@@ -1,0 +1,19 @@
+13:44   ping 8.8.8.8
+        8 packages sent
+
+13:45   go to google.com
+
+13:46  go to https://www.youtube.com/watch?v=J0tGubH9ZyM
+
+13:46 do nothing for a few minutes to check background traffic of kali linux (everything closed)
+
+13:50   nmap -sP 192.168.0.0-100
+13:51   nmap -sV 192.168.1.1 -A
+
+13:54   open file:///usr/share/kali-defaults/web/homepage.html
+
+13:55   open facebook.com --> https://www.facebook.com/ (not logged in)
+13:56   go to bbc.com
+13:56   got to google.com (with bbc still open)
+13:57   close google.com
+13:57 close bbc.com

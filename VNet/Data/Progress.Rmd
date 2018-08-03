@@ -1,0 +1,582 @@
+---
+title: "VNet Data Henry"
+output: html_document
+highlight: Pygments
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Week 2
+
+## Data
+
+### To Do
+What I did so far:
+
+
+10.05.
+
+- 13:44   ping 8.8.8.8 (49440s)
+  8 packages sent
+- 13:45   go to google.com (49500s)
+- 13:46  go to https://www.youtube.com/watch?v=J0tGubH9ZyM (49560s)
+- 13:46 do nothing for a few minutes to check background traffic of kali linux (everything closed)
+- 13:50   nmap -sP 192.168.0.0-100  (49800s)
+- 13:51   nmap -sV 192.168.1.1 -A  (49860s)
+- 13:54   open file:///usr/share/kali-defaults/web/homepage.html (50040s)
+- 13:55   open facebook.com --> https://www.facebook.com/ (not logged in) (50100s)
+- 13:56   go to bbc.com  (50160s)
+- 13:56   go to google.com (with bbc still open)
+- 13:57   close google.com  (50220s)
+- 13:57 close bbc.com
+
+
+# Looking at the data:
+```{r Initial,eval=TRUE,cache=FALSE,echo=FALSE, results=FALSE}
+setwd("~/Desktop/VNet/Data/")
+
+Flows <- Outflows <- read.table("nf_data.txt",sep=",",header=FALSE, stringsAsFactors = FALSE,skip=1,fill=TRUE)
+del <- nrow(Flows)
+
+Flows <- Flows <- read.table("nf_data.txt",sep=",",header=FALSE, stringsAsFactors = FALSE,skip=1,nrows=del-4,fill=TRUE)
+t11 <- sapply(strsplit(Flows[,1]," "), "[",2)
+Flows[,1] <- c(data.matrix(read.table(text=t11,sep=":"))%*%c(3600,60,1))
+Flows[,5] <- sapply(strsplit(Flows[,5],":"), "[",2)
+Flows[,7] <- sapply(strsplit(Flows[,7],":"), "[",2)
+Flows[,3] <- trimws(Flows[,3],which="both")
+Flows[,4] <- trimws(Flows[,4],which="both")
+Flows[,5] <- trimws(Flows[,5],which="both")
+Flows[,6] <- trimws(Flows[,6],which="both")
+Flows[,7] <- trimws(Flows[,7],which="both")
+Flows[,9] <- trimws(Flows[,9],which="both")
+Flows[,8] <- gsub(" M","000000",Flows[,8])
+Flows[,9] <- gsub(" M","000000",Flows[,9])
+Flows[,8] <- gsub(" G","000000000",Flows[,8])
+Flows[,9] <- gsub(" G","000000000",Flows[,9])
+
+colnames(Flows) <- c("timeStamp","duration","proto","srcip","srcport",
+                              "destip","destport","packetcount","bytes","flowcount")
+Flows <- Flows[order(Flows[,1]),]
+
+
+Outflows <- Flows[Flows[,4]=="192.168.1.100",]
+Inflows <- Flows[Flows[,6]=="192.168.1.100",]
+Others <- Flows[Flows[,6]!="192.168.1.100"&Flows[,4]!="192.168.1.100",]
+
+#dim(Inflows)
+#dim(Outflows)
+
+
+# Outflows <- Outflows[Outflows[,1]/3600>13.99,]
+# Outflows[,1] <- Outflows[,1]-min(Outflows[,1])
+# Inflows <- Inflows[Inflows[,1]/3600>13.99,]
+# Inflows[,1] <- Inflows[,1]-min(Inflows[,1])
+
+
+#Outflows ###############################################################
+
+Outflows_b <- Outflows
+Inflows_b <- Inflows
+
+Outflows_b[,8] <- as.numeric(Outflows_b[,8])
+Outflows_b[,9] <- as.numeric(Outflows_b[,9])
+Inflows_b[,8] <- as.numeric(Inflows_b[,8])
+Inflows_b[,9] <- as.numeric(Inflows_b[,9])
+
+#Colors and groups
+coldout <- rep("black",dim(Outflows)[1])
+coldin <- rep("black",dim(Inflows)[1])
+colpout <- rep("black",dim(Outflows)[1])
+colpin <- rep("black",dim(Inflows)[1])
+colbout <- rep("black",dim(Outflows)[1])
+colbin <- rep("black",dim(Inflows)[1])
+
+quantile(as.numeric(Outflows[,2]),probs = c(0.7,0.95,0.99,0.999))
+quantile(as.numeric(Inflows[,2]),probs = c(0.7,0.95,0.99,0.999))
+durationsv <- c(-1,0,1,10,100,600,Inf)
+cold <- c("black","black","darkred","red","purple","green")
+
+for(i in 2:length(durationsv)){
+  Outflows[Outflows_b[,2]>durationsv[i-1]&Outflows_b[,2]<=durationsv[i],2] <- paste("<",durationsv[i])
+  coldout[Outflows_b[,2]>durationsv[i-1]&Outflows_b[,2]<=durationsv[i]] <- cold[i-1]
+  Inflows[Inflows_b[,2]>durationsv[i-1]&Inflows_b[,2]<=durationsv[i],2] <- paste("<",durationsv[i])
+  coldin[Inflows_b[,2]>durationsv[i-1]&Inflows_b[,2]<=durationsv[i]] <- cold[i-1]
+}
+
+quantile(as.numeric(Outflows[,8]),probs = c(0.7,0.95,0.99,0.999))
+quantile(as.numeric(Inflows[,8]),probs = c(0.7,0.95,0.99,0.999))
+paketsv <- c(-1,1,10,100,1000,10000,100000,Inf)
+colp <- c("black","black","darkred","red","purple","purple","green")
+
+for(i in 2:length(paketsv)){
+  Outflows[Outflows_b[,8]>paketsv[i-1]&Outflows_b[,8]<=paketsv[i],8] <- paste("<",paketsv[i])
+  colpout[Outflows_b[,8]>paketsv[i-1]&Outflows_b[,8]<=paketsv[i]] <- colp[i-1]
+  Inflows[Inflows_b[,8]>paketsv[i-1]&Inflows_b[,8]<=paketsv[i],8] <- paste("<",paketsv[i])
+  colpin[Inflows_b[,8]>paketsv[i-1]&Inflows_b[,8]<=paketsv[i]] <- colp[i-1]
+}
+
+quantile(as.numeric(Outflows[,9]),probs = c(0.7,0.95,0.99,0.999))
+quantile(as.numeric(Inflows[,9]),probs = c(0.7,0.95,0.99,0.999))
+bytesv <- c(-1,100,10000,1000000,100000000,1000000000,Inf)
+colb <- c("black","darkred","red","purple","purple","green")
+
+for(i in 2:length(paketsv)){
+  Outflows[Outflows_b[,9]>bytesv[i-1]&Outflows_b[,9]<=bytesv[i],9] <- paste("<",bytesv[i])
+  colbout[Outflows_b[,9]>bytesv[i-1]&Outflows_b[,9]<=bytesv[i]] <- colb[i-1]
+  Inflows[Inflows_b[,9]>bytesv[i-1]&Inflows_b[,9]<=bytesv[i],9] <- paste("<",bytesv[i])
+  colbin[Inflows_b[,9]>bytesv[i-1]&Inflows_b[,9]<=bytesv[i]] <- colb[i-1]
+}
+
+
+library(RColorBrewer)
+n <- 74
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector = unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
+#pie(rep(1,n), col=sample(col_vector, n))
+```
+
+
+
+```{r Facebook,eval=TRUE,cache=FALSE,fig.height=10,fig.width=15,echo=FALSE}
+window <- c(0,30)+49530
+
+
+yax <- seq(from = window[1], to = window[2], by = 5)
+
+par(mfrow=c(1,2))
+
+
+nout <- sum(table(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6])>2)
+nin <- sum(table(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4])>2)
+
+IPout <- names(sort(table(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]),decreasing = TRUE))
+IPin <- names(sort(table(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4]),decreasing = TRUE))
+
+colsout <- rep("black",length(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]))
+colsin <- rep("black",length(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],6]))
+
+for(i in 1:nout){
+  colsout[Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]==IPout[i]]=col_vector[i]
+}
+
+for(i in 1:nin){
+  colsin[Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4]==IPin[i]]=col_vector[i]
+}
+
+outUDP <- Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],3]=="UDP"
+outTCP <- Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],3]=="TCP"
+inUDP <- Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],3]=="UDP"
+inTCP <- Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],3]=="TCP"
+
+
+
+#sort(table(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]),decreasing = TRUE)
+#sort(table(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4]),decreasing = TRUE)
+
+#Outflows ##################
+
+plot(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0,Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     col=colsout[outUDP],ylim=rev(window),pch=16,cex=0.8,xlim=c(-0.6,0.5),axes=FALSE,frame.plot=TRUE,
+     main="Outflows 1: Go to google.com",ylab=" " ,xlab=" ")
+axis(side = 2, at = yax)
+points(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.5,Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+       col=colsout[outTCP],cex=0.8,pch=16)
+
+#Ports
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.07, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],7],offset = 0, cex = 0.7)
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.43, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],7],offset = 0, cex = 0.7)
+
+#Duration
+
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.16, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldout[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.34, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldout[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+
+#Bytes
+
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.3, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbout[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.2, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbout[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+
+#Pakets
+
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.4, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpout[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.1, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpout[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+
+#Inflows ##################
+
+plot(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0,Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     col=colsin[inUDP],ylim=rev(window),pch=16,cex=0.8,xlim=c(-0.6,0.5),axes=FALSE,frame.plot=TRUE,
+     main="Outflows 1: Go to google.com",ylab=" " ,xlab=" ")
+axis(side = 2, at = yax)
+points(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.5,Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+       col=colsin[inTCP],cex=0.8,pch=16)
+
+#Ports
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.07, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],5],offset = 0, cex = 0.7)
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.43, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],5],offset = 0, cex = 0.7)
+
+#Duration
+
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.16, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldin[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.34, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldin[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+
+#Bytes
+
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.3, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbin[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.2, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbin[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+
+#Pakets
+
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.4, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpin[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.1, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpin[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+
+```
+
+
+```{r youtube,eval=TRUE,cache=FALSE,fig.height=15,fig.width=15,echo=FALSE}
+window <- c(0,40)+49560
+
+
+yax <- seq(from = window[1], to = window[2], by = 5)
+
+par(mfrow=c(1,2))
+
+
+nout <- sum(table(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6])>2)
+nin <- sum(table(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4])>2)
+
+IPout <- names(sort(table(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]),decreasing = TRUE))
+IPin <- names(sort(table(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4]),decreasing = TRUE))
+
+colsout <- rep("black",length(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]))
+colsin <- rep("black",length(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],6]))
+
+for(i in 1:nout){
+  colsout[Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]==IPout[i]]=col_vector[i]
+}
+
+for(i in 1:nin){
+  colsin[Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4]==IPin[i]]=col_vector[i]
+}
+
+outUDP <- Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],3]=="UDP"
+outTCP <- Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],3]=="TCP"
+inUDP <- Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],3]=="UDP"
+inTCP <- Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],3]=="TCP"
+
+
+
+#sort(table(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]),decreasing = TRUE)
+#sort(table(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4]),decreasing = TRUE)
+
+#Outflows ##################
+
+plot(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0,Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     col=colsout[outUDP],ylim=rev(window),pch=16,cex=0.8,xlim=c(-0.6,0.5),axes=FALSE,frame.plot=TRUE,
+     main="Outflows 2: View video on youtube (direct open)",ylab=" " ,xlab=" ")
+axis(side = 2, at = yax)
+points(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.5,Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+       col=colsout[outTCP],cex=0.8,pch=16)
+
+#Ports
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.07, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],7],offset = 0, cex = 0.7)
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.43, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],7],offset = 0, cex = 0.7)
+
+#Duration
+
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.16, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldout[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.34, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldout[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+
+#Bytes
+
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.3, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbout[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.2, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbout[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+
+#Pakets
+
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.4, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpout[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.1, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpout[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+
+#Inflows ##################
+
+plot(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0,Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     col=colsin[inUDP],ylim=rev(window),pch=16,cex=0.8,xlim=c(-0.6,0.5),axes=FALSE,frame.plot=TRUE,
+     main="Inflows 2: View video on youtube (direct open)",ylab=" " ,xlab=" ")
+axis(side = 2, at = yax)
+points(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.5,Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+       col=colsin[inTCP],cex=0.8,pch=16)
+
+#Ports
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.07, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],5],offset = 0, cex = 0.7)
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.43, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],5],offset = 0, cex = 0.7)
+
+#Duration
+
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.16, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldin[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.34, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldin[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+
+#Bytes
+
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.3, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbin[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.2, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbin[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+
+#Pakets
+
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.4, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpin[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.1, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpin[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+
+```
+
+```{r portscan,eval=TRUE,cache=FALSE,fig.height=10,fig.width=15,echo=FALSE}
+window <- c(0,30)+49890
+
+
+yax <- seq(from = window[1], to = window[2], by = 5)
+
+par(mfrow=c(1,2))
+
+
+nout <- sum(table(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6])>2)
+nin <- sum(table(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4])>2)
+
+IPout <- names(sort(table(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]),decreasing = TRUE))
+IPin <- names(sort(table(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4]),decreasing = TRUE))
+
+colsout <- rep("black",length(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]))
+colsin <- rep("black",length(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],6]))
+
+for(i in 1:nout){
+  colsout[Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]==IPout[i]]=col_vector[i]
+}
+
+for(i in 1:nin){
+  colsin[Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4]==IPin[i]]=col_vector[i]
+}
+
+outUDP <- Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],3]=="UDP"
+outTCP <- Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],3]=="TCP"
+inUDP <- Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],3]=="UDP"
+inTCP <- Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],3]=="TCP"
+
+
+
+#sort(table(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]),decreasing = TRUE)
+#sort(table(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4]),decreasing = TRUE)
+
+#Outflows ##################
+
+plot(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0,Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     col=colsout[outUDP],ylim=rev(window),pch=16,cex=0.8,xlim=c(-0.6,0.5),axes=FALSE,frame.plot=TRUE,
+     main="Outflows 3: Port scan",ylab=" " ,xlab=" ")
+axis(side = 2, at = yax)
+points(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.5,Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+       col=colsout[outTCP],cex=0.8,pch=16)
+
+#Ports
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.07, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],7],offset = 0, cex = 0.7)
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.43, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],7],offset = 0, cex = 0.7)
+
+#Duration
+
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.16, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldout[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.34, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldout[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+
+#Bytes
+
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.3, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbout[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.2, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbout[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+
+#Pakets
+
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.4, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpout[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.1, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpout[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+
+#Inflows ##################
+
+plot(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0,Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     col=colsin[inUDP],ylim=rev(window),pch=16,cex=0.8,xlim=c(-0.6,0.5),axes=FALSE,frame.plot=TRUE,
+     main="Inflows 3: Port scan",ylab=" " ,xlab=" ")
+axis(side = 2, at = yax)
+points(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.5,Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+       col=colsin[inTCP],cex=0.8,pch=16)
+
+#Ports
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.07, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],5],offset = 0, cex = 0.7)
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.43, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],5],offset = 0, cex = 0.7)
+
+#Duration
+
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.16, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldin[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.34, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldin[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+
+#Bytes
+
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.3, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbin[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.2, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbin[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+
+#Pakets
+
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.4, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpin[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.1, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpin[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+
+```
+
+
+```{r bbc,eval=TRUE,cache=FALSE,fig.height=10,fig.width=15,echo=FALSE}
+window <- c(0,30)+50160
+
+
+yax <- seq(from = window[1], to = window[2], by = 5)
+
+par(mfrow=c(1,2))
+
+
+nout <- sum(table(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6])>2)
+nin <- sum(table(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4])>2)
+
+IPout <- names(sort(table(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]),decreasing = TRUE))
+IPin <- names(sort(table(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4]),decreasing = TRUE))
+
+colsout <- rep("black",length(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]))
+colsin <- rep("black",length(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],6]))
+
+for(i in 1:nout){
+  colsout[Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]==IPout[i]]=col_vector[i]
+}
+
+for(i in 1:nin){
+  colsin[Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4]==IPin[i]]=col_vector[i]
+}
+
+outUDP <- Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],3]=="UDP"
+outTCP <- Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],3]=="TCP"
+inUDP <- Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],3]=="UDP"
+inTCP <- Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],3]=="TCP"
+
+
+
+#sort(table(Outflows[Outflows[,1]>=window[1]&Outflows[,1]<=window[2],6]),decreasing = TRUE)
+#sort(table(Inflows[Inflows[,1]>=window[1]&Inflows[,1]<=window[2],4]),decreasing = TRUE)
+
+#Outflows ##################
+
+plot(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0,Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     col=colsout[outUDP],ylim=rev(window),pch=16,cex=0.8,xlim=c(-0.6,0.5),axes=FALSE,frame.plot=TRUE,
+     main="Outflows 4: BBC",ylab=" " ,xlab=" ")
+axis(side = 2, at = yax)
+points(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.5,Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+       col=colsout[outTCP],cex=0.8,pch=16)
+
+#Ports
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.07, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],7],offset = 0, cex = 0.7)
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.43, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],7],offset = 0, cex = 0.7)
+
+#Duration
+
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.16, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldout[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.34, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldout[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+
+#Bytes
+
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.3, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbout[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.2, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbout[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+
+#Pakets
+
+text(Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0+0.4, Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpout[Outflows[,3]=="UDP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+text(Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1]*0-0.1, Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],1],
+     labels = Outflows[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpout[Outflows[,3]=="TCP"&Outflows[,1]>=window[1]&Outflows[,1]<=window[2]])
+
+#Inflows ##################
+
+plot(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0,Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     col=colsin[inUDP],ylim=rev(window),pch=16,cex=0.8,xlim=c(-0.6,0.5),axes=FALSE,frame.plot=TRUE,
+     main="Inflows 4: BBC",ylab=" " ,xlab=" ")
+axis(side = 2, at = yax)
+points(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.5,Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+       col=colsin[inTCP],cex=0.8,pch=16)
+
+#Ports
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.07, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],5],offset = 0, cex = 0.7)
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.43, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],5],offset = 0, cex = 0.7)
+
+#Duration
+
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.16, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldin[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.34, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],2],offset = 0, cex = 0.7,col=coldin[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+
+#Bytes
+
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.3, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbin[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.2, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],9],offset = 0, cex = 0.7,col=colbin[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+
+#Pakets
+
+text(Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0+0.4, Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpin[Inflows[,3]=="UDP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+text(Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1]*0-0.1, Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],1],
+     labels = Inflows[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2],8],offset = 0, cex = 0.7,col=colpin[Inflows[,3]=="TCP"&Inflows[,1]>=window[1]&Inflows[,1]<=window[2]])
+
+```
