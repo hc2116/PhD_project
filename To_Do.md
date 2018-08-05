@@ -5,6 +5,7 @@
 - Think of scenarios for Nikola that attempt to answer the RQs
 - Investigate questions more
 
+- Validate that ping and other scenarios are similar at different workloads, different environments (machines) etc.
 
 # Call BT
 
@@ -14,7 +15,7 @@
 	- look for survey on behavioural characterisations
 
 - Write down a list of approaches to cluster flows, finger printing, behavioural flow characterisation
-	- comments, what hs not been told
+	- comments, what has not been told
 	- Think about second order features compared to first order features: What characterises a flow
 	- Compile a little report with the questions
 
