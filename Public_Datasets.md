@@ -39,7 +39,14 @@ Server down currently
 
 #### [UGR'16](https://nesg.ugr.es/nesg-ugr16/index.php): A New Dataset for the Evaluation of Cyclostationarity-Based Network IDSs
 
-* 4 months of netflow data from a 
+* 4 months of netflow data from a spanish 3-tier ISP
+	* the network is used by many client companies --> implies that the traffic traversing the network is traffic very heterogeneous
+* 5 attack machines, 20 victim machines
+	*  inject the traffic in the dataset as if all the
+twenty victim machines in our setup are infected
+* labelled attack flows
+* about 14GB per week background traffic
+
 
 #### [UNSW-NB15](https://www.unsw.adfa.edu.au/unsw-canberra-cyber/cybersecurity/ADFA-NB15-Datasets/): A Comprehensive Data set for Network Intrusion Detection systems
 * DOI: 10.1109/MilCIS.2015.7348942
