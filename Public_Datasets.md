@@ -2,6 +2,9 @@
 
 A collection of links to pubished datasets with some remarks for Detgen.
 
+![Datasets](Datasets.png){ width=70% }
+
+
 ### Impact Cyber Trust
 
 [Impact Cyber Trust](https://www.impactcybertrust.org/) cyber security oriented data, includes many data sets, synthetic as well as real captures, from different sources. Many datasets focus on observed attack data, are not directly relevant to the project. In general, there is very little information given that describe the datasets origin, which makes it hard to investigate how relevant or biased the data is.
@@ -38,8 +41,20 @@ Server down currently
 
 * 4 months of netflow data from a 
 
+#### [UNSW-NB15](https://www.unsw.adfa.edu.au/unsw-canberra-cyber/cybersecurity/ADFA-NB15-Datasets/): A Comprehensive Data set for Network Intrusion Detection systems
+* DOI: 10.1109/MilCIS.2015.7348942
+* consists of real world traffic from a network (Cyber Range Lab of the Australian Centre for Cyber Security) and synthetic contemporary attack behaviours using IXIA PerfectStorm tool
+	* Attacks: Fuzzers, Analysis, Backdoors, DoS, Exploits, Generic, Reconnaissance, Shellcode and Worms
 
-* Data-Sets:
+![Data-gen setup](UNSW-data.png){ width=70% }
+
+* 100 GB of the raw traffic (pcap from TCPdump), also used Bro and Argus to generate 49 features with the class label
+* 16 hours on Jan 22, 2015 and 15  hours  on  Feb  17,  2015
+
+
+
+### Data-Sets:
+
 	* ADFA-LD12
 		*  representative of the modern attack structure and methodology
 		*  Ubuntu as host system, software with known vulnerabilities installed for penetration testing and web-attacks
