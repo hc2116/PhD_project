@@ -813,26 +813,6 @@ tion of the two classes of data.
 ### Statistical Identifcation of Encrypted Web Browsing Traffic
 
 
-### Can Android Applications be identified using only TCP/IP Headers?
-##### Alan, Kaur, 2016
-##### Chapel Hill, 12 citations, 6 pages
-
-* 4 Android devices with 1600 applications
-*  86,10 app launches
-
-* mobile apps use mostly http/https traffic
-* select learning algorithms and features that have worked well in the past for identification of web pages in web traffic
-	* packet sizes found in the initial launch time traffic 
-		* 32-64 first packages
-	* 88% accuracy 
-* Classifiers:
-	1. Group packets in connection into bursts
-		1. Signature of connections using number of packets and their size
-		2. Similarity measure Sim(x,y)=XintersectY/XunionY
-	2. Naive Bayes on incoming and outgoing packet sizes on multiset of packets
-	3. Like 2., but with inverse document frequency transformation and normalization (worked best)
-
-* Noticable: Detection accuracy decreases substantially when applied across OS --> OS or programs drive the signatures significantly
 
 ### Histogram-Based Traffic Anomaly Detection
 ##### Kind, Stoecklin, Dimitropoulus, 2009
@@ -884,4 +864,65 @@ tion of the two classes of data.
 ##### New Jersey, 240 citations, 6 pages
 
 
+## Fingerprinting/Clustering of Flows
 
+### Traffic Classification through Simple Statistical Fingerprinting
+##### Crotti, Dusi, Gringoli, Salgarelli, 2007
+##### Universita degli Studi di Brescia, 437 citations
+
+* For packets $(p_1,...,p_n)$ in a flow, determine the pdf (prob. histogram) of every packet $p_i$ --> $PDF=(PDF_1,...,PDF_n)$
+  * PDF for size and interarrival time
+* Apply gaussian filtering to every $PDF_i$ to smooth things out
+* A flow is classified according to an *"anomaly"* score which determines to which protocol the flow is closest
+  * Anomaly score vector for packet $P_i$: $A_i(P_i,PDF_i)=\frac{1}{\max(\epsilon,PDF_i(P_i))}$
+  
+
+### Who do you sync you are? Smartphone Fingerprinting via Application Behaviour
+##### Stoeber, Frank, Schmitt, Martinovic, 2013
+##### TU Kaiserlautern, Berkeley, Oxford, 53 citations
+
+* Notion of burst: each packet is vector $p_i=(t_i,size_i,direction_i)$ 
+* One can observe alternating idle periods between bursts 
+  --> burst separation time: 4.43s (95% of all packets are within that window, very similar to notion of session)
+* Calculate features:
+  * Size stats, #incoming, #outgoing, interarrival stats,... (nothing special)
+  * kNN and SVM
+
+### Can Android Applications be identified using only TCP/IP Headers?
+##### Alan, Kaur, 2016
+##### Chapel Hill, 12 citations, 6 pages
+
+* 4 Android devices with 1600 applications
+*  86,10 app launches
+
+* mobile apps use mostly http/https traffic
+* select learning algorithms and features that have worked well in the past for identification of web pages in web traffic
+	* packet sizes found in the initial launch time traffic 
+		* 32-64 first packages
+	* 88% accuracy 
+* Classifiers:
+	1. Group packets in connection into bursts
+		1. Signature of connections using number of packets and their size
+		2. Similarity measure Sim(x,y)=XintersectY/XunionY
+	2. Naive Bayes on incoming and outgoing packet sizes on multiset of packets
+	3. Like 2., but with inverse document frequency transformation and normalization (worked best)
+
+* Noticable: Detection accuracy decreases substantially when applied across OS --> OS or programs drive the signatures significantly
+
+### Unsupervised traffic classification using flow statistical properties and IP packet payload
+##### Zhang et. all, 2012
+##### Deakin University, Australia, 31 cit.
+
+* Cluster both with flow props and payload
+  * k-means on standard flow properties
+  * Latent semantic analysis
+* Bag-of-Word model to represent content of clusters
+
+### Understanding Patterns of TCP Connection Usage with Statistical Clustering
+##### Campos, Nobel, Smith, Jeffay, 2005,
+##### Chapel Hill, 31
+
+* Model the traffic in form of incoming bulks $a_i$, outgoing bulks $b_i$ and idle time $t_i$
+  ---> Flow is a chain of these three states
+  * THen calculate features from that (what is the advantage to using packets directly? Why not use both)
+* Then use hierarchichal clustering and agglomerative clustering

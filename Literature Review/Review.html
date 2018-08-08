@@ -1131,6 +1131,25 @@ $(document).ready(function () {
 <h5>New Jersey, 240 citations, 6 pages</h5>
 </div>
 </div>
+<div id="fingerprintingclustering-of-flows" class="section level2">
+<h2>Fingerprinting/Clustering of Flows</h2>
+<div id="traffic-classification-through-simple-statistical-fingerprinting" class="section level3">
+<h3>Traffic Classification through Simple Statistical Fingerprinting</h3>
+<div id="crotti-dusi-gringoli-salgarelli-2007" class="section level5">
+<h5>Crotti, Dusi, Gringoli, Salgarelli, 2007</h5>
+</div>
+<div id="universita-degli-studi-di-brescia-437" class="section level5">
+<h5>Universita degli Studi di Brescia, 437</h5>
+<ul>
+<li>For packets <span class="math inline">\((p_1,...,p_n)\)</span> in a flow, determine the pdf (prob. histogram) of every packet <span class="math inline">\(p_i\)</span> –&gt; <span class="math inline">\(PDF=(PDF_1,...,PDF_n)\)</span></li>
+<li>PDF for size and interarrival time</li>
+<li>Apply gaussian filtering to every <span class="math inline">\(PDF_i\)</span> to smooth things out</li>
+<li>A flow is classified according to an <em>“anomaly”</em> score which determines to which protocol the flow is closest</li>
+<li>Anomaly score vector for packet <span class="math inline">\(P_i\)</span>: <span class="math inline">\(A_i(P_i,PDF_i)=\frac{1}{\max(\epsilon,PDF_i(P_i))}\)</span></li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 
 
