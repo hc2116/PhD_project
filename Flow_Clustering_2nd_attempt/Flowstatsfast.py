@@ -6,6 +6,9 @@ Created on Thu Jul 12 17:21:34 2018
 @author: henry
 """
 import os
+from scapy.all import *
+
+
 try:
     os.remove("Desktop/Project/Flow_Clustering_2nd_attempt/Flows.txt")
 except OSError:

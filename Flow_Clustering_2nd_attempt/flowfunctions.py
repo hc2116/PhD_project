@@ -271,3 +271,11 @@ def writeflow(iii,Flowd,Dict,Vars,Compflows):
     linestr+="\n"
     Compflows.write(linestr)
     del Dict[iii]
+
+
+
+
+
+def Compflows(pcapfile):
+    pingpackets = rdpcap(pcapfile)
+    
