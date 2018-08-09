@@ -7,14 +7,23 @@ Created on Thu Jul 12 17:21:34 2018
 """
 import os
 from scapy.all import *
+import re
+from Desktop.Project.Flow_Clustering_2nd_attempt.flowfunctions import Vardecl, writeflow, Compflows, Compflowstxt
+from Desktop.Project.Flow_Clustering_2nd_attempt.flowfunctions2 import Vardeclpcap, Compflowspcap
 
+filename="Desktop/Project/Flow_Clustering_2nd_attempt/dump-011-ping2-2018-08-07-1732.pcap"
+filename="Desktop/Project/Flow_Clustering_2nd_attempt/tcptest.pcap"
+
+Compflows(filename,
+          "Desktop/Project/Flow_Clustering_2nd_attempt/Flows4.txt",
+          pcap=True)
 
 try:
     os.remove("Desktop/Project/Flow_Clustering_2nd_attempt/Flows.txt")
 except OSError:
     pass
 
-Packets = open("Desktop/Project/Flow_Clustering_2nd_attempt/Packets2")
+Packets = open("Desktop/Project/Data/ImpactRep/Random/Packets2")
 Compflows=open("Desktop/Project/Flow_Clustering_2nd_attempt/Flows.txt","w")
 
 #Packets = open("Desktop/Project/Flow_Clustering_2nd_attempt/textcon.txt")
