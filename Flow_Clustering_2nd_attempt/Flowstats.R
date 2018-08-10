@@ -50,8 +50,13 @@ Packets[(Packets[,3]=="131.243.141.141"&Packets[,4]=="208.189.11.184"&
              Packets[,4]=="131.243.141.141"&
              grepl("1525",Packets[,7])),c(3,4,7)]
 
-Flows <- read.table("~/Desktop/Project/Flow_Clustering_2nd_attempt/Flows.txt",
+Flows <- read.table("~/Desktop/Project/Flow_Clustering_2nd_attempt/Flows4.txt",
                       sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+
+Flows <- read.table("~/Desktop/Project/Flow_Clustering_2nd_attempt/FlowsUNSW1.txt",
+                    sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+
+Flows[which(is.na(as.numeric(Flows$NSPack))),]
 
 Packets[(Packets[,3]=="131.243.142.14"&Packets[,4]=="60.244.125.30")|
           (Packets[,3]=="60.244.125.30"&
