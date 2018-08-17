@@ -56,7 +56,9 @@ Flows <- read.table("~/Desktop/Project/Flow_Clustering_2nd_attempt/Flows4.txt",
 Flows <- read.table("~/Desktop/Project/Flow_Clustering_2nd_attempt/FlowsUNSW1.txt",
                     sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
 
-Flows[which(is.na(as.numeric(Flows$NSPack))),]
+
+table(Flows[,3])
+
 
 Packets[(Packets[,3]=="131.243.142.14"&Packets[,4]=="60.244.125.30")|
           (Packets[,3]=="60.244.125.30"&
@@ -114,3 +116,29 @@ a=jitter(rep(1,1000),amount=0.2)
 b=jitter(c(rep(1,500),rep(2,500)),amount=0.7)
 plot(a,b,pch=16)
 
+##########################################################
+
+Flows <- read.table("~/Desktop/Project/Flow_Clustering_2nd_attempt/FlowsCIC.txt",
+                    sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+
+Flows <- Flows[-26,]
+Flows[which(is.na(as.numeric(Flows$NSPack))),]
+
+which(is.na(as.numeric(Flows$NSPack)))
+
+table(Flows[,3])
+
+
+##########################################################
+
+Flows <- read.table("~/Desktop/Project/Flow_Clustering_2nd_attempt/FlowsUNSW1.txt",
+                    sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+
+table(Flows[,3])
+Flows[1:3,]
+
+clusti <- c(6:13,15:18)
+
+Flows[1:3,clusti]
+
+Flows_cluster=Flows[]

@@ -33,12 +33,28 @@ Flowcomp(filename,
 
 
 
+filename="Desktop/Project/Data/CIC/Monday-WorkingHours.pcap"
+outputfilename="Desktop/Project/Flow_Clustering_2nd_attempt/FlowsCIC.txt"
+
+Flowcomp(filename,
+          outputfilename,
+          pcap=True)
+
+
+packets[1].summary()
+packets[1].show()
+
+packets[1].payload.payload.len
 
 packets=rdpcap(filename)
 
 
+print(packets[1])
 
+print((packets[1].payload))
 
+packets[1]
+print(str(packets[1].payload.len))
 
 line=packets[99]
 
