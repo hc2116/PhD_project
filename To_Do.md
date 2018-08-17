@@ -29,6 +29,7 @@
 	- Look for survey on datasets
 	- look for survey for artifical data generation
 	- look for survey on behavioural characterisations
+	- look at shadowserver
 
 - Write down a list of approaches to cluster flows, finger printing, behavioural flow characterisation
 	- comments, what has not been told
