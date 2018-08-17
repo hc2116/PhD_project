@@ -2,14 +2,30 @@
 
 # Project
 
-- Think of scenarios for Nikola that attempt to answer the RQs
-- Investigate questions more
+- write down current thoughts on approach to overall project
+  - autoencoder purpose
+  - event correlation
+  - datasets 
+  - what are actions (on application level)
+  - what can be identified as actions
+  - think about research proposal?
+  
+- write down steps for experiment
+  - which containers generate which traffic
+  - internal validity
+  - traffic similarities
+  - traffic statistics that are automatically generated
+  - traffic filter for unwanted packages
+  - compare traffic with http protocol description etc.
+  - investigate http testing tools (tools that test if traffic from website is fulfilling http requirements)
+  
+- investigate current traffic generation (especially the cic data!!!)
+  - investigat
 
 - Validate that ping and other scenarios are similar at different workloads, different environments (machines) etc.
 
-# Call BT
-
 - Compile list of datasets
+  - investigate datasets in introduction of CIC paper
 	- Look for survey on datasets
 	- look for survey for artifical data generation
 	- look for survey on behavioural characterisations

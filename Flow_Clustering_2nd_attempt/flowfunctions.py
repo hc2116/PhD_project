@@ -250,43 +250,8 @@ def Compflowspcap(filename,outputfilename):
     pingpackets = PcapReader(filename)
     Compflows=open(outputfilename,"w")
     #i=0
-    ii=0
-# =============================================================================
-#     line=pingpackets[i]
-#     while not ((line.name in ['IPv6','IP'])|(line.payload.name in ['IPv6','IP'])):
-#         i+=1
-#         line=pingpackets[i]
-#     
-#     if line.payload.name in ['IPv6','IP']:
-#         line=line.payload
-#     
-#     if line.payload.name in ['TCP','UDP']:
-#         sport=str(line.payload.sport)
-#         dport=str(line.payload.dport)
-#     else:
-#         sport='-'
-#         dport='-'
-# 
-#     Dict=[str(line.src)+','+str(line.dst)+','+line.payload.name+','+sport+'>'+dport]
-#     Flowd={}
-#     Vars=[]
-# 
-#     Vardeclpcap(line,Dict,Flowd,Vars,Init=True)
-# 
-#     linestr="SIP,DIP,Prot,SPort,DPort"
-#     for aa in Vars:
-#         if not ("temp" in aa):
-#             linestr+=","+aa
-#     linestr+="\n"
-# 
-#     Compflows.write(linestr)
-# 
-#     limiter=0
-#     limiter2=0
-#     timeout=500
-#     nbulks=1
-#     idletime=4
-# =============================================================================
+    iiiiii=0
+
     limiter=0
     limiter2=0
     timeout=500
@@ -294,12 +259,17 @@ def Compflowspcap(filename,outputfilename):
     idletime=4    
     
     for line in pingpackets:
-        if ii==0:
-            if ((line.name in ['IPv6','IP'])|(line.payload.name in ['IPv6','IP'])):
-                ii=1
+        if iiiiii==0:
+            #print(str(line.name))
+            #print(str(line.payload.name))
+            #print(str(line.payload.len))
+            if (((line.name in ['IPv6','IP'])|(line.payload.name in ['IPv6','IP']))&(not(
+                    ('ICMPv6 Neighbor' in line.payload.name)|
+                    ('ICMPv6 Neighbor' in line.payload.payload.name)))):
+                iiiiii=1
                 if line.payload.name in ['IPv6','IP']:
                     line=line.payload
-    
+                #print(str(line.name))
                 if line.payload.name in ['TCP','UDP']:
                     sport=str(line.payload.sport)
                     dport=str(line.payload.dport)
@@ -322,7 +292,9 @@ def Compflowspcap(filename,outputfilename):
                 Compflows.write(linestrvars)
 
         
-        elif ((line.name in ['IPv6','IP'])|(line.payload.name in ['IPv6','IP'])):
+        elif (((line.name in ['IPv6','IP'])|(line.payload.name in ['IPv6','IP']))&(not(
+                    ('ICMPv6 Neighbor' in line.payload.name)|
+                    ('ICMPv6 Neighbor' in line.payload.payload.name)))):
             if line.payload.name in ['IPv6','IP']:
                 line=line.payload
             
@@ -522,7 +494,7 @@ def Compflowspcap(filename,outputfilename):
     #pingpackets.close()
     Compflows.close()
 
-
+ 
 def Vardeclpcap(line,Dict,Flowd,Vars=[],Init=False,nbulks=8):   
     #Stats ######################################################
     if Init==True:
