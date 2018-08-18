@@ -40,8 +40,6 @@ Flowcomp(filename,
 
 
 
-
->>>>>>> e479d64d0a38b7cb84ef1c8414c2f1404a766596
 filename="Desktop/Project/Data/CIC/Monday-WorkingHours.pcap"
 outputfilename="Desktop/Project/Flow_Clustering_2nd_attempt/FlowsCIC.txt"
 
