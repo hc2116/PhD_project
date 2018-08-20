@@ -247,6 +247,7 @@ def Compflowstxt(filename,outputfilename):
 
 def Compflowspcap(filename,outputfilename):
     #pingpackets = rdpcap(filename)
+    Bulkpktn=3
     pingpackets = PcapReader(filename)
     Compflows=open(outputfilename,"w")
     #i=0
@@ -328,19 +329,20 @@ def Compflowspcap(filename,outputfilename):
                     Flowd["B_IndP_temp"][index]+=1
                     Flowd["B_Packets_temp"][index]+=1
                     Flowd["B_Bytes_temp"][index]+=SByte
+                    Flowd["T_assist_temp"][index]+=SByte
                     Flowd["B_Dur_temp"][index]+=Interarr*(Flowd["B_Packets_temp"][index]>1.1)
                 # Otherwise delete previous params ###############################################
-                elif Flowd["B_Packets_temp"][index]>3:
+                elif Flowd["B_Packets_temp"][index]>Bulkpktn:
                     # Add transaction mode ###############################################
                     if Flowd["T_Ind"][index]==True:
                         Flowd["T_Counter"][index]+=1
                         Flowd["T_Packets_max"][index]=max([Flowd["T_Packets_max"][index],Flowd["T_Packets_temp"][index]])
                         Flowd["T_Bytes_max"][index]=max([Flowd["T_Bytes_max"][index],Flowd["T_Bytes_temp"][index]])
                         Flowd["T_Dur_max"][index]=max([Flowd["T_Dur_max"][index],Flowd["T_Dur_temp"][index]])
-                        Flowd["T_Packets_temp"][index]=1
-                        Flowd["T_Bytes_temp"][index]=SByte
-                        Flowd["T_Dur_temp"][index]=0
-                        Flowd["T_Ind"][index]=False
+                        #Flowd["T_Packets_temp"][index]=1
+                        #Flowd["T_Bytes_temp"][index]=SByte
+                        #Flowd["T_Dur_temp"][index]=0
+                        #Flowd["T_Ind"][index]=False
                     # Add bulk mode ###############################################
                     Flowd["B_Counter"][index]+=1
                     Flowd["B_Packets"][index]+=Flowd["B_Packets_temp"][index]
@@ -358,17 +360,22 @@ def Compflowspcap(filename,outputfilename):
                         Flowd[BC+"B_Bytes"][index]=Flowd["B_Bytes_temp"][index]
                         Flowd[BC+"B_Dur"][index]=Flowd["B_Dur_temp"][index]
                         Flowd[BC+"B_Ind"][index]=Flowd["B_Ind_temp"][index]
-                    # To do
+                    # Reinitialise params
                     Flowd["B_Packets_temp"][index]=1
                     Flowd["B_Bytes_temp"][index]=SByte
                     Flowd["B_Dur_temp"][index]=0
                     Flowd["B_Ind_temp"][index]=1
                     Flowd["B_IndP_temp"][index]=1
+                    Flowd["T_Packets_temp"][index]=1
+                    Flowd["T_Bytes_temp"][index]=SByte
+                    Flowd["T_Dur_temp"][index]=0
+                    Flowd["T_Ind"][index]=False
                 else:
                     Flowd["T_Packets_temp"][index]+=Flowd["B_Packets_temp"][index]
                     if Flowd["T_Packets_temp"][index]>3&Flowd["T_Ind"][index]==False:
                         Flowd["T_Ind"][index]=True
-                    Flowd["T_Bytes_temp"][index]+=Flowd["B_Bytes_temp"][index]+SByte
+                    Flowd["T_Bytes_temp"][index]+=+SByte+Flowd["T_assist_temp"][index]
+                    Flowd["T_assist_temp"][index]=0
                     Flowd["T_Dur_temp"][index]+=Flowd["B_Dur_temp"][index]+Interarr
                     Flowd["B_Packets_temp"][index]=1
                     Flowd["B_Bytes_temp"][index]=SByte
@@ -415,19 +422,20 @@ def Compflowspcap(filename,outputfilename):
                     Flowd["B_Packets_temp"][index]+=1
                     Flowd["B_IndP_temp"][index]+=2
                     Flowd["B_Bytes_temp"][index]+=DByte
+                    Flowd["T_assist_temp"][index]+=DByte
                     Flowd["B_Dur_temp"][index]+=Interarr*(Flowd["B_Packets_temp"][index]>1.1)
                 # Otherwise delete previous params ###############################################
-                elif Flowd["B_Packets_temp"][index]>3:
+                elif Flowd["B_Packets_temp"][index]>Bulkpktn:
                     # Add transaction mode ###############################################
                     if Flowd["T_Ind"][index]==True:
                         Flowd["T_Counter"][index]+=1
                         Flowd["T_Packets_max"][index]=max([Flowd["T_Packets_max"][index],Flowd["T_Packets_temp"][index]])
                         Flowd["T_Bytes_max"][index]=max([Flowd["T_Bytes_max"][index],Flowd["T_Bytes_temp"][index]])
                         Flowd["T_Dur_max"][index]=max([Flowd["T_Dur_max"][index],Flowd["T_Dur_temp"][index]])
-                        Flowd["T_Packets_temp"][index]=1
-                        Flowd["T_Bytes_temp"][index]=DByte
-                        Flowd["T_Dur_temp"][index]=0
-                        Flowd["T_Ind"][index]=False
+                        #Flowd["T_Packets_temp"][index]=1
+                        #Flowd["T_Bytes_temp"][index]=DByte
+                        #Flowd["T_Dur_temp"][index]=0
+                        #Flowd["T_Ind"][index]=False
                     # Add bulk mode ###############################################
                     Flowd["B_Counter"][index]+=1
                     Flowd["B_Packets"][index]+=Flowd["B_Packets_temp"][index]
@@ -445,17 +453,22 @@ def Compflowspcap(filename,outputfilename):
                         Flowd[BC+"B_Bytes"][index]=Flowd["B_Bytes_temp"][index]
                         Flowd[BC+"B_Dur"][index]=Flowd["B_Dur_temp"][index]
                         Flowd[BC+"B_Ind"][index]=Flowd["B_Ind_temp"][index]
-                    # To do
+                    # Reinitialise params
                     Flowd["B_Packets_temp"][index]=1
-                    Flowd["B_Bytes_temp"][index]=SByte
+                    Flowd["B_Bytes_temp"][index]=DByte
                     Flowd["B_Dur_temp"][index]=0
                     Flowd["B_Ind_temp"][index]=2
                     Flowd["B_IndP_temp"][index]=2
+                    Flowd["T_Packets_temp"][index]=1
+                    Flowd["T_Bytes_temp"][index]=DByte
+                    Flowd["T_Dur_temp"][index]=0
+                    Flowd["T_Ind"][index]=False
                 else:
                     Flowd["T_Packets_temp"][index]+=Flowd["B_Packets_temp"][index]
                     if Flowd["T_Packets_temp"][index]>3&Flowd["T_Ind"][index]==False:
                         Flowd["T_Ind"][index]=True
-                    Flowd["T_Bytes_temp"][index]+=Flowd["B_Bytes_temp"][index]+DByte
+                    Flowd["T_Bytes_temp"][index]+=+DByte+Flowd["T_assist_temp"][index]
+                    Flowd["T_assist_temp"][index]=0
                     Flowd["T_Dur_temp"][index]+=Flowd["B_Dur_temp"][index]+Interarr
                     Flowd["B_Packets_temp"][index]=1
                     Flowd["B_Bytes_temp"][index]=DByte
@@ -620,7 +633,7 @@ def Vardeclpcap(line,Dict,Flowd,Vars=[],Init=False,nbulks=8):
     if Init==True:
         Vars.append("T_Bytes_temp")
         Flowd["T_Bytes_temp"]=[]
-    Flowd["T_Bytes_temp"].append(0)
+    Flowd["T_Bytes_temp"].append(int(line.len))
     if Init==True:
         Vars.append("T_Dur_max")
         Flowd["T_Dur_max"]=[]
@@ -629,6 +642,10 @@ def Vardeclpcap(line,Dict,Flowd,Vars=[],Init=False,nbulks=8):
         Vars.append("T_Dur_temp")
         Flowd["T_Dur_temp"]=[]
     Flowd["T_Dur_temp"].append(0)
+    if Init==True:
+        Vars.append("T_assist_temp")
+        Flowd["T_assist_temp"]=[]
+    Flowd["T_assist_temp"].append(0)
     #Bulk mode ######################################################
     if Init==True:
         Vars.append("B_Counter")
@@ -649,7 +666,7 @@ def Vardeclpcap(line,Dict,Flowd,Vars=[],Init=False,nbulks=8):
     if Init==True:
         Vars.append("B_Bytes_temp")
         Flowd["B_Bytes_temp"]=[]
-    Flowd["B_Bytes_temp"].append(0)
+    Flowd["B_Bytes_temp"].append(int(line.len))
     if Init==True:
         Vars.append("B_Bytes")
         Flowd["B_Bytes"]=[]
@@ -836,7 +853,7 @@ def Vardecl(line,Dict,Flowd,Vars=[],Init=False,nbulks=8):
     if Init==True:
         Vars.append("T_Bytes_temp")
         Flowd["T_Bytes_temp"]=[]
-    Flowd["T_Bytes_temp"].append(0)
+    Flowd["T_Bytes_temp"].append(int(line[6].split("Len=")[1].replace('"',' ').split(' ')[0]))
     if Init==True:
         Vars.append("T_Dur_max")
         Flowd["T_Dur_max"]=[]
@@ -930,8 +947,8 @@ def Vardecl(line,Dict,Flowd,Vars=[],Init=False,nbulks=8):
 
 
 def writeflow(iii,Flowd,Dict,Vars,Compflows):
-    
-    if Flowd["B_Packets_temp"][iii]>3:
+    Bulkpktn=3
+    if Flowd["B_Packets_temp"][iii]>Bulkpktn:
         # Add transaction mode ###############################################
         # Add bulk mode ###############################################
         Flowd["B_Counter"][iii]+=1
@@ -944,9 +961,10 @@ def writeflow(iii,Flowd,Dict,Vars,Compflows):
         Flowd["B_Ind"][iii]+=Flowd["B_Ind_temp"][iii]
         linestr=(Dict[iii])
         
-    if Flowd["T_Ind"][iii]==True:
-        if Flowd["B_Packets_temp"][iii]<=3:
+    if Flowd["T_Ind"][iii]==True or Flowd["NS:Pack"][iii]+Flowd["NDPack"][iii]<4:
+        if Flowd["B_Packets_temp"][iii]<=Bulkpktn:
             Flowd["T_Packets_temp"][iii]+=Flowd["B_Packets_temp"][iii]-1
+            #Flowd["T_Bytes_temp"][iii]+=Flowd["B_Bytes_temp"][iii]
         Flowd["T_Counter"][iii]+=1
         Flowd["T_Packets_max"][iii]=max([Flowd["T_Packets_max"][iii],Flowd["T_Packets_temp"][iii]])
         Flowd["T_Bytes_max"][iii]=max([Flowd["T_Bytes_max"][iii],Flowd["T_Bytes_temp"][iii]])

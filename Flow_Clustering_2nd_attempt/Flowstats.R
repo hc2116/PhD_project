@@ -56,7 +56,6 @@ Flows <- read.table("~/Desktop/Project/Flow_Clustering_2nd_attempt/Flows4.txt",
 Flows <- read.table("~/Desktop/Project/Flow_Clustering_2nd_attempt/FlowsUNSW1.txt",
                     sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
 
-
 table(Flows[,3])
 
 
@@ -142,3 +141,55 @@ clusti <- c(6:13,15:18)
 Flows[1:3,clusti]
 
 Flows_cluster=Flows[]
+
+
+Flows1c <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowclient1.txt",
+                    sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows1s <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowserver1.txt",
+                    sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows2c <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowclient2.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows2s <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowserver2.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows3c <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowclient3.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows3s <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowserver3.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows4c <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowclient4.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows4s <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowserver4.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows5c <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowclient5.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows5s <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowserver5.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows6c <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowclient6.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows6s <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowserver6.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows7c <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowclient7.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows7s <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowserver7.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows8c <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowclient8.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows8s <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowserver8.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows9c <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowclient9.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows9s <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowserver9.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows10c <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowclient10.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+Flows10s <- read.table("~/detlearsom/detgen/packetstats/Flowfiles/Flowserver10.txt",
+                      sep=",",header=TRUE, stringsAsFactors = FALSE,fill=TRUE)
+
+
+
+
+
+Flows1c[,6:42]
+
+Flows1s[,6:42]
+
+
