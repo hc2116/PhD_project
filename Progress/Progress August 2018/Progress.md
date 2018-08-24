@@ -1,14 +1,4 @@
 ---
-title: "PhD update August 2018"
-author: "Henry Clausen"
-output: html_document
-highlight: Pygments
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 
 
 ### Current thoughts on modeling approach
@@ -18,6 +8,7 @@ My current focus lies on the analysis and grouping of traffic connections/flows.
 Connections can obviously be produced by different applications, and these often transmit data with (a finite set of) different connection protocols/implementations. This notion of protocol/implementation is finer than the one of usual traffic protocols such as http or ssh.
 
 - Assumption: These different implementations leave different observable patterns in the connection that differentiate them from other implementations, but are consistent in one implementation. This assumption is backed by several papers that describe different patterns within connections.
+
 ![Design](Bulks.png){ width=70% }
 *Understanding Patterns of TCP Connection Usage with Statistical Clustering (2005), Hernandez-Campos et. al*
 	
