@@ -1,5 +1,3 @@
-
-
 # Project
 
 - write down current thoughts on approach to overall project
