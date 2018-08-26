@@ -6,6 +6,7 @@ Created on Sat Jul 21 18:27:14 2018
 @author: henry
 """
 import re
+import math as mt
 from scapy.all import *
 
 def Flowcomp(filename,outputfilename,pcap=True):
@@ -248,6 +249,7 @@ def Compflowstxt(filename,outputfilename):
 def Compflowspcap(filename,outputfilename):
     #pingpackets = rdpcap(filename)
     Bulkpktn=3
+    MTU=1500
     pingpackets = PcapReader(filename)
     Compflows=open(outputfilename,"w")
     #i=0
@@ -310,9 +312,11 @@ def Compflowspcap(filename,outputfilename):
                 # Bytes ###############################################
                 SByte=int(line.len)
                 Flowd["SBytes"][index]+=SByte
-                Flowd["SBytes_std"][index]+=SByte**2
+                Flowd["SBytes_std1"][index]+=SByte**2
+                Flowd["SBytes_std2"][index]+=MTU**2*mt.floor(SByte/MTU)+(SByte-mt.floor(SByte/MTU)*MTU)**2
                 Flowd["SBytes_max"][index]=max([Flowd["SBytes_max"][index],SByte])
-                Flowd["NSPack"][index]+=1
+                Flowd["NSPack1"][index]+=1
+                Flowd["NSPack2"][index]+=mt.ceil(SByte/MTU)
                 # Time ###############################################
                 Interarr=float(line.time)-Flowd["Curr"][index]
                 Flowd["Curr"][index]=float(line.time)
@@ -326,8 +330,10 @@ def Compflowspcap(filename,outputfilename):
                 # Test for Bulk mode ###############################################
                 # Test if in bulk currently ###############################################
                 if Flowd["B_Ind_temp"][index]==1:
-                    Flowd["B_IndP_temp"][index]+=1
-                    Flowd["B_Packets_temp"][index]+=1
+                    #Flowd["B_IndP_temp"][index]+=1
+                    Flowd["B_IndP_temp"][index]+=mt.ceil(SByte/MTU)
+                    Flowd["B_Packets_temp"][index]+=mt.ceil(SByte/MTU)
+                    #Flowd["B_Packets_temp"][index]+=1
                     Flowd["B_Bytes_temp"][index]+=SByte
                     Flowd["T_assist_temp"][index]+=SByte
                     Flowd["B_Dur_temp"][index]+=Interarr*(Flowd["B_Packets_temp"][index]>1.1)
@@ -361,11 +367,13 @@ def Compflowspcap(filename,outputfilename):
                         Flowd[BC+"B_Dur"][index]=Flowd["B_Dur_temp"][index]
                         Flowd[BC+"B_Ind"][index]=Flowd["B_Ind_temp"][index]
                     # Reinitialise params
-                    Flowd["B_Packets_temp"][index]=1
+                    #Flowd["B_Packets_temp"][index]=1
+                    Flowd["B_Packets_temp"][index]=mt.ceil(SByte/MTU)
                     Flowd["B_Bytes_temp"][index]=SByte
                     Flowd["B_Dur_temp"][index]=0
                     Flowd["B_Ind_temp"][index]=1
-                    Flowd["B_IndP_temp"][index]=1
+                    #Flowd["B_IndP_temp"][index]=1
+                    Flowd["B_IndP_temp"][index]=mt.ceil(SByte/MTU)
                     Flowd["T_Packets_temp"][index]=1
                     Flowd["T_Bytes_temp"][index]=SByte
                     Flowd["T_Dur_temp"][index]=0
