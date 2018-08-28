@@ -23,7 +23,6 @@ def Compflowspcap(filename,outputfilename):
     MTU=1514
     pingpackets = PcapReader(filename)
     Compflows=open(outputfilename,"w")
-    #i=0
     iiiiii=0
 
     limiter=0
@@ -31,8 +30,11 @@ def Compflowspcap(filename,outputfilename):
     timeout=500
     nbulks=8
     idletime=4    
+    Pktnumber=0
     for line in pingpackets:
-        i+=1
+        Pktnumber+=1
+        print(" ")
+        print("Pktnumber:"+str(Pktnumber))
         if iiiiii==0:
             #print(str(line.name))
             #print(str(line.payload.name))
@@ -55,7 +57,7 @@ def Compflowspcap(filename,outputfilename):
                 Flowd={}
                 Vars=[]
 
-                Vardeclpcap(line,Dict,Flowd,Vars,Init=True,nbulks=nbulks)
+                Vardeclpcap(line,Dict,Flowd,Vars,Init=True,nbulks=nbulks,SDBytes=int(line.len),MTU=MTU)
                 
                 linestrvars="SIP,DIP,Prot,SPort,DPort"
                 for aa in Vars:
@@ -100,123 +102,7 @@ def Compflowspcap(filename,outputfilename):
                 
                 # Test for Bulk mode ###############################################
                 # Test if in bulk currently ###############################################
-                if Flowd["B_Ind_temp"][index]==1:
-                    Flowd["B_IndP_temp"][index]+=1
-                    Flowd["B_IndP_temp_broken"][index]+=mt.ceil(SByte/MTU)
-                    Flowd["B_Packets_temp_broken"][index]+=mt.ceil(SByte/MTU)
-                    Flowd["B_Packets_temp"][index]+=1
-                    Flowd["B_Bytes_temp"][index]+=SByte
-                    Flowd["B_Dur_temp"][index]+=Interarr*(Flowd["B_Packets_temp"][index]>1.1)
-                    Flowd["T_assist_temp"][index]+=SByte
-                    #Flowd["T_Ind_temp"][index]=False
-                    #######
-                    print("Packet"+str(i)+":Contin")
-                    print("T_Packets_temp:"+str(Flowd["T_Packets_temp"][index]))
-                    print("T_Packets_temp_broken:"+str(Flowd["T_Packets_temp_broken"][index]))
-                    print("T_Packets:"+str(Flowd["T_Packets"][index]))
-                    print("T_Packets_broken:"+str(Flowd["T_Packets_broken"][index]))
-                    #######
-                # Otherwise delete previous params ###############################################
-                elif Flowd["B_Packets_temp_broken"][index]>Bulkpktn:
-                    # Add transaction mode ###############################################
-                    if Flowd["T_Ind"][index]==True:
-                        Flowd["T_Counter"][index]+=1
-                        Flowd["T_Packets"][index]+=Flowd["T_Packets_temp"][index]
-                        Flowd["T_Packets_broken"][index]+=Flowd["T_Packets_temp_broken"][index]
-                        Flowd["T_Packets_std"][index]+=Flowd["T_Packets_temp"][index]**2
-                        Flowd["T_Packets_broken_std"][index]+=Flowd["T_Packets_temp_broken"][index]**2
-                        Flowd["T_Packets_max"][index]=max([Flowd["T_Packets_max"][index],Flowd["T_Packets_temp"][index]])
-                        Flowd["T_Packets_max_broken"][index]=max([Flowd["T_Packets_max_broken"][index],Flowd["T_Packets_temp_broken"][index]])
-                        Flowd["T_Bytes"][index]+=Flowd["T_Bytes_temp"][index]
-                        Flowd["T_Bytes_std"][index]+=Flowd["T_Bytes_temp"][index]**2
-                        Flowd["T_Bytes_max"][index]=max([Flowd["T_Bytes_max"][index],Flowd["T_Bytes_temp"][index]])
-                        Flowd["T_Dur"][index]+=Flowd["T_Dur_temp"][index]
-                        Flowd["T_Dur_std"][index]+=Flowd["T_Dur_temp"][index]**2
-                        Flowd["T_Dur_max"][index]=max([Flowd["T_Dur_max"][index],Flowd["T_Dur_temp"][index]])
-                        #Flowd["T_Packets_temp"][index]=1
-                        #Flowd["T_Bytes_temp"][index]=SByte
-                        #Flowd["T_Dur_temp"][index]=0
-                        #Flowd["T_Ind"][index]=False
-                    # Add bulk mode ###############################################
-                    Flowd["B_Counter"][index]+=1
-                    Flowd["B_Packets"][index]+=Flowd["B_Packets_temp"][index]
-                    Flowd["B_Packets_broken"][index]+=Flowd["B_Packets_temp_broken"][index]
-                    Flowd["B_Packets_std"][index]+=Flowd["B_Packets_temp"][index]**2
-                    Flowd["B_Packets_broken_std"][index]+=Flowd["B_Packets_temp_broken"][index]**2
-                    Flowd["B_Bytes"][index]+=Flowd["B_Bytes_temp"][index]
-                    Flowd["B_Bytes_std"][index]+=Flowd["B_Bytes_temp"][index]**2
-                    Flowd["B_Dur"][index]+=Flowd["B_Dur_temp"][index]
-                    Flowd["B_Dur_std"][index]+=Flowd["B_Dur_temp"][index]**2
-                    Flowd["B_Packets_max"][index]=max([Flowd["B_Packets_max"][index],Flowd["B_Packets_temp"][index]])
-                    Flowd["B_Packets_broken_max"][index]=max([Flowd["B_Packets_broken_max"][index],Flowd["B_Packets_temp_broken"][index]])
-                    Flowd["B_Bytes_max"][index]=max([Flowd["B_Bytes_max"][index],Flowd["B_Bytes_temp"][index]])
-                    Flowd["B_Dur_max"][index]=max([Flowd["B_Dur_max"][index],Flowd["B_Dur_temp"][index]])
-                    Flowd["B_Ind"][index]+=Flowd["B_Ind_temp"][index]
-                    Flowd["B_IndP"][index]+=Flowd["B_IndP_temp"][index]
-                    Flowd["B_IndP_broken"][index]+=Flowd["B_IndP_temp_broken"][index]
-                    # Add first bulks ###############################################
-                    if Flowd["B_Counter"][index]<=nbulks:
-                        BC=str(Flowd["B_Counter"][index])
-                        Flowd[BC+"B_Packets"][index]=Flowd["B_Packets_temp"][index]
-                        Flowd[BC+"B_Packets_broken"][index]=Flowd["B_Packets_temp_broken"][index]
-                        Flowd[BC+"B_Bytes"][index]=Flowd["B_Bytes_temp"][index]
-                        Flowd[BC+"B_Dur"][index]=Flowd["B_Dur_temp"][index]
-                        Flowd[BC+"B_Ind"][index]=Flowd["B_Ind_temp"][index]
-                    # Reinitialise params
-                    Flowd["B_Packets_temp"][index]=1
-                    Flowd["B_Packets_temp_broken"][index]=mt.ceil(SByte/MTU)
-                    Flowd["B_Bytes_temp"][index]=SByte
-                    Flowd["B_Dur_temp"][index]=0
-                    Flowd["B_Ind_temp"][index]=1
-                    Flowd["B_IndP_temp"][index]=1
-                    Flowd["B_IndP_temp_broken"][index]=mt.ceil(SByte/MTU)
-                    Flowd["T_Ind"][index]=False
-                    if mt.ceil(SByte/MTU)==1:
-                        Flowd["T_Ind_temp"][index]=True
-                        Flowd["T_Packets_temp"][index]=1
-                        Flowd["T_Packets_temp_broken"][index]=mt.ceil(SByte/MTU)
-                        Flowd["T_Bytes_temp"][index]=SByte
-                        Flowd["T_Dur_temp"][index]=0
-                        Flowd["T_assist_temp"][index]=0
-                    else:
-                        Flowd["T_Ind_temp"][index]=False
-                        Flowd["T_Packets_temp"][index]=0
-                        Flowd["T_Packets_temp_broken"][index]=0
-                        Flowd["T_Bytes_temp"][index]=0
-                        Flowd["T_assist_temp"][index]=SByte
-                        Flowd["T_Dur_temp"][index]=0
-                        
-                    
-                    #######
-                    print("Packet"+str(i)+":write")
-                    print("T_Packets_temp:"+str(Flowd["T_Packets_temp"][index]))
-                    print("T_Packets_temp_broken:"+str(Flowd["T_Packets_temp_broken"][index]))
-                    print("T_Packets:"+str(Flowd["T_Packets"][index]))
-                    print("T_Packets_broken:"+str(Flowd["T_Packets_broken"][index]))
-                    #######
-                else:
-                    Flowd["T_Packets_temp"][index]+=Flowd["B_Packets_temp"][index]
-                    if Flowd["T_Ind_temp"][index]==True:
-                        Flowd["T_Ind"][index]=True
-                    Flowd["T_Ind_temp"][index]=True
-                    Flowd["T_Packets_temp_broken"][index]+=Flowd["B_Packets_temp_broken"][index]
-                    Flowd["T_Bytes_temp"][index]+=SByte+Flowd["T_assist_temp"][index]
-                    Flowd["T_assist_temp"][index]=0
-                    Flowd["T_Dur_temp"][index]+=Flowd["B_Dur_temp"][index]+Interarr
-                    Flowd["B_Packets_temp"][index]=1
-                    Flowd["B_Packets_temp_broken"][index]=mt.ceil(SByte/MTU)
-                    Flowd["B_Bytes_temp"][index]=SByte
-                    Flowd["B_Dur_temp"][index]=0
-                    Flowd["B_Ind_temp"][index]=1
-                    Flowd["B_IndP_temp"][index]=1
-                    Flowd["B_IndP_temp_broken"][index]=mt.ceil(SByte/MTU)
-                    #######
-                    print("Packet"+str(i)+":new")
-                    print("T_Packets_temp:"+str(Flowd["T_Packets_temp"][index]))
-                    print("T_Packets_temp_broken:"+str(Flowd["T_Packets_temp_broken"][index]))
-                    print("T_Packets:"+str(Flowd["T_Packets"][index]))
-                    print("T_Packets_broken:"+str(Flowd["T_Packets_broken"][index]))
-                    #######
+                Bulkchecker(Flowd, index,"S",SByte,Bulkpktn,nbulks,Interarr,MTU)
                 # Test for FIN flag ###############################################
                 if line.payload.name=='TCP':    
                     if  Flowd["FIN1"][index]==False and "F" in str(line.payload.flags):
@@ -234,9 +120,7 @@ def Compflowspcap(filename,outputfilename):
                 # Test for SYN flag ###############################################
                 if Flowd["NSPack"][index]==1&(Flowd["NDPack"][index]==0)&Flowd["SYN1"][index]==True:                        
                     Flowd["SYN2"][index]="S" in str(line.payload.flags)
-                    #print("SYN", str("SYN" in line[6]),str(Flowd["SYN2"][index]))
 
-                #Flowd["DBytes"][index]+=int(line[6].split("Len=")[1].replace('"',' ').split(' ')[0])
                 DByte=int(line.len)
                 Flowd["DBytes"][index]+=DByte
                 Flowd["DBytes_std"][index]+=DByte**2
@@ -256,123 +140,7 @@ def Compflowspcap(filename,outputfilename):
                        
                 # Test for Bulk mode ###############################################
                 # Test if in bulk currently ###############################################
-                if Flowd["B_Ind_temp"][index]==2:
-                    Flowd["B_Packets_temp"][index]+=1
-                    Flowd["B_Packets_temp_broken"][index]+=mt.ceil(DByte/MTU)
-                    Flowd["B_IndP_temp"][index]+=2
-                    Flowd["B_IndP_temp_broken"][index]+=mt.ceil(DByte/MTU)*2
-                    Flowd["B_Bytes_temp"][index]+=DByte
-                    Flowd["T_assist_temp"][index]+=DByte
-                    Flowd["B_Dur_temp"][index]+=Interarr*(Flowd["B_Packets_temp"][index]>1.1)
-                    #Flowd["T_Ind_temp"][index]=False
-                    #######
-                    print("Packet"+str(i)+":Contin")
-                    print("T_Packets_temp:"+str(Flowd["T_Packets_temp"][index]))
-                    print("T_Packets_temp_broken:"+str(Flowd["T_Packets_temp_broken"][index]))
-                    print("T_Packets:"+str(Flowd["T_Packets"][index]))
-                    print("T_Packets_broken:"+str(Flowd["T_Packets_broken"][index]))
-                    #######
-                # Otherwise delete previous params ###############################################
-                elif Flowd["B_Packets_temp_broken"][index]>Bulkpktn:
-                    # Add transaction mode ###############################################
-                    if Flowd["T_Ind"][index]==True:
-                        Flowd["T_Counter"][index]+=1
-                        Flowd["T_Packets"][index]+=Flowd["T_Packets_temp"][index]
-                        Flowd["T_Packets_broken"][index]+=Flowd["T_Packets_temp_broken"][index]
-                        Flowd["T_Packets_std"][index]+=Flowd["T_Packets_temp"][index]**2
-                        Flowd["T_Packets_broken_std"][index]+=Flowd["T_Packets_temp_broken"][index]**2
-                        Flowd["T_Packets_max"][index]=max([Flowd["T_Packets_max"][index],Flowd["T_Packets_temp"][index]])
-                        Flowd["T_Packets_max_broken"][index]=max([Flowd["T_Packets_max_broken"][index],Flowd["T_Packets_temp_broken"][index]])
-                        Flowd["T_Bytes"][index]+=Flowd["T_Bytes_temp"][index]
-                        Flowd["T_Bytes_std"][index]+=Flowd["T_Bytes_temp"][index]**2
-                        Flowd["T_Bytes_max"][index]=max([Flowd["T_Bytes_max"][index],Flowd["T_Bytes_temp"][index]])
-                        Flowd["T_Dur"][index]+=Flowd["T_Dur_temp"][index]
-                        Flowd["T_Dur_std"][index]+=Flowd["T_Dur_temp"][index]**2
-                        Flowd["T_Dur_max"][index]=max([Flowd["T_Dur_max"][index],Flowd["T_Dur_temp"][index]])
-                        #Flowd["T_Packets_temp"][index]=1
-                        #Flowd["T_Bytes_temp"][index]=DByte
-                        #Flowd["T_Dur_temp"][index]=0
-                        #Flowd["T_Ind"][index]=False
-                    # Add bulk mode ###############################################
-                    Flowd["B_Counter"][index]+=1
-                    Flowd["B_Packets"][index]+=Flowd["B_Packets_temp"][index]
-                    Flowd["B_Packets_broken"][index]+=Flowd["B_Packets_temp_broken"][index]
-                    Flowd["B_Packets_std"][index]+=Flowd["B_Packets_temp"][index]**2
-                    Flowd["B_Packets_broken_std"][index]+=Flowd["B_Packets_temp_broken"][index]**2
-                    Flowd["B_Bytes"][index]+=Flowd["B_Bytes_temp"][index]
-                    Flowd["B_Bytes_std"][index]+=Flowd["B_Bytes_temp"][index]**2
-                    Flowd["B_Dur"][index]+=Flowd["B_Dur_temp"][index]
-                    Flowd["B_Dur_std"][index]+=Flowd["B_Dur_temp"][index]**2
-                    Flowd["B_Packets_max"][index]=max([Flowd["B_Packets_max"][index],Flowd["B_Packets_temp"][index]])
-                    Flowd["B_Packets_broken_max"][index]=max([Flowd["B_Packets_broken_max"][index],Flowd["B_Packets_temp_broken"][index]])
-                    Flowd["B_Bytes_max"][index]=max([Flowd["B_Bytes_max"][index],Flowd["B_Bytes_temp"][index]])
-                    Flowd["B_Dur_max"][index]=max([Flowd["B_Dur_max"][index],Flowd["B_Dur_temp"][index]])
-                    Flowd["B_Ind"][index]+=Flowd["B_Ind_temp"][index]
-                    Flowd["B_IndP"][index]+=Flowd["B_IndP_temp"][index]
-                    Flowd["B_IndP_broken"][index]+=Flowd["B_IndP_temp_broken"][index]
-                    # Add first bulks ###############################################
-                    if Flowd["B_Counter"][index]<=nbulks:
-                        BC=str(Flowd["B_Counter"][index])
-                        Flowd[BC+"B_Packets"][index]=Flowd["B_Packets_temp"][index]
-                        Flowd[BC+"B_Packets_broken"][index]=Flowd["B_Packets_temp_broken"][index]
-                        Flowd[BC+"B_Bytes"][index]=Flowd["B_Bytes_temp"][index]
-                        Flowd[BC+"B_Dur"][index]=Flowd["B_Dur_temp"][index]
-                        Flowd[BC+"B_Ind"][index]=Flowd["B_Ind_temp"][index]
-                    # Reinitialise params
-                    Flowd["B_Packets_temp"][index]=1
-                    Flowd["B_Packets_temp_broken"][index]=mt.ceil(DByte/MTU)
-                    Flowd["B_Bytes_temp"][index]=DByte
-                    Flowd["B_Dur_temp"][index]=0
-                    Flowd["B_Ind_temp"][index]=2
-                    Flowd["B_IndP_temp"][index]=2
-                    Flowd["T_Ind"][index]=False
-                    if mt.ceil(SByte/MTU)==1:
-                        Flowd["T_Ind_temp"][index]=True
-                        Flowd["T_Packets_temp"][index]=1
-                        Flowd["T_Packets_temp_broken"][index]=mt.ceil(SByte/MTU)
-                        Flowd["T_Bytes_temp"][index]=DByte
-                        Flowd["T_Dur_temp"][index]=0
-                        Flowd["T_assist_temp"][index]=0
-                    else:
-                        Flowd["T_Ind_temp"][index]=False
-                        Flowd["T_Packets_temp"][index]=0
-                        Flowd["T_Packets_temp_broken"][index]=0
-                        Flowd["T_Bytes_temp"][index]=0
-                        Flowd["T_assist_temp"][index]=DByte
-                        Flowd["T_Dur_temp"][index]=0
-                        
-                    #######
-                    print("Packet"+str(i)+":Write")
-                    print("T_Packets_temp:"+str(Flowd["T_Packets_temp"][index]))
-                    print("T_Packets_temp_broken:"+str(Flowd["T_Packets_temp_broken"][index]))
-                    print("T_Packets:"+str(Flowd["T_Packets"][index]))
-                    print("T_Packets_broken:"+str(Flowd["T_Packets_broken"][index]))
-                    #######
-                else:
-                    Flowd["T_Packets_temp"][index]+=Flowd["B_Packets_temp"][index]
-                    if Flowd["T_Ind_temp"][index]==True:
-                        Flowd["T_Ind"][index]=True
-                    Flowd["T_Ind_temp"][index]=True
-                    Flowd["T_Packets_temp_broken"][index]+=Flowd["B_Packets_temp_broken"][index]
-                    Flowd["T_Bytes_temp"][index]+=+DByte+Flowd["T_assist_temp"][index]
-                    Flowd["T_assist_temp"][index]=0
-                    Flowd["T_Dur_temp"][index]+=Flowd["B_Dur_temp"][index]+Interarr
-                    ################################################################################
-                    Flowd["B_Packets_temp"][index]=1
-                    Flowd["B_Packets_temp_broken"][index]=mt.ceil(DByte/MTU)
-                    Flowd["B_Bytes_temp"][index]=DByte
-                    Flowd["B_Dur_temp"][index]=0
-                    Flowd["B_Ind_temp"][index]=2
-                    Flowd["B_IndP_temp"][index]=2
-                    Flowd["B_IndP_temp_broken"][index]=2*mt.ceil(DByte/MTU)
-                    #######
-                    print("Packet"+str(i)+":new")
-                    print("T_Packets_temp:"+str(Flowd["T_Packets_temp"][index]))
-                    print("T_Packets_temp_broken:"+str(Flowd["T_Packets_temp_broken"][index]))
-                    print("T_Packets:"+str(Flowd["T_Packets"][index]))
-                    print("T_Packets_broken:"+str(Flowd["T_Packets_broken"][index]))
-                    #######
-                
+                Bulkchecker(Flowd, index,"D",DByte,Bulkpktn,nbulks,Interarr,MTU)
                 # Test for FIN flag ###############################################
                 if line.payload.name=='TCP':    
                     if  Flowd["FIN1"][index]==False and "F" in str(line.payload.flags):
@@ -387,7 +155,7 @@ def Compflowspcap(filename,outputfilename):
             # Write connection to Dict ###############################################    
             else:
                 Dict.append(str(line.src)+","+str(line.dst)+","+line.payload.name+','+sport+'>'+dport)
-                Vardeclpcap(line,Dict,Flowd,[],Init=False,nbulks=nbulks)
+                Vardeclpcap(line,Dict,Flowd,[],Init=False,nbulks=nbulks,SDBytes=int(line.len),MTU=MTU)
     
         limiter+=1
         limiter2+=1
@@ -412,7 +180,7 @@ Created on Tue Aug 28 15:37:52 2018
 
 @author: henry
 """
-def Bulkchecker(Flowd,index,SD,SDByte,Bulkpktn,Interarr,MTU):
+def Bulkchecker(Flowd,index,SD,SDByte,Bulkpktn,nbulks,Interarr,MTU):
     if SD=="S":
         Ind=1
     elif SD=="D":
@@ -428,14 +196,21 @@ def Bulkchecker(Flowd,index,SD,SDByte,Bulkpktn,Interarr,MTU):
         Flowd["B_Packets_temp"][index]+=1
         Flowd["B_Bytes_temp"][index]+=SDByte
         Flowd["B_Dur_temp"][index]+=Interarr*(Flowd["B_Packets_temp"][index]>1.1)
-        Flowd["T_assist_temp"][index]+=SDByte
-        #Flowd["T_Ind_temp"][index]=False
+        
+        
+        Flowd["T_Packets_temp_temp"][index]+=1
+        Flowd["T_Packets_temp_temp_broken"][index]+=mt.ceil(SDByte/MTU)
+        Flowd["T_Bytes_temp_temp"][index]+=SDByte
+        Flowd["T_Dur_temp_temp"][index]+=Interarr
         #######
-        #print("Packet"+str(i)+":Contin")
-        print("T_Packets_temp:"+str(Flowd["T_Packets_temp"][index]))
-        print("T_Packets_temp_broken:"+str(Flowd["T_Packets_temp_broken"][index]))
-        print("T_Packets:"+str(Flowd["T_Packets"][index]))
-        print("T_Packets_broken:"+str(Flowd["T_Packets_broken"][index]))
+        print(" ")
+        print("Contin")
+        print("Alle Bytes:"+str(Flowd["SBytes"][index]+Flowd["DBytes"][index]))
+        print("Jetzige Bytes:"+str(SDByte))
+        print("T_Bytes_temp_temp:"+str(Flowd["T_Bytes_temp_temp"][index]))
+        print("T_Bytes_temp:"+str(Flowd["T_Bytes_temp"][index]))
+        print("T_Bytes:"+str(Flowd["T_Bytes"][index]))
+        print("B_Bytes:"+str(Flowd["B_Bytes"][index]))
         #######
     # Ohterwise delete previous params ###############################################
     elif Flowd["B_Packets_temp_broken"][index]>Bulkpktn:
@@ -491,55 +266,64 @@ def Bulkchecker(Flowd,index,SD,SDByte,Bulkpktn,Interarr,MTU):
         Flowd["B_Ind_temp"][index]=Ind
         Flowd["B_IndP_temp"][index]=Ind
         Flowd["B_IndP_temp_broken"][index]=mt.ceil(SDByte/MTU)*Ind
+        
         Flowd["T_Ind"][index]=False
-        if mt.ceil(SDByte/MTU)==1:
-            Flowd["T_Ind_temp"][index]=True
-            Flowd["T_Packets_temp"][index]=1
-            Flowd["T_Packets_temp_broken"][index]=1#mt.ceil(SDByte/MTU)
-            Flowd["T_Bytes_temp"][index]=SDByte
-            Flowd["T_Dur_temp"][index]=0
-            Flowd["T_assist_temp"][index]=0
-        else:
-            Flowd["T_Ind_temp"][index]=True
-            Flowd["T_Packets_temp"][index]=0
-            Flowd["T_Packets_temp_broken"][index]=0
-            Flowd["T_Bytes_temp"][index]=0
-            Flowd["T_assist_temp"][index]=SDByte
-            Flowd["T_Dur_temp"][index]=0
+        Flowd["T_Packets_temp_temp"][index]=1
+        Flowd["T_Packets_temp_temp_broken"][index]=mt.ceil(SDByte/MTU)
+        Flowd["T_Bytes_temp_temp"][index]=SDByte
+        Flowd["T_Dur_temp_temp"][index]=Interarr
+        
+        Flowd["T_Ind_temp"][index]=True
+        Flowd["T_Packets_temp"][index]=0
+        Flowd["T_Packets_temp_broken"][index]=0
+        Flowd["T_Bytes_temp"][index]=0
+        Flowd["T_Dur_temp"][index]=0
                         
         #######
-        #print("Packet"+str(i)+":write")
-        print("T_Packets_temp:"+str(Flowd["T_Packets_temp"][index]))
-        print("T_Packets_temp_broken:"+str(Flowd["T_Packets_temp_broken"][index]))
-        print("T_Packets:"+str(Flowd["T_Packets"][index]))
-        print("T_Packets_broken:"+str(Flowd["T_Packets_broken"][index]))
+        print(" ")
+        print("write")
+        print("Alle Bytes:"+str(Flowd["SBytes"][index]+Flowd["DBytes"][index]))
+        print("Jetzige Bytes:"+str(SDByte))
+        print("T_Bytes_temp_temp:"+str(Flowd["T_Bytes_temp_temp"][index]))
+        print("T_Bytes_temp:"+str(Flowd["T_Bytes_temp"][index]))
+        print("T_Bytes:"+str(Flowd["T_Bytes"][index]))
+        print("B_Bytes:"+str(Flowd["B_Bytes"][index]))
         #######
     else:
-        Flowd["T_Packets_temp"][index]+=Flowd["B_Packets_temp"][index]
         if Flowd["T_Ind_temp"][index]==True:
             Flowd["T_Ind"][index]=True
-        Flowd["T_Ind_temp"][index]=True
-        Flowd["T_Packets_temp_broken"][index]+=Flowd["B_Packets_temp_broken"][index]
-        Flowd["T_Bytes_temp"][index]+=SDByte+Flowd["T_assist_temp"][index]
-        Flowd["T_assist_temp"][index]=0
-        Flowd["T_Dur_temp"][index]+=Flowd["B_Dur_temp"][index]+Interarr
+        Flowd["T_Ind_temp"][index]=True    
+        Flowd["T_Packets_temp"][index]+=Flowd["T_Packets_temp_temp"][index]
+        Flowd["T_Packets_temp_broken"][index]+=Flowd["T_Packets_temp_temp_broken"][index]
+        Flowd["T_Bytes_temp"][index]+=Flowd["T_Bytes_temp_temp"][index]
+        Flowd["T_Dur_temp"][index]+=Flowd["T_Dur_temp_temp"][index]
+        
+        Flowd["T_Packets_temp_temp"][index]=1
+        Flowd["T_Packets_temp_temp_broken"][index]=mt.ceil(SDByte/MTU)
+        Flowd["T_Bytes_temp_temp"][index]=SDByte
+        Flowd["T_Dur_temp_temp"][index]=Interarr
+        
+        
         Flowd["B_Packets_temp"][index]=1
         Flowd["B_Packets_temp_broken"][index]=mt.ceil(SDByte/MTU)
         Flowd["B_Bytes_temp"][index]=SDByte
         Flowd["B_Dur_temp"][index]=0
-        Flowd["B_Ind_temp"][index]=1
+        Flowd["B_Ind_temp"][index]=Ind
         Flowd["B_IndP_temp"][index]=1
         Flowd["B_IndP_temp_broken"][index]=mt.ceil(SDByte/MTU)
         #######
-        #print("Packet"+str(i)+":new")
-        print("T_Packets_temp:"+str(Flowd["T_Packets_temp"][index]))
-        print("T_Packets_temp_broken:"+str(Flowd["T_Packets_temp_broken"][index]))
-        print("T_Packets:"+str(Flowd["T_Packets"][index]))
-        print("T_Packets_broken:"+str(Flowd["T_Packets_broken"][index]))
+        print(" ")
+        print("new")
+        print("Alle Bytes:"+str(Flowd["SBytes"][index]+Flowd["DBytes"][index]))
+        print("Jetzige Bytes:"+str(SDByte))
+        print("T_Bytes_temp_temp:"+str(Flowd["T_Bytes_temp_temp"][index]))
+        print("T_Bytes_temp:"+str(Flowd["T_Bytes_temp"][index]))
+        print("T_Bytes:"+str(Flowd["T_Bytes"][index]))
+        print("B_Bytes:"+str(Flowd["B_Bytes"][index]))
         #######
     
     
-def Vardeclpcap(line,Dict,Flowd,Vars=[],Init=False,nbulks=8):   
+def Vardeclpcap(line,Dict,Flowd,Vars,Init,nbulks,SDBytes,MTU):   
     #Stats ######################################################
     if Init==True:
         Vars.append("SBytes")
@@ -706,9 +490,17 @@ def Vardeclpcap(line,Dict,Flowd,Vars=[],Init=False,nbulks=8):
         Flowd["T_Packets_temp"]=[]
     Flowd["T_Packets_temp"].append(1)
     if Init==True:
+        Vars.append("T_Packets_temp_temp")
+        Flowd["T_Packets_temp_temp"]=[]
+    Flowd["T_Packets_temp_temp"].append(0)
+    if Init==True:
         Vars.append("T_Packets_temp_broken")
         Flowd["T_Packets_temp_broken"]=[]
-    Flowd["T_Packets_temp_broken"].append(1)
+    Flowd["T_Packets_temp_broken"].append(mt.ceil(int(line.len)/MTU))
+    if Init==True:
+        Vars.append("T_Packets_temp_temp_broken")
+        Flowd["T_Packets_temp_temp_broken"]=[]
+    Flowd["T_Packets_temp_temp_broken"].append(0)
     if Init==True:
         Vars.append("T_Bytes")
         Flowd["T_Bytes"]=[]
@@ -734,6 +526,10 @@ def Vardeclpcap(line,Dict,Flowd,Vars=[],Init=False,nbulks=8):
         Flowd["T_Bytes_temp"]=[]
     Flowd["T_Bytes_temp"].append(int(line.len))
     if Init==True:
+        Vars.append("T_Bytes_temp_temp")
+        Flowd["T_Bytes_temp_temp"]=[]
+    Flowd["T_Bytes_temp_temp"].append(0)
+    if Init==True:
         Vars.append("T_Dur_max")
         Flowd["T_Dur_max"]=[]
     Flowd["T_Dur_max"].append(0)
@@ -742,9 +538,9 @@ def Vardeclpcap(line,Dict,Flowd,Vars=[],Init=False,nbulks=8):
         Flowd["T_Dur_temp"]=[]
     Flowd["T_Dur_temp"].append(0)
     if Init==True:
-        Vars.append("T_assist_temp")
-        Flowd["T_assist_temp"]=[]
-    Flowd["T_assist_temp"].append(0)
+        Vars.append("T_Dur_temp_temp")
+        Flowd["T_Dur_temp_temp"]=[]
+    Flowd["T_Dur_temp_temp"].append(0)
     #Bulk mode ######################################################
     if Init==True:
         Vars.append("B_Counter")
@@ -757,7 +553,7 @@ def Vardeclpcap(line,Dict,Flowd,Vars=[],Init=False,nbulks=8):
     if Init==True:
         Vars.append("B_Packets_temp_broken")
         Flowd["B_Packets_temp_broken"]=[]
-    Flowd["B_Packets_temp_broken"].append(1)
+    Flowd["B_Packets_temp_broken"].append(mt.ceil(int(line.len)/MTU))
     if Init==True:
         Vars.append("B_Packets")
         Flowd["B_Packets"]=[]
@@ -903,8 +699,10 @@ def writeflow(iii,Flowd,Dict,Vars,Compflows,nbulks=8,Bulkpktn=3):
         
     if Flowd["T_Ind"][iii]==True or Flowd["NSPack_broken"][iii]+Flowd["NDPack_broken"][iii]<Bulkpktn:
         if Flowd["B_Packets_temp"][iii]<=Bulkpktn:
-            Flowd["T_Packets_temp"][iii]+=Flowd["B_Packets_temp"][iii]-1
-            Flowd["T_Packets_temp_broken"][iii]+=Flowd["B_Packets_temp_broken"][iii]-1
+            Flowd["T_Packets_temp"][iii]+=Flowd["T_Packets_temp_temp"][iii]
+            Flowd["T_Packets_temp_broken"][iii]+=Flowd["T_Packets_temp_temp_broken"][iii]
+            Flowd["T_Dur_temp"][iii]+=Flowd["T_Dur_temp_temp"][iii]
+            Flowd["T_Bytes_temp"][iii]+=Flowd["T_Bytes_temp_temp"][iii]
             #Flowd["T_Bytes_temp"][iii]+=Flowd["B_Bytes_temp"][iii]
         Flowd["T_Counter"][iii]+=1
         Flowd["T_Packets"][iii]+=Flowd["T_Packets_temp"][iii]
@@ -962,10 +760,11 @@ def writeflow(iii,Flowd,Dict,Vars,Compflows,nbulks=8,Bulkpktn=3):
              (Flowd["T_Dur"][iii]/Flowd["T_Counter"][iii])**2)
     
     print("End")
-    print("T_Packets_temp:"+str(Flowd["T_Packets_temp"][iii]))
-    print("T_Packets_temp_broken:"+str(Flowd["T_Packets_temp_broken"][iii]))    
-    print("T_Packets:"+str(Flowd["T_Packets"][iii]))
-    print("T_Packets_broken:"+str(Flowd["T_Packets_broken"][iii]))
+    print("Alle Bytes:"+str(Flowd["SBytes"][iii]+Flowd["DBytes"][iii]))
+    print("T_Bytes_temp_temp:"+str(Flowd["T_Bytes_temp_temp"][iii]))
+    print("T_Bytes_temp:"+str(Flowd["T_Bytes_temp"][iii]))
+    print("T_Bytes:"+str(Flowd["T_Bytes"][iii]))
+    print("B_Bytes:"+str(Flowd["B_Bytes"][iii]))
     #del Flowd["B_Dur_temp"][iii], Flowd["B_Bytes_temp"][iii], Flowd["B_Packets_temp"][iii], Flowd["T_Packets_temp"][iii]
     # Write
     linestr=Dict[iii].replace('>',',')
