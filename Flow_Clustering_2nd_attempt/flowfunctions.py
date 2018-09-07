@@ -28,24 +28,20 @@ def Compflowspcap(filename,outputfilename):
     limiter=0
     limiter2=0
     timeout=500
-    nbulks=8
+    nbulks=12
     idletime=4    
     Pktnumber=0
     for line in pingpackets:
         Pktnumber+=1
-        print(" ")
-        print("Pktnumber:"+str(Pktnumber))
+        #print(" ")
+        #print("Pktnumber:"+str(Pktnumber))
         if iiiiii==0:
-            #print(str(line.name))
-            #print(str(line.payload.name))
-            #print(str(line.payload.len))
             if (((line.name in ['IPv6','IP'])|(line.payload.name in ['IPv6','IP']))&(not(
                     ('ICMPv6 Neighbor' in line.payload.name)|
                     ('ICMPv6 Neighbor' in line.payload.payload.name)))):
                 iiiiii=1
                 if line.payload.name in ['IPv6','IP']:
                     line=line.payload
-                #print(str(line.name))
                 if line.payload.name in ['TCP','UDP']:
                     sport=str(line.payload.sport)
                     dport=str(line.payload.dport)
@@ -203,14 +199,14 @@ def Bulkchecker(Flowd,index,SD,SDByte,Bulkpktn,nbulks,Interarr,MTU):
         Flowd["T_Bytes_temp_temp"][index]+=SDByte
         Flowd["T_Dur_temp_temp"][index]+=Interarr
         #######
-        print(" ")
-        print("Contin")
-        print("Alle Bytes:"+str(Flowd["SBytes"][index]+Flowd["DBytes"][index]))
-        print("Jetzige Bytes:"+str(SDByte))
-        print("T_Bytes_temp_temp:"+str(Flowd["T_Bytes_temp_temp"][index]))
-        print("T_Bytes_temp:"+str(Flowd["T_Bytes_temp"][index]))
-        print("T_Bytes:"+str(Flowd["T_Bytes"][index]))
-        print("B_Bytes:"+str(Flowd["B_Bytes"][index]))
+        #print(" ")
+        #print("Contin")
+        #print("Alle Bytes:"+str(Flowd["SBytes"][index]+Flowd["DBytes"][index]))
+        #print("Jetzige Bytes:"+str(SDByte))
+        #print("T_Bytes_temp_temp:"+str(Flowd["T_Bytes_temp_temp"][index]))
+        #print("T_Bytes_temp:"+str(Flowd["T_Bytes_temp"][index]))
+        #print("T_Bytes:"+str(Flowd["T_Bytes"][index]))
+        #print("B_Bytes:"+str(Flowd["B_Bytes"][index]))
         #######
     # Ohterwise delete previous params ###############################################
     elif Flowd["B_Packets_temp_broken"][index]>Bulkpktn:
@@ -280,14 +276,14 @@ def Bulkchecker(Flowd,index,SD,SDByte,Bulkpktn,nbulks,Interarr,MTU):
         Flowd["T_Dur_temp"][index]=0
                         
         #######
-        print(" ")
-        print("write")
-        print("Alle Bytes:"+str(Flowd["SBytes"][index]+Flowd["DBytes"][index]))
-        print("Jetzige Bytes:"+str(SDByte))
-        print("T_Bytes_temp_temp:"+str(Flowd["T_Bytes_temp_temp"][index]))
-        print("T_Bytes_temp:"+str(Flowd["T_Bytes_temp"][index]))
-        print("T_Bytes:"+str(Flowd["T_Bytes"][index]))
-        print("B_Bytes:"+str(Flowd["B_Bytes"][index]))
+        #print(" ")
+        #print("write")
+        #print("Alle Bytes:"+str(Flowd["SBytes"][index]+Flowd["DBytes"][index]))
+        #print("Jetzige Bytes:"+str(SDByte))
+        #print("T_Bytes_temp_temp:"+str(Flowd["T_Bytes_temp_temp"][index]))
+        #print("T_Bytes_temp:"+str(Flowd["T_Bytes_temp"][index]))
+        #print("T_Bytes:"+str(Flowd["T_Bytes"][index]))
+        #print("B_Bytes:"+str(Flowd["B_Bytes"][index]))
         #######
     else:
         if Flowd["T_Ind_temp"][index]==True:
@@ -312,14 +308,14 @@ def Bulkchecker(Flowd,index,SD,SDByte,Bulkpktn,nbulks,Interarr,MTU):
         Flowd["B_IndP_temp"][index]=1
         Flowd["B_IndP_temp_broken"][index]=mt.ceil(SDByte/MTU)
         #######
-        print(" ")
-        print("new")
-        print("Alle Bytes:"+str(Flowd["SBytes"][index]+Flowd["DBytes"][index]))
-        print("Jetzige Bytes:"+str(SDByte))
-        print("T_Bytes_temp_temp:"+str(Flowd["T_Bytes_temp_temp"][index]))
-        print("T_Bytes_temp:"+str(Flowd["T_Bytes_temp"][index]))
-        print("T_Bytes:"+str(Flowd["T_Bytes"][index]))
-        print("B_Bytes:"+str(Flowd["B_Bytes"][index]))
+        #print(" ")
+        #print("new")
+        #print("Alle Bytes:"+str(Flowd["SBytes"][index]+Flowd["DBytes"][index]))
+        #print("Jetzige Bytes:"+str(SDByte))
+        #print("T_Bytes_temp_temp:"+str(Flowd["T_Bytes_temp_temp"][index]))
+        #print("T_Bytes_temp:"+str(Flowd["T_Bytes_temp"][index]))
+        #print("T_Bytes:"+str(Flowd["T_Bytes"][index]))
+        #print("B_Bytes:"+str(Flowd["B_Bytes"][index]))
         #######
     
     
@@ -664,8 +660,6 @@ def Vardeclpcap(line,Dict,Flowd,Vars,Init,nbulks,SDBytes,MTU):
         
     
 
-
-
 def writeflow(iii,Flowd,Dict,Vars,Compflows,nbulks=8,Bulkpktn=3):
     Bulkpktn=3
     linestr=(Dict[iii])
@@ -759,12 +753,12 @@ def writeflow(iii,Flowd,Dict,Vars,Compflows,nbulks=8,Bulkpktn=3):
         Flowd["T_Dur_std"][iii]=(Flowd["T_Dur_std"][iii]/Flowd["T_Counter"][iii]-
              (Flowd["T_Dur"][iii]/Flowd["T_Counter"][iii])**2)
     
-    print("End")
-    print("Alle Bytes:"+str(Flowd["SBytes"][iii]+Flowd["DBytes"][iii]))
-    print("T_Bytes_temp_temp:"+str(Flowd["T_Bytes_temp_temp"][iii]))
-    print("T_Bytes_temp:"+str(Flowd["T_Bytes_temp"][iii]))
-    print("T_Bytes:"+str(Flowd["T_Bytes"][iii]))
-    print("B_Bytes:"+str(Flowd["B_Bytes"][iii]))
+    #print("End")
+    #print("Alle Bytes:"+str(Flowd["SBytes"][iii]+Flowd["DBytes"][iii]))
+    #print("T_Bytes_temp_temp:"+str(Flowd["T_Bytes_temp_temp"][iii]))
+    #print("T_Bytes_temp:"+str(Flowd["T_Bytes_temp"][iii]))
+    #print("T_Bytes:"+str(Flowd["T_Bytes"][iii]))
+    #print("B_Bytes:"+str(Flowd["B_Bytes"][iii]))
     #del Flowd["B_Dur_temp"][iii], Flowd["B_Bytes_temp"][iii], Flowd["B_Packets_temp"][iii], Flowd["T_Packets_temp"][iii]
     # Write
     linestr=Dict[iii].replace('>',',')
