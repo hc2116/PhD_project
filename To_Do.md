@@ -1,12 +1,12 @@
 # Project
 
-- write down current thoughts on approach to overall project
-  - autoencoder purpose
-  - event correlation
-  - datasets 
-  - what are actions (on application level)
-  - what can be identified as actions
-  - think about research proposal?
+- Look at current state of network anomaly detection
+	- Look at a survey, investigate individual flow anomaly detection or packet anomaly detection
+
+- Look at exemplary malware network data
+	- Flame	
+
+- think about research proposal?
   
 - write down steps for experiment
   - which containers generate which traffic
@@ -18,7 +18,7 @@
   - investigate http testing tools (tools that test if traffic from website is fulfilling http requirements)
   
 - investigate current traffic generation (especially the cic data!!!)
-  - investigat
+  - investigate
 
 - Validate that ping and other scenarios are similar at different workloads, different environments (machines) etc.
 
@@ -41,3 +41,11 @@
 
 # Done
 - Look at BT Invitation (done)
+
+- write down current thoughts on approach to overall project
+  - autoencoder purpose
+  - event correlation
+  - datasets 
+  - what are actions (on application level)
+  - what can be identified as actions
+
