@@ -1,5 +1,16 @@
 # Project
 
+- Look at Nialls presentation
+	-Network data is difuse and diverse
+		- Tame this diversity by discovering structural model of flows, understanding flows
+		- Events are not equal, but different in nature, we have to understand this nature
+	- Anomalous behaviour is usually not a single occurrence, but: 
+		- a chain of events
+		- at multiple timescales (per second, per minute, per hour, per day, per week, ..)
+		- at multiple layers
+		- spanning multiple connected devices
+		- occurring as isolated anomalies, bursts of anomalous activity, or persistent changes affecting not only traffic volume, but also IP destinations, applications, protocols, etc.
+
 - Look at current state of network anomaly detection
 	- Look at a survey, investigate individual flow anomaly detection or packet anomaly detection
 
