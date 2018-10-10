@@ -857,11 +857,6 @@ tion of the two classes of data.
 
 + Not very detailed how SVM is applied and what time window etc. or how grouping is done
 
-# Deep Learning approaches
-
-### HIDE a Hierarchical Network Intrusion Detection System using Statistical Preprocessing and Neural Network Classification
-##### Zhang, Li, Meo, Manikopoulos, Jorgenson, 2001
-##### New Jersey, 240 citations, 6 pages
 
 
 ## Fingerprinting/Clustering of Flows
@@ -994,3 +989,10 @@ Criticism:
   
   
 * Important: Our hardness results indicate that when the attacker can insert chaff that is more than a certain threshold fraction, the attacker can make the attacking streams mimic two independent random processes, and thus completely evade any detection algorithm
+
+# Deep Learning approaches
+
+### HIDE a Hierarchical Network Intrusion Detection System using Statistical Preprocessing and Neural Network Classification
+##### Zhang, Li, Meo, Manikopoulos, Jorgenson, 2001
+##### New Jersey, 240 citations, 6 pages
+
