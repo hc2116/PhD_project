@@ -926,3 +926,44 @@ tion of the two classes of data.
   ---> Flow is a chain of these three states
   * THen calculate features from that (what is the advantage to using packets directly? Why not use both)
 * Then use hierarchichal clustering and agglomerative clustering
+
+
+## Misuse detection
+
+### Stepping stones
+
+Stepping stone: launching attacks not from own computer but from intermediary hosts that were previously compromised. Basically, low privilege low protection targets from which high privilege targets are attacked
+
+
+### Detecting stepping stones
+#### Zhang and Paxson, 500 citations
+#### Cornell University, 11 pages, 2000
+
+* Stepping stones generally heterogeneous, diversely-administered hosts
+  --> Difficult to trace attack back through them to its origin
+  
+* Only want to find flow chains such as $h_1\rightarrow h_2\rightarrow h_3$, not $h_1\rightarrow h_2\leftarrow h_3$
+
+* Want to find both direct and indirect stepping stones $h_1\rightarrow h_2\rightarrow ... \rightarrow h_3$
+
+* Notion of active monitoring introduced but not used: Detection ia pertubation of traffic like introduction of artificial delays to identify delay correlations
+
+* Filtering: The more traffic that can be discarded, the better the processing.
+  * Keystroke packets are quite small --> capture only small packets
+
+* Minimise number of pairs by discarding pairs with pairs sharing the same port on one computer (connections to the same server) and pairs with inconsistent timing (OFF-period endings not consistently ordered)
+
+Detection method: Find correlation of keystroke commands sent on devices 
+
+* Monitor ON/OFF states of devices (device is OFF of no packets for $>T_{idle}$) (keystroke traffic often have significant off-times)
+* Two OFF periods are correlated if ending differs by $\leq\delta$
+* For two connections 1 and 2 are stepping stone if $\frac{\text{#OFF}_{1,2}}{\text{min}(\text{#OFF}_1,\text{#OFF}_2)}\geq \gamma$
+* Refinement: Drop all pairs with few consecutive coincidences  $\text{#OFF}^*_{1,2}<\text{min}_{\text{csc}}$ 
+
+* Evaluation looks promising, but is only tested on a dataset with manually identified stepping stones
+  --> Might be that many stepping stones are unidentified, efficiency not clear
+
+### Detecting stepping stones: Algorithms and Confidence bounds
+#### Blum, Song, and Venkataraman, 235 citations
+#### Carnegie Mellon University, 2 pages, 2004
+

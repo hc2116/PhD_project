@@ -1030,39 +1030,6 @@ $(document).ready(function () {
 <div id="statistical-identifcation-of-encrypted-web-browsing-traffic" class="section level3">
 <h3>Statistical Identifcation of Encrypted Web Browsing Traffic</h3>
 </div>
-<div id="can-android-applications-be-identified-using-only-tcpip-headers" class="section level3">
-<h3>Can Android Applications be identified using only TCP/IP Headers?</h3>
-<div id="alan-kaur-2016" class="section level5">
-<h5>Alan, Kaur, 2016</h5>
-</div>
-<div id="chapel-hill-12-citations-6-pages" class="section level5">
-<h5>Chapel Hill, 12 citations, 6 pages</h5>
-<ul>
-<li>4 Android devices with 1600 applications</li>
-<li><p>86,10 app launches</p></li>
-<li>mobile apps use mostly http/https traffic</li>
-<li>select learning algorithms and features that have worked well in the past for identification of web pages in web traffic
-<ul>
-<li>packet sizes found in the initial launch time traffic
-<ul>
-<li>32-64 first packages</li>
-</ul></li>
-<li>88% accuracy</li>
-</ul></li>
-<li>Classifiers:
-<ol style="list-style-type: decimal">
-<li>Group packets in connection into bursts
-<ol style="list-style-type: decimal">
-<li>Signature of connections using number of packets and their size</li>
-<li>Similarity measure Sim(x,y)=XintersectY/XunionY</li>
-</ol></li>
-<li>Naive Bayes on incoming and outgoing packet sizes on multiset of packets</li>
-<li>Like 2., but with inverse document frequency transformation and normalization (worked best)</li>
-</ol></li>
-<li><p>Noticable: Detection accuracy decreases substantially when applied across OS –&gt; OS or programs drive the signatures significantly</p></li>
-</ul>
-</div>
-</div>
 <div id="histogram-based-traffic-anomaly-detection" class="section level3">
 <h3>Histogram-Based Traffic Anomaly Detection</h3>
 <div id="kind-stoecklin-dimitropoulus-2009" class="section level5">
@@ -1138,14 +1105,123 @@ $(document).ready(function () {
 <div id="crotti-dusi-gringoli-salgarelli-2007" class="section level5">
 <h5>Crotti, Dusi, Gringoli, Salgarelli, 2007</h5>
 </div>
-<div id="universita-degli-studi-di-brescia-437" class="section level5">
-<h5>Universita degli Studi di Brescia, 437</h5>
+<div id="universita-degli-studi-di-brescia-437-citations" class="section level5">
+<h5>Universita degli Studi di Brescia, 437 citations</h5>
 <ul>
 <li>For packets <span class="math inline">\((p_1,...,p_n)\)</span> in a flow, determine the pdf (prob. histogram) of every packet <span class="math inline">\(p_i\)</span> –&gt; <span class="math inline">\(PDF=(PDF_1,...,PDF_n)\)</span></li>
 <li>PDF for size and interarrival time</li>
 <li>Apply gaussian filtering to every <span class="math inline">\(PDF_i\)</span> to smooth things out</li>
 <li>A flow is classified according to an <em>“anomaly”</em> score which determines to which protocol the flow is closest</li>
 <li>Anomaly score vector for packet <span class="math inline">\(P_i\)</span>: <span class="math inline">\(A_i(P_i,PDF_i)=\frac{1}{\max(\epsilon,PDF_i(P_i))}\)</span></li>
+</ul>
+</div>
+</div>
+<div id="who-do-you-sync-you-are-smartphone-fingerprinting-via-application-behaviour" class="section level3">
+<h3>Who do you sync you are? Smartphone Fingerprinting via Application Behaviour</h3>
+<div id="stoeber-frank-schmitt-martinovic-2013" class="section level5">
+<h5>Stoeber, Frank, Schmitt, Martinovic, 2013</h5>
+</div>
+<div id="tu-kaiserlautern-berkeley-oxford-53-citations" class="section level5">
+<h5>TU Kaiserlautern, Berkeley, Oxford, 53 citations</h5>
+<ul>
+<li>Notion of burst: each packet is vector <span class="math inline">\(p_i=(t_i,size_i,direction_i)\)</span></li>
+<li>One can observe alternating idle periods between bursts –&gt; burst separation time: 4.43s (95% of all packets are within that window, very similar to notion of session)</li>
+<li>Calculate features:</li>
+<li>Size stats, #incoming, #outgoing, interarrival stats,… (nothing special)</li>
+<li>kNN and SVM</li>
+</ul>
+</div>
+</div>
+<div id="can-android-applications-be-identified-using-only-tcpip-headers" class="section level3">
+<h3>Can Android Applications be identified using only TCP/IP Headers?</h3>
+<div id="alan-kaur-2016" class="section level5">
+<h5>Alan, Kaur, 2016</h5>
+</div>
+<div id="chapel-hill-12-citations-6-pages" class="section level5">
+<h5>Chapel Hill, 12 citations, 6 pages</h5>
+<ul>
+<li>4 Android devices with 1600 applications</li>
+<li><p>86,10 app launches</p></li>
+<li>mobile apps use mostly http/https traffic</li>
+<li>select learning algorithms and features that have worked well in the past for identification of web pages in web traffic
+<ul>
+<li>packet sizes found in the initial launch time traffic
+<ul>
+<li>32-64 first packages</li>
+</ul></li>
+<li>88% accuracy</li>
+</ul></li>
+<li>Classifiers:
+<ol style="list-style-type: decimal">
+<li>Group packets in connection into bursts
+<ol style="list-style-type: decimal">
+<li>Signature of connections using number of packets and their size</li>
+<li>Similarity measure Sim(x,y)=XintersectY/XunionY</li>
+</ol></li>
+<li>Naive Bayes on incoming and outgoing packet sizes on multiset of packets</li>
+<li>Like 2., but with inverse document frequency transformation and normalization (worked best)</li>
+</ol></li>
+<li><p>Noticable: Detection accuracy decreases substantially when applied across OS –&gt; OS or programs drive the signatures significantly</p></li>
+</ul>
+</div>
+</div>
+<div id="unsupervised-traffic-classification-using-flow-statistical-properties-and-ip-packet-payload" class="section level3">
+<h3>Unsupervised traffic classification using flow statistical properties and IP packet payload</h3>
+<div id="zhang-et.-all-2012" class="section level5">
+<h5>Zhang et. all, 2012</h5>
+</div>
+<div id="deakin-university-australia-31-cit." class="section level5">
+<h5>Deakin University, Australia, 31 cit.</h5>
+<ul>
+<li>Cluster both with flow props and payload</li>
+<li>k-means on standard flow properties</li>
+<li>Latent semantic analysis</li>
+<li>Bag-of-Word model to represent content of clusters</li>
+</ul>
+</div>
+</div>
+<div id="understanding-patterns-of-tcp-connection-usage-with-statistical-clustering" class="section level3">
+<h3>Understanding Patterns of TCP Connection Usage with Statistical Clustering</h3>
+<div id="campos-nobel-smith-jeffay-2005" class="section level5">
+<h5>Campos, Nobel, Smith, Jeffay, 2005,</h5>
+</div>
+<div id="chapel-hill-31" class="section level5">
+<h5>Chapel Hill, 31</h5>
+<ul>
+<li>Model the traffic in form of incoming bulks <span class="math inline">\(a_i\)</span>, outgoing bulks <span class="math inline">\(b_i\)</span> and idle time <span class="math inline">\(t_i\)</span> —&gt; Flow is a chain of these three states</li>
+<li>THen calculate features from that (what is the advantage to using packets directly? Why not use both)</li>
+<li>Then use hierarchichal clustering and agglomerative clustering</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="misuse-detection" class="section level2">
+<h2>Misuse detection</h2>
+<div id="stepping-stones" class="section level3">
+<h3>Stepping stones</h3>
+<p>Stepping stone: launching attacks not from own computer but from intermediary hosts that were previously compromised. Basically, low privilege low protection targets from which high privilege targets are attacked</p>
+</div>
+<div id="detecting-stepping-stones" class="section level3">
+<h3>Detecting stepping stones</h3>
+<div id="zhang-and-paxson-500-citations" class="section level4">
+<h4>Zhang and Paxson, 500 citations</h4>
+</div>
+<div id="cornell-universitz-11-pages-2000" class="section level4">
+<h4>Cornell Universitz, 11 pages, 2000</h4>
+<ul>
+<li><p>Stepping stones generally heterogeneous, diversely-administered hosts –&gt; Difficult to trace attack back through them to its origin</p></li>
+<li><p>Only want to find flow chains such as <span class="math inline">\(h_1\rightarrow h_2\rightarrow h_3\)</span>, not <span class="math inline">\(h_1\rightarrow h_2\lightarrow h_3\)</span></p></li>
+<li><p>Want to find both direct and indirect stepping stones <span class="math inline">\(h_1\rightarrow h_2\rightarrow ... \rightarrow h_3\)</span></p></li>
+<li><p>Notion of active monitoring introduced but not used: Detection ia pertubation of traffic like introduction of artificial delays to identify delay correlations</p></li>
+<li>Filtering: The more traffic that can be discarded, the better the processing.</li>
+<li><p>Keystroke packets are quite small –&gt; capture only small packets</p></li>
+<li><p>Minimise number of pairs by discarding pairs with pairs sharing the same port on one computer (connections to the same server) and pairs with inconsistent timing</p></li>
+</ul>
+<p>Detection method: Find correlation of keystroke commands sent on devices</p>
+<ul>
+<li>Monitor ON/OFF states of devices (device is OFF of no packets for <span class="math inline">\(&gt;T_{idle}\)</span>) (keystroke traffic often have significant off-times)</li>
+<li>Two OFF periods are correlated if ending differs by <span class="math inline">\(\leq\delta\)</span></li>
+<li>For two connections 1 and 2 are stepping stone if <span class="math inline">\(\frac{\text{#OFF}_{1,2}}{\text{min}(\text{#OFF}_1,\text{#OFF}_2)}\geq \gamma\)</span></li>
 </ul>
 </div>
 </div>
