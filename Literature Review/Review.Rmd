@@ -967,3 +967,30 @@ Detection method: Find correlation of keystroke commands sent on devices
 #### Blum, Song, and Venkataraman, 235 citations
 #### Carnegie Mellon University, 2 pages, 2004
 
+* Objective: identify attack pairs of computers which serve as a communication channel hich transmits the same number of packets
+
+* Assumptions:
+  * Normal traffic Poisson distributed
+  * Normal computers only very coarsely correlated traffic
+  * Attacker has maximum delay tolerance by which he would delay packets
+  * For stepping stones $S_1, S_2$: $N_1(t)\geq N_2(t)$, and $N_1(t)\leq N_2(t+\Delta)$, i.e. the number of ultimately transmitted packets is the same for $S_1$ and $S_2$, there is no combination or breakdown of packets, and no packets are lost
+  * Maximum number $p_\Delta$ of packets possible to sent in $\Delta$
+  
+  * Improved algo later allows for chaff packets below certain treshold
+  
+* Guarantee: 
+  * Any stepping stone pair will be identified after $M=p^2_\Delta \text{log}(1/\delta)$ packets
+  * Any normal pair has at most a $\delta$ change of false alert
+
+* Works by testing if $d=N_1(t)-N_2(t)\geq p_\Delta$ for $m$ times 
+* Statistical nature of Poisson distribution guarantees that only $\delta$ pairs fulfil the condition
+
+
+Criticism:
+  * Normal traffic not Poisson distr. 
+  * Packets can be lost
+  * Easy evasion by combining packets or breakdown
+  * Needs lots of packets to find attacker
+  
+  
+* Important: Our hardness results indicate that when the attacker can insert chaff that is more than a certain threshold fraction, the attacker can make the attacking streams mimic two independent random processes, and thus completely evade any detection algorithm
