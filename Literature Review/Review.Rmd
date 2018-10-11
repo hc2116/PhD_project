@@ -992,7 +992,30 @@ Criticism:
 
 # Deep Learning approaches
 
+### Outlier Detection Using Replicator Neural Networks
+#### Hawkins et al, 2002
+#### CSIRO Canberra, 450 citations, 11 pages
+
+* Straightforward application of a replicator network to the features of KDD dataset to detect outliers
+
 ### HIDE a Hierarchical Network Intrusion Detection System using Statistical Preprocessing and Neural Network Classification
 ##### Zhang, Li, Meo, Manikopoulos, Jorgenson, 2001
 ##### New Jersey, 240 citations, 6 pages
+
+Statistical profile:
+* $E_1,E_2,...,E_k$ are partitions (events) of a random variable (event stream?), $P_i$ are their empirical probabilities, and $P'_i$ are the frequencies in a distinct time interval, $N=\sum P'_i$ the total number of occurrences
+
+* $\chi^2$-like  test  to  measure  the  similarity  between  short-term and long-term profiles: 
+$Q = N \times \sum_{i=1}^k \frac{P'_i-P_i}{P_i}$
+  * if $E_i$ independent, $Q\propto\chi^2$, but in reality not necessarily the case
+  * Use empirical distr. of Q, updated to adjust non-stationarity 
+  * Update models: $p_{new}=s\cdot\alpha\cdot p_{obs}+(1-s\cdot\alpha)\cdot p_{old}$, $alpha$ is adaption rate and $s$ is parameter that incorporates the no-threat-confidence
+
+* Use different time windows to capture different time scales, compare these windows with their respective reference model
+
+* Closeness to reference model of different time scales is input vector to neural networks (at least it appears to be, very unclear)
+* Simulation of attacks as dataset with labels, used for training, misclassification is cost function
+
+ 
+
 

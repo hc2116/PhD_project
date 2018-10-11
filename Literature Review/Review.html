@@ -1086,18 +1086,6 @@ $(document).ready(function () {
 </div>
 </div>
 </div>
-</div>
-<div id="deep-learning-approaches" class="section level1">
-<h1>Deep Learning approaches</h1>
-<div id="hide-a-hierarchical-network-intrusion-detection-system-using-statistical-preprocessing-and-neural-network-classification" class="section level3">
-<h3>HIDE a Hierarchical Network Intrusion Detection System using Statistical Preprocessing and Neural Network Classification</h3>
-<div id="zhang-li-meo-manikopoulos-jorgenson-2001" class="section level5">
-<h5>Zhang, Li, Meo, Manikopoulos, Jorgenson, 2001</h5>
-</div>
-<div id="new-jersey-240-citations-6-pages" class="section level5">
-<h5>New Jersey, 240 citations, 6 pages</h5>
-</div>
-</div>
 <div id="fingerprintingclustering-of-flows" class="section level2">
 <h2>Fingerprinting/Clustering of Flows</h2>
 <div id="traffic-classification-through-simple-statistical-fingerprinting" class="section level3">
@@ -1206,24 +1194,81 @@ $(document).ready(function () {
 <div id="zhang-and-paxson-500-citations" class="section level4">
 <h4>Zhang and Paxson, 500 citations</h4>
 </div>
-<div id="cornell-universitz-11-pages-2000" class="section level4">
-<h4>Cornell Universitz, 11 pages, 2000</h4>
+<div id="cornell-university-11-pages-2000" class="section level4">
+<h4>Cornell University, 11 pages, 2000</h4>
 <ul>
 <li><p>Stepping stones generally heterogeneous, diversely-administered hosts –&gt; Difficult to trace attack back through them to its origin</p></li>
-<li><p>Only want to find flow chains such as <span class="math inline">\(h_1\rightarrow h_2\rightarrow h_3\)</span>, not <span class="math inline">\(h_1\rightarrow h_2\lightarrow h_3\)</span></p></li>
+<li><p>Only want to find flow chains such as <span class="math inline">\(h_1\rightarrow h_2\rightarrow h_3\)</span>, not <span class="math inline">\(h_1\rightarrow h_2\leftarrow h_3\)</span></p></li>
 <li><p>Want to find both direct and indirect stepping stones <span class="math inline">\(h_1\rightarrow h_2\rightarrow ... \rightarrow h_3\)</span></p></li>
 <li><p>Notion of active monitoring introduced but not used: Detection ia pertubation of traffic like introduction of artificial delays to identify delay correlations</p></li>
 <li>Filtering: The more traffic that can be discarded, the better the processing.</li>
 <li><p>Keystroke packets are quite small –&gt; capture only small packets</p></li>
-<li><p>Minimise number of pairs by discarding pairs with pairs sharing the same port on one computer (connections to the same server) and pairs with inconsistent timing</p></li>
+<li><p>Minimise number of pairs by discarding pairs with pairs sharing the same port on one computer (connections to the same server) and pairs with inconsistent timing (OFF-period endings not consistently ordered)</p></li>
 </ul>
 <p>Detection method: Find correlation of keystroke commands sent on devices</p>
 <ul>
 <li>Monitor ON/OFF states of devices (device is OFF of no packets for <span class="math inline">\(&gt;T_{idle}\)</span>) (keystroke traffic often have significant off-times)</li>
 <li>Two OFF periods are correlated if ending differs by <span class="math inline">\(\leq\delta\)</span></li>
 <li>For two connections 1 and 2 are stepping stone if <span class="math inline">\(\frac{\text{#OFF}_{1,2}}{\text{min}(\text{#OFF}_1,\text{#OFF}_2)}\geq \gamma\)</span></li>
+<li><p>Refinement: Drop all pairs with few consecutive coincidences <span class="math inline">\(\text{#OFF}^*_{1,2}&lt;\text{min}_{\text{csc}}\)</span></p></li>
+<li><p>Evaluation looks promising, but is only tested on a dataset with manually identified stepping stones –&gt; Might be that many stepping stones are unidentified, efficiency not clear</p></li>
 </ul>
 </div>
+</div>
+<div id="detecting-stepping-stones-algorithms-and-confidence-bounds" class="section level3">
+<h3>Detecting stepping stones: Algorithms and Confidence bounds</h3>
+<div id="blum-song-and-venkataraman-235-citations" class="section level4">
+<h4>Blum, Song, and Venkataraman, 235 citations</h4>
+</div>
+<div id="carnegie-mellon-university-2-pages-2004" class="section level4">
+<h4>Carnegie Mellon University, 2 pages, 2004</h4>
+<ul>
+<li><p>Objective: identify attack pairs of computers which serve as a communication channel hich transmits the same number of packets</p></li>
+<li>Assumptions:</li>
+<li>Normal traffic Poisson distributed</li>
+<li>Normal computers only very coarsely correlated traffic</li>
+<li>Attacker has maximum delay tolerance by which he would delay packets</li>
+<li>For stepping stones <span class="math inline">\(S_1, S_2\)</span>: <span class="math inline">\(N_1(t)\geq N_2(t)\)</span>, and <span class="math inline">\(N_1(t)\leq N_2(t+\Delta)\)</span>, i.e. the number of ultimately transmitted packets is the same for <span class="math inline">\(S_1\)</span> and <span class="math inline">\(S_2\)</span>, there is no combination or breakdown of packets, and no packets are lost</li>
+<li><p>Maximum number <span class="math inline">\(p_\Delta\)</span> of packets possible to sent in <span class="math inline">\(\Delta\)</span></p></li>
+<li><p>Improved algo later allows for chaff packets below certain treshold</p></li>
+<li>Guarantee:</li>
+<li>Any stepping stone pair will be identified after <span class="math inline">\(M=p^2_\Delta \text{log}(1/\delta)\)</span> packets</li>
+<li><p>Any normal pair has at most a <span class="math inline">\(\delta\)</span> change of false alert</p></li>
+<li>Works by testing if <span class="math inline">\(d=N_1(t)-N_2(t)\geq p_\Delta\)</span> for <span class="math inline">\(m\)</span> times</li>
+<li><p>Statistical nature of Poisson distribution guarantees that only <span class="math inline">\(\delta\)</span> pairs fulfil the condition</p></li>
+</ul>
+<p>Criticism: * Normal traffic not Poisson distr. * Packets can be lost * Easy evasion by combining packets or breakdown * Needs lots of packets to find attacker</p>
+<ul>
+<li>Important: Our hardness results indicate that when the attacker can insert chaff that is more than a certain threshold fraction, the attacker can make the attacking streams mimic two independent random processes, and thus completely evade any detection algorithm</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="deep-learning-approaches" class="section level1">
+<h1>Deep Learning approaches</h1>
+<div id="outlier-detection-using-replicator-neural-networks" class="section level3">
+<h3>Outlier Detection Using Replicator Neural Networks</h3>
+<div id="hawkins-et-al-2002" class="section level4">
+<h4>Hawkins et al, 2002</h4>
+</div>
+<div id="csiro-canberra-450-citations-11-pages" class="section level4">
+<h4>CSIRO Canberra, 450 citations, 11 pages</h4>
+<ul>
+<li>Straightforward application of a replicator network to the features of KDD dataset to detect outliers</li>
+</ul>
+</div>
+</div>
+<div id="hide-a-hierarchical-network-intrusion-detection-system-using-statistical-preprocessing-and-neural-network-classification" class="section level3">
+<h3>HIDE a Hierarchical Network Intrusion Detection System using Statistical Preprocessing and Neural Network Classification</h3>
+<div id="zhang-li-meo-manikopoulos-jorgenson-2001" class="section level5">
+<h5>Zhang, Li, Meo, Manikopoulos, Jorgenson, 2001</h5>
+</div>
+<div id="new-jersey-240-citations-6-pages" class="section level5">
+<h5>New Jersey, 240 citations, 6 pages</h5>
+<ul>
+<li><span class="math inline">\(\chi^2\)</span>-like test to measure the similarity between short-term and long-term profiles: <span class="math inline">\(Q = N \times \sum_{i=1}^k \frac{P'_i-P_i}{P_i}\)</span></li>
+</ul>
 </div>
 </div>
 </div>
