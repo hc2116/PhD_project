@@ -2,9 +2,6 @@
 
 A collection of links to pubished datasets with some remarks for Detgen.
 
-<!--![Datasets](Datasets.png){ width=70% }-->
-
-
 ### Impact Cyber Trust
 
 [Impact Cyber Trust](https://www.impactcybertrust.org/) cyber security oriented data, includes many data sets, synthetic as well as real captures, from different sources. Many datasets focus on observed attack data, are not directly relevant to the project. In general, there is very little information given that describe the datasets origin, which makes it hard to investigate how relevant or biased the data is.

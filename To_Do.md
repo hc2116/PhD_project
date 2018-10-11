@@ -1,24 +1,22 @@
 # Project
 
-- Look at Nialls presentation
-	-Network data is difuse and diverse
-		- Tame this diversity by discovering structural model of flows, understanding flows
-		- Events are not equal, but different in nature, we have to understand this nature
-	- Anomalous behaviour is usually not a single occurrence, but: 
-		- a chain of events
-		- at multiple timescales (per second, per minute, per hour, per day, per week, ..)
-		- at multiple layers
-		- spanning multiple connected devices
-		- occurring as isolated anomalies, bursts of anomalous activity, or persistent changes affecting not only traffic volume, but also IP destinations, applications, protocols, etc.
+- Investigate blackboard transmission for next call
+
+- Investigate to introduce artificial delays in traffic generation, look at effect
+
+- New data for paper
+
+- Investigate use cases from Alex
 
 - Look at current state of network anomaly detection
 	- Look at a survey, investigate individual flow anomaly detection or packet anomaly detection
+	- Think about second order features compared to first order features: What characterises a flow
 
 - Look at exemplary malware network data
 	- Flame	
 
-- think about research proposal?
-  
+- look at shadowserver
+
 - write down steps for experiment
   - which containers generate which traffic
   - internal validity
@@ -27,36 +25,20 @@
   - traffic filter for unwanted packages
   - compare traffic with http protocol description etc.
   - investigate http testing tools (tools that test if traffic from website is fulfilling http requirements)
-  
-- investigate current traffic generation (especially the cic data!!!)
-  - investigate
-
-- Validate that ping and other scenarios are similar at different workloads, different environments (machines) etc.
-
-- Compile list of datasets
-  - investigate datasets in introduction of CIC paper
-	- Look for survey on datasets
-	- look for survey for artifical data generation
-	- look for survey on behavioural characterisations
-	- look at shadowserver
-
-- Write down a list of approaches to cluster flows, finger printing, behavioural flow characterisation
-	- comments, what has not been told
-	- Think about second order features compared to first order features: What characterises a flow
-	- Compile a little report with the questions
 
 - Blind signal separation (wikipedia) (Cocktail party problem)
 	- Another look at traffic desagragation, also look at the use of factorial HMMs (like Guilio said), Imperial Guys (Oliver P..., ... Helly)
 
-- Investigate blackboard transmission for next call
 
 # Done
-- Look at BT Invitation (done)
 
-- write down current thoughts on approach to overall project
-  - autoencoder purpose
-  - event correlation
-  - datasets 
-  - what are actions (on application level)
-  - what can be identified as actions
-
+- Look at Nialls presentation
+	- Network data is difuse and diverse
+		- Tame this diversity by discovering structural model of flows, understanding flows
+		- Events are not equal, but different in nature, we have to understand this nature
+	- Anomalous behaviour is usually not a single occurrence, but: 
+		- a chain of events
+		- at multiple timescales (per second, per minute, per hour, per day, per week, ..)
+		- at multiple layers
+		- spanning multiple connected devices
+		- occurring as isolated anomalies, bursts of anomalous activity, or persistent changes affecting not only traffic volume, but also IP destinations, applications, protocols, etc.

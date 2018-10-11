@@ -1017,5 +1017,11 @@ $Q = N \times \sum_{i=1}^k \frac{P'_i-P_i}{P_i}$
 * Simulation of attacks as dataset with labels, used for training, misclassification is cost function
 
  
+### A Deep Learning Approach for Network Intrusion Detection Systems
+##### Zhang, Li, Meo, Manikopoulos, Jorgenson, 2001
+##### New Jersey, 240 citations, 6 pages
 
+* KDD-Cup dataset
+* Simply feature extraction using auto-encoders, and then supervised classification using soft-max regression on the extracted features
+* Training using 10-fold cross validation (ok....)
 
