@@ -253,9 +253,9 @@ Disadvantages:
       + HMM to model switching between normal and anomalous behaviour, estimation with MCMC
       
 #### Evaluation
-+ *Clustering, classification, and statistical techniques have low testing time, in contrast to knn, information based, and spectral techniques*
-+ *For intrusion detection, anomalous worm traffic is actually more frequent than normal traffic*
-+ *Only Supervised and semi-supervised models are suitable for bulk anomalies*
++ Clustering, classification, and statistical techniques have low testing time, in contrast to knn, information based, and spectral techniques*
++ For intrusion detection, anomalous worm traffic is actually more frequent than normal traffic*
++ Only Supervised and semi-supervised models are suitable for bulk anomalies*
 
 ## Anomalous Payload-Based Network Intrusion Detection
 ##### Ke Wang and Salvatore J. Stolfo , 2004
