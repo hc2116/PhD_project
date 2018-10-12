@@ -38,6 +38,11 @@ twenty victim machines in our setup are infected
 * labelled attack flows
 * about 14GB per week background traffic
 
+Attacks: 
+* DoS
+* Port Scanning
+* Botnet traffic from CTU dataset
+
 #### [UNSW-NB15](https://www.unsw.adfa.edu.au/unsw-canberra-cyber/cybersecurity/ADFA-NB15-Datasets/): A Comprehensive Data set for Network Intrusion Detection systems
 * DOI: 10.1109/MilCIS.2015.7348942
 * consists of real world traffic from a network (Cyber Range Lab of the Australian Centre for Cyber Security) and synthetic contemporary attack behaviours using IXIA PerfectStorm tool

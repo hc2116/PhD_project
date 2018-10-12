@@ -1022,6 +1022,6 @@ $Q = N \times \sum_{i=1}^k \frac{P'_i-P_i}{P_i}$
 ##### New Jersey, 240 citations, 6 pages
 
 * KDD-Cup dataset
-* Simply feature extraction using auto-encoders, and then supervised classification using soft-max regression on the extracted features
+* Simply feature extraction using auto-encoders, and then supervised classification using soft-max regression on the extracted features  (trained separately)
 * Training using 10-fold cross validation (ok....)
 
