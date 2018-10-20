@@ -660,9 +660,47 @@ $Q = N \times \sum_{i=1}^k \frac{P'_i-P_i}{P_i}$
 * Closeness to reference model of different time scales is input vector to neural networks (at least it appears to be, very unclear)
 * Simulation of attacks as dataset with labels, used for training, misclassification is cost function
 
+#### Analyzing Flow-based Anomaly Intrusion Detection using Replicator Neural Networks 
+##### Cordero et. al, 2016
+##### TU Darmstadt, 8 pages, 5 citations
 
+* Using lakhina's approach of binning flows into time windows 
+  * calculating the entropy of each feature inside this time window (count the occurrences of individual IP addresses, etc.)
+ * Input for replicator network (specific type of  auto-encoder)
+  * dropout in hidden layers 2 and 4 to prevent overfitting
+
+* Remove outliers during training by looking at the quantiles of the reconstruction error, some anomalies are quite obvious
+  * Claim to be resilient against learning in the presence of attacks
+
+* Tested on MAWI Japan-USA dataset with injected synthetic attacks
+* In the evaluation, it is only able to detect very broad port scans and large DDoS attacks, (i.e. with larger volume, more concise traffic like smaller scans or less attacks are not detected)
 
 ## Flow or packet-metadata based approaches
+
+#### Service Specific Anomaly Detection for Network Intrusion Detection 
+##### Kruegel et. al, 2002,
+##### TU Vienna, 420 citations, 8 pages
+
+Approach: 
+* "partition the network traffic and independently analyze packets sent by different applications"
+  * "By concentrating only on one type of traffic (hence the term service specific), statistical data with lesser variance can be collected. This allows to establish a notion of 'normal traffic' for each service" (Me liky)
+  * HTTP, DNS, SMTP, and FTP cover most of the necessary services
+  * Current model only trained on DNS and HTTP traffic
+
+In other words: Train separate models on each port with the same approach
+
+Model:
+  * Packet Processing Unit: Read packet and extract service request (such as get, head r post for htt)
+  * Statistical Processing Unit: Give each event an anomaly score composed of three parts:
+  $AS=0.3\cdot AS_{service-type}+0.3\cdot AS_{length}+0.4\cdot AS_{payload}$
+    * Type of service: Compute frequencies $p_t$ of each type of service and score $AS_{type}=-\log_2(p_t)$ so that less frequent services get higher score
+    * Length: Calculate mean $mu_s$ and std $sigma_s$ for each service 
+      * "the length of different requests does not vary for different requests, but is usually a short string in human readable form"
+      * $AS_{len}=1.5^\frac{l-\mu_s}{2.5\cdot sigma_t}$
+    * Payload distribution: Based on the assumption of human readable string (i.e. non-uniform distribution of strings)
+      * Calculate frequency of characters, build probability distribution as average of all payload
+      * $\Chi^2$ test to measure deviation of payload from distribution 
+      
 
 
 #### Learning Nonstationary Models of Normal Network Traffic for Detecting Novel Attacks
@@ -733,6 +771,7 @@ A good amount of rather badly written papers (from mostly chinese or korean Univ
 Training of Deep Belief Network (stacked RBM) to the KDD-Cup data
   * Categorical variables have to be pre-processed to be numerical
   * Reconstruction error is indicator of anomaly
+
 
 ### Semantics/Temporal correlation based
 
