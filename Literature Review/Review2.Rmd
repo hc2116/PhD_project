@@ -414,6 +414,15 @@ the aggregate of the archived audit data and new data."
 
 ## Payload based techniques
 
+#### Network Traffic Anomaly Detection Based on Packet Bytes
+##### Mahoney, 2003
+##### Florida Institute of Technology, 300 citations, 5 pages
+
+* Only on first few packets of server requests
+* Flag events that have not been observed for a long time
+* model the first 48 bytes of the packet starting with the IP header
+* anomaly score on each of the 48 instances $\sum tn/r$ (r=256, the number of possible bytes) 
+
 #### Anomalous Payload-Based Network Intrusion Detection
 ##### Ke Wang and Salvatore J. Stolfo , 2004
 ##### Columbia University, 900 citations, 20 pages
@@ -460,7 +469,7 @@ the aggregate of the archived audit data and new data."
 
 ## Traffic aggregation/time-window based approaches
 
-### Volume-based
+### Wavelet/Volume-based
 
 #### A Signal Analysis of Network Traffic Anomalies
 ##### Barford et al., 2002
@@ -475,6 +484,22 @@ My criticism:
   --> Loss of a lot of detail
 * Only suitable to unstealthy attacks that create big volume anomalies
 
+#### A transform domain-based anomaly detection approach
+##### D.Jian et al., 2014
+##### Schanghai, 120 citations, 15 pages
+
+* Takes into account network topology
+* S-transform based (kind of wavelet/fourier transform):
+* Extract only hf domain of OD flows to discover anomalies (which are comparibly small, but fast and bursty) 
+
+* Steps: 
+ * For a network with $q$ nodes, group all origin–destination flows in it into $q$ different groups $f_{1,...,q}+\{f_{1q},f_{2q},...\}$, which contains all the OD flows running through the particular node
+ * For $f_{1,...,q}$, perform S-transform and extract high frequency component (since bursts correspond to HF domain)
+ * Carry out inverse S-transform and reconstruct signal only using HF components
+ * Compute average pairwise correlation coeff. between OD flows in each group using sliding window
+ * If average correlation is to small (below treshold), an anomaly is found
+
+
 #### Anomaly detection in IP networks
 ##### Thottan and Ji, 2003
 ##### Bell Lab and Georgia Tech, 600 citations, 14 pages
@@ -485,23 +510,28 @@ Similar to Barford et al., detecting abrupt changes in traffic volume of SNMP co
 * Abrupt changes are detected by comparing the variance of the residuals obtained from two adjacent windows of data that are referred to as the learning and test windows
 * Change detection is done using a hypothesis test based on the generalized likelihood rati
 
-### Entropy based
 
-#### Mining Anomalies using traffic feature distributions
-##### Anukool Lakhina, Mark Crovella, Christophe Diot, 2005
-##### Boston University, 1330 citations, 12 pages
 
-* Measure network-wide sample entropy of feature histogram:
-$H(X)=-\sum_{i=1}^N\frac{n_i}{S}\log\big(\frac{n_i}{S}\big)$
-where $S=\sum_i^N n_i$
-![Design](Mining_anomalies.png){ width=70% }
+### Subspace/  PCA-based
 
- * Write $H$ as three-way matrix according to time, feature, and OD flow (not very clear what exactly that means)
- * PCA-like subspace projection
- * Clustering to identify anomalies
- * Tested on Abilene and Geant backbone network using untruthed data
+#### Extracting Hidden Anomalies using Sketch and Non-Gaussian Multiresolution Statistical Detection Procedures
+##### Dewaele et al., 2007
+##### Lyon/Tokyo, 150 citations, 8 pages
 
-### PCA-based
+* Aimed at both short-lived and long-lasting low-intensity anomalies
+
+* Sliding window $T$
+  * Observe $I$ packets in $T$ with usual 5-touple (t, SIP, DIP, SPort, DPort)
+  * Use $N=8$ independent tabluar-hash functions (no idea how that works) with $M=32$ being the size of has table to randomly project SIP,DIP,SPort,DPort onto "sketch"
+  * Apparently, marginal distributions of aggregated traffic (probably of the parameters projected by the hash functions) can be well described using gamma distributions, whose parameters scale with aggregation window size
+  * Estimate gamma parameters to optain behaviour profile, and then find statistical distances using mahalanobis distance 
+  * Anomaly detections are performed in all $M$ outputs of the $N$ hash functions, reversing the hash gives indication of the anomalous parameter
+  
+My comment: 
+* Very complicated, why should the deviations of the marginal distributions correspond to proper traffic anomalies? If I understood correctly, they only translate IPs and Ports, which can change without corresponding to anomalies
+* Why only look at marginal distributions?
+* Temporal variations?
+
 
 #### Characterization of Network-Wide Anomalies in Traffic Flows
 ##### Anukool Lakhina, Mark Crovella, Christophe Diot, 2004
@@ -535,6 +565,10 @@ where $S=\sum_i^N n_i$
   + Point-to-multi-point: Spike in B/P traffic from one source to many, broadcasting
   + Outage: Decrease in B,F, and P traffic
   + Ingress-shift: Decrease in traffic for one OD, increase for other OD
+
+
+Is then extended by Camacho et al. to  do automatic PCA anomaly detection (which has already been around, but not used by Lakhina)
+
 
 #### Diagnosing Network-Wide Traffic Anomalies
 ##### Anukool Lakhina, ..., 2004
@@ -585,6 +619,23 @@ where $S=\sum_i^N n_i$
 
 + Note for me: Tere is far less UDP than TCP traffic in internet, but UDP flows are less aggregated, there are similar numbers of UDP and TCP flows
 
+### Entropy based
+
+#### Mining Anomalies using traffic feature distributions
+##### Anukool Lakhina, Mark Crovella, Christophe Diot, 2005
+##### Boston University, 1330 citations, 12 pages
+
+* Measure network-wide sample entropy of feature histogram:
+$H(X)=-\sum_{i=1}^N\frac{n_i}{S}\log\big(\frac{n_i}{S}\big)$
+where $S=\sum_i^N n_i$
+![Design](Mining_anomalies.png){ width=70% }
+
+ * Write $H$ as three-way matrix according to time, feature, and OD flow (not very clear what exactly that means)
+ * PCA-like subspace projection
+ * Clustering to identify anomalies
+ * Tested on Abilene and Geant backbone network using untruthed data
+
+
 #### An Empirical Evaluation of Entropy-based Traffic Anomaly Detection
 ##### Nychis, Sekar, Andersen, Zhang, 2008
 ##### CMU, 300 citations, 6 pages
@@ -602,6 +653,23 @@ where $S=\sum_i^N n_i$
 + Identification of anomalies from the plots is in my opinion very arbitrary and not well explained
 
 ### Clustering based
+
+#### Network Anomaly Detection Based on Wavelet Analysis
+##### Lu and Ghorbani, 2009
+##### University of New Brunswick, 160 citations, 16 pages
+
+* Aggregate traffic in 1 minute intervals:
+ * #TCP flows
+ * #UDP flows
+ * #ICMP flows
+ * Average #packets and #bytes per flow in each protocol
+ * ratio of packets to bytes per flow in each protocol
+
+* Fit wavelet model to traffic features
+
+* Residuals of model as outliers
+  * Model residuals of normal traffic with GMM
+    * A GMM can approximate any distribution when sufficient number of components are used   
 
 #### Traffic Anomaly Detection Using K-Means Clustering
 ##### Muenz, Li, Carle, 2007
@@ -676,6 +744,15 @@ $Q = N \times \sum_{i=1}^k \frac{P'_i-P_i}{P_i}$
 * In the evaluation, it is only able to detect very broad port scans and large DDoS attacks, (i.e. with larger volume, more concise traffic like smaller scans or less attacks are not detected)
 
 ## Flow or packet-metadata based approaches
+### PCA-based
+
+#### Identifying Intrusions in Computer Networks with Principal Component Analysis
+##### Wang and Battiti, 2006
+##### University of Trento, Italy, 110 citations, 8 pages
+
+PCA directly on the 34 numeric features of Darpa 1998 data
+
+If reconstruction error from the first few components compared to true projection is too high --> Anomaly
 
 #### Service Specific Anomaly Detection for Network Intrusion Detection 
 ##### Kruegel et. al, 2002,
@@ -701,7 +778,32 @@ Model:
       * Calculate frequency of characters, build probability distribution as average of all payload
       * $\Chi^2$ test to measure deviation of payload from distribution 
       
+My comment: Is likely to work well for applications that only send short and isolated service requests like dns (also since it emphasizes length and content of payload), unlikely to work well on general traffic like ssh, ftp etc.
 
+#### A multi-model approach to the detection of web-based attacks
+##### Kruegel et. al, 2005
+##### UC Santa Barbara, 290 citations, 22 pages
+
+Similar approach as Kruegel developed before, but now only directed towards server receiving http requests:
+
+Score anomaly of individual requests is composition of multiple models:
+$\text{AS}=\sum_{m\in \text{models}}w_m \cdot (1-p_m)$
+
+1. Attribute length:
+  * Only if $l$ is greater than $\mu$, $p_m(l)$=\frac{\sigma^2}{(l-\mu)^2}
+2. Attribute character dstribution: Like above
+3. Structural inference on parameters (i.e. if characters have been replaced by different ones, non-printable characters, etc. for buffer overflow, directory travesal,...)
+  * Use of markov model
+4. Token finder
+5. Attribute presence or absence
+6. Attribute order
+7. Access frequency
+  * Calculate probability of number of requests from client $n_1$ conditional on total number of requests $n$ in an intervla
+8. Time delays between individual requests
+  * Dstribution of time delays is compiled on the fly to adapt to changes, then $\chi^2$ test 
+9. Invocation order
+
+My comment: Highly specific, and does not relate individual attribute anomalies with each other (i.e. how does it adapt to changes in time and temporal variation that is correlated in multiple attributes?)
 
 #### Learning Nonstationary Models of Normal Network Traffic for Detecting Novel Attacks
 ##### Mahoney and Chan, 2002
@@ -734,6 +836,66 @@ Two models working parallel:
 * SOM is trained on normal traffic and maps it to two-dimensional lattice
 * The network connection is then classified as an intrusion if this distance is more than a pre-set threshold.
 
+* Kayacik (2007) et. al refine it more for KDD99 data, Jirapummin et al. also use it first (2002), but not well described, they detect from visualization
+
+#### ADAM: A Testbed for Exploring the Use of Data Mining in Intrusion Detection
+##### Barbara et al. 2001
+##### George Mason University
+  
+* Bayesian Network classification on Darpa 
+
+#### Intrusion Detection based on K-Means Clustering and Naïve Bayes Classification
+##### Muda et. al, 2011
+##### Malaysia, 104 citations, 6 pages
+
+On KDD Cup 99 data
+Clustering to create attack clusters, then classifier to classify these different attack types
+Altwaijry et al (2012) also used a Naive Bayese on KDD
+
+
+
+#### Principle Components Analysis and Support Vector Machine based Intrusion Detection System
+##### Eid et al., 2010
+##### Cairo, 70 citations, 5 pages
+
+PCA on KDD features, then SVM
+
+
+#### Online Adaboost-Based parametrized methods for dynamic distributed network instrusion detection
+##### Hu et. al, 2014
+##### Bejing, 100 citations, 17 pages
+
+New: Online parameter estimation and pooling of distributed models on each node into global model, also boosting was not used before but does not look like a step forward
+
+But: classification based
+
+Steps:
+ * Weak classifiers for each individual feature of KDD 99, both categorical and continuous
+ * Online adaboost with decision stumps (old) or with online GMMs (new, but why GMMs as classifiers?)
+ * One model for each node, then combining them into global model using PSO and SVM-based algorithm
+  * Two approaches for combining models exist:
+    * One is rule based, uses product, sum, max, min, median and majority vote rule
+    * Other is SVM based by combining model outputs of all classifiers into a vector and then using and SVM to classify the result using all model recommendations
+  * Both are combined to account for performance gaps and weight differences for similar models
+
+#### An Adaptive Automatically Tuning Intrusion Detection System
+##### Yu and Tsai, 2008
+##### University of Illinois, 70 citations, 25 pages
+
+Very interesting approach, albeit quite different from regular machine learning
+
+* Uses fuzzy set/control theory to build fuzzy classifiers
+  * These aren't exact, but also quantify some sort of confidence in their prediction
+  * Due to inexactness, it is easier to tune the borders of the classifiers
+  * They use an approach earlier developed by Yu (the other) to tune the borders of the classifier in an online manner by giving different weights to correctly classified instances, false positives, and false negatives
+
+* The different weighting of regular data, and false positives or false negatives (how do you find false negatives when operating) might be important and worth considering for us
+
+
+* Classifier is ultimately a group of binary classifiers working on KDD 99 data
+  * One binary classifier for each malware group
+
+
 ### Unsupervised Detection of APT C&C channels using Web Request Graphs
 ##### Lamprakis et al., 2017
 ##### ETH, 22 pages, 0 citations
@@ -745,6 +907,7 @@ Two models working parallel:
   + Mark non-whitelisted, unrelated web requests as malicious
   
 + is it possible to create complete whitelist? What about non-web-browsing traffic that uses http?
+
 
 ### Deep Learning based
 
@@ -774,6 +937,8 @@ Training of Deep Belief Network (stacked RBM) to the KDD-Cup data
 
 
 ### Semantics/Temporal correlation based
+
+Several approaches of discrete Markov chain models or Hidden Markov Models, but only for system call logs, such as Lane (1999, 2006), Yeung and Ding (2--3), orHu et al. (2009).
 
 #### Real-Time Dynamic Network Anomaly Detection 
 ##### Noble and Adams, 2018
