@@ -837,6 +837,8 @@ Two models working parallel:
 * The network connection is then classified as an intrusion if this distance is more than a pre-set threshold.
 
 * Kayacik (2007) et. al refine it more for KDD99 data, Jirapummin et al. also use it first (2002), but not well described, they detect from visualization
+	* Luo et al. (2014) also detect from visualisation using 4-angle-star technique to distinguish 5 classes (sounds stupid)
+
 
 #### ADAM: A Testbed for Exploring the Use of Data Mining in Intrusion Detection
 ##### Barbara et al. 2001
@@ -852,6 +854,11 @@ On KDD Cup 99 data
 Clustering to create attack clusters, then classifier to classify these different attack types
 Altwaijry et al (2012) also used a Naive Bayese on KDD
 
+#### CANN: An intrusion detection system based on combining cluster centers and nearest neighbors
+##### Lin et. al, 2016
+##### Taiwan, 170 citations, 9 pages
+
+Combination of Clustering and NN on KDD Cup 99
 
 
 #### Principle Components Analysis and Support Vector Machine based Intrusion Detection System
