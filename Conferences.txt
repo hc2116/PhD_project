@@ -1,7 +1,13 @@
-ACM CCS
+ACM CCS (Symposium on Computer and Communications Security)
 
-IEEE SNP (Oakland)
+IEEE S&P (Security & Privacy) (Oakland)
+IEEE  Communications 
+Surveys  & Tutorials
 
-DIMVA
+NDSS (Network and Distributed System Security Symposium)
 
-ACMC CCS (AISec)
+DIMVA (Detection of Intrusions and Malware, and Vulnerability Assessment)
+
+ACM CCS (AISec) workshop
+
+ASIACCS or ACM Workshop on Security in Cloud Computing

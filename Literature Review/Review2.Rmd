@@ -355,6 +355,22 @@ Types of intrusions to Cloud systems:
 + Attack on hypervisor to gain access to VMs or damage them
 .....
 
+#### From Intrusion Detection to Attacker Attribution: A Comprehensive Survey of Unsupervised Methods
+##### Nisioti et al., 2018
+##### Bournemouth University, 0 citations, 23 pages
+
+**DS attack classes **
+All IDS-related literature divides the indicators produced by the system in four classes, namely DoS, U2R, R2L and probe. As  attacks  evolve  these  classes  should  have evolved along  with  them  and,  thus,  we  consider  that  they  are not  sufficient  anymore.  The open  issues  regarding  the  attack classes of intrusion detection systems that have been identified in this work are as follows: 
+
+* An  intrusion  detection  system  produces  attack  indicators and   divides   them   in  the   aforementioned   4   classes. According to Akamai [1] and OWASP TOP 10 [104], the three  most  frequent  web  application  attacks  are  SQL injections, Local file inclusion and XSS. All three of them belong to the U2R and R2L classes, which are currently the least detected   attack   classes.   This   fact   supports   our previous  argument  that  it  is necessary  to  reinforce  the IDS’s  ability  to  detect  these  classes  by  using  feature
+selection,  extraction  and  transformation  techniques  and manually selected features (see Section III.B). 
+* As stated  by  Kaspersky [105],  cyber  espionage  through data exfiltration is one of the worst fears of every business. In this attack, the  transmission  of the targeted data  to the attacker takes place after host infection with malware and in   most   cases   uses   encrypted   traffic.   This   malicious network  activity  does  not  fall  under  the traditional  four attack  classes  that  are  used  in  the  literature,  as  it  is  the action  that  follows  a  successful  intrusion.  Nevertheless, creating  an  indicator  for this  malicious  network  traffic could  identify  an  intrusion  and  reveal  the  infected host, even if the infection was not detected. 
+* Similarly  as  mentioned  in [106],  the  number  of  new ransomware families has steadily increased since 2011 and in   2016   almost   43%   of   ransomware   victims   were employees  in  organizations.  This  attack  falls  under  the malware  infection  category, which  does  not  necessarily require network traffic (e.g., infection with an USB drive). However, it possesses a unique characteristic: after the first execution  the  malware  has to  communicate  with  a  C&C server to receive the encryption key. By selecting a proper feature  subset  we  might  create  indicators  for  this  type  of communication (see Section III.B) and stop the realization of the attack, even if the infection was successful.
+* Botnets facilitate DDoS attacks, regardless if they are hired or owned by the attackers[5] . Thus, botnet infections have increased  the  last  years  and  large  networks  with  high
+speeds,  such  as  corporate  or  university  networks  are  the primary targets. Again, botnet infections and communication  do  not  fall  under  any  of  the  four  known attack categories.  Detecting  the  infection  stage  could  be based mostly on features related to the host as in any other malware  infection  instance.  On  the  contrary,  detecting botnet communication  can  be  based  on  network  features regarding a) the type of communication: HTTP, IRC, P2P or  a  social  network  communication  method[107]  and  b) the  occurrence of  hiding  and  evasion  techniques,  such  as Fast-Flux [108].  Finally,  produced indicators  could  be combined to identify infected hosts as members of a botnet through spatial and temporal correlation. For instance, if a group  of   hosts   is  observed  to be performing  similar activities  in  response  to  similar  messages  from  the  same server,then they are likely part of the same botnet. 
+
+As easily observed, points two, threeand four are associated with  the  outgoing  network  traffic.  Traditionally, computer security uses the notion of the perimeter, considers everything out  of  it  enemy  territory  and  everything  inside  as  safe  zone. Consequently, malicious traffic used to be considered as always part  of  the  incoming traffic.  This  fact  however  is  no  longer valid,  with  the  emergence  of  insider threats,  data  exfiltration and    C&C    communication.    To    conclude,    the   existing categorization of attacks needs to be extended.  Following the evolution of the attacks and the current threats, the  outgoing  traffic  needs  to  be  considered  as well. Based  on these, we propose the addition of the following attack classes: data exfiltration, botnet C&C communication and ransomware communication. Ransomware communication is referred to the acquisition of the encryption key but utilizes C&C methods for it.  Consequently, this  class  could  be  considered  a  subclass  of C&C. However, ransomware network communication is more specific and its messages are limited in number whereas botnet C&C communication is extended and continuous through time. Moreover, if we consider host evidence as well, a ransomware malware  reveals  itself  to  the  user  whereas  a  botnet malware utilizes  different  techniques  to  keep  itself  hidden.  Finally, botnet communication often includes multiple hosts exhibiting the   same   suspicious   behaviour, which   constitutes   another unique characteristics.
+
 ### Network Anomaly Detection Methods, Systems, and Tools
 ##### Monowar Bhuyan, Bhattacharyya, Kalita, 2014
 ##### Tepur University, 350 citations, 34 pages
@@ -859,6 +875,17 @@ Altwaijry et al (2012) also used a Naive Bayese on KDD
 ##### Taiwan, 170 citations, 9 pages
 
 Combination of Clustering and NN on KDD Cup 99
+
+Firstly, the cluster centres are extracted using a 
+clustering technique. As the second step, the distance measures 
+are calculated, namely the distance between all data of the given 
+dataset and the cluster centres (dist1) and the distance between 
+each data point and its nearest neighbour in the same cluster 
+(dist2). The sum of dist1 and dist2 leads to a new one dimension 
+feature. Finally, k-NN is used to classify the data represented 
+by the newly constructed feature. Experiments show that the 
+approach succeeds in detecting DoS and probe attacks, but does 
+not perform well on U2R and R2L
 
 
 #### Principle Components Analysis and Support Vector Machine based Intrusion Detection System
