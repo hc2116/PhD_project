@@ -582,7 +582,7 @@ My comment:
   + Outage: Decrease in B,F, and P traffic
   + Ingress-shift: Decrease in traffic for one OD, increase for other OD
 
-
+  
 Is then extended by Camacho et al. to  do automatic PCA anomaly detection (which has already been around, but not used by Lakhina)
 
 
@@ -606,6 +606,9 @@ Is then extended by Camacho et al. to  do automatic PCA anomaly detection (which
 + Data sources for features:
   + Entropy to measure dispersion of S IP, D IP, SPorts, and DPorts distr. incoming at at routers (must be aggregated over some time)
   + Traffic aggregation of #packets, #bytes, #flows etc. like above
+
+
+### Entropy based
 
 #### Entropy based Worm and ANomaly Detection in Fast IP Networks
 ##### Wagner, Plattner, 2005
@@ -633,9 +636,8 @@ Is then extended by Camacho et al. to  do automatic PCA anomaly detection (which
 
 ![Design](Worm_Entropy.png){ width=70% }
 
-+ Note for me: Tere is far less UDP than TCP traffic in internet, but UDP flows are less aggregated, there are similar numbers of UDP and TCP flows
++ Note for me: There is far less UDP than TCP traffic in internet, but UDP flows are less aggregated, there are similar numbers of UDP and TCP flows
 
-### Entropy based
 
 #### Mining Anomalies using traffic feature distributions
 ##### Anukool Lakhina, Mark Crovella, Christophe Diot, 2005
