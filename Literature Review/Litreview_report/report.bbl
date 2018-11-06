@@ -1,0 +1,256 @@
+\begin{thebibliography}{10}
+
+\bibitem{noauthor_ctu-13_nodate}
+The {CTU}-13 {Dataset}. {A} {Labeled} {Dataset} with {Botnet}, {Normal} and
+  {Background} traffic.
+\newblock 00001.
+
+\bibitem{USC2010ICT}
+Impact cyber trust: {USC} {DS}-062, {USC} {DS}-266, {USC} {LANDER}.
+\newblock \url{https://www.impactcybertrust.org/dataset_view?idDataset=62/}
+  \url{https://www.impactcybertrust.org/dataset_view?idDataset=75/}
+  \url{https://www.impactcybertrust.org/dataset_view?idDataset=265}, 2010.
+\newblock Accessed on 05 Nov. 2018.
+
+\bibitem{anderson1980computer}
+J.~P. Anderson.
+\newblock Computer security threat monitoring and surveillance.
+\newblock {\em Technical Report, James P. Anderson Company}, 1980.
+
+\bibitem{barford2002signal}
+P.~Barford, J.~Kline, D.~Plonka, and A.~Ron.
+\newblock A signal analysis of network traffic anomalies.
+\newblock In {\em Proceedings of the 2nd ACM SIGCOMM Workshop on Internet
+  measurment}, pages 71--82. ACM, 2002.
+
+\bibitem{camacho_pca-based_2016}
+J.~Camacho, A.~Pérez-Villegas, P.~García-Teodoro, and G.~Maciá-Fernández.
+\newblock {PCA}-based multivariate statistical network monitoring for anomaly
+  detection.
+\newblock {\em Computers \& Security}, 59:118--137, June 2016.
+\newblock 00027.
+
+\bibitem{creech2014developing}
+G.~Creech.
+\newblock {\em Developing a high-accuracy cross platform Host-Based Intrusion
+  Detection System capable of reliably detecting zero-day attacks.}
+\newblock PhD thesis, University of New South Wales, Canberra, Australia, 2014.
+
+\bibitem{creech2013generation}
+G.~Creech and J.~Hu.
+\newblock Generation of a new ids test dataset: Time to retire the kdd
+  collection.
+\newblock In {\em Wireless Communications and Networking Conference (WCNC),
+  2013 IEEE}, pages 4487--4492. IEEE, 2013.
+
+\bibitem{cup1999data}
+K.~Cup.
+\newblock Data. knowledge discovery in databases darpa archive, 1999.
+
+\bibitem{cup1999dataset}
+K.~Cup.
+\newblock Dataset.
+\newblock \url{http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html}, 1999.
+\newblock Accessed on 05 Nov. 2018.
+
+\bibitem{gao_intrusion_2014}
+N.~Gao, L.~Gao, Q.~Gao, and H.~Wang.
+\newblock An {Intrusion} {Detection} {Model} {Based} on {Deep} {Belief}
+  {Networks}.
+\newblock In {\em 2014 {Second} {International} {Conference} on {Advanced}
+  {Cloud} and {Big} {Data}}, pages 247--252, Nov. 2014.
+\newblock 00046.
+
+\bibitem{garcia2014empirical}
+S.~Garcia, M.~Grill, J.~Stiborek, and A.~Zunino.
+\newblock An empirical comparison of botnet detection methods.
+\newblock {\em computers \& security}, 45:100--123, 2014.
+
+\bibitem{gharib2016evaluation}
+A.~Gharib, I.~Sharafaldin, A.~H. Lashkari, and A.~A. Ghorbani.
+\newblock An evaluation framework for intrusion detection dataset.
+\newblock In {\em Information Science and Security (ICISS), 2016 International
+  Conference on}, pages 1--6. IEEE, 2016.
+
+\bibitem{hawkins_outlier_2002}
+S.~Hawkins, H.~He, G.~Williams, and R.~Baxter.
+\newblock Outlier {Detection} {Using} {Replicator} {Neural} {Networks}.
+\newblock In Y.~Kambayashi, W.~Winiwarter, and M.~Arikawa, editors, {\em Data
+  {Warehousing} and {Knowledge} {Discovery}}, Lecture {Notes} in {Computer}
+  {Science}, pages 170--180. Springer Berlin Heidelberg, 2002.
+\newblock 00451.
+
+\bibitem{jiang2014transform}
+D.~Jiang, Z.~Xu, P.~Zhang, and T.~Zhu.
+\newblock A transform domain-based anomaly detection approach to network-wide
+  traffic.
+\newblock {\em Journal of Network and Computer Applications}, 40:292--306,
+  2014.
+
+\bibitem{kayacik2007hierarchical}
+H.~G. Kayacik, A.~N. Zincir-Heywood, and M.~I. Heywood.
+\newblock A hierarchical som-based intrusion detection system.
+\newblock {\em Engineering applications of artificial intelligence},
+  20(4):439--451, 2007.
+
+\bibitem{kent-2015-cyberdata1}
+A.~D. Kent.
+\newblock {Comprehensive, Multi-Source Cyber-Security Events}.
+\newblock Los Alamos National Laboratory, 2015.
+
+\bibitem{akent-2015-enterprise-data}
+A.~D. Kent.
+\newblock {Cybersecurity Data Sources for Dynamic Network Research}.
+\newblock In {\em Dynamic Networks in Cybersecurity}. Imperial College Press,
+  June 2015.
+
+\bibitem{kruegel2005multi}
+C.~Kruegel, G.~Vigna, and W.~Robertson.
+\newblock A multi-model approach to the detection of web-based attacks.
+\newblock {\em Computer Networks}, 48(5):717--738, 2005.
+
+\bibitem{krugel2002service}
+C.~Kr{\"u}gel, T.~Toth, and E.~Kirda.
+\newblock Service specific anomaly detection for network intrusion detection.
+\newblock In {\em Proceedings of the 2002 ACM symposium on Applied computing},
+  pages 201--208. ACM, 2002.
+
+\bibitem{lakhina_characterization_2004}
+A.~Lakhina, M.~Crovella, and C.~Diot.
+\newblock Characterization of {Network}-wide {Anomalies} in {Traffic} {Flows}.
+\newblock In {\em Proceedings of the 4th {ACM} {SIGCOMM} {Conference} on
+  {Internet} {Measurement}}, {IMC} '04, pages 201--206, New York, NY, USA,
+  2004. ACM.
+\newblock 00439.
+
+\bibitem{lakhina_diagnosing_2004}
+A.~Lakhina, M.~Crovella, and C.~Diot.
+\newblock Diagnosing {Network}-wide {Traffic} {Anomalies}.
+\newblock In {\em Proceedings of the 2004 {Conference} on {Applications},
+  {Technologies}, {Architectures}, and {Protocols} for {Computer}
+  {Communications}}, {SIGCOMM} '04, pages 219--230, New York, NY, USA, 2004.
+  ACM.
+\newblock 01230.
+
+\bibitem{lippmann2000evaluating}
+R.~P. Lippmann, D.~J. Fried, I.~Graf, J.~W. Haines, K.~R. Kendall, D.~McClung,
+  D.~Weber, S.~E. Webster, D.~Wyschogrod, R.~K. Cunningham, et~al.
+\newblock Evaluating intrusion detection systems: The 1998 darpa off-line
+  intrusion detection evaluation.
+\newblock In {\em DARPA Information Survivability Conference and Exposition,
+  2000. DISCEX'00. Proceedings}, volume~2, pages 12--26. IEEE, 2000.
+
+\bibitem{macia2018ugr}
+G.~Maci{\'a}-Fern{\'a}ndez, J.~Camacho, R.~Mag{\'a}n-Carri{\'o}n,
+  P.~Garc{\'\i}a-Teodoro, and R.~Ther{\'o}n.
+\newblock Ugr ‘16: A new dataset for the evaluation of
+  cyclostationarity-based network idss.
+\newblock {\em Computers \& Security}, 73:411--424, 2018.
+
+\bibitem{mahoney2002learning}
+M.~V. Mahoney and P.~K. Chan.
+\newblock Learning nonstationary models of normal network traffic for detecting
+  novel attacks.
+\newblock In {\em Proceedings of the eighth ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 376--385. ACM, 2002.
+
+\bibitem{moustafa_unsw-nb15:_2015}
+N.~Moustafa and J.~Slay.
+\newblock {UNSW}-{NB}15: a comprehensive data set for network intrusion
+  detection systems ({UNSW}-{NB}15 network data set).
+\newblock In {\em 2015 {Military} {Communications} and {Information} {Systems}
+  {Conference} ({MilCIS})}, pages 1--6, Nov. 2015.
+\newblock 00074.
+
+\bibitem{noble_real-time_2018}
+J.~Noble and N.~Adams.
+\newblock Real-{Time} {Dynamic} {Network} {Anomaly} {Detection}.
+\newblock {\em IEEE Intelligent Systems}, 33(2):5--18, Mar. 2018.
+\newblock 00000.
+
+\bibitem{noble_correlation-based_2016}
+J.~Noble and N.~M. Adams.
+\newblock Correlation-{Based} {Streaming} {Anomaly} {Detection} in
+  {Cyber}-{Security}.
+\newblock In {\em 2016 {IEEE} 16th {International} {Conference} on {Data}
+  {Mining} {Workshops} ({ICDMW})}, pages 311--318, Dec. 2016.
+\newblock 00004.
+
+\bibitem{pang2005first}
+R.~Pang, M.~Allman, M.~Bennett, J.~Lee, V.~Paxson, and B.~Tierney.
+\newblock A first look at modern enterprise traffic.
+\newblock In {\em Proceedings of the 5th ACM SIGCOMM conference on Internet
+  Measurement}, pages 2--2. USENIX Association, 2005.
+
+\bibitem{ramadas2003detecting}
+M.~Ramadas, S.~Ostermann, and B.~Tjaden.
+\newblock Detecting anomalous network traffic with self-organizing maps.
+\newblock In {\em International Workshop on Recent Advances in Intrusion
+  Detection}, pages 36--54. Springer, 2003.
+
+\bibitem{ringberg_sensitivity_2007}
+H.~Ringberg, A.~Soule, J.~Rexford, and C.~Diot.
+\newblock Sensitivity of {PCA} for {Traffic} {Anomaly} {Detection}.
+\newblock In {\em Proceedings of the 2007 {ACM} {SIGMETRICS} {International}
+  {Conference} on {Measurement} and {Modeling} of {Computer} {Systems}},
+  {SIGMETRICS} '07, pages 109--120, New York, NY, USA, 2007. ACM.
+\newblock 00337.
+
+\bibitem{saad2011detecting}
+S.~Saad, I.~Traore, A.~Ghorbani, B.~Sayed, D.~Zhao, W.~Lu, J.~Felix, and
+  P.~Hakimian.
+\newblock Detecting p2p botnets through network behavior analysis and machine
+  learning.
+\newblock In {\em Privacy, Security and Trust (PST), 2011 Ninth Annual
+  International Conference on}, pages 174--180. IEEE, 2011.
+
+\bibitem{sharafaldin2018towards}
+I.~Sharafaldin, A.~Gharib, A.~H. Lashkari, and A.~A. Ghorbani.
+\newblock Towards a reliable intrusion detection benchmark dataset.
+\newblock {\em Software Networking}, 2018(1):177--200, 2018.
+
+\bibitem{sony2000traffic}
+C.~Sony and K.~Cho.
+\newblock Traffic data repository at the wide project.
+\newblock In {\em Proceedings of USENIX 2000 Annual Technical Conference:
+  FREENIX Track}, pages 263--270, 2000.
+
+\bibitem{tavallaee2012nsl}
+M.~Tavallaee, E.~Bagheri, W.~Lu, and A.~A. Ghorbani.
+\newblock Nsl-kdd dataset.
+\newblock
+  \url{http://www.unb.ca/research/iscx/dataset/iscx-NSL-KDD-dataset.html},
+  2012.
+\newblock Accessed on 05 Nov. 2018.
+
+\bibitem{thottan2003anomaly}
+M.~Thottan and C.~Ji.
+\newblock Anomaly detection in ip networks.
+\newblock {\em IEEE Transactions on signal processing}, 51(8):2191--2204, 2003.
+
+\bibitem{turcotte17}
+M.~J.~M. {Turcotte}, A.~D. {Kent}, and C.~{Hash}.
+\newblock {Unified Host and Network Data Set}.
+\newblock {\em ArXiv e-prints}, Aug. 2017.
+
+\bibitem{UNIBS2009data}
+UNIBS.
+\newblock Data sharing.
+\newblock \url{http://netweb.ing.unibs.it/~ntw/tools/traces/}, 2009.
+\newblock Accessed on 05 Nov. 2018.
+
+\bibitem{walsworth2015caida}
+C.~Walsworth, E.~Aben, K.~Claffy, and D.~Andersen.
+\newblock The caida ucsd anonymized internet traces 2012,”, 2015.
+
+\bibitem{whitehouse_activity-based_2016}
+M.~Whitehouse, M.~Evangelou, and N.~Adams.
+\newblock Activity-based temporal anomaly detection in enterprise-cyber
+  security.
+\newblock In {\em {IEEE} {International} {Big} {Data} {Analytics} for
+  {Cybersecurity} computing ({BDAC}'16) {Workshop}, {IEEE} {International}
+  {Conference} on {Intelligence} and {Security} {Informatics}}. IEEE, Nov.
+  2016.
+\newblock 00001.
+
+\end{thebibliography}
