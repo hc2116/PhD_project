@@ -239,6 +239,13 @@ UNIBS.
 \newblock \url{http://netweb.ing.unibs.it/~ntw/tools/traces/}, 2009.
 \newblock Accessed on 05 Nov. 2018.
 
+\bibitem{wagner2005entropy}
+A.~Wagner and B.~Plattner.
+\newblock Entropy based worm and anomaly detection in fast ip networks.
+\newblock In {\em Enabling Technologies: Infrastructure for Collaborative
+  Enterprise, 2005. 14th IEEE International Workshops on}, pages 172--177.
+  IEEE, 2005.
+
 \bibitem{walsworth2015caida}
 C.~Walsworth, E.~Aben, K.~Claffy, and D.~Andersen.
 \newblock The caida ucsd anonymized internet traces 2012,”, 2015.

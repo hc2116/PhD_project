@@ -236,12 +236,11 @@ In reality, anomaly and misuse detection are not necessarily mutually exclusive,
 
 Anomaly-based intrusion detection moved into the focus of researchers at the end of the 90s, with many advances and new ideas being implemented between 1998 and 2005. 
 
-\subsection{Payload-based approaches}
+%\subsection{Payload-based approaches}
 
 \subsection{Approaches based on Volume or Traffic Aggregation}
 
-\subsubsection{Entropy-based}
-
+Difficult to identify individual malicious flows.
 
 
 \subsubsection{Subspace projection/PCA-based}
@@ -255,7 +254,14 @@ This approach can be applied to individual OD pairs, or on a network-wide basis 
 Naturally, since the traffic is aggregated into bins and the temporal behaviour of these bins are examined, this approach is aimed towards identifying attacks with a comparably large volume of traffic, even if they are isolated in time. It is however unlikely that it is capable of spotting smaller U2R and R2L attacks or C\&C traffic. Another possible criticism is that anomalies are not spotted immediately, but in the worst case after hours.
 
 
-\textbf{Ringberg and Rexford} \cite{ringberg_sensitivity_2007} described a PCA-based approach to traffic anomaly detection as very sensitive to small differences in the number of used principal components and to the level of aggregation of the traffic measurements. Furthermore, the training data has to be absolutely free of any traffic anomalies, otherwise the projection onto the first principle components can change drastically.
+\textbf{Ringberg and Rexford} \cite{ringberg_sensitivity_2007} provided a discussion of PCA-based approaches to traffic anomaly detection. They concluded that PCA is very sensitive to small differences in the number of used principal components and to the level of aggregation of the traffic measurements. Furthermore, the training data has to be absolutely free of any traffic anomalies, otherwise the projection onto the first principle components can change drastically. 
+
+\subsubsection{Entropy-based}
+
+The entropy is a measure for the degree of disorder a system is in. Applied to 
+
+Wagner and Plattner \cite{wagner2005entropy} 
+
 
 
 \subsubsection{Wavelet-based}
@@ -268,7 +274,7 @@ Both Barford et al. \cite{barford2002signal}, and Thottan and Ji \cite{thottan20
 
 Jian et al. \cite{jiang2014transform} proposed a refined wavelet-based model in 2014 which is applied to individual OD pairs. All observed OD pairs in the network are grouped into $q$\footnote{number depends on network topology} groups. To each group, an S-transformation (a modified version of a wavelet-transformion) is applied. The signal for each OD pair is then reconstructed using only the estimates of the high-frequency components since these correspond to any bursty behaviour. Now, the reconstructed signal is free from any slow variation and contains only fast and bursty behaviour. The assumption of the authors this degenerated signal must be heavily correlated between individual OD pairs. Using a sliding window, the pairwise correlations of each OD pair is computed. If the correlation for any pair falls below a certain treshold, this pair is marked as an anomaly. The approach is designed to detect volume-intensive attacks on busy servers, the exact motivation for this approach however is not described very well by the authors. The evaluation is done using data from the \textit{Abilene backbone}.
 
-It is clear that any approach that looks exclusively at the traffic volume either between individual hosts or in a network-wide fashion will only detect attacks with sufficient attack volume, such as DoS attacks. Additionally, 
+It is clear that any approach that looks exclusively at the traffic volume either between individual hosts or in a network-wide fashion will only detect attacks with sufficient attack volume, such as DoS attacks. Additionally, wavelet-based approaches do not provide a probabilistic framework for anomaly detection, which makes the seperation of true anomalies from false positives difficult, especially in larger networks. 
 
 
 
