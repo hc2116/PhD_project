@@ -6,7 +6,7 @@
 
 \begin{document}
 
-\title{\LARGE {\bf Literature Review}\\
+\title{\LARGE {\bf Literature Review - Anomaly Detection in Computer Networks}\\
  \vspace*{6mm}
 }
 
@@ -15,9 +15,9 @@
 
 \maketitle
 
-\begin{abstract}
-Text
-\end{abstract}
+%\begin{abstract}
+%Text
+%\end{abstract}
 
 
 \chapter{Introduction}
@@ -71,8 +71,7 @@ U2R R2L
 \item \textit{Data exfiltration}
 
 \end{enumerate}
-
-A lot of successful research has been addressed to detecting botnets and port scanning, so we won't address it in this literature review.
+\textcolor{red}{A lot of successful research has been addressed to detecting botnets and port scanning, so we won't address it in this literature review....} ...
 
 \section{Data Sets}
 
@@ -92,7 +91,7 @@ In order to evaluate its ability to model the behaviour of a network and to iden
 
 \end{enumerate}
 
-Write about privacy concerns and general problematic of getting data
+\textcolor{red}{Write about privacy concerns and general problematic of getting data}
 
 Furthermore, we can also identify different formats of network data:
 
@@ -114,16 +113,16 @@ In 2015, the Los Alamos National Laboratory (LANL) released a large data set con
 
 Additionally, the data set also contains other event sources which were recorded in parallel in order to give a more comprehensive look at the network, and could be very useful when investigating a detection approach that correlates multiple event sources. These sources include process events and authentication events from Windows-based computers and servers, and DNS lookup events from the DNS servers within the network. 
 
-The dataset furthermore contains a labelled set of redteam events which should resemble intrusions. However, these events are not part of the network flow data and only contain information about the time of the attack and the attacked computer. These events apparently resemble remote \textit{access attacks}, are not described further and appear to be artificial or injected into the data set. It is thus not certain how well they resemble actual network intrusions.
+The dataset furthermore contains a labeled set of redteam events which should resemble intrusions. However, these events are not part of the network flow data and only contain information about the time of the attack and the attacked computer. These events apparently resemble remote \textit{access attacks}, are not described further and appear to be artificial or injected into the data set. It is thus not certain how well they resemble actual network intrusions.
 
 
-LANL released another data set containing network flow traffic from their network in 2017 \cite{turcotte17}. This data set is similar to the one from 2015, but spans over a longer period of time, 90 days. Furthermore, it contains no labelled malicious activity,  however that does not mean that the data is completely free of malicious activity.
+LANL released another data set containing network flow traffic from their network in 2017 \cite{turcotte17}. This data set is similar to the one from 2015, but spans over a longer period of time, 90 days. Furthermore, it contains no labeled malicious activity,  however that does not mean that the data is completely free of malicious activity.
 
 \subsubsection*{CTU 2013 \cite{noauthor_ctu-13_nodate, garcia2014empirical}}
 
-The \textit{Stratosphere Laboratory} in Prague released this dataset in 2013 to study botnet detection. It consists of more than 10 million labelled \textbf{network flows} captured on lab machines for 13 different botnet attack scenarios. Additionally, the raw packets for the botnet activity is also available for attack analysis. 
+The \textit{Stratosphere Laboratory} in Prague released this dataset in 2013 to study botnet detection. It consists of more than 10 million labeled \textbf{network flows} captured on lab machines for 13 different botnet attack scenarios. Additionally, the raw packets for the botnet activity is also available for attack analysis. 
 
-The labelling in this dataset is different from other datasets as each  flow  in  the  list  is  labelled  based  on  the  source  IP  address.  In  the experiments,  certain  hosts  are  infected  with  a  botnet  and  any  traffic  arising from such a host is labelled as Botnet traffic. Traffic from uninfected hosts is labelled as Normal. All other traffic is Background, as one cannot classify it. 
+The labelling in this dataset is different from other datasets as each  flow  in  the  list  is  labeled  based  on  the  source  IP  address.  In  the experiments,  certain  hosts  are  infected  with  a  botnet  and  any  traffic  arising from such a host is labeled as Botnet traffic. Traffic from uninfected hosts is labeled as Normal. All other traffic is Background, as one cannot classify it. 
 
 A criticism of this dataset is the unrealistically high amount of malicious traffic contained in the dataset, which makes it easier to spot it while reducing false positives. Furthermore, the way normal or background traffic is generated is described only poorly and leaves the question how representative it is of actual network traffic.
 
@@ -133,14 +132,14 @@ The UGR'16 data set was released by the University of Grenada and contains \text
 
 A main focus in the creation of the data was the consideration of long-term traffic evolution and observable periodicity in order to enable the testing of so called \textit{cyclostationary} traffic models. The data set correspondingly covers a very long period, spanning from March to August of 2016, and containing about 14 GB of traffic per week. 
 
-The data is split into a training set and a test set, with the latter containing labelled attack data. This attack data does not stem from rogue agents but is in part generated in controlled attacks on victim machines, and in part injected from previously observed malware infections. The attack data is therefore does not truly correspond to actual attacks, but achieves a high degree of similarity. The implemented attacks contain:
+The data is split into a training set and a test set, with the latter containing labeled attack data. This attack data does not stem from rogue agents but is in part generated in controlled attacks on victim machines, and in part injected from previously observed malware infections. The attack data is therefore does not truly correspond to actual attacks, but achieves a high degree of similarity. The implemented attacks contain:
 \begin{itemize}
 \item DoS attacks (controlled attacks),
 \item Port scanning (controlled attacks),
 \item C\&C traffic from a botnet (injected).
 \end{itemize}
 
-The authors also acknowledge that the background traffic is not necessarily free from further attacks. In fact, three real attacks have been observed and labelled, corresponding to IP-scanning and a spam mail campaign.
+The authors also acknowledge that the background traffic is not necessarily free from further attacks. In fact, three real attacks have been observed and labeled, corresponding to IP-scanning and a spam mail campaign.
 
 \subsubsection*{UNSW-NB 2015 \cite{moustafa_unsw-nb15:_2015}}
 
@@ -154,7 +153,7 @@ Since this data set is collected from a relatively small number of machines and 
 
 \subsubsection*{CICIDS 2017 \cite{gharib2016evaluation}\cite{sharafaldin2018towards}}
 
-This data set, released by the \textit{Canadian Institute for Cybersecurity} (CIC), contains 5 days of network traffic from 12 computers. These computers all have either different different operating systems such as Windows, OSX, or Ubuntu, or different versions of the same operating system in order to enable a wider range of attack scenarios. The network  furthermore contains switches, routers, a web server, a modem, and a firewall in order to ensure a realistic network topology. The traffic data itself consists of \textbf{labelled benign and attack traffic}, and is available as 11 GB per day of \textbf{raw packets} with payloads, or as \textbf{network flows}. 
+This data set, released by the \textit{Canadian Institute for Cybersecurity} (CIC), contains 5 days of network traffic from 12 computers. These computers all have either different different operating systems such as Windows, OSX, or Ubuntu, or different versions of the same operating system in order to enable a wider range of attack scenarios. The network  furthermore contains switches, routers, a web server, a modem, and a firewall in order to ensure a realistic network topology. The traffic data itself consists of \textbf{labeled benign and attack traffic}, and is available as 11 GB per day of \textbf{raw packets} with payloads, or as \textbf{network flows}. 
 
 It was ensured that the data contains all traffic coming and going from individual machines. However, in contrast to other data sets, the background traffic is not directly generated through user interactions on the machine, but by using a method to profile abstract user behaviour in different traffic protocol. The purpose of this is to make the traffic more heterogenuous and to ensure that different types of behaviour are present in the data during the comparably short time span. This  However, it is not completely clear how much of the underlying structure of real traffic is lost in the process, and therefore how suitable this data is to build models of benign user activity.
 
@@ -164,7 +163,7 @@ The CIC released another very similar dataset to this one in 2012.
 
 \subsubsection*{DARPA 1998 \cite{lippmann2000evaluating}}
 
-The \textit{Defense Advanced Research Projects Agency} released the first major dataset to test network intrusion detection systems. The data stems from two experiments at the \textit{MIT Lincoln Laboratory} were multiple victim hosts running Unix and Windows NT were subject of over 200 attacks of 58 different types. The data spans three weeks of training and two weeks of testing data and contains \textit{raw packets} that are labelled. It was since then heavily used as a benchmark to test new detection methods. %In 2000, the original data was post-processed to reduce some of its shortcomings.
+The \textit{Defense Advanced Research Projects Agency} released the first major dataset to test network intrusion detection systems. The data stems from two experiments at the \textit{MIT Lincoln Laboratory} were multiple victim hosts running Unix and Windows NT were subject of over 200 attacks of 58 different types. The data spans three weeks of training and two weeks of testing data and contains \textit{raw packets} that are labeled. It was since then heavily used as a benchmark to test new detection methods. %In 2000, the original data was post-processed to reduce some of its shortcomings.
 
 Also due to its prominence, it was heavily scrutinised and received a lot of criticism for its lack of realistic background traffic, which was generated through simulation procedure, and the presence of artifacts from these simulations in the data that could heavily skew any model relying on benign traffic. Also, the high percentage of attack traffic in the data is described as unrealistic.
 
@@ -240,12 +239,12 @@ Anomaly-based intrusion detection moved into the focus of researchers at the end
 
 \subsection{Approaches based on Volume or Traffic Aggregation}
 
-Difficult to identify individual malicious flows.
+Difficult to identify individual malicious flows and attack attribution.
 
 
 \subsubsection{Subspace projection/PCA-based}
 
-\textbf{Principal Component Analysis} is a statistical form of \textit{orthogonal coordinate transformation} to convert a set of observations (or feature vectors) into a set of linearly independent variables\footnote{the \textit{principal components}}. These variables uncorrelated variables each account for differing amounts of the variation contained in the data. By projecting an observation only onto the components that account for the most variation, it is possible to retain most of the information while operating in much lower dimensions.
+\textit{Principal Component Analysis} is a statistical form of \textit{orthogonal coordinate transformation} to convert a set of observations (or feature vectors) into a set of linearly independent variables\footnote{the \textit{principal components}}. These variables uncorrelated variables each account for differing amounts of the variation contained in the data. By projecting an observation only onto the components that account for the most variation, it is possible to retain most of the information while operating in much lower dimensions.
 
 \textbf{Lakhina et al.} \cite{lakhina_diagnosing_2004,lakhina_characterization_2004}  introduced a PCA-based anomaly detection method for network traffic in 2004. In their approach, they aggregated the network flows for each OD\footnote{Origin-Destination} pair into 5-minute bins, with the number of transferred bytes, packets, and flows being the features for each bin. Each 120 consecutive bins were then treated as a an observation (with $3\cdot 120$ variables), and PCA was then applied to the collection of observations. The first $5$ principal components are then identified as the dominant temporal patterns. Anomalies were then identified as observations that could only very poorly reconstructed using the first $5$ principle components. Since then, this approach has been adopted to several other datasets without much methodological advances. Camacho et al. \cite{camacho_pca-based_2016} proposed an improvement to the existing PCA-based approach with a more natural implementation of spotting anomalies. 
 
@@ -258,9 +257,21 @@ Naturally, since the traffic is aggregated into bins and the temporal behaviour 
 
 \subsubsection{Entropy-based}
 
-The entropy is a measure for the degree of disorder a system is in. Applied to 
+The entropy is a measure for the degree of disorder a system is in. Applied to network traffic, a popular quantity to measure is the dispersion of events onto different source or destination IP addresses. A high entropy would correspond to all events being evenly distributed among the all existing IPs while a low entropy corresponds to the majority of events being concentrated between a small number of IPs. 
 
-Wagner and Plattner \cite{wagner2005entropy} 
+Entropy-based approaches can usually be attributed more towards misuse detection, but can also have reasonable applications in anomaly detection.
+
+\textbf{Wagner and Plattner} \cite{wagner2005entropy} measured the entropy of network flow distribution across source and destination IP addresses and across source and destination ports on a network-wide basis. The entropy is measured in a sliding window of 5-minutes with 1-minute shifts and monitored continuously. Anomalies are flagged as sudden changes in one or more of the mentioned entropy sources with tresholds that were determined from empirical judgement. The described measures were applied to network data from a swiss internet backbone which contained data from two large-scale worm outbreaks\footnote{\textit{Blaster worm} and \textit{Witty worm}, both more than 50 000 infections}. The characteristics of these worms in terms of entropy changes\footnote{Source IP and destination port entropy decreases drastically, destination IP entropy increases moderately} were then analysed as an evaluation of the technique.
+
+\textbf{Lakhina et al.} \cite{lakhina2005mining} used entropy in a similar, albeit more sophisticated way to detect anomalies. Instead of using entropy on a network-wide basis, it used to monitor src and dst IP and port distributions on individual hosts over time. The obtained values are then bundled in a three-way matrix $H(t,p,k)$ where $t$ is the current time, $p$ is the particular host, and $k$ is one of the four monitored traffic features. This data matrix is then converted into a two-way matrix and similar to other work by Lakhina, a PCA-like subspace projection is applied to mine temporal features as orthogonal components. However, here these components reflect correlations in simultaneous entropy changes on different hosts and features. Anomalies are again detected as poor reconstructions by via the most dominant components, and the performance is examined using untruthed data from the Abilene backbone network. Another clever addition of this paper is the use of unsupervised learning to identify different types of observed anomalies. This is done by applying hierarchichal clustering with a fixed number of clusters to the residual vector of $H$. However, contains some obvious flaws that in my opinion prevent a generalised grouping of anomalies.
+
+\subsubsection*{Other}
+
+
+\textbf{Kind et al.} \cite{kind2009histogram} proposed a network-wide detection approach that is based on traffic histograms and clustering to identify and model substructures in normal traffic for better anomaly detection. A number of different traffic quantities are divided into a fixed number of subgroups, such intervals of IP-addresses or network ports, bins of packet sizes or connection durations, or the different TCP flags in a connection. For every different feature, authors create histograms measuring the number of events occuring in each subgroup during a 5-minute interval. Histograms are monitored over a period of time without any malicious activity in order to gather a collection of training histograms. After removing subgroups that remain, each traffic feature is then divided into clusters using the Mahalanobis-distance measure as a similarity metric between histograms and either hierarchical or $k$-means clustering. Anomalies in individual traffic features can then be detected as histograms with distances from the nearest cluster that exceed a certain treshold. Evaluation is conducted with an unnamed dataset containing 15 labeled attack, containing DoS attacks, worm propagation and network scanning, and network-wide system fingerprinting, and mail bombs, of which 13 were detected. Unsurprisingly, the two undetected attacks addressed fewer machines and thus consisted of less traffic. In general, this approach indivates a great improvement from the previous approaches as it is the first significant attempt at discovering substructures in aggregated traffic, which generally grants a better detection of non-trivial anomalies. An interesting improvement would be to correlate simultaneous outliers in different features using a variant of hypothesis tests as a lower anomaly treshold could be used.
+
+\textbf{Heard et al.} \cite{heard2016network, heard2016topic} recently proposed a rather different approach: The authors here monitor the number of network-internal connections and authentication events on each machine over 5-minute invervals. The authors observed network-wide a strong \textit{power-law-like} distributions of the number of events per host, i.e. the number of events is very large for some hosts an declines proportional to $c x^{-k}$ where $x$ is the number of the host. The authors then model the behaviour using two related probabilistic methods, the \textit{Dirichlet process} and \textit{latent Dirichlet allocation}, where the model parameters were estimated from attack-free training data in a Bayesian fashion. Event numbers which deviate strongly from the estimated model were then scored according to their unlikeliness. Both approaches were tested using the LANL dataset and asigned high scores to known inected computers. Furthermore, the authors claim to have possibly detected an unlabeled machine as being infected through manual investigation after it was asigned the highest score of all machines. As this approach is solely looking at the number of incoming and outgoing connections and events, this approach similarly to many entropy-based approaches covers a narrow area of possible malicious activity, and it is concerning that the ratio of benign machines with high anomaly scores (which can be seen as false alerts) is very high. However, this approach marks a step into a more probabilistic anomaly asignement which is beneficial for a more adaptive approach to model estimation and a quantification of detection certainty.
+
 
 
 
@@ -270,13 +281,11 @@ Wavelet modelling is a frequency-based signal processing approach. Amplitudes of
 
 %\subsubsection*{Barford et al. - A Signal Analysis of Network Traffic Anomalies, 2002}
 
-Both Barford et al. \cite{barford2002signal}, and Thottan and Ji \cite{thottan2003anomaly} introduced wavelets to network anomaly detection in 2002/2003. Both approaches are fairly simple, as they only look at the network flow numbers from multiple machines at different points in the network, aggregated into 5-minute intervals. Using enough anomaly-free training data\footnote{It is crucial that this data is absolutely free of anomalies that are to be detected}, this volume signal can be described by a set of frequency-components. Barford et al. then compare the frequencies of any future traffic episodes against this set, and marked as anomalous if a treshold is exceed. The approach is directed towards detecting network-wide flash crowds, DoS attacks, and outages, which is evaluated using proprietary data. Thottan and Ji detected anomalies by looking at the reconstruction error of such traffic episodes using the estimated frequency-components instead comparing different estimates. The reconstruction error is assumed to follow a gaussian distribution, and anomalies can be detected using a hypothesis test.
+Both \textbf{Barford et al.} \cite{barford2002signal}, and \textbf{Thottan and Ji} \cite{thottan2003anomaly} introduced wavelets to network anomaly detection in 2002/2003. Both approaches are fairly simple, as they only look at the network flow numbers from multiple machines at different points in the network, aggregated into 5-minute intervals. Using enough anomaly-free training data\footnote{It is crucial that this data is absolutely free of anomalies that are to be detected}, this volume signal can be described by a set of frequency-components. Barford et al. then compare the frequencies of any future traffic episodes against this set, and marked as anomalous if a treshold is exceed. The approach is directed towards detecting network-wide flash crowds, DoS attacks, and outages, which is evaluated using proprietary data. Thottan and Ji detected anomalies by looking at the reconstruction error of such traffic episodes using the estimated frequency-components instead comparing different estimates. The reconstruction error is assumed to follow a gaussian distribution, and anomalies can be detected using a hypothesis test.
 
-Jian et al. \cite{jiang2014transform} proposed a refined wavelet-based model in 2014 which is applied to individual OD pairs. All observed OD pairs in the network are grouped into $q$\footnote{number depends on network topology} groups. To each group, an S-transformation (a modified version of a wavelet-transformion) is applied. The signal for each OD pair is then reconstructed using only the estimates of the high-frequency components since these correspond to any bursty behaviour. Now, the reconstructed signal is free from any slow variation and contains only fast and bursty behaviour. The assumption of the authors this degenerated signal must be heavily correlated between individual OD pairs. Using a sliding window, the pairwise correlations of each OD pair is computed. If the correlation for any pair falls below a certain treshold, this pair is marked as an anomaly. The approach is designed to detect volume-intensive attacks on busy servers, the exact motivation for this approach however is not described very well by the authors. The evaluation is done using data from the \textit{Abilene backbone}.
+\textbf{Jian et al.} \cite{jiang2014transform} proposed a refined wavelet-based model in 2014 which is applied to individual OD pairs. All observed OD pairs in the network are grouped into $q$\footnote{number depends on network topology} groups. To each group, an S-transformation (a modified version of a wavelet-transformion) is applied. The signal for each OD pair is then reconstructed using only the estimates of the high-frequency components since these correspond to any bursty behaviour. Now, the reconstructed signal is free from any slow variation and contains only fast and bursty behaviour. The assumption of the authors this degenerated signal must be heavily correlated between individual OD pairs. Using a sliding window, the pairwise correlations of each OD pair is computed. If the correlation for any pair falls below a certain treshold, this pair is marked as an anomaly. The approach is designed to detect volume-intensive attacks on busy servers, the exact motivation for this approach however is not described very well by the authors. The evaluation is done using data from the \textit{Abilene backbone}.
 
 It is clear that any approach that looks exclusively at the traffic volume either between individual hosts or in a network-wide fashion will only detect attacks with sufficient attack volume, such as DoS attacks. Additionally, wavelet-based approaches do not provide a probabilistic framework for anomaly detection, which makes the seperation of true anomalies from false positives difficult, especially in larger networks. 
-
-
 
 \subsection{Event-based}
 
@@ -284,10 +293,10 @@ The majority of network anomaly detection approaches are based on point anomaly 
 
 \subsubsection{Direct application of Machine Learning}
 
-Due to the availability of datasets such as DARPA'98 or KDD'99 which are labelled and rich in both benign and malicious traffic, it is tempting to apply existing machine learning approaches directly onto the event features provided in the data, and there exists a large body of literature doing exactly that. Unfortunately, such approaches often lack the necessary understanding of the data and are overfitting, or do not learn any generalisable behaviour. 
+Due to the availability of datasets such as DARPA'98 or KDD'99 which are labeled and rich in both benign and malicious traffic, it is tempting to apply existing machine learning approaches directly onto the event features provided in the data, and there exists a large body of literature doing exactly that. Unfortunately, such approaches often lack the necessary understanding of the data and are overfitting, or do not learn any generalisable behaviour. 
 
 
-\textcolor{red}{ Also, a number of different classifier techniques were applied on labelled datasets. Although they often achieve good accuracy in the DARPA'98 or KDD'99 datasets, it is unclear how well they translate. Should I include papers using classifiers}
+\textcolor{red}{ Also, a number of different classifier techniques were applied on labeled datasets. Although they often achieve good accuracy in the DARPA'98 or KDD'99 datasets, it is unclear how well they translate. Should I include papers using classifiers}
 
 
 I will briefly discuss some of the better ones here:
@@ -295,11 +304,11 @@ I will briefly discuss some of the better ones here:
 %\textbf{Wang and Battiti} proposed an anomaly detection based on 
 
 
-\subsection{Statistics-based}
+\subsubsection{Statistics-based}
 
-\subsubsection*{Mahoney and Chan - Learning Nonstationary Models of Normal Network Traffic for Novel Attacks, 2002 \cite{mahoney2002learning}}
+%\subsubsection*{Mahoney and Chan - Learning Nonstationary Models of Normal Network Traffic for Novel Attacks, 2002 \cite{mahoney2002learning}}
 
-Mahoney and Chen were one of the first to develop statistical methods to identify anomalous events in network traffic. Their approach consists of two separate scoring stages.
+\textbf{Mahoney and Chen} \cite{mahoney2002learning} were one of the first to develop statistical methods to identify anomalous events in network traffic. Their approach consists of two separate scoring stages.
 
 The first stage is the \textit{packet header anomaly detection} (PHAD). Here, the 33 different fields of an Ethernet-transmitted packet are converted from their one to four bytes to an integer value. The gathered values for each field are then clustered in a simple agglomerative fashion, and the clusters are updated each time a new packet arrives in order to keep the number of clusters below a treshold. The anomaly score of a packet is then proportional to the number of fields in which the clusters had to be updated. 
 
@@ -307,9 +316,9 @@ At the second stage, the \textit{application layer anomaly detection} (ALAD), sc
 
 The approach was tested on the DARPA'98 dataset and detected 70 out of 180 attacks while raising 100 false alerts. When the unrealistically high number of malicious packets in the data is considered, the number of false alerts is alarmingly high. Another issue with this publication is that the authors claim that they are building nonstationary models, yet give little how these models should adapt over time. 
 
-\subsubsection*{Kruegel et al., Service Specific Anomaly Detection for Network Intrusion Detection, 2002 \cite{krugel2002service}}
+%\subsubsection*{Kruegel et al., Service Specific Anomaly Detection for Network Intrusion Detection, 2002 \cite{krugel2002service}}
 
-Kruegel et al. developed an approach that is aimed fitting individual models for each of the different services generating network traffic. Their assumption is that by concentrating on only one type of traffic, statistical data with lesser variance can be collected. 
+\textbf{Kruegel et al.} \cite{krugel2002service} developed an approach that is aimed fitting individual models for each of the different services generating network traffic. Their assumption is that by concentrating on only one type of traffic, statistical data with lesser variance can be collected. 
 
 The approach works as following: Once a connection is openened, the packet processing unit reads the first packets of a connection and extracts the specific service, such as a get request for a HTTP request. It is then asigned an anomaly score based on the different aspects: The type of service, the length of the request, and the payload contained in the request. 
 
@@ -329,19 +338,21 @@ In their evaluation, the authors only considered DNS traffic due to lack of reso
 
 
 
-\subsection{Clustering based}
+\subsubsection{Clustering based}
 
-\subsection{Representation-learning based}
+
+
+\subsubsection{Representation-learning based}
 
 Representation learning, also called \textit{feature learning} is a set of techniques aimed at automatically learning underlying structures in raw and noisy data, and are in a broader sense a form of density estimation. These techniques are often based on learning lower dimensional representations of the data, similar to subspace-projections, and are therefore suitable for data with highly correlated variables. Existing methods are often based on neural-networks and backpropagation. Learning of normal traffic behaviour can be done directly using representation learning instead of deriving probability distributions and correlations of individual traffic variables first. However, current methods are only suitable for numerical variables and not for categorical ones.
 
 
 
-Ramadas and Ostermann \cite{ramadas2003detecting} in 2003 proposed the use of \textbf{self-organizing maps} (SOM) to learn the representation of individual types of network services. A self-organizing map projects input data onto a two-dimensional lattice, which is why they are often used for data visualisation. The projection is learned using groups of competitive neurons. Each generation drops neurons which have different representations from the group, which makes this approach particularly computation-intensive. Since the projected data lies densely together, the authors train the map with normal traffic and detect anomalous events via their distance to the nearest neighbour. The authors however only evaluate their approach using 6 numerical features from DNS and HTTP network flows which they collected themselves. This makes a performance evaluation difficult and also leaves the question open how much knowledge is gained by using only 6 different flow features. Kayacik et al. \cite{kayacik2007hierarchical} later extend this approach to all 41 numerical features of the KDD'99 data. The evaluation showed most success in the detection of DoS and probing attacks.
+\textbf{Ramadas and Ostermann} \cite{ramadas2003detecting} in 2003 proposed the use of \textit{self-organizing maps} (SOM) to learn the representation of individual types of network services. A self-organizing map projects input data onto a two-dimensional lattice, which is why they are often used for data visualisation. The projection is learned using groups of competitive neurons. Each generation drops neurons which have different representations from the group, which makes this approach particularly computation-intensive. Since the projected data lies densely together, the authors train the map with normal traffic and detect anomalous events via their distance to the nearest neighbour. The authors however only evaluate their approach using 6 numerical features from DNS and HTTP network flows which they collected themselves. This makes a performance evaluation difficult and also leaves the question open how much knowledge is gained by using only 6 different flow features. Kayacik et al. \cite{kayacik2007hierarchical} later extend this approach to all 41 numerical features of the KDD'99 data. The evaluation showed most success in the detection of DoS and probing attacks.
 
-A more direct approach to outlier detection is provided by Hawkins et al. \cite{hawkins_outlier_2002} in 2002. They applied a \textbf{replicator neural network}\footnote{Also called \textit{Autoencoder network}} to the numerical features of the KDD'99 data. A replicator network tries to accurately reconstruct any input data it receives after sending it through a lower-dimensional bottleneck. The difference to an SOM is that learning is based on error-correction. By training it on normal traffic, the authors build a model that can reconstruct any normal traffic from its lower-dimensional representation with small errors. Anomalies are then detected as input data which is not reconstructed well and therefore deviates substantially from the learned data structures. Supposedly, a replicator network is robust agains small numbers of outliers in the training data. However, it requires careful examination how well this assumption translates onto network traffic. 
+A more direct approach to outlier detection is provided by \textbf{Hawkins et al}. \cite{hawkins_outlier_2002} in 2002. They applied a \textit{replicator neural network}\footnote{Also called \textit{Autoencoder network}} to the numerical features of the KDD'99 data. A replicator network tries to accurately reconstruct any input data it receives after sending it through a lower-dimensional bottleneck. The difference to an SOM is that learning is based on error-correction. By training it on normal traffic, the authors build a model that can reconstruct any normal traffic from its lower-dimensional representation with small errors. Anomalies are then detected as input data which is not reconstructed well and therefore deviates substantially from the learned data structures. Supposedly, a replicator network is robust agains small numbers of outliers in the training data. However, it requires careful examination how well this assumption translates onto network traffic. 
 
-Gao et al. \cite{gao_intrusion_2014} use a similar technique called \textbf{deep belief networks} (DBN) on the KDD'99 data. They have a similar structure to replicator networks, but training is more difficult since their hidden layers are probabilistic. The authors mainly focus on explaining the benefits of using probabilistic neurons and discussing possible ways how to train a DBN on network traffic while not providing a thorough discussion of their results.
+\textbf{Gao et al}. \cite{gao_intrusion_2014} use a similar technique called \textit{deep belief networks} (DBN) on the KDD'99 data. They have a similar structure to replicator networks, but training is more difficult since their hidden layers are probabilistic. The authors mainly focus on explaining the benefits of using probabilistic neurons and discussing possible ways how to train a DBN on network traffic while not providing a thorough discussion of their results.
 
 
 
@@ -351,67 +362,29 @@ Gao et al. \cite{gao_intrusion_2014} use a similar technique called \textbf{deep
 \subsection{Temporal correlation/Semantics-based}
 
 
-Noble and Adams \cite{noble_real-time_2018, noble_correlation-based_2016} have recently proposed \textit{ReTiNa}, a tool that measures temporal changes in the correlation between individual events in order to find intrusions on individual hosts. In their approach, they estimate the correlation between the time passed between two events, also called \textit{interarrival time}, of an OD pair and the associated size or number of packets of the involved events. For this, interarrival time and the size/packet number are modelled as a bivariate gaussian distribution, and the covariance matrix is estimated using maximum-likelihood-estimation. The authors use a sophisticated online-estimation method to adapt the estimates to changes in the correlation structure, which can then be identified by comparison to an offline estimate. Anomalies are then identified as a collection of changes happening across multiple OD pairs on one host or in the entire network by simple hypothesis testing, which decreases the false-positive rate. The assumption here is that different OD pairs are independent of each other.
+
+In 2003, \textbf{Krishnamurthy et al.} \cite{krishnamurthy2003sketch} propose a rather simple, yet efficient method for network-wide monitoring of individual key occurrences in an online fashion. For that, a sliding window approach is used to asign all keys (which here stand for individual IP addresses or network ports) a value containing the number of its occurrency. For each key, the collected values are then used to train either an \textit{ARIMA} or a \textit{Holt-Winters} method, both popular and powerful time-series forecasting models which can be trained in an online fashion. Anomalies are then identified as values with a forecasting error exceeding a certain treshold and thus indicating a sudden change in occurrency-behaviour of that particular key. This is an improvement to summarisation measures such as entropy or histograms in two ways: It provides a better resolution of individual traffic channels, enabling the detection of attacks with far less volume, and enabling the modelling of more complex temporal patterns which become apparent on a lower level. And it makes attack attribution far simpler by indicating directly the key which is subject to an anomaly. 
+
+Since traffic is usually arriving at a fast rate, it is a computationally hard and memory-consuming task to count the occurrencies of all keys simultaneously. Schweller et al.  overcome this problem using a \textit{sketch-based counting approach} which uses hash-function to direct the values of a key directly to a position in a hash table without the need to store actual key in the memory. As this process is not exact, the count value is subject to statistical variations and the authors propose an unbiased estimator. The inaccuracy of the count estimator is also preventing the authors from using a probabilistic approach to anomaly detection instead of simple tresholding. However, this approach is also only counting occurrencies and does not detect any correlated key behaviour.
+
+A great problem of the proposed framework is the fact that the key translation works only in one direction, making it impossible to associate a detected change with the corresponding key. This problem is overcome by Schweller et al.\cite{schweller2004reversible} who propose a reversible sketch method.
+
+
+\textbf{Noble and Adams} \cite{noble_real-time_2018, noble_correlation-based_2016} have recently proposed \textit{ReTiNa}, a tool that measures temporal changes in the correlation between individual events in order to find intrusions on individual hosts. In their approach, they estimate the correlation between the time passed between two events, also called \textit{interarrival time}, of an OD pair and the associated size or number of packets of the involved events. For this, interarrival time and the size/packet number are modelled as a bivariate gaussian distribution, and the covariance matrix is estimated using maximum-likelihood-estimation. The authors use a sophisticated online-estimation method to adapt the estimates to changes in the correlation structure, which can then be identified by comparison to an offline estimate. Anomalies are then identified as a collection of changes happening across multiple OD pairs on one host or in the entire network by simple hypothesis testing, which decreases the false-positive rate. The assumption here is that different OD pairs are independent of each other.
 
 
 A big advantage of this approach is that it is adaptive and does not need a training phase, i.e. it is not reliant on attack-free training data. The method was tested both on the LANL network flow data as well as internal data from the \textit{Imperial College Academic network}. The method found several anomalies that coincide malicious activity in the network, but a definitive conclusion whether they are related is difficult to make.
 
-Whitehouse, Evangelou and Adams \cite{whitehouse_activity-based_2016} modeling the number of 
+\textbf{Whitehouse, Evangelou and Adams} \cite{whitehouse_activity-based_2016} modeling the number of 
 network flow and \textit{user authentication} events on individual hosts as a polynomial function of the time and day and its rarity. Anomalies are then identified using Fisher's product test statistic and the reconstruction error. The method was tested on the LANL data using the auth and the flow sources and wa able to identify persistent structures in the data. 
 
 
-\textcolor{red}{Sketch based}
-
-These  papers  are  similar  in  that  they  both  develop  sketch-based  methods  to  find
-changes in a computationally efficient manner, which allows a large number of machines
-to  be  monitored  simultaneously,  even  when  traffic  is  arriving  at  a  high  rate.   More
-algorithmically, they perform change point detection in cases where there is a very large
-number of sequences to be monitored.
-The basic problem they are trying to solve is this: we observe (key,value) pairs, where
-the value counts the number of times the key has occurred.  We wish to detect changes
-in the rate at which the keys arrive (which can correspond to an increase in the number
-of TCP packets, portscans, etc).  These papers work in discrete time using windowing –
-for each window of size W, changes in a single sequence can be detected by counting the
-number of times the key appears in the window, and comparing this to the forecasted
-value, based on all the previous windows and some forecasting model (e.g.  ARIMA, Holt-
-Winters, etc).  If the difference between the empirical value and the forecast exceeds some
-threshold, a change is flagged.  The question is then how to scale this up so that many
-different streams can be simultaneously monitored.  Their solution involves sketches.
-The sketch they use is an extension of the Count Sketch.  They have H hash tables
-each containing K bins, where K is much smaller than N (N = the number of keys that are
-being monitored).  Each hash table is associated with a unique hash function.  Whenever
-a key is received, it is hashed using each of the H functions, and the corresponding bin
-in  each  hash  table  is  incremented.   Based  on  this,  they  propose  an  estimator  of  the
-count (value) associated each key which is unbiased, with variance proportion to (K-1).
-However, the variance they get is only a bound, not an exact number.  Similarly, they
-propose an estimator of the sum of squares of all elements in the sketch, which is used
-for change detection.
-The change detection is carried out by simply checking whether the forecast error is
-above T * sqrt(sketch variance), for some threshold T..  Because of the inaccuracy in the
-count estimator, combined with their forecasting model, they cannot produce a p-value.
-(which also prevents them from doing anything more sophisticated like False Discovery
-Rate control).
-The Krishnamurthy paper has a serious problem related to the Count Sketch that
-it uses:  since they do not log the values of the keys themselves (as there are too many,
-and doing so would remove the efficiency gains from the sketch), they are only capable
-of  saying whether there  has been  a  change  point  in  the sequence  of  counts  associated
-with at least one key, but they cannot recover which particular key has changed.  The
-Schweller paper introduces a new reversible sketch method to fix this problem, and allow
-the changed keys to be recovered.  Their insight is based on the fact that only the sketch
-updating needs to performed fast,  in a streaming manner.  The change detection part
-on the other hand can be performed offline, and perhaps only needs to be run every few
-seconds.  This is essentially an example of stream-cloud integration.
-Note the original Count-Sketch paper (“Finding Frequent Items in Data Streams”)
-seems to have more detailed theoretical results.
-My comment:  as future work, is it possible to get p-values?  This involves compen-
-sating for the inaccuracy in the sketch counting, and would make it possible to use more
-sophisticated change detection methods.
 
 
 
 \subsubsection{Semantic-based approaches using different data sources}
 
-
+\textcolor{red}{hidden markov models for system calls - two papers}
 
 \appendix
 % appendices come here

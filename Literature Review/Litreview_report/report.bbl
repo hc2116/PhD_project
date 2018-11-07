@@ -80,6 +80,18 @@ S.~Hawkins, H.~He, G.~Williams, and R.~Baxter.
   {Science}, pages 170--180. Springer Berlin Heidelberg, 2002.
 \newblock 00451.
 
+\bibitem{heard2016topic}
+N.~Heard, K.~Palla, and M.~Skoularidou.
+\newblock Topic modelling of authentication events in an enterprise computer
+  network.
+\newblock 2016.
+
+\bibitem{heard2016network}
+N.~Heard and P.~Rubin-Delanchy.
+\newblock Network-wide anomaly detection via the dirichlet process.
+\newblock In {\em Intelligence and Security Informatics (ISI), 2016 IEEE
+  Conference on}, pages 220--224. IEEE, 2016.
+
 \bibitem{jiang2014transform}
 D.~Jiang, Z.~Xu, P.~Zhang, and T.~Zhu.
 \newblock A transform domain-based anomaly detection approach to network-wide
@@ -103,6 +115,18 @@ A.~D. Kent.
 \newblock {Cybersecurity Data Sources for Dynamic Network Research}.
 \newblock In {\em Dynamic Networks in Cybersecurity}. Imperial College Press,
   June 2015.
+
+\bibitem{kind2009histogram}
+A.~Kind, M.~P. Stoecklin, and X.~Dimitropoulos.
+\newblock Histogram-based traffic anomaly detection.
+\newblock {\em IEEE Transactions on Network and Service Management},
+  6(2):110--121, 2009.
+
+\bibitem{krishnamurthy2003sketch}
+B.~Krishnamurthy, S.~Sen, Y.~Zhang, and Y.~Chen.
+\newblock Sketch-based change detection: methods, evaluation, and applications.
+\newblock In {\em Proceedings of the 3rd ACM SIGCOMM conference on Internet
+  measurement}, pages 234--247. ACM, 2003.
 
 \bibitem{kruegel2005multi}
 C.~Kruegel, G.~Vigna, and W.~Robertson.
@@ -131,6 +155,12 @@ A.~Lakhina, M.~Crovella, and C.~Diot.
   {Communications}}, {SIGCOMM} '04, pages 219--230, New York, NY, USA, 2004.
   ACM.
 \newblock 01230.
+
+\bibitem{lakhina2005mining}
+A.~Lakhina, M.~Crovella, and C.~Diot.
+\newblock Mining anomalies using traffic feature distributions.
+\newblock In {\em ACM SIGCOMM Computer Communication Review}, volume~35, pages
+  217--228. ACM, 2005.
 
 \bibitem{lippmann2000evaluating}
 R.~P. Lippmann, D.~J. Fried, I.~Graf, J.~W. Haines, K.~R. Kendall, D.~McClung,
@@ -203,6 +233,13 @@ S.~Saad, I.~Traore, A.~Ghorbani, B.~Sayed, D.~Zhao, W.~Lu, J.~Felix, and
   learning.
 \newblock In {\em Privacy, Security and Trust (PST), 2011 Ninth Annual
   International Conference on}, pages 174--180. IEEE, 2011.
+
+\bibitem{schweller2004reversible}
+R.~Schweller, A.~Gupta, E.~Parsons, and Y.~Chen.
+\newblock Reversible sketches for efficient and accurate change detection over
+  network data streams.
+\newblock In {\em Proceedings of the 4th ACM SIGCOMM conference on Internet
+  measurement}, pages 207--212. ACM, 2004.
 
 \bibitem{sharafaldin2018towards}
 I.~Sharafaldin, A.~Gharib, A.~H. Lashkari, and A.~A. Ghorbani.

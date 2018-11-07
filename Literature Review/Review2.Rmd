@@ -628,7 +628,7 @@ Is then extended by Camacho et al. to  do automatic PCA anomaly detection (which
   + Appeared in 2003
   + Uses TCP random scanning with fixed DPort and variable SPort
   + Infected 200.000-500.000 hosts
-+Witty worm:
++ Witty worm:
   + 2004
   + Attacks specific firewall product
   + UDP random scans with fixed SPort and variable DPort
@@ -689,7 +689,7 @@ where $S=\sum_i^N n_i$
   * Model residuals of normal traffic with GMM
     * A GMM can approximate any distribution when sufficient number of components are used   
 
-#### Traffic Anomaly Detection Using K-Means Clustering
+#### s
 ##### Muenz, Li, Carle, 2007
 ##### Tuebingen, 180 citations, 8 pages
 
