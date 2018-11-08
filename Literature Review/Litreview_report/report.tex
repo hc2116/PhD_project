@@ -171,7 +171,7 @@ Furthermore, since the dataset is now more than 20 years old, it is remarked tha
 
 \subsubsection*{KDD Cup 1999 \cite{cup1999data,cup1999dataset}/NSL-KDD 2012 \cite{tavallaee2012nsl}}
 
-The \textit{MIT Lincoln Laboratory} created this dataset in 1999 by processing portions of the 1998 DARPA dataset with new labels for a competition at the conference on \textit{Knowledge Discovery and Data Mining}, and is the most widely used dataset in intrusion detection. It contains 2 million connections summaries in a new format and in total 38 attack types. This new format is essentially a form of \textbf{network flows} with a greatly increased number of features, 46 in total, whichgive additional details to the origin of the connection. Since the KDD'99 data stems directly from the DARPA dataset, it faces the same problems and criticism. 
+The \textit{MIT Lincoln Laboratory} created this dataset in 1999 by processing portions of the 1998 DARPA dataset with new labels for a competition at the conference on \textit{Knowledge Discovery and Data Mining}, and is the most widely used dataset in intrusion detection. It contains 2 million connections summaries in a new format and in total 38 attack types. This new format is essentially a form of \textbf{network flows} with a greatly increased number of features, 46 in total, which give additional details about the origin of the connection. The availability of these features in a real-world application however is in my opinion unrealistic as most of them could be mined due to the availability of parallel surveilance of the host, a Solaris-based system. However, we can see significant differences in today's operating systems which barely resemble Solaris. In addition, parallel host system surveilance usually cannot be taken for granted in a realistic network environment. Naturally, as the KDD'99 data stems directly from the DARPA dataset, it also faces the same problems and criticism. 
 
 The \textit{Canadian Institute for Cybersecurity} postprocessed the KDD'99 data in order to address some of its shortcomings. This includes removing redundant records, balancing the size of the training and test data, and adjusting the proportion of attack traffic in the data. However, the biggest criticism from the KDD'99 and the DARPA data, the unrealistic generation of background data, still prevails.
 
@@ -215,7 +215,7 @@ The \textit{Impact Cyber Trust} releases cyber security oriented data. Its repos
 Among the more useful datasets are the \textit{USC datasets}\footnote{DS-062, LANDER Data, and DS-266}, which contain network traffic (both \textbf{packet headers} and \textbf{network flows}) from academic networks in the US between 2008 and 2010. The datasets are very large, with the largest one covering 48 hours and containing 357 GB of packet headers. 
 
 
-\chapter{Existing literature}
+\chapter{\textcolor{red}{Existing literature}}
 
 Existing literature on intrusion detection can be divided into two approaches: 
 
@@ -293,15 +293,17 @@ The majority of network anomaly detection approaches are based on point anomaly 
 
 \subsubsection{Direct application of Machine Learning}
 
-Due to the availability of datasets such as DARPA'98 or KDD'99 which are labeled and rich in both benign and malicious traffic, it is tempting to apply existing machine learning approaches directly onto the event features provided in the data, and there exists a large body of literature doing exactly that. Unfortunately, such approaches often lack the necessary understanding of the data and are overfitting, or do not learn any generalisable behaviour. 
+Due to the availability of datasets such as DARPA'98 or KDD'99 which are labeled and rich in both benign and malicious traffic, it is tempting to apply existing machine learning approaches directly onto the event features provided in the data. Additionally, the KDD'99 data contains significantly more features for each event than normal network flow data. Consequently, there exists a large body of literature drawing from this apparent opportunity and applying a variety of classifiers such as  decision trees, support vector machines, Na\"ive Bayes, or Neural Networks to these two datasets. However, such approaches often lack a greater understanding of the utilised data and the overall problem of intrusion detection, and achieved test results can normally not translated into good performance in realistic environments.
+
+Two illustrative examples are the works of \textbf{Barbar\'a et al.} \cite{barbara2001detecting} on the DARPA 98 data, and of \textbf{Javaid et al.} \cite{javaid2016deep} on the NSL-KDD data, both highly cited papers. Barba\'a et al. apply a Bayesian network classifier on the available features\footnote{Numerical features and dictionaries of pre-seen IPs and ports} of individual packets while Javaid et al. train two layers of neural networks on the numerical features of the KDD flow events. Both approaches achieve high detection accuracies on the used data. The overall assumption here is that the classifier can generalise the learned differences that separate benign from malicious traffic in the dataset to a broader set of malware classes or even most of them. 
+
+However, there is no valid reason to assume that this is true. I would instead argue against it and claim that since there are only a relatively small number of different malware activity in every available dataset, the malicious traffic in a dataset only contains very little variation, which makes it fairly easy to overfit the malicious traffic with the available features and achieve high detection accuracy. %\footnote{since the training and test data is not separated with regards to different malware classes}. 
+This is especially true for the DARPA and the KDD data as they contain artifacts and  duplicate entries, which are known lead to over-estimation of anomaly detection performance, according to a survey by \textbf{Ahmed and Mahmood} \cite{ahmed2016survey}. Another important point is that benign traffic is very heterogenous, and a classifier would have to be trained for every network to learn how to separate it from malicious traffic. Truthed data containing both attack and benign traffic is however very rare and notoriously hard to get, so it is far from realistic to assume that such data is available for every network. It is also important to repeat that event data is generally not as rich in features as the KDD data, which will further impact the ability of detecting malware. 
 
 
-\textcolor{red}{ Also, a number of different classifier techniques were applied on labeled datasets. Although they often achieve good accuracy in the DARPA'98 or KDD'99 datasets, it is unclear how well they translate. Should I include papers using classifiers}
-
-
-I will briefly discuss some of the better ones here:
-
-%\textbf{Wang and Battiti} proposed an anomaly detection based on 
+Other notable examples can be found in the references \cite{gupta_layered_2010,muda_intrusion_2011,maglaras_intrusion_2014,
+peddabachigari_intrusion_nodate,ramos_antids_2005}.
+An interesting contribution was made by \textbf{Hu et al.} \cite{hu2014online}. While having the same methodological flaws described above, the paper is more noteworthy for the proposal of a distributed learning framework that allows the large-scale training of a host-based model on many machines simultaneously.
 
 
 \subsubsection{Statistics-based}

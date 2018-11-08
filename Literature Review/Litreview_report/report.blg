@@ -7,45 +7,46 @@ Warning--to sort, need author or key in noauthor_ctu-13_nodate
 Warning--to sort, need author or key in USC2010ICT
 Warning--empty journal in heard2016topic
 Warning--can't use both volume and number fields in lakhina2005mining
-You've used 46 entries,
+Warning--empty journal in peddabachigari_intrusion_nodate
+You've used 55 entries,
             2118 wiz_defined-function locations,
-            760 strings with 13278 characters,
-and the built_in function-call counts, 18310 in all, are:
-= -- 1878
-> -- 838
-< -- 24
-+ -- 339
-- -- 283
-* -- 1202
-:= -- 2844
-add.period$ -- 168
-call.type$ -- 46
-change.case$ -- 276
+            815 strings with 15416 characters,
+and the built_in function-call counts, 22164 in all, are:
+= -- 2266
+> -- 1030
+< -- 30
++ -- 414
+- -- 347
+* -- 1472
+:= -- 3451
+add.period$ -- 203
+call.type$ -- 55
+change.case$ -- 332
 chr.to.int$ -- 0
-cite$ -- 50
-duplicate$ -- 723
-empty$ -- 1438
-format.name$ -- 283
-if$ -- 4013
+cite$ -- 60
+duplicate$ -- 877
+empty$ -- 1726
+format.name$ -- 347
+if$ -- 4849
 int.to.chr$ -- 0
-int.to.str$ -- 46
-missing$ -- 37
-newline$ -- 243
-num.names$ -- 90
-pop$ -- 344
+int.to.str$ -- 55
+missing$ -- 46
+newline$ -- 293
+num.names$ -- 110
+pop$ -- 404
 preamble$ -- 1
-purify$ -- 231
+purify$ -- 278
 quote$ -- 0
-skip$ -- 558
+skip$ -- 674
 stack$ -- 0
-substring$ -- 1127
-swap$ -- 251
-text.length$ -- 24
+substring$ -- 1358
+swap$ -- 304
+text.length$ -- 30
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 184
-warning$ -- 4
-while$ -- 175
-width$ -- 48
-write$ -- 542
-(There were 4 warnings)
+type$ -- 220
+warning$ -- 5
+while$ -- 216
+width$ -- 57
+write$ -- 654
+(There were 5 warnings)

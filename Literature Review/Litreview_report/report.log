@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  7 NOV 2018 17:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  8 NOV 2018 16:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -193,12 +193,15 @@ Underfull \vbox (badness 3954) has occurred while \output is active []
 
  [12]
 [13] [14] [15]
-Overfull \hbox (1.57587pt too wide) in paragraph at lines 351--352
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16]
+Overfull \hbox (1.57587pt too wide) in paragraph at lines 353--354
 \OT1/cmr/m/n/12 (SOM) to learn the rep-re-sen-ta-tion of in-di-vid-ual types of
  net-work ser-vices. A self-organizing
  []
 
-[16] [17] (./report.bbl [18]
+[17] (./report.bbl [18]
 Underfull \hbox (badness 10000) in paragraph at lines 9--14
 []\OT1/cmr/m/n/12 Impact cy-ber trust: USC DS-062, USC DS-266, USC LAN-DER.
  []
@@ -229,16 +232,21 @@ Missing character: There is no ¡ in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ˜ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¯ in font cmr12!
  [21]
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¶ in font cmr12!
+ [22]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no  in font cmr12!
-) [22] (./report.aux) ) 
+) [23] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 1853 strings out of 492982
- 24049 string characters out of 6134895
- 93678 words of memory out of 5000000
- 5446 multiletter control sequences out of 15000+600000
+ 1863 strings out of 492982
+ 24245 string characters out of 6134895
+ 93714 words of memory out of 5000000
+ 5456 multiletter control sequences out of 15000+600000
  10583 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  24i,8n,35p,1867b,262s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -254,10 +262,10 @@ onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmtt12.pfb>
-Output written on report.pdf (22 pages, 211311 bytes).
+Output written on report.pdf (23 pages, 216474 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
+ 126 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

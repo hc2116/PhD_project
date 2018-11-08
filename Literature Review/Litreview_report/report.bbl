@@ -12,10 +12,21 @@ Impact cyber trust: {USC} {DS}-062, {USC} {DS}-266, {USC} {LANDER}.
   \url{https://www.impactcybertrust.org/dataset_view?idDataset=265}, 2010.
 \newblock Accessed on 05 Nov. 2018.
 
+\bibitem{ahmed2016survey}
+M.~Ahmed, A.~N. Mahmood, and J.~Hu.
+\newblock A survey of network anomaly detection techniques.
+\newblock {\em Journal of Network and Computer Applications}, 60:19--31, 2016.
+
 \bibitem{anderson1980computer}
 J.~P. Anderson.
 \newblock Computer security threat monitoring and surveillance.
 \newblock {\em Technical Report, James P. Anderson Company}, 1980.
+
+\bibitem{barbara2001detecting}
+D.~Barbara, N.~Wu, and S.~Jajodia.
+\newblock Detecting novel network intrusions using bayes estimators.
+\newblock In {\em Proceedings of the 2001 SIAM International Conference on Data
+  Mining}, pages 1--17. SIAM, 2001.
 
 \bibitem{barford2002signal}
 P.~Barford, J.~Kline, D.~Plonka, and A.~Ron.
@@ -72,6 +83,14 @@ A.~Gharib, I.~Sharafaldin, A.~H. Lashkari, and A.~A. Ghorbani.
 \newblock In {\em Information Science and Security (ICISS), 2016 International
   Conference on}, pages 1--6. IEEE, 2016.
 
+\bibitem{gupta_layered_2010}
+K.~K. Gupta, B.~Nath, and R.~Kotagiri.
+\newblock Layered {Approach} {Using} {Conditional} {Random} {Fields} for
+  {Intrusion} {Detection}.
+\newblock {\em IEEE Transactions on Dependable and Secure Computing},
+  7(1):35--49, Jan. 2010.
+\newblock 00170.
+
 \bibitem{hawkins_outlier_2002}
 S.~Hawkins, H.~He, G.~Williams, and R.~Baxter.
 \newblock Outlier {Detection} {Using} {Replicator} {Neural} {Networks}.
@@ -91,6 +110,20 @@ N.~Heard and P.~Rubin-Delanchy.
 \newblock Network-wide anomaly detection via the dirichlet process.
 \newblock In {\em Intelligence and Security Informatics (ISI), 2016 IEEE
   Conference on}, pages 220--224. IEEE, 2016.
+
+\bibitem{hu2014online}
+W.~Hu, J.~Gao, Y.~Wang, O.~Wu, and S.~Maybank.
+\newblock Online adaboost-based parameterized methods for dynamic distributed
+  network intrusion detection.
+\newblock {\em IEEE Transactions on Cybernetics}, 44(1):66--82, 2014.
+
+\bibitem{javaid2016deep}
+A.~Javaid, Q.~Niyaz, W.~Sun, and M.~Alam.
+\newblock A deep learning approach for network intrusion detection system.
+\newblock In {\em Proceedings of the 9th EAI International Conference on
+  Bio-inspired Information and Communications Technologies (formerly
+  BIONETICS)}, pages 21--26. ICST (Institute for Computer Sciences,
+  Social-Informatics and Telecommunications Engineering), 2016.
 
 \bibitem{jiang2014transform}
 D.~Jiang, Z.~Xu, P.~Zhang, and T.~Zhu.
@@ -177,6 +210,14 @@ G.~Maci{\'a}-Fern{\'a}ndez, J.~Camacho, R.~Mag{\'a}n-Carri{\'o}n,
   cyclostationarity-based network idss.
 \newblock {\em Computers \& Security}, 73:411--424, 2018.
 
+\bibitem{maglaras_intrusion_2014}
+L.~A. Maglaras and J.~Jiang.
+\newblock Intrusion detection in {SCADA} systems using machine learning
+  techniques.
+\newblock In {\em 2014 {Science} and {Information} {Conference}}, pages
+  626--631, Aug. 2014.
+\newblock 00048.
+
 \bibitem{mahoney2002learning}
 M.~V. Mahoney and P.~K. Chan.
 \newblock Learning nonstationary models of normal network traffic for detecting
@@ -191,6 +232,14 @@ N.~Moustafa and J.~Slay.
 \newblock In {\em 2015 {Military} {Communications} and {Information} {Systems}
   {Conference} ({MilCIS})}, pages 1--6, Nov. 2015.
 \newblock 00074.
+
+\bibitem{muda_intrusion_2011}
+Z.~Muda, W.~Yassin, M.~N. Sulaiman, and N.~I. Udzir.
+\newblock Intrusion detection based on {K}-{Means} clustering and {Naïve}
+  {Bayes} classification.
+\newblock In {\em 2011 7th {International} {Conference} on {Information}
+  {Technology} in {Asia}}, pages 1--6, July 2011.
+\newblock 00104.
 
 \bibitem{noble_real-time_2018}
 J.~Noble and N.~Adams.
@@ -212,11 +261,28 @@ R.~Pang, M.~Allman, M.~Bennett, J.~Lee, V.~Paxson, and B.~Tierney.
 \newblock In {\em Proceedings of the 5th ACM SIGCOMM conference on Internet
   Measurement}, pages 2--2. USENIX Association, 2005.
 
+\bibitem{peddabachigari_intrusion_nodate}
+S.~Peddabachigari, A.~Abraham, and J.~Thomas.
+\newblock Intrusion {Detection} {Systems} {Using} {Decision} {Trees} and
+  {Support} {Vector} {Machines}.
+\newblock page~17, 2004.
+\newblock 00070.
+
 \bibitem{ramadas2003detecting}
 M.~Ramadas, S.~Ostermann, and B.~Tjaden.
 \newblock Detecting anomalous network traffic with self-organizing maps.
 \newblock In {\em International Workshop on Recent Advances in Intrusion
   Detection}, pages 36--54. Springer, 2003.
+
+\bibitem{ramos_antids_2005}
+V.~Ramos and A.~Abraham.
+\newblock {ANTIDS}: {Self} {Orga} nized {Ant}-{Based} {C} lustering {Model} for
+  {Intrusion} {Det} ection {System}.
+\newblock In A.~Abraham, Y.~Dote, T.~Furuhashi, M.~Köppen, A.~Ohuchi, and
+  Y.~Ohsawa, editors, {\em Soft {Computing} as {Transdisciplinary} {Science}
+  and {Technology}}, Advances in {Soft} {Computing}, pages 977--986. Springer
+  Berlin Heidelberg, 2005.
+\newblock 00075.
 
 \bibitem{ringberg_sensitivity_2007}
 H.~Ringberg, A.~Soule, J.~Rexford, and C.~Diot.
