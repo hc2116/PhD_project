@@ -64,6 +64,13 @@ K.~Cup.
 \newblock \url{http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html}, 1999.
 \newblock Accessed on 05 Nov. 2018.
 
+\bibitem{du2017deeplog}
+M.~Du, F.~Li, G.~Zheng, and V.~Srikumar.
+\newblock Deeplog: Anomaly detection and diagnosis from system logs through
+  deep learning.
+\newblock In {\em Proceedings of the 2017 ACM SIGSAC Conference on Computer and
+  Communications Security}, pages 1285--1298. ACM, 2017.
+
 \bibitem{gao_intrusion_2014}
 N.~Gao, L.~Gao, Q.~Gao, and H.~Wang.
 \newblock An {Intrusion} {Detection} {Model} {Based} on {Deep} {Belief}
@@ -99,6 +106,11 @@ S.~Hawkins, H.~He, G.~Williams, and R.~Baxter.
   {Science}, pages 170--180. Springer Berlin Heidelberg, 2002.
 \newblock 00451.
 
+\bibitem{he2007detecting}
+T.~He and L.~Tong.
+\newblock Detecting encrypted stepping-stone connections.
+\newblock {\em IEEE Transactions on Signal Processing}, 55(5):1612--1623, 2007.
+
 \bibitem{heard2016topic}
 N.~Heard, K.~Palla, and M.~Skoularidou.
 \newblock Topic modelling of authentication events in an enterprise computer
@@ -110,6 +122,12 @@ N.~Heard and P.~Rubin-Delanchy.
 \newblock Network-wide anomaly detection via the dirichlet process.
 \newblock In {\em Intelligence and Security Informatics (ISI), 2016 IEEE
   Conference on}, pages 220--224. IEEE, 2016.
+
+\bibitem{hu2009simple}
+J.~Hu, X.~Yu, D.~Qiu, and H.-H. Chen.
+\newblock A simple and efficient hidden markov model scheme for host-based
+  anomaly intrusion detection.
+\newblock {\em IEEE network}, 23(1):42--47, 2009.
 
 \bibitem{hu2014online}
 W.~Hu, J.~Gao, Y.~Wang, O.~Wu, and S.~Maybank.
@@ -241,6 +259,12 @@ Z.~Muda, W.~Yassin, M.~N. Sulaiman, and N.~I. Udzir.
   {Technology} in {Asia}}, pages 1--6, July 2011.
 \newblock 00104.
 
+\bibitem{neil2013scan}
+J.~Neil, C.~Hash, A.~Brugh, M.~Fisk, and C.~B. Storlie.
+\newblock Scan statistics for the online detection of locally anomalous
+  subgraphs.
+\newblock {\em Technometrics}, 55(4):403--414, 2013.
+
 \bibitem{noble_real-time_2018}
 J.~Noble and N.~Adams.
 \newblock Real-{Time} {Dynamic} {Network} {Anomaly} {Detection}.
@@ -267,6 +291,12 @@ S.~Peddabachigari, A.~Abraham, and J.~Thomas.
   {Support} {Vector} {Machines}.
 \newblock page~17, 2004.
 \newblock 00070.
+
+\bibitem{pellegrino2017learning}
+G.~Pellegrino, Q.~Lin, C.~Hammerschmidt, and S.~Verwer.
+\newblock Learning behavioral fingerprints from netflows using timed automata.
+\newblock In {\em Integrated Network and Service Management (IM), 2017
+  IFIP/IEEE Symposium on}, pages 308--316. IEEE, 2017.
 
 \bibitem{ramadas2003detecting}
 M.~Ramadas, S.~Ostermann, and B.~Tjaden.
@@ -353,6 +383,12 @@ A.~Wagner and B.~Plattner.
 C.~Walsworth, E.~Aben, K.~Claffy, and D.~Andersen.
 \newblock The caida ucsd anonymized internet traces 2012,”, 2015.
 
+\bibitem{warrender1999detecting}
+C.~Warrender, S.~Forrest, and B.~Pearlmutter.
+\newblock Detecting intrusions using system calls: Alternative data models.
+\newblock In {\em Proceedings of the 1999 IEEE symposium on security and
+  privacy (Cat. No. 99CB36344)}, pages 133--145. IEEE, 1999.
+
 \bibitem{whitehouse_activity-based_2016}
 M.~Whitehouse, M.~Evangelou, and N.~Adams.
 \newblock Activity-based temporal anomaly detection in enterprise-cyber
@@ -362,5 +398,16 @@ M.~Whitehouse, M.~Evangelou, and N.~Adams.
   {Conference} on {Intelligence} and {Security} {Informatics}}. IEEE, Nov.
   2016.
 \newblock 00001.
+
+\bibitem{yeung2003host}
+D.-Y. Yeung and Y.~Ding.
+\newblock Host-based intrusion detection using dynamic and static behavioral
+  models.
+\newblock {\em Pattern recognition}, 36(1):229--243, 2003.
+
+\bibitem{zhang2000detecting}
+Y.~Zhang and V.~Paxson.
+\newblock Detecting stepping stones.
+\newblock In {\em USENIX Security Symposium}, volume 171, page 184, 2000.
 
 \end{thebibliography}
