@@ -281,6 +281,8 @@ It is clear that any approach that looks exclusively at the traffic volume eithe
 
 \subsubsection*{Other}
 
+%\textbf{Zhang et al. }\cite{zhang2001hide} 
+
 
 \textbf{Kind et al.} \cite{kind2009histogram} proposed a network-wide detection approach that is based on traffic histograms and clustering to identify and model substructures in normal traffic for better anomaly detection. A number of different traffic quantities are divided into a fixed number of subgroups, such intervals of IP-addresses or network ports, bins of packet sizes or connection durations, or the different TCP flags in a connection. For every different feature, authors create histograms measuring the number of events occuring in each subgroup during a 5-minute interval. Histograms are monitored over a period of time without any malicious activity in order to gather a collection of training histograms. After removing subgroups that remain, each traffic feature is then divided into clusters using the Mahalanobis-distance measure as a similarity metric between histograms and either hierarchical or $k$-means clustering. Anomalies in individual traffic features can then be detected as histograms with distances from the nearest cluster that exceed a certain treshold. Evaluation is conducted with an unnamed dataset containing 15 labeled attack, containing DoS attacks, worm propagation and network scanning, and network-wide system fingerprinting, and mail bombs, of which 13 were detected. Unsurprisingly, the two undetected attacks addressed fewer machines and thus consisted of less traffic. In general, this approach indivates a great improvement from the previous approaches as it is the first significant attempt at discovering substructures in aggregated traffic, which generally grants a better detection of non-trivial anomalies. An interesting improvement would be to correlate simultaneous outliers in different features using a variant of hypothesis tests as a lower anomaly treshold could be used.
 
@@ -296,7 +298,7 @@ The majority of network anomaly detection approaches are based on point anomaly 
 
 \subsubsection{Direct application of Machine Learning}
 
-Due to the availability of datasets such as DARPA'98 or KDD'99 which are labeled and rich in both benign and malicious traffic, it is tempting to apply existing machine learning approaches directly onto the event features provided in the data. Additionally, the KDD'99 data contains significantly more features for each event than normal network flow data. Consequently, there exists a large body of literature drawing from this apparent opportunity and applying a variety of classifiers such as  decision trees, support vector machines, Na\"ive Bayes, or Neural Networks to these two datasets. However, such approaches often lack a greater understanding of the utilised data and the overall problem of intrusion detection, and achieved test results can normally not translated into good performance in realistic environments.
+Due to the availability of datasets such as DARPA'98 or KDD'99 which are labeled and rich in both benign and malicious traffic, it is tempting to apply existing machine learning approaches directly onto the event features provided in the data. Additionally, the KDD'99 data contains significantly more features for each event than normal network flow data. Consequently, there exists a large body of literature drawing from this apparent opportunity and applying a variety of classifiers such as  decision trees, support vector machines, Na\"ive Bayes, or Neural Networks to these two datasets. However, such approaches often lack a greater understanding of the utilised data and the overall problem of intrusion detection, and achieved test results can normally not translated into good performance in realistic environments. Also, even if labels for both normal and anomalous data is available, the imbalance of normal traffic to malicious one generally makes learning a classifier hard.
 
 Two illustrative examples are the works of \textbf{Barbar\'a et al.} \cite{barbara2001detecting} on the DARPA 98 data, and of \textbf{Javaid et al.} \cite{javaid2016deep} on the NSL-KDD data, both highly cited papers. Barba\'a et al. apply a Bayesian network classifier on the available features\footnote{Numerical features and dictionaries of pre-seen IPs and ports} of individual packets while Javaid et al. train two layers of neural networks on the numerical features of the KDD flow events. Both approaches achieve high detection accuracies on the used data. The overall assumption here is that the classifier can generalise the learned differences that separate benign from malicious traffic in the dataset to a broader set of malware classes or even most of them. 
 
@@ -343,8 +345,12 @@ In their evaluation, the authors only considered DNS traffic due to lack of reso
 
 
 
-\subsubsection{Clustering based}
+%\subsubsection{Clustering based}
 
+
+
+
+Intersection with traffic classification
 
 
 \subsubsection{Representation-learning based}
