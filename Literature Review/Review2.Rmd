@@ -861,7 +861,7 @@ Two models working parallel:
 #### ADAM: A Testbed for Exploring the Use of Data Mining in Intrusion Detection
 ##### Barbara et al. 2001
 ##### George Mason University
-  
+
 * Bayesian Network classification on Darpa 
 
 #### Intrusion Detection based on K-Means Clustering and Naïve Bayes Classification

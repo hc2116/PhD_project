@@ -22,6 +22,11 @@ J.~P. Anderson.
 \newblock Computer security threat monitoring and surveillance.
 \newblock {\em Technical Report, James P. Anderson Company}, 1980.
 
+\bibitem{auld2007bayesian}
+T.~Auld, A.~W. Moore, and S.~F. Gull.
+\newblock Bayesian neural networks for internet traffic classification.
+\newblock {\em IEEE Transactions on neural networks}, 18(1):223--239, 2007.
+
 \bibitem{barbara2001detecting}
 D.~Barbara, N.~Wu, and S.~Jajodia.
 \newblock Detecting novel network intrusions using bayes estimators.
@@ -33,6 +38,11 @@ P.~Barford, J.~Kline, D.~Plonka, and A.~Ron.
 \newblock A signal analysis of network traffic anomalies.
 \newblock In {\em Proceedings of the 2nd ACM SIGCOMM Workshop on Internet
   measurment}, pages 71--82. ACM, 2002.
+
+\bibitem{bernaille2006traffic}
+L.~Bernaille, R.~Teixeira, I.~Akodkenou, A.~Soule, and K.~Salamatian.
+\newblock Traffic classification on the fly.
+\newblock {\em ACM SIGCOMM Computer Communication Review}, 36(2):23--26, 2006.
 
 \bibitem{camacho_pca-based_2016}
 J.~Camacho, A.~Pérez-Villegas, P.~García-Teodoro, and G.~Maciá-Fernández.
@@ -53,6 +63,11 @@ G.~Creech and J.~Hu.
   collection.
 \newblock In {\em Wireless Communications and Networking Conference (WCNC),
   2013 IEEE}, pages 4487--4492. IEEE, 2013.
+
+\bibitem{crotti2007traffic}
+M.~Crotti, M.~Dusi, F.~Gringoli, and L.~Salgarelli.
+\newblock Traffic classification through simple statistical fingerprinting.
+\newblock {\em ACM SIGCOMM Computer Communication Review}, 37(1):5--16, 2007.
 
 \bibitem{cup1999data}
 K.~Cup.
@@ -89,6 +104,12 @@ A.~Gharib, I.~Sharafaldin, A.~H. Lashkari, and A.~A. Ghorbani.
 \newblock An evaluation framework for intrusion detection dataset.
 \newblock In {\em Information Science and Security (ICISS), 2016 International
   Conference on}, pages 1--6. IEEE, 2016.
+
+\bibitem{giacinto2008intrusion}
+G.~Giacinto, R.~Perdisci, M.~Del~Rio, and F.~Roli.
+\newblock Intrusion detection in computer networks by a modular ensemble of
+  one-class classifiers.
+\newblock {\em Information Fusion}, 9(1):69--82, 2008.
 
 \bibitem{gupta_layered_2010}
 K.~K. Gupta, B.~Nath, and R.~Kotagiri.
@@ -213,6 +234,12 @@ A.~Lakhina, M.~Crovella, and C.~Diot.
 \newblock In {\em ACM SIGCOMM Computer Communication Review}, volume~35, pages
   217--228. ACM, 2005.
 
+\bibitem{lin2015cann}
+W.-C. Lin, S.-W. Ke, and C.-F. Tsai.
+\newblock Cann: An intrusion detection system based on combining cluster
+  centers and nearest neighbors.
+\newblock {\em Knowledge-based systems}, 78:13--21, 2015.
+
 \bibitem{lippmann2000evaluating}
 R.~P. Lippmann, D.~J. Fried, I.~Graf, J.~W. Haines, K.~R. Kendall, D.~McClung,
   D.~Weber, S.~E. Webster, D.~Wyschogrod, R.~K. Cunningham, et~al.
@@ -242,6 +269,18 @@ M.~V. Mahoney and P.~K. Chan.
   novel attacks.
 \newblock In {\em Proceedings of the eighth ACM SIGKDD international conference
   on Knowledge discovery and data mining}, pages 376--385. ACM, 2002.
+
+\bibitem{mcgregor2004flow}
+A.~McGregor, M.~Hall, P.~Lorier, and J.~Brunskill.
+\newblock Flow clustering using machine learning techniques.
+\newblock In {\em International Workshop on Passive and Active Network
+  Measurement}, pages 205--214. Springer, 2004.
+
+\bibitem{moore2005internet}
+A.~W. Moore and D.~Zuev.
+\newblock Internet traffic classification using bayesian analysis techniques.
+\newblock In {\em ACM SIGMETRICS Performance Evaluation Review}, volume~33,
+  pages 50--60. ACM, 2005.
 
 \bibitem{moustafa_unsw-nb15:_2015}
 N.~Moustafa and J.~Slay.
@@ -383,6 +422,12 @@ A.~Wagner and B.~Plattner.
 C.~Walsworth, E.~Aben, K.~Claffy, and D.~Andersen.
 \newblock The caida ucsd anonymized internet traces 2012,”, 2015.
 
+\bibitem{wang2010new}
+G.~Wang, J.~Hao, J.~Ma, and L.~Huang.
+\newblock A new approach to intrusion detection using artificial neural
+  networks and fuzzy clustering.
+\newblock {\em Expert systems with applications}, 37(9):6225--6232, 2010.
+
 \bibitem{warrender1999detecting}
 C.~Warrender, S.~Forrest, and B.~Pearlmutter.
 \newblock Detecting intrusions using system calls: Alternative data models.
@@ -399,11 +444,25 @@ M.~Whitehouse, M.~Evangelou, and N.~Adams.
   2016.
 \newblock 00001.
 
+\bibitem{yen2009browser}
+T.-F. Yen, X.~Huang, F.~Monrose, and M.~K. Reiter.
+\newblock Browser fingerprinting from coarse traffic summaries: Techniques and
+  implications.
+\newblock In {\em International Conference on Detection of Intrusions and
+  Malware, and Vulnerability Assessment}, pages 157--175. Springer, 2009.
+
 \bibitem{yeung2003host}
 D.-Y. Yeung and Y.~Ding.
 \newblock Host-based intrusion detection using dynamic and static behavioral
   models.
 \newblock {\em Pattern recognition}, 36(1):229--243, 2003.
+
+\bibitem{zander2005automated}
+S.~Zander, T.~Nguyen, and G.~Armitage.
+\newblock Automated traffic classification and application identification using
+  machine learning.
+\newblock In {\em Local Computer Networks, 2005. 30th Anniversary. The IEEE
+  Conference on}, pages 250--257. IEEE, 2005.
 
 \bibitem{zhang2000detecting}
 Y.~Zhang and V.~Paxson.

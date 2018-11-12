@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2018)
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: report.aux
 The style file: abbrv.bst
@@ -7,46 +7,47 @@ Warning--to sort, need author or key in noauthor_ctu-13_nodate
 Warning--to sort, need author or key in USC2010ICT
 Warning--empty journal in heard2016topic
 Warning--can't use both volume and number fields in lakhina2005mining
+Warning--can't use both volume and number fields in moore2005internet
 Warning--empty journal in peddabachigari_intrusion_nodate
-You've used 63 entries,
+You've used 73 entries,
             2118 wiz_defined-function locations,
-            861 strings with 16940 characters,
-and the built_in function-call counts, 25604 in all, are:
-= -- 2621
-> -- 1184
-< -- 35
-+ -- 475
-- -- 399
-* -- 1717
-:= -- 3978
-add.period$ -- 230
-call.type$ -- 63
-change.case$ -- 382
+            915 strings with 18919 characters,
+and the built_in function-call counts, 29870 in all, are:
+= -- 3060
+> -- 1394
+< -- 40
++ -- 558
+- -- 471
+* -- 2040
+:= -- 4651
+add.period$ -- 264
+call.type$ -- 73
+change.case$ -- 448
 chr.to.int$ -- 0
-cite$ -- 68
-duplicate$ -- 1013
-empty$ -- 1992
-format.name$ -- 399
-if$ -- 5599
+cite$ -- 79
+duplicate$ -- 1169
+empty$ -- 2307
+format.name$ -- 471
+if$ -- 6508
 int.to.chr$ -- 0
-int.to.str$ -- 63
-missing$ -- 54
-newline$ -- 333
-num.names$ -- 126
-pop$ -- 458
+int.to.str$ -- 73
+missing$ -- 64
+newline$ -- 383
+num.names$ -- 146
+pop$ -- 522
 preamble$ -- 1
-purify$ -- 320
+purify$ -- 376
 quote$ -- 0
-skip$ -- 779
+skip$ -- 892
 stack$ -- 0
-substring$ -- 1609
-swap$ -- 353
-text.length$ -- 35
+substring$ -- 1909
+swap$ -- 403
+text.length$ -- 40
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 252
-warning$ -- 5
-while$ -- 250
-width$ -- 65
-write$ -- 746
-(There were 5 warnings)
+type$ -- 292
+warning$ -- 6
+while$ -- 294
+width$ -- 75
+write$ -- 861
+(There were 6 warnings)
