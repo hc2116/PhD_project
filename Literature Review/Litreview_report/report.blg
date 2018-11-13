@@ -5,49 +5,52 @@ The style file: abbrv.bst
 Database file #1: refs.bib
 Warning--to sort, need author or key in noauthor_ctu-13_nodate
 Warning--to sort, need author or key in USC2010ICT
+Warning--empty institution in brownlee1999traffic
+Warning--there's a number but no volume in denning1987intrusion
 Warning--empty journal in heard2016topic
 Warning--can't use both volume and number fields in lakhina2005mining
 Warning--can't use both volume and number fields in moore2005internet
 Warning--empty journal in peddabachigari_intrusion_nodate
-You've used 73 entries,
+Warning--can't use both volume and number fields in roesch1999snort
+You've used 80 entries,
             2118 wiz_defined-function locations,
-            915 strings with 18919 characters,
-and the built_in function-call counts, 29870 in all, are:
-= -- 3060
-> -- 1394
-< -- 40
-+ -- 558
-- -- 471
-* -- 2040
-:= -- 4651
-add.period$ -- 264
-call.type$ -- 73
-change.case$ -- 448
+            946 strings with 19900 characters,
+and the built_in function-call counts, 32446 in all, are:
+= -- 3318
+> -- 1513
+< -- 44
++ -- 606
+- -- 511
+* -- 2207
+:= -- 5058
+add.period$ -- 286
+call.type$ -- 80
+change.case$ -- 489
 chr.to.int$ -- 0
-cite$ -- 79
-duplicate$ -- 1169
-empty$ -- 2307
-format.name$ -- 471
-if$ -- 6508
+cite$ -- 89
+duplicate$ -- 1273
+empty$ -- 2508
+format.name$ -- 511
+if$ -- 7065
 int.to.chr$ -- 0
-int.to.str$ -- 73
-missing$ -- 64
-newline$ -- 383
-num.names$ -- 146
-pop$ -- 522
+int.to.str$ -- 80
+missing$ -- 69
+newline$ -- 417
+num.names$ -- 160
+pop$ -- 573
 preamble$ -- 1
-purify$ -- 376
+purify$ -- 409
 quote$ -- 0
-skip$ -- 892
+skip$ -- 973
 stack$ -- 0
-substring$ -- 1909
-swap$ -- 403
-text.length$ -- 40
+substring$ -- 2058
+swap$ -- 438
+text.length$ -- 44
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 292
-warning$ -- 6
-while$ -- 294
-width$ -- 75
-write$ -- 861
-(There were 6 warnings)
+type$ -- 320
+warning$ -- 9
+while$ -- 319
+width$ -- 82
+write$ -- 936
+(There were 9 warnings)

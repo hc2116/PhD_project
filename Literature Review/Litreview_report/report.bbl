@@ -44,6 +44,11 @@ L.~Bernaille, R.~Teixeira, I.~Akodkenou, A.~Soule, and K.~Salamatian.
 \newblock Traffic classification on the fly.
 \newblock {\em ACM SIGCOMM Computer Communication Review}, 36(2):23--26, 2006.
 
+\bibitem{brownlee1999traffic}
+N.~Brownlee, C.~Mills, and G.~Ruth.
+\newblock Traffic flow measurement: Architecture.
+\newblock Technical report, 1999.
+
 \bibitem{camacho_pca-based_2016}
 J.~Camacho, A.~Pérez-Villegas, P.~García-Teodoro, and G.~Maciá-Fernández.
 \newblock {PCA}-based multivariate statistical network monitoring for anomaly
@@ -78,6 +83,11 @@ K.~Cup.
 \newblock Dataset.
 \newblock \url{http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html}, 1999.
 \newblock Accessed on 05 Nov. 2018.
+
+\bibitem{denning1987intrusion}
+D.~E. Denning.
+\newblock An intrusion-detection model.
+\newblock {\em IEEE Transactions on software engineering}, (2):222--232, 1987.
 
 \bibitem{du2017deeplog}
 M.~Du, F.~Li, G.~Zheng, and V.~Srikumar.
@@ -234,6 +244,17 @@ A.~Lakhina, M.~Crovella, and C.~Diot.
 \newblock In {\em ACM SIGCOMM Computer Communication Review}, volume~35, pages
   217--228. ACM, 2005.
 
+\bibitem{lamprakis2017unsupervised}
+P.~Lamprakis, R.~Dargenio, D.~Gugelmann, V.~Lenders, M.~Happe, and L.~Vanbever.
+\newblock Unsupervised detection of apt c\&c channels using web request graphs.
+\newblock In {\em International Conference on Detection of Intrusions and
+  Malware, and Vulnerability Assessment}, pages 366--387. Springer, 2017.
+
+\bibitem{lazarevic2005intrusion}
+A.~Lazarevic, V.~Kumar, and J.~Srivastava.
+\newblock Intrusion detection: A survey.
+\newblock In {\em Managing Cyber Threats}, pages 19--78. Springer, 2005.
+
 \bibitem{lin2015cann}
 W.-C. Lin, S.-W. Ke, and C.-F. Tsai.
 \newblock Cann: An intrusion detection system based on combining cluster
@@ -304,6 +325,12 @@ J.~Neil, C.~Hash, A.~Brugh, M.~Fisk, and C.~B. Storlie.
   subgraphs.
 \newblock {\em Technometrics}, 55(4):403--414, 2013.
 
+\bibitem{nisioti2018intrusion}
+A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
+\newblock From intrusion detection to attacker attribution: A comprehensive
+  survey of unsupervised methods.
+\newblock {\em IEEE Communications Surveys \& Tutorials}, 2018.
+
 \bibitem{noble_real-time_2018}
 J.~Noble and N.~Adams.
 \newblock Real-{Time} {Dynamic} {Network} {Anomaly} {Detection}.
@@ -323,6 +350,10 @@ R.~Pang, M.~Allman, M.~Bennett, J.~Lee, V.~Paxson, and B.~Tierney.
 \newblock A first look at modern enterprise traffic.
 \newblock In {\em Proceedings of the 5th ACM SIGCOMM conference on Internet
   Measurement}, pages 2--2. USENIX Association, 2005.
+
+\bibitem{paxson2014bro}
+V.~Paxson.
+\newblock Bro intrusion detection system (2007), 2014.
 
 \bibitem{peddabachigari_intrusion_nodate}
 S.~Peddabachigari, A.~Abraham, and J.~Thomas.
@@ -360,6 +391,11 @@ H.~Ringberg, A.~Soule, J.~Rexford, and C.~Diot.
   {Conference} on {Measurement} and {Modeling} of {Computer} {Systems}},
   {SIGMETRICS} '07, pages 109--120, New York, NY, USA, 2007. ACM.
 \newblock 00337.
+
+\bibitem{roesch1999snort}
+M.~Roesch et~al.
+\newblock Snort: Lightweight intrusion detection for networks.
+\newblock In {\em Lisa}, volume~99, pages 229--238, 1999.
 
 \bibitem{saad2011detecting}
 S.~Saad, I.~Traore, A.~Ghorbani, B.~Sayed, D.~Zhao, W.~Lu, J.~Felix, and
