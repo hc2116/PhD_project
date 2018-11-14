@@ -49,7 +49,7 @@ However, with attackers becoming adept at shedding such previously identified si
 
 However, attackers are becoming more adept at shedding previously gathered signatures: A file hash can be altered by minor modifications in the program and IP and domain addresses can be switched by changing servers. A sophisticated attack will employ new, customized protocols and software that is fitted to the targeted computer infrastructure, and thus will not show any identified signatures. 
 
-The field of \textit{Intrusion Detection} is concerned with the development of methods and tools that identify malicious behaviour in a computer network in a more robust way. \textcolor{red}{In this work, I will discuss existing literature concerning a sub-branch intrusion detection, that is concerned with detecting anomalous behaviour in network traffic.... network intrusion detection  and anomaly detection}
+The field of \textit{Intrusion Detection} is concerned with the development of methods and tools that identify malicious behaviour in a computer network in a more robust way. %\textcolor{red}{In this work, I will discuss existing literature concerning a sub-branch intrusion detection, that is concerned with detecting anomalous behaviour in network traffic.... network intrusion detection  and anomaly detection}
 
 
 
@@ -84,7 +84,7 @@ Access attacks can be very diverse in their nature. A simple example are brute-f
 Two examples of data manipulation attacks are \textit{session replay} and \textit{website impersonation}. In a session replay, the intruder captures packet sequences exchanged between two parties and modifies part of the data before forwarding it to the receiver. Here, both parties are unaware of the data manipulation and trust the authenticity of the connection. In website impersionation, a user is unknowingly redirected to a perfect copy of the website he requested. The user is then tricked to enter confidential information into a web form, which is then sent to the attacker instead of the trusted party operating the original page. 
 
 
-Data manipulation attacks are often used pass malicious code to a victim in order to gain access on its machine. An impressive example of such behaviour was demonstrated by the malware \textit{Flame}: An infected host in a network sends messages to other machines running Windows advertising itself as a Windows update provider, using spoofed IP addresses and a fake Microsoft certificate and thus defeating Microsoft's authentication mechanism. Other computers were consequently tricked into receiving malicious updates from the infected host, which would then infect their machine.
+Data manipulation attacks are often used pass malicious code to a victim in order to gain access on its machine. An impressive example of such behaviour was demonstrated by the malware \textit{Flame}\footnote{also known as \textit{Skywiper}}: An infected host in a network sends messages to other machines running Windows advertising itself as a Windows update provider, using spoofed IP addresses and a fake Microsoft certificate and thus defeating Microsoft's authentication mechanism. Other computers were consequently tricked into receiving malicious updates from the infected host, which would then infect their machine \cite{skywiperskywiper}.
 
 
 
@@ -286,7 +286,9 @@ Payload-based methods inspect the payload contained in individual packets, and t
 
 \section{Approaches based on Volume or Traffic Aggregation}
 
-Difficult to identify individual malicious flows and attack attribution.
+Traffic aggregation is a simple way of creating a contextual format of network traffic in contrast to isolated events. Usually, all events in a certain time interval are binned and summary statistics over the different traffic parameters are calculated, such as the sum of events of bytes transferred, or the number of distinct IP addresses/ports communicating. Events in each time interval therefore stand in a contextual relationship as they together influence the different summary statistics.  Aggregation of traffic can be done for individual hosts as well as for groups or entire networks, while the computational load depends on the choice of summary statistics. 
+
+Methods relying on traffic aggregation are most suitable for attacks in which events form a collective instead of a point anomaly. Examples  of attacks forming collective anomalies are DoS and port scanning attacks as events like a half-open connection are not anomalous themselves, but are anomalous when occurring in larger numbers. Attacks that contain less volume however are less likely to be detected in aggregated traffic as individual features of the events would have to be large or unusual enough to influence the summary statistic of the entire group.
 
 
 \subsection{Subspace projection/PCA-based}
@@ -304,9 +306,7 @@ Naturally, since the traffic is aggregated into bins and the temporal behaviour 
 
 \subsection{Entropy-based}
 
-The entropy is a measure for the degree of disorder a system is in. Applied to network traffic, a popular quantity to measure is the dispersion of events onto different source or destination IP addresses. A high entropy would correspond to all events being evenly distributed among the all existing IPs while a low entropy corresponds to the majority of events being concentrated between a small number of IPs. 
-
-Entropy-based approaches can usually be attributed more towards misuse detection, but can also have reasonable applications in anomaly detection.
+The entropy is a measure for the degree of disorder a system is in. Applied to network traffic, a popular quantity to measure is the dispersion of events onto different source or destination IP addresses. A high entropy would correspond to all events being evenly distributed among the all existing IPs while a low entropy corresponds to the majority of events being concentrated between a small number of IPs.  Entropy-based approaches are usually emplyed more in misuse detection, but can also have reasonable applications in anomaly detection.
 
 \textbf{Wagner and Plattner} \cite{wagner2005entropy} measured the entropy of network flow distribution across source and destination IP addresses and across source and destination ports on a network-wide basis. The entropy is measured in a sliding window of 5-minutes with 1-minute shifts and monitored continuously. Anomalies are flagged as sudden changes in one or more of the mentioned entropy sources with tresholds that were determined from empirical judgement. The described measures were applied to network data from a swiss internet backbone which contained data from two large-scale worm outbreaks\footnote{\textit{Blaster worm} and \textit{Witty worm}, both more than 50 000 infections}. The characteristics of these worms in terms of entropy changes\footnote{Source IP and destination port entropy decreases drastically, destination IP entropy increases moderately} were then analysed as an evaluation of the technique.
 
@@ -401,7 +401,6 @@ Similarly to classification-based methods, the availability of the DARPA'98 and 
 Lin et al. \cite{lin2015cann} recently developed a clustering based framework for intrusion detection, called \textit{CANN}. They apply \textit{k-means clustering} to the normalised numeric features of the KDD'99 data for $k=5$. Anomalies are then identified as points exceeding a treshold distance from these centres using a specific distance metric that includes every cluster center, comparable with the \textit{k-neirest neighbour} technique. Several other authors use clustering as a form of data pre-processing to reducing overfitting and computation time. Among them  include \textbf{Wang et al.} \cite{wang2010new} who use \textit{ant-colony based clustering} combined with a neural network classifier with mixed results, or \textbf{Giacinto et al.} \cite{giacinto2008intrusion} who used k-means clustering with a \textit{support vector machine} classifier, both on the KDD'99 data.
 
 
-
 Clustering of network events is related to traffic classification in that different traffic generator classes which influence the observed event features are assumed to exist. As I mentioned above, raw network events such as flows are not overly rich in features and are thus limited in the amount of traffic structure they can convey. Anomaly detection techniques that rely on clustering can benefit from the data mining techniques developed in the area of traffic classification, which is why I will include some noteworthy results here. 
 
 In 2004, \textbf{McGregor et al.} \cite{mcgregor2004flow} published one of the earliest works on network traffic clustering. They use a probabilistic method, the \textit{Gaussian mixture model} (GMM), in order to estimate the position and the width of a small number of clusters. As this approach is based on the likelihood of the datapoints in a Gaussian model, it is possible to estimate the number of clusters using GMMs, a big advantage over most other methods were the number of clusters has to be chosen manually. 
@@ -437,13 +436,16 @@ In general, effective applications of representation learning require the availa
 
 \section{Temporal correlation/Semantics-based}
 
+Despite network traffic being a stream of events, most anomaly-based intrusion detection approaches neglect any temporal features. Nevertheless, malicious behaviour most often is composed of  a series  of related computer and network  events and have a distinct temporal and semantic profile \cite{ye2000markov}. As an example, an intruder using a session relay to exfiltrate information or pass malicious code generates a strong dependency between incoming packets in one connection and outgoing packets in the other connection (and vice versa) albeit the individual packets or connections resemble perfectly benign behaviour\footnote{as they are essentially two normal connections that are relayed by the intruder}. Building a model that can that can understand relations and dependencies between individual events could potentially lead to great improvements in the detection of otherwise non-anomalous attacks. 
+
+Since a machine's network traffic is the collective stream of multiple processes accessing the internet, individual traffic sequences are mixed with others, which makes the modelling of temporal dependencies a non-trivial task. In comparison to the other identified categories, research in the area of anomaly detection using temporal correlation or semantic models is sparse. 
 
 
 In 2003, \textbf{Krishnamurthy et al.} \cite{krishnamurthy2003sketch} propose a rather simple, yet efficient method for network-wide monitoring of individual key occurrences in an online fashion. For that, a sliding window approach is used to asign all keys (which here stand for individual IP addresses or network ports) a value containing the number of its occurrency. For each key, the collected values are then used to train either an \textit{ARIMA} or a \textit{Holt-Winters} method, both popular and powerful time-series forecasting models which can be trained in an online fashion. Anomalies are then identified as values with a forecasting error exceeding a certain treshold and thus indicating a sudden change in occurrency-behaviour of that particular key. This is an improvement to summarisation measures such as entropy or histograms in two ways: It provides a better resolution of individual traffic channels, enabling the detection of attacks with far less volume, and enabling the modelling of more complex temporal patterns which become apparent on a lower level. And it makes attack attribution far simpler by indicating directly the key which is subject to an anomaly. 
 
 Since traffic is usually arriving at a fast rate, it is a computationally hard and memory-consuming task to count the occurrencies of all keys simultaneously. Schweller et al.  overcome this problem using a \textit{sketch-based counting approach} which uses hash-function to direct the values of a key directly to a position in a hash table without the need to store actual key in the memory. As this process is not exact, the count value is subject to statistical variations and the authors propose an unbiased estimator. The inaccuracy of the count estimator is also preventing the authors from using a probabilistic approach to anomaly detection instead of simple tresholding. However, this approach is also only counting occurrencies and does not detect any correlated key behaviour.
 
-A great problem of the proposed framework is the fact that the key translation works only in one direction, making it impossible to associate a detected change with the corresponding key. This problem is overcome by Schweller et al.\cite{schweller2004reversible} who propose a reversible sketch method.
+A great problem of the proposed framework is the fact that the key translation works only in one direction, making it impossible to associate a detected change with the corresponding key. This problem is overcome by \textbf{Schweller et al.} \cite{schweller2004reversible} who propose a reversible sketch method.
 
 \textbf{Pellegrino et al.} \cite{pellegrino2017learning} last year proposed \textit{BASTA}, a framework to mine behavioural fingerprints from network flows using \textit{timed automata learning}. An automata encodes patterns of short-term interactions of a system and is a representation of symbolic sequences, often corresponding to state transitions, which it encodes in a state transition function. Applied to network flows, an automata represents sets of events\footnote{distinguished by port,  protocol, etc.} that can follow each other in the network trace of a system. To be more specific, they used a type of probabilistic automata that works with transition probabilities and thus works in a similar way to a \textit{hidden Markov model}. Events are asigned a state corresponding to the protocol and the direction of the flow, and the quantile\footnote{of the overall distribution of the individual parameters} its duration, size, and number of packets are lying in. The authors then use this framework to create malicious fingerprints by training it on malicious traffic intermixed with normal traffic. These fingerprints are then detected on an infected host if the difference between the expected and the observed state counts drops below a treshold. 
 
@@ -465,7 +467,7 @@ Especially in larger computer networks, attackers often try use relay-like comma
 
 As stepping stone detection falls much more in the field of misuse detection, I will only give a very brief overview over emplyed techniques.
 
-Zhang and Paxson \cite{zhang2000detecting} proposed one of the first methods for detecting stepping stones in 2000. They model relayed key-stroke packet streams as a two-dimensional ON/OFF switching process, where state changes have to occur within a certain window between the two channels. Correlation is then simply detected if the number of switches lying in this window exceeds a treshold. 
+\textbf{Zhang and Paxson} \cite{zhang2000detecting} proposed one of the first methods for detecting stepping stones in 2000. They model relayed key-stroke packet streams as a two-dimensional ON/OFF switching process, where state changes have to occur within a certain window between the two channels. Correlation is then simply detected if the number of switches lying in this window exceeds a treshold. 
 
 
 A common assumption made when trying to find stepping stones is that packet or flow streams between different hosts in a network are almost always independent of each other, which is shown by \cite{neil2013scan}. \textbf{He and Tong}\cite{he2007detecting} model normal packet arrivals in a connection as a Poisson Process, and use the assumption of independence to derive a probabilistic distribution for the similarity of packet numbers in two channels in a time interval. P-values are then used to identify when the number of similar intervals becomes unlikely. They also show that if the ratio of chaff-packets exceeds to necessary packets in a stepping stone becomes too large, correlation is impossible to detect under the asumption of normal traffic following a Poisson distribution.
@@ -476,10 +478,36 @@ A common assumption made when trying to find stepping stones is that packet or f
 
 \subsection{Semantic-based approaches using different data sources}
 
-Approachs that model semantic or temporal behaviour characteristics have been also been applied on host-based data streams such as \textit{system call logs} or \textit{process logs} as well. As these are mostly symbolic event streams, anomaly detection in principal works similarly as for network traffic. As these data sources have usually a more hierarchical structure of events following each other in a parent-child fashion and therefore do not suffer from overlapping signals, and it is generally easier to identify semantic structures. Notable examples include the use of deterministic automata \cite{warrender1999detecting}, hidden Markov models \cite{yeung2003host,hu2009simple}, or \textit{recurrent neural networks}\cite{du2017deeplog}.
+Approachs that model semantic or temporal behaviour characteristics have been also been applied on host-based data streams such as \textit{system call logs} or \textit{process logs} as well. As these are mostly symbolic event streams, anomaly detection in principal works similarly as for network traffic. As these data sources have usually a more hierarchical structure of events following each other in a parent-child fashion and therefore do not suffer from overlapping signals, and it is generally easier to identify semantic structures. Notable examples include the use of deterministic automata \cite{warrender1999detecting}, Markov chains \cite{ye2000markov}, hidden Markov models \cite{yeung2003host,hu2009simple}, or \textit{recurrent neural networks}\cite{du2017deeplog}.
 
 
 \section{Conclusion}
+
+Network intrusion detection is not a new field, and substantial literature exists with a variety of approaches having been proposed identify malicious network traffic. I identified three different categories of anomaly-based intrusion detection methods and reviewed the in my eyes most significant contributions in each category. I furthermore reviewed existing datasets that are suitable for anomaly detection. 
+
+In a nutshell, existing methods achieve mixed results upon detecting malicious activities as anomalous behaviour, especially when comparing the detection rates for different types of malicious traffic. Methods using aggregated traffic offer convincing models of normal behaviour in terms of the volume and frequency of different traffic features, and of their interdepence. They perform as expected best in the detection collective anomalies such as DoS attacks and network probing in moderate to large size, and are in my eyes a good supplementation of existing misuse frameworks in the detection of this type of malicious traffic.  
+
+Detection rates for other types of malicious traffic are however not as convincing. This most visible for event-based methods. As these are directed towards point anomaly detection, it should be expected that they are most suitable for the detection of intrusions that consist of individual malicious packets or flows like buffer overflow attacks or code injections. Most methods however were tested on the KDD'99 dataset, which has received significant criticism for allowing unrealistic detection rates. Those methods tested on more realistic datasets surprisingly achieved the highest detection rates for DoS attacks and network probing.  Right now, methods from the area of misuse detection offer better and more reliable solutions for the detection of botnets and data manipulation attacks.
+
+The two areas were I see the most room for significant advances are more sophisticated feature mining techniques for network flows, and models that capture temporal or semantic substructures in network events. Both are areas have been overlooked by NIDS researchers and offer in my eyes new ways for the accurate quantification of application behaviour.
+
+%of attacks that generate collective
+
+
+%offer currently no great help in the detection of more sophisticated botnets
+
+%room for advances in 
+
+%feature engineering for point individual network events
+
+%existing datasets like KDD and DARPA conveyed false impression of feature mining not being necessary.
+
+%generating semantic models of network traffic
+
+%However, results 
+
+
+%In this work, I reviewed significant literature 
 
 \appendix
 % appendices come here

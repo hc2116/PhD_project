@@ -431,6 +431,11 @@ M.~Tavallaee, E.~Bagheri, W.~Lu, and A.~A. Ghorbani.
   2012.
 \newblock Accessed on 05 Nov. 2018.
 
+\bibitem{skywiperskywiper}
+S.~A. TEAM et~al.
+\newblock skywiper: A complex malware for targeted attacks.
+\newblock Technical report, Technical Report.
+
 \bibitem{thottan2003anomaly}
 M.~Thottan and C.~Ji.
 \newblock Anomaly detection in ip networks.
@@ -479,6 +484,13 @@ M.~Whitehouse, M.~Evangelou, and N.~Adams.
   {Conference} on {Intelligence} and {Security} {Informatics}}. IEEE, Nov.
   2016.
 \newblock 00001.
+
+\bibitem{ye2000markov}
+N.~Ye et~al.
+\newblock A markov chain model of temporal behavior for anomaly detection.
+\newblock In {\em Proceedings of the 2000 IEEE Systems, Man, and Cybernetics
+  Information Assurance and Security Workshop}, volume 166, page 169. West
+  Point, NY, 2000.
 
 \bibitem{yen2009browser}
 T.-F. Yen, X.~Huang, F.~Monrose, and M.~K. Reiter.
