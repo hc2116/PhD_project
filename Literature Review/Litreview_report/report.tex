@@ -37,24 +37,24 @@
 %\end{abstract}
 
 
-\chapter{Introduction}
+\chapter{Overview}
 
-In the wake of devastating personal information leaks, concerns over cyber-security are at an all-time high. Sophisticated data breaches affect hundreds of million customers and inflicts tremendous financial, reputational, and logistic damage.% Cyber-security incidents increased by 38\% in 2017, and the global cost of cyber crime is estimated to reach \$2 trillion by 2019 %\citep{conteh2016rise}. The prevention of cyber crime is therefore a globally demanded necessity.
-One reason for the recent rise of cyber crime is the increased use of sophisticated techniques for the attack of specific targets. Attackers use customised social engineering and custom-build malware to pass common security frameworks.
-Existing solutions to commercial intrusion detection in computer networks are often based on \textbf{detecting signatures} of previously uncovered and analysed  attacks. Examples of such signatures include  file  hashes of malicious software, blacklisted IP addresses and domain names, and characteristics of known Command-and-Control (C\&C) protocols. Detection of a signature usually indicates an imminent intrusion and triggers investigation. 
+\section{Network attacks}
 
-
-
-However, with attackers becoming adept at shedding such previously identified signatures, cyber-security researchers have to find ways of quantifying malicious activity in a more robust way. 
-
-However, attackers are becoming more adept at shedding previously gathered signatures: A file hash can be altered by minor modifications in the program and IP and domain addresses can be switched by changing servers. A sophisticated attack will employ new, customized protocols and software that is fitted to the targeted computer infrastructure, and thus will not show any identified signatures. 
-
-The field of \textit{Intrusion Detection} is concerned with the development of methods and tools that identify malicious behaviour in a computer network in a more robust way. %\textcolor{red}{In this work, I will discuss existing literature concerning a sub-branch intrusion detection, that is concerned with detecting anomalous behaviour in network traffic.... network intrusion detection  and anomaly detection}
+Sophisticated data breaches affect hundreds of million customers and inflicts tremendous financial, reputational, and logistic damage. %Cyber-security incidents increased by 38\% in 2017, and the global cost of cyber crime is estimated to reach \$2 trillion by 2019 %\citep{conteh2016rise}. The prevention of cyber crime is therefore a globally demanded necessity.
+One reason for the recent rise of cyber crime is the increased use of sophisticated techniques for the attack of specific targets. Attackers use customised social engineering and custom-build malware that penetrate defensive barriers and potentially stay undetected in an infected system for an extended period of time. 
 
 
 
+%Existing solutions to commercial intrusion detection in computer networks are often based on \textbf{detecting signatures} of previously uncovered and analysed  attacks. Examples of such signatures include  file  hashes of malicious software, blacklisted IP addresses and domain names, and characteristics of known Command-and-Control (C\&C) protocols. Detection of a signature usually indicates an imminent intrusion and triggers investigation. 
 
-\section{Network Intrusion Detection}
+
+
+%However, with attackers becoming adept at shedding such previously identified signatures, cyber-security researchers have to find ways of quantifying malicious activity in a more robust way. 
+
+%However, attackers are becoming more adept at shedding previously gathered signatures: A file hash can be altered by minor modifications in the program and IP and domain addresses can be switched by changing servers. A sophisticated attack will employ new, customized protocols and software that is fitted to the targeted computer infrastructure, and thus will not show any identified signatures. 
+
+%The field of \textit{Intrusion Detection} is concerned with the development of methods and tools that identify malicious behaviour in a computer network in a more robust way. %\textcolor{red}{In this work, I will discuss existing literature concerning a sub-branch intrusion detection, that is concerned with detecting anomalous behaviour in network traffic.... network intrusion detection  and anomaly detection}
 
 In 1980, James P. Anderson, a member of the \textit{Defense Science Board Task Force on Computer Security} at the U.S. Air Force, published the first report to introduce the notion of automated intrusion detection \cite{anderson1980computer}. In it, he defines an \textbf{intrusion attempt} or a threat as 
 
@@ -62,8 +62,7 @@ In 1980, James P. Anderson, a member of the \textit{Defense Science Board Task F
 \textit{"\dots an unauthorized and deliberate attempt to access or manipulate information, or to render a system unreliable or unusable."}
 \end{quote}
 
-Such attacks can be very diverse in their nature: They can be used to achieve different goals, and correspondingly exploit different types of tools and vulnerabilities. Very often, intrusive attacks involve some sort network communication between the victim machine(s) and a malicious agent. 
-A recent survey covering intrusive attacks and defense systems distinguishes five classes of malicious network traffic \cite{nisioti2018intrusion}:
+Such attacks can be very diverse in their nature: They can be used to achieve different goals, and correspondingly exploit different types of tools and vulnerabilities. Very often, intrusive attacks involve some sort network communication between the victim machine(s) and a malicious agent. As this work is focusing primaly on network intrusion and corresponding defense systems, we will take a closer look at this type of communication. A recent survey covering intrusive attacks and defense systems distinguishes five classes of malicious network traffic \cite{nisioti2018intrusion}:
 
 \begin{enumerate}
 \item \textit{DoS-attacks}: A denial-of-service attack is an attempt to remove ability of a particular computer to communicate with other machines over an extended period of time. Such attacks are usually targeted at network servers in order to disrupt the service it is providing. All major types of DoS-attacks achieve this by overwhelming the target server with service requests, which are usually corrupted in a way that causes the server to bind resources unnessecarily long for each request, and thus losing its capability to process other requests. The most prominent type of DoS attacks are SYN-floods. They exploit the TCP-handshake protocol by sending many SYN-requests to a server while ignoring the SYN-ACK response packets sent in return by the server. This causes the server to keep waiting for a response for each of the attacker's requests, and thus binds the resources of the server while being computationally very cheap for the attacker. After a certain treshold, the server will not be able to process any more requests, rendering it unusable for actual client requests.
@@ -99,11 +98,46 @@ C\&C communication is usually sent over the HTTP or HTTPS protocol as it is wide
 An additional class of networking threats is the \textit{unauthorized surveillance} of network traffic. A local network of computers is usually separated from the outside, with a router establishing the connection between computers in the network and ones outside the network. The traffic exchanged between machines inside the network therefore does not leave the network and is not visible for outsiders. Unauthorised access captures of internal network traffic can give an intruder significant information about the network topology, and even access to sensitive information if a connection is not encrypted. As network surveillance usually does not leave any visible traces in the network, I did not include it in the above listed types of malicious traffic. 
 
 
+\section{Network Intrusion Detection Systems}
+
+The field of intrusion detection is concerned with the development of methods and tools that identificaty and locate possible intrusions in a computer network.
+
+Intrusion detection comprises several different areas of \textcolor{red}{research}, \textcolor{red}{such as .... depicted in figure ...}. In this work, I will focus on network-based methods that rely on anomaly detection  \textcolor{red}{because it is closest to my PhD?}. For this, I will examine the benefits and drawbacks of different approaches to data processing and subsequent modelling techniques. Additionally, I will examine existing network traffic datasets that are suitable for testing anomy-based methods.
+
 Network intrusion detection refers to the detection of malicious traffic in a network of computers. A \textit{network intrusion detection system} (NIDS) monitors network traffic within in a network and/or between the network and external hosts for malicious activity or policy violations. This can be either done using a signature based method as mentioned above, or using tools that establish a more contextual understanding of malicious and benign behaviour. Signature-based methods scan network traffic for specific patterns such as byte-sequences or packet sequences, or for the contact to specific IP addresses, and compare them with a database of known malicious signatures and policy violations. Signature-based NIDSs are usually computationally cheap, reliable, and have a very low false-alert rate. However, signatures are not robust to changes in malicious code or execution of intrusions, even small ones. They consequently rely completely on the availability of updated intrusion signatures and are ineffective against undocumented threats. Examples of popular open-source signature-based NIDSs are SNORT and BRO \cite{roesch1999snort,paxson2014bro}.
 
 In order to complement signature-based NIDS are model-based systems that attempt to quantify the differences between malicious and benign activity in a contextual way. Such methods are should therefore be more robust against the evolution of malware and unseen threats. We can distinguish model-based NIDS into \textit{anomaly detection} and \textit{misuse detection}. I will explain the differences between these two approaches in section \ref{Anomaly detection}.
 
 The second part of intrusion detection are \textit{host-based intrusion detection systems} (HIDS), a distinction established by \textbf{Denning} \cite{denning1987intrusion} in 1987. HIDS monitor files and sequences such as operating system calls on individual computers instead of traffic between computers. Host-based systems have the advantage of working with high quality data that   are   typically   very   informative \cite{lazarevic2005intrusion}. NIDS have the advantage of being plattform independent and more resiliant to attacks as detection of an infection is not done on the infected system. In this review, I will focus on work done in the area of network intrusion detection.
+
+
+
+
+
+“
+signature-based intrusion detection
+”
+,
+“
+anomaly-based intrusion
+detection
+”
+,
+“
+biometric-based intrusion detection
+”
+,
+“
+psychometric
+intrusion detection
+”
+, and
+“
+behaviour pro
+fi
+ling
+”
+
 
 
 \chapter{Data}
