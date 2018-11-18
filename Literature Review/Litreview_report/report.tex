@@ -98,13 +98,19 @@ C\&C communication is usually sent over the HTTP or HTTPS protocol as it is wide
 An additional class of networking threats is the \textit{unauthorized surveillance} of network traffic. A local network of computers is usually separated from the outside, with a router establishing the connection between computers in the network and ones outside the network. The traffic exchanged between machines inside the network therefore does not leave the network and is not visible for outsiders. Unauthorised access captures of internal network traffic can give an intruder significant information about the network topology, and even access to sensitive information if a connection is not encrypted. As network surveillance usually does not leave any visible traces in the network, I did not include it in the above listed types of malicious traffic. 
 
 
-\section{Network Intrusion Detection Systems}
+\section{Intrusion Detection Systems and NIDS}
 
-The field of intrusion detection is concerned with the development of methods and tools that identificaty and locate possible intrusions in a computer network.
+The field of intrusion detection is concerned with the development of methods and tools that identify and locate possible intrusions in a computer network. An \textit{intrusion detection system} (IDS) is typically a device or software application that detects malicious activity or policy violations in an automated way by scanning incoming data collected from one or more sources for patterns that a model or a set of rules classifies as malicious.
 
-Intrusion detection comprises several different areas of \textcolor{red}{research}, \textcolor{red}{such as .... depicted in figure ...}. In this work, I will focus on network-based methods that rely on anomaly detection  \textcolor{red}{because it is closest to my PhD?}. For this, I will examine the benefits and drawbacks of different approaches to data processing and subsequent modelling techniques. Additionally, I will examine existing network traffic datasets that are suitable for testing anomy-based methods.
 
-Network intrusion detection refers to the detection of malicious traffic in a network of computers. A \textit{network intrusion detection system} (NIDS) monitors network traffic within in a network and/or between the network and external hosts for malicious activity or policy violations. This can be either done using a signature based method as mentioned above, or using tools that establish a more contextual understanding of malicious and benign behaviour. Signature-based methods scan network traffic for specific patterns such as byte-sequences or packet sequences, or for the contact to specific IP addresses, and compare them with a database of known malicious signatures and policy violations. Signature-based NIDSs are usually computationally cheap, reliable, and have a very low false-alert rate. However, signatures are not robust to changes in malicious code or execution of intrusions, even small ones. They consequently rely completely on the availability of updated intrusion signatures and are ineffective against undocumented threats. Examples of popular open-source signature-based NIDSs are SNORT and BRO \cite{roesch1999snort,paxson2014bro}.
+Intrusion detection is a well researched area, with the first IDSs emerging in the late 1980's. Intrusion detection today comprises a variety of research areas in terms of different types of data sources, system architectures, detection sope, and so forth. Figure \textcolor{red}{bla} provides a broad yet uncomplete overview of these different areas. 
+
+
+
+
+In this work, I will focus on network-based methods that rely on anomaly detection \textcolor{red}{because it is closest to my PhD?}. For this, I will examine the benefits and drawbacks of different approaches to data processing and subsequent modelling techniques. Additionally, I will examine existing network traffic datasets that are suitable for testing anomy-based methods, and I will also give a brief overview of existing surveys and taxonomies.
+
+\textit{Network intrusion detection} refers to the detection of malicious traffic in a network of computers. A \textit{network intrusion detection system} (NIDS) monitors network traffic within in a network and/or between the network and external hosts for malicious activity or policy violations. This can be either done using a signature based method as mentioned above, or using tools that establish a more contextual understanding of malicious and benign behaviour. Signature-based methods scan network traffic for specific patterns such as byte-sequences or packet sequences, or for the contact to specific IP addresses, and compare them with a database of known malicious signatures and policy violations. Signature-based NIDSs are usually computationally cheap, reliable, and have a very low false-alert rate. However, signatures are not robust to changes in malicious code or execution of intrusions, even small ones. They consequently rely completely on the availability of updated intrusion signatures and are ineffective against undocumented threats. Examples of popular open-source signature-based NIDSs are SNORT and BRO \cite{roesch1999snort,paxson2014bro}.
 
 In order to complement signature-based NIDS are model-based systems that attempt to quantify the differences between malicious and benign activity in a contextual way. Such methods are should therefore be more robust against the evolution of malware and unseen threats. We can distinguish model-based NIDS into \textit{anomaly detection} and \textit{misuse detection}. I will explain the differences between these two approaches in section \ref{Anomaly detection}.
 
@@ -513,6 +519,30 @@ A common assumption made when trying to find stepping stones is that packet or f
 \subsection{Semantic-based approaches using different data sources}
 
 Approachs that model semantic or temporal behaviour characteristics have been also been applied on host-based data streams such as \textit{system call logs} or \textit{process logs} as well. As these are mostly symbolic event streams, anomaly detection in principal works similarly as for network traffic. As these data sources have usually a more hierarchical structure of events following each other in a parent-child fashion and therefore do not suffer from overlapping signals, and it is generally easier to identify semantic structures. Notable examples include the use of deterministic automata \cite{warrender1999detecting}, Markov chains \cite{ye2000markov}, hidden Markov models \cite{yeung2003host,hu2009simple}, or \textit{recurrent neural networks}\cite{du2017deeplog}.
+
+
+\chapter{Related work and Conclusion}
+
+\section{Related work}
+
+
+Lazarevic et al. \textcolor{red}{insert citation} provided the first survey on network anomaly detection in 2003. The authors focused primarily on generating a comparitive study by testing different anomaly-based approaches on the DARPA'98 dataset as well as a private collection of network data. In order to compare the gathered results, the authors introduced four different measures to capture the response time, the detection rate, the false positive rate, and the amount of detected malicious connections in an attack burst, of each tested method. 
+
+Tapiador et al. \textcolor{red}{insert citation} in 2004 introduced a first taxonomy of anomaly-based NIDSs, proposing the particular network features analyzed, the type of behavior model, and the temporal scale of analysis as the basic criteria to classify existing methods. The authors concluded that anomaly-based intrusion detection was still a hard problem, and gave several recommendations for future research. 
+
+Similarly, Garcia-Teodoro et al. \textcolor{red}{insert citation} in 2009 classified anomaly-based NIDSs into statistical, knowledge-based, and machine-learning approaches and their respective sub-categories. The authors furthermore discuss available platforms and systems under development, and identify the assessment of anomaly-based methods due to the scarsity of representative datasets as one of the main open issues for network intrusion detection.
+
+Sperotto et al. \textcolor{red}{insert citation}(2010) point out that the individual packet processing may not be possible at real-time due to the amount and speed of incoming traffic. They focus exclusively on flow-based detection methods using either anomaly or misuse methods. However, they discuss existing frameworks with less technical detail than other surveys. 
+
+Bhuyan et al. \textcolor{red}{insert citation} (2014) examine a large number of existing network anomaly detection methods, and additionally provide a brief, but incomplete overview of existing datasets. They classify type of methods and systems in a detailed, however sometimes inconsistent manner. 
+
+Ahmed et al. \textcolor{red}{insert citation} (2016) provide a similar, yet less extensive survey of network anomaly detection techniques. However, the authors provide a more detail discussion of available datasets, pointing out their specific strengths and weaknesses.
+
+
+
+
+
+Sommer and Paxson
 
 
 \section{Conclusion}
