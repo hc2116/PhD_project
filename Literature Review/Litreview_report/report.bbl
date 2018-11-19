@@ -44,10 +44,23 @@ L.~Bernaille, R.~Teixeira, I.~Akodkenou, A.~Soule, and K.~Salamatian.
 \newblock Traffic classification on the fly.
 \newblock {\em ACM SIGCOMM Computer Communication Review}, 36(2):23--26, 2006.
 
+\bibitem{bhuyan_network_2014}
+M.~H. Bhuyan, D.~K. Bhattacharyya, and J.~K. Kalita.
+\newblock Network {Anomaly} {Detection}: {Methods}, {Systems} and {Tools}.
+\newblock {\em IEEE Communications Surveys \& Tutorials}, 16(1):303--336, 2014.
+\newblock 00357.
+
 \bibitem{brownlee1999traffic}
 N.~Brownlee, C.~Mills, and G.~Ruth.
 \newblock Traffic flow measurement: Architecture.
 \newblock Technical report, 1999.
+
+\bibitem{buczak_survey_2016}
+A.~L. Buczak and E.~Guven.
+\newblock A {Survey} of {Data} {Mining} and {Machine} {Learning} {Methods} for
+  {Cyber} {Security} {Intrusion} {Detection}.
+\newblock {\em IEEE Communications Surveys Tutorials}, 18(2):1153--1176, 2016.
+\newblock 00294.
 
 \bibitem{camacho_pca-based_2016}
 J.~Camacho, A.~Pérez-Villegas, P.~García-Teodoro, and G.~Maciá-Fernández.
@@ -55,6 +68,12 @@ J.~Camacho, A.~Pérez-Villegas, P.~García-Teodoro, and G.~Maciá-Fernández.
   detection.
 \newblock {\em Computers \& Security}, 59:118--137, June 2016.
 \newblock 00027.
+
+\bibitem{chandola_anomaly_2009}
+V.~Chandola, A.~Banerjee, and V.~Kumar.
+\newblock Anomaly {Detection}: {A} {Survey}.
+\newblock {\em ACM Comput. Surv.}, 41(3):15:1--15:58, July 2009.
+\newblock 05458.
 
 \bibitem{creech2014developing}
 G.~Creech.
@@ -96,6 +115,12 @@ M.~Du, F.~Li, G.~Zheng, and V.~Srikumar.
 \newblock In {\em Proceedings of the 2017 ACM SIGSAC Conference on Computer and
   Communications Security}, pages 1285--1298. ACM, 2017.
 
+\bibitem{estevez-tapiador_anomaly_2004}
+J.~M. Estevez-Tapiador, P.~Garcia-Teodoro, and J.~E. Diaz-Verdejo.
+\newblock Anomaly detection methods in wired networks: a survey and taxonomy.
+\newblock {\em Computer Communications}, 27(16):1569--1584, Oct. 2004.
+\newblock 00208.
+
 \bibitem{gao_intrusion_2014}
 N.~Gao, L.~Gao, Q.~Gao, and H.~Wang.
 \newblock An {Intrusion} {Detection} {Model} {Based} on {Deep} {Belief}
@@ -108,6 +133,13 @@ N.~Gao, L.~Gao, Q.~Gao, and H.~Wang.
 S.~Garcia, M.~Grill, J.~Stiborek, and A.~Zunino.
 \newblock An empirical comparison of botnet detection methods.
 \newblock {\em computers \& security}, 45:100--123, 2014.
+
+\bibitem{garcia-teodoro_anomaly-based_2009}
+P.~García-Teodoro, J.~Díaz-Verdejo, G.~Maciá-Fernández, and E.~Vázquez.
+\newblock Anomaly-based network intrusion detection: {Techniques}, systems and
+  challenges.
+\newblock {\em Computers \& Security}, 28(1):18--28, Feb. 2009.
+\newblock 00000.
 
 \bibitem{gharib2016evaluation}
 A.~Gharib, I.~Sharafaldin, A.~H. Lashkari, and A.~A. Ghorbani.
@@ -250,6 +282,15 @@ P.~Lamprakis, R.~Dargenio, D.~Gugelmann, V.~Lenders, M.~Happe, and L.~Vanbever.
 \newblock In {\em International Conference on Detection of Intrusions and
   Malware, and Vulnerability Assessment}, pages 366--387. Springer, 2017.
 
+\bibitem{lazarevic_comparative_2003}
+A.~Lazarevic, L.~Ertoz, V.~Kumar, A.~Ozgur, and J.~Srivastava.
+\newblock A {Comparative} {Study} of {Anomaly} {Detection} {Schemes} in
+  {Network} {Intrusion} {Detection}.
+\newblock In D.~Barbara and C.~Kamath, editors, {\em Proceedings of the 2003
+  {SIAM} {International} {Conference} on {Data} {Mining}}, pages 25--36.
+  Society for Industrial and Applied Mathematics, Philadelphia, PA, May 2003.
+\newblock 00843.
+
 \bibitem{lazarevic2005intrusion}
 A.~Lazarevic, V.~Kumar, and J.~Srivastava.
 \newblock Intrusion detection: A survey.
@@ -297,6 +338,20 @@ A.~McGregor, M.~Hall, P.~Lorier, and J.~Brunskill.
 \newblock In {\em International Workshop on Passive and Active Network
   Measurement}, pages 205--214. Springer, 2004.
 
+\bibitem{mitchell_survey_2014}
+R.~Mitchell and I.-R. Chen.
+\newblock A {Survey} of {Intrusion} {Detection} {Techniques} for
+  {Cyber}-physical {Systems}.
+\newblock {\em ACM Comput. Surv.}, 46(4):55:1--55:29, Mar. 2014.
+\newblock 00164.
+
+\bibitem{modi_survey_2013}
+C.~Modi, D.~Patel, B.~Borisaniya, H.~Patel, A.~Patel, and M.~Rajarajan.
+\newblock A survey of intrusion detection techniques in {Cloud}.
+\newblock {\em Journal of Network and Computer Applications}, 36(1):42--57,
+  Jan. 2013.
+\newblock 00465.
+
 \bibitem{moore2005internet}
 A.~W. Moore and D.~Zuev.
 \newblock Internet traffic classification using bayesian analysis techniques.
@@ -325,11 +380,25 @@ J.~Neil, C.~Hash, A.~Brugh, M.~Fisk, and C.~B. Storlie.
   subgraphs.
 \newblock {\em Technometrics}, 55(4):403--414, 2013.
 
+\bibitem{nguyen_survey_2008}
+T.~T.~T. Nguyen and G.~Armitage.
+\newblock A survey of techniques for internet traffic classification using
+  machine learning.
+\newblock {\em IEEE Communications Surveys Tutorials}, 10(4):56--76, 2008.
+\newblock 01138.
+
 \bibitem{nisioti2018intrusion}
 A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
 \newblock From intrusion detection to attacker attribution: A comprehensive
   survey of unsupervised methods.
 \newblock {\em IEEE Communications Surveys \& Tutorials}, 2018.
+
+\bibitem{nisioti_intrusion_2018}
+A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
+\newblock From {Intrusion} {Detection} to {Attacker} {Attribution}: {A}
+  {Comprehensive} {Survey} of {Unsupervised} {Methods}.
+\newblock {\em IEEE Communications Surveys Tutorials}, pages 1--1, 2018.
+\newblock 00000.
 
 \bibitem{noble_real-time_2018}
 J.~Noble and N.~Adams.
@@ -351,9 +420,12 @@ R.~Pang, M.~Allman, M.~Bennett, J.~Lee, V.~Paxson, and B.~Tierney.
 \newblock In {\em Proceedings of the 5th ACM SIGCOMM conference on Internet
   Measurement}, pages 2--2. USENIX Association, 2005.
 
-\bibitem{paxson2014bro}
-V.~Paxson.
-\newblock Bro intrusion detection system (2007), 2014.
+\bibitem{patcha_overview_2007}
+A.~Patcha and J.-M. Park.
+\newblock An overview of anomaly detection techniques: {Existing} solutions and
+  latest technological trends.
+\newblock {\em Computer Networks}, 51(12):3448--3470, Aug. 2007.
+\newblock 01297.
 
 \bibitem{peddabachigari_intrusion_nodate}
 S.~Peddabachigari, A.~Abraham, and J.~Thomas.
@@ -367,6 +439,13 @@ G.~Pellegrino, Q.~Lin, C.~Hammerschmidt, and S.~Verwer.
 \newblock Learning behavioral fingerprints from netflows using timed automata.
 \newblock In {\em Integrated Network and Service Management (IM), 2017
   IFIP/IEEE Symposium on}, pages 308--316. IEEE, 2017.
+
+\bibitem{peng_user_2016}
+J.~Peng, K.-K.~R. Choo, and H.~Ashman.
+\newblock User profiling in intrusion detection: {A} review.
+\newblock {\em Journal of Network and Computer Applications}, 72:14--27, Sept.
+  2016.
+\newblock 00043.
 
 \bibitem{ramadas2003detecting}
 M.~Ramadas, S.~Ostermann, and B.~Tjaden.
@@ -392,11 +471,6 @@ H.~Ringberg, A.~Soule, J.~Rexford, and C.~Diot.
   {SIGMETRICS} '07, pages 109--120, New York, NY, USA, 2007. ACM.
 \newblock 00337.
 
-\bibitem{roesch1999snort}
-M.~Roesch et~al.
-\newblock Snort: Lightweight intrusion detection for networks.
-\newblock In {\em Lisa}, volume~99, pages 229--238, 1999.
-
 \bibitem{saad2011detecting}
 S.~Saad, I.~Traore, A.~Ghorbani, B.~Sayed, D.~Zhao, W.~Lu, J.~Felix, and
   P.~Hakimian.
@@ -417,11 +491,25 @@ I.~Sharafaldin, A.~Gharib, A.~H. Lashkari, and A.~A. Ghorbani.
 \newblock Towards a reliable intrusion detection benchmark dataset.
 \newblock {\em Software Networking}, 2018(1):177--200, 2018.
 
+\bibitem{sommer_outside_2010}
+R.~Sommer and V.~Paxson.
+\newblock Outside the {Closed} {World}: {On} {Using} {Machine} {Learning} for
+  {Network} {Intrusion} {Detection}.
+\newblock In {\em 2010 {IEEE} {Symposium} on {Security} and {Privacy}}, pages
+  305--316, May 2010.
+\newblock 00654.
+
 \bibitem{sony2000traffic}
 C.~Sony and K.~Cho.
 \newblock Traffic data repository at the wide project.
 \newblock In {\em Proceedings of USENIX 2000 Annual Technical Conference:
   FREENIX Track}, pages 263--270, 2000.
+
+\bibitem{sperotto_overview_2010}
+A.~Sperotto, G.~Schaffrath, R.~Sadre, C.~Morariu, A.~Pras, and B.~Stiller.
+\newblock An {Overview} of {IP} {Flow}-{Based} {Intrusion} {Detection}.
+\newblock {\em IEEE Communications Surveys Tutorials}, 12(3):343--356, 2010.
+\newblock 00367.
 
 \bibitem{tavallaee2012nsl}
 M.~Tavallaee, E.~Bagheri, W.~Lu, and A.~A. Ghorbani.
@@ -484,6 +572,13 @@ M.~Whitehouse, M.~Evangelou, and N.~Adams.
   {Conference} on {Intelligence} and {Security} {Informatics}}. IEEE, Nov.
   2016.
 \newblock 00001.
+
+\bibitem{yang_zhang_outlier_2010}
+{Yang Zhang}, N.~Meratnia, and P.~Havinga.
+\newblock Outlier {Detection} {Techniques} for {Wireless} {Sensor} {Networks}:
+  {A} {Survey}.
+\newblock {\em IEEE Communications Surveys \& Tutorials}, 12(2):159--170, 2010.
+\newblock 00605.
 
 \bibitem{ye2000markov}
 N.~Ye et~al.

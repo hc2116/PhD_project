@@ -3,6 +3,8 @@
 %\usepackage[square,authoryear,sort]{natbib}
 \usepackage{url}
 \usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{pdfpages}
 
 \makeatletter
 \def\@makechapterhead#1{%
@@ -98,63 +100,103 @@ C\&C communication is usually sent over the HTTP or HTTPS protocol as it is wide
 An additional class of networking threats is the \textit{unauthorized surveillance} of network traffic. A local network of computers is usually separated from the outside, with a router establishing the connection between computers in the network and ones outside the network. The traffic exchanged between machines inside the network therefore does not leave the network and is not visible for outsiders. Unauthorised access captures of internal network traffic can give an intruder significant information about the network topology, and even access to sensitive information if a connection is not encrypted. As network surveillance usually does not leave any visible traces in the network, I did not include it in the above listed types of malicious traffic. 
 
 
-\section{Intrusion Detection Systems and NIDS}
+\section{Intrusion Detection Systems}
 
 The field of intrusion detection is concerned with the development of methods and tools that identify and locate possible intrusions in a computer network. An \textit{intrusion detection system} (IDS) is typically a device or software application that detects malicious activity or policy violations in an automated way by scanning incoming data collected from one or more sources for patterns that a model or a set of rules classifies as malicious.
 
-
-Intrusion detection is a well researched area, with the first IDSs emerging in the late 1980's. Intrusion detection today comprises a variety of research areas in terms of different types of data sources, system architectures, detection sope, and so forth. Figure \textcolor{red}{bla} provides a broad yet uncomplete overview of these different areas. 
-
+Intrusion detection is a well researched area, with the first IDSs emerging in the late 1980's. Intrusion detection today comprises a variety of research areas in terms of different types of data sources, system architectures, detection sope, and so forth. Figure \ref{graph} provides a broad yet uncomplete overview of these different areas. 
 
 
+\subsubsection*{Implementation}
 
-In this work, I will focus on network-based methods that rely on anomaly detection \textcolor{red}{because it is closest to my PhD?}. For this, I will examine the benefits and drawbacks of different approaches to data processing and subsequent modelling techniques. Additionally, I will examine existing network traffic datasets that are suitable for testing anomy-based methods, and I will also give a brief overview of existing surveys and taxonomies.
+Denning \cite{denning1987intrusion} in 1987 established the notion of two different types IDS implementations: a) host-based and b) network-based. 
+\textit{Host-based intrusion detection systems} (HIDS) monitor each host in a network individually, and rely on local data streams such as application logs or raw operating system calls as  data source. A relatively new form of host-based data sources are biometrik user data such as keystrokes or eye movement, please see \cite{peng_user_2016} for more information.
 
-\textit{Network intrusion detection} refers to the detection of malicious traffic in a network of computers. A \textit{network intrusion detection system} (NIDS) monitors network traffic within in a network and/or between the network and external hosts for malicious activity or policy violations. This can be either done using a signature based method as mentioned above, or using tools that establish a more contextual understanding of malicious and benign behaviour. Signature-based methods scan network traffic for specific patterns such as byte-sequences or packet sequences, or for the contact to specific IP addresses, and compare them with a database of known malicious signatures and policy violations. Signature-based NIDSs are usually computationally cheap, reliable, and have a very low false-alert rate. However, signatures are not robust to changes in malicious code or execution of intrusions, even small ones. They consequently rely completely on the availability of updated intrusion signatures and are ineffective against undocumented threats. Examples of popular open-source signature-based NIDSs are SNORT and BRO \cite{roesch1999snort,paxson2014bro}.
+\textit{Network-based intrusion detection} refers to the detection of malicious traffic in a network of computers. A network intrusion detection system (NIDS) monitors network traffic within in a network and/or between the network and external hosts for malicious activity or policy violations. Network traffic data can take different forms, a more detailled explanation will be provided in Section \ref{traffic}.
 
-In order to complement signature-based NIDS are model-based systems that attempt to quantify the differences between malicious and benign activity in a contextual way. Such methods are should therefore be more robust against the evolution of malware and unseen threats. We can distinguish model-based NIDS into \textit{anomaly detection} and \textit{misuse detection}. I will explain the differences between these two approaches in section \ref{Anomaly detection}.
+\begin{figure}\label{graph}
+\centering
+\includegraphics[scale=0.25]{Graphic2.pdf}
+\caption{A broad overview over different aspects in an IDS}
+\end{figure}
 
-The second part of intrusion detection are \textit{host-based intrusion detection systems} (HIDS), a distinction established by \textbf{Denning} \cite{denning1987intrusion} in 1987. HIDS monitor files and sequences such as operating system calls on individual computers instead of traffic between computers. Host-based systems have the advantage of working with high quality data that   are   typically   very   informative \cite{lazarevic2005intrusion}. NIDS have the advantage of being plattform independent and more resiliant to attacks as detection of an infection is not done on the infected system. In this review, I will focus on work done in the area of network intrusion detection.
-
-
-
-
-
-“
-signature-based intrusion detection
-”
-,
-“
-anomaly-based intrusion
-detection
-”
-,
-“
-biometric-based intrusion detection
-”
-,
-“
-psychometric
-intrusion detection
-”
-, and
-“
-behaviour pro
-fi
-ling
-”
+Host-based systems have the advantage of working with high quality data that   are   typically   very   informative \cite{lazarevic2005intrusion}. NIDS have the advantage of being plattform independent and more resiliant to attacks as detection of an infection is not done on the infected system. In this review, I will focus on work done in the area of network intrusion detection.
 
 
+
+
+
+\subsubsection*{Architecture}
+
+The architecture of an IDS can affect its overall performance, and is therefore an important design aspect in the operational deployment of IDSs. The decentralised topology of computer networks usually means that data is collected from multiple sensors or hosts across the network. The processing of the collecting can be done in three different ways:
+
+Centralised IDSs gather all collected data to a central processing unit,  where  the 
+analysis of the collected data and the detection take place. This unit then has complete information about the network, however the lack of scalability makes these systems less common. 
+
+Decentralised systems follow a hierarchical structure. Sensors sent data to the closest processing unit, which pre-processes the data before sending it to the main processing unit. This way, workload is reduced at the central unit, and
+the scalability problems can be avoided, but not fully overcome. 
+
+Distributed IDS consist of multiple autonomous units that process incoming data. Processing and evaluation for malicious activity are done independently from a main unit. Individual units can communicate with each other to identify network-wide anomalies.
+
+
+\subsubsection*{Detection methods}
+
+Detection methods are the core of an IDS, and are therefore the most important design choice. Traditionally, two broad types of detection approaches are identified: a) Misuse detection and b) anomaly detection. 
+
+Misuse detection aims at detecting a particular and well known reoccurring characteristic or pattern of a malicious behaviour. Two simple examples of such a characteristic are the large number of SYN packets sent by a host in a DoS attack, and the synchronised connection of many hosts to one server in a botnet. In misuse detection, abnormal or malicious behaviour is therefore defined first before developing a model to distinguish the defined behaviour from other traffic.
+
+In contrast, anomaly detection aims at building a model of normal system behaviour that is accurate enough to spot any malicious behaviour as traffic that deviates from the estimated model. Anomaly detection is principally more difficult than misuse detection since the traffic model has to incorporate potentially very heterogenuous traffic behaviours. However, it is generally acknowledged that anomaly detectionhas is more suitable to detect new and previously unseen malicious behaviour as it makes no definite assumptions on the anomalous behaviour. Misuse detection is robust against evolution of malware as long as defined malicious behaviours do not change.
+
+In reality, anomaly and misuse detection are not necessarily mutually exclusive, and there is a fluent passage between the two. This is because many anomaly detection approaches choose a particular set of features to be modelled with a particular threat in mind. For instance, models for the number of connections of a machine are naturally suitable for detecting DoS attacks, port scans, or Worm attacks. 
+
+As misuse detection detection methods are aimed at detecting very specific behaviour, they usually only detect one type of malicious traffic. Areas that have been researched particularly well include botnet C\&C channel detection, DoS attack detection, and port scan detection. Areas that lack a comprehensive body of research are different types of R2L and U2R attacks. These are also currently the least   detected   attack   classes \cite{nisioti2018intrusion}.
+
+\section{Scope of this work}
+
+As my PhD-project is aimed at developing more general methods that are capable of detecting new types malicious behaviour, this review will focus mainly on anomaly detection methods. Specifically, I will look at \textbf{anomaly-based network intrusion detection}. I will however cover some areas of misuse detection if the employed methods have a potential applications to anomaly detection methods.
+
+
+I will identify different classes of feature generation from network traffic and examine the benefits and drawbacks of each class. I will then proceed to review significant methods in each of the identified classes. Additionally, I will examine existing network traffic datasets that are suitable for testing anomy-based methods, and I will also give a brief overview of existing surveys and taxonomies. I will then conclude my results and briefly discuss implications for my PhD-project.
 
 \chapter{Data}
 
-Computers in a network communicate with each other by sending one or multiple packets that contain the transmitted information. Apart from the payload, each packet has a header that contains the necessary information for the correct transmission of the packet, including the source and destination IP addresses and network ports\footnote{A network port is a number that identifies which service or application is responsible for the processing of incoming packets.}, the transmission protocol (such as TCP, UDP, or ICMP), the size of the packet, and protocol-specific fields. \textbf{Raw packets} can be captured and saved in the widespread \textit{pcap} format. 
+\section{Network traffic}\label{traffic}
+
+
+
+Computers in a network mostly communicate with each other by sending \textit{network packets} to each other, in which the transmitted information is encapsulated. Each network packet is split into the control information, also called packet header, and the user information, called payload. The packet header contains the necessary information for the correct transmission of the packet, including the transmission protocol layer (such as TCP, UDP, or ICMP), and the source and destination IP addresses and network ports\footnote{A network port is a number that identifies which service or application is responsible for the processing of incoming packets.}. It furthermore contains error-checking fields suchs as the size of the packet and a checksum over the payload, and protocol-specific fields. 
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.4]{tcp_header.png}
+\caption{Typical format of a TCP packet. Source:\scriptsize{ https://www.lifewire.com/tcp-headers-and-udp-headers-explained-817970}\normalsize}
+\end{figure}
+
+
+The payload of a packet is in general the data that is carried on behalf of an application. It can be of variable length, however, it cannot exceed the maximum packet length set by the network protocol. In contrast to the packet header, the payload can be encrypted, a technique that makes it unreadable to any third parties and that is becoming increasingly common in modern computer networks. 
+
+
+While traversing between to parties, a network packet can pass multiple connecting devices which direct the packet in the right direction. Any device in the immediate circuit traversed by a packet can capture and store it. In a monitoring setting, packets are usually captured by network routers and stored in the widespread \textit{pcap} format. In case of space shortage or privacy concerns, the payload of a packet can be dropped in the saving process.
 
 
 Another more structured way of capturing network traffic is based on connection summaries, or \textbf{network flows}. RFC 3697 \cite{brownlee1999traffic} defines a network flow as a sequence of packets that share the same source and destination IP address, IP protocol, and for TCP and UDP connections the same source and destination port. A network flow is usually saved containing these informations along with the start and duration of the connection and the number of packets and bytes transferred in the connection.
 
 
-Raw packets grant full information about the connection, but take a lot of space when stored, whereas network flows give a more structured and lightweight overview over the traffic in a network. 
+\begin{figure}[h!]
+\scriptsize
+\centering
+\begin{verbatim}
+ Date flow start        Duration Proto  Src IP Addr:Port      Dst IP Addr:Port   Packets  Bytes Flows
+ 2010-09-01 00:00:00.459   0.000 UDP    127.0.0.1:24920   ->  192.168.0.1:22126      1     46     1
+ 2010-09-01 00:00:00.363   0.000 UDP    192.168.0.1:22126 ->  127.0.0.1:24920        1     80     1
+\end{verbatim}
+\normalsize
+\caption{A typical network flow output}
+\end{figure}
+
+
+Raw packets grant full information about the connection, but take a lot of space when stored, whereas network flows give a more structured and lightweight overview over the traffic in a network. Both data formats are used widely by NIDSs.
 
 \section{Existing datasets}
 
@@ -176,7 +218,7 @@ As described in a recent survey by \textbf{Ahmed et al.} \cite{ahmed2016survey},
 
 \end{enumerate}
 
-I will now describe the properties of existing datasets suitable for network intrusion detection. As this review is primarily concerned with anomaly detection models that require benign network traffic, I did not include datasets such as honeypots that mostly contain malicious traffic. A description that includes such datasets can be found in the mentioned survey by Ahmed et al. \cite{ahmed2016survey}.
+I will now describe the properties of existing datasets suitable for network intrusion detection. As this review is primarily concerned with anomaly detection models that require benign network traffic, I did not include datasets such as honeypots that mostly contain malicious traffic. A description that includes such datasets can be found in the below described survey by Ahmed et al. \cite{ahmed2016survey}.
 
 
 
@@ -288,41 +330,25 @@ The \textit{Impact Cyber Trust} releases cyber security oriented data. Its repos
 Among the more useful datasets are the \textit{USC datasets}\footnote{DS-062, LANDER Data, and DS-266}, which contain network traffic (both \textbf{packet headers} and \textbf{network flows}) from academic networks in the US between 2008 and 2010. The datasets are very large, with the largest one covering 48 hours and containing 357 GB of packet headers. 
 
 
-\chapter{Anomaly detection and literature}\label{Anomaly detection}
+\chapter{Methods and Systems for Network Anomaly Detection}\label{Anomaly detection}
 
-Existing literature in the field of network intrusion detection can be divided into two approaches: 
+\section{Feature generation}
 
-\begin{itemize}
-\item \textbf{Misuse detection}
-\item \textbf{Anomaly detection}
-\end{itemize} 
+Anomaly-based intrusion detection moved into the focus of researchers at the end of the 1990s, with many advances and new ideas being implemented between 1998 and 2005. Anomaly detection methods often rely heavily on tools from the area of machine learning and statistics in order to generate quantitative models for normal traffic from large amounts of data. A challenge for researchers is that network traffic data, both in the form of packet headers or network flows, is a mix of continuous and categorical variables, with the latter often having an immense number of categories. Furthermore, the data has a temporal aspect, which is however only incorporated by a few authors. 
+
+Many existing surveys \cite{ahmed2016survey,buczak_survey_2016,bhuyan_network_2014} distinguish anomaly-based approaches directly according to the area the method is borrowed from, e.g. into statistical, supervised, unsupervised methods and so forth. 
+However, this neglects an aspect that should be the primary decision factor for which method or model to use: Feature engineering. As network traffic is itself not a data format, it is necessary to generate meaningful features from it. The type of features is crucial for accurateness of traffic representation and ultimately for the types of malicious activity that can be discovered. 
 
 
-Misuse detection aims at detecting a particular and well known reoccurring characteristic or pattern of a malicious behaviour. Two simple examples of such a characteristic are the large number of SYN packets sent by a host in a DoS attack, and the synchronised connection of many hosts to one server in a botnet. In misuse detection, abnormal or malicious behaviour is therefore defined first before developing a model to distinguish the defined behaviour from other traffic.
-
-In contrast, anomaly detection aims at building a model of normal system behaviour that is accurate enough to spot any malicious behaviour as traffic that deviates from the estimated model. Anomaly detection is principally more difficult than misuse detection since the traffic model has to incorporate potentially very heterogenuous traffic behaviours. However, it is generally acknowledged that anomaly detectionhas is more suitable to detect new and previously unseen malicious behaviour as it makes no definite assumptions on the anomalous behaviour. Misuse detection is robust against evolution of malware as long as defined malicious behaviours do not change.
-
-In reality, anomaly and misuse detection are not necessarily mutually exclusive, and there is a fluent passage between the two. This is because many anomaly detection approaches choose a particular set of features to be modelled with a particular threat in mind. For instance, models for the number of connections of a machine are naturally suitable for detecting DoS attacks, port scans, or Worm attacks. 
-
-As misuse detection detection methods are aimed at detecting very specific behaviour, they usually only detect one type of malicious traffic. Areas that have been researched particularly well include botnet C\&C channel detection, DoS attack detection, and port scan detection \textcolor{red}{citation here?}. Areas that particularly lack a comprehensive body of research are different types of R2L and U2R attacks. These are also currently the least   detected   attack   classes \cite{nisioti2018intrusion}.
-
-As my PhD-project is aimed at developing more general methods that are capable of detecting new types malicious behaviour, this review will focus mainly on anomaly detection methods. I will however cover some areas of misuse detection if there are potential applications to anomaly detection methods.
-
-\section{Anomaly detection}
-
-Anomaly-based intrusion detection moved into the focus of researchers at the end of the 1990s, with many advances and new ideas being implemented between 1998 and 2005. Anomaly detection methods often rely heavily on tools from the area of machine learning and statistics in order to generate  models for normal traffic from large amounts of data. A challenge for researchers is that network traffic data, both in the form of packet headers or network flows, is a mix of continuous and categorical variables, with the latter often having an immense number of categories. Furthermore, the data has a temporal aspect, which is however only incorporated by a few authors. I separate existing detection methods into four different classes, depending on how the authors process the data: 
+While surveying existing literature, I identified four different classes of detection methods, depending on how the authors incorporate traffic features: 
 
 \begin{itemize}
-\item Payload-based methods,
-\item traffic aggregation-based methods,
+\item Traffic aggregation-based methods,
 \item event-based methods,
 \item and methods that incorporate the temporal structure of network events.
 \end{itemize}
 
-Payload-based methods inspect the payload contained in individual packets, and therefore can only be applied to unencrypted traffic. Nowadays, encryption becomes more and more the standard in the way we communicate over the internet \textcolor{red}{citation needed?}, and I will generally assume that no unencrypted traffic is available for my PhD-project. I will therefore not cover any methods that primarily rely on payload inspection.
-
-
-%\subsection{Payload-based approaches}
+Iwill now explain the nature of the different classes and analyse anomaly-based methods in each class. It is important to mention that I neglected methods that are based on \textbf{payload inspection}, which form themselves another class of detection methods. However, payload-based methods are dependent on unencrypted traffic and are often seen as to computationally expensive for a successfull deployment in real networks. As encryption becomes more and more the standard in the way we communicate over the internet, I will not discuss payload-based methods in this work and instead generally assume that no unencrypted traffic is available for my PhD-project.
 
 \section{Approaches based on Volume or Traffic Aggregation}
 
@@ -367,9 +393,6 @@ It is clear that any approach that looks exclusively at the traffic volume eithe
 
 
 \subsection{Other}
-
-%\textbf{Zhang et al. }\cite{zhang2001hide} 
-
 
 \textbf{Kind et al.} \cite{kind2009histogram} proposed a network-wide detection approach that is based on traffic histograms and clustering to identify and model substructures in normal traffic for better anomaly detection. A number of different traffic quantities are divided into a fixed number of subgroups, such intervals of IP-addresses or network ports, bins of packet sizes or connection durations, or the different TCP flags in a connection. For every different feature, authors create histograms measuring the number of events occuring in each subgroup during a 5-minute interval. Histograms are monitored over a period of time without any malicious activity in order to gather a collection of training histograms. After removing subgroups that remain, each traffic feature is then divided into clusters using the Mahalanobis-distance measure as a similarity metric between histograms and either hierarchical or $k$-means clustering. Anomalies in individual traffic features can then be detected as histograms with distances from the nearest cluster that exceed a certain treshold. Evaluation is conducted with an unnamed dataset containing 15 labeled attack, containing DoS attacks, worm propagation and network scanning, and network-wide system fingerprinting, and mail bombs, of which 13 were detected. Unsurprisingly, the two undetected attacks addressed fewer machines and thus consisted of less traffic. In general, this approach indivates a great improvement from the previous approaches as it is the first significant attempt at discovering substructures in aggregated traffic, which generally grants a better detection of non-trivial anomalies. An interesting improvement would be to correlate simultaneous outliers in different features using a variant of hypothesis tests as a lower anomaly treshold could be used.
 
@@ -444,6 +467,8 @@ Lin et al. \cite{lin2015cann} recently developed a clustering based framework fo
 Clustering of network events is related to traffic classification in that different traffic generator classes which influence the observed event features are assumed to exist. As I mentioned above, raw network events such as flows are not overly rich in features and are thus limited in the amount of traffic structure they can convey. Anomaly detection techniques that rely on clustering can benefit from the data mining techniques developed in the area of traffic classification, which is why I will include some noteworthy results here. 
 
 In 2004, \textbf{McGregor et al.} \cite{mcgregor2004flow} published one of the earliest works on network traffic clustering. They use a probabilistic method, the \textit{Gaussian mixture model} (GMM), in order to estimate the position and the width of a small number of clusters. As this approach is based on the likelihood of the datapoints in a Gaussian model, it is possible to estimate the number of clusters using GMMs, a big advantage over most other methods were the number of clusters has to be chosen manually. 
+
+\subsubsection*{Traffic Classification and its relation to Clustering}
 
 An important assumptions the authors make is that there can be several quite distinct classes of traffic within individual protocols, and that these classes can themselve be spread accross more than one port or protocol. The usual numeric features of network flows, the number of bytes and packets and the duration of the connection, are extended by statistics\footnote{mean, first five modes, minimum and maximum, and quartiles} of the packet sizes and the interarrival times of packets and the idle time which is the cumulated interarrival times exceeding two seconds. Furthermore, the notion of transaction and bulk mode of a connection is established, with the latter denoting more than three successive packets being sent in one direction, and the number of transitions between the two are recorded. A GMM is then trained using standard expectation maximisation, and 6 different well-separated clusters of traffic are identified and described. It is however questionable how representative 6 clusters are for the variety of network traffic, and how accurate the assumption of Gaussian distributions for such a small number of clusters is. \textit{Zander et al.} \cite{zander2005automated} in 2005 use a very similar approach with a slightly more sophisticated probabilistic clustering method. The concept of extracting packet size and interarrival statistics as additional flow features is also used in classifier-based appraoches to traffic classification, most notably \textbf{Moore et al.} \cite{auld2007bayesian,moore2005internet} with classification accuracies up to $99\%$ using a Bayesian neural network. Remarkably, accuracy only decreases to $95\%$ when testing applications eight months apart.
 
@@ -525,31 +550,33 @@ Approachs that model semantic or temporal behaviour characteristics have been al
 
 \section{Related work}
 
-Lazarevic et al. \textcolor{red}{insert citation} provided the first survey on network anomaly detection in 2003. The authors focused primarily on generating a comparitive study by testing different anomaly-based approaches on the DARPA'98 dataset as well as a private collection of network data. In order to compare the gathered results, the authors introduced four different measures to capture the response time, the detection rate, the false positive rate, and the amount of detected malicious connections in an attack burst, of each tested method. 
+Lazarevic et al. \cite{lazarevic_comparative_2003} provided the first survey on network anomaly detection in 2003. The authors focused primarily on generating a comparitive study by testing different anomaly-based approaches on the DARPA'98 dataset as well as a private collection of network data. In order to compare the gathered results, the authors introduced four different measures to capture the response time, the detection rate, the false positive rate, and the amount of detected malicious connections in an attack burst, of each tested method. 
 
-Estevez-Tapiador et al. \textcolor{red}{insert citation} in 2004 introduced a first taxonomy of anomaly-based NIDSs, proposing the particular network features analyzed, the type of behavior model, and the temporal scale of analysis as the basic criteria to classify existing methods. The authors concluded that anomaly-based intrusion detection was still a hard problem, and gave several recommendations for future research. 
+Estevez-Tapiador et al. \cite{garcia-teodoro_anomaly-based_2009} in 2004 introduced a first taxonomy of anomaly-based NIDSs, proposing the particular network features analyzed, the type of behavior model, and the temporal scale of analysis as the basic criteria to classify existing methods. The authors concluded that anomaly-based intrusion detection was still a hard problem, and gave several recommendations for future research. 
 
-Similarly, Garcia-Teodoro et al. \textcolor{red}{insert citation} in 2009 classified anomaly-based NIDSs into statistical, knowledge-based, and machine-learning approaches and their respective sub-categories. The authors furthermore discuss available platforms and systems under development, and identify the assessment of anomaly-based methods due to the scarsity of representative datasets as one of the main open issues for network intrusion detection.
+Similarly, Garcia-Teodoro et al. \cite{estevez-tapiador_anomaly_2004} in 2009 classified anomaly-based NIDSs into statistical, knowledge-based, and machine-learning approaches and their respective sub-categories. The authors furthermore discuss available platforms and systems under development, and identify the assessment of anomaly-based methods due to the scarsity of representative datasets as one of the main open issues for network intrusion detection.
 
-Sperotto et al. \textcolor{red}{insert citation}(2010) point out that the individual packet processing may not be possible at real-time due to the amount and speed of incoming traffic. They focus exclusively on flow-based detection methods using either anomaly or misuse methods. However, they discuss existing frameworks with less technical detail than other surveys. 
+Patcha and Park \cite{patcha_overview_2007} in 2007 produced a well-cited survey discussing existing anomaly-based solutions and future trends. The authors discuss the general benefits and drawbacks of anomaly detection for finding "zero day attacks", and proceed to focus on the technical realisability of individual methods and point. Additionally, several technical problems identified by the authors such as high false alert rates and scalability are discussed, and the authors give an outlook to future challenges and developments.
 
-Bhuyan et al. \textcolor{red}{insert citation} (2014) examine a large number of existing network anomaly detection methods, and additionally provide a brief, but incomplete overview of existing datasets. They classify type of methods and systems in a detailed, however sometimes inconsistent manner. The authors also present capturing methods,  different 
+Sperotto et al. \cite{sperotto_overview_2010}(2010) point out that the individual packet processing may not be possible at real-time due to the amount and speed of incoming traffic. They focus exclusively on flow-based detection methods using either anomaly or misuse methods. However, they discuss existing frameworks with less technical detail than other surveys. 
+
+Bhuyan et al. \cite{bhuyan_network_2014} (2014) examine a large number of existing network anomaly detection methods, and additionally provide a brief, but incomplete overview of existing datasets. They classify type of methods and systems in a detailed, however sometimes inconsistent manner. The authors also present capturing methods,  different 
 metrics, attack types
 
-Ahmed et al. \textcolor{red}{insert citation} (2016) provide a similar, yet less extensive survey of network anomaly detection techniques. However, the authors provide a more detail discussion of available datasets, pointing out their specific strengths and weaknesses. They also discuss some datasets that are more directed towards testing misuse-based methods rather than anomaly-based ones. 
+Ahmed et al. \cite{ahmed2016survey} (2016) provide a similar, yet less extensive survey of network anomaly detection techniques. However, the authors provide a more detail discussion of available datasets, pointing out their specific strengths and weaknesses. They also discuss some datasets that are more directed towards testing misuse-based methods rather than anomaly-based ones. 
 
-Nisioti et al. \textcolor{red}{insert citation} this year produced a survey on feature selection methods unsupervised detection methods in network intrusion detection,. The authors furthermore discuss the potential evolution of current IDS architectures to include correlation of different data sources and to improve attack attribution. The authors also provide a new taxonomy of network attack classes which is adopted in this work. Lastly, the authors provide a discussion of available datasets similar to Ahmed et al.
+Nisioti et al. \cite{nisioti_intrusion_2018} this year produced a survey on feature selection methods unsupervised detection methods in network intrusion detection,. The authors furthermore discuss the potential evolution of current IDS architectures to include correlation of different data sources and to improve attack attribution. The authors also provide a new taxonomy of network attack classes which is adopted in this work. Lastly, the authors provide a discussion of available datasets similar to Ahmed et al.
 
 
-Buczak et al. \textcolor{red}{insert citation} (2016) produced a comparative survey of representative machine learning and data mining methods used in intrusion detection.  Their evaluation is based on the citation number and  the  relevancy of a publication.  The authors also give background information of the field and compare different methods. Finally, the authors also discuss the  significant  problems  in intrusion detection, particularly the collection of labelled data for re-training of classifiers and misuse methods.
+Buczak et al. \cite{buczak_survey_2016} (2016) produced a comparative survey of representative machine learning and data mining methods used in intrusion detection.  Their evaluation is based on the citation number and  the  relevancy of a publication.  The authors also give background information of the field and compare different methods. Finally, the authors also discuss the  significant  problems  in intrusion detection, particularly the collection of labelled data for re-training of classifiers and misuse methods.
 
-Several surveys discuss anomaly-based intrusion detection methods in specific environments such as wireless sensor networks, mobile ad hoc networks, or cloud service providers. Notable contributions come from Zhang et al., Mishra et al., Modi et al., and Anantvalee et al.
+Several surveys discuss anomaly-based intrusion detection methods in specific environments such as wireless sensor networks, mobile ad hoc networks, or cloud service providers. Notable contributions come from Zhang et al. \cite{yang_zhang_outlier_2010}, Modi et al. \cite{modi_survey_2013}, and Mitchell et al. \cite{mitchell_survey_2014}.
 
-Chandola et al.  \textcolor{red}{insert citation} (2009) provide a very-well cited and in my eyes the most comprehensive survey on general anomaly detection methods. They distinguish three classes of anomalies, namely point anomalies, group anomalies, and contextual anomalies. The authors then discuss a variety of techniques including the individual strengths and weaknesses, and compare them in terms of computational complexity and training time. Several applications of anomaly detection, including intrusion detection, are briefly discussed. 
+Chandola et al. \cite{chandola_anomaly_2009} (2009) provide a very-well cited and in my eyes the most comprehensive survey on general anomaly detection methods. They distinguish three classes of anomalies, namely point anomalies, group anomalies, and contextual anomalies. The authors then discuss a variety of techniques including the individual strengths and weaknesses, and compare them in terms of computational complexity and training time. Several applications of anomaly detection, including intrusion detection, are briefly discussed. 
 
-Sommer and Paxson \textcolor{red}{insert citation} in 2010 provided a notable discussion of the application of anomaly detection and machine learning in network intrusion detection. In particular, the assumption that anomaly detection is suitable for finding novel attacks is examined and criticised. The authors identify the diversity and variability of network traffic, models lacking a semantic grasp of attacks, and a too wide scope for individual methods as problems that prevent the application of anomaly detection from being applied in operational settings with more success. They proceed to give recommendations for future research, among them to rely on the strength of machine learning in true classification for identifying evolutions of malware, and focusing on reducing false positives in anomaly detection.
+Sommer and Paxson \cite{sommer_outside_2010} in 2010 provided a notable discussion of the application of anomaly detection and machine learning in network intrusion detection. In particular, the assumption that anomaly detection is suitable for finding novel attacks is examined and criticised. The authors identify the diversity and variability of network traffic, models lacking a semantic grasp of attacks, and a too wide scope for individual methods as problems that prevent the application of anomaly detection from being applied in operational settings with more success. They proceed to give recommendations for future research, among them to rely on the strength of machine learning in true classification for identifying evolutions of malware, and focusing on reducing false positives in anomaly detection.
 
-Lastly, Nguyen et al. \textcolor{red}{insert citation} (2008) provide a comprehensive survey of IP traffic classification using machine learning techniques. The authors provide  context  and motivation  for the  application of  traffic  classification, and discuss 18 significant works from the dominant period between 2004 and 2007. Methods are categorised according to their strategies, and are compared against a set of identifed requirements for the successful employment of ML in traffic classification. 
+Lastly, Nguyen et al. \cite{nguyen_survey_2008} (2008) provide a comprehensive survey of IP traffic classification using machine learning techniques. The authors provide  context  and motivation  for the  application of  traffic  classification, and discuss 18 significant works from the dominant period between 2004 and 2007. Methods are categorised according to their strategies, and are compared against a set of identifed requirements for the successful employment of ML in traffic classification. 
 
 
 
@@ -562,7 +589,13 @@ In a nutshell, existing methods achieve mixed results upon detecting malicious a
 
 Detection rates for other types of malicious traffic are however not as convincing. This most visible for event-based methods. As these are directed towards point anomaly detection, it should be expected that they are most suitable for the detection of intrusions that consist of individual malicious packets or flows like buffer overflow attacks or code injections. Most methods however were tested on the KDD'99 dataset, which has received significant criticism for allowing unrealistic detection rates. Those methods tested on more realistic datasets surprisingly achieved the highest detection rates for DoS attacks and network probing.  Right now, methods from the area of misuse detection offer better and more reliable solutions for the detection of botnets and data manipulation attacks.
 
-The two areas were I see the most room for significant advances are more sophisticated feature mining techniques for network flows, and models that capture temporal or semantic substructures in network events. Both are areas have been overlooked by NIDS researchers and offer in my eyes new ways for the accurate quantification of application behaviour.
+The two areas were I see the most room for significant advances are more sophisticated feature mining techniques for network flows, and models that capture temporal or semantic substructures in network events. Network flows are a structured quantity and give a better representation of the communication between two parties than individual packets. However, as I described in this work, currently generated flows are not rich in features and do not contain any information about the temporal or semantic structure of the communication. 
+
+Similarly, little attention has been paid so far at understanding the temporal correlation of individual flows for intrusion detection. However, it has already been shown \cite{yen2009browser} that programs create multiple flows in a distinct manner. Gathering information about this semantic structure of generated flows can be used to create narrow semantic profiles of host machines.
+
+Both of the described areas have been overlooked by NIDS researchers and are in my eyes necessary to build more meaningful representations of modern network traffic.
+
+
 
 %of attacks that generate collective
 

@@ -292,7 +292,7 @@ Disadvantages:
   + Finding the right model that holds is difficult
   + Hypothesis tests for high-dimensional data is nontrivial
   + Effective only when dimensionality is low 
-  
+
 ##### Information theoretic techniques
 
 + Assumption: Anomalies in data induce irregularities in the information content of the data set
