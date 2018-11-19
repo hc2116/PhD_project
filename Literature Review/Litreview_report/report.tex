@@ -525,24 +525,33 @@ Approachs that model semantic or temporal behaviour characteristics have been al
 
 \section{Related work}
 
-
 Lazarevic et al. \textcolor{red}{insert citation} provided the first survey on network anomaly detection in 2003. The authors focused primarily on generating a comparitive study by testing different anomaly-based approaches on the DARPA'98 dataset as well as a private collection of network data. In order to compare the gathered results, the authors introduced four different measures to capture the response time, the detection rate, the false positive rate, and the amount of detected malicious connections in an attack burst, of each tested method. 
 
-Tapiador et al. \textcolor{red}{insert citation} in 2004 introduced a first taxonomy of anomaly-based NIDSs, proposing the particular network features analyzed, the type of behavior model, and the temporal scale of analysis as the basic criteria to classify existing methods. The authors concluded that anomaly-based intrusion detection was still a hard problem, and gave several recommendations for future research. 
+Estevez-Tapiador et al. \textcolor{red}{insert citation} in 2004 introduced a first taxonomy of anomaly-based NIDSs, proposing the particular network features analyzed, the type of behavior model, and the temporal scale of analysis as the basic criteria to classify existing methods. The authors concluded that anomaly-based intrusion detection was still a hard problem, and gave several recommendations for future research. 
 
 Similarly, Garcia-Teodoro et al. \textcolor{red}{insert citation} in 2009 classified anomaly-based NIDSs into statistical, knowledge-based, and machine-learning approaches and their respective sub-categories. The authors furthermore discuss available platforms and systems under development, and identify the assessment of anomaly-based methods due to the scarsity of representative datasets as one of the main open issues for network intrusion detection.
 
 Sperotto et al. \textcolor{red}{insert citation}(2010) point out that the individual packet processing may not be possible at real-time due to the amount and speed of incoming traffic. They focus exclusively on flow-based detection methods using either anomaly or misuse methods. However, they discuss existing frameworks with less technical detail than other surveys. 
 
-Bhuyan et al. \textcolor{red}{insert citation} (2014) examine a large number of existing network anomaly detection methods, and additionally provide a brief, but incomplete overview of existing datasets. They classify type of methods and systems in a detailed, however sometimes inconsistent manner. 
+Bhuyan et al. \textcolor{red}{insert citation} (2014) examine a large number of existing network anomaly detection methods, and additionally provide a brief, but incomplete overview of existing datasets. They classify type of methods and systems in a detailed, however sometimes inconsistent manner. The authors also present capturing methods,  different 
+metrics, attack types
 
-Ahmed et al. \textcolor{red}{insert citation} (2016) provide a similar, yet less extensive survey of network anomaly detection techniques. However, the authors provide a more detail discussion of available datasets, pointing out their specific strengths and weaknesses.
+Ahmed et al. \textcolor{red}{insert citation} (2016) provide a similar, yet less extensive survey of network anomaly detection techniques. However, the authors provide a more detail discussion of available datasets, pointing out their specific strengths and weaknesses. They also discuss some datasets that are more directed towards testing misuse-based methods rather than anomaly-based ones. 
+
+Nisioti et al. \textcolor{red}{insert citation} this year produced a survey on feature selection methods unsupervised detection methods in network intrusion detection,. The authors furthermore discuss the potential evolution of current IDS architectures to include correlation of different data sources and to improve attack attribution. The authors also provide a new taxonomy of network attack classes which is adopted in this work. Lastly, the authors provide a discussion of available datasets similar to Ahmed et al.
 
 
+Buczak et al. \textcolor{red}{insert citation} (2016) produced a comparative survey of representative machine learning and data mining methods used in intrusion detection.  Their evaluation is based on the citation number and  the  relevancy of a publication.  The authors also give background information of the field and compare different methods. Finally, the authors also discuss the  significant  problems  in intrusion detection, particularly the collection of labelled data for re-training of classifiers and misuse methods.
+
+Several surveys discuss anomaly-based intrusion detection methods in specific environments such as wireless sensor networks, mobile ad hoc networks, or cloud service providers. Notable contributions come from Zhang et al., Mishra et al., Modi et al., and Anantvalee et al.
+
+Chandola et al.  \textcolor{red}{insert citation} (2009) provide a very-well cited and in my eyes the most comprehensive survey on general anomaly detection methods. They distinguish three classes of anomalies, namely point anomalies, group anomalies, and contextual anomalies. The authors then discuss a variety of techniques including the individual strengths and weaknesses, and compare them in terms of computational complexity and training time. Several applications of anomaly detection, including intrusion detection, are briefly discussed. 
+
+Sommer and Paxson \textcolor{red}{insert citation} in 2010 provided a notable discussion of the application of anomaly detection and machine learning in network intrusion detection. In particular, the assumption that anomaly detection is suitable for finding novel attacks is examined and criticised. The authors identify the diversity and variability of network traffic, models lacking a semantic grasp of attacks, and a too wide scope for individual methods as problems that prevent the application of anomaly detection from being applied in operational settings with more success. They proceed to give recommendations for future research, among them to rely on the strength of machine learning in true classification for identifying evolutions of malware, and focusing on reducing false positives in anomaly detection.
+
+Lastly, Nguyen et al. \textcolor{red}{insert citation} (2008) provide a comprehensive survey of IP traffic classification using machine learning techniques. The authors provide  context  and motivation  for the  application of  traffic  classification, and discuss 18 significant works from the dominant period between 2004 and 2007. Methods are categorised according to their strategies, and are compared against a set of identifed requirements for the successful employment of ML in traffic classification. 
 
 
-
-Sommer and Paxson
 
 
 \section{Conclusion}

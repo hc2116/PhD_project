@@ -102,7 +102,7 @@ Recommendations:
   + "What can it detect, and why? What can it not detect, and why not? How reliably does it operate? Where does it break? In our experience, the #1 reason that conference submissions on anomaly detection fail arises from a failure to adequately explore these issues"
 
 
-+ The observation that machine learning works much better for such true classification problems then leads to the conclusion that anomaly detection is likely in fact better suited for finding variations of known attacks , rather than previously unknown malicious act ivity. In such settings, one can train the system with specimens of the attacks as they are known and with normal background traffic, and thus achieve a much more reliable decision process
++ The observation that machine learning works much better for such true classification problems then leads to the conclusion that anomaly detection is likely in fact better suited for finding variations of known attacks , rather than previously unknown malicious activity. In such settings, one can train the system with specimens of the attacks as they are known and with normal background traffic, and thus achieve a much more reliable decision process
 
 
 + Likely the most important step towards fewer mistakes is reducing the system’s scope
