@@ -1,12 +1,40 @@
 
 http://web.inf.ed.ac.uk/infweb/student-services/igs/phd/year-timelines/year-1
 
+
 Research Topic:
-	- Research Topic: What is the problem? Why is it interesting? What has already been done by other people to address it? Why are these existing approaches / solutions inadequate?  
+	- Research Topic: 
+
+		- What is the problem? Why is it interesting? 
+
+		   General description of problem of intrusion detection, maybe describe benefits of NIDS compared to IDS and benefits of Anomaly detection compared to Misuse detection
+		   Could be done by extending the introduction of research proposal for problem description and why it is interesting, and then extending the systems section a bit for anomaly vs misuse and NIDS compared to HIDS
+
+		- What has already been done by other people to address it? 
+
+		    Literature review here
+		- Why are these existing approaches / solutions inadequate?  
+
+		    Conclusion from Literature review here with a bit more detail about lack of semantic structure, and relate that to the types of attacks detected
+		    Maybe present example of distinct attack traffic that is semantically different from other things
 	
 	- Your Approach: What new approach / angle / idea are you proposing to pursue? Why does it seem promising?
-	
+
+		- Generate more features for individual connections
+
+			- Specifically, extract some features that represent semantic properties of connection and some that are representing for the action that was taken (can be and is probably highly related)
+				- Representation learning very helpful, because we do not have to classify to learn
+			- Build up on the work done by David, Gudmund, and Marc to improve semantic model for netflows
+				- Here, the better features for connections can be very helpful
+
+
+
 	- Your Plan: What are the sub-goals that need to be achieved? What is your planned order of attack, and how long do you expect each task to take? Does the schedule make it plausible that you will achieve the required work within the prescribed period of the PhD programme?  And what are the risks in this plan and how will you address them (contingency plans)?
 
-Work achieved so far:
-	-   
+	- Work achieved so far:
+
+		- Data generation with Nikola
+		
+		- Initial data analysis (include plots of connection)
+
+	- This part of the document should include a description of how this work is relevant to the thesis proposal 
