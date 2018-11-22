@@ -1,0 +1,95 @@
+\begin{thebibliography}{10}
+
+\bibitem{aafer2013droidapiminer}
+Yousra Aafer, Wenliang Du, and Heng Yin.
+\newblock Droidapiminer: Mining api-level features for robust malware detection
+  in android.
+\newblock In {\em International Conference on Security and Privacy in
+  Communication Systems}, pages 86--103. Springer, 2013.
+
+\bibitem{blei2012probabilistic}
+David~M Blei.
+\newblock Probabilistic topic models.
+\newblock {\em Communications of the ACM}, 55(4):77--84, 2012.
+
+\bibitem{burguera2011crowdroid}
+Iker Burguera, Urko Zurutuza, and Simin Nadjm-Tehrani.
+\newblock Crowdroid: behavior-based malware detection system for android.
+\newblock In {\em Proceedings of the 1st ACM workshop on Security and privacy
+  in smartphones and mobile devices}, pages 15--26. ACM, 2011.
+
+\bibitem{chen2016more}
+Wei Chen, David Aspinall, Andrew~D Gordon, Charles Sutton, and Igor Muttik.
+\newblock More semantics more robust: Improving android malware classifiers.
+\newblock In {\em Proceedings of the 9th ACM Conference on Security \& Privacy
+  in Wireless and Mobile Networks}, pages 147--158. ACM, 2016.
+
+\bibitem{chen2016robust}
+Wei Chen, David Aspinall, Andrew~D Gordon, Charles Sutton, and Igor Muttik.
+\newblock On robust malware classifiers by verifying unwanted behaviours.
+\newblock In {\em International Conference on Integrated Formal Methods}, pages
+  326--341. Springer, 2016.
+
+\bibitem{Henrythesis2017}
+Henry Clausen.
+\newblock A {B}ayesian approach to human behaviour modelling in computer
+  networks.
+\newblock Master's thesis, Imperial College London, 2017.
+
+\bibitem{cretu2009adaptive}
+Gabriela~F Cretu-Ciocarlie, Angelos Stavrou, Michael~E Locasto, and Salvatore~J
+  Stolfo.
+\newblock Adaptive anomaly detection via self-calibration and dynamic updating.
+\newblock In {\em RAID}, volume~9, pages 41--60. Springer, 2009.
+
+\bibitem{gorla2014checking}
+Alessandra Gorla, Ilaria Tavecchia, Florian Gross, and Andreas Zeller.
+\newblock Checking app behavior against app descriptions.
+\newblock In {\em Proceedings of the 36th International Conference on Software
+  Engineering}, pages 1025--1035. ACM, 2014.
+
+\bibitem{NIPS2010_3902}
+Matthew Hoffman, Francis~R. Bach, and David~M. Blei.
+\newblock Online learning for latent dirichlet allocation.
+\newblock In J.~D. Lafferty, C.~K.~I. Williams, J.~Shawe-Taylor, R.~S. Zemel,
+  and A.~Culotta, editors, {\em Advances in Neural Information Processing
+  Systems 23}, pages 856--864. Curran Associates, Inc., 2010.
+
+\bibitem{peiravian2013machine}
+Naser Peiravian and Xingquan Zhu.
+\newblock Machine learning for android malware detection using permission and
+  api calls.
+\newblock In {\em Tools with Artificial Intelligence (ICTAI), 2013 IEEE 25th
+  International Conference on}, pages 300--305. IEEE, 2013.
+
+\bibitem{rieck2011automatic}
+Konrad Rieck, Philipp Trinius, Carsten Willems, and Thorsten Holz.
+\newblock Automatic analysis of malware behavior using machine learning.
+\newblock {\em Journal of Computer Security}, 19(4):639--668, 2011.
+
+\bibitem{sahs2012machine}
+Justin Sahs and Latifur Khan.
+\newblock A machine learning approach to android malware detection.
+\newblock In {\em Intelligence and security informatics conference (eisic),
+  2012 european}, pages 141--147. IEEE, 2012.
+
+\bibitem{tang2014unsupervised}
+Adrian Tang, Simha Sethumadhavan, and Salvatore~J Stolfo.
+\newblock Unsupervised anomaly-based malware detection using hardware features.
+\newblock In {\em International Workshop on Recent Advances in Intrusion
+  Detection}, pages 109--129. Springer, 2014.
+
+\bibitem{wang2011online}
+Chong Wang, John Paisley, and David Blei.
+\newblock Online variational inference for the hierarchical dirichlet process.
+\newblock In {\em Proceedings of the Fourteenth International Conference on
+  Artificial Intelligence and Statistics}, pages 752--760, 2011.
+
+\bibitem{yerima2013new}
+Suleiman~Y Yerima, Sakir Sezer, Gavin McWilliams, and Igor Muttik.
+\newblock A new android malware detection approach using bayesian
+  classification.
+\newblock In {\em Advanced Information Networking and Applications (AINA), 2013
+  IEEE 27th International Conference on}, pages 121--128. IEEE, 2013.
+
+\end{thebibliography}
