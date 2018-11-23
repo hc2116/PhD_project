@@ -1,5 +1,5 @@
 \documentclass[a4paper,12pt,twoside]{report}
-\usepackage[left=2.7cm,right=2.7cm,top=2cm,bottom=3cm]{geometry}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage{amsmath}
@@ -31,27 +31,32 @@
 
 \maketitle
 
-\section{Introduction}
+\section*{Intrusion detection and semantic models}
 
-%Cyber Security relies on a range of defensive techniques, including sophisticated intrusion detection systems and firewalls that try to detect and prevent attacks against software subsystems.
 
-Network intrusion detection plays a vital role in protecting computer networks from malicious access. Current detection methods are predominantly based on the analysis of previously identified attack signatures, which provides great reliability and low false alert rates. However, these methods are dependent on an updated attack signature database and provide no protection against previously unseen attacks. 
+Cyber Security relies on a range of defensive techniques, including sophisticated intrusion detection systems and firewalls that try to detect and prevent attacks against software subsystems. Malicious software still remains the biggest threat to computer users, and its detection is of utmost importance. 
+
+Program analysis methods is used widely to automatically test software for particular characteristics and behaviour, and thus identify malicious instances. Close attention has to be paid at the type of features and models that quantify the behaviour of software, as a lack of general program representation leads to low robustness against new or polymorphic malware, and consequently a poor classification performance.  Chen et al.  (2016) \cite{chen2016robust, chen2016more} demonstrated convincingly that semantic features are suitable to reflect the nature of software, benign or malware, in an accurate manner. These semantic features \textcolor{red}{add here} 
+
+
+In modern computer networks, it is often impossible use software analysis on a large-scale basis to prevent network intrusions through malicious software. Here, network intrusion detection systems play a vital role in protecting computer networks from malicious access. Current detection methods are predominantly based on the analysis of previously identified attack signatures, which provides great reliability and low false alert rates. However, these methods are dependent on an updated attack signature database and provide no protection against previously unseen attacks. 
 
 Another approach that has recently gained traction in commercial deployment is based on detecting malware and other undesired activity as anomalous behaviour when compared to benign computer activity. For that, models that quantify the behaviour of normal network are trained on attack-free traffic data. Observed behaviour that significantly deviates from the trained model is then denoted as anomalous, and the intrusion detection system is taking further steps to investigate a possible intrusion. 
 
-Generally, network traffic logs are a symbolic sequence of events with different types of attributes. These can be of numeric, such as the number of bytes transferred, or categorical nature, such as the specific connection port, or entirely different such as the contacted IP address or the checksum of a package. Such formats are not appropriate as direct input for a generative traffic model. Instead, features have to be mined from the raw traffic in order to provide a suitable data format. These features have represent the traffic properties that should be quantified by the designed traffic model. The design of an appropriate model and the choice of corresponding features for capturing the different aspects of network traffic behaviour is not trivial, and there exists a substantial body of research concerned with this topic, which is discussed \textcolor{red}{in my literature review}. 
+Generally, network traffic is usually collected either on a atomic level as raw network packets, or in a more structured way as network connection summaries, also called network flows. Both formats consist of symbolic sequence of events with different types of attributes. These can be of numeric, such as the number of bytes transferred, or categorical nature, such as the specific connection port, or entirely different such as the contacted IP address or the checksum of a package. Such formats are not appropriate as direct input for a generative traffic model. Instead, features have to be mined from the raw traffic in order to provide a suitable data format. These features have represent the traffic properties that should be quantified by the designed traffic model. The design of an appropriate model and the choice of corresponding features for capturing the different aspects of network traffic behaviour is not trivial, and there exists a substantial body of research concerned with this topic, which is discussed \textcolor{red}{in my literature review}. 
 
 
+As I described \textcolor{red}{in my literature review}, there exists little work that attempts to model network traffic on a semantic level. This is both true on a packet level inside a connection, as well as on a network flow level. \textcolor{red}{write something about how these things can be combined}.
 
-As I described \textcolor{red}{in my literature review}, there exists little work that attempts to model network traffic on a semantic level. Chen et al.  (2016) \cite{chen2016robust, chen2016more} argue convincingly that semantic features are suitable to reflect the nature of software, benign or malware, in an accurate manner. 
+
+\section*{Semantic modelling of connection communication and feature generation}
 
  and can improve 
 
-Chen et al. \cite{chen2016robust, chen2016more} propose the use of software behaviour automata, a semantic description of a process which aims to characterize the action of a program on a device. The mining of such abstracted features from a program apparently provides a much more robust data base for machine learning methods targeted on malware identification, with both false positive and false negative errors being significantly lower when using similar classification techniques as previous approaches.
 
 
 
-This lack of general program representation leads to low robustness againstnew or polymorphic malware, and a poor classification performance.  
+
 
 
 
