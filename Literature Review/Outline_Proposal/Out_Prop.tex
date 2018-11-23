@@ -1,52 +1,35 @@
 \documentclass[a4paper,12pt,twoside]{report}
 \usepackage[left=2.7cm,right=2.7cm,top=2cm,bottom=3cm]{geometry}
 \usepackage{xcolor}
-\usepackage{fancyhdr}
-\usepackage{tgschola}
-\usepackage{lastpage}
+\usepackage{url}
 \usepackage{amsmath}
-\usepackage{tikz}
-\usetikzlibrary{bayesnet}
-
-%\usepackage[natbibapa]{apacite}
-\usepackage{cite}
-%\usepackage[round,authoryear,sort]{natbib}
 \usepackage{graphicx}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[C]{%
-  \footnotesize\sffamily
-  \yourname\quad
-  \textcolor{darkgray}{\youremail}}
-\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
 
-\newcommand{\soptitle}{Research Proposal for Adaptive Anomaly Detection}
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \interlinepenalty\@M
+    \Huge\bfseries  \thechapter.\quad #1\par\nobreak
+    \vskip 40\p@
+  }}
+\makeatother
 
-\newcommand{\yourname}{Henry Clausen}
-\newcommand{\youremail}{hc2116@ic.ac.uk}
+\makeatletter
+\newcommand*{\toccontents}{\@starttoc{toc}}
+\makeatother
 
-\newcommand{\statement}[1]{\par\medskip
-  \textcolor{blue}{\textbf{#1:}}\space
-}
-
-\usepackage[
-  breaklinks,
-  pdftitle={\yourname - \soptitle},
-  pdfauthor={\yourname},
-  unicode
-]{hyperref}
-
+\let\endtitlepage\relax
 \begin{document}
 
-\begin{center}\LARGE\soptitle\\
-\normalsize of \yourname\ (PhD in Informatics)
-\end{center}
-\vspace{-0.2cm}
-\hrule
-\vspace{1pt}
-\hrule height 1pt
+\title{\LARGE {\bf Anomaly Detection in Computer Networks - Literature Review}\\
+ \vspace*{6mm}
+}
 
-\bigskip
+\author{Henry Clausen}
+%\date{October 2008}
+
+\maketitle
 
 \section{Introduction}
 
@@ -56,18 +39,20 @@ Network intrusion detection plays a vital role in protecting computer networks f
 
 Another approach that has recently gained traction in commercial deployment is based on detecting malware and other undesired activity as anomalous behaviour when compared to benign computer activity. For that, models that quantify the behaviour of normal network are trained on attack-free traffic data. Observed behaviour that significantly deviates from the trained model is then denoted as anomalous, and the intrusion detection system is taking further steps to investigate a possible intrusion. 
 
-Generally, network traffic logs are a symbolic sequence of events with different types of attributes. These can be of numeric, such as the number of bytes transferred, or categorical nature, such as the specific connection port, or entirely different such as the contacted IP address or the checksum of a package. 
-Such formats are not appropriate as direct input for a generative traffic model. Instead, features have to be mined from the raw traffic in order to provide a suitable data format. These features have represent the traffic properties that should be quantified by the designed traffic model. The design of an appropriate model and the corresponding features for capturing the aspects of network traffic behaviour is not trivial, and there exists a substantial body of research concerned with this topic, which is discussed \textcolor{red}{in my literature review}. 
+Generally, network traffic logs are a symbolic sequence of events with different types of attributes. These can be of numeric, such as the number of bytes transferred, or categorical nature, such as the specific connection port, or entirely different such as the contacted IP address or the checksum of a package. Such formats are not appropriate as direct input for a generative traffic model. Instead, features have to be mined from the raw traffic in order to provide a suitable data format. These features have represent the traffic properties that should be quantified by the designed traffic model. The design of an appropriate model and the choice of corresponding features for capturing the different aspects of network traffic behaviour is not trivial, and there exists a substantial body of research concerned with this topic, which is discussed \textcolor{red}{in my literature review}. 
 
 
 
+As I described \textcolor{red}{in my literature review}, there exists little work that attempts to model network traffic on a semantic level. Chen et al.  (2016) \cite{chen2016robust, chen2016more} argue convincingly that semantic features are suitable to reflect the nature of software, benign or malware, in an accurate manner. 
 
-Chen et al.  (2016) \cite{chen2016robust, chen2016more} argue convincingly that
-semantic features do not reflect the nature of software, benign or malware, in an accurate manner. This lack of general program representation leads to low robustness againstnew or polymorphic malware, and a poor classification performance.  Chen
-et al. \cite{chen2016robust, chen2016more} propose the use of software behaviour automata, a semantic description of a process which aims to characterize the action of a program on a device. The mining of such abstracted features from a program apparently provides a much more robust data base for machine learning methods targeted on malware identification, with both false positive and false negative errors being significantly lower when using similar classification techniques as previous approaches.
+ and can improve 
+
+Chen et al. \cite{chen2016robust, chen2016more} propose the use of software behaviour automata, a semantic description of a process which aims to characterize the action of a program on a device. The mining of such abstracted features from a program apparently provides a much more robust data base for machine learning methods targeted on malware identification, with both false positive and false negative errors being significantly lower when using similar classification techniques as previous approaches.
 
 
-As I described \textcolor{red}{in my literature review}, there exists little work that attempts to model network traffic on a semantic level. 
+
+This lack of general program representation leads to low robustness againstnew or polymorphic malware, and a poor classification performance.  
+
 
 
 
@@ -154,82 +139,6 @@ The identification of individual events in the network flow stream is expectedly
 
 
 The coherent estimation of device states is more complicated: Since the state of a device at one moment is highly dependent on the state it occupied before, a sequential Markovian model is a reasonable approach to the state estimation. Together with Dr. Mark Briers and Prof. Niall Adams, I recently developed an unsupervised sequential Bayesian framework that aims at inferring the presence of a user at a device and the state of usage \cite{Henrythesis2017}. The results I generated resemble the overall usage intensity of personal computers in an accurate manner, and future work on the model promises a very accurate resolution of individual task done on a device. 
-
-
-
-\begin{figure}
-  \centering
-  \tikz{ %
-  	\node[latent,minimum size=1cm] (X_I_m1) {$X_{I_{i-1}}$} ; %
-    \node[latent, right=3.2 of X_I_m1,minimum size=1cm] (X_I) {$X_{I_{i}}$} ; %
-    \node[latent, right=3.2 of X_I,minimum size=1cm] (X_I_1) {$X_{I_{i+1}}$} ; %
-    
-    \node[latent, below=of X_I,xshift=-0.7cm,minimum size=0.8cm] (c_i) {$c_i$} ; %
-    \node[latent, below=of X_I_m1,xshift=-0.7cm,,minimum size=0.8cm] (c_i_m1) {$c_{i-1}$} ; %
-    \node[latent, below=of X_I_1,xshift=-0.7cm,minimum size=0.8cm] (c_i_1) {$c_{i+1}$} ; %
-    
-     \node[latent, below=of X_I,xshift=0.7cm,minimum size=0.8cm] (c2_i) {$\dots$} ; %
-    \node[latent, below=of X_I_m1,xshift=0.7cm,,minimum size=0.8cm] (c2_i_m1) {$\dots$} ; %
-    \node[latent, below=of X_I_1,xshift=0.7cm,minimum size=0.8cm] (c2_i_1) {$\dots$} ; %
-   
-    
-    \node[const, left=of X_I_m1] (dots) {... } ; %
-    \node[const, right=of X_I_1] (dots2) { ...} ; %
-    
-    \node[const, below=-0.2 of X_I_m1, xshift=-1.4cm] (mu1) {$\{\lambda_k\}$} ; %
-    \node[const, below=-0.2 of X_I, xshift=-1.4cm] (mu2) {$\{\lambda_k\}$} ; %
-    \node[const, below=-0.2 of X_I_1, xshift=-1.4cm] (mu3) {$\{\lambda_k\}$} ; %
-    
-	\node[const, below=-0.2 of X_I_m1, xshift=1.4cm] (mu7) {$\{\lambda_k^\prime\}$} ; %
-    \node[const, below=-0.2 of X_I, xshift=1.4cm] (mu8) {$\{\lambda_k^\prime\}$} ; %
-    \node[const, below=-0.2 of X_I_1, xshift=1.4cm] (mu9) {$\{\lambda_k^\prime\}$} ; %    
-    
-    \factor[below=of X_I_m1,xshift=-0.7cm] {c-f1} {left:Pois} {X_I_m1,mu1} {c_i_m1} ; %
-	\factor[below=of X_I,xshift=-0.7cm] {c-f2} {left:Pois} {X_I,mu2} {c_i} ; %
-	\factor[below=of X_I_1,xshift=-0.7cm] {c-f3} {left:Pois} {X_I_1,mu3} {c_i_1} ; %
-	
-	\factor[below=of X_I_m1,xshift=0.7cm] {c-f4} {left:Pois} {X_I_m1,mu7} {c2_i_m1} ; %
-	\factor[below=of X_I,xshift=0.7cm] {c-f5} {left:Pois} {X_I,mu8} {c2_i} ; %
-	\factor[below=of X_I_1,xshift=0.7cm] {c-f6} {left:Pois} {X_I_1,mu9} {c2_i_1} ; %
-	
-	\node[obs, below=of c_i,minimum size=0.8cm] (z_i) {$z_i$} ; %
-    \node[obs, below=of c_i_m1,minimum size=0.8cm] (z_i_m1) {$z_{i-1}$} ; %
-    \node[obs, below=of c_i_1,minimum size=0.8cm] (z_i_1) {$z_{i+1}$} ; %
-    
-    \node[obs, below=of c2_i,minimum size=0.8cm] (l_i) {$\dots$} ; %
-    \node[obs, below=of c2_i_m1,minimum size=0.8cm] (l_i_m1) {$\dots$} ; %
-    \node[obs, below=of c2_i_1,minimum size=0.8cm] (l_i_1) {$\dots$} ; %
-    
-    
-    \node[const, below=-0.5 of c_i_m1, xshift=-0.9cm] (mu4) {$\lambda_Y$} ; %
-    \node[const, below=-0.5 of c_i, xshift=-0.9cm] (mu5) {$\lambda_Y$} ; %
-    \node[const, below=-0.5 of c_i_1, xshift=-0.9cm] (mu6) {$\lambda_Y$} ; %
-    
-	%\node[const, below=-0.5 of c2_i_m1, xshift=0.9cm] (mu24) {$\dots$} ; %
-    %\node[const, below=-0.5 of c2_i, xshift=0.9cm] (mu25) {$\dots$} ; %
-    %\node[const, below=-0.5 of c2_i_1, xshift=0.9cm] (mu26) {$\dots$} ; %
-        
-    
-	\factor[below=of c_i_m1] {z-f1} {left:shifted Pois} {c_i_m1,mu4} {z_i_m1} ; %
-	\factor[below=of c_i] {z-f2} {left:shifted Pois} {c_i,mu5} {z_i} ; %
-	\factor[below=of c_i_1] {z-f3} {left:shifted Pois} {c_i_1,mu6} {z_i_1} ; %
-	
-	\factor[below=of c2_i_m1] {z-f1} {left: } {c2_i_m1} {l_i_m1} ; %
-	\factor[below=of c2_i] {z-f2} {left: } {c2_i} {l_i} ; %
-	\factor[below=of c2_i_1] {z-f3} {left: } {c2_i_1} {l_i_1} ; %
-	
-	\edge {X_I_m1} {X_I} ; %
-    \edge {X_I} {X_I_1} ; %
-   % \edge {X_I} {c_i} ; %
-    \edge {dots} {X_I_m1} ; %
-    \edge {X_I_1}{dots2} ; %
-    %\edge {X_I_m1}{c_i_m1} ; %
-    \edge {c_i}{z_i} ; %
-    \edge {c_i_m1}{z_i_m1} ; %
-    \edge {c_i_1}{z_i_1} ; %
-  }
-\caption{Graphical model for the current model with the latent Markov process $X_t$ tracing the device state, and the observed flows $z_i$ as input. Possible model extensions with additional input are indicated with placeholders and another set of generator rates $\{\lambda_k^\prime\}$.}\label{Graphmod}
-\end{figure}
 
 
 
