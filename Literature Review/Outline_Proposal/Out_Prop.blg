@@ -1,46 +1,48 @@
-This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Out_Prop.aux
 The style file: plain.bst
 Database file #1: sample.bib
-You've used 12 entries,
+Warning--empty booktitle in aspinall2018anomaly
+You've used 8 entries,
             2118 wiz_defined-function locations,
-            569 strings with 6681 characters,
-and the built_in function-call counts, 5841 in all, are:
-= -- 615
-> -- 242
-< -- 11
-+ -- 96
-- -- 81
-* -- 363
-:= -- 860
-add.period$ -- 46
-call.type$ -- 12
-change.case$ -- 74
+            548 strings with 5773 characters,
+and the built_in function-call counts, 3798 in all, are:
+= -- 385
+> -- 189
+< -- 7
++ -- 75
+- -- 66
+* -- 255
+:= -- 582
+add.period$ -- 31
+call.type$ -- 8
+change.case$ -- 56
 chr.to.int$ -- 0
-cite$ -- 12
-duplicate$ -- 260
-empty$ -- 465
-format.name$ -- 81
-if$ -- 1335
+cite$ -- 9
+duplicate$ -- 158
+empty$ -- 286
+format.name$ -- 66
+if$ -- 843
 int.to.chr$ -- 0
-int.to.str$ -- 12
-missing$ -- 11
-newline$ -- 63
-num.names$ -- 26
-pop$ -- 106
+int.to.str$ -- 8
+missing$ -- 8
+newline$ -- 44
+num.names$ -- 16
+pop$ -- 76
 preamble$ -- 1
-purify$ -- 62
+purify$ -- 48
 quote$ -- 0
-skip$ -- 204
+skip$ -- 118
 stack$ -- 0
-substring$ -- 410
-swap$ -- 118
-text.length$ -- 11
+substring$ -- 218
+swap$ -- 65
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 48
-warning$ -- 0
-while$ -- 58
-width$ -- 14
-write$ -- 144
+type$ -- 32
+warning$ -- 1
+while$ -- 34
+width$ -- 9
+write$ -- 97
+(There was 1 warning)

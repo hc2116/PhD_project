@@ -3,7 +3,7 @@ http://web.inf.ed.ac.uk/infweb/student-services/igs/phd/year-timelines/year-1
 
 
 Research Topic:
-	- Research Topic: 
+	- Research Topic:
 
 		- What is the problem? Why is it interesting? 
 
@@ -38,3 +38,5 @@ Research Topic:
 		- Initial data analysis (include plots of connection)
 
 	- This part of the document should include a description of how this work is relevant to the thesis proposal 
+
+	- Graphic showing plan of action?
