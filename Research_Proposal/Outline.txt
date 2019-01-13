@@ -62,4 +62,6 @@ Project description and aim:
 Work achieved so far:
 	- Significant amount of time has been spent on reflecting on good strategies, data analysis, and appropriate measures to best capture programs distinctinctive signatures
 		- Signatures from Snort have been helpful
+	- Data generation tool for ground truth of connection data
+	- 
 
