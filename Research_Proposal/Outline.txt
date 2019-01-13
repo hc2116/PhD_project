@@ -45,5 +45,21 @@ Research Topic:
 
 ###########################
 
-Introduction
+Introduction and Problem description
+	- Introduction:
+		- Talk little bit about cyber sec. and general concept of IDS (not about anomaly detection etc.)
+	- Anomaly detection
+		- General concept of anomalies (with generating distributions etc., look up Anomaly detection survey)
+			- Also mention applications to fraud detection etc.
+		- Subsection: Applications to Intrusion detection and brief summary of literature, talk about gaps in the literature
+
+Project description and aim:
+	- Talk shortly about concept of programs being generating distributions for behaviour
+	- Talk about this behaviour, i.e. semantic modelling
+	- Project with Automata and connection classification with first few packets
+		- Could be combined with representation learning, i.e. rec. neural network on the long-term behaviour of individual connections
+
+Work achieved so far:
+	- Significant amount of time has been spent on reflecting on good strategies, data analysis, and appropriate measures to best capture programs distinctinctive signatures
+		- Signatures from Snort have been helpful
 
