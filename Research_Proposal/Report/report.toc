@@ -7,7 +7,7 @@
 \contentsline {subsection}{\numberline {2.1.2}Network traffic}{5}
 \contentsline {section}{\numberline {2.2}Related work and important gaps}{5}
 \contentsline {section}{\numberline {2.3}Intrusion Detection Systems}{8}
-\contentsline {section}{\numberline {2.4}Scope of this work}{10}
+\contentsline {section}{\numberline {2.4}Scope of this work}{11}
 \contentsline {chapter}{\numberline {3}Data}{12}
 \contentsline {section}{\numberline {3.1}Network traffic}{12}
 \contentsline {section}{\numberline {3.2}Existing datasets}{13}
