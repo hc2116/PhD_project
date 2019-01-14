@@ -5,7 +5,7 @@
 \contentsline {section}{\numberline {2.1}Introduction and motivation}{4}
 \contentsline {subsection}{\numberline {2.1.1}Anomaly detection}{5}
 \contentsline {subsection}{\numberline {2.1.2}Network traffic}{5}
-\contentsline {section}{\numberline {2.2}Related work and important gaps}{5}
+\contentsline {section}{\numberline {2.2}Related work and important gaps}{6}
 \contentsline {section}{\numberline {2.3}Intrusion Detection Systems}{8}
 \contentsline {section}{\numberline {2.4}Scope of this work}{11}
 \contentsline {chapter}{\numberline {3}Data}{12}
