@@ -4,28 +4,29 @@
 \contentsline {chapter}{\numberline {2}Research description}{4}
 \contentsline {section}{\numberline {2.1}Introduction and motivation}{4}
 \contentsline {subsection}{\numberline {2.1.1}Anomaly detection}{5}
-\contentsline {subsection}{\numberline {2.1.2}Network traffic}{5}
+\contentsline {subsubsection}{Anomaly detection and IDS}{6}
+\contentsline {subsection}{\numberline {2.1.2}Network traffic}{6}
 \contentsline {section}{\numberline {2.2}Related work and important gaps}{6}
-\contentsline {section}{\numberline {2.3}Intrusion Detection Systems}{8}
+\contentsline {section}{\numberline {2.3}Intrusion Detection Systems}{9}
 \contentsline {section}{\numberline {2.4}Scope of this work}{11}
-\contentsline {chapter}{\numberline {3}Data}{12}
-\contentsline {section}{\numberline {3.1}Network traffic}{12}
-\contentsline {section}{\numberline {3.2}Existing datasets}{13}
-\contentsline {chapter}{\numberline {4}Methods and Systems for Network Anomaly Detection}{19}
-\contentsline {section}{\numberline {4.1}Feature generation}{19}
-\contentsline {section}{\numberline {4.2}Approaches based on Volume or Traffic Aggregation}{20}
-\contentsline {subsection}{\numberline {4.2.1}Subspace projection/PCA-based}{20}
-\contentsline {subsection}{\numberline {4.2.2}Entropy-based}{21}
-\contentsline {subsection}{\numberline {4.2.3}Wavelet-based}{22}
-\contentsline {subsection}{\numberline {4.2.4}Other}{22}
-\contentsline {section}{\numberline {4.3}Event-based}{23}
-\contentsline {subsection}{\numberline {4.3.1}Statistics-based}{24}
-\contentsline {subsection}{\numberline {4.3.2}Classifier-based}{25}
-\contentsline {subsection}{\numberline {4.3.3}Clustering based}{26}
-\contentsline {subsection}{\numberline {4.3.4}Representation-learning based}{28}
-\contentsline {section}{\numberline {4.4}Temporal correlation/Semantics-based}{29}
-\contentsline {subsection}{\numberline {4.4.1}Application to stepping stone detection}{31}
-\contentsline {subsection}{\numberline {4.4.2}Semantic-based approaches using different data sources}{31}
-\contentsline {chapter}{\numberline {5}Related work and Conclusion}{33}
-\contentsline {section}{\numberline {5.1}Related work}{33}
-\contentsline {section}{\numberline {5.2}Conclusion}{34}
+\contentsline {chapter}{\numberline {3}Data}{13}
+\contentsline {section}{\numberline {3.1}Network traffic}{13}
+\contentsline {section}{\numberline {3.2}Existing datasets}{14}
+\contentsline {chapter}{\numberline {4}Methods and Systems for Network Anomaly Detection}{20}
+\contentsline {section}{\numberline {4.1}Feature generation}{20}
+\contentsline {section}{\numberline {4.2}Approaches based on Volume or Traffic Aggregation}{21}
+\contentsline {subsection}{\numberline {4.2.1}Subspace projection/PCA-based}{21}
+\contentsline {subsection}{\numberline {4.2.2}Entropy-based}{22}
+\contentsline {subsection}{\numberline {4.2.3}Wavelet-based}{23}
+\contentsline {subsection}{\numberline {4.2.4}Other}{23}
+\contentsline {section}{\numberline {4.3}Event-based}{24}
+\contentsline {subsection}{\numberline {4.3.1}Statistics-based}{25}
+\contentsline {subsection}{\numberline {4.3.2}Classifier-based}{26}
+\contentsline {subsection}{\numberline {4.3.3}Clustering based}{27}
+\contentsline {subsection}{\numberline {4.3.4}Representation-learning based}{29}
+\contentsline {section}{\numberline {4.4}Temporal correlation/Semantics-based}{30}
+\contentsline {subsection}{\numberline {4.4.1}Application to stepping stone detection}{32}
+\contentsline {subsection}{\numberline {4.4.2}Semantic-based approaches using different data sources}{32}
+\contentsline {chapter}{\numberline {5}Related work and Conclusion}{34}
+\contentsline {section}{\numberline {5.1}Related work}{34}
+\contentsline {section}{\numberline {5.2}Conclusion}{35}
