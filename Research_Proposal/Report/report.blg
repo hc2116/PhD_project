@@ -1,58 +1,49 @@
-This is BibTeX, Version 0.99d (TeX Live 2018)
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: report.aux
 The style file: abbrv.bst
 Database file #1: refs.bib
 Warning--I didn't find a database entry for "chen2016robust"
 Warning--I didn't find a database entry for "chen2016more"
-Warning--to sort, need author or key in noauthor_ctu-13_nodate
-Warning--to sort, need author or key in USC2010ICT
-Warning--empty institution in brownlee1999traffic
-Warning--there's a number but no volume in denning1987intrusion
-Warning--empty journal in heard2016topic
-Warning--can't use both volume and number fields in lakhina2005mining
-Warning--can't use both volume and number fields in moore2005internet
-Warning--empty journal in peddabachigari_intrusion_nodate
-Warning--empty year in skywiperskywiper
-You've used 95 entries,
+You've used 2 entries,
             2118 wiz_defined-function locations,
-            1037 strings with 22941 characters,
-and the built_in function-call counts, 38478 in all, are:
-= -- 3942
-> -- 1822
-< -- 47
-+ -- 733
-- -- 615
-* -- 2696
-:= -- 6067
-add.period$ -- 349
-call.type$ -- 95
-change.case$ -- 585
+            512 strings with 4098 characters,
+and the built_in function-call counts, 724 in all, are:
+= -- 69
+> -- 41
+< -- 0
++ -- 16
+- -- 14
+* -- 59
+:= -- 132
+add.period$ -- 7
+call.type$ -- 2
+change.case$ -- 13
 chr.to.int$ -- 0
-cite$ -- 104
-duplicate$ -- 1465
-empty$ -- 2925
-format.name$ -- 615
-if$ -- 8294
+cite$ -- 2
+duplicate$ -- 21
+empty$ -- 48
+format.name$ -- 14
+if$ -- 140
 int.to.chr$ -- 0
-int.to.str$ -- 95
-missing$ -- 84
-newline$ -- 508
-num.names$ -- 192
-pop$ -- 632
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 14
+num.names$ -- 4
+pop$ -- 10
 preamble$ -- 1
-purify$ -- 489
+purify$ -- 11
 quote$ -- 0
-skip$ -- 1103
+skip$ -- 14
 stack$ -- 0
-substring$ -- 2499
-swap$ -- 471
-text.length$ -- 47
+substring$ -- 44
+swap$ -- 2
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 380
-warning$ -- 9
-while$ -- 381
-width$ -- 97
-write$ -- 1136
-(There were 11 warnings)
+type$ -- 8
+warning$ -- 0
+while$ -- 6
+width$ -- 3
+write$ -- 25
+(There were 2 warnings)

@@ -1,49 +1,49 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.31)  15 JAN 2019 11:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  15 JAN 2019 16:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **report.tex
 (./report.tex
-LaTeX2e <2018-04-01> patch level 2
-Babel <3.18> and hyphenation patterns for 22 language(s) loaded.
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/report.cls
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/size12.clo
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@chapter=\count81
-\c@section=\count82
-\c@subsection=\count83
-\c@subsubsection=\count84
-\c@paragraph=\count85
-\c@subparagraph=\count86
-\c@figure=\count87
-\c@table=\count88
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2018/03/24 v5.7 Page Geometry
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
-(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/usr/local/texlive/2018basic/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count89
-\Gm@cntv=\count90
-\c@Gm@tempcnt=\count91
+\Gm@cnth=\count88
+\Gm@cntv=\count89
+\c@Gm@tempcnt=\count90
 \Gm@bindingoffset=\dimen103
 \Gm@wd@mp=\dimen104
 \Gm@odd@mp=\dimen105
@@ -54,19 +54,19 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
 )
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/url/url.sty
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics-cfg/color.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics-def/pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 )
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
@@ -79,72 +79,73 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 )
 \Gin@req@height=\dimen111
 \Gin@req@width=\dimen112
-) (/usr/local/texlive/2018basic/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
 Package: pdfpages 2017/10/31 v0.5l Insert pages of external PDF documents (AM)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count92
-\calc@Bcount=\count93
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count91
+\calc@Bcount=\count92
 \calc@Adimen=\dimen113
 \calc@Bdimen=\dimen114
 \calc@Askip=\skip43
 \calc@Bskip=\skip44
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count94
+\calc@Ccount=\count93
 \calc@Cskip=\skip45
 )
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )))
 \AM@pagewidth=\dimen115
 \AM@pageheight=\dimen116
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/pdfpages/pppdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
 File: pppdftex.def 2017/10/31 v0.5l Pdfpages driver for pdfTeX (AM)
 )
 \AM@pagebox=\box26
 \AM@global@opts=\toks16
 \AM@toc@title=\toks17
-\c@AM@survey=\count95
+\c@AM@survey=\count94
 \AM@templatesizebox=\box27
 )
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/caption/subcaption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/caption/caption3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen117
@@ -155,16 +156,11 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \caption@parindent=\dimen122
 \caption@hangindent=\dimen123
 )
-\c@ContinuedFloat=\count96
+\c@ContinuedFloat=\count95
 )
-\c@subfigure=\count97
-\c@subtable=\count98
-)
-(./report.aux
-
-LaTeX Warning: Label `graph' multiply defined.
-
-)
+\c@subfigure=\count96
+\c@subtable=\count97
+) (./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -179,7 +175,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -214,36 +209,38 @@ LaTeX Font Info:    ... okay on input line 26.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count99
+\scratchcounter=\count98
 \scratchdimen=\dimen124
 \scratchbox=\box28
-\nofMPsegments=\count100
-\nofMParguments=\count101
+\nofMPsegments=\count99
+\nofMParguments=\count100
 \everyMPshowfont=\toks18
-\MPscratchCnt=\count102
+\MPscratchCnt=\count101
 \MPscratchDim=\dimen125
-\MPnumerator=\count103
-\makeMPintoPDFobject=\count104
+\MPnumerator=\count102
+\makeMPintoPDFobject=\count103
 \everyMPtoPDFconversion=\toks19
-) (/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/grfext.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-)) (/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
@@ -252,8 +249,8 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
-(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -267,15 +264,16 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box29
- (/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
 
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/lscape.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
@@ -286,184 +284,87 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 34.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 34.
-
-(./report.toc
+ (./report.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 2.
- [1
-
-{/usr/local/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+)
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
- [2]
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 Chapter 1.
-[3
 
-]
-Chapter 2.
-
-LaTeX Warning: Citation `chen2016robust' on page 4 undefined on input line 65.
+LaTeX Warning: Citation `chen2016robust' on page 2 undefined on input line 57.
 
 
-LaTeX Warning: Citation `chen2016more' on page 4 undefined on input line 65.
+LaTeX Warning: Citation `chen2016more' on page 2 undefined on input line 57.
 
 
-Package caption Warning: \label without proper reference on input line 175.
+Package caption Warning: \label without proper reference on input line 74.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `graph' on page 4 undefined on input line 69.
+LaTeX Warning: Reference `graph' on page 2 undefined on input line 61.
 
-[4
+[2
 
 ]
-<images/outlier_mine.png, id=18, 710.655pt x 577.15625pt>
+<images/outlier_mine.png, id=12, 710.655pt x 577.15625pt>
 File: images/outlier_mine.png Graphic file (type png)
 <use images/outlier_mine.png>
-Package pdftex.def Info: images/outlier_mine.png  used on input line 85.
+Package pdftex.def Info: images/outlier_mine.png  used on input line 77.
 (pdftex.def)             Requested size: 199.73708pt x 162.2103pt.
-<images/Atrial_Premature_Contraction.png, id=19, 1324.95pt x 1029.8475pt>
+<images/Atrial_Premature_Contraction.png, id=13, 1324.95pt x 1029.8475pt>
 File: images/Atrial_Premature_Contraction.png Graphic file (type png)
 <use images/Atrial_Premature_Contraction.png>
 Package pdftex.def Info: images/Atrial_Premature_Contraction.png  used on input
- line 89.
+ line 81.
 (pdftex.def)             Requested size: 199.73708pt x 155.24045pt.
- [5 <./images/outlier_mine.png> <./images/Atrial_Premature_Contraction.png>] [6
-] [7]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 146.
- [8]
-
-Package caption Warning: \label without proper reference on input line 175.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `graph' on page 9 undefined on input line 165.
-
-<Graphic2.pdf, id=40, 1862.96pt x 1818.795pt>
-File: Graphic2.pdf Graphic file (type pdf)
-<use Graphic2.pdf>
-Package pdftex.def Info: Graphic2.pdf  used on input line 177.
-(pdftex.def)             Requested size: 465.73886pt x 454.69765pt.
-
-Overfull \hbox (21.87567pt too wide) in paragraph at lines 177--178
- [][] 
+ [3 <./images/outlier_mine.png> <./images/Atrial_Premature_Contraction.png>]
+Overfull \hbox (19.79416pt too wide) in paragraph at lines 102--103
+[]\OT1/cmr/m/n/12 Although com-mer-cial in-tru-sion de-tec-tion sys-tems still 
+re-lies pre-dom-i-nantly on \OT1/cmr/m/it/12 Signature-
  []
 
-[9] [10 <./Graphic2.pdf>] [11] [12]
-Chapter 3.
-<tcp_header.png, id=68, 770.88pt x 432.61626pt>
-File: tcp_header.png Graphic file (type png)
-<use tcp_header.png>
-Package pdftex.def Info: tcp_header.png  used on input line 230.
-(pdftex.def)             Requested size: 308.34654pt x 173.04343pt.
-[13
+[4]
+Chapter 2.
+[5
 
- <./tcp_header.png>]
-Overfull \hbox (7.29524pt too wide) in paragraph at lines 283--283
-[]\OT1/cmr/bx/n/12 Los Alamos Na-tional Lab-o-ra-tory, 2015 - Com-pre-hen-sive,
- Multi-Source Cyber-
- []
+]
+Appendix A.
+(./report.bbl [6
 
-[14]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+]) [7
 
- [15]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 310.
-
-
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 310.
- [16]
-[17] [18] [19]
-Chapter 4.
-[20
-
-] [21]
-Underfull \vbox (badness 1466) has occurred while \output is active []
-
- [22]
-[23]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [24]
-[25] [26] [27] [28] [29] [30] [31] [32] [33]
-Chapter 5.
-
-Overfull \hbox (8.17657pt too wide) in paragraph at lines 617--618
-[]\OT1/cmr/m/n/12 Patcha and Park [[]] in 2007 pro-duced a well-cited sur-vey d
-is-cussing ex-ist-ing anomaly-
- []
-
-[34
-
-] [35] (./report.bbl [36]
-Underfull \hbox (badness 10000) in paragraph at lines 9--14
-[]\OT1/cmr/m/n/12 Impact cy-ber trust: USC DS-062, USC DS-266, USC LAN-DER.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--14
-\OT1/cmtt/m/n/12 https : / / www . impactcybertrust . org / dataset _ view ? id
-Dataset = 62/$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--14
-\OT1/cmtt/m/n/12 https : / / www . impactcybertrust . org / dataset _ view ? id
-Dataset = 75/$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--14
-\OT1/cmtt/m/n/12 https : / / www . impactcybertrust . org / dataset _ view ? id
-Dataset = 265$\OT1/cmr/m/n/12 , 2010.
- []
-
-[37
-
-] [38] [39] [40] [41] [42] [43]) [44] (./report.aux)
+] (./report.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 4592 strings out of 494091
- 71597 string characters out of 6163522
- 148273 words of memory out of 5000000
- 8201 multiletter control sequences out of 15000+600000
- 11051 words of font info for 39 fonts, out of 8000000 for 9000
- 319 hyphenation exceptions out of 8191
- 42i,9n,40p,1867b,470s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
-2.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr7.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/texmf-dist/font
-s/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2018basic/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2018basic/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on report.pdf (44 pages, 451257 bytes).
+ 4461 strings out of 492982
+ 68162 string characters out of 6134895
+ 143558 words of memory out of 5000000
+ 7969 multiletter control sequences out of 15000+600000
+ 10368 words of font info for 36 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 42i,9n,40p,1177b,470s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on report.pdf (7 pages, 201726 bytes).
 PDF statistics:
- 222 PDF objects out of 1000 (max. 8388607)
- 151 compressed objects within 2 object streams
+ 52 PDF objects out of 1000 (max. 8388607)
+ 34 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
