@@ -94,10 +94,19 @@ Anomaly detection refers to the problem of identifying data instances that have 
 
 Anomaly detection has found wide application in areas where stability of  critical systems or detection of their abuse is crucial. Examples of these include engine-fault detection in wind-turbines, fraud detection for credit cards. The assumption here is that the modelled system, such as the sensor-data stream of an engine or the buying behaviour of a customer, remains stable and generates consistent data. Detected anomalies in new observations then indicate potential fault or abuse in this system. Obviously, it is not inherently clear that every abuse or fault generates data that differs from normal data. Therefore, it is important to choose data sources are able to reflect the unique nature of a particular system.
 
-\subsubsection{Anomaly detection and IDS}
+\subsubsection{Anomaly detection and NIDS}
 
 SImilar to the above described examples, anomaly detection has been applied to network security since the late 90's in order to assist IDSs, with the behaviour of network computers being quantified in the form of events logs capturing network traffic, system calls, etc. The basic approach is to use collected training logs to infer a model of trustworthy activity, and then compare new behaviour against this model. Again, the assumption is that unauthorized and malicious activity will correspond to behaviour that differs from trustworthy one. As an example, an anomalous network traffic pattern in a involving unusual connection pairs could
 signify that a hacked computer is extracting or sending out sensitive data to an unauthorized destination.
+
+\textcolor{red}{Insert stuff about NIDS and anomaly detection, drill down on networ traffic
+
+Maybe talk about technical structure, how training data is gathered, then trained, collection of the traffic, possible anomalies in training data etc, scarcity of datasets}.
+
+\subsubsection{Literature Summary}
+
+Network traffic can be processed into 
+
 
 
 \subsection{Network traffic}
