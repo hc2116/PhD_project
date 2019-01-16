@@ -108,12 +108,27 @@ I provide a detailed analysis of the most important techniques and approaches in
 
 \section{Project aim}
 
-As pointed out above, anomaly detection techniques currently perform best in the detection of attacks of larger volume, such as \textit{DoS attacks} or \textit{Port Scans}, and currently are the most common application in commercial IDS systems \textcolor{red}{reference or example of IDS}. In contrast, research in this area has been less convincing in the context of more targeted attacks that consist of only one or a few connections, with \textit{R2L} and \textit{U2R} attacks currently being the least detected attack classes \cite{nisioti2018intrusion}. This can in part be explained 
+As pointed out above, anomaly detection techniques currently perform best in the detection of attacks of larger volume, such as \textit{DoS attacks} or \textit{Port Scans}, and currently are the most common application in commercial IDS systems \textcolor{red}{reference or example of IDS}. In contrast, research in this area has been less convincing in the context of more targeted attacks that consist of only one or a few connections, with \textit{R2L} and \textit{U2R} attacks currently being the least detected attack classes \cite{nisioti2018intrusion}. 
+
+This can in part be explained by a lack of understanding of how these smaller, more point-like attacks differentiate themselves from normal traffic. Attacks using a larger number of connections will inevitably disturb the  distribution of one or multiple measures of the network, such as the byte-throughput or the port entropy \cite{lakhina2005mining}. However, an attacking connection inserting malicious code to gain control over a computer does not necessarily have different external properties\footnote{also caled \textit{connection summaries}} such as length, size, or port number, than the diverse range of normal connections. Yet, most attempts to detect these attacks via anomaly detection rely exclusively on sumary properties of individual connections or packets to draw a border between normal and malicious traffic.
+
+In this project, I will instead look at the more intrinsic nature of network traffic, the \textit{semantic structure} of packet and connection sequences. \textcolor{red}{argue what that means, why it is promising, and that is has been done before on system calls and promises better robustness}
 
 
 \section{Project specific objectives}
 
 
+\chapter{Work achieved so far}
+
+Significant amount of time has been spent on reflecting on good strategies, data analysis, and appropriate measures to best capture programs distinctinctive signatures. Signatures from Snort have been helpful
+
+\section{Ground truth data generation}
+
+\section{Gathering useful data sources}
+
+\section{Testing first approaches on realistic data}
+
+\section{Alan Turing Data Study Group}
 
 \appendix
 % appendices come here

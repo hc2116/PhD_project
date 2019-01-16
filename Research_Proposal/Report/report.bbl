@@ -6,6 +6,12 @@ V.~Chandola, A.~Banerjee, and V.~Kumar.
 \newblock {\em ACM Comput. Surv.}, 41(3):15:1--15:58, July 2009.
 \newblock 05458.
 
+\bibitem{lakhina2005mining}
+A.~Lakhina, M.~Crovella, and C.~Diot.
+\newblock Mining anomalies using traffic feature distributions.
+\newblock In {\em ACM SIGCOMM Computer Communication Review}, volume~35, pages
+  217--228. ACM, 2005.
+
 \bibitem{nisioti2018intrusion}
 A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
 \newblock From intrusion detection to attacker attribution: A comprehensive
