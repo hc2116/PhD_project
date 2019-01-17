@@ -1,5 +1,5 @@
 \documentclass[a4paper,12pt,twoside]{report}
-\usepackage[left=2.7cm,right=2.7cm,top=2cm,bottom=3cm]{geometry}
+\usepackage[left=3.1cm,right=3.1cm,top=2cm,bottom=3cm]{geometry}
 %\usepackage[square,authoryear,sort]{natbib}
 \usepackage{url}
 \usepackage{xcolor}
@@ -115,20 +115,30 @@ This can in part be explained by a lack of understanding of how these smaller, m
 In this project, I will instead look at the more intrinsic nature of network traffic, the \textit{semantic structure} of packet and connection sequences. \textcolor{red}{argue what that means, why it is promising, and that is has been done before on system calls and promises better robustness}
 
 
-\section{Project specific objectives}
 
 
-\chapter{Work achieved so far}
+\section{Work achieved so far}
+
+
 
 Significant amount of time has been spent on reflecting on good strategies, data analysis, and appropriate measures to best capture programs distinctinctive signatures. Signatures from Snort have been helpful
-\section{Alan Turing Data Study Group}
 
 
-\section{Ground truth data generation}
+\subsection{Alan Turing Data Study Group}
 
-\section{Gathering useful data sources}
 
-\section{Testing first approaches on realistic data}
+\subsection{Ground truth data generation}
+
+Building semantic models of network traffic means to build an understanding how different network interactions can be distinguished via their traffic trace. We want to use ML techniques to automatically extract meaningful sets of sequences that represent these different interactions. In order to ensure that this is actually true, that our extracted models are indeed representing real, distinguishable interactions and not just nonsense, we need validation from \textit{ground truth data}. 
+
+Network traffic datasets are already hard to obtain due to privacy concerns. However, as  the correspondance between individual network traffic events and their particular purpose are virtually never recorded on a computer, their exist close to zero datasets containing ground truth about the contained events. For that reason, a particular aspect of this project is to generate useful ground truth data with appropriate content myself.
+
+\subsection{Gathering useful data sources}
+
+\subsection{Testing first approaches on realistic data}
+
+
+\section{Project specific objectives}
 
 
 \appendix
