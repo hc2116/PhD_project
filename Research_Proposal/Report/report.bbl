@@ -6,6 +6,21 @@ V.~Chandola, A.~Banerjee, and V.~Kumar.
 \newblock {\em ACM Comput. Surv.}, 41(3):15:1--15:58, July 2009.
 \newblock 05458.
 
+\bibitem{chen_more_2016}
+W.~Chen, D.~Aspinall, A.~D. Gordon, C.~Sutton, and I.~Muttik.
+\newblock More {Semantics} {More} {Robust}: {Improving} {Android} {Malware}
+  {Classifiers}.
+\newblock pages 147--158. ACM Press, 2016.
+\newblock 00005.
+
+\bibitem{chen_2016_robust}
+W.~Chen, D.~Aspinall, A.~D. Gordon, C.~Sutton, and I.~Muttik.
+\newblock On {Robust} {Malware} {Classifiers} by {Verifying} {Unwanted}
+  {Behaviours}.
+\newblock In E.~Ábrahám and M.~Huisman, editors, {\em Integrated {Formal}
+  {Methods}}, volume 9681, pages 326--341. Springer International Publishing,
+  Cham, 2016.
+
 \bibitem{lakhina2005mining}
 A.~Lakhina, M.~Crovella, and C.~Diot.
 \newblock Mining anomalies using traffic feature distributions.
