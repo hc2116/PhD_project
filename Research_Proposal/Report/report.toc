@@ -6,11 +6,11 @@
 \contentsline {subsection}{\numberline {1.1.2}Gaps}{4}
 \contentsline {chapter}{\numberline {2}Proposal}{6}
 \contentsline {section}{\numberline {2.1}Project aim}{6}
-\contentsline {section}{\numberline {2.2}Work achieved so far}{6}
-\contentsline {subsection}{\numberline {2.2.1}Exploration of data and gathering useful data sources}{6}
+\contentsline {section}{\numberline {2.2}Work achieved so far}{7}
+\contentsline {subsection}{\numberline {2.2.1}Data analysis, strategy, and gathering useful data sources}{7}
 \contentsline {subsection}{\numberline {2.2.2}Alan Turing Data Study Group}{7}
 \contentsline {subsection}{\numberline {2.2.3}Ground truth data generation}{7}
 \contentsline {subsection}{\numberline {2.2.4}Testing first approaches on realistic data}{8}
-\contentsline {section}{\numberline {2.3}Project specific objectives}{8}
-\contentsline {chapter}{\numberline {A}}{9}
-\contentsline {section}{\numberline {A.1}Literature Review}{9}
+\contentsline {section}{\numberline {2.3}Project specific objectives}{9}
+\contentsline {chapter}{\numberline {A}}{10}
+\contentsline {section}{\numberline {A.1}Literature Review}{10}
