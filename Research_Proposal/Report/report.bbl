@@ -8,10 +8,9 @@ V.~Chandola, A.~Banerjee, and V.~Kumar.
 
 \bibitem{chen_more_2016}
 W.~Chen, D.~Aspinall, A.~D. Gordon, C.~Sutton, and I.~Muttik.
-\newblock More {Semantics} {More} {Robust}: {Improving} {Android} {Malware}
-  {Classifiers}.
-\newblock pages 147--158. ACM Press, 2016.
-\newblock 00005.
+\newblock More semantics more robust: Improving android malware classifiers.
+\newblock In {\em Proceedings of the 9th ACM Conference on Security \& Privacy
+  in Wireless and Mobile Networks}, pages 147--158. ACM, 2016.
 
 \bibitem{chen_2016_robust}
 W.~Chen, D.~Aspinall, A.~D. Gordon, C.~Sutton, and I.~Muttik.
@@ -20,6 +19,11 @@ W.~Chen, D.~Aspinall, A.~D. Gordon, C.~Sutton, and I.~Muttik.
 \newblock In E.~Ábrahám and M.~Huisman, editors, {\em Integrated {Formal}
   {Methods}}, volume 9681, pages 326--341. Springer International Publishing,
   Cham, 2016.
+
+\bibitem{garcia2014empirical}
+S.~Garcia, M.~Grill, J.~Stiborek, and A.~Zunino.
+\newblock An empirical comparison of botnet detection methods.
+\newblock {\em computers \& security}, 45:100--123, 2014.
 
 \bibitem{lakhina2005mining}
 A.~Lakhina, M.~Crovella, and C.~Diot.

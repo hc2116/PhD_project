@@ -3,49 +3,46 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: report.aux
 The style file: abbrv.bst
 Database file #1: refs.bib
-Warning--I didn't find a database entry for "chen2016robust"
-Warning--I didn't find a database entry for "chen2016more"
-Warning--empty booktitle in chen_more_2016
 Warning--can't use both volume and number fields in lakhina2005mining
-You've used 5 entries,
+You've used 6 entries,
             2118 wiz_defined-function locations,
-            535 strings with 4693 characters,
-and the built_in function-call counts, 2411 in all, are:
-= -- 244
-> -- 123
+            541 strings with 5006 characters,
+and the built_in function-call counts, 2802 in all, are:
+= -- 282
+> -- 146
 < -- 5
-+ -- 47
-- -- 42
-* -- 179
-:= -- 381
-add.period$ -- 20
-call.type$ -- 5
-change.case$ -- 35
++ -- 57
+- -- 50
+* -- 212
+:= -- 447
+add.period$ -- 22
+call.type$ -- 6
+change.case$ -- 42
 chr.to.int$ -- 0
 cite$ -- 7
-duplicate$ -- 90
-empty$ -- 170
-format.name$ -- 42
-if$ -- 519
+duplicate$ -- 102
+empty$ -- 198
+format.name$ -- 50
+if$ -- 597
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 5
-newline$ -- 30
-num.names$ -- 12
-pop$ -- 36
+int.to.str$ -- 6
+missing$ -- 6
+newline$ -- 34
+num.names$ -- 14
+pop$ -- 42
 preamble$ -- 1
-purify$ -- 30
+purify$ -- 36
 quote$ -- 0
-skip$ -- 72
+skip$ -- 78
 stack$ -- 0
-substring$ -- 155
-swap$ -- 36
+substring$ -- 186
+swap$ -- 38
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 20
-warning$ -- 2
-while$ -- 22
-width$ -- 6
-write$ -- 65
-(There were 4 warnings)
+type$ -- 24
+warning$ -- 1
+while$ -- 26
+width$ -- 7
+write$ -- 75
+(There was 1 warning)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  21 JAN 2019 19:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  22 JAN 2019 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -312,12 +312,6 @@ omers and in-flicts tremen-
  []
 
 
-LaTeX Warning: Citation `chen2016robust' on page 2 undefined on input line 57.
-
-
-LaTeX Warning: Citation `chen2016more' on page 2 undefined on input line 57.
-
-
 Package caption Warning: \label without proper reference on input line 159.
 See the caption package documentation for explanation.
 
@@ -382,10 +376,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4490 strings out of 492982
- 68658 string characters out of 6134895
- 143612 words of memory out of 5000000
- 7992 multiletter control sequences out of 15000+600000
+ 4489 strings out of 492982
+ 68649 string characters out of 6134895
+ 143615 words of memory out of 5000000
+ 7991 multiletter control sequences out of 15000+600000
  10714 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,9n,40p,1466b,470s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -398,7 +392,7 @@ onts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmti12.pfb>
-Output written on report.pdf (11 pages, 321794 bytes).
+Output written on report.pdf (11 pages, 324235 bytes).
 PDF statistics:
  81 PDF objects out of 1000 (max. 8388607)
  54 compressed objects within 1 object stream
