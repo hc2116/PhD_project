@@ -10,8 +10,10 @@
 \contentsline {subsection}{\numberline {2.2.1}Data analysis, strategy, and gathering useful data sources}{7}
 \contentsline {subsection}{\numberline {2.2.2}Alan Turing Data Study Group}{7}
 \contentsline {subsection}{\numberline {2.2.3}Ground truth data generation}{7}
-\contentsline {subsection}{\numberline {2.2.4}Testing first approaches on realistic data}{8}
-\contentsline {section}{\numberline {2.3}Project specific objectives}{9}
-\contentsline {subsection}{\numberline {2.3.1}Unsupervised connection modelling}{9}
-\contentsline {chapter}{\numberline {A}}{10}
-\contentsline {section}{\numberline {A.1}Literature Review}{10}
+\contentsline {subsection}{\numberline {2.2.4}Testing first approaches on realistic data}{9}
+\contentsline {section}{\numberline {2.3}Project specific objectives}{10}
+\contentsline {subsection}{\numberline {2.3.1}Learning representations of connection/protocol behaviour}{10}
+\contentsline {subsection}{\numberline {2.3.2}Improving current methods}{10}
+\contentsline {subsection}{\numberline {2.3.3}Testing}{10}
+\contentsline {chapter}{\numberline {A}}{11}
+\contentsline {section}{\numberline {A.1}Literature Review}{11}

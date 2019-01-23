@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  22 JAN 2019 16:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  23 JAN 2019 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -160,25 +160,27 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 )
 \c@subfigure=\count96
 \c@subtable=\count97
-) (./report.aux
+)
+\c@assumption=\count98
+ (./report.aux
 
 LaTeX Warning: Label `graph' multiply defined.
 
 )
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -216,16 +218,16 @@ LaTeX Font Info:    ... okay on input line 26.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count98
+\scratchcounter=\count99
 \scratchdimen=\dimen124
 \scratchbox=\box28
-\nofMPsegments=\count99
-\nofMParguments=\count100
+\nofMPsegments=\count100
+\nofMParguments=\count101
 \everyMPshowfont=\toks18
-\MPscratchCnt=\count101
+\MPscratchCnt=\count102
 \MPscratchDim=\dimen125
-\MPnumerator=\count102
-\makeMPintoPDFobject=\count103
+\MPnumerator=\count103
+\makeMPintoPDFobject=\count104
 \everyMPtoPDFconversion=\toks19
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -286,9 +288,9 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 34.
+(Font)              <14.4> on input line 36.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 34.
+(Font)              <7> on input line 36.
  (./report.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 2.
@@ -306,17 +308,17 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 Chapter 1.
 
-Overfull \hbox (2.93958pt too wide) in paragraph at lines 51--52
+Overfull \hbox (2.93958pt too wide) in paragraph at lines 53--54
 \OT1/cmr/m/n/12 Sophisticated data breaches af-fect hun-dreds of mil-lion cus-t
 omers and in-flicts tremen-
  []
 
 
-Package caption Warning: \label without proper reference on input line 159.
+Package caption Warning: \label without proper reference on input line 177.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `graph' on page 2 undefined on input line 61.
+LaTeX Warning: Reference `graph' on page 2 undefined on input line 63.
 
 [2
 
@@ -324,48 +326,50 @@ LaTeX Warning: Reference `graph' on page 2 undefined on input line 61.
 <images/outlier_mine.png, id=12, 710.655pt x 577.15625pt>
 File: images/outlier_mine.png Graphic file (type png)
 <use images/outlier_mine.png>
-Package pdftex.def Info: images/outlier_mine.png  used on input line 77.
+Package pdftex.def Info: images/outlier_mine.png  used on input line 79.
 (pdftex.def)             Requested size: 189.49391pt x 153.89679pt.
 <images/Atrial_Premature_Contraction.png, id=13, 1324.95pt x 1029.8475pt>
 File: images/Atrial_Premature_Contraction.png Graphic file (type png)
 <use images/Atrial_Premature_Contraction.png>
 Package pdftex.def Info: images/Atrial_Premature_Contraction.png  used on input
- line 81.
+ line 83.
 (pdftex.def)             Requested size: 189.49391pt x 147.28908pt.
  [3 <./images/outlier_mine.png> <./images/Atrial_Premature_Contraction.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 112.
+(Font)              <5> on input line 114.
 [4] [5]
 Chapter 2.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 129.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 147.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 129.
-
-Underfull \vbox (badness 4168) has occurred while \output is active []
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 147.
  [6
 
 ]
-<images/Dockernet.jpg, id=34, 887.315pt x 514.92375pt>
+<images/Dockernet.jpg, id=36, 887.315pt x 514.92375pt>
 File: images/Dockernet.jpg Graphic file (type jpg)
 <use images/Dockernet.jpg>
-Package pdftex.def Info: images/Dockernet.jpg  used on input line 161.
+Package pdftex.def Info: images/Dockernet.jpg  used on input line 179.
 (pdftex.def)             Requested size: 294.76903pt x 171.05678pt.
-
-[7] [8 <./images/Dockernet.jpg>] [9]
+ [7] [8 <./images/Dockernet.jpg>]
+<images/RNN.jpg, id=45, 768.8725pt x 513.92pt>
+File: images/RNN.jpg Graphic file (type jpg)
+<use images/RNN.jpg>
+Package pdftex.def Info: images/RNN.jpg  used on input line 212.
+(pdftex.def)             Requested size: 294.76903pt x 197.0325pt.
+ [9 <./images/RNN.jpg>] [10]
 Appendix A.
-(./report.bbl [10
+(./report.bbl [11
 
 ]
 Missing character: There is no √ in font cmr12!
 Missing character: There is no Å in font cmr12!
 Missing character: There is no √ in font cmr12!
 Missing character: There is no ° in font cmr12!
-) [11
+) [12
 
 ] (./report.aux)
 
@@ -376,26 +380,29 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4489 strings out of 492982
- 68649 string characters out of 6134895
- 143615 words of memory out of 5000000
- 7991 multiletter control sequences out of 15000+600000
+ 4501 strings out of 492982
+ 68809 string characters out of 6134895
+ 143706 words of memory out of 5000000
+ 8002 multiletter control sequences out of 15000+600000
  10714 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,9n,40p,1466b,470s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmti12.pfb>
-Output written on report.pdf (11 pages, 324235 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
+>
+Output written on report.pdf (12 pages, 419123 bytes).
 PDF statistics:
- 81 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
+ 97 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

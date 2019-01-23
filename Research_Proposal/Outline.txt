@@ -42,7 +42,7 @@ Research Topic:
 	- Graphic showing plan of action?
 
 
-
+  
 ###########################
 
 Introduction and Problem description
@@ -64,4 +64,19 @@ Work achieved so far:
 		- Signatures from Snort have been helpful
 	- Data generation tool for ground truth of connection data
 	- 
+
+What can explicitely be done:
+	- Extend previous work
+		- incorporate more features, allow for more statistical variation
+		- Feed connection learning approach
+	- Use machine-learning to learn protocol behaviours
+		- As interpretability is a key request, try both state-models and more representation/deep learning based methods
+		- Automata for first few packages 		
+		- Cluster them for more labels (index)
+	- Robustness
+
+
+
+		
+
 

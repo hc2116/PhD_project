@@ -21,6 +21,8 @@
 \newcommand*{\toccontents}{\@starttoc{toc}}
 \makeatother
 
+\newtheorem{assumption}{Assumption}
+
 
 \let\endtitlepage\relax
 \begin{document}
@@ -123,6 +125,21 @@ This project will use the idea of semantic software models and apply it to netwo
 
 The motivation for the use of semantic models in network traffic stems from the fact that current anomaly detection methods perform poorly in the identification of temporally isolated malicious connections, as described above, as their external properties such as size, duration, or direction, do not necessarily deviate from normal traffic. Attacks with traffic that falls into this category often break into a machine by exploiting loopholes in the processing of information of programs, and in one way or the other breaking the \textcolor{red}{insert}. Traffic with malicious intent will therefore likely deviate in its intrinsic structure from benign one, and should be detectable when modelling this structure using semantic models.
 
+
+
+A key assumption in this project is the following:
+
+\begin{assumption}\label{Ass1}
+Application $A$ running on a computer can be seen as a probability distribution $P_A(X)$ generating sequences $X$ of network events, with $X$ behaving as a random variable. A computer running a set $N$ of applications%\footnote{including OS-applications}
+generates sequences $X$ of network events with a distribution $P_N(X)=\sum_{n\in N}P_n(X)$.
+\end{assumption}
+
+\begin{assumption}\label{Ass2}
+Two noncongruent applications $A$ and $B$ will most likely possess
+\end{assumption}
+
+
+
  \textcolor{red}{argue what that means, why it is promising, and that is has been done before on system calls and promises better robustness}
 
 \begin{itemize}
@@ -149,7 +166,7 @@ Although this project is motivated by previous successful applications of ML-dri
 
 \subsection{Ground truth data generation}
 
-Building semantic models of network traffic means to build an understanding how different network interactions can be distinguished via their traffic trace. We want to use ML techniques to automatically extract meaningful sets of sequences that represent these different interactions. In order to ensure that this is actually true, that our extracted models are indeed representing real, distinguishable interactions and not just nonsense, we need validation from \textit{ground truth data}. 
+Building semantic models of network traffic means to build an understanding how different network interactions can be distinguished via their traffic trace. We want to use ML techniques to automatically extract meaningful sets of sequences that represent these different interactions. In order to ensure that this is actually true, that our extracted models are indeed representing real distinguishable interactions and not just nonsense, we need validation from \textit{ground truth data}. 
 
 Network traffic datasets are already h7ard to obtain due to privacy concerns. However, as  the correspondance between individual network traffic events and their particular purpose are virtually never recorded on a computer, their exist close to zero datasets containing ground truth about the contained events. For that reason, a particular aspect of this project is to generate useful ground truth data with appropriate content myself.
 
@@ -189,6 +206,12 @@ For each service, a number of different scenarios are implemented. For example, 
 
 In the context of the overall research goal of this project, some exploratory work on semantic anomaly detection for network events has been conducted by Marc Sabate, Gudmund Grov, Wei Chen, and David Aspinall. This work uses three different machine learning algorithms\footnote{A Markov Chain model, Finite-State Automata, and a Recurrent Neural Network} from the area of \textit{representation learning} to capture meaningful sequences of \textit{NetFlows} and reflect reoccurring patterns in a model. For that, recorded NetFlows are grouped according to the generating host. Furthermore, in order to filter out sequences of flows that are unrelated to each other, a squence of flows that are close in time is grouped into what is called a \textit{sessions} as an approximation "true relation". Each session then serves as a training or test sequence for a behavioural model. Learned semantic behaviour is reflected through the capability of the model to predict features of the whole session and of other flows in the session from a smaller subset of flows, with more accurate predictions being rewarded in the training process. \textcolor{red}{These features include the network protocol and port and} Sessions which deviate from previously observed behaviour are then predicted poorly by the model and flagged as potentially malicious.
 
+\begin{figure}\label{RNN}
+\centering
+\includegraphics[width=0.7\textwidth]{images/RNN.jpg}
+\caption{Visualisation of the RNN-method used}
+\end{figure}
+
 \textcolor{red}{maybe write about how these methods are directly relevant for this PhD and could be extended, improved or incorporated}.
 
 The described methods were tested on the CTU-13 dataset \cite{garcia2014empirical}, a laboratory generated dataset available to study botnet detection. The great benefit of this data is the inclusion of both benign background traffic, on which the models were trained, and malicious traffic used to test their detection capabilities, and the availability of corresponding labels. Furthermore, it consists of more than ten million flows on multiple machines, thus containing reasonably much variation for testing purposes.
@@ -202,7 +225,22 @@ Anomaly-based methods in intrusion detection are often criticised for working on
 \section{Project specific objectives}
 
 
-\subsection{Unsupervised connection modelling}
+\subsection{Learning representations of connection/protocol behaviour}
+
+
+NDFA with similarity measure and state merging
+
+
+RNN approach or Autoencoder
+
+\subsection{Improving current methods}
+
+Using more features
+
+Using extracted features from the connection
+
+Let above mentioned methods provide semantic understanding of connections to form groups, and then give the detected group as an input feature to the methods. That way, specific tasks performed in a connection can be identified and given as input to methods looking at connection sequences
+
 
 
 \subsection{Testing}
