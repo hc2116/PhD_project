@@ -8,12 +8,13 @@
 \contentsline {section}{\numberline {2.1}Project aim}{6}
 \contentsline {section}{\numberline {2.2}Work achieved so far}{7}
 \contentsline {subsection}{\numberline {2.2.1}Data analysis, strategy, and gathering useful data sources}{7}
-\contentsline {subsection}{\numberline {2.2.2}Alan Turing Data Study Group}{7}
-\contentsline {subsection}{\numberline {2.2.3}Ground truth data generation}{7}
-\contentsline {subsection}{\numberline {2.2.4}Testing first approaches on realistic data}{9}
+\contentsline {subsubsection}{Semantic structures and corresponding variations}{7}
+\contentsline {subsubsection}{Alan Turing Data Study Group}{8}
+\contentsline {subsection}{\numberline {2.2.2}Ground truth data generation}{8}
+\contentsline {subsection}{\numberline {2.2.3}Testing first approaches on realistic data}{9}
 \contentsline {section}{\numberline {2.3}Project specific objectives}{10}
 \contentsline {subsection}{\numberline {2.3.1}Learning representations of connection/protocol behaviour}{10}
-\contentsline {subsection}{\numberline {2.3.2}Improving current methods}{10}
-\contentsline {subsection}{\numberline {2.3.3}Testing}{10}
-\contentsline {chapter}{\numberline {A}}{11}
-\contentsline {section}{\numberline {A.1}Literature Review}{11}
+\contentsline {subsection}{\numberline {2.3.2}Improving current methods}{11}
+\contentsline {subsection}{\numberline {2.3.3}Testing}{11}
+\contentsline {chapter}{\numberline {A}}{12}
+\contentsline {section}{\numberline {A.1}Literature Review}{12}

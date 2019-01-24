@@ -127,21 +127,9 @@ The motivation for the use of semantic models in network traffic stems from the 
 
 
 
-A key assumption in this project is the following:
-
-\begin{assumption}\label{Ass1}
-Application $A$ running on a computer can be seen as a probability distribution $P_A(X)$ generating sequences $X$ of network events, with $X$ behaving as a random variable. A computer running a set $N$ of applications%\footnote{including OS-applications}
-generates sequences $X$ of network events with a distribution $P_N(X)=\sum_{n\in N}P_n(X)$.
-\end{assumption}
-
-\begin{assumption}\label{Ass2}
-Two applications $A$ and $B$ usually have different $P_A(X)$ and $P_B(X)$, which also applies to malicious applications. Consequently, a sophisticated and well enough trained anomaly model of a machine's traffic distribution $P_N(X)$ should be able to identify the existence of a new (and potentially malicious) application as traffic that did not originate from the set of existing applications $N$.
-\end{assumption}
 
 
-\begin{assumption}\label{Ass2}
-\textcolor{red}{Write how that applies to semantic structures}
-\end{assumption}
+
 
  \textcolor{red}{argue what that means, why it is promising, and that is has been done before on system calls and promises better robustness}
 
@@ -160,10 +148,34 @@ Two applications $A$ and $B$ usually have different $P_A(X)$ and $P_B(X)$, which
 
 Although this project is motivated by previous successful applications of ML-driven semantic models for anomaly detection, the differences in the type of data used in this project means that different tools and modelling strategies are necessary. Network traffic usually contains more intrinsic variation and noise, with packets potentially being dropped, and data distribution being afffected by the level of network congestion or by varying input parameters. Therefore, significant amount of time has been spent on initial data analysis and reflection on good modelling strategies. 
 
+Key assumption in this project is the following:
+
+\begin{assumption}\label{Ass1}
+Application $A$ running on a computer can be seen as a probability distribution $P_A(X)$ generating sequences $X$ of network events, with $X$ behaving as a random variable.
+\end{assumption}
+
+\begin{assumption}\label{Ass2}
+Two applications $A$ and $B$ usually have different $P_A(X)$ and $P_B(X)$, which is applies especially to malicious applications. A computer running a set $N$ of applications%\footnote{including OS-applications}
+generates sequences $X$ of network events with a distribution $P_N(X)=\sum_{n\in N}P_n(X)$. Consequently, a sophisticated and well enough trained anomaly model of a machine's traffic distribution $P_N(X)$ should be able to identify the existence of a new (and potentially malicious) application as traffic that did not originate from the set of existing applications $N$.
+\end{assumption}
+
+
+\subsubsection{Semantic structures and corresponding variations}
+
+Semantic behaviour of a program denotes how it transmits and reacts to information. This is can be observed both on a packet and on a flow level: Programs follow specific protocols on key-exchange etc. when a connection is established or how and with what frequency new bulks of data-packets are pushed, but also react to data retrieved in one connections with new connection requests such as the establishing of a HTTP-connection to an address received by an earlier DNS-request. Variation and noise is introduced in several ways:
+
+\begin{itemize}
+
+\item Varying sizes of data means a varying number and sizes of packets to be transmitted, which can in turn influence the way the receiver responds. Similarly, requested content can be made up of several files of different sizes which are transmitted in a varying number of connections with differing sizes.
+\item Encryption can in a similar way introduce variation in packet or connection sizes and numbers.
+\item Variation in the computational load or on the network on a computer can translate into varying response times to retreived information or much data is buffered and pushed at once. Similarly, packet loss or deviations from the established protocol by one side usually means that information has to be transmitted again.
+
+\end{itemize}
+
 
 % data analysis, and appropriate measures to best capture programs distinctinctive signatures. Signatures from Snort have been helpful
 
-\subsection{Alan Turing Data Study Group}
+\subsubsection{Alan Turing Data Study Group}
 
 
 
