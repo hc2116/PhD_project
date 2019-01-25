@@ -1,5 +1,10 @@
 \begin{thebibliography}{1}
 
+\bibitem{bernaille2006traffic}
+L.~Bernaille, R.~Teixeira, I.~Akodkenou, A.~Soule, and K.~Salamatian.
+\newblock Traffic classification on the fly.
+\newblock {\em ACM SIGCOMM Computer Communication Review}, 36(2):23--26, 2006.
+
 \bibitem{chandola_anomaly_2009}
 V.~Chandola, A.~Banerjee, and V.~Kumar.
 \newblock Anomaly {Detection}: {A} {Survey}.
@@ -19,6 +24,11 @@ W.~Chen, D.~Aspinall, A.~D. Gordon, C.~Sutton, and I.~Muttik.
 \newblock In E.~Ábrahám and M.~Huisman, editors, {\em Integrated {Formal}
   {Methods}}, volume 9681, pages 326--341. Springer International Publishing,
   Cham, 2016.
+
+\bibitem{crotti2007traffic}
+M.~Crotti, M.~Dusi, F.~Gringoli, and L.~Salgarelli.
+\newblock Traffic classification through simple statistical fingerprinting.
+\newblock {\em ACM SIGCOMM Computer Communication Review}, 37(1):5--16, 2007.
 
 \bibitem{garcia2014empirical}
 S.~Garcia, M.~Grill, J.~Stiborek, and A.~Zunino.
