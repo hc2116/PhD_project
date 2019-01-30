@@ -284,7 +284,13 @@ A model that offers enough representation of semantic structure has to go furthe
 
 \subsubsection{Probabilistic Real-Time Automata}
 
-The \textit{finite-state automaton} is a mathematical model of computation as it can be exactly one out of a finite set of states at any given time. It is therefore a very common model for discrete event systems. A very useful 
+The \textit{non-deterministic finite-state automaton (NFA} is a widely used model for discrete event systems and can be seen as a mathematical model of computation. It is a type of Markov chain with a finite number of states and a set of Markovian transition probabilities from each state to the others. A recent variant of the  of the NFA is the \textit{probabilistic real-time automaton (PRTA)}, which models the event interarrival times as a discrete distribution that is dependent on the current state. 
+
+Automata are learned from a set of input sequences via state-merging. In this procedure, a trie with all observed event sequences is built, with each path in the trie representing one input sequence. Pairs of paths that are close to each other are then merged, thus generalising over the input data and learning the structure of the target machine. Closeness is determined by heuristic measures, with a merge  considered good if the future behaviour after  reaching state $q$ in one path is  similar to that after reaching $q\prime$. 
+
+
+
+Automata have already been successfully applied 
 
 
 RNN approach or Autoencoder

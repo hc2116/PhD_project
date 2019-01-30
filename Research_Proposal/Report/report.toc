@@ -14,6 +14,7 @@
 \contentsline {subsection}{\numberline {2.2.3}Testing first approaches on realistic data}{9}
 \contentsline {section}{\numberline {2.3}Project specific objectives}{10}
 \contentsline {subsection}{\numberline {2.3.1}Learning representations of connection/protocol behaviour}{10}
+\contentsline {subsubsection}{Probabilistic Real-Time Automata}{12}
 \contentsline {subsection}{\numberline {2.3.2}Improving current methods}{12}
 \contentsline {subsection}{\numberline {2.3.3}Robustness}{12}
 \contentsline {subsection}{\numberline {2.3.4}Testing}{12}
