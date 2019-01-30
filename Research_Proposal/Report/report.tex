@@ -242,32 +242,54 @@ Anomaly-based methods in intrusion detection are often criticised for working on
 
 \subsection{Learning representations of connection/protocol behaviour}
 
-\textcolor{red}{As became clear during our investigation}
-The distinct semantic behaviour of an applications manifests itself most clearly in the first few packages exchanged in a connection. This is the stage in a connection during which a specific clientrequest is transmitted, encryption keys are exchanged, users authenticate themselves with password, 
-\textcolor{red}{provide meaningful example, maybe with different ftp scenarios leaving different traces...}. 
+%\textcolor{red}{As became clear during our investigation}
+The distinct semantic behaviour of an applications manifests itself most clearly in the first few packages exchanged in a connection. This is the stage in a connection during which a specific client or server request is transmitted, encryption keys are exchanged, users authenticate themselves with passwords, ports for successive connections are defined, etc. This is distinction goes far beyond individual traffic protocols, as even a single application usually can excert different actions which translate to different semantic behaviours in this initial negotiation phase. 
 
-%A single application can have multiple behaviors which should be modeled separately
+The significance of the initial negitiation phase is bolstered by two publications on the area of traffic classification that share the same conclusion and train clusters and classifiers on the metadata of the first five to ten packets to distinguish different applications\cite{bernaille2006traffic,crotti2007traffic}.
 
 
-The importance of this initial negitiation phase is bolstered by two publications on the area of traffic classification that share the same conclusion and train clusters and classifiers on the metadata of the first five to ten packets to distinguish different applications\cite{bernaille2006traffic,crotti2007traffic}. \textcolor{red}{write about why this work needs to be extended with more sophisticated models (there is some text in Bernaille about flaws)}
+\begin{figure}\label{negot}
+\centering
+\begin{subfigure}[b]{0.49\textwidth}\label{FTP}
+\includegraphics[width=\textwidth]{images/FTP.jpg}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.49\textwidth}\label{SSH}
+\includegraphics[width=\textwidth]{images/SSH.jpg}
+\caption{}
+\end{subfigure}
+%\includegraphics[width=0.7\textwidth]{images/FTP.jpg}
+\caption{Depiction of user-ID and password exchange in an FTP-connection (a) and an SSH-connection (b) during the negotiation phase.}
+\end{figure}
+
+ \textcolor{red}{write about why this work needs to be extended with more sophisticated models (there is some text in Bernaille about flaws)}
+
 
 
 Learning precise semantic representations of this initial negotiation phase from applications running on a computer has several main benefits for this project: 
 
 \begin{itemize}
-\item Several types of attacks exploit loopholes accessible at the negotiation stage, such as a buffer overflow attack. A precise semantic representation model could detect anomalous deviations in particular packet parameters such as size or tcp-flags from the learned behaviour. \textcolor{red}{insert image how buffer overflow attack deviates from a learned model (with distributions of size etc. maybe)}
-\item As applications are updated, their particular traffic generation distribution $P(X)$ can also  gradually change, causing corresponding traffic to be potentially flagged as anomalous by current anomaly detection methods. A representational model could identify common semantic substructures between traffic instances and thus indicate that they originate from an updated application.
-\item 
+\item Several types of attacks exploit loopholes accessible at the negotiation stage. A precise semantic representation model could detect anomalous deviations in particular packet parameters from the learned behaviour. A simple example of such a deviation from expected behaviour would occur during a \textit{buffer overflow attack}, which overflows an input buffer (such as for a password) to directly modify memory locations. This should be observable as a significant deviation in the corresponding packet size.
+
+\item Newly installed malware will most likely exhibit different than normal behaviour in this stage, from very different negotiation procedures to just slight deviations in the packet interarrivals.
+
+\item The translation of semantic negotiation structures into different behaviour groups could be used to associate individual flows with particular actions. This could be very helpful for anomaly detection on a flow level, such as the described work by Chen et al.\cite{chen_more_2016}. I will describe this more in section \ref{Curmet}.
+
+\item As applications are updated, their particular traffic generation distribution $P(X)$ can also  gradually change, causing corresponding traffic to be potentially flagged as anomalous by current anomaly detection methods. A representational model could identify common semantic substructures between traffic instances and thus indicate that they originate from an updated application. More detail will be given in section \ref{Robustness}.
+
 \end{itemize}
 
 
+A model that offers enough representation of semantic structure has to go further than the above mentioned work, which was intended for traffic classification instead of cyber-security. Therefore, I propose \textcolor{red}{three} unsupervised modelling approaches that are intended to encapsule significantly more information.
 
-NDFA with similarity measure and state merging
+\subsubsection{Probabilistic Real-Time Automata}
+
+The \textit{finite-state automaton} is a mathematical model of computation as it can be exactly one out of a finite set of states at any given time. It is therefore a very common model for discrete event systems. A very useful 
 
 
 RNN approach or Autoencoder
 
-\subsection{Improving current methods}
+\subsection{Improving current methods}\label{Curmet}
 
 Using more features
 
@@ -276,6 +298,7 @@ Using extracted features from the connection
 Let above mentioned methods provide semantic understanding of connections to form groups, and then give the detected group as an input feature to the methods. That way, specific tasks performed in a connection can be identified and given as input to methods looking at connection sequences
 
 
+\subsection{Robustness}\label{Robustness}
 
 \subsection{Testing}
 

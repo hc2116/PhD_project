@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  28 JAN 2019 11:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  30 JAN 2019 17:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -372,16 +372,27 @@ File: images/RNN.jpg Graphic file (type jpg)
 <use images/RNN.jpg>
 Package pdftex.def Info: images/RNN.jpg  used on input line 226.
 (pdftex.def)             Requested size: 294.76903pt x 197.0325pt.
- [9] [10 <./images/RNN.jpg>] [11]
+ [9] [10 <./images/RNN.jpg>]
+<images/FTP.jpg, id=52, 455.7025pt x 490.83376pt>
+File: images/FTP.jpg Graphic file (type jpg)
+<use images/FTP.jpg>
+Package pdftex.def Info: images/FTP.jpg  used on input line 254.
+(pdftex.def)             Requested size: 206.34154pt x 222.2512pt.
+<images/SSH.jpg, id=53, 456.70625pt x 487.8225pt>
+File: images/SSH.jpg Graphic file (type jpg)
+<use images/SSH.jpg>
+Package pdftex.def Info: images/SSH.jpg  used on input line 258.
+(pdftex.def)             Requested size: 206.34154pt x 220.39642pt.
+ [11 <./images/FTP.jpg> <./images/SSH.jpg>] [12]
 Appendix A.
-(./report.bbl [12
+(./report.bbl [13
 
 ]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no  in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¡ in font cmr12!
-) [13
+) [14
 
 ] (./report.aux)
 
@@ -392,10 +403,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4505 strings out of 492982
- 68862 string characters out of 6134895
- 144729 words of memory out of 5000000
- 8006 multiletter control sequences out of 15000+600000
+ 4522 strings out of 492982
+ 69081 string characters out of 6134895
+ 144876 words of memory out of 5000000
+ 8021 multiletter control sequences out of 15000+600000
  10714 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,9n,40p,1466b,470s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -411,10 +422,10 @@ fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 >
-Output written on report.pdf (13 pages, 424965 bytes).
+Output written on report.pdf (14 pages, 501808 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 68 compressed objects within 1 object stream
+ 106 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
