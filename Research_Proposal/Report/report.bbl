@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{bernaille2006traffic}
 L.~Bernaille, R.~Teixeira, I.~Akodkenou, A.~Soule, and K.~Salamatian.
@@ -41,10 +41,33 @@ A.~Lakhina, M.~Crovella, and C.~Diot.
 \newblock In {\em ACM SIGCOMM Computer Communication Review}, volume~35, pages
   217--228. ACM, 2005.
 
+\bibitem{malhotra2016lstm}
+P.~Malhotra, A.~Ramakrishnan, G.~Anand, L.~Vig, P.~Agarwal, and G.~Shroff.
+\newblock Lstm-based encoder-decoder for multi-sensor anomaly detection.
+\newblock {\em arXiv preprint arXiv:1607.00148}, 2016.
+
 \bibitem{nisioti2018intrusion}
 A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
 \newblock From intrusion detection to attacker attribution: A comprehensive
   survey of unsupervised methods.
 \newblock {\em IEEE Communications Surveys \& Tutorials}, 2018.
+
+\bibitem{pellegrino2017learning}
+G.~Pellegrino, Q.~Lin, C.~Hammerschmidt, and S.~Verwer.
+\newblock Learning behavioral fingerprints from netflows using timed automata.
+\newblock In {\em Integrated Network and Service Management (IM), 2017
+  IFIP/IEEE Symposium on}, pages 308--316. IEEE, 2017.
+
+\bibitem{schmidt2014online}
+J.~Schmidt and S.~Kramer.
+\newblock Online induction of probabilistic real-time automata.
+\newblock {\em Journal of Computer Science and Technology}, 29(3):345--360,
+  2014.
+
+\bibitem{srivastava2015unsupervised}
+N.~Srivastava, E.~Mansimov, and R.~Salakhudinov.
+\newblock Unsupervised learning of video representations using lstms.
+\newblock In {\em International conference on machine learning}, pages
+  843--852, 2015.
 
 \end{thebibliography}

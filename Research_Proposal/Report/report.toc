@@ -15,8 +15,10 @@
 \contentsline {section}{\numberline {2.3}Project specific objectives}{10}
 \contentsline {subsection}{\numberline {2.3.1}Learning representations of connection/protocol behaviour}{10}
 \contentsline {subsubsection}{Probabilistic Real-Time Automata}{12}
-\contentsline {subsection}{\numberline {2.3.2}Improving current methods}{12}
-\contentsline {subsection}{\numberline {2.3.3}Robustness}{12}
-\contentsline {subsection}{\numberline {2.3.4}Testing}{12}
-\contentsline {chapter}{\numberline {A}}{13}
-\contentsline {section}{\numberline {A.1}Literature Review}{13}
+\contentsline {subsubsection}{Autoencoder-based}{14}
+\contentsline {subsubsection}{Validation of results}{15}
+\contentsline {subsection}{\numberline {2.3.2}Improving current methods}{15}
+\contentsline {subsection}{\numberline {2.3.3}Robustness}{15}
+\contentsline {subsection}{\numberline {2.3.4}Testing}{15}
+\contentsline {chapter}{\numberline {A}}{16}
+\contentsline {section}{\numberline {A.1}Literature Review}{16}

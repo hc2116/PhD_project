@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{pdfpages}
 \usepackage{subcaption}
+%\usepackage{subfig}
 
 \makeatletter
 \def\@makechapterhead#1{%
@@ -262,7 +263,7 @@ The significance of the initial negitiation phase is bolstered by two publicatio
 \caption{Depiction of user-ID and password exchange in an FTP-connection (a) and an SSH-connection (b) during the negotiation phase.}
 \end{figure}
 
- \textcolor{red}{write about why this work needs to be extended with more sophisticated models (there is some text in Bernaille about flaws)}
+\textcolor{red}{write about why this work needs to be extended with more sophisticated models (there is some text in Bernaille about flaws)}
 
 
 
@@ -279,6 +280,8 @@ Learning precise semantic representations of this initial negotiation phase from
 
 \end{itemize}
 
+Focusing exclusively on this initial phase, i.e. a fixed number of the first packets in a connection, has several benefits: We are dealing with a fixed and comparibly small input size, which lower computational cost and is beneficial for modelling techniques with a higher complexity. Our model is tainted by large data exchanges, which usually do not contain as much useful information but are spread across many more packets, which could create a high imbalance in the traffic representation. And we do not have to wait until a connection is finished for its evaluation.
+
 
 A model that offers enough representation of semantic structure has to go further than the above mentioned work, which was intended for traffic classification instead of cyber-security. Therefore, I propose \textcolor{red}{three} unsupervised modelling approaches that are intended to encapsule significantly more information.
 
@@ -286,14 +289,69 @@ A model that offers enough representation of semantic structure has to go furthe
 
 The \textit{non-deterministic finite-state automaton (NFA} is a widely used model for discrete event systems and can be seen as a mathematical model of computation. It is a type of Markov chain with a finite number of states and a set of Markovian transition probabilities from each state to the others. A recent variant of the  of the NFA is the \textit{probabilistic real-time automaton (PRTA)}, which models the event interarrival times as a discrete distribution that is dependent on the current state. 
 
-Automata are learned from a set of input sequences via state-merging. In this procedure, a trie with all observed event sequences is built, with each path in the trie representing one input sequence. Pairs of paths that are close to each other are then merged, thus generalising over the input data and learning the structure of the target machine. Closeness is determined by heuristic measures, with a merge  considered good if the future behaviour after  reaching state $q$ in one path is  similar to that after reaching $q\prime$. 
+Automata are learned from a set of input sequences via state-merging. In this procedure, a trie with all observed event sequences is built, with each path in the trie representing one input sequence. Pairs of paths that are close to each other are then merged, thus generalising over the input data and learning the structure of the target machine. Closeness is determined by heuristic measures, with a merge  considered good if the future behaviour after  reaching state $q$ in one path is  similar to that after reaching $q\prime$. Figure \ref{Autt} depicts this process.
+
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{c}
+\begin{subfigure}[b]{0.85\textwidth}\label{Autotrie}
+\includegraphics[width=\textwidth]{images/Autotrie.jpg}
+\caption{}
+\end{subfigure}\\
+\begin{subfigure}[b]{0.85\textwidth}\label{Automerge}
+\includegraphics[width=\textwidth]{images/Automerge.jpg}
+\caption{}
+\end{subfigure}
+\end{tabular}
+\caption{Depiction of the state-merging process for two input sequences}\label{Autt}
+\end{figure}
+
+As the exchange of network packets is a symbolic sequences of a computational process, they are a very suitable candidate to be modelled by probabilistic automata: The tree-branching in an automata is well suited to represent the different avenues a negotiation can take while the probabilistic state-merging ensures that potential variation within one avenue are accounted for. With enough traning data, automata can therefore provide a much more refined representation of a given set of packet sequences than previously explored techniques without overfitting. Anomaly detection to identify potentially malicious traffic can then be done by computing the likelihood of a input sequence trajectory and flagging it if it false a likelihood-ratio test. 
+
+Using probabilistic automata has further benefits in the context of this project. In contrast to many methods, they are interpretable by domain experts when checking, which is a priority for many researchers in order to process the inevitably\footnote{due to the inbalance between benign but irregular traffic compared to actual attacks} high occurrencies of false alerts. Furthermore, the branching structure in automata provides a natural grouping of sequences, which can be used to engineer labels for similar sequences in a similar manner to the \textit{hierarchichal clustering method}. Such labels can be very useful in future ambitions discussed in section \ref{Curmet}.
+
+PRTAs have been applied to network traffic before by Pellegrino et al. \cite{pellegrino2017learning}, however in a different context and scale. To apply automata to this project, network packets would have to be transformed to discrete, finite states. Interesting properties to be included are 
+
+\begin{enumerate}
+\item the direction of the packet,
+\item TCP-flags,
+\item the interarrival time,
+\item the size of the payload,
+\item and potentially the offered window size.
+\end{enumerate}
+
+To create states, continouos variables have to be transformed into a set of finite non-overlapping intervals. For a better resolution, a rescaling onto a logarithmic scale is very sensible. The combination of all attributes into one set of states is then straightforward. 
+
+One challenge in this project is the large amount of training data needed to represent the variability of network traffic. Schmidt and Kramer \cite{schmidt2014online} have recently proposed an online learning approach for PRTAs that enables the effective processing of massive datasets, which could be very useful for this project. A further thing to consider is that the chosen similarity measure for state-merging should be able to account for additional \textit{ack}-packets inserted in the connection or potential packet loss. A possible solution is to introduce non-vanishing probabilities for both scenarios, i.e. it should be possible from every state to jump to an empty \textit{ack}-packet and back, or to skip a packet. Another solution which could also reduce the potential computational burden is to learn multiple automatas from the input using rolling windows over, with each automata learning a specific interval of the negotiation phase. This could increase the stability of individual automata and decrease the size of the trie. Furthermore, as each automata would correspond to sub-behaviours in the connection, it would be possible to identify common subsequences in traffic from updated software and thus create a relation to previous traffic. 
+
+\subsubsection{Autoencoder-based}
+
+\textit{Autoencoders} are the most popular deep learning-based method for unsupervised representation learning. They can learn a compressed representation of input data by self-supervised training using the reconstruction error of the input data. Although autoencoders themselves do not produce a defined model of the input data, they translate complex structures into a more simple space in which they can be described by conventional density estimation methods. 
+
+\textit{Long short-term memory (LSTM)} autoencoders are a recent version of autoencoders that use the structure of RNNs to capture the sequential nature of the input data before the encoding-process, first introduced by Srivastava et al. \cite{srivastava2015unsupervised}. Since then, they have been successfully used for artificially creation facial videos, music generation, or text compression.
+LSTM autoencoders can be trained using backpropagation, and the application of an LSTM autoencoder to packet data is straightforward, however again time and size variables should be logarithmically rescaled. Anomaly detection can then either be performed by thresholding the reconstruction error of new input sequences, as has been demonstrated by Malhotra et al. \cite{malhotra2016lstm}.
+ 
+\begin{figure}[h]\label{LSTM_Enc}
+\centering
+\begin{subfigure}[b]{0.65\textwidth}\label{LSTM1}
+\includegraphics[width=\textwidth]{images/LSTM_Encoder.jpg}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.34\textwidth}
+\includegraphics[width=\textwidth]{images/MNIST.png}
+\caption{}\label{LSTM2}
+\end{subfigure}
+\caption{Visualisation of the design of an LSTM Autoencoder (a), taken from https://machinelearningmastery.com/lstm-autoencoders/, and the embedding of different types of handwritten digits by an autoencoder.}
+\end{figure}
+
+
+LSTM autoencoders are an excellent alternative to PRTAs for the modelling of packet data due to their superb ability to discover non-linearities in sequential data, and the fact that they can be trained on massive datasets. Furthermore, the embedding of input data into a lower dimensional continuous space means that clustering of similar traffic instances to create higher level flow labels can be performed, see Figure \ref{LSTM2}.
+
+\subsubsection{Validation of results}
 
 
 
-Automata have already been successfully applied 
-
-
-RNN approach or Autoencoder
 
 \subsection{Improving current methods}\label{Curmet}
 
