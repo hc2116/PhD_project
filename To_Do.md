@@ -1,16 +1,10 @@
 # Project
 
-- Investigate blackboard transmission for next call
-
 - Investigate to introduce artificial delays in traffic generation, look at effect
 
 - New data for paper
 
-- Investigate use cases from Alex
-
-- Look at current state of network anomaly detection
-	- Look at a survey, investigate individual flow anomaly detection or packet anomaly detection
-	- Think about second order features compared to first order features: What characterises a flow
+- Think about second order features compared to first order 	features: What characterises a flow
 
 - Look at exemplary malware network data
 	- Flame	
