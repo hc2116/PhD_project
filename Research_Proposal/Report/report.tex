@@ -22,7 +22,7 @@
 \newcommand*{\toccontents}{\@starttoc{toc}}
 \makeatother
 
-\newtheorem{assumption}{Assumption}
+\newtheorem{hypothesis}{Hypothesis}
 
 
 \let\endtitlepage\relax
@@ -116,6 +116,9 @@ This can in part be explained by a lack of understanding of how these smaller, m
 
 \textcolor{red}{Talk maybe a bit about robustness? but maybe just mention it in the probject proposal}
 
+
+Cite Sommer and Paxson \cite{sommer_outside_2010}.
+
 \chapter{Proposal}
 
 \section{Project aim}
@@ -151,15 +154,16 @@ Although this project is motivated by previous successful applications of ML-dri
 
 Key assumption in this project is the following:
 
-\begin{assumption}\label{Ass1}
+\begin{hypothesis}\label{Ass1}
 Application $A$ running on a computer can be seen as a probability distribution $P_A(X)$ generating sequences $X$ of network events, with $X$ behaving as a random variable.
-\end{assumption}
+\end{hypothesis}
 
-\begin{assumption}\label{Ass2}
+\begin{hypothesis}\label{Ass2}
 Two applications $A$ and $B$ usually have different $P_A(X)$ and $P_B(X)$, which is applies especially to malicious applications. A computer running a set $N$ of applications%\footnote{including OS-applications}
 generates sequences $X$ of network events with a distribution $P_N(X)=\sum_{n\in N}P_n(X)$. Consequently, a sophisticated and well enough trained anomaly model of a machine's traffic distribution $P_N(X)$ should be able to identify the existence of a new (and potentially malicious) application as traffic that did not originate from the set of existing applications $N$.
-\end{assumption}
+\end{hypothesis}
 
+An additional assumption about systems we are looking at is that the set of installed software is relatively constant throughout the network, with new software installations being rather rare and controlled. 
 
 \subsubsection{Semantic structures and corresponding variations}
 
@@ -245,10 +249,10 @@ Anomaly-based methods in intrusion detection are often criticised for working on
 
 \textcolor{red}{write about LANL and UGR when you are done}
 
-\section{Project specific objectives}
+\chapter{Project specific objectives}
 
 
-\subsection{Learning representations of connection/protocol behaviour}
+\section{Learning representations of connection/protocol behaviour}
 
 %\textcolor{red}{As became clear during our investigation}
 The distinct semantic behaviour of an applications manifests itself most clearly in the first few packages exchanged in a connection. This is the stage in a connection during which a specific client or server request is transmitted, encryption keys are exchanged, users authenticate themselves with passwords, ports for successive connections are defined, etc. This is distinction goes far beyond individual traffic protocols, as even a single application usually can excert different actions which translate to different semantic behaviours in this initial negotiation phase. 
@@ -292,7 +296,7 @@ Focusing exclusively on this initial phase, i.e. a fixed number of the first pac
 
 A model that offers enough representation of semantic structure has to go further than the above mentioned work, which was intended for traffic classification instead of cyber-security. Therefore, I propose \textcolor{red}{three} unsupervised modelling approaches that are intended to encapsule significantly more information.
 
-\subsubsection{Probabilistic Real-Time Automata}
+\subsection{Probabilistic Real-Time Automata}
 
 The \textit{non-deterministic finite-state automaton (NFA} is a widely used model for discrete event systems and can be seen as a mathematical model of computation. It is a type of Markov chain with a finite number of states and a set of Markovian transition probabilities from each state to the others. A recent variant of the  of the NFA is the \textit{probabilistic real-time automaton (PRTA)}, which models the event interarrival times as a discrete distribution that is dependent on the current state. 
 
@@ -330,9 +334,9 @@ PRTAs have been applied to network traffic before by Pellegrino et al. \cite{pel
 
 To create states, continouos variables have to be transformed into a set of finite non-overlapping intervals. For a better resolution, a rescaling onto a logarithmic scale is very sensible. The combination of all attributes into one set of states is then straightforward. 
 
-One challenge in this project is the large amount of training data needed to represent the variability of network traffic. Schmidt and Kramer \cite{schmidt2014online} have recently proposed an online learning approach for PRTAs that enables the effective processing of massive datasets, which could be very useful for this project. A further thing to consider is that the chosen similarity measure for state-merging should be able to account for additional \textit{ack}-packets inserted in the connection or potential packet loss. A possible solution is to introduce non-vanishing probabilities for both scenarios, i.e. it should be possible from every state to jump to an empty \textit{ack}-packet and back, or to skip a packet. Another solution which could also reduce the potential computational burden is to learn multiple automatas from the input using rolling windows over, with each automata learning a specific interval of the negotiation phase. This could increase the stability of individual automata and decrease the size of the trie. Furthermore, as each automata would correspond to sub-behaviours in the connection, it would be possible to identify common subsequences in traffic from updated software and thus create a relation to previous traffic. 
+One challenge in this project is the large amount of training data needed to represent the variability of network traffic. Schmidt and Kramer \cite{schmidt2014online} have recently proposed an online learning approach for PRTAs that enables the effective processing of massive datasets, which could be very useful for this project. A further thing to consider is that the chosen similarity measure for state-merging should be able to account for additional \textit{ack}-packets inserted in the connection or potential packet loss. A possible solution is to introduce non-vanishing probabilities for both scenarios, i.e. it should be possible from every state to jump to an empty \textit{ack}-packet and back, or to skip a packet. Another solution which could also reduce the potential computational burden is to learn multiple automatas from the input using rolling windows over, with each automata learning a specific interval of the negotiation phase, in a similar manner as in \cite{pellegrino2017learning}. This could increase the stability of individual automata and decrease the size of the trie. Furthermore, as each automata would correspond to sub-behaviours in the connection, it would be possible to identify common subsequences in traffic from updated software and thus create a relation to previous traffic. 
 
-\subsubsection{Autoencoder-based}
+\subsection{Autoencoder-based}
 
 \textit{Autoencoders} are the most popular deep learning-based method for unsupervised representation learning. They can learn a compressed representation of input data by self-supervised training using the reconstruction error of the input data. Although autoencoders themselves do not produce a defined model of the input data, they translate complex structures into a more simple space in which they can be described by conventional density estimation methods. 
 
@@ -355,7 +359,7 @@ LSTM autoencoders can be trained using backpropagation, and the application of a
 
 LSTM autoencoders are an excellent alternative to PRTAs for the modelling of packet data due to their superb ability to discover non-linearities in sequential data, and the fact that they can be trained on massive datasets. Furthermore, the embedding of input data into a lower dimensional continuous space means that clustering of similar traffic instances to create higher level flow labels can be performed, see Figure \ref{LSTM2}.
 
-\subsubsection{Data and result validation}
+\subsection{Data and result validation}
 
 The above described methods should be tested for three properties:
 
@@ -370,7 +374,7 @@ Testing of the first two properties is straight-forward given a suitable dataset
 The third property is not as straight-forward to test, as hard ground truth about the purpose of individual connections is required to analyse the labelling consistency. Fortunately, such ground truth data is now available to us for a variety of services by our data generation tool, described in Section \ref{Groundtruth}. To test the labelling consistency appropriately, a given dataset could be superimposed with labelled ground truth traffic, and split into training and test data. If individual scenarios in the test set are both identified consistently  while associated with a different label than significantly different scenarios, the labelling can be seen as meaningful.  
 
 
-\subsection{Improving current methods}\label{Curmet}
+\section{Improving current methods}\label{Curmet}
 
 Using more features
 
@@ -379,12 +383,25 @@ Using extracted features from the connection
 Let above mentioned methods provide semantic understanding of connections to form groups, and then give the detected group as an input feature to the methods. That way, specific tasks performed in a connection can be identified and given as input to methods looking at connection sequences
 
 
-\subsection{Robustness}\label{Robustness}
+\section{Robustness}\label{Robustness}
 
-\subsection{Testing}
+Networks and their corresponding traffic are not static, but gradually change over time. Consequently, making intrusion detection systems adaptive to such changes in normal behaviour is an increasingly important issue in the research community \cite{sommer_outside_2010,noble_real-time_2018}.
 
-packet capture dataset, validating with likelihood fit and further validation if captured sequences meaningful with traffic generation tool
+In our context, such changes in normal behaviour would appear in the observed semantic structures and could be induced by new software being installed on the observed machine, or by installed software changing through updates or similar modifications. As new software could equally be of malicious nature, there is no way to make our system robust against such changes without introducing additional notions of overall malicious software\footnote{which is why we are assuming that new software is not installed on a regular basis}. 
 
+Software updates however should correspond to more gradual changes as only small parts of the software are modified. Hence, it is reasonable to assume that in the process only parts of the semantic traffic structure will change, while larger parts surrounding it stay the same. 
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{images/Robust.jpg}
+\caption{Depiction of the state-merging process for two input sequences}\label{Robust}
+\end{figure}
+
+
+
+
+%\subsection{Interpretability}
 
 \appendix
 % appendices come here

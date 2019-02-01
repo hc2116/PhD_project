@@ -11,14 +11,13 @@
 \contentsline {subsubsection}{Semantic structures and corresponding variations}{7}
 \contentsline {subsubsection}{Alan Turing Data Study Group}{8}
 \contentsline {subsection}{\numberline {2.2.2}Ground truth data generation}{8}
-\contentsline {subsection}{\numberline {2.2.3}Testing first approaches on realistic data}{9}
-\contentsline {section}{\numberline {2.3}Project specific objectives}{11}
-\contentsline {subsection}{\numberline {2.3.1}Learning representations of connection/protocol behaviour}{11}
-\contentsline {subsubsection}{Probabilistic Real-Time Automata}{12}
-\contentsline {subsubsection}{Autoencoder-based}{14}
-\contentsline {subsubsection}{Data and result validation}{14}
-\contentsline {subsection}{\numberline {2.3.2}Improving current methods}{15}
-\contentsline {subsection}{\numberline {2.3.3}Robustness}{16}
-\contentsline {subsection}{\numberline {2.3.4}Testing}{16}
-\contentsline {chapter}{\numberline {A}}{17}
-\contentsline {section}{\numberline {A.1}Literature Review}{17}
+\contentsline {subsection}{\numberline {2.2.3}Testing first approaches on realistic data}{10}
+\contentsline {chapter}{\numberline {3}Project specific objectives}{12}
+\contentsline {section}{\numberline {3.1}Learning representations of connection/protocol behaviour}{12}
+\contentsline {subsection}{\numberline {3.1.1}Probabilistic Real-Time Automata}{13}
+\contentsline {subsection}{\numberline {3.1.2}Autoencoder-based}{15}
+\contentsline {subsection}{\numberline {3.1.3}Data and result validation}{16}
+\contentsline {section}{\numberline {3.2}Improving current methods}{17}
+\contentsline {section}{\numberline {3.3}Robustness}{17}
+\contentsline {chapter}{\numberline {A}}{19}
+\contentsline {section}{\numberline {A.1}Literature Review}{19}

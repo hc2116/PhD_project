@@ -52,6 +52,12 @@ A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
   survey of unsupervised methods.
 \newblock {\em IEEE Communications Surveys \& Tutorials}, 2018.
 
+\bibitem{noble_real-time_2018}
+J.~Noble and N.~Adams.
+\newblock Real-{Time} {Dynamic} {Network} {Anomaly} {Detection}.
+\newblock {\em IEEE Intelligent Systems}, 33(2):5--18, Mar. 2018.
+\newblock 00000.
+
 \bibitem{pellegrino2017learning}
 G.~Pellegrino, Q.~Lin, C.~Hammerschmidt, and S.~Verwer.
 \newblock Learning behavioral fingerprints from netflows using timed automata.
@@ -63,6 +69,14 @@ J.~Schmidt and S.~Kramer.
 \newblock Online induction of probabilistic real-time automata.
 \newblock {\em Journal of Computer Science and Technology}, 29(3):345--360,
   2014.
+
+\bibitem{sommer_outside_2010}
+R.~Sommer and V.~Paxson.
+\newblock Outside the {Closed} {World}: {On} {Using} {Machine} {Learning} for
+  {Network} {Intrusion} {Detection}.
+\newblock In {\em 2010 {IEEE} {Symposium} on {Security} and {Privacy}}, pages
+  305--316, May 2010.
+\newblock 00654.
 
 \bibitem{srivastava2015unsupervised}
 N.~Srivastava, E.~Mansimov, and R.~Salakhudinov.
