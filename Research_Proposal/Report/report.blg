@@ -1,48 +1,48 @@
-This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: report.aux
 The style file: abbrv.bst
 Database file #1: refs.bib
 Warning--can't use both volume and number fields in lakhina2005mining
-You've used 14 entries,
+You've used 18 entries,
             2118 wiz_defined-function locations,
-            590 strings with 6533 characters,
-and the built_in function-call counts, 6065 in all, are:
-= -- 611
-> -- 310
-< -- 8
-+ -- 121
-- -- 106
-* -- 450
-:= -- 968
-add.period$ -- 49
-call.type$ -- 14
-change.case$ -- 94
+            608 strings with 7333 characters,
+and the built_in function-call counts, 7602 in all, are:
+= -- 767
+> -- 376
+< -- 11
++ -- 147
+- -- 128
+* -- 540
+:= -- 1201
+add.period$ -- 62
+call.type$ -- 18
+change.case$ -- 117
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 225
-empty$ -- 438
-format.name$ -- 106
-if$ -- 1288
+cite$ -- 19
+duplicate$ -- 290
+empty$ -- 562
+format.name$ -- 128
+if$ -- 1631
 int.to.chr$ -- 0
-int.to.str$ -- 14
-missing$ -- 14
-newline$ -- 76
-num.names$ -- 30
-pop$ -- 93
+int.to.str$ -- 18
+missing$ -- 17
+newline$ -- 96
+num.names$ -- 38
+pop$ -- 125
 preamble$ -- 1
-purify$ -- 80
+purify$ -- 99
 quote$ -- 0
-skip$ -- 173
+skip$ -- 230
 stack$ -- 0
-substring$ -- 398
-swap$ -- 76
-text.length$ -- 8
+substring$ -- 490
+swap$ -- 103
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 56
+type$ -- 72
 warning$ -- 1
-while$ -- 59
-width$ -- 16
-write$ -- 167
+while$ -- 73
+width$ -- 20
+write$ -- 211
 (There was 1 warning)

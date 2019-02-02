@@ -35,6 +35,11 @@ S.~Garcia, M.~Grill, J.~Stiborek, and A.~Zunino.
 \newblock An empirical comparison of botnet detection methods.
 \newblock {\em computers \& security}, 45:100--123, 2014.
 
+\bibitem{kent-2015-cyberdata1}
+A.~D. Kent.
+\newblock {Comprehensive, Multi-Source Cyber-Security Events}.
+\newblock Los Alamos National Laboratory, 2015.
+
 \bibitem{lakhina2005mining}
 A.~Lakhina, M.~Crovella, and C.~Diot.
 \newblock Mining anomalies using traffic feature distributions.
@@ -70,6 +75,13 @@ J.~Schmidt and S.~Kramer.
 \newblock {\em Journal of Computer Science and Technology}, 29(3):345--360,
   2014.
 
+\bibitem{silberer2014learning}
+C.~Silberer and M.~Lapata.
+\newblock Learning grounded meaning representations with autoencoders.
+\newblock In {\em Proceedings of the 52nd Annual Meeting of the Association for
+  Computational Linguistics (Volume 1: Long Papers)}, volume~1, pages 721--732,
+  2014.
+
 \bibitem{sommer_outside_2010}
 R.~Sommer and V.~Paxson.
 \newblock Outside the {Closed} {World}: {On} {Using} {Machine} {Learning} for
@@ -83,5 +95,17 @@ N.~Srivastava, E.~Mansimov, and R.~Salakhudinov.
 \newblock Unsupervised learning of video representations using lstms.
 \newblock In {\em International conference on machine learning}, pages
   843--852, 2015.
+
+\bibitem{yang2017improved}
+Z.~Yang, Z.~Hu, R.~Salakhutdinov, and T.~Berg-Kirkpatrick.
+\newblock Improved variational autoencoders for text modeling using dilated
+  convolutions.
+\newblock {\em arXiv preprint arXiv:1702.08139}, 2017.
+
+\bibitem{yousefi2017autoencoder}
+M.~Yousefi-Azar, V.~Varadharajan, L.~Hamey, and U.~Tupakula.
+\newblock Autoencoder-based feature learning for cyber security applications.
+\newblock In {\em Neural Networks (IJCNN), 2017 International Joint Conference
+  on}, pages 3854--3861. IEEE, 2017.
 
 \end{thebibliography}
