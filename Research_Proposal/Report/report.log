@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.31)  2 FEB 2019 19:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.31)  3 FEB 2019 19:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -190,14 +190,14 @@ LaTeX Font Info:    ... okay on input line 29.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: twoside 
-* h-part:(L,W,R)=(88.2037pt, 421.10046pt, 88.2037pt)
+* h-part:(L,W,R)=(85.35826pt, 426.79135pt, 85.35826pt)
 * v-part:(T,H,B)=(56.9055pt, 702.78308pt, 85.35826pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=421.10046pt
+* \textwidth=426.79135pt
 * \textheight=702.78308pt
-* \oddsidemargin=15.93372pt
-* \evensidemargin=15.93372pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
 * \topmargin=-52.36449pt
 * \headheight=12.0pt
 * \headsep=25.0pt
@@ -304,19 +304,6 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/usr/local/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Chapter 1.
-
-Overfull \hbox (2.93958pt too wide) in paragraph at lines 54--55
-\OT1/cmr/m/n/12 Sophisticated data breaches af-fect hun-dreds of mil-lion cus-t
-omers and in-flicts tremen-
- []
-
-
-Package caption Warning: \label without proper reference on input line 196.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `graph' on page 2 undefined on input line 64.
-
 [2
 
 ]
@@ -324,13 +311,13 @@ LaTeX Warning: Reference `graph' on page 2 undefined on input line 64.
 File: images/outlier_mine.png Graphic file (type png)
 <use images/outlier_mine.png>
 Package pdftex.def Info: images/outlier_mine.png  used on input line 80.
-(pdftex.def)             Requested size: 189.49391pt x 153.89679pt.
+(pdftex.def)             Requested size: 192.0548pt x 155.97517pt.
 <images/Atrial_Premature_Contraction.png, id=13, 1324.95pt x 1029.8475pt>
 File: images/Atrial_Premature_Contraction.png Graphic file (type png)
 <use images/Atrial_Premature_Contraction.png>
 Package pdftex.def Info: images/Atrial_Premature_Contraction.png  used on input
  line 84.
-(pdftex.def)             Requested size: 189.49391pt x 147.28908pt.
+(pdftex.def)             Requested size: 192.0548pt x 149.26906pt.
  [3 <./images/outlier_mine.png> <./images/Atrial_Premature_Contraction.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 115.
@@ -344,35 +331,33 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 141.
 
+Overfull \hbox (19.47653pt too wide) in paragraph at lines 151--151
+[]\OT1/cmr/bx/n/14.4 Data anal-y-sis, strat-egy, and gath-er-ing use-ful data s
+ources 
+ []
+
+
 Underfull \vbox (badness 4168) has occurred while \output is active []
 
  [6
 
 ]
-Overfull \hbox (3.21933pt too wide) in paragraph at lines 162--164
-[]\OT1/cmr/m/it/12 Two ap-pli-ca-tions $\OML/cmm/m/it/12 A$ \OT1/cmr/m/it/12 an
-d $\OML/cmm/m/it/12 B$ \OT1/cmr/m/it/12 usu-ally have dif-fer-ent $\OML/cmm/m/i
-t/12 P[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X\OT1/cmr/m/n/12 )$ \OT1/cmr/m/it/12 
-and $\OML/cmm/m/it/12 P[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X\OT1/cmr/m/n/12 )$\
-OT1/cmr/m/it/12 ,
- []
-
 [7]
 <images/Dockernet.jpg, id=41, 887.315pt x 514.92375pt>
 File: images/Dockernet.jpg Graphic file (type jpg)
 <use images/Dockernet.jpg>
 Package pdftex.def Info: images/Dockernet.jpg  used on input line 198.
-(pdftex.def)             Requested size: 294.76903pt x 171.05678pt.
- [8] [9 <./images/Dockernet.jpg>]
+(pdftex.def)             Requested size: 298.75264pt x 173.36676pt.
+ [8 <./images/Dockernet.jpg>] [9]
 <images/RNN.jpg, id=48, 768.8725pt x 513.92pt>
 File: images/RNN.jpg Graphic file (type jpg)
 <use images/RNN.jpg>
 Package pdftex.def Info: images/RNN.jpg  used on input line 238.
-(pdftex.def)             Requested size: 294.76903pt x 197.0325pt.
+(pdftex.def)             Requested size: 298.75264pt x 199.69086pt.
  [10 <./images/RNN.jpg>] [11]
 Chapter 3.
 
-Overfull \hbox (26.54521pt too wide) in paragraph at lines 255--255
+Overfull \hbox (20.85432pt too wide) in paragraph at lines 255--255
 []\OT1/cmr/bx/n/17.28 Learning rep-re-sen-ta-tions of con-nec-tion/protocol
  []
 
@@ -380,12 +365,12 @@ Overfull \hbox (26.54521pt too wide) in paragraph at lines 255--255
 File: images/FTP.jpg Graphic file (type jpg)
 <use images/FTP.jpg>
 Package pdftex.def Info: images/FTP.jpg  used on input line 266.
-(pdftex.def)             Requested size: 206.34154pt x 222.2512pt.
+(pdftex.def)             Requested size: 209.1301pt x 225.2545pt.
 <images/SSH.jpg, id=56, 456.70625pt x 487.8225pt>
 File: images/SSH.jpg Graphic file (type jpg)
 <use images/SSH.jpg>
 Package pdftex.def Info: images/SSH.jpg  used on input line 270.
-(pdftex.def)             Requested size: 206.34154pt x 220.39642pt.
+(pdftex.def)             Requested size: 209.1301pt x 223.37386pt.
 [12
 
 ] [13 <./images/FTP.jpg> <./images/SSH.jpg>]
@@ -393,23 +378,23 @@ Package pdftex.def Info: images/SSH.jpg  used on input line 270.
 File: images/Autotrie.jpg Graphic file (type jpg)
 <use images/Autotrie.jpg>
 Package pdftex.def Info: images/Autotrie.jpg  used on input line 310.
-(pdftex.def)             Requested size: 357.93796pt x 115.5181pt.
+(pdftex.def)             Requested size: 362.77525pt x 117.07857pt.
 <images/Automerge.jpg, id=65, 1113.15875pt x 238.8925pt>
 File: images/Automerge.jpg Graphic file (type jpg)
 <use images/Automerge.jpg>
 Package pdftex.def Info: images/Automerge.jpg  used on input line 314.
-(pdftex.def)             Requested size: 357.93796pt x 76.81532pt.
+(pdftex.def)             Requested size: 362.77525pt x 77.8542pt.
  [14 <./images/Autotrie.jpg> <./images/Automerge.jpg>]
 <images/LSTM_Encoder.jpg, id=69, 657.45625pt x 491.8375pt>
 File: images/LSTM_Encoder.jpg Graphic file (type jpg)
 <use images/LSTM_Encoder.jpg>
 Package pdftex.def Info: images/LSTM_Encoder.jpg  used on input line 349.
-(pdftex.def)             Requested size: 273.71272pt x 204.76167pt.
+(pdftex.def)             Requested size: 277.41176pt x 207.53094pt.
 <images/MNIST.png, id=70, 315.1775pt x 244.915pt>
 File: images/MNIST.png Graphic file (type png)
 <use images/MNIST.png>
 Package pdftex.def Info: images/MNIST.png  used on input line 353.
-(pdftex.def)             Requested size: 143.1726pt x 111.25337pt.
+(pdftex.def)             Requested size: 145.10748pt x 112.75941pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -419,30 +404,27 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: images/Robust.jpg Graphic file (type jpg)
 <use images/Robust.jpg>
 Package pdftex.def Info: images/Robust.jpg  used on input line 391.
-(pdftex.def)             Requested size: 210.55023pt x 208.1348pt.
- [17] [18 <./images/Robust.jpg>] [19] [20]
+(pdftex.def)             Requested size: 213.39568pt x 210.94707pt.
+ [17 <./images/Robust.jpg>] [18] [19] [20] [21]
 Chapter 4.
-[21
+[22
 
 ]
 Appendix A.
-(./report.bbl [22
+(./report.bbl [23
 
-] [23
+] [24
 
-]) [24] (./report.aux)
-
-LaTeX Warning: There were undefined references.
-
+]) [25] (./report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4572 strings out of 494091
- 70896 string characters out of 6163522
- 147496 words of memory out of 5000000
- 8175 multiletter control sequences out of 15000+600000
+ 4575 strings out of 494091
+ 70936 string characters out of 6163522
+ 147490 words of memory out of 5000000
+ 8178 multiletter control sequences out of 15000+600000
  10714 words of font info for 37 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  42i,14n,40p,1466b,540s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -459,10 +441,10 @@ ublic/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1
 ype1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018basic/texmf-dist/font
 s/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (24 pages, 714468 bytes).
+Output written on report.pdf (25 pages, 718428 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
+ 147 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

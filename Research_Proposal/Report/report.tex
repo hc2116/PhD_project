@@ -1,5 +1,5 @@
 \documentclass[a4paper,12pt,twoside]{report}
-\usepackage[left=3.1cm,right=3.1cm,top=2cm,bottom=3cm]{geometry}
+\usepackage[left=3cm,right=3cm,top=2cm,bottom=3cm]{geometry}
 %\usepackage[square,authoryear,sort]{natbib}
 \usepackage{url}
 \usepackage{xcolor}
@@ -61,7 +61,7 @@ Program analysis methods are used widely to automatically test software for part
 
 In modern computer networks, it is often impossible to use software analysis on a large-scale basis to prevent network intrusions through malicious software. Here, network intrusion detection systems play a vital role in protecting computer networks from malicious access. The field of intrusion detection is concerned with the development of methods and tools that identify and locate possible intrusions in a computer network. An \textit{intrusion detection system} (IDS) is typically a device or software application that detects malicious activity or policy violations in an automated way by scanning incoming data collected from one or more sources for patterns that a model or a set of rules classifies as malicious.
 
-Intrusion detection is a well researched area, with the first IDSs emerging in the late 1980's. Intrusion detection today comprises a variety of research areas in terms of different types of data sources, system architectures, detection sope, and so forth. Figure \ref{graph} provides a broad yet uncomplete overview of these different areas. 
+Intrusion detection is a well researched area, with the first IDSs emerging in the late 1980's. Intrusion detection today comprises a variety of research areas in terms of different types of data sources, system architectures, detection sope, and so forth. %Figure \ref{graph} provides a broad yet uncomplete overview of these different areas. 
 
 
 
@@ -233,10 +233,10 @@ Both properties were tested for selected scenarios with positive results. For th
 
 In the context of the overall research goal of this project, some exploratory work on semantic anomaly detection for network events has been conducted by Marc Sabate, Gudmund Grov, Wei Chen, and David Aspinall. This work uses three different machine learning algorithms\footnote{A Markov Chain model, Finite-State Automata, and a Recurrent Neural Network} from the area of \textit{representation learning} to capture meaningful sequences of \textit{NetFlows} and reflect reoccurring patterns in a model. For that, recorded NetFlows are grouped according to the generating host. Furthermore, in order to filter out sequences of flows that are unrelated to each other, a squence of flows that are close in time is grouped into what is called a \textit{sessions} as an approximation "true relation". Each session then serves as a training or test sequence for a behavioural model. Learned semantic behaviour is reflected through the capability of the model to predict features of the whole session and of other flows in the session from a smaller subset of flows, with more accurate predictions being rewarded in the training process. \textcolor{red}{These features include the network protocol and port and} Sessions which deviate from previously observed behaviour are then predicted poorly by the model and flagged as potentially malicious.
 
-\begin{figure}\label{RNN}
+\begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{images/RNN.jpg}
-\caption{Visualisation of the RNN-method used}
+\caption{Visualisation of the RNN-method used}\label{RNN}
 \end{figure}
 
 \textcolor{red}{maybe write about how these methods are directly relevant for this PhD and could be extended, improved or incorporated}.
@@ -252,7 +252,7 @@ Anomaly-based methods in intrusion detection are often criticised for working on
 \chapter{Project specific objectives}
 
 
-\section{Learning representations of connection/protocol behaviour}
+\section{Learning representations of connection/protocol behaviour}\label{Repr}
 
 %\textcolor{red}{As became clear during our investigation}
 The distinct semantic behaviour of an applications manifests itself most clearly in the first few packages exchanged in a connection. This is the stage in a connection during which a specific client or server request is transmitted, encryption keys are exchanged, users authenticate themselves with passwords, ports for successive connections are defined, etc. This is distinction goes far beyond individual traffic protocols, as even a single application usually can excert different actions which translate to different semantic behaviours in this initial negotiation phase. 
@@ -381,7 +381,7 @@ Networks and their corresponding traffic are not static, but gradually change ov
 
 In our context, such changes in normal behaviour would appear in the observed semantic structures and could be induced by new software being installed on the observed machine, or by installed software changing through updates or similar modifications. As new software could equally be of malicious nature, there is no way to make our system robust against such changes without introducing additional notions of overall malicious software\footnote{which is why we are assuming that new software is not installed on a regular basis}. 
 
-Software updates however should correspond to more gradual changes as only small parts of the software are modified. Hence, it is reasonable to assume that in the process only parts of the semantic traffic structure will change, while larger parts surrounding it stay the same. \textcolor{red}{give an explaining example of this}
+Software updates however should correspond to more gradual changes as only small parts of the software are modified. Hence, it is reasonable to assume that in the process only parts of the semantic traffic structure will change, while larger parts surrounding it stay the same. %\textcolor{red}{give an explaining example of this}
 A logical approach to distinguish this gradual software evolution from more abrupt changes would therefore rely on the comparison of semantic sub-features to detect an overall closeness between traffic instances. However, more analysis of traffic evolution under software updates has to be conducted to make reliable statements about precise modelling methods. Yet, a few ideas are presented here.
 
 Chen et al. \cite{chen_more_2016, chen_2016_robust} introduced the concept of common sub-automata between similar malware instances in order to improve the robustness of detection methods. This notion could be used in this project in a similar way: Traffic instances deviating from the learned traffic automata are examined for sub-automata that are within the learned range of normal behaviour, depicted in Figure \ref{Robust}. If enough common sub-automata exist, the traffic is marked a potential software update and either authorised by an administrator or directly incorporated into the existing model. 
@@ -408,22 +408,37 @@ without introducing concept drifts or catastrophic interference is an important 
 
 %With the exception of the work by Aspinall et al. described in Section \ref{Prevwork}, only little literature exists about the semantic structures observed on a network flow level. Asppinall et all exception
 
-Due to their wide availability and their lightweight  nature, network flows are currently very popular data sources for intrusion detection research.
-\textcolorr{red}{write about higher level of modelling of flows}
-In Section \ref{Prevwork}, initial work by Aspinall et al. on modelling semantic traffic structures on a flow level is described. This work shows the existence of a semantic correlation of a machine's network flows and the semantic deviation of common network attacks from regular  behaviour. 
+In Section \ref{Prevwork}, initial work by Aspinall et al. on modelling semantic traffic structures on a flow level is described. This work demonstrates that semantic structures in a machine's network traffic can be observed on a flow level, and how these can be used to identify malicious behaviour as deviations from normal behaviour.
 
-Discovering meaningful semantic 
+As this work is an initial step towards a flow-based semantic models, there is room for further developments and improvements which are congruent  with the general aim of this PhD-project. I therefore propose the following measures to create a more detailed and precise traffic model:
 
-because little information, and parameters like size etc. vary a lot more in flows than for individual packets. 
+\subsubsection{Incorporate more detailed connection-based features}
 
-Furthermore traffic overlay
+\textcolor{red}{insert image of two separate sessions and their overlay with bad prediction }
+
+The current traffic models by Aspinall et al. only incorporate protocol and port numbers of successive flows as semantic features. Network flows additionally include the IP addresses of contacted machines, the direction of the connection, and strongly correlated information about the duration, size, and packet number of a flow. Both the direction and the duration or size of a flow are readily available quantities that could help identify more detailed substructures. However, all these parameters describe a flow on a quite high level of abstraction, with a lot more information about the type of traffic not being captured. This information gap is widely recognised in traffic classification research, with a number of approaches generating additional connection information such as interarrival or packet size statistics. Therefore, obtaining additional information about the specific type of traffic a connection represents is likely to increase the detail of any semantic traffic model and can help identify malicious behaviour that deviates in a less obvious way from normal behaviour.
+
+McGregor et al. \cite{mcgregor2004flow} included information about the number of \textit{bulk} and \textit{interaction} episodes in a connection for traffic classification, showing that such lightweight semantic features can improve the understanding about the type of observed traffic. Incorporating such realtively easily obtainable information into our existing traffic models is something that I would like to explore and evaluate the effect it has on the detection abilities. 
+
+In Section \ref{Repr}, I described how a semantic model of packet exchange can be used to automatically create connection labels for different groups of semantic behaviour. These labels would describe a greater subdivision of traffic types in similar way to common network ports which already give a broad indication about the type of traffic. As the currently used methods already work with port numbers, it would be straightforward to extend them on these artificial flow labels.
 
 
-Using more features
+\subsubsection{Introduce more robustness against overlayed traffic}
 
-Using extracted features from the connection
 
-Let above mentioned methods provide semantic understanding of connections to form groups, and then give the detected group as an input feature to the methods. That way, specific tasks performed in a connection can be identified and given as input to methods looking at connection sequences
+
+The described current models are representing semantic structures as the prediction accuracy of the next element in a sequence, as depicted in Figure \ref{RNN}. This probabilistic method is quite effective when semantic sequences are isolated, even under noise, as can be observed in current language models \cite{shi2012towards}. This is however not always the case in a stream of network flows as two or more independent actions generating traffic can have temporal overlap, causing their corresponding semantic structures to overlay each other. Subsequent separation of the different signals is a hard problem and at this stage likely infeasible. Since these overlays can occur between completely independent actions, it is hard for our current models to accurately predict the next event in an overlayed session. Although these traffic overlays appear to not be the norm in a machine's network stream, the decrease in prediction certainty in a session depletes the possibility to detect anomalous behaviour and thus opens a door a door for adversaries to hide attacks in normal traffic. 
+
+Although the problem of semantic structure separation itself is a hard one, there exist possibilities to improve the RNN model and increase prediction accuracy of overlayed events in a session:
+
+\begin{itemize}
+\item Instead of predicting one successive event in a sequence, prediction accuracies of an RNN can be improved by extending the prediction to multiple unordered events that are supposed to occur within a window. This will shift the focus from one event which is relatively unpredictible under overlay to a larger group in which particular events are relatively certain to occur. This way, a model can learn semantics easier and can provide a higher certainty under overlays.
+\item  For longer sessions , a rolling window approach should be introduced. This way, hidden neurons can be reset easier and adjust to the current behaviours in a session. This is helpful when one behaviour is directly followed by a different independent one.
+\end{itemize}
+
+
+
+
 
 \section{Traffic generation and data fusion}
 

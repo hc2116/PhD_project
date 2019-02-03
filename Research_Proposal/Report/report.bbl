@@ -51,6 +51,12 @@ P.~Malhotra, A.~Ramakrishnan, G.~Anand, L.~Vig, P.~Agarwal, and G.~Shroff.
 \newblock Lstm-based encoder-decoder for multi-sensor anomaly detection.
 \newblock {\em arXiv preprint arXiv:1607.00148}, 2016.
 
+\bibitem{mcgregor2004flow}
+A.~McGregor, M.~Hall, P.~Lorier, and J.~Brunskill.
+\newblock Flow clustering using machine learning techniques.
+\newblock In {\em International Workshop on Passive and Active Network
+  Measurement}, pages 205--214. Springer, 2004.
+
 \bibitem{nisioti2018intrusion}
 A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
 \newblock From intrusion detection to attacker attribution: A comprehensive
@@ -74,6 +80,13 @@ J.~Schmidt and S.~Kramer.
 \newblock Online induction of probabilistic real-time automata.
 \newblock {\em Journal of Computer Science and Technology}, 29(3):345--360,
   2014.
+
+\bibitem{shi2012towards}
+Y.~Shi, P.~Wiggers, and C.~M. Jonker.
+\newblock Towards recurrent neural networks language models with linguistic and
+  contextual features.
+\newblock In {\em Thirteenth Annual Conference of the International Speech
+  Communication Association}, 2012.
 
 \bibitem{silberer2014learning}
 C.~Silberer and M.~Lapata.

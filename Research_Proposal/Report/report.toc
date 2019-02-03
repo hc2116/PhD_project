@@ -18,13 +18,15 @@
 \contentsline {subsection}{\numberline {3.1.2}Autoencoder-based}{15}
 \contentsline {subsection}{\numberline {3.1.3}Data and result validation}{16}
 \contentsline {section}{\numberline {3.2}Software evolution and drift}{17}
-\contentsline {subsection}{\numberline {3.2.1}Evaluation}{17}
+\contentsline {subsection}{\numberline {3.2.1}Evaluation}{18}
 \contentsline {subsection}{\numberline {3.2.2}Adaptive learning}{18}
 \contentsline {section}{\numberline {3.3}Improving flow-level based methods}{18}
-\contentsline {section}{\numberline {3.4}Traffic generation and data fusion}{19}
-\contentsline {subsubsection}{Simulate real network traffic distributions}{19}
-\contentsline {subsubsection}{Data fusion}{19}
-\contentsline {chapter}{\numberline {4}Time-span and potential risks}{21}
-\contentsline {section}{\numberline {4.1}Risks}{21}
-\contentsline {chapter}{\numberline {A}}{22}
-\contentsline {section}{\numberline {A.1}Literature Review}{22}
+\contentsline {subsubsection}{Incorporate more detailed connection-based features}{19}
+\contentsline {subsubsection}{Introduce more robustness against overlayed traffic}{19}
+\contentsline {section}{\numberline {3.4}Traffic generation and data fusion}{20}
+\contentsline {subsubsection}{Simulate real network traffic distributions}{20}
+\contentsline {subsubsection}{Data fusion}{20}
+\contentsline {chapter}{\numberline {4}Time-span and potential risks}{22}
+\contentsline {section}{\numberline {4.1}Risks}{22}
+\contentsline {chapter}{\numberline {A}}{23}
+\contentsline {section}{\numberline {A.1}Literature Review}{23}
