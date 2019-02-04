@@ -30,6 +30,11 @@ M.~Crotti, M.~Dusi, F.~Gringoli, and L.~Salgarelli.
 \newblock Traffic classification through simple statistical fingerprinting.
 \newblock {\em ACM SIGCOMM Computer Communication Review}, 37(1):5--16, 2007.
 
+\bibitem{denning1987intrusion}
+D.~E. Denning.
+\newblock An intrusion-detection model.
+\newblock {\em IEEE Transactions on software engineering}, (2):222--232, 1987.
+
 \bibitem{garcia2014empirical}
 S.~Garcia, M.~Grill, J.~Stiborek, and A.~Zunino.
 \newblock An empirical comparison of botnet detection methods.
@@ -45,6 +50,13 @@ A.~Lakhina, M.~Crovella, and C.~Diot.
 \newblock Mining anomalies using traffic feature distributions.
 \newblock In {\em ACM SIGCOMM Computer Communication Review}, volume~35, pages
   217--228. ACM, 2005.
+
+\bibitem{macia2018ugr}
+G.~Maci{\'a}-Fern{\'a}ndez, J.~Camacho, R.~Mag{\'a}n-Carri{\'o}n,
+  P.~Garc{\'\i}a-Teodoro, and R.~Ther{\'o}n.
+\newblock Ugr ‘16: A new dataset for the evaluation of
+  cyclostationarity-based network idss.
+\newblock {\em Computers \& Security}, 73:411--424, 2018.
 
 \bibitem{malhotra2016lstm}
 P.~Malhotra, A.~Ramakrishnan, G.~Anand, L.~Vig, P.~Agarwal, and G.~Shroff.
