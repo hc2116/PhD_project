@@ -25,6 +25,10 @@ W.~Chen, D.~Aspinall, A.~D. Gordon, C.~Sutton, and I.~Muttik.
   {Methods}}, volume 9681, pages 326--341. Springer International Publishing,
   Cham, 2016.
 
+\bibitem{clausen2018bayesian}
+H.~Clausen, M.~Briers, and N.~M. Adams.
+\newblock Bayesian activity modelling for network flow data.
+
 \bibitem{crotti2007traffic}
 M.~Crotti, M.~Dusi, F.~Gringoli, and L.~Salgarelli.
 \newblock Traffic classification through simple statistical fingerprinting.
@@ -69,6 +73,14 @@ A.~McGregor, M.~Hall, P.~Lorier, and J.~Brunskill.
 \newblock In {\em International Workshop on Passive and Active Network
   Measurement}, pages 205--214. Springer, 2004.
 
+\bibitem{moustafa_unsw-nb15:_2015}
+N.~Moustafa and J.~Slay.
+\newblock {UNSW}-{NB}15: a comprehensive data set for network intrusion
+  detection systems ({UNSW}-{NB}15 network data set).
+\newblock In {\em 2015 {Military} {Communications} and {Information} {Systems}
+  {Conference} ({MilCIS})}, pages 1--6, Nov. 2015.
+\newblock 00074.
+
 \bibitem{nisioti2018intrusion}
 A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
 \newblock From intrusion detection to attacker attribution: A comprehensive
@@ -92,6 +104,11 @@ J.~Schmidt and S.~Kramer.
 \newblock Online induction of probabilistic real-time automata.
 \newblock {\em Journal of Computer Science and Technology}, 29(3):345--360,
   2014.
+
+\bibitem{sharafaldin2018towards}
+I.~Sharafaldin, A.~Gharib, A.~H. Lashkari, and A.~A. Ghorbani.
+\newblock Towards a reliable intrusion detection benchmark dataset.
+\newblock {\em Software Networking}, 2018(1):177--200, 2018.
 
 \bibitem{shi2012towards}
 Y.~Shi, P.~Wiggers, and C.~M. Jonker.
