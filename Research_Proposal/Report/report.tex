@@ -6,7 +6,7 @@
 \usepackage{graphicx}
 \usepackage{pdfpages}
 \usepackage{subcaption}
-\usepackage{pgfgantt}
+%\usepackage{pgfgantt}
 \usepackage{dirtytalk}
 
 \makeatletter
@@ -229,7 +229,7 @@ In order to bolster the findings of this sub-project, I applied the same methods
 
 \section{Research questions}
 
-
+Chapter 2.1 described the broader motivation and ambition for this project. To achieve a coherent scientific progress, this PhD-project will explore the problem of modelling the semantic behaviour a computer from different angles and hopefully find answers to the most important questions that arise in the process. Below I formulated four questions with a number of sub-questions that will be central for my work.
 
 
 \subsubsection{Data analysis and exploration}
@@ -249,14 +249,18 @@ How well-structured is the space of semantic behaviours observed in the traffic 
 
 \subsubsection{Modelling scope}
 
+Anomaly-based detection systems aim to find deviations from normal behaviour in as many ways as possible. For that, it is desired that any semantic model of network traffic should represent common network traffic with as much information as possible. However, a too detailed model runs the risk of being of overfitting the structure found in the training data and consequently yielding high false-alert rates. Therefore, we need to address the following questions: 
+
 \begin{rquestion}
-To what degree can semantic structure in network traffic be captured in a model from training data, and how can we achieve this?
+To what degree can semantic structure in network traffic be captured in a model from a training dataset, and how can we achieve this?
 \begin{enumerate}
 \item Which parts of network traffic both contain important information and can be represented by a model?
-\item Can be combine models that act at different traffic levels to enhance the amount of context given by the data?
+\item Can be combine models that act at different traffic levels to enhance the amount of context given by the data? 
+\item Can we efficiently disentangle overlaying network flows to isolate otherwise distorted flow groups corresponding to similar actions? 
 \item What is an efficient and realistic way to incorporate other data sources into the modelling procedure? How can this input enhance the learning process and the representation detail of a traffic model? 
 \end{enumerate}
 \end{rquestion}
+
 
 
 \subsubsection{Ground truth data and evaluation of semantic understanding}
@@ -272,7 +276,9 @@ What is a meaningful representation of traffic structures?
 \end{enumerate}
 \end{rquestion}
 
-\subsubsection{Application to Intrusion Detection}
+\subsubsection{Application to realistic Intrusion Detection}
+
+Finally, this work should make an impact on future intrusion detection methods. Although anomaly-based methods are meant to be agnostic of a notion of malicious activity, we have to ask how and where this work will offer improvements in the detection of modern attacks.
 
 \begin{rquestion}
 What will a semantic model be able to prevent? 
@@ -436,6 +442,10 @@ Despite the identification of similar traffic instances, their incorporation int
 
 \section{Improving flow-level based methods}\label{Curmet}
 
+
+I want to emphasise the importance of Question 3 here: As network traffic is very diverse with program malfunctions inadvertedly widening the notion of normal behaviour. Malicious behaviour can on individual levels looks
+
+
 %With the exception of the work by Aspinall et al. described in Section \ref{Prevwork}, only little literature exists about the semantic structures observed on a network flow level. Asppinall et all exception
 
 In Section \ref{Prevwork}, initial work by Aspinall et al. on modelling semantic traffic structures on a flow level is described. This work demonstrates that semantic structures in a machine's network traffic can be observed on a flow level, and how these can be used to identify malicious behaviour as deviations from normal behaviour.
@@ -576,11 +586,6 @@ One potential risk to keep in mind is the scalability of estimated models. The p
 %Lack of appropriate attack data (DoS and port scans are not that interesting, R2L are often not very representative in a dataset)
 
 
-
-\appendix
-% appendices come here
-\chapter{}
-\section{Literature Review}\label{litreview}
 
 %\addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{abbrv}
