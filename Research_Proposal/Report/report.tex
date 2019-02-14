@@ -1,5 +1,5 @@
 \documentclass[a4paper,12pt,twoside]{report}
-\usepackage[left=3cm,right=3cm,top=2cm,bottom=3cm]{geometry}
+\usepackage[left=2.8cm,right=2.8cm,top=2cm,bottom=3cm]{geometry}
 %\usepackage[square,authoryear,sort]{natbib}
 \usepackage{url}
 \usepackage{xcolor}
@@ -224,13 +224,11 @@ Anomaly-based methods in intrusion detection are often criticised for working on
 
 In order to bolster the findings of this sub-project, I applied the same methods on currently available real-world datasets which I am already familiar with through my MSc thesis \cite{clausen2018bayesian}. The particular datasets come from the enterprise network of the \textit{Los Alamos National Laboratory} \cite{kent-2015-cyberdata1} and from a Spanish ISP \cite{macia2018ugr}. For that I selected appropriate machines (e.g. IP addresses) that contain the variety of traffic behaviour found on personal computers, in contrast to less diverse traffic sources such as IP-phones, printers or servers. Furthermore, the selected machines should be subject to attacks so that the effectiveness of the results can be verified. I made sure the data is in the right format to be passed to the implemented models and supervised the training process by adjusting important parameters and hyper-parameters. Finally, I evaluated the results and added them to the existing manuscript.
 
-\chapter{Project specific objectives}\label{Obj}
 
 
 \section{Research questions}
 
-Chapter 2.1 described the broader motivation and ambition for this project. To achieve a coherent scientific progress, this PhD-project will explore the problem of modelling the semantic behaviour a computer from different angles and hopefully find answers to the most important questions that arise in the process. Below I formulated four questions with a number of sub-questions that will be central for my work.
-
+Chapter 2.1 described the broader motivation and ambition for this project. To achieve a coherent scientific progress, this PhD-project will explore the problem of modelling the semantic behaviour a computer from different angles and hopefully find answers to the most important questions that arise in the process. Below I formulated four questions with a number of sub-questions that address different parts of this project and will be central for my work.
 
 \subsubsection{Data analysis and exploration}
 
@@ -261,7 +259,7 @@ To what degree can semantic structure in network traffic be captured in a model 
 \end{enumerate}
 \end{rquestion}
 
-
+Section 
 
 \subsubsection{Ground truth data and evaluation of semantic understanding}
 
@@ -288,6 +286,10 @@ What will a semantic model be able to prevent?
 \end{enumerate}
 \end{rquestion}
 
+These questions will drive the direction of my research during this project. I do not expect to address all of them comprehensively, but I believe that I will be able to find satisfying answers to the majority. In the next chapter, I am proposing specific sub-projects that will pave the way to find scientific results for questions in each of the different areas.
+
+
+\chapter{Project specific objectives}\label{Obj}
 
 \section{Learning representations of packet exchanges}\label{Repr}
 
@@ -438,38 +440,70 @@ In order to gather data and to test developed methods, I will again make use of 
 The data produced this way does not necessarily represent the influence of software updates on network traffic as a whole. However, it can give good indications of the amount of change introduced and is a good testing possibility for our methods in a very novel area of cyber-security until more extensive datasets become available. 
 
 \subsection{Adaptive learning}
-Despite the identification of similar traffic instances, their incorporation into the existing model without introducing concept drifts or catastrophic interference is an important task. Online or incremental learning methods exist for both autoencoders and PRTA and could be used with new traffic gathered over time. However, special attention has to be paid to the fact that once traffic from updated software is identified, it should be included into the model immediately to avoid a flood of traffic alerts from the same software. \textcolor{red}{I cannot propose solutions for this specific problem yet, but am optimistic that they will be found}.
+Despite the identification of similar traffic instances, their incorporation into the existing model without introducing concept drifts or catastrophic interference is an important task. Online or incremental learning methods exist for both autoencoders and PRTA and could be used with new traffic gathered over time. However, special attention has to be paid to the fact that once traffic from updated software is identified, it should be included into the model immediately to avoid a flood of traffic alerts from the same software. How this this specific problem can be solved will depend on specific models and is yet to be determined.
 
-\section{Improving flow-level based methods}\label{Curmet}
+\section{Flow-level based modelling}\label{Curmet}
 
 
-I want to emphasise the importance of Question 3 here: As network traffic is very diverse with program malfunctions inadvertedly widening the notion of normal behaviour. Malicious behaviour can on individual levels looks
+
+In Section \ref{Prevwork}, initial work by Aspinall et al. on modelling semantic traffic structures on a flow level is described. This work demonstrates that semantic structures in a machine's network traffic can be observed on a flow level, and how these can be used to identify malicious behaviour as deviations from normal behaviour.
+
+As this work is an initial step towards a flow-based semantic models, there is room for further developments and improvements which are congruent  with the general aim of this PhD-project, in particular with . I therefore propose the following measures to create a more detailed and precise traffic model:
 
 
 %With the exception of the work by Aspinall et al. described in Section \ref{Prevwork}, only little literature exists about the semantic structures observed on a network flow level. Asppinall et all exception
 
-In Section \ref{Prevwork}, initial work by Aspinall et al. on modelling semantic traffic structures on a flow level is described. This work demonstrates that semantic structures in a machine's network traffic can be observed on a flow level, and how these can be used to identify malicious behaviour as deviations from normal behaviour.
 
-As this work is an initial step towards a flow-based semantic models, there is room for further developments and improvements which are congruent  with the general aim of this PhD-project. I therefore propose the following measures to create a more detailed and precise traffic model:
+\subsection{Combination of packet and flow-level information}
 
-\subsubsection{Incorporate more detailed connection-based features}
+The current traffic models by Aspinall et al. only incorporate protocol and port numbers of successive flows as semantic features. Network flows additionally include the IP addresses of contacted machines, the direction of the connection, and strongly correlated information about the duration, size, and packet number of a flow. Network flows additionally include the IP addresses of contacted machines, the direction of the connection, and strongly correlated information about the duration, size, and packet number of a flow. Both the direction and the duration or size of a flow are readily available quantities that could help identify more detailed substructures. However, all these parameters describe a flow on a quite high level of abstraction, with a lot more information about the type of traffic not being captured. This information gap is widely recognised in traffic classification research, with a number of approaches generating additional connection information such as interarrival or packet size statistics. Including such information would be a fairly straightforward choice to improve existing methods. I however am more interested in examining how semantic information about a connection could be used to give sequences on a flow level more context.
 
-%\textcolor{red}{insert image of two separate sessions and their overlay with bad prediction }
-
-The current traffic models by Aspinall et al. only incorporate protocol and port numbers of successive flows as semantic features. Network flows additionally include the IP addresses of contacted machines, the direction of the connection, and strongly correlated information about the duration, size, and packet number of a flow. Both the direction and the duration or size of a flow are readily available quantities that could help identify more detailed substructures. However, all these parameters describe a flow on a quite high level of abstraction, with a lot more information about the type of traffic not being captured. This information gap is widely recognised in traffic classification research, with a number of approaches generating additional connection information such as interarrival or packet size statistics. Therefore, obtaining additional information about the specific type of traffic a connection represents is likely to increase the detail of any semantic traffic model and can help identify malicious behaviour that deviates in a less obvious way from normal behaviour.
-
-McGregor et al. \cite{mcgregor2004flow} included information about the number of \textit{bulk} and \textit{interaction} episodes in a connection for traffic classification, showing that such lightweight semantic features can improve the understanding about the type of observed traffic. Incorporating such realtively easily obtainable information into our existing traffic models is something that I would like to explore and evaluate the effect it has on the detection abilities. 
-
-In Section \ref{Repr}, I described how a semantic model of packet exchange can be used to automatically create connection labels for different groups of semantic behaviour. These labels would describe a greater subdivision of traffic types in similar way to common network ports which already give a broad indication about the type of traffic. As the currently used methods already work with port numbers, it would be straightforward to extend them on these artificial flow labels.
+This task is in direct correspondance to the posed research question 2.2: \say{How can we combine models at different traffic levels to enhance the amount of context given by the data?} This question is very important in regards to extending a systems capability to detect anomalies effectively. Events in a network can be disturbed by many factors, and the space of events accepted has to included many rare, albeit possible events as normal. This could for example mean that a TCP hijacking attack is for a model indistinguishable from a connection malfunction. However, such an event at packet level will likely trigger some effect on the flow level, like the opening of a similar follow-up connection etc, which might not necessarily be the same if the event was malicious. If the context of a malfunction or similar event inside a connection would be available to models on the flow level, their expected effect could be compared to the observed one to receive a greater level of detection capabilities.
 
 
-\subsubsection{Introduce more robustness against overlayed traffic}
+How this combination of semantic packet and flow level information would be implemented will depend on the outcome of the project described in Section \ref{Repr}. A fully connected model that learns information structures at both levels simultaneously would be desired as learning and updating would be more natural and cause less problems in the information linking. This is however not the only possible way to proceed as a stacked combination of two models where training is performed independently could be an easier solution to implement and test.
+
+In Section \ref{Repr}, I described how a model of packet exchanges can be used to automatically create connection labels for different groups of semantic behaviour, both using PRTA and autoencoders. These labels would describe a greater subdivision of traffic types in similar way to common network ports which already give a broad indication about the type of traffic. As the currently used methods already work with port numbers, it would be straightforward to extend them on these artificial flow labels.
+
+
+\begin{figure}\label{LSTM_Enc}
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{images/Latspace1.jpg}
+\caption{}\label{Lat1}
+\end{subfigure}
+\hspace{0.5cm}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{images/Latspace2.jpg}
+\caption{}\label{Lat1}
+\end{subfigure}
+\caption{Visualisation of the use of extracted semantic information from the packet level (a) to be used in modelling sequences of flows (b).}
+\end{figure}
+
+\subsection{Traffic separation}
 
 
 
 The described current models are representing semantic structures as the prediction accuracy of the next element in a sequence, as depicted in Figure \ref{RNN}. This probabilistic method is quite effective when semantic sequences are isolated, even under noise, as can be observed in current language models \cite{shi2012towards}. This is however not always the case in a stream of network flows as two or more independent actions generating traffic can have temporal overlap, causing their corresponding semantic structures to overlay each other. Subsequent separation of the different signals is a hard problem and at this stage likely infeasible. Since these overlays can occur between completely independent actions, it is hard for our current models to accurately predict the next event in an overlayed session. Although these traffic overlays appear to not be the norm in a machine's network stream, the decrease in prediction certainty in a session depletes the possibility to detect anomalous behaviour and thus opens a door a door for adversaries to hide attacks in normal traffic. 
 
-Although the problem of semantic structure separation itself is a hard one, there exist possibilities to improve the RNN model and increase prediction accuracy of overlayed events in a session:
+
+The problem of separating traffic from different services itself is computationally not trivial, and there may not exist complete solution. It is still however still worth to consider possible ways to isolate significant traffic instances, or how to at least improve robustness of existing solutions. The traffic generation framework described in Section \ref{Groundtruth} can be very beneficial for this taks as we can generated overlayed traffic with the ground truth labels of the different traffic signals. 
+
+\subsubsection{Training a classifier}
+
+One possible idea I would like to explore is to generate a larger quantity of overlayed traffic sessions with corresponding signal labels and a realistic level of variation to train a classifier. This classifier should try to put flow events into groups according to their generation source based on group properties observed in their IP-addresses, sizes, etc. As labels will be provided, this task can be done in a supervised manner. The learned distinction distinction properties should be general enough to be applied to different traffic tasks. 
+
+In order to support the learning process, data from other sources such as application logs or operating system calls could and should be used. More information on how these could be generated can be found in Section \ref{Fusion}. 
+
+If the classification of network events into groups is too hard, the classifier could instead be trained to just identify if a session contains overlayed traffic or is generated by one source, which could inform a detection system of the ambiguity of the observed session. 
+
+How exactly an appropriate classifier could be designed is still to be determined. 
+
+
+
+\subsubsection{Robustification}
+
+If the separation of signals turns out to be too difficult, it is still possible to improve the existing RNN model and increase prediction accuracy of overlayed events in a session:
 
 \begin{itemize}
 \item Instead of predicting one successive event in a sequence, prediction accuracies of an RNN can be improved by extending the prediction to multiple unordered events that are supposed to occur within a window. This will shift the focus from one event which is relatively unpredictible under overlay to a larger group in which particular events are relatively certain to occur. This way, a model can learn semantics easier and can provide a higher certainty under overlays.
@@ -496,7 +530,7 @@ As many network intrusion detection methods are designed for application to ente
 \item What other underlying traffic properties such as service correlations or network congestion did we not capture?
 \end{enumerate}
 
-\subsubsection{Data fusion}
+\subsubsection{Data fusion}\label{Fusion}
 
 Apart from network traffic, applications often produce additional events captured in log files. These are usually intended to control whether a service is working properly, but are also increasingly used for cyber-security purposes. The fusion of multiple events streams such as log files and network traffic is a very promising direction in current intrusion detection as the combination of multiple indicators for malicious activity has the potential to significantly decrease the rate false positives, and some effort has been made to provide synchronised data sources, notably from the Los Alamos National Laboratory \cite{kent-2015-cyberdata1}. However, it is traditionally very hard to link specific log events with corresponding network traffic events due to the lack of ground truth traffic. Due to the separation of traffic from individual applications and programmable execution of different scenarios, our framework can provide the unique opportunity to examine and model this relationship. %In this PhD-project I hope to contribute in the following way: 
 

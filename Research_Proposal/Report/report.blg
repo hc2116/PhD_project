@@ -7,45 +7,45 @@ Warning--empty journal in clausen2018bayesian
 Warning--empty year in clausen2018bayesian
 Warning--there's a number but no volume in denning1987intrusion
 Warning--can't use both volume and number fields in lakhina2005mining
-You've used 25 entries,
+You've used 24 entries,
             2118 wiz_defined-function locations,
-            647 strings with 8777 characters,
-and the built_in function-call counts, 10201 in all, are:
-= -- 1021
-> -- 506
-< -- 13
-+ -- 199
-- -- 172
-* -- 728
-:= -- 1622
-add.period$ -- 84
-call.type$ -- 25
-change.case$ -- 160
+            641 strings with 8565 characters,
+and the built_in function-call counts, 9674 in all, are:
+= -- 965
+> -- 483
+< -- 12
++ -- 190
+- -- 164
+* -- 694
+:= -- 1546
+add.period$ -- 80
+call.type$ -- 24
+change.case$ -- 153
 chr.to.int$ -- 0
-cite$ -- 29
-duplicate$ -- 389
-empty$ -- 763
-format.name$ -- 172
-if$ -- 2175
+cite$ -- 28
+duplicate$ -- 366
+empty$ -- 722
+format.name$ -- 164
+if$ -- 2054
 int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 24
-newline$ -- 131
-num.names$ -- 52
-pop$ -- 176
+int.to.str$ -- 24
+missing$ -- 23
+newline$ -- 126
+num.names$ -- 50
+pop$ -- 166
 preamble$ -- 1
-purify$ -- 135
+purify$ -- 129
 quote$ -- 0
-skip$ -- 295
+skip$ -- 277
 stack$ -- 0
-substring$ -- 649
-swap$ -- 126
-text.length$ -- 13
+substring$ -- 612
+swap$ -- 115
+text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 100
+type$ -- 96
 warning$ -- 4
-while$ -- 99
-width$ -- 27
-write$ -- 286
+while$ -- 94
+width$ -- 26
+write$ -- 274
 (There were 4 warnings)

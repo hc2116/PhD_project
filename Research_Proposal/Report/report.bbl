@@ -67,12 +67,6 @@ P.~Malhotra, A.~Ramakrishnan, G.~Anand, L.~Vig, P.~Agarwal, and G.~Shroff.
 \newblock Lstm-based encoder-decoder for multi-sensor anomaly detection.
 \newblock {\em arXiv preprint arXiv:1607.00148}, 2016.
 
-\bibitem{mcgregor2004flow}
-A.~McGregor, M.~Hall, P.~Lorier, and J.~Brunskill.
-\newblock Flow clustering using machine learning techniques.
-\newblock In {\em International Workshop on Passive and Active Network
-  Measurement}, pages 205--214. Springer, 2004.
-
 \bibitem{moustafa_unsw-nb15:_2015}
 N.~Moustafa and J.~Slay.
 \newblock {UNSW}-{NB}15: a comprehensive data set for network intrusion
