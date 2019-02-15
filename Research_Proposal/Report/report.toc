@@ -9,31 +9,31 @@
 \contentsline {subsection}{\numberline {2.2.1}Data analysis and strategy}{7}
 \contentsline {subsubsection}{Semantic structures and corresponding variations}{7}
 \contentsline {subsection}{\numberline {2.2.2}Ground truth data generation}{8}
-\contentsline {subsection}{\numberline {2.2.3}Testing initial approaches on realistic data}{9}
+\contentsline {subsection}{\numberline {2.2.3}Testing initial approaches on realistic data}{10}
 \contentsline {section}{\numberline {2.3}Research questions}{11}
 \contentsline {subsubsection}{Data analysis and exploration}{11}
 \contentsline {subsubsection}{Modelling scope}{11}
 \contentsline {subsubsection}{Ground truth data and evaluation of semantic understanding}{12}
 \contentsline {subsubsection}{Application to realistic Intrusion Detection}{12}
-\contentsline {chapter}{\numberline {3}Project specific objectives}{13}
-\contentsline {section}{\numberline {3.1}Learning representations of packet exchanges}{13}
-\contentsline {subsection}{\numberline {3.1.1}Probabilistic Real-Time Automata}{14}
-\contentsline {subsection}{\numberline {3.1.2}Autoencoder-based}{16}
-\contentsline {subsection}{\numberline {3.1.3}Data and result validation}{17}
-\contentsline {section}{\numberline {3.2}Software evolution and drift}{17}
-\contentsline {subsection}{\numberline {3.2.1}Evaluation}{19}
-\contentsline {subsection}{\numberline {3.2.2}Adaptive learning}{19}
-\contentsline {section}{\numberline {3.3}Flow-level based modelling}{19}
-\contentsline {subsection}{\numberline {3.3.1}Combination of packet and flow-level information}{19}
-\contentsline {subsection}{\numberline {3.3.2}Traffic separation}{20}
-\contentsline {subsubsection}{Training a classifier}{21}
-\contentsline {subsubsection}{Robustification}{22}
-\contentsline {section}{\numberline {3.4}Traffic generation and data fusion}{22}
-\contentsline {subsubsection}{Simulate real network traffic distributions}{22}
-\contentsline {subsubsection}{Data fusion}{23}
-\contentsline {chapter}{\numberline {4}Programme of work and potential risks}{24}
-\contentsline {subsubsection}{First year}{24}
-\contentsline {subsubsection}{Second year}{24}
-\contentsline {subsubsection}{Third year}{25}
-\contentsline {subsubsection}{Fourth year}{25}
-\contentsline {section}{\numberline {4.1}Risks}{25}
+\contentsline {chapter}{\numberline {3}Project specific objectives}{14}
+\contentsline {section}{\numberline {3.1}Learning representations of packet exchanges}{14}
+\contentsline {subsection}{\numberline {3.1.1}Probabilistic Real-Time Automata}{15}
+\contentsline {subsection}{\numberline {3.1.2}Autoencoder-based}{17}
+\contentsline {subsection}{\numberline {3.1.3}Data and result validation}{18}
+\contentsline {section}{\numberline {3.2}Software evolution and drift}{19}
+\contentsline {subsection}{\numberline {3.2.1}Evaluation}{20}
+\contentsline {subsection}{\numberline {3.2.2}Adaptive learning}{20}
+\contentsline {section}{\numberline {3.3}Flow-level based modelling}{20}
+\contentsline {subsection}{\numberline {3.3.1}Combination of packet and flow-level information}{21}
+\contentsline {subsection}{\numberline {3.3.2}Traffic separation}{22}
+\contentsline {subsubsection}{Training a classifier}{22}
+\contentsline {subsubsection}{Robustification}{23}
+\contentsline {section}{\numberline {3.4}Traffic generation and data fusion}{23}
+\contentsline {subsubsection}{Simulate real network traffic distributions}{23}
+\contentsline {subsubsection}{Data fusion}{24}
+\contentsline {chapter}{\numberline {4}Programme of work and potential risks}{25}
+\contentsline {subsubsection}{First year}{25}
+\contentsline {subsubsection}{Second year}{25}
+\contentsline {subsubsection}{Third year}{26}
+\contentsline {subsubsection}{Fourth year}{26}
+\contentsline {section}{\numberline {4.1}Risks}{26}

@@ -1,5 +1,5 @@
 \documentclass[a4paper,12pt,twoside]{report}
-\usepackage[left=2.8cm,right=2.8cm,top=2cm,bottom=3cm]{geometry}
+\usepackage[left=3cm,right=3cm,top=2cm,bottom=3cm]{geometry}
 %\usepackage[square,authoryear,sort]{natbib}
 \usepackage{url}
 \usepackage{xcolor}
@@ -224,9 +224,7 @@ Anomaly-based methods in intrusion detection are often criticised for working on
 
 In order to bolster the findings of this sub-project, I applied the same methods on currently available real-world datasets which I am already familiar with through my MSc thesis \cite{clausen2018bayesian}. The particular datasets come from the enterprise network of the \textit{Los Alamos National Laboratory} \cite{kent-2015-cyberdata1} and from a Spanish ISP \cite{macia2018ugr}. For that I selected appropriate machines (e.g. IP addresses) that contain the variety of traffic behaviour found on personal computers, in contrast to less diverse traffic sources such as IP-phones, printers or servers. Furthermore, the selected machines should be subject to attacks so that the effectiveness of the results can be verified. I made sure the data is in the right format to be passed to the implemented models and supervised the training process by adjusting important parameters and hyper-parameters. Finally, I evaluated the results and added them to the existing manuscript.
 
-
-
-\section{Research questions}
+\section{Research questions}\label{RQ}
 
 Chapter 2.1 described the broader motivation and ambition for this project. To achieve a coherent scientific progress, this PhD-project will explore the problem of modelling the semantic behaviour a computer from different angles and hopefully find answers to the most important questions that arise in the process. Below I formulated four questions with a number of sub-questions that address different parts of this project and will be central for my work.
 
@@ -256,10 +254,11 @@ To what degree can semantic structure in network traffic be captured in a model 
 \item Can be combine models that act at different traffic levels to enhance the amount of context given by the data? 
 \item Can we efficiently disentangle overlaying network flows to isolate otherwise distorted flow groups corresponding to similar actions? 
 \item What is an efficient and realistic way to incorporate other data sources into the modelling procedure? How can this input enhance the learning process and the representation detail of a traffic model? 
+\item How can a model adapt to changes of normal semantic structures?
 \end{enumerate}
 \end{rquestion}
 
-Section 
+In order to capture the diversity of network traffic, large quantities of training data will need to be processed. The choice of modelling methods will therefore depend on several aspects such as computational efficiency, retraining capabilities, and interpretability.
 
 \subsubsection{Ground truth data and evaluation of semantic understanding}
 
@@ -276,7 +275,7 @@ What is a meaningful representation of traffic structures?
 
 \subsubsection{Application to realistic Intrusion Detection}
 
-Finally, this work should make an impact on future intrusion detection methods. Although anomaly-based methods are meant to be agnostic of a notion of malicious activity, we have to ask how and where this work will offer improvements in the detection of modern attacks.
+Finally, this work should make an impact on future intrusion detection methods. Although anomaly-based methods are meant to be agnostic of a notion of malicious activity, we have to ask how and where this work will offer improvements in the detection of modern attacks. In order to effectively increase detection rates, semantic anomalies have to occur within attacks that are not reliably detected yet and are not trivial for an adversary to disguise our hide. 
 
 \begin{rquestion}
 What will a semantic model be able to prevent? 
@@ -285,6 +284,8 @@ What will a semantic model be able to prevent?
 \item Can an adversary adapt his attacks to avoid detection? How can we prevent this?
 \end{enumerate}
 \end{rquestion}
+
+\vspace{0.8cm}
 
 These questions will drive the direction of my research during this project. I do not expect to address all of them comprehensively, but I believe that I will be able to find satisfying answers to the majority. In the next chapter, I am proposing specific sub-projects that will pave the way to find scientific results for questions in each of the different areas.
 
@@ -480,7 +481,7 @@ In Section \ref{Repr}, I described how a model of packet exchanges can be used t
 \caption{Visualisation of the use of extracted semantic information from the packet level (a) to be used in modelling sequences of flows (b).}
 \end{figure}
 
-\subsection{Traffic separation}
+\subsection{Traffic separation}\label{Sep}
 
 
 
@@ -542,7 +543,7 @@ Apart from network traffic, applications often produce additional events capture
 
 \chapter{Programme of work and potential risks}
 
-Section \ref{Obj} presented a number of different subtasks this PhD-project will be split into. I will now give an outline of my workplan of this series of interdependent workpackages, which will be carried out in parallel:
+Section \ref{Obj} presented a number of different subtasks this PhD-project will be split into. I will now give an outline of my workplan of this series of interdependent workpackages, which will be carried out in parallel. The outlined plan of work is relatively conservative to accomodate enough time for different tasks. I expect that several projects will be completed sooner and that additional room for further work on the reserach question in Section \ref{RQ} will be conducted.
 
 \subsubsection{First year}
 
@@ -561,15 +562,15 @@ Upon conclusion of this project, significant time will be spent on the work on d
 
 In order to provide the necessary data for the intended task, the data generation tool will be extended throughout the second year. Depending on potential collaboration opportunities, concepts for data fusion might be implemented already in the second year.
 
-I believe that substantial progress will be made and that both of the main tasks will be concluded by the end of the second year.
+I believe that substantial progress will be made and that both of the main tasks will be concluded by the end of the second year. I would expect that some projects 
 
 \subsubsection{Third year}
 
-Time allocation in the third year will depend on the progress achieved in year two, but as for now I anticipate that both the extension and publication of our traffic generation framework and the improvement of flow-based methods with the results from year two will be the focus of year three. 
+Time allocation in the third year will depend on the progress achieved in year two, but as for now I anticipate that both the extension and publication of our traffic generation framework, and the combination of flow-based and packet-based methods with the results from year two will be the focus of year three. 
 
 As more applications will be added to our \textit{Docker} environment during year two, the third year is a good time to develop an automatised execution script that is able to emulate normal network traffic distributions with extensively labelled traffic from real applications. As this traffic generation framework should be available for other researchers to use, the framework has to be tested for errors, reliability, and documentation. In addition to that, other datasets have to be analysed to infer statistical traffic distributions. 
 
-The other main project in year three will be the improvements robustification of existing flow methods based on results from packet modelling methods. This project has relatively much room for improvement, therefore the time allocation on this task can be adjusted according to progress on other intended tasks.
+The other main project in year three will be the work on overlaying traffic instances and correspondingly on the incorporation of other data sources. I outlined two approaches how to address this problem in Section \ref{Sep}. These should be relatively quickly explored, however it is hard to anticipate how much success they will provide, and whether further work has to be done. The time allocation on this task can be adjusted according to progress on other intended tasks.
 
 \subsubsection{Fourth year}
 
