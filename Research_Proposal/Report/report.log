@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  15 FEB 2019 12:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  18 FEB 2019 18:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -360,68 +360,68 @@ File: images/RNN.jpg Graphic file (type jpg)
 <use images/RNN.jpg>
 Package pdftex.def Info: images/RNN.jpg  used on input line 215.
 (pdftex.def)             Requested size: 298.75264pt x 199.69086pt.
- [10 <./images/RNN.jpg>] [11] [12] [13]
+ [10 <./images/RNN.jpg>] [11] [12] [13] [14]
 Chapter 3.
-<images/FTP.jpg, id=62, 455.7025pt x 490.83376pt>
+<images/FTP.jpg, id=65, 455.7025pt x 490.83376pt>
 File: images/FTP.jpg Graphic file (type jpg)
 <use images/FTP.jpg>
-Package pdftex.def Info: images/FTP.jpg  used on input line 306.
+Package pdftex.def Info: images/FTP.jpg  used on input line 333.
 (pdftex.def)             Requested size: 209.1301pt x 225.2545pt.
-<images/SSH.jpg, id=63, 456.70625pt x 487.8225pt>
+<images/SSH.jpg, id=66, 456.70625pt x 487.8225pt>
 File: images/SSH.jpg Graphic file (type jpg)
 <use images/SSH.jpg>
-Package pdftex.def Info: images/SSH.jpg  used on input line 310.
+Package pdftex.def Info: images/SSH.jpg  used on input line 337.
 (pdftex.def)             Requested size: 209.1301pt x 223.37386pt.
-[14
+[15
 
-] [15 <./images/FTP.jpg> <./images/SSH.jpg>]
-<images/Autotrie.jpg, id=70, 1104.125pt x 356.33125pt>
+] [16 <./images/FTP.jpg> <./images/SSH.jpg>]
+<images/Autotrie.jpg, id=73, 1104.125pt x 356.33125pt>
 File: images/Autotrie.jpg Graphic file (type jpg)
 <use images/Autotrie.jpg>
-Package pdftex.def Info: images/Autotrie.jpg  used on input line 350.
+Package pdftex.def Info: images/Autotrie.jpg  used on input line 377.
 (pdftex.def)             Requested size: 362.77525pt x 117.07857pt.
-<images/Automerge.jpg, id=71, 1113.15875pt x 238.8925pt>
+<images/Automerge.jpg, id=74, 1113.15875pt x 238.8925pt>
 File: images/Automerge.jpg Graphic file (type jpg)
 <use images/Automerge.jpg>
-Package pdftex.def Info: images/Automerge.jpg  used on input line 354.
+Package pdftex.def Info: images/Automerge.jpg  used on input line 381.
 (pdftex.def)             Requested size: 362.77525pt x 77.8542pt.
- [16 <./images/Autotrie.jpg> <./images/Automerge.jpg>]
-<images/LSTM_Encoder.jpg, id=75, 657.45625pt x 491.8375pt>
+ [17 <./images/Autotrie.jpg> <./images/Automerge.jpg>]
+<images/LSTM_Encoder.jpg, id=78, 657.45625pt x 491.8375pt>
 File: images/LSTM_Encoder.jpg Graphic file (type jpg)
 <use images/LSTM_Encoder.jpg>
-Package pdftex.def Info: images/LSTM_Encoder.jpg  used on input line 389.
+Package pdftex.def Info: images/LSTM_Encoder.jpg  used on input line 416.
 (pdftex.def)             Requested size: 277.41176pt x 207.53094pt.
-<images/MNIST.png, id=76, 315.1775pt x 244.915pt>
+<images/MNIST.png, id=79, 315.1775pt x 244.915pt>
 File: images/MNIST.png Graphic file (type png)
 <use images/MNIST.png>
-Package pdftex.def Info: images/MNIST.png  used on input line 393.
+Package pdftex.def Info: images/MNIST.png  used on input line 420.
 (pdftex.def)             Requested size: 145.10748pt x 112.75941pt.
- [17] [18 <./images/LSTM_Encoder.jpg> <./images/MNIST.png>]
-<images/Robust.jpg, id=84, 613.29124pt x 606.265pt>
+ [18] [19 <./images/LSTM_Encoder.jpg> <./images/MNIST.png>]
+<images/Robust.jpg, id=88, 613.29124pt x 606.265pt>
 File: images/Robust.jpg Graphic file (type jpg)
 <use images/Robust.jpg>
-Package pdftex.def Info: images/Robust.jpg  used on input line 431.
+Package pdftex.def Info: images/Robust.jpg  used on input line 458.
 (pdftex.def)             Requested size: 213.39568pt x 210.94707pt.
- [19 <./images/Robust.jpg>] [20]
-<images/Latspace1.jpg, id=92, 618.31pt x 616.3025pt>
+ [20 <./images/Robust.jpg>] [21]
+<images/Latspace1.jpg, id=95, 618.31pt x 616.3025pt>
 File: images/Latspace1.jpg Graphic file (type jpg)
 <use images/Latspace1.jpg>
-Package pdftex.def Info: images/Latspace1.jpg  used on input line 473.
+Package pdftex.def Info: images/Latspace1.jpg  used on input line 500.
 (pdftex.def)             Requested size: 192.0548pt x 191.42796pt.
-<images/Latspace2.jpg, id=93, 508.90125pt x 350.30875pt>
+<images/Latspace2.jpg, id=96, 508.90125pt x 350.30875pt>
 File: images/Latspace2.jpg Graphic file (type jpg)
 <use images/Latspace2.jpg>
-Package pdftex.def Info: images/Latspace2.jpg  used on input line 478.
+Package pdftex.def Info: images/Latspace2.jpg  used on input line 505.
 (pdftex.def)             Requested size: 192.0548pt x 132.20467pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [21]
-[22 <./images/Latspace1.jpg> <./images/Latspace2.jpg>] [23] [24]
+ [22]
+[23 <./images/Latspace1.jpg> <./images/Latspace2.jpg>] [24] [25]
 Chapter 4.
-[25
+[26
 
-] [26] (./report.bbl [27]
+] [27] (./report.bbl [28]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no  in font cmr12!
 Missing character: There is no Ã in font cmr12!
@@ -429,18 +429,18 @@ Missing character: There is no ¡ in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ˜ in font cmr12!
- [28
+ [29
 
-]) [29] (./report.aux)
+]) [30] (./report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4636 strings out of 492982
- 71116 string characters out of 6134895
- 147565 words of memory out of 5000000
- 8124 multiletter control sequences out of 15000+600000
+ 4637 strings out of 492982
+ 71123 string characters out of 6134895
+ 147575 words of memory out of 5000000
+ 8125 multiletter control sequences out of 15000+600000
  10714 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,14n,40p,1358b,540s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -456,10 +456,10 @@ fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 >
-Output written on report.pdf (29 pages, 809211 bytes).
+Output written on report.pdf (30 pages, 812828 bytes).
 PDF statistics:
- 162 PDF objects out of 1000 (max. 8388607)
- 102 compressed objects within 2 object streams
+ 165 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
