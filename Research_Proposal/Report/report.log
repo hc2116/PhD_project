@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  18 FEB 2019 18:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  19 FEB 2019 11:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -360,58 +360,64 @@ File: images/RNN.jpg Graphic file (type jpg)
 <use images/RNN.jpg>
 Package pdftex.def Info: images/RNN.jpg  used on input line 215.
 (pdftex.def)             Requested size: 298.75264pt x 199.69086pt.
- [10 <./images/RNN.jpg>] [11] [12] [13] [14]
+ [10 <./images/RNN.jpg>] [11] [12]
+<images/RQ.png, id=58, 1141.26375pt x 912.40875pt>
+File: images/RQ.png Graphic file (type png)
+<use images/RQ.png>
+Package pdftex.def Info: images/RQ.png  used on input line 298.
+(pdftex.def)             Requested size: 213.39568pt x 170.60286pt.
+ [13] [14 <./images/RQ.png>]
 Chapter 3.
-<images/FTP.jpg, id=65, 455.7025pt x 490.83376pt>
+<images/FTP.jpg, id=67, 455.7025pt x 490.83376pt>
 File: images/FTP.jpg Graphic file (type jpg)
 <use images/FTP.jpg>
-Package pdftex.def Info: images/FTP.jpg  used on input line 333.
+Package pdftex.def Info: images/FTP.jpg  used on input line 334.
 (pdftex.def)             Requested size: 209.1301pt x 225.2545pt.
-<images/SSH.jpg, id=66, 456.70625pt x 487.8225pt>
+<images/SSH.jpg, id=68, 456.70625pt x 487.8225pt>
 File: images/SSH.jpg Graphic file (type jpg)
 <use images/SSH.jpg>
-Package pdftex.def Info: images/SSH.jpg  used on input line 337.
+Package pdftex.def Info: images/SSH.jpg  used on input line 338.
 (pdftex.def)             Requested size: 209.1301pt x 223.37386pt.
 [15
 
 ] [16 <./images/FTP.jpg> <./images/SSH.jpg>]
-<images/Autotrie.jpg, id=73, 1104.125pt x 356.33125pt>
+<images/Autotrie.jpg, id=75, 1104.125pt x 356.33125pt>
 File: images/Autotrie.jpg Graphic file (type jpg)
 <use images/Autotrie.jpg>
-Package pdftex.def Info: images/Autotrie.jpg  used on input line 377.
+Package pdftex.def Info: images/Autotrie.jpg  used on input line 378.
 (pdftex.def)             Requested size: 362.77525pt x 117.07857pt.
-<images/Automerge.jpg, id=74, 1113.15875pt x 238.8925pt>
+<images/Automerge.jpg, id=76, 1113.15875pt x 238.8925pt>
 File: images/Automerge.jpg Graphic file (type jpg)
 <use images/Automerge.jpg>
-Package pdftex.def Info: images/Automerge.jpg  used on input line 381.
+Package pdftex.def Info: images/Automerge.jpg  used on input line 382.
 (pdftex.def)             Requested size: 362.77525pt x 77.8542pt.
  [17 <./images/Autotrie.jpg> <./images/Automerge.jpg>]
-<images/LSTM_Encoder.jpg, id=78, 657.45625pt x 491.8375pt>
+<images/LSTM_Encoder.jpg, id=80, 657.45625pt x 491.8375pt>
 File: images/LSTM_Encoder.jpg Graphic file (type jpg)
 <use images/LSTM_Encoder.jpg>
-Package pdftex.def Info: images/LSTM_Encoder.jpg  used on input line 416.
+Package pdftex.def Info: images/LSTM_Encoder.jpg  used on input line 417.
 (pdftex.def)             Requested size: 277.41176pt x 207.53094pt.
-<images/MNIST.png, id=79, 315.1775pt x 244.915pt>
+<images/MNIST.png, id=81, 315.1775pt x 244.915pt>
 File: images/MNIST.png Graphic file (type png)
 <use images/MNIST.png>
-Package pdftex.def Info: images/MNIST.png  used on input line 420.
+Package pdftex.def Info: images/MNIST.png  used on input line 421.
 (pdftex.def)             Requested size: 145.10748pt x 112.75941pt.
  [18] [19 <./images/LSTM_Encoder.jpg> <./images/MNIST.png>]
-<images/Robust.jpg, id=88, 613.29124pt x 606.265pt>
+<images/Robust.jpg, id=90, 613.29124pt x 606.265pt>
 File: images/Robust.jpg Graphic file (type jpg)
 <use images/Robust.jpg>
-Package pdftex.def Info: images/Robust.jpg  used on input line 458.
+Package pdftex.def Info: images/Robust.jpg  used on input line 459.
 (pdftex.def)             Requested size: 213.39568pt x 210.94707pt.
  [20 <./images/Robust.jpg>] [21]
-<images/Latspace1.jpg, id=95, 618.31pt x 616.3025pt>
+<images/Latspace1.jpg, id=97, 618.31pt x 616.3025pt>
 File: images/Latspace1.jpg Graphic file (type jpg)
 <use images/Latspace1.jpg>
-Package pdftex.def Info: images/Latspace1.jpg  used on input line 500.
+Package pdftex.def Info: images/Latspace1.jpg  used on input line 501.
 (pdftex.def)             Requested size: 192.0548pt x 191.42796pt.
-<images/Latspace2.jpg, id=96, 508.90125pt x 350.30875pt>
+<images/Latspace2.jpg, id=98, 508.90125pt x 350.30875pt>
 File: images/Latspace2.jpg Graphic file (type jpg)
 <use images/Latspace2.jpg>
-Package pdftex.def Info: images/Latspace2.jpg  used on input line 505.
+Package pdftex.def Info: images/Latspace2.jpg  used on input line 506.
 (pdftex.def)             Requested size: 192.0548pt x 132.20467pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -437,10 +443,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4637 strings out of 492982
- 71123 string characters out of 6134895
- 147575 words of memory out of 5000000
- 8125 multiletter control sequences out of 15000+600000
+ 4643 strings out of 492982
+ 71205 string characters out of 6134895
+ 147609 words of memory out of 5000000
+ 8130 multiletter control sequences out of 15000+600000
  10714 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,14n,40p,1358b,540s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -456,10 +462,10 @@ fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 >
-Output written on report.pdf (30 pages, 812828 bytes).
+Output written on report.pdf (30 pages, 878400 bytes).
 PDF statistics:
- 165 PDF objects out of 1000 (max. 8388607)
+ 167 PDF objects out of 1000 (max. 8388607)
  104 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

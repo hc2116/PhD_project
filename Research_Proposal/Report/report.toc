@@ -14,7 +14,7 @@
 \contentsline {section}{\numberline {2.3}Research questions}{11}
 \contentsline {subsubsection}{Data analysis and exploration}{11}
 \contentsline {subsubsection}{Modelling scope}{12}
-\contentsline {subsubsection}{Ground truth data and evaluation of semantic understanding}{12}
+\contentsline {subsubsection}{Ground truth data and evaluation of semantic understanding}{13}
 \contentsline {subsubsection}{Application to realistic Intrusion Detection}{13}
 \contentsline {subsubsection}{Challenges}{13}
 \contentsline {chapter}{\numberline {3}Project specific objectives}{15}
