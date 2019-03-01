@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  19 FEB 2019 11:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  1 MAR 2019 17:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -337,93 +337,94 @@ Package pdftex.def Info: images/Atrial_Premature_Contraction.png  used on input
  [3 <./images/outlier_mine.png> <./images/Atrial_Premature_Contraction.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 102.
-[4] [5]
-Chapter 2.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 121.
+[4]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 119.
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 121.
- [6
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 119.
+ [5] [6]
+Chapter 2.
+[7
 
-] [7]
+]
 <images/Dockernet.jpg, id=41, 887.315pt x 514.92375pt>
 File: images/Dockernet.jpg Graphic file (type jpg)
 <use images/Dockernet.jpg>
-Package pdftex.def Info: images/Dockernet.jpg  used on input line 175.
+Package pdftex.def Info: images/Dockernet.jpg  used on input line 174.
 (pdftex.def)             Requested size: 298.75264pt x 173.36676pt.
  [8] [9 <./images/Dockernet.jpg>]
 <images/RNN.jpg, id=48, 768.8725pt x 513.92pt>
 File: images/RNN.jpg Graphic file (type jpg)
 <use images/RNN.jpg>
-Package pdftex.def Info: images/RNN.jpg  used on input line 215.
+Package pdftex.def Info: images/RNN.jpg  used on input line 214.
 (pdftex.def)             Requested size: 298.75264pt x 199.69086pt.
- [10 <./images/RNN.jpg>] [11] [12]
-<images/RQ.png, id=58, 1141.26375pt x 912.40875pt>
+ [10 <./images/RNN.jpg>] [11]
+Chapter 3.
+[12
+
+] [13]
+<images/RQ.png, id=62, 1141.26375pt x 912.40875pt>
 File: images/RQ.png Graphic file (type png)
 <use images/RQ.png>
-Package pdftex.def Info: images/RQ.png  used on input line 298.
+Package pdftex.def Info: images/RQ.png  used on input line 305.
 (pdftex.def)             Requested size: 213.39568pt x 170.60286pt.
- [13] [14 <./images/RQ.png>]
-Chapter 3.
+ [14 <./images/RQ.png>]
 <images/FTP.jpg, id=67, 455.7025pt x 490.83376pt>
 File: images/FTP.jpg Graphic file (type jpg)
 <use images/FTP.jpg>
-Package pdftex.def Info: images/FTP.jpg  used on input line 334.
+Package pdftex.def Info: images/FTP.jpg  used on input line 339.
 (pdftex.def)             Requested size: 209.1301pt x 225.2545pt.
 <images/SSH.jpg, id=68, 456.70625pt x 487.8225pt>
 File: images/SSH.jpg Graphic file (type jpg)
 <use images/SSH.jpg>
-Package pdftex.def Info: images/SSH.jpg  used on input line 338.
+Package pdftex.def Info: images/SSH.jpg  used on input line 343.
 (pdftex.def)             Requested size: 209.1301pt x 223.37386pt.
-[15
-
-] [16 <./images/FTP.jpg> <./images/SSH.jpg>]
+ [15] [16 <./images/FTP.jpg> <./images/SSH.jpg>]
 <images/Autotrie.jpg, id=75, 1104.125pt x 356.33125pt>
 File: images/Autotrie.jpg Graphic file (type jpg)
 <use images/Autotrie.jpg>
-Package pdftex.def Info: images/Autotrie.jpg  used on input line 378.
+Package pdftex.def Info: images/Autotrie.jpg  used on input line 383.
 (pdftex.def)             Requested size: 362.77525pt x 117.07857pt.
 <images/Automerge.jpg, id=76, 1113.15875pt x 238.8925pt>
 File: images/Automerge.jpg Graphic file (type jpg)
 <use images/Automerge.jpg>
-Package pdftex.def Info: images/Automerge.jpg  used on input line 382.
+Package pdftex.def Info: images/Automerge.jpg  used on input line 387.
 (pdftex.def)             Requested size: 362.77525pt x 77.8542pt.
- [17 <./images/Autotrie.jpg> <./images/Automerge.jpg>]
-<images/LSTM_Encoder.jpg, id=80, 657.45625pt x 491.8375pt>
-File: images/LSTM_Encoder.jpg Graphic file (type jpg)
-<use images/LSTM_Encoder.jpg>
-Package pdftex.def Info: images/LSTM_Encoder.jpg  used on input line 417.
-(pdftex.def)             Requested size: 277.41176pt x 207.53094pt.
-<images/MNIST.png, id=81, 315.1775pt x 244.915pt>
-File: images/MNIST.png Graphic file (type png)
-<use images/MNIST.png>
-Package pdftex.def Info: images/MNIST.png  used on input line 421.
-(pdftex.def)             Requested size: 145.10748pt x 112.75941pt.
- [18] [19 <./images/LSTM_Encoder.jpg> <./images/MNIST.png>]
-<images/Robust.jpg, id=90, 613.29124pt x 606.265pt>
-File: images/Robust.jpg Graphic file (type jpg)
-<use images/Robust.jpg>
-Package pdftex.def Info: images/Robust.jpg  used on input line 459.
-(pdftex.def)             Requested size: 213.39568pt x 210.94707pt.
- [20 <./images/Robust.jpg>] [21]
-<images/Latspace1.jpg, id=97, 618.31pt x 616.3025pt>
-File: images/Latspace1.jpg Graphic file (type jpg)
-<use images/Latspace1.jpg>
-Package pdftex.def Info: images/Latspace1.jpg  used on input line 501.
-(pdftex.def)             Requested size: 192.0548pt x 191.42796pt.
-<images/Latspace2.jpg, id=98, 508.90125pt x 350.30875pt>
-File: images/Latspace2.jpg Graphic file (type jpg)
-<use images/Latspace2.jpg>
-Package pdftex.def Info: images/Latspace2.jpg  used on input line 506.
-(pdftex.def)             Requested size: 192.0548pt x 132.20467pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [22]
-[23 <./images/Latspace1.jpg> <./images/Latspace2.jpg>] [24] [25]
+ [17 <./images/Autotrie.jpg> <./images/Automerge.jpg>] [18]
+<images/LSTM_Encoder.jpg, id=83, 657.45625pt x 491.8375pt>
+File: images/LSTM_Encoder.jpg Graphic file (type jpg)
+<use images/LSTM_Encoder.jpg>
+Package pdftex.def Info: images/LSTM_Encoder.jpg  used on input line 422.
+(pdftex.def)             Requested size: 277.41176pt x 207.53094pt.
+<images/MNIST.png, id=84, 315.1775pt x 244.915pt>
+File: images/MNIST.png Graphic file (type png)
+<use images/MNIST.png>
+Package pdftex.def Info: images/MNIST.png  used on input line 426.
+(pdftex.def)             Requested size: 145.10748pt x 112.75941pt.
+ [19 <./images/LSTM_Encoder.jpg> <./images/MNIST.png>]
+<images/Robust.jpg, id=90, 613.29124pt x 606.265pt>
+File: images/Robust.jpg Graphic file (type jpg)
+<use images/Robust.jpg>
+Package pdftex.def Info: images/Robust.jpg  used on input line 464.
+(pdftex.def)             Requested size: 213.39568pt x 210.94707pt.
+ [20] [21 <./images/Robust.jpg>] [22]
+<images/Latspace1.jpg, id=100, 618.31pt x 616.3025pt>
+File: images/Latspace1.jpg Graphic file (type jpg)
+<use images/Latspace1.jpg>
+Package pdftex.def Info: images/Latspace1.jpg  used on input line 506.
+(pdftex.def)             Requested size: 192.0548pt x 191.42796pt.
+<images/Latspace2.jpg, id=101, 508.90125pt x 350.30875pt>
+File: images/Latspace2.jpg Graphic file (type jpg)
+<use images/Latspace2.jpg>
+Package pdftex.def Info: images/Latspace2.jpg  used on input line 511.
+(pdftex.def)             Requested size: 192.0548pt x 132.20467pt.
+ [23 <./images/Latspace1.jpg> <./images/Latspace2.jpg>] [24] [25]
 Chapter 4.
 [26
 
@@ -445,7 +446,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  4643 strings out of 492982
  71205 string characters out of 6134895
- 147609 words of memory out of 5000000
+ 145603 words of memory out of 5000000
  8130 multiletter control sequences out of 15000+600000
  10714 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -462,7 +463,7 @@ fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 >
-Output written on report.pdf (30 pages, 878400 bytes).
+Output written on report.pdf (30 pages, 878517 bytes).
 PDF statistics:
  167 PDF objects out of 1000 (max. 8388607)
  104 compressed objects within 2 object streams

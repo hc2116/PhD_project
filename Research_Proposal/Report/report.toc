@@ -3,35 +3,34 @@
 \contentsline {section}{\numberline {1.2}Anomaly detection}{3}
 \contentsline {subsubsection}{Anomaly detection and NIDS}{4}
 \contentsline {section}{\numberline {1.3}Research opportunities}{4}
-\contentsline {chapter}{\numberline {2}Proposal}{6}
-\contentsline {section}{\numberline {2.1}Project aim}{6}
-\contentsline {section}{\numberline {2.2}Work achieved so far}{7}
-\contentsline {subsection}{\numberline {2.2.1}Data analysis and strategy}{7}
+\contentsline {section}{\numberline {1.4}Project aim}{5}
+\contentsline {chapter}{\numberline {2}Work so far}{7}
+\contentsline {section}{\numberline {2.1}Data analysis and strategy}{7}
 \contentsline {subsubsection}{Semantic structures and corresponding variations}{7}
-\contentsline {subsection}{\numberline {2.2.2}Ground truth data generation}{8}
-\contentsline {subsection}{\numberline {2.2.3}Testing initial approaches on realistic data}{10}
-\contentsline {subsection}{\numberline {2.2.4}Other activity}{11}
-\contentsline {section}{\numberline {2.3}Research questions}{11}
-\contentsline {subsubsection}{Data analysis and exploration}{11}
+\contentsline {section}{\numberline {2.2}Ground truth data generation}{8}
+\contentsline {section}{\numberline {2.3}Testing initial approaches on realistic data}{10}
+\contentsline {section}{\numberline {2.4}Other activity}{11}
+\contentsline {chapter}{\numberline {3}Thesis Proposal}{12}
+\contentsline {section}{\numberline {3.1}Research questions}{12}
+\contentsline {subsubsection}{Data analysis and exploration}{12}
 \contentsline {subsubsection}{Modelling scope}{12}
 \contentsline {subsubsection}{Ground truth data and evaluation of semantic understanding}{13}
-\contentsline {subsubsection}{Application to realistic Intrusion Detection}{13}
-\contentsline {subsubsection}{Challenges}{13}
-\contentsline {chapter}{\numberline {3}Project specific objectives}{15}
-\contentsline {section}{\numberline {3.1}Learning representations of packet exchanges}{15}
-\contentsline {subsection}{\numberline {3.1.1}Probabilistic Real-Time Automata}{16}
-\contentsline {subsection}{\numberline {3.1.2}Autoencoder-based}{18}
-\contentsline {subsection}{\numberline {3.1.3}Data and result validation}{19}
-\contentsline {section}{\numberline {3.2}Software evolution and drift}{20}
-\contentsline {subsection}{\numberline {3.2.1}Evaluation}{21}
-\contentsline {subsection}{\numberline {3.2.2}Adaptive learning}{21}
-\contentsline {section}{\numberline {3.3}Flow-level based modelling}{21}
-\contentsline {subsection}{\numberline {3.3.1}Combination of packet and flow-level information}{22}
-\contentsline {subsection}{\numberline {3.3.2}Traffic separation}{23}
-\contentsline {subsubsection}{Training a classifier}{23}
+\contentsline {subsubsection}{Application to realistic Intrusion Detection}{14}
+\contentsline {subsubsection}{Challenges}{14}
+\contentsline {section}{\numberline {3.2}Learning representations of packet exchanges}{15}
+\contentsline {subsection}{\numberline {3.2.1}Probabilistic Real-Time Automata}{17}
+\contentsline {subsection}{\numberline {3.2.2}Autoencoder-based}{18}
+\contentsline {subsection}{\numberline {3.2.3}Data and result validation}{19}
+\contentsline {section}{\numberline {3.3}Software evolution and drift}{20}
+\contentsline {subsection}{\numberline {3.3.1}Evaluation}{21}
+\contentsline {subsection}{\numberline {3.3.2}Adaptive learning}{21}
+\contentsline {section}{\numberline {3.4}Flow-level based modelling}{22}
+\contentsline {subsection}{\numberline {3.4.1}Combination of packet and flow-level information}{22}
+\contentsline {subsection}{\numberline {3.4.2}Traffic separation}{23}
+\contentsline {subsubsection}{Training a classifier}{24}
 \contentsline {subsubsection}{Robustification}{24}
-\contentsline {section}{\numberline {3.4}Traffic generation and data fusion}{24}
-\contentsline {subsubsection}{Simulate real network traffic distributions}{24}
+\contentsline {section}{\numberline {3.5}Traffic generation and data fusion}{24}
+\contentsline {subsubsection}{Simulate real network traffic distributions}{25}
 \contentsline {subsubsection}{Data fusion}{25}
 \contentsline {chapter}{\numberline {4}Programme of work and potential risks}{26}
 \contentsline {subsubsection}{First year}{26}

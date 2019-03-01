@@ -54,11 +54,11 @@
 
 \section{Intrusion detection}
 
-Sophisticated data breaches affect hundreds of million customers and inflicts tremendous financial, reputational, and logistic damage. One reason for the recent rise of cyber crime is the increased use of sophisticated techniques for the attack of specific targets. Attackers use customised social engineering and custom-build malware that penetrate defensive barriers and potentially stay undetected in an infected system for an extended period of time. 
+Sophisticated data breaches affect hundreds of million customers and inflict tremendous financial, reputational, and logistic damage. One reason for the recent rise of cyber crime is the increased use of advanced techniques for the attack of specific targets. Attackers use customised social engineering and custom-built malware that penetrate defensive barriers and potentially stay undetected in an infected system for an extended period of time. 
 
-Cyber-Security relies on a range of defensive techniques, including sophisticated intrusion detection systems and firewalls that try to detect and prevent attacks against software subsystems. Malicious software still remains the biggest threat to computer users, and its detection is of utmost importance. 
+Cyber-security relies on a range of defensive techniques, including sophisticated intrusion detection systems and firewalls that try to detect and prevent attacks against software subsystems. Malicious software still remains the biggest threat to computer users, and its detection is of utmost importance. 
 
-The field of intrusion detection is concerned with the development of methods and tools that identify and locate possible intrusions in a computer network. An \textit{intrusion detection system} (IDS) is typically a device or software application that detects malicious activity or policy violations in an automated way by scanning incoming data collected from one or more sources for patterns that a model or a set of rules classifies as malicious.
+The field of intrusion detection is concerned with the development of methods and tools that identify and locate possible intrusions in a computer network. An \textit{intrusion detection system} (IDS) is typically a device or software application that detects malicious activity or policy violations in an automated way by scanning incoming data collected from one or more sources for patterns that a model or a set of rules classifies as potentially malicious.
 
 Intrusion detection is a well researched area, with the first IDSs emerging in the late 1980's. Intrusion detection today comprises a variety of research areas in terms of different types of data sources, system architectures, detection sope, and so forth. Denning \cite{denning1987intrusion} in 1987 established the notion of two different types IDS implementations: a) host-based and b) network-based. 
 \textit{Host-based intrusion detection systems} (HIDS) monitor each host in a network individually, and rely on local data streams such as application logs or raw operating system calls as  data source. \textit{Network-based intrusion detection} refers to the detection of malicious traffic in a network of computers and uses network traffic captures as a data source. In this PhD project, I will mainly focus on network traffic as a data source due its universal nature, its resilience against modification, and my previous experience in the field. However, I will also investigate the possibility of relating both types of traffic. For more details on IDS implementations, I refer the reader to my more detailed literature review. 
@@ -66,7 +66,7 @@ Intrusion detection is a well researched area, with the first IDSs emerging in t
 
 Current detection methods are predominantly based on the analysis of previously identified attack signatures, which provides great reliability and low false alert rates. However, these methods are dependent on an updated attack signature database and provide no protection against previously unseen attacks. With attackers having access to more resources than ever, custom built malware is becoming more common to circumvent signature-based detection. 
 
-Another approach that has recently gained traction in commercial deployment is based on detecting malware and other undesired activity as anomalous behaviour when compared to benign computer activity. In this approach, known as \textbf{network anomaly detection}, models that quantify the behaviour of normal network behaviour in order to be independent of a narrowly defined notion of malicious activity.
+Another approach that has recently gained traction in commercial deployment is based on detecting malware and other undesired activity as anomalous behaviour when compared to benign computer activity. In this approach, known as \textbf{network anomaly detection}, models must quantify the behaviour of normal network behaviour to be independent of a narrowly defined notion of malicious activity.
 
 
 
@@ -106,8 +106,6 @@ Another pressing issue in anomaly-based intrusion detection is the problem of tr
 
 More information about about current state-of-the-art methods and identified literature gaps can be found in my literature review in Sections 3 and 4.2.
 
-\chapter{Proposal}
-
 \section{Project aim}
 
 Chen et al. \cite{chen_2016_robust,chen_more_2016} recently demonstrated the effectiveness of state-based software models in the identification of malicious sequences actions in a stream of permission and API calls of Android applications. This usage of semantic features allowed the discovery of new malware instances and improved the overall robustness of the classifier drastically. 
@@ -126,10 +124,11 @@ Specific goals of this project are:
 
 
 
-\section{Work achieved so far}\label{Sofar}
+\chapter{Work so far}\label{Sofar}
 
 
-\subsection{Data analysis and strategy}
+
+\section{Data analysis and strategy}
 
 Although this project is motivated by previous successful applications of ML-driven semantic models for anomaly detection, the differences in the type of data used in this project means that different tools and modelling strategies are necessary. Network traffic usually contains more intrinsic variation and noise, with packets potentially being dropped, and data distribution being afffected by the level of network congestion or by varying input parameters. Therefore, significant amount of time has been spent on initial data analysis and reflection on good modelling strategies. 
 
@@ -161,7 +160,7 @@ Semantic behaviour of a program denotes how it transmits and reacts to informati
 A significant amount of time was spent at gathering appropriate  real-world data sources that can be used to train and to validate the developed methods. Due to its sensitivity, network traffic is not widely available. Furthermore, existing datasets are often subject sampling tools to reduce the amount of data collected, or are modified to preserve the privacy of the corresponding network users. Therefore, several datasets were analysed closely to establish whether they are suitable for both modelling semantic traffic structures and detection of malicious traffic. A summary of datasets can be found in the attached literature review in Section 2.2.
 
 
-\subsection{Ground truth data generation}\label{Groundtruth}
+\section{Ground truth data generation}\label{Groundtruth}
 
 Building semantic models of network traffic means to build an understanding how different network interactions can be distinguished via their traffic trace. We want to use ML techniques to automatically extract meaningful sets of sequences that represent these different interactions. In order to ensure that this is actually true, that our extracted models are indeed representing real distinguishable interactions and not just nonsense, we need validation from \textit{ground truth data}. 
 
@@ -206,7 +205,7 @@ Both properties were tested for selected scenarios with positive results. For th
 %\textcolor{red}{write about the application of the traffic, how to use it for validation}.
 
 
-\subsection{Testing initial approaches on realistic data}\label{Prevwork}
+\section{Testing initial approaches on realistic data}\label{Prevwork}
 
 In the context of the overall research goal of this project, some exploratory work on semantic anomaly detection for network events has been conducted by Marc Sabate, Gudmund Grov, Wei Chen, and David Aspinall. This work uses three different machine learning algorithms\footnote{A Markov Chain model, Finite-State Automata, and a Recurrent Neural Network} from the area of \textit{representation learning} to capture meaningful sequences of \textit{NetFlows} and reflect reoccurring patterns in a model. For that, recorded NetFlows are grouped according to the generating host. Furthermore, in order to filter out sequences of flows that are unrelated to each other, a squence of flows that are close in time is grouped into what is called a \say{session} as an approximation \say{true relation}. Each session then serves as a training or test sequence for a behavioural model. Learned semantic behaviour is reflected through the capability of the model to predict traffic protocols and network ports of flows in a session from a smaller subset of flows, with more accurate predictions being rewarded in the training process. Sessions which deviate from previously observed behaviour are then predicted poorly by the model and flagged as potentially malicious.
 
@@ -224,12 +223,20 @@ Anomaly-based methods in intrusion detection are often criticised for working on
 
 In order to bolster the findings of this sub-project, I applied the same methods on currently available real-world datasets which I am already familiar with through my MSc thesis \cite{clausen2018bayesian}. The particular datasets come from the enterprise network of the \textit{Los Alamos National Laboratory} \cite{kent-2015-cyberdata1} and from a Spanish ISP \cite{macia2018ugr}. For that I selected appropriate machines (e.g. IP addresses) that contain the variety of traffic behaviour found on personal computers, in contrast to less diverse traffic sources such as IP-phones, printers or servers. Furthermore, the selected machines should be subject to attacks so that the effectiveness of the results can be verified. I made sure the data is in the right format to be passed to the implemented models and supervised the training process by adjusting important parameters and hyper-parameters. Finally, I evaluated the results and added them to the existing manuscript.
 
-\subsection{Other activity}
+\section{Other activity}
 
 A significant part of the first year was spent on reviewing literature and collecting suitable datasets. The results were used to produce both a comprehensive literature review and this document. 
 
 
 Besides this, I attended several events that are thematically relevant for my PhD. I attended a one-week data study group at the Alan Turing institute in the context of knowledge exchange and skill development. While there, I contributed in the creation of a comprehensive report on \textit{Developing data science tools for improving enterprise cyber-security}. I also participated in a poster competition at the conference \textit{Big Data in Cyber Security} at Napier University. Additionally, I attended a two-day the \textit{Tommy Flowers} conference on \say{repurposed innovation} in Ipswich, and took part in a workshop at Edinburgh University on \textit{Scalable Bayesian Inference}.
+
+
+
+
+
+
+
+\chapter{Thesis Proposal}\label{Obj}
 
 
 \section{Research questions}\label{RQ}
@@ -317,8 +324,6 @@ a non-trivial task that will require both creativity and rigorous testing for an
 
 
 
-
-\chapter{Project specific objectives}\label{Obj}
 
 \section{Learning representations of packet exchanges}\label{Repr}
 
