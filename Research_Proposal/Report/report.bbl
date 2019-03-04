@@ -1,15 +1,33 @@
 \begin{thebibliography}{10}
 
+\bibitem{ahmed2016survey}
+M.~Ahmed, A.~N. Mahmood, and J.~Hu.
+\newblock A survey of network anomaly detection techniques.
+\newblock {\em Journal of Network and Computer Applications}, 60:19--31, 2016.
+
 \bibitem{bernaille2006traffic}
 L.~Bernaille, R.~Teixeira, I.~Akodkenou, A.~Soule, and K.~Salamatian.
 \newblock Traffic classification on the fly.
 \newblock {\em ACM SIGCOMM Computer Communication Review}, 36(2):23--26, 2006.
 
+\bibitem{bodenham_adaptive_2014}
+D.~A. Bodenham and N.~M. Adams.
+\newblock Adaptive {Change} {Detection} for {Relay}-{Like} {Behaviour}.
+\newblock In {\em 2014 {IEEE} {Joint} {Intelligence} and {Security}
+  {Informatics} {Conference}}, pages 252--255, Sept. 2014.
+\newblock 00008.
+
+\bibitem{buczak_survey_2016}
+A.~L. Buczak and E.~Guven.
+\newblock A {Survey} of {Data} {Mining} and {Machine} {Learning} {Methods} for
+  {Cyber} {Security} {Intrusion} {Detection}.
+\newblock {\em IEEE Communications Surveys Tutorials}, 18(2):1153--1176, 2016.
+\newblock 00294.
+
 \bibitem{chandola_anomaly_2009}
 V.~Chandola, A.~Banerjee, and V.~Kumar.
 \newblock Anomaly {Detection}: {A} {Survey}.
 \newblock {\em ACM Comput. Surv.}, 41(3):15:1--15:58, July 2009.
-\newblock 05458.
 
 \bibitem{chen_more_2016}
 W.~Chen, D.~Aspinall, A.~D. Gordon, C.~Sutton, and I.~Muttik.
@@ -28,6 +46,7 @@ W.~Chen, D.~Aspinall, A.~D. Gordon, C.~Sutton, and I.~Muttik.
 \bibitem{clausen2018bayesian}
 H.~Clausen, M.~Briers, and N.~M. Adams.
 \newblock Bayesian activity modelling for network flow data.
+\newblock {\em Data Science For Cyber-security}, 3:55, 2018.
 
 \bibitem{crotti2007traffic}
 M.~Crotti, M.~Dusi, F.~Gringoli, and L.~Salgarelli.
@@ -44,10 +63,26 @@ S.~Garcia, M.~Grill, J.~Stiborek, and A.~Zunino.
 \newblock An empirical comparison of botnet detection methods.
 \newblock {\em computers \& security}, 45:100--123, 2014.
 
+\bibitem{jiang2014transform}
+D.~Jiang, Z.~Xu, P.~Zhang, and T.~Zhu.
+\newblock A transform domain-based anomaly detection approach to network-wide
+  traffic.
+\newblock {\em Journal of Network and Computer Applications}, 40:292--306,
+  2014.
+
 \bibitem{kent-2015-cyberdata1}
 A.~D. Kent.
 \newblock {Comprehensive, Multi-Source Cyber-Security Events}.
 \newblock Los Alamos National Laboratory, 2015.
+
+\bibitem{lakhina_diagnosing_2004}
+A.~Lakhina, M.~Crovella, and C.~Diot.
+\newblock Diagnosing {Network}-wide {Traffic} {Anomalies}.
+\newblock In {\em Proceedings of the 2004 {Conference} on {Applications},
+  {Technologies}, {Architectures}, and {Protocols} for {Computer}
+  {Communications}}, {SIGCOMM} '04, pages 219--230, New York, NY, USA, 2004.
+  ACM.
+\newblock 01230.
 
 \bibitem{lakhina2005mining}
 A.~Lakhina, M.~Crovella, and C.~Diot.
@@ -85,7 +120,6 @@ A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
 J.~Noble and N.~Adams.
 \newblock Real-{Time} {Dynamic} {Network} {Anomaly} {Detection}.
 \newblock {\em IEEE Intelligent Systems}, 33(2):5--18, Mar. 2018.
-\newblock 00000.
 
 \bibitem{pellegrino2017learning}
 G.~Pellegrino, Q.~Lin, C.~Hammerschmidt, and S.~Verwer.
@@ -124,13 +158,19 @@ R.~Sommer and V.~Paxson.
   {Network} {Intrusion} {Detection}.
 \newblock In {\em 2010 {IEEE} {Symposium} on {Security} and {Privacy}}, pages
   305--316, May 2010.
-\newblock 00654.
 
 \bibitem{srivastava2015unsupervised}
 N.~Srivastava, E.~Mansimov, and R.~Salakhudinov.
 \newblock Unsupervised learning of video representations using lstms.
 \newblock In {\em International conference on machine learning}, pages
   843--852, 2015.
+
+\bibitem{wuchner2015robust}
+T.~W{\"u}chner, M.~Ochoa, and A.~Pretschner.
+\newblock Robust and effective malware detection through quantitative data flow
+  graph metrics.
+\newblock In {\em International Conference on Detection of Intrusions and
+  Malware, and Vulnerability Assessment}, pages 98--118. Springer, 2015.
 
 \bibitem{yang2017improved}
 Z.~Yang, Z.~Hu, R.~Salakhutdinov, and T.~Berg-Kirkpatrick.

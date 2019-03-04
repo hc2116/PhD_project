@@ -3,49 +3,47 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: report.aux
 The style file: abbrv.bst
 Database file #1: refs.bib
-Warning--empty journal in clausen2018bayesian
-Warning--empty year in clausen2018bayesian
 Warning--there's a number but no volume in denning1987intrusion
 Warning--can't use both volume and number fields in lakhina2005mining
-You've used 24 entries,
+You've used 30 entries,
             2118 wiz_defined-function locations,
-            641 strings with 8565 characters,
-and the built_in function-call counts, 9674 in all, are:
-= -- 965
-> -- 483
-< -- 12
-+ -- 190
-- -- 164
-* -- 694
-:= -- 1546
-add.period$ -- 80
-call.type$ -- 24
-change.case$ -- 153
+            677 strings with 9854 characters,
+and the built_in function-call counts, 12216 in all, are:
+= -- 1235
+> -- 586
+< -- 15
++ -- 233
+- -- 198
+* -- 869
+:= -- 1937
+add.period$ -- 101
+call.type$ -- 30
+change.case$ -- 188
 chr.to.int$ -- 0
-cite$ -- 28
-duplicate$ -- 366
-empty$ -- 722
-format.name$ -- 164
-if$ -- 2054
+cite$ -- 32
+duplicate$ -- 467
+empty$ -- 924
+format.name$ -- 198
+if$ -- 2611
 int.to.chr$ -- 0
-int.to.str$ -- 24
-missing$ -- 23
-newline$ -- 126
-num.names$ -- 50
-pop$ -- 166
+int.to.str$ -- 30
+missing$ -- 29
+newline$ -- 157
+num.names$ -- 62
+pop$ -- 195
 preamble$ -- 1
-purify$ -- 129
+purify$ -- 158
 quote$ -- 0
-skip$ -- 277
+skip$ -- 355
 stack$ -- 0
-substring$ -- 612
-swap$ -- 115
-text.length$ -- 12
+substring$ -- 817
+swap$ -- 149
+text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 96
-warning$ -- 4
-while$ -- 94
-width$ -- 26
-write$ -- 274
-(There were 4 warnings)
+type$ -- 120
+warning$ -- 2
+while$ -- 122
+width$ -- 32
+write$ -- 348
+(There were 2 warnings)
