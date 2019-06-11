@@ -1,0 +1,9 @@
+Questions regarding NATO paper:
+
+How do get knowledge about what an attacker has already done? To base predictions on, for recommendation systems we usually have easily accessible information about past events.
+
+What kind of events, other than example about release of vulnerability are we talking about?
+
+How and where would such a system be deployed?
+
+Suggestions on future work is a bit vague and maybe a bit naive?
