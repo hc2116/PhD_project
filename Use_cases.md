@@ -60,22 +60,26 @@
 
 
 ### Who is working on what
-Michael: Working on word-to-vec and anomaly detection, figuring out how general methods are (i.e. if they work on all plattforms, traffic,....)
+
+Michael, Giulio, Lea: Working on word-to-vec and anomaly detection, figuring out how general methods are (i.e. if they work on all plattforms, traffic,....)
 Alex: Supposedly works a lot on stepping-stones recently, also visuals 
 Lea: Embeddings, word-to-vec
 Graham: Leading the "V.." visualisation project
 
 Alfie: SOOR, reaction at the detection of an intrusion
-Guy next to Alfie: Stepping stone detection, is looking for data
+Alex: Stepping stone detection, is looking for data
+
 Guy opposite of Alfie: Is looking at collaboration and sharing of data, how to enable the sharing of data and how to run analytics on it, working on the plattform they are developing (ask for name?), sounds a bit similar to Galois
 
-Guy next to Michael: Active learning, labelling problem, how can supervised learning help unsupervised learning, only been there for a month
+Sadiq: Active learning, labelling problem, how can supervised learning help unsupervised learning, only been there for a month
+
+
 
 
 ##### Michael lunch
 
 Not to worry too much about encryption and IPv6, IPv6 will probably not be used in consumer market too soon, also not that much in enterprise settings
-Encryption is not perfect, you still ahve to exchange keys
+Encryption is not perfect, you still have to exchange keys
 
 
 ##### Presentation comments and discussion afterwards

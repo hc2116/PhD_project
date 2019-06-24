@@ -8,6 +8,6 @@ NDSS (Network and Distributed System Security Symposium)
 
 DIMVA (Detection of Intrusions and Malware, and Vulnerability Assessment)
 
-ACM CCS (AISec) workshop
+ACM CCS (AIESec) workshop
 
 ASIACCS or ACM Workshop on Security in Cloud Computing
