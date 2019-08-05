@@ -1,0 +1,103 @@
+version: '2'
+services:
+  sshtunnel1:
+    image: 'detlearsom/sshd'
+    networks:
+      capture:
+        ipv4_address: 172.16.238.10
+    privileged: true
+    ports:
+      - "1223:22"
+    volumes:
+      - $PWD/.ssh:/root/.ssh:ro
+
+  sshtunnel2:
+    image: 'detlearsom/sshd'
+    networks:
+      capture:
+        ipv4_address: 172.16.238.15
+    privileged: true
+    ports:
+      - "1224:22"
+    volumes:
+      - $PWD/.ssh:/root/.ssh:ro
+
+  sshd:
+    image: 'detlearsom/sshd'
+    networks:
+      capture:
+        ipv4_address: 172.16.238.5
+    ports:
+      - "1222:22"
+    volumes:
+      - $PWD/.ssh:/root/.ssh:ro
+      - '$PWD/dataToShare:/dataToShare:ro'
+      - $PWD/receive:/receive
+
+  ssh-client:
+    image: 'detlearsom/sshd'
+    volumes:
+      - $PWD/.ssh:/root/.ssh
+      - $PWD/scripts:/scripts:ro
+      - $PWD/receive:/receive
+      - $PWD/dataToShare:/dataToShare:ro
+    networks:
+      capture:
+        ipv4_address: 172.16.238.20
+    privileged: true
+    depends_on:
+      - sshd
+    command: /scripts/ssh-script_tunnel.sh
+
+
+  tcpdump_tunnel1:
+    image: 'detlearsom/tcpdump'
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/dump-090-sshd-tunnel1-sc${SCENARIO}-${CAPTURETIME}-$REPNUM.pcap"
+    volumes:
+      - '${DATADIR}:/data'
+    depends_on:
+      - dummy
+    network_mode: "service:sshtunnel1"
+
+  tcpdump_tunnel2:
+    image: 'detlearsom/tcpdump'
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/dump-090-sshd-tunnel2-sc${SCENARIO}-${CAPTURETIME}-$REPNUM.pcap"
+    volumes:
+      - '${DATADIR}:/data'
+    depends_on:
+      - dummy
+    network_mode: "service:sshtunnel2"
+
+  tcpdump_sshd:
+    image: 'detlearsom/tcpdump'
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/dump-090-sshd-server-sc${SCENARIO}-${CAPTURETIME}-$REPNUM.pcap"
+    volumes:
+      - '${DATADIR}:/data'
+    depends_on:
+      - dummy
+    network_mode: "service:sshd"
+
+  tcpdump_client:
+    image: 'detlearsom/tcpdump'
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/dump-090-sshd-client-sc${SCENARIO}-${CAPTURETIME}-$REPNUM.pcap"
+    volumes:
+      - '${DATADIR}:/data'
+    depends_on:
+      - dummy
+    network_mode: "service:ssh-client"
+
+  dummy:
+    image: 'ubuntu'
+    depends_on:
+      - ssh-client
+
+networks:
+  capture:
+    driver: "bridge"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.238.0/24
+        gateway: 172.16.238.1
+
+
