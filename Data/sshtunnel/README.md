@@ -7,3 +7,5 @@ This simulation includes two containers running sshd. One acts like a server and
 2. Copies a file from the client to the server
 3. Connects to the server and runs "sleep 5; ls" 3 times
 4. Tries to Copy a file from the server to the client, but gives the wrong password
+5. Scans the server's ID via ssh-keyscan and stores it
+
