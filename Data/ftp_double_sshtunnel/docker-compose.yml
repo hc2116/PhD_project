@@ -1,0 +1,137 @@
+version: '2'
+services:
+  ssh_tunnel_1:
+    image: 'detlearsom/sshd'
+    networks:
+      capture:
+        ipv4_address: 172.16.238.10
+    privileged: true
+    ports:
+      - "1221:22"
+    volumes:
+      - $PWD/.ssh:/root/.ssh
+      - $PWD/scripts:/scripts:ro
+    environment:
+      - SSH_ENABLE_ROOT=true
+
+  ssh_server:
+    image: 'detlearsom/sshd'
+    networks:
+      capture:
+        ipv4_address: 172.16.238.5
+    ports:
+      - "1222:22"
+    volumes:
+      - $PWD/.ssh:/root/.ssh
+      - '$PWD/dataToShare:/dataToShare:ro'
+      - $PWD/receive_SERVER:/receive_SERVER
+    environment:
+      - SSH_ENABLE_ROOT=true
+    depends_on:
+      - ssh_tunnel_1
+
+  ssh_client:
+    image: 'detlearsom/sshd'
+    volumes:
+      - $PWD/.ssh:/root/.ssh
+      - $PWD/scripts:/scripts:ro
+      - $PWD/receive:/receive
+      - $PWD/dataToShare:/dataToShare_CLIENT:ro
+    networks:
+      capture:
+        ipv4_address: 172.16.238.20
+    ports:
+      - "1220:22"
+    privileged: true
+    environment:
+      - SSH_ENABLE_ROOT=true
+      - GATEWAY_PORTS=true
+    depends_on:
+      - ssh_server
+
+  ftp_server:
+    image: 'detlearsom/vsftpd'
+    networks:
+      capture:
+        ipv4_address: 172.16.238.11
+    volumes:
+      - '$PWD/users:/home/vsftpd'
+    environment:
+      - FTP_USER=$User
+      - FTP_PASS=$Password
+    depends_on:
+      - ssh_client
+
+  ftp_client:
+    image: 'detlearsom/ftp-client'
+    volumes:
+      - $PWD/dataToShare:/dataToShare:ro
+      - $PWD/receive:/usr/src/ftp
+      - $PWD/scripts:/usr/src/scripts:ro
+    networks:
+      capture:
+        ipv4_address: 172.16.238.12
+    command: tail -F anything
+    depends_on:
+      - ftp_server
+
+  tcpdump_vsftpd:
+    image: 'detlearsom/tcpdump'
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/doubletunnel-ftpd_server-${CAPTURETIME}-sc${SCENARIO}-$REPNUM.pcap"
+    volumes:
+      - '${DATADIR}:/data'
+    depends_on:
+      - dummy
+    network_mode: "service:ftp_server"
+
+  tcpdump_ftp-client:
+    image: 'detlearsom/tcpdump'
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/doubletunnel-ftpd_client-${CAPTURETIME}-sc${SCENARIO}-$REPNUM.pcap"
+    volumes:
+      - '${DATADIR}:/data'
+    depends_on:
+      - dummy
+    network_mode: "service:ftp_client"
+
+  tcpdump_ssh_tunnel_1:
+    image: 'detlearsom/tcpdump'
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/doubletunnel-tunnel_1-${CAPTURETIME}-sc${SCENARIO}-$REPNUM.pcap"
+    volumes:
+      - '${DATADIR}:/data'
+    depends_on:
+      - dummy
+    network_mode: "service:ssh_tunnel_1"
+
+  tcpdump_ssh_server:
+    image: 'detlearsom/tcpdump'
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/doubletunnel-ssh_server-${CAPTURETIME}-sc${SCENARIO}-$REPNUM.pcap"
+    volumes:
+      - '${DATADIR}:/data'
+    depends_on:
+      - dummy
+    network_mode: "service:ssh_server"
+
+  tcpdump_ssh_client:
+    image: 'detlearsom/tcpdump'
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/doubletunnel-ssh_client-${CAPTURETIME}-sc${SCENARIO}-$REPNUM.pcap"
+    volumes:
+      - '${DATADIR}:/data'
+    depends_on:
+      - dummy
+    network_mode: "service:ssh_client"
+
+  dummy:
+    image: 'ubuntu'
+    depends_on:
+      - ftp_client
+
+networks:
+  capture:
+    driver: "bridge"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.238.0/24
+        gateway: 172.16.238.1
+
+

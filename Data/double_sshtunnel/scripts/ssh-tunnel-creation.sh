@@ -11,11 +11,13 @@ if [ ! -f "$KNOWNHOSTFILE" ]; then
 fi
 
 echo "WAITING FOR TCPDUMP TO LAUNCH"
-sleep 20
+sleep 5
 echo "Creating tunnel "
+sshpass -p $PASS ssh -4 -L 7777:localhost:22 root@$SERVER -f -N
+sshpass -p $PASS ssh -4 -R 7777:localhost:7777 root@$CLIENT -f -N
 #sshpass -p $PASS ssh -R 7777:$SERVER:22 root@$CLIENT -f -N
-sshpass -p $PASS ssh -L 22:localhost:7777 root@$SERVER -f -N
-sshpass -p $PASS ssh -R 7777:localhost:7777 root@$CLIENT -f -N
-sleep 100
+#sshpass -p $PASS ssh -L 22:localhost:7777 root@$SERVER -f -N sshpass -p $PASS ssh -R 7777:localhost:7777 root@$CLIENT -f -N
+echo "SLEEPING"
+sleep 15
 echo "DONE"
 

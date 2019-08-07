@@ -32,11 +32,14 @@ do
     echo "Repeat Nr " $i
 #    echo "Scenario" $SCENARIO
     rm -f $PWD/receive/*
+    rm -f $PWD/receive_SERVER/*
     export REPNUM=$i
     bringup;
     echo "WAITING FOR TCPDUMP TO LAUNCH"
-    sleep 30
+    sleep 10
     echo "Capturing data now for $DURATION seconds...."
+    docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_tunnel_1_1") /scripts/ssh-tunnel-creation.sh
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/ssh-tunnel-sending.sh
+    sleep $DURATION
     teardown;
 done
