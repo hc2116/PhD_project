@@ -40,8 +40,8 @@ do
     KNOWNHOSTFILE=$PWD/.ssh/known_hosts
     if [ ! -f "$KNOWNHOSTFILE" ]; then
         echo "Scanning Hosts"
-        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/keyscanner.sh
-#        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_sshtunnel1_1") /scripts/keyscanner.sh
+#        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/keyscanner.sh
+        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_sshtunnel1_1") /scripts/keyscanner.sh
     fi
 
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/ssh-tunnel-sending.sh
