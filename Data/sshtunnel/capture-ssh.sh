@@ -58,8 +58,7 @@ do
     echo "WAITING FOR TCPDUMP TO LAUNCH"
     sleep 30
     echo "Capturing data now for $DURATION seconds...."
-    
-
+    keyscanning;
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/ssh-tunnel-sending.sh
     sleep $DURATION
     teardown;
