@@ -39,6 +39,7 @@ do
     echo "Capturing data now for $DURATION seconds...."
     KNOWNHOSTFILE=$PWD/.ssh/known_hosts
     if [ ! -f "$KNOWNHOSTFILE" ]; then
+        echo "Scanning Hosts"
         docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/keyscanner.sh
         docker exec -it $(sudo docker ps -aqf "name=sshtunnel_sshtunnel1_1") /scripts/keyscanner.sh
     fi

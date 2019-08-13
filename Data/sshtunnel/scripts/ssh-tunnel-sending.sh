@@ -5,10 +5,10 @@ TUNNEL="172.16.238.10"
 USER="root"
 PASS="root"
 # Check if necessary to scan host
-KNOWNHOSTFILE=~/.ssh/known_hosts
-if [ ! -f "$KNOWNHOSTFILE" ]; then
-    ssh-keyscan -H $SERVER $CLIENT $TUNNEL >> ~/.ssh/known_hosts
-fi
+#KNOWNHOSTFILE=~/.ssh/known_hosts
+#if [ ! -f "$KNOWNHOSTFILE" ]; then
+#    ssh-keyscan -H $SERVER $CLIENT $TUNNEL >> ~/.ssh/known_hosts
+#fi
 
 #Choose random file
 export FILE=$(ls /dataToShare | sort -R | tail -1)
