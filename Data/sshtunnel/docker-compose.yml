@@ -13,7 +13,7 @@ services:
       - $PWD/scripts:/scripts:ro
     environment:
       - SSH_ENABLE_ROOT=true
-    command: /scripts/ssh-tunnel-creation.sh
+#    command: /scripts/ssh-tunnel-creation.sh
 
   sshd:
     image: 'detlearsom/sshd'
@@ -46,7 +46,6 @@ services:
       - SSH_ENABLE_ROOT=true
     depends_on:
       - sshd
-#    command: /scripts/ssh-tunnel-sending.sh
 
   tcpdump_tunnel1:
     image: 'detlearsom/tcpdump'
