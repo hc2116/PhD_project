@@ -1,5 +1,5 @@
 #!/bin/sh
-HOST="172.16.238.11"
+HOST="172.16.238.20"
 USER="$1"
 PASS="$2"
 FILE=$(ls /dataToShare/ | sort -R | tail -1)
