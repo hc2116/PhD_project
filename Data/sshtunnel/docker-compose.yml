@@ -13,7 +13,7 @@ services:
       - $PWD/scripts:/scripts:ro
     environment:
       - SSH_ENABLE_ROOT=true
-#    command: /scripts/ssh-tunnel-creation.sh
+    command: /scripts/ssh-tunnel-creation.sh
 
   sshd:
     image: 'detlearsom/sshd'
