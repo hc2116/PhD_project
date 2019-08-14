@@ -24,6 +24,6 @@ echo "TRANSFERRING " $FILE
 #sshpass -p $PASS ssh -4 -L 7777:localhost:7778 $USER@$TUNNEL -f -N
 #sshpass -p $PASS ssh -4 -L 7777:localhost:22 -N $USER@$SERVER -f -N
 #sshpass -p $PASS ssh -4 -L 7775:localhost:7776 $USER@$TUNNEL sshpass -p $PASS ssh -4 -L 7776:localhost:22 -N $USER@$SERVER -f
-sshpass -p $PASS scp -4 -o StrictHostKeyChecking=no -P 22 $USER@$CLIENT:/dataToShare/$FILE /receive
+sshpass -p $PASS scp -4 -o StrictHostKeyChecking=no -P 7777 $USER@$CLIENT:/dataToShare/$FILE /receive
 echo "DONE"
 
