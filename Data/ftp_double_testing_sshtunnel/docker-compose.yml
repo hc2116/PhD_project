@@ -59,6 +59,7 @@ services:
     privileged: true
     environment:
       - SSH_ENABLE_ROOT=true
+      - GATEWAY_PORTS=true
     depends_on:
       - ssh_server
 
