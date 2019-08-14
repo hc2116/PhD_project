@@ -6,6 +6,7 @@ FILE=$(ls /dataToShare/ | sort -R | tail -1)
 
 echo "CONNECTING ..."
 ftp -n $HOST <<END_SCRIPT
+pass
 quote USER $USER
 quote PASS $PASS
 pwd
