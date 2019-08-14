@@ -11,8 +11,9 @@ PASS="root"
 #fi
 
 #Choose random file
-FILE=$(ls /dataToShare_CLIENT | sort -R | tail -1)
-echo $FILE
+#FILE=$(ls /dataToShare_CLIENT | sort -R | tail -1)
+#echo $FILE
+FILE="SampleJPGImage_2mbmb.jpg"
 echo "SCANNING"
 echo "TRANSFERRING " $FILE
 #cp /dataToShare/$FILE /receive
