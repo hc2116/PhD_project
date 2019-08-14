@@ -68,9 +68,9 @@ do
     sleep 5
     echo "Capturing data now for $DURATION seconds...."
     keyscanning;
-    #docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_tunnel_1_1") /scripts/ssh-tunnel-creation.sh
+    docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_tunnel_1_1") /scripts/ssh-tunnel-creation.sh
 #    docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/ssh-tunnel-sending.sh
-    #docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_test_client_1") /scripts/ssh-tunnel-sending.sh
+    docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_test_client_1") /scripts/ssh-tunnel-sending.sh
 
     sleep $DURATION
     teardown;
