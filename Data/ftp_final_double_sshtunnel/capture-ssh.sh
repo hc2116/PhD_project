@@ -59,7 +59,11 @@ trap '{ echo "Interrupted."; teardown; exit 1; }' INT
 for ((i=1; i<=REPEAT; i++))
 do
     echo "Repeat Nr " $i
-#    echo "Scenario" $SCENARIO
+
+    rm -f -r users
+    mkdir users
+    mkdir users/"$User"
+    cp -r  dataToShare/* users/"$User"/
     rm -f $PWD/receive/*
     rm -f $PWD/receive_SERVER/*
     export REPNUM=$i
