@@ -24,6 +24,26 @@ function teardown {
     echo "Done."
 }
 
+function keyscanning {
+    KNOWNHOSTFILE=$PWD/.ssh_client/known_hosts
+    if [ ! -f "$KNOWNHOSTFILE" ]; then
+        echo "Client scanning Hosts"
+        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/keyscanner.sh
+    fi
+    KNOWNHOSTFILE=$PWD/.ssh_tunnel/known_hosts
+    if [ ! -f "$KNOWNHOSTFILE" ]; then
+        echo "Tunnel scanning Hosts"
+        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_tunnel_1_1") /scripts/keyscanner.sh
+    fi
+    KNOWNHOSTFILE=$PWD/.ssh_server/known_hosts
+    if [ ! -f "$KNOWNHOSTFILE" ]; then
+        echo "Server scanning Hosts"
+        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_sshd_1") /scripts/keyscanner.sh
+    fi
+
+}
+
+
 trap '{ echo "Interrupted."; teardown; exit 1; }' INT
 #trap '{ echo "EXITED."; teardown; exit 0; }' EXIT
 
@@ -38,6 +58,7 @@ do
     echo "WAITING FOR TCPDUMP TO LAUNCH"
     sleep 10
     echo "Capturing data now for $DURATION seconds...."
+    keyscanning;
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_tunnel_1_1") /scripts/ssh-tunnel-creation.sh
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/ssh-tunnel-sending.sh
     sleep $DURATION
