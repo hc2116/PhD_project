@@ -13,9 +13,9 @@ PASS="root"
 echo "WAITING FOR TCPDUMP TO LAUNCH"
 sleep 5
 echo "Creating tunnel "
-sshpass -p $PASS ssh -4 -L 7777:localhost:22 root@$SERVER -f -N
+sshpass -p $PASS ssh -4 -o StrictHostKeyChecking=no -L 7777:localhost:22 root@$SERVER -f -N
 sleep 5
-sshpass -p $PASS ssh -4 -R 7777:localhost:7777 root@$CLIENT -f -N
+sshpass -p $PASS ssh -4 -o StrictHostKeyChecking=no -R 7777:localhost:7777 root@$CLIENT -f -N
 #sshpass -p $PASS ssh -R 7777:$SERVER:22 root@$CLIENT -f -N
 #sshpass -p $PASS ssh -L 22:localhost:7777 root@$SERVER -f -N sshpass -p $PASS ssh -R 7777:localhost:7777 root@$CLIENT -f -N
 echo "SLEEPING"
