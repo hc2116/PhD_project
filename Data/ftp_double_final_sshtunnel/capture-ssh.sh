@@ -88,7 +88,7 @@ do
     keyscanning;
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/ssh-tunnel-creation_client_tunnel.sh
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_tunnel_1_1") /scripts/ssh-tunnel-creation_tunnel_server.sh
-#    docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_test_client_1") /scripts/ssh-tunnel-sending.sh
+    docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_test_client_1") /scripts/ssh-tunnel-sending.sh
 #    docker exec -ti $(sudo docker ps -aqf "name=sshtunnel_ftp_client") /usr/src/scripts/inclient1.sh $User $Password 
     sleep $DURATION
     teardown;
