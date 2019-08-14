@@ -59,6 +59,20 @@ trap '{ echo "Interrupted."; teardown; exit 1; }' INT
 for ((i=1; i<=REPEAT; i++))
 do
     echo "Repeat Nr " $i
+    # Randomise user-ID and password
+    RN=$((1 + RANDOM % 200))
+    Pi=`echo "4*a(1)" | bc -l`
+    RN2=$(echo "1000*(s((0.5*$RN/32767)*$Pi)/c((0.5*$RN/32767)*$Pi))" | bc -l)
+    RN3=$(echo "5+(2*$RN2+1)/2" | bc )
+    export User=$(cat /dev/urandom | tr -dc 'a-z' | fold -w $RN3 | head -n 1)
+    echo "User " $User
+    ################
+    RNP=$((1 + RANDOM % 200))
+    RNP2=$(echo "1000*(s((0.5*$RNP/32767)*$Pi)/c((0.5*$RNP/32767)*$Pi))" | bc -l)
+    RNP3=$(echo "5+(2*$RNP2+1)/2" | bc )
+    export Password=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w $RNP3 | head -n 1)	
+    echo "Password " $Password
+    ################
 
     rm -f -r users
     mkdir users
