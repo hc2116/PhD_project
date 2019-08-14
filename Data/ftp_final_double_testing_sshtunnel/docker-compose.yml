@@ -29,6 +29,21 @@ services:
     environment:
       - SSH_ENABLE_ROOT=true
 
+  ssh_test_server:
+    image: 'detlearsom/sshd'
+    networks:
+      capture:
+        ipv4_address: 172.16.238.11
+    ports:
+      - "1228:22"
+    volumes:
+      - $PWD/.ssh_server:/root/.ssh
+      - $PWD/scripts:/scripts
+      - '$PWD/dataToShare:/dataToShare:ro'
+      - $PWD/receive_SERVER:/receive_SERVER
+    environment:
+      - SSH_ENABLE_ROOT=true
+
   ssh_client:
     image: 'detlearsom/sshd'
     volumes:
@@ -49,21 +64,6 @@ services:
       - ssh_server
 
 
-  ssh_test_server:
-    image: 'detlearsom/sshd'
-    networks:
-      capture:
-        ipv4_address: 172.16.238.13
-    ports:
-      - "1228:22"
-    volumes:
-      - $PWD/.ssh_server:/root/.ssh
-      - $PWD/scripts:/scripts
-      - '$PWD/dataToShare:/dataToShare:ro'
-      - $PWD/receive_SERVER:/receive_SERVER
-    environment:
-      - SSH_ENABLE_ROOT=true
-
   ssh_test_client:
     image: 'detlearsom/sshd'
     volumes:
@@ -73,7 +73,7 @@ services:
       - $PWD/dataToShare:/dataToShare_CLIENT:ro
     networks:
       capture:
-        ipv4_address: 172.16.238.14
+        ipv4_address: 172.16.238.12
     ports:
       - "1229:22"
     privileged: true
@@ -81,33 +81,6 @@ services:
       - SSH_ENABLE_ROOT=true
     depends_on:
       - ssh_server
-
-
-  ftp_server:
-    image: 'detlearsom/vsftpd'
-    networks:
-      capture:
-        ipv4_address: 172.16.238.11
-    volumes:
-      - '$PWD/users:/home/vsftpd'
-    environment:
-      - FTP_USER=$User
-      - FTP_PASS=$Password
-    depends_on:
-      - ssh_client
-
-  ftp_client:
-    image: 'detlearsom/ftp-client'
-    volumes:
-      - $PWD/dataToShare:/dataToShare:ro
-      - $PWD/receive:/usr/src/ftp
-      - $PWD/scripts:/usr/src/scripts:ro
-    networks:
-      capture:
-        ipv4_address: 172.16.238.12
-    command: tail -F anything
-    depends_on:
-      - ftp_server
 
 
   tcpdump_ssh_tunnel_1:

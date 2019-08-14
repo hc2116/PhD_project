@@ -59,7 +59,7 @@ trap '{ echo "Interrupted."; teardown; exit 1; }' INT
 for ((i=1; i<=REPEAT; i++))
 do
     echo "Repeat Nr " $i
-    # Randomise user-ID and password
+   # Randomise user-ID and password
     RN=$((1 + RANDOM % 200))
     Pi=`echo "4*a(1)" | bc -l`
     RN2=$(echo "1000*(s((0.5*$RN/32767)*$Pi)/c((0.5*$RN/32767)*$Pi))" | bc -l)
@@ -89,7 +89,7 @@ do
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/ssh-tunnel-creation_client_tunnel.sh
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_tunnel_1_1") /scripts/ssh-tunnel-creation_tunnel_server.sh
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_test_client_1") /scripts/ssh-tunnel-sending.sh
-#    docker exec -ti $(sudo docker ps -aqf "name=sshtunnel_ftp_client") /usr/src/scripts/inclient1.sh $User $Password 
+
     sleep $DURATION
     teardown;
 done
