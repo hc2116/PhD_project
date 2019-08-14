@@ -78,4 +78,9 @@ do
 
     sleep $DURATION
     teardown;
+
+    rm -f -r users
+    rm -f $PWD/receive/*
+    rm -f $PWD/receive_SERVER/*
+
 done
