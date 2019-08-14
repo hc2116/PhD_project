@@ -25,9 +25,9 @@ function teardown {
 }
 
 function keyscanning {
-    rm -f $PWD/.ssh_client/known_hosts
-    rm -f $PWD/.ssh_tunnel/known_hosts
-    rm -f $PWD/.ssh_server/known_hosts
+    #rm -f $PWD/.ssh_client/known_hosts
+    #rm -f $PWD/.ssh_tunnel/known_hosts
+    #rm -f $PWD/.ssh_server/known_hosts
     KNOWNHOSTFILE=$PWD/.ssh_client/known_hosts
     if [ ! -f "$KNOWNHOSTFILE" ]; then
         echo "Client scanning Hosts"
