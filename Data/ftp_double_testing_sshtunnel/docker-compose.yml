@@ -44,7 +44,6 @@ services:
     environment:
       - SSH_ENABLE_ROOT=true
 
-
   ssh_client:
     image: 'detlearsom/sshd'
     volumes:
@@ -62,7 +61,26 @@ services:
       - SSH_ENABLE_ROOT=true
     depends_on:
       - ssh_server
-#    command: /scripts/ssh-tunnel-sending.sh
+
+
+  ssh_test_client:
+    image: 'detlearsom/sshd'
+    volumes:
+      - $PWD/.ssh_test_client:/root/.ssh
+      - $PWD/scripts:/scripts
+      - $PWD/receive:/receive
+      - $PWD/dataToShare:/dataToShare_CLIENT:ro
+    networks:
+      capture:
+        ipv4_address: 172.16.238.12
+    ports:
+      - "1229:22"
+    privileged: true
+    environment:
+      - SSH_ENABLE_ROOT=true
+    depends_on:
+      - ssh_server
+
 
   tcpdump_ssh_tunnel_1:
     image: 'detlearsom/tcpdump'

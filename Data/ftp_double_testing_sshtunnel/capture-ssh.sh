@@ -26,12 +26,18 @@ function teardown {
 
 function keyscanning {
     #rm -f $PWD/.ssh_client/known_hosts
+    #rm -f $PWD/.ssh_test_client/known_hosts
     #rm -f $PWD/.ssh_tunnel/known_hosts
     #rm -f $PWD/.ssh_server/known_hosts
     KNOWNHOSTFILE=$PWD/.ssh_client/known_hosts
     if [ ! -f "$KNOWNHOSTFILE" ]; then
         echo "Client scanning Hosts"
         docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/keyscanner.sh
+    fi
+    KNOWNHOSTFILE=$PWD/.ssh_test_client/known_hosts
+    if [ ! -f "$KNOWNHOSTFILE" ]; then
+        echo "Client scanning Hosts"
+        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_test_client_1") /scripts/keyscanner.sh
     fi
     KNOWNHOSTFILE=$PWD/.ssh_tunnel/known_hosts
     if [ ! -f "$KNOWNHOSTFILE" ]; then
@@ -64,6 +70,9 @@ do
     keyscanning;
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_tunnel_1_1") /scripts/ssh-tunnel-creation.sh
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/ssh-tunnel-sending.sh
+    rm -f $PWD/receive/*
+    docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_test_client_1") /scripts/ssh-tunnel-sending.sh
+
     sleep $DURATION
     teardown;
 done
