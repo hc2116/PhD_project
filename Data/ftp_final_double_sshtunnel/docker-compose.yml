@@ -83,6 +83,34 @@ services:
       - ssh_server
 
 
+  ftp_server:
+    image: 'detlearsom/vsftpd'
+    networks:
+      capture:
+        ipv4_address: 172.16.238.13
+    volumes:
+      - '$PWD/users:/home/vsftpd'
+    environment:
+      - FTP_USER=$User
+      - FTP_PASS=$Password
+    depends_on:
+      - ssh_client
+
+  ftp_client:
+    image: 'detlearsom/ftp-client'
+    volumes:
+      - $PWD/dataToShare:/dataToShare:ro
+      - $PWD/receive:/usr/src/ftp
+      - $PWD/scripts:/usr/src/scripts:ro
+    networks:
+      capture:
+        ipv4_address: 172.16.238.14
+    command: tail -F anything
+    depends_on:
+      - ftp_server
+
+
+
   tcpdump_ssh_tunnel_1:
     image: 'detlearsom/tcpdump'
     command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/dump-090-sshd-tunnel_1-sc${SCENARIO}-${CAPTURETIME}-$REPNUM.pcap"
