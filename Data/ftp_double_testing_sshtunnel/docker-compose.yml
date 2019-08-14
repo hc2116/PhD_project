@@ -13,7 +13,6 @@ services:
       - $PWD/scripts:/scripts
     environment:
       - SSH_ENABLE_ROOT=true
-#    command: /scripts/ssh-tunnel-creation.sh
 
   ssh_server:
     image: 'detlearsom/sshd'
@@ -29,6 +28,22 @@ services:
       - $PWD/receive_SERVER:/receive_SERVER
     environment:
       - SSH_ENABLE_ROOT=true
+
+  ssh_test_server:
+    image: 'detlearsom/sshd'
+    networks:
+      capture:
+        ipv4_address: 172.16.238.11
+    ports:
+      - "1228:22"
+    volumes:
+      - $PWD/.ssh_server:/root/.ssh
+      - $PWD/scripts:/scripts
+      - '$PWD/dataToShare:/dataToShare:ro'
+      - $PWD/receive_SERVER:/receive_SERVER
+    environment:
+      - SSH_ENABLE_ROOT=true
+
 
   ssh_client:
     image: 'detlearsom/sshd'
