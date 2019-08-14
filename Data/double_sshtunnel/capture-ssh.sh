@@ -59,7 +59,7 @@ do
     export REPNUM=$i
     bringup;
     echo "WAITING FOR TCPDUMP TO LAUNCH"
-    sleep 10
+    sleep 5
     echo "Capturing data now for $DURATION seconds...."
     keyscanning;
     docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_tunnel_1_1") /scripts/ssh-tunnel-creation.sh
