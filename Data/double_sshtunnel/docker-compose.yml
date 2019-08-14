@@ -24,6 +24,7 @@ services:
       - "1222:22"
     volumes:
       - $PWD/.ssh_server:/root/.ssh
+      - $PWD/scripts:/scripts
       - '$PWD/dataToShare:/dataToShare:ro'
       - $PWD/receive_SERVER:/receive_SERVER
     environment:
