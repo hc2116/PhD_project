@@ -38,7 +38,7 @@ function keyscanning {
     KNOWNHOSTFILE=$PWD/.ssh_server/known_hosts
     if [ ! -f "$KNOWNHOSTFILE" ]; then
         echo "Server scanning Hosts"
-        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_sshd_1") /scripts/keyscanner.sh
+        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_server_1") /scripts/keyscanner.sh
     fi
 
 }
