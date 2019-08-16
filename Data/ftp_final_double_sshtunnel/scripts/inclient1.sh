@@ -13,6 +13,7 @@ pwd
 ls
 verbose
 bin
+get $FILE
 quit
 END_SCRIPT
 exit 0
