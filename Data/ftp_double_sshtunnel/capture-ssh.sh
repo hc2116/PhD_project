@@ -24,6 +24,35 @@ function teardown {
     echo "Done."
 }
 
+function keyscanning {
+    #rm -f $PWD/.ssh_client/known_hosts
+    #rm -f $PWD/.ssh_test_client/known_hosts
+    #rm -f $PWD/.ssh_tunnel/known_hosts
+    #rm -f $PWD/.ssh_server/known_hosts
+    KNOWNHOSTFILE=$PWD/.ssh_client/known_hosts
+    if [ ! -f "$KNOWNHOSTFILE" ]; then
+        echo "Client scanning Hosts"
+        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/keyscanner.sh
+    fi
+    KNOWNHOSTFILE=$PWD/.ssh_test_client/known_hosts
+    if [ ! -f "$KNOWNHOSTFILE" ]; then
+        echo "Client scanning Hosts"
+        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_test_client_1") /scripts/keyscanner.sh
+    fi
+    KNOWNHOSTFILE=$PWD/.ssh_tunnel/known_hosts
+    if [ ! -f "$KNOWNHOSTFILE" ]; then
+        echo "Tunnel scanning Hosts"
+        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_tunnel_1_1") /scripts/keyscanner.sh
+    fi
+    KNOWNHOSTFILE=$PWD/.ssh_server/known_hosts
+    if [ ! -f "$KNOWNHOSTFILE" ]; then
+        echo "Server scanning Hosts"
+        docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_server_1") /scripts/keyscanner.sh
+    fi
+
+}
+
+
 trap '{ echo "Interrupted."; teardown; exit 1; }' INT
 #trap '{ echo "EXITED."; teardown; exit 0; }' EXIT
 
@@ -45,8 +74,6 @@ do
     echo "Password " $Password
     ################
 
-
-    echo "Scenario" $SCENARIO
     rm -f -r users
     mkdir users
     mkdir users/"$User"
@@ -56,12 +83,21 @@ do
     export REPNUM=$i
     bringup;
     echo "WAITING FOR TCPDUMP TO LAUNCH"
-    sleep 10
-    echo "Capturing data now for $DURATION seconds...."
-    docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_tunnel_1_1") /scripts/ssh-tunnel-creation.sh
-#    docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/ssh-tunnel-sending.sh
-    docker exec -ti $(sudo docker ps -aqf "name=sshtunnel_ftp_client") /usr/src/scripts/inclient1.sh $User $Password 
+    sleep 5
+    echo "Keyscanning"
+    keyscanning;
+#    echo "Capturing data now for $DURATION seconds...."
+    echo "Creating tunnels in $DURATION seconds...."
     sleep $DURATION
+    docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_client_1") /scripts/ssh-tunnel-creation_client_tunnel.sh
+    docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_tunnel_1_1") /scripts/ssh-tunnel-creation_tunnel_server.sh
+#    docker exec -it $(sudo docker ps -aqf "name=sshtunnel_ssh_test_client_1") /scripts/ssh-tunnel-sending.sh
+    echo "Sending through tunnel in $DURATION seconds...."
+    sleep $DURATION
+    docker exec -ti $(sudo docker ps -aqf "name=sshtunnel_ftp_client") /usr/src/scripts/inclient1.sh $User $Password 
+
     teardown;
+
+    rm -f -r users
 
 done
