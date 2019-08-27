@@ -1,0 +1,77 @@
+version: '2'
+services:
+
+  ftp_server:
+    image: 'detlearsom/vsftpd'
+    networks:
+      capture:
+        ipv4_address: 172.16.238.13
+    volumes:
+      - '$PWD/users:/home/vsftpd'
+    environment:
+      - FTP_USER=$User
+      - FTP_PASS=$Password
+
+  ftp_client:
+    image: 'detlearsom/ftp-client'
+    volumes:
+      - $PWD/dataToShare:/dataToShare:ro
+      - $PWD/receive:/usr/src/ftp
+      - $PWD/scripts:/usr/src/scripts:ro
+    networks:
+      capture:
+        ipv4_address: 172.16.238.14
+    command: tail -F anything
+    depends_on:
+      - ftp_server
+
+  netcat-receive:
+    image: 'detlearsom/netcat'
+    volumes:
+      - $PWD/scripts:/usr/share/scripts
+    depends_on:
+      - ftp_client
+    command: /usr/share/scripts/test.sh
+    network_mode: "service:ftp_server"
+
+  netcat-send:
+    image: 'detlearsom/netcat'
+    volumes:
+      - $PWD/scripts:/usr/share/scripts
+    depends_on:
+      - ftp_client
+    command: sleep 1000
+    network_mode: "service:ftp_client"
+
+##############################################################################################################################
+
+  tcpdump_ftp-client:
+    image: 'detlearsom/tcpdump'
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/doubletunnel-ftpd_client-${CAPTURETIME}-sc${SCENARIO}-$REPNUM.pcap"
+    volumes:
+      - '${DATADIR}:/data'
+    depends_on:
+      - netcat-send
+    network_mode: "service:ftp_client"
+
+  tcpdump_ftp-server:
+    image: 'detlearsom/tcpdump'
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/doubletunnel-ftpd_server-${CAPTURETIME}-sc${SCENARIO}-$REPNUM.pcap"
+    volumes:
+      - '${DATADIR}:/data'
+    depends_on:
+      - netcat-send
+    network_mode: "service:ftp_server"
+
+
+
+networks:
+  capture:
+    driver: "bridge"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.238.0/24
+        gateway: 172.16.238.1
+
+
