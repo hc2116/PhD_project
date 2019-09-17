@@ -27,6 +27,24 @@ Alex - security for AI for security
 ACSAC rejection ----------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------
 
+- LSTMs have been used for anomaly detection and security event prediction before.
+	- Aggregated traffic time series is easier to model, more stable features, numerical features
+	- Tiresias introduced prediction of discrete security event sequences
+		- better for R2L and U2R detection
+		- assumption of pre-existing alphabet
+		- too large alphabets are expensive, require massive amounts of training data
+
+- our novel contribution
+	- present a model that uses discrete event prediction on network traffic to detect contextually anomalous events
+	- developed efficient generation of well-sized event alphabets from network connection
+	- novel LSTM architecture that relies on multiple smaller alphabets and learns from multiple machines simultaneously
+
+
 - split evaluation into R2L and U2R and other attacks
-- make section about evasion
-- 
+- make section about evasion, look at Tiresias paper
+
+- show comparison plot of benign data for Markov chain, Automata, LSTM
+
+
+
+

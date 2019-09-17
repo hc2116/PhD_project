@@ -102,21 +102,21 @@ do
     sleep $DURATION
     # Start first chaffer from the the beginning of the first tunnel, aka 172.16.238.20, 
     #to the end of the first tunnel, aka 172.16.238.9
-    docker exec -d -it $(sudo docker ps -aqf "name=ftp_chaff_delayed_double_sshtunnel_netcat-send") /usr/share/scripts/netcat_send.sh $DURATION 172.16.238.20 18 6000
+#    docker exec -d -it $(sudo docker ps -aqf "name=ftp_chaff_delayed_double_sshtunnel_netcat-send") /usr/share/scripts/netcat_send.sh $DURATION 172.16.238.20 18 6000
     # Start third chaffer from the the beginning of the second tunnel, aka 172.16.238.10, 
     #to the end of the second tunnel, aka 172.16.238.5
-    docker exec -d -it $(sudo docker ps -aqf "name=ftp_chaff_delayed_double_sshtunnel_netcat-send") /usr/share/scripts/netcat_send.sh $DURATION 172.16.238.10 18 6002
+#    docker exec -d -it $(sudo docker ps -aqf "name=ftp_chaff_delayed_double_sshtunnel_netcat-send") /usr/share/scripts/netcat_send.sh $DURATION 172.16.238.10 18 6002
 
     # Start the reverse chaffer from the the end of the first tunnel, aka 172.16.238.9, 
     # to the beginning of the first tunnel, aka 172.16.238.20
-    docker exec -d -it $(sudo docker ps -aqf "name=ftp_chaff_delayed_double_sshtunnel_netcat-receive") /usr/share/scripts/netcat_send_reverse_server.sh $DURATION 19
+#    docker exec -d -it $(sudo docker ps -aqf "name=ftp_chaff_delayed_double_sshtunnel_netcat-receive") /usr/share/scripts/netcat_send_reverse_server.sh $DURATION 19
     sleep 0.1
-    docker exec -d -it $(sudo docker ps -aqf "name=ftp_chaff_delayed_double_sshtunnel_netcat-send") /usr/share/scripts/netcat_receive_reverse_client.sh 172.16.238.20 19 6001
+#    docker exec -d -it $(sudo docker ps -aqf "name=ftp_chaff_delayed_double_sshtunnel_netcat-send") /usr/share/scripts/netcat_receive_reverse_client.sh 172.16.238.20 19 6001
     # Start the reverse chaffer from the the end of the first tunnel, aka 172.16.238.5, 
     # to the beginning of the first tunnel, aka 172.16.238.10
-    docker exec -d -it $(sudo docker ps -aqf "name=ftp_chaff_delayed_double_sshtunnel_netcat-receive") /usr/share/scripts/netcat_send_reverse_server.sh $DURATION 17
+#    docker exec -d -it $(sudo docker ps -aqf "name=ftp_chaff_delayed_double_sshtunnel_netcat-receive") /usr/share/scripts/netcat_send_reverse_server.sh $DURATION 17
     sleep 0.1
-    docker exec -d -it $(sudo docker ps -aqf "name=ftp_chaff_delayed_double_sshtunnel_netcat-send") /usr/share/scripts/netcat_receive_reverse_client.sh 172.16.238.10 17 6003
+#    docker exec -d -it $(sudo docker ps -aqf "name=ftp_chaff_delayed_double_sshtunnel_netcat-send") /usr/share/scripts/netcat_receive_reverse_client.sh 172.16.238.10 17 6003
 
     ###############################################################################################
     echo "Sending through tunnel in $DURATION seconds...."
