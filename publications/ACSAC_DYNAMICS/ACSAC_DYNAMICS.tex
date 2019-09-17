@@ -1,0 +1,130 @@
+\documentclass[sigconf,anonymous]{acmart}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\usepackage{alltt}
+\pagestyle{plain}
+%\usepackage{amsmath}
+%\usepackage{caption} 
+%\captionsetup[table]{skip=3pt}
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+\setcopyright{acmcopyright}
+\copyrightyear{2018}
+\acmYear{2018}
+\acmDOI{10.1145/1122445.1122456}
+
+\acmConference[Woodstock '18]{Woodstock '18: ACM Symposium on Neural
+  Gaze Detection}{June 03--05, 2018}{Woodstock, NY}
+\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
+  June 03--05, 2018, Woodstock, NY}
+\acmPrice{15.00}
+\acmISBN{978-1-4503-9999-9/18/06}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+\title{DetGen: Deterministic Ground Truth Traffic Generation using Docker for Machine Learning}
+
+
+\begin{abstract}
+
+
+
+\end{abstract}
+
+% \begin{CCSXML}
+% <ccs2012>
+% <concept>
+% <concept_id>10002978.10002997.10002999</concept_id>
+% <concept_desc>Security and privacy~Intrusion detection systems</concept_desc>
+% <concept_significance>500</concept_significance>
+% </concept>
+% </ccs2012>
+% \end{CCSXML}
+% 
+% \ccsdesc[500]{Security and privacy~Intrusion detection systems}
+% \keywords{datasets, neural networks, gaze detection, text tagging}
+
+\maketitle
+
+\section{Introduction}
+
+
+The exponential growth of data availibity enabled the machine learning revolution of this decade and transformed many areas of our lives. Ironically, researchers struggle to gather qualitative network traffic data to \textcolor{red}{...}
+Well-designed datasets are such a rarity that researchers often evaluate intrusion detection systems on datasets that are well over a decade old \cite{tavallaee2009detailed, kayacik2005selecting}, calling into question their effectiveness on modern traffic and attacks. 
+The lack of quantity, variability, meaningful labels, and ground truth has so far prohibited ML-based methods from having a bigger impact in network security.
+
+
+Privacy and security concerns discourage network administrators to release rich and realistic datasets for the public. Network traffic produced by individuals contains a host of sensitive, personal information, such as passwords, email addresses, or usage habits, requiring researchers to expend time anonymising the dataset \cite{mirsky2016sherlock}. In order to examine malicious behaviour, researchers are often forced to build artificial datasets using isolated machines in a laboratory setting to avoid damaging operational devices. Background traffic is generated either from \textcolor{red}{...}
+
+The datasets currently available are meant to be \textcolor{red}{all-purpose} and are \textit{static} in their design, unable to be modified or expanded. This proves to be a serious defect as the ecosystem of intrusions is continually evolving. Furthermore, it prohibits a more detailed analysis of specific areas of network traffic. To prevent this, new datasets must be periodically built from scratch.
+
+Additionally, \textcolor{red}{ground truth}
+
+Developing a framework that allows researchers to create datasets that circumvent these issues would be extremely beneficial. We propose that this can be done using Docker \cite{docker}. Docker is a service for developing and monitoring containers, also known as OS-level virtual machines. Each Docker container is highly specialised in its purpose, generating traffic related to only a single application process. Therefore, by scripting a variety of Docker-based \textit{scenarios} that simulate benign or malicious behaviours and collecting the resultant traffic, we can build a dataset with perfect ground truth. Furthermore, these scenarios could be continually enhanced and expanded, allowing for the easy creation of datasets containing modern, up-to-date traffic and attacks. 
+
+
+
+This is the primary goal of this work. Furthermore, we demonstrate the utility of this framework by performing a series of experiments: one that measures the realism of the network traffic produced by our Docker scenarios and two that would be difficult to perform using a conventional dataset.
+
+
+
+
+
+
+
+
+
+\section{Acknowledgments}
+
+We are grateful for our ongoing collaboration with our industry partners (blinded) on this topic area, who provided both ongoing support and guidance to this work. Discussions with them have helped reinforce the need for a better evaluation and understanding of the possibilities that new intelligent tools can provide.
+
+Full funding sources after currently blinded.
+
+\bibliographystyle{ACM-Reference-Format}
+  
+\bibliography{ACSAC_DYNAMICS}
+
+\appendix
+
+\section{Result tables}
+
+
+
+
+
+ 
+
+\end{document}

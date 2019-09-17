@@ -1,0 +1,55 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}% 
+\contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Virtualisation \& Containers}{3}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}Docker}{3}{subsection.2.1.1}% 
+\contentsline {section}{\numberline {2.2}Malicious Behaviour and its Detection}{6}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}Machine learning-based techniques}{7}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}Existing Datasets \& Criticism}{7}{subsection.2.2.2}% 
+\contentsline {subsection}{\numberline {2.2.3}Packet Inter-Arrival Times}{9}{subsection.2.2.3}% 
+\contentsline {chapter}{\numberline {3}Design \& Implementation of Docker Containers}{11}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Requirements}{11}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Design for Requirements}{12}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Requirement 1 - Coverage of Protocol Types}{12}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}Requirement 2 - Variation within Protocols}{13}{subsection.3.2.2}% 
+\contentsline {subsection}{\numberline {3.2.3}Requirement 3 - Inclusion of Malicious Traffic}{13}{subsection.3.2.3}% 
+\contentsline {subsection}{\numberline {3.2.4}Requirement 4 - Deterministic Scenarios}{14}{subsection.3.2.4}% 
+\contentsline {subsection}{\numberline {3.2.5}Requirement 5 - Automated Capture}{14}{subsection.3.2.5}% 
+\contentsline {section}{\numberline {3.3}Dataset Collection}{14}{section.3.3}% 
+\contentsline {section}{\numberline {3.4}Implementation}{15}{section.3.4}% 
+\contentsline {subsection}{\numberline {3.4.1}Implementation of Tooling}{15}{subsection.3.4.1}% 
+\contentsline {subsection}{\numberline {3.4.2}Prior Scenarios}{16}{subsection.3.4.2}% 
+\contentsline {subsection}{\numberline {3.4.3}Implementation Process}{16}{subsection.3.4.3}% 
+\contentsline {subsection}{\numberline {3.4.4}Simple Example Scenario - FTP server}{17}{subsection.3.4.4}% 
+\contentsline {subsection}{\numberline {3.4.5}Complex Example Scenarios - Secure SQL \& Insecure SQL}{19}{subsection.3.4.5}% 
+\contentsline {section}{\numberline {3.5}Creation of Datasets}{20}{section.3.5}% 
+\contentsline {section}{\numberline {3.6}Implemented Scenarios}{22}{section.3.6}% 
+\contentsline {chapter}{\numberline {4}Experimentation}{23}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Experimental Design}{23}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Experiment 1: Exploration of Artificial Delays}{23}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Motivation}{23}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Datasets}{24}{subsection.4.2.2}% 
+\contentsline {subsection}{\numberline {4.2.3}Methodology}{25}{subsection.4.2.3}% 
+\contentsline {section}{\numberline {4.3}Experiment 2 - Classifying Application Flows using IATs}{26}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}Motivation}{26}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}Data \& Preprocessing}{27}{subsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.3.3}Methodology}{28}{subsection.4.3.3}% 
+\contentsline {section}{\numberline {4.4}Experiment 3 - Varying levels of Malicious Traffic}{28}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}Motivation}{28}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}Data \& Preprocessing}{29}{subsection.4.4.2}% 
+\contentsline {subsection}{\numberline {4.4.3}Methodology}{30}{subsection.4.4.3}% 
+\contentsline {chapter}{\numberline {5}Evaluation \& Results}{31}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Evaluation of Docker Scenarios \& Dataset}{31}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Docker Scenarios}{31}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.2}Dataset}{33}{subsection.5.1.2}% 
+\contentsline {subsubsection}{\numberline {5.1.2.1}Difficulties \& Limitations}{34}{subsubsection.5.1.2.1}% 
+\contentsline {section}{\numberline {5.2}Results of Experiment 1}{35}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}Results of Experiment 2}{36}{section.5.3}% 
+\contentsline {section}{\numberline {5.4}Results of Experiment 3}{37}{section.5.4}% 
+\contentsline {chapter}{\numberline {6}Conclusions}{39}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Discussion of Experiments}{39}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Conclusion, Criticism \& Future Work}{40}{section.6.2}% 
+\contentsline {chapter}{\numberline {A}Secure SQL Code}{41}{appendix.A}% 
+\contentsline {section}{\numberline {A.1}Docker-Compose.yml}{41}{section.A.1}% 
+\contentsline {section}{\numberline {A.2}Start-Up Script}{41}{section.A.2}% 
+\contentsline {section}{\numberline {A.3}Login Page with Prepared Statements - Code Snippet}{42}{section.A.3}% 
+\contentsline {section}{\numberline {A.4}SQL Start-Up Script}{43}{section.A.4}% 
