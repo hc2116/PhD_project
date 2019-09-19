@@ -109,14 +109,9 @@ The majority of packets are exchanged between two hosts within bidirectional con
 
 \section{Problems in existing datasets and traffic generators}
 
-Capturing network traffic into a public dataset is marred by several difficulties and has seen a wealth of criticism. As discussed by Sperotto et al. \cite{sperotto2009labeled}, simply monitoring the usage of several internet users and collecting the resultant traffic into a single dataset, although possible, introduces serious ethical concerns due to the large amount of sensitive or personally identifiable information that average internet users transmit during daily use --- such as passwords, GPS coordinates, private material. Despite these difficulties, a few network traffic datasets  designed for network intrusion detection exist.
+%There are already some datasets containing a mixture of benign and malicious traffic to test and train machine-learning approaches, captured using tools such as \texttt{tcpdump} or Wireshark. Such datasets attempt to emulate the network patterns found in 'real-world' internet traffic in order to provide researchers with a reasonable approximation of how a malware classifier may perform when deployed in a public environment. However, the development of such datasets are marred by several difficulties and have seen a wealth of criticism. As discussed by Sperotto et al. \cite{sperotto2009labeled}, simply monitoring the usage of several internet users and collecting the resultant traffic into a single dataset, although possible, introduces serious ethical concerns due to the large amount of sensitive or personally identifiable information that average internet users transmit during daily use --- such as passwords, GPS coordinates, private material.
 
-containing a mixture of benign and malicious traffic to test and train machine-learning approaches, captured using tools such as \texttt{tcpdump} or Wireshark. 
-
-%Such datasets attempt to emulate the network patterns found in 'real-world' internet traffic in order to provide researchers with a reasonable approximation of how a malware classifier may perform when deployed in a public environment. However, the development of such datasets are marred by several difficulties and have seen a wealth of criticism. As discussed by Sperotto et al. \cite{sperotto2009labeled}, simply monitoring the usage of several internet users and collecting the resultant traffic into a single dataset, although possible, introduces serious ethical concerns due to the large amount of sensitive or personally identifiable information that average internet users transmit during daily use --- such as passwords, GPS coordinates, private material.
-
-To avoid this complication, researchers often use statistical approximations of real-world traffic to build such datasets. However, it is unclear to what extent such approximations actually resemble real-world traffic. For instance, it is unclear what the ratio of benign to malicious traffic should be as it is unknown what this ratio is in the real-world. Allix et al. \cite{allix2014machine} claim that the standard work-flow for developing machine-learning systems --- namely, collecting large amount of data and then training the algorithm on that data --- is necessarily flawed when applied to the domain of intrusion detection. They contend that the inherent secrecy of the intrusion ecosystem and the rate at which it develops make it is impossible to develop a dataset containing, say, network traces of intrusions that are currently being deployed by malicious agents. Instead, one can only build a dataset containing previously discovered attacks. As such, they suggest that it is impossible to release a static dataset that is truly representative of the real-world, impeding the performance of machine-learning-based classifiers.
-
+%To avoid this complication, researchers often use statistical approximations of real-world traffic to build such datasets. However, it is unclear to what extent such approximations actually resemble real-world traffic. For instance, it is unclear what the ratio of benign to malicious traffic should be as it is unknown what this ratio is in the real-world. Allix et al. \cite{allix2014machine} claim that the standard work-flow for developing machine-learning systems --- namely, collecting large amount of data and then training the algorithm on that data --- is necessarily flawed when applied to the domain of intrusion detection. They contend that the inherent secrecy of the intrusion ecosystem and the rate at which it develops make it is impossible to develop a dataset containing, say, network traces of intrusions that are currently being deployed by malicious agents. Instead, one can only build a dataset containing previously discovered attacks. As such, they suggest that it is impossible to release a static dataset that is truly representative of the real-world, impeding the performance of machine-learning-based classifiers.
 
 A problem with all of these datasets is their static design. 
 
@@ -160,75 +155,48 @@ OS-level virtualisation, also known as \emph{containerisation}, is a virtualisat
 \paragraph*{Docker container}
 
 In Docker's terminology, a container is a single, running instance of a Docker image. 
-\textcolor{red}{Add more information about Docker containers, not about images or docker file}
+\textcolor{red}{Add more information about Docker containers, not about images or docker file
 
 The Docker software platform includes a cloud-based repository called the Docker Hub \cite{dockerhub} which allows users to download and build open source images on their local computers. At the time of writing, nearly 2.5 million images are available from Docker Hub. 
 
 \paragraph*{Docker Networking} 
 
-
-Docker allows the creation of virtualised networks with one or more subnetworks, to which containers can securely connect via a virtualised network bridge. Containers attached to the bridge network are assigned an IP address and are able to communicate with other containers on their subnetwork.
-
-Containers can furthermore be connected to a host network, which allows communication with external networks using NAT via the host interface.
-
-\textcolor{red}{We can create our own user-defined Bridge networks, which Docker's documentation recommends as it provides greater isolation and interoperability between containers \cite{docker_docs}. Furthermore, this allows us to set the subnet and gateway for our networks as well as the IP addresses of our containers, which simplifies scripting our scenarios considerably.}
-
-
+Upon installation, Docker automatically creates three networks: \textit{None}, \textit{Host} and \textit{Bridge}. Of these networks, only the Bridge network is of any relevance for this project as it allows us to securely run Docker containers with networking capabilities and in isolation. Containers attached to the Bridge network are assigned an IP address and are able to communicate with any other container on the network. We can create our own user-defined Bridge networks, which Docker's documentation recommends as it provides greater isolation and interoperability between containers \cite{docker_docs}. Furthermore, this allows us to set the subnet and gateway for our networks as well as the IP addresses of our containers, which simplifies scripting our scenarios considerably.
 
 
 \paragraph*{Docker-Compose Files}
 
-Often, applications built using the Docker framework need more than one container to operate --- for example, an Apache server and a MySQL server running in separate containers --- and it is therefore necessary to build and deploy several interconnected containers simultaneously. Docker provides this functionality via \texttt{docker-compose}, a tool that allows users to define the services of multiple containers as well as the properties of virtual networks in a YAML file. By default, this file is named \textit{docker-compose.yml}. This allows for numerous containers to be started, stopped and rebuilt with a single command. We can specify volumes, exposed ports, application environment variables, and commands to be run on start up.  
+   Often, applications built using the Docker framework need more than one container to operate --- for example, an Apache server and a MySQL server running in separate containers --- and it is therefore necessary to build and deploy several interconnected containers simultaneously. Docker provides this functionality via \texttt{docker-compose}, a tool that allows users to define the services of multiple containers as well as the properties of their virtual network in a YAML file. By default, this file is named \textit{docker-compose.yml}. This allows for numerous containers to be started, stopped and rebuilt with a single command. We can also make some limited modifications to our images in the YAML file, such as sharing volumes, exposing ports and adding commands to be run on start up. Due to the ease of starting several containers at once as well as defining their behaviour from a single docker-compose file, this will be our primary method of deploying our containerised scenarios. We include an example docker-compose file below.
+   
+   \vspace{10mm}
+
+  \begin{minted}[
+    gobble=4,
+    frame=single,
+    linenos
+  ]{yaml}
+    version: '3'
+    services:
+      ping: 
+        image: 'detlearsom/ping'
+          container_name: ping-container
+          environment:
+            - HOSTNAME=google.com
+            - TIMEOUT=2
+      tcpdump:
+        image: 'detlearsom/tcpdump'
+          volumes:
+            - '\$PWD/data:/data'
+          command: not(ip6 or arp or (udp and (src port 5353 or 
+                   src port 57621))) -v -w 
+                   "/data/dump-010-ping-\${CAPTURETIME}.pcap"
+          network_mode: 'service:ping'
+  \end{minted}
+
 
 
 
 \section{Design}
-
-We provide access to our framework via a GitHub repository, which contains both the implemented capture scenarios as well as the corresponding docker container images.
-
-\subsection{Coverage of Protocol Types}
-\label{sec:bro_logs}
-As discussed previously, our primary aim is the development of a network traffic dataset for training IDSes. Therefore, in deciding how we should expand the Detlearsom benign scenarios, we initially investigated the protocols and applications present in existing network traffic datasets. Our analysis included CIC-IDS 2017 \cite{sharafaldin2018toward}, UNSW-NB15 \cite{moustafa2015unsw}, ICSX Botnet \cite{beigi2014towards} and Mawi \cite{fontugne2010mawilab}. We chose these datasets as they provide .pcap files of their network traffic which enables us to more easily see what protocols are present. To do this, we used the Bro IDS tool to generate log files, listing the results in table \ref{tab:results-bro}.
-
-\begin{table}[ht!]
-\begin{center}
-\begin{small}
-\begin{sc}
-\begin{tabular}{ccccc}
-\hline
-\abovespace\belowspace
-Protocol & UNSW-NB15 & ISCX & CIC-IDS 2017 & Mawi (2019-7-31)\\
-\hline
-\abovespace
-HTTP         & 196195          & 2372        & 276405   &           156179   \\
-SSL          & 540          & 141         & 285760     &      591551      \\
-DNS          & 372748          & 200009          & 1820105      &    1581858      \\
-X509          & 459          & 331          & 2758590      &     Unknown     \\
-FTP          & 111685         &  1989         & 5540        &   278    \\
-SSH          & 31320          & 434       & 5600         &   5503    \\
-IRC          & 202          &  27       & 0          &    Unknown  \\
-\belowspace
-SMTP          & 44455         & 125         & 0      &      4601   \\
-\hline
-\end{tabular}
-\end{sc}
-\end{small}
-\vskip -2mm
-\caption{Bro Log Flow Count}
-\label{tab:results-bro}
-\end{center}
-\vskip -4mm
-\end{table}
-
-The protocols listed in table \ref{tab:results-bro} make up over 90\% of the benign traffic in these datasets. Moreover, although the ratio of protocols in datasets can differ significantly, we see some patterns: namely, protocols associated with general browser usage, such as HTTP, SSL, DNS, are the most common in each dataset. 
-
-We could base the ratios of protocols in our own dataset off of those found in an existing dataset where the traffic has been artificially generated. However, this would be problematic. In the case of CIC-IDS 2017, some protocols that make up a substantial amount of real-world traffic are glaringly omitted, such as bittorrent or video streaming protocols. In contrast, although UNSW-NB15 contains a better range of protocols, only a small percentage of their web traffic is transmitted over SSL which is  unrepresentative of real-world traffic. Furthermore, in both these datasets, it appears that a non-negligible amount of traffic is the result of remote desktop protocols being used to interact with the virtual machines generating data, such as X11, VNC and RDP, which we consider to be unwanted noise. Instead, we opt to use these datasets as a rough guideline for constructing datasets but not closely following any one in particular.
-
-\subsection{Variation within Protocols}
-
-Synthetic datasets often contain traffic from a given protocol, but the manner in which that protocol is used is highly-restricted. It is thus unclear if such traffic is representative of its real-world equivalent usage. For instance, in CIC-IDS 2017 the vast majority of successful FTP transfers consist of a client downloading a .txt file containing the Wikipedia page for 'Encryption' several hundred times in a day. This lack of variation in the breadth of a protocol's network trace results in unrealistic levels of homogeneity in a dataset, and can therefore lead in overoptimistic detection rates of an IDS that do not translate to real-world scenarios. For example, an IDS trained on the CICIDS-17 dataset may trigger a false positive when a larger file is downloaded over FTP due to the difference in the duration or backwards packet length of the connection. 
-
-
 
 
 
