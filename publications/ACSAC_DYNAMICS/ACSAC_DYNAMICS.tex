@@ -60,7 +60,7 @@
 
 \begin{abstract}
 
-
+testest
 
 \end{abstract}
 
@@ -93,7 +93,7 @@ The datasets currently available are meant to be \textcolor{red}{all-purpose} an
 
 Additionally, \textcolor{red}{ground truth}
 
-Developing a framework that allows researchers to create datasets that circumvent these issues would be extremely beneficial. We propose that this can be done using Docker \cite{docker}. Docker is a service for developing and monitoring containers, also known as OS-level virtual machines. Each Docker container is highly specialised in its purpose, generating traffic related to only a single application process. Therefore, by scripting a variety of Docker-based \textit{scenarios} that simulate benign or malicious behaviours and collecting the resultant traffic, we can build a dataset with perfect ground truth. Furthermore, these scenarios could be continually enhanced and expanded, allowing for the easy creation of datasets containing modern, up-to-date traffic and attacks. 
+Allowing researchers to create datasets dynamically to circumvent these issues would be extremely beneficial. We propose a such framework based on Docker \cite{docker}. Docker is a service for developing and monitoring containers, also known as OS-level virtual machines. Each Docker container is highly specialised in its purpose, generating traffic related to only a single application process. Therefore, by scripting a variety of Docker-based \textit{scenarios} that simulate benign or malicious behaviours and collecting the resultant traffic, we can build a dataset with perfect ground truth. Furthermore, these scenarios could be continually enhanced and expanded, allowing for the easy creation of datasets containing modern, up-to-date traffic and attacks. 
 
 
 
@@ -186,6 +186,14 @@ Often, applications built using the Docker framework need more than one containe
 
 We provide access to our framework via a GitHub repository, which contains both the implemented capture scenarios as well as the corresponding docker container images.
 
+\subsection{Definitions}
+
+Scenario
+Subscenario
+
+\textcolor{red}{draw image with trees breaking from scenarios to subscenarios to randomisation to visualise the achieved heterogenity.}
+
+
 \subsection{Coverage of Protocol Types}
 \label{sec:bro_logs}
 As discussed previously, our primary aim is the development of a network traffic dataset for training IDSes. Therefore, in deciding how we should expand the Detlearsom benign scenarios, we initially investigated the protocols and applications present in existing network traffic datasets. Our analysis included CIC-IDS 2017 \cite{sharafaldin2018toward}, UNSW-NB15 \cite{moustafa2015unsw}, ICSX Botnet \cite{beigi2014towards} and Mawi \cite{fontugne2010mawilab}. We chose these datasets as they provide .pcap files of their network traffic which enables us to more easily see what protocols are present. To do this, we used the Bro IDS tool to generate log files, listing the results in table \ref{tab:results-bro}.
@@ -196,10 +204,8 @@ As discussed previously, our primary aim is the development of a network traffic
 \begin{sc}
 \begin{tabular}{ccccc}
 \hline
-\abovespace\belowspace
 Protocol & UNSW-NB15 & ISCX & CIC-IDS 2017 & Mawi (2019-7-31)\\
 \hline
-\abovespace
 HTTP         & 196195          & 2372        & 276405   &           156179   \\
 SSL          & 540          & 141         & 285760     &      591551      \\
 DNS          & 372748          & 200009          & 1820105      &    1581858      \\
@@ -207,7 +213,6 @@ X509          & 459          & 331          & 2758590      &     Unknown     \\
 FTP          & 111685         &  1989         & 5540        &   278    \\
 SSH          & 31320          & 434       & 5600         &   5503    \\
 IRC          & 202          &  27       & 0          &    Unknown  \\
-\belowspace
 SMTP          & 44455         & 125         & 0      &      4601   \\
 \hline
 \end{tabular}
@@ -229,11 +234,76 @@ We could base the ratios of protocols in our own dataset off of those found in a
 Synthetic datasets often contain traffic from a given protocol, but the manner in which that protocol is used is highly-restricted. It is thus unclear if such traffic is representative of its real-world equivalent usage. For instance, in CIC-IDS 2017 the vast majority of successful FTP transfers consist of a client downloading a .txt file containing the Wikipedia page for 'Encryption' several hundred times in a day. This lack of variation in the breadth of a protocol's network trace results in unrealistic levels of homogeneity in a dataset, and can therefore lead in overoptimistic detection rates of an IDS that do not translate to real-world scenarios. For example, an IDS trained on the CICIDS-17 dataset may trigger a false positive when a larger file is downloaded over FTP due to the difference in the duration or backwards packet length of the connection. 
 
 
+\subsection{Randomisation within Subscenarios}
+\label{sec:randomsubscen}
 
 
 
 
-\section{Capture}
+\paragraph{Random inputs etc}
+
+\paragraph{Netem stuff}
+
+
+\subsection{Implementation Process}
+
+The implementation process for each scenario followes broadly the same outline: 
+
+\begin{enumerate}
+
+\item Firstly, we draw up a broad outline of a given protocol, scenario or attack. We select containers which provide the required services 
+
+We identify the \textit{primary} container/s for a given scenario which is/are dictating the container interaction. We then create and build a Dockerfile containing all necessary dependencies. 
+  
+%\item We now run this container which allows us to develop the scripts necessary to enact the desired behaviour from the host machine. For instance, if the primary container is a vulnerable server and we want to capture the traffic from a DoS attack, we ensure that such an attack is possible by launching it from the host machine initially. 
+
+\item We now identify 
+ 
+\item Having scripted the behaviour of the secondary containers from the host machine, we simply need to build Dockerfiles which download and install all necessary dependencies before transferring any scripts to their respective containers.
+
+\item We then create a docker-compose file that launches all containers simultaneously and executes all necessary commands. Finally, we develop a script that, upon running, calls this docker-compose file and allows the user to specify the various parameters of the scenario --- for instance, how many times a scenario should be run and how long each scenario should be run for.
+
+\end{enumerate}
+
+Following the Docker \textit{best practise} guidelines \cite{bestpractise}, each Docker container in our framework consists of a single service with a specialised purpose, with as few additional dependencies as possible. When possible, we will opt to use Alpine Linux as our base image to house our containers, which is far more lightweight than Ubuntu or Debian as this improves the scalability of our scenarios. Moreover, we ensure that there are minimal inter-dependencies between the containers of a scenario. This allows us to easily modify and update our containers as new versions of the underlying software are released with minimal interference with other containers.
+
+  
+\subsection{Simple Example Scenario - FTP server}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.50\textwidth]{images/ftp_example.png}
+\caption{Diagram of our FTP scenario}
+\end{figure}
+
+We shall review the design of a prototypical capture scenario, namely, an FTP server and client interaction. The entire interaction is initiated by a single script, which allows the user to specify the length of the interaction, the number of times the interaction takes place as well as the specific scenario that should govern the interaction at runtime. Upon specifying these parameters, the script then generates a random ftp username and password, creating the necessary \textit{User} directory on the host machine before calling the docker-compose file which creates a user-defined bridge network. Subsequently, the necessary containers are then started which, in this case, consist of a vsftpd server, a client with ftp installed and two containers running tcpdump to capture all of the traffic emitted and received by the client and server respectively into separate .pcap files. These .pcap files are then sent to the host machine via a shared data directory. In addition, the host machine also shares:
+    
+\begin{itemize}
+\item A \textit{dataToShare} volume containing files that can be downloaded by the client.
+\item The \textit{User} directory with the server --- which contains the same files as the \textit{dataToShare} folder.
+\item An empty \textit{recieve} folder with the client into which the files will be downloaded.
+\item The random username and password is also shared with the client container to allow it to authenticate itself with the server.
+\end{itemize}
+    
+    Up to this point, no network traffic has been generated and the containers are now ready to begin communicating with one another. 
+    For this particular interaction between an FTP server and client, we want to ensure that it is possible to capture the many ways in which an FTP session may develop. For instance, the client may seek to download files via the \texttt{get} command or the \texttt{put} command, alongside many other possibilities. There are 13 possible capture scenarios intended to encapsulate a wide range of potential FTP sessions. These include downloading a single file using \texttt{get} or \texttt{put}, downloading every file using \texttt{mget} or \texttt{mput}, deleting every file from the server and requesting files from the server without the necessary authentication.
+
+    Finally, after the scenario ends, both the \textit{User} directory and any downloaded files are then removed from the host machine. Following this, the containers are then stopped and the bridge network is torn down. All necessary containers, volumes and scripts are in the same position prior to initiating the scenario --- barring any generated .pcap files --- allowing for the scenarios to be started repeatedly with minimal human interaction.
+    
+    \begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{images/pcap.png}
+\caption{Wireshark view of a .pcap file from our FTP scenario}
+\end{figure}
+    
+
+
+
+
+
+
+
+
+\subsection{Capture}
 
 While traversing between to parties, a network packet can pass multiple connecting devices which direct the packet in the right direction. Any device in the immediate circuit traversed by a packet can capture and store it. In a monitoring setting, packets are usually captured by network routers and stored in the widespread \textit{pcap} format. In case of space shortage or privacy concerns, the payload of a packet can be dropped in the saving process.
 

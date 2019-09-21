@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.9.3)  19 SEP 2019 18:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.9.3)  21 SEP 2019 15:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1149,12 +1149,6 @@ Package natbib Warning: Citation `docker' on page 1 undefined on input line 96.
 
 
 
-Overfull \hbox (2.03151pt too wide) in paragraph at lines 96--97
-[]\T1/LinuxLibertineT-TLF/m/n/9 (-20) Developing a frame-work that al-lows re-s
-earchers to cre-ate datasets
- []
-
-
 Package natbib Warning: Citation `brownlee1999traffic' on page 1 undefined on i
 nput line 107.
 
@@ -1227,121 +1221,114 @@ e 174.
 
 
 Package natbib Warning: Citation `sharafaldin2018toward' on page 3 undefined on
- input line 191.
+ input line 199.
 
 
 Package natbib Warning: Citation `moustafa2015unsw' on page 3 undefined on inpu
-t line 191.
+t line 199.
 
 
 Package natbib Warning: Citation `beigi2014towards' on page 3 undefined on inpu
-t line 191.
+t line 199.
 
 
 Package natbib Warning: Citation `fontugne2010mawilab' on page 3 undefined on i
-nput line 191.
-
-
-LaTeX Warning: Reference `tab:results-bro' on page 3 undefined on input line 19
-1.
+nput line 199.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 193.
+surrounding objects on input line 201.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 193.
+surrounding objects on input line 201.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 8.0pt on input line 196.
-! Undefined control sequence.
-<recently read> \abovespace 
-                            
-l.199 \abovespace
-                 \belowspace
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+(Font)              scaled to size 8.0pt on input line 204.
 
-! Undefined control sequence.
-l.199 \abovespace\belowspace
-                            
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \abovespace 
-                            
-l.202 \abovespace
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \belowspace 
-                            
-l.210 \belowspace
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Overfull \hbox (8.8364pt too wide) in paragraph at lines 197--216
+Overfull \hbox (8.8364pt too wide) in paragraph at lines 205--221
  [] 
  []
 
+[3.3]
 
-LaTeX Warning: Reference `tab:results-bro' on page 3 undefined on input line 22
-3.
+Package natbib Warning: Citation `bestpractise' on page 4 undefined on input li
+ne 264.
 
 
-Underfull \vbox (badness 3623) has occurred while \output is active []
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 268.
 
- [3.3]
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 268.
+
+<images/ftp_example.png, id=109, 934.49126pt x 548.0475pt>
+File: images/ftp_example.png Graphic file (type png)
+<use images/ftp_example.png>
+Package pdftex.def Info: images/ftp_example.png  used on input line 270.
+(pdftex.def)             Requested size: 253.14749pt x 148.45982pt.
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 270--271
+ [][] 
+ []
+
+
+Class acmart Warning: A possible image without description on input line 272.
+
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 277.
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 288.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 288.
+
+<images/pcap.png, id=111, 983.675pt x 376.40625pt>
+File: images/pcap.png Graphic file (type png)
+<use images/pcap.png>
+Package pdftex.def Info: images/pcap.png  used on input line 290.
+(pdftex.def)             Requested size: 379.72124pt x 145.29878pt.
+
+Overfull \hbox (138.57375pt too wide) in paragraph at lines 290--291
+ [][] 
+ []
+
+
+Class acmart Warning: A possible image without description on input line 292.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4.4 <./images/ftp_example.png>]
 No file ACSAC_DYNAMICS.bbl.
 
 Package natbib Warning: There were undefined citations.
 
-[4.4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 261.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 261.
+
+Class acmart Warning: Some images may lack descriptions.
+
+[5.5 <./images/pcap.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 327.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 327.
  (./ACSAC_DYNAMICS.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 261.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 261.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 327.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 327.
+Package rerunfilecheck Info: File `ACSAC_DYNAMICS.out' has not changed.
+(rerunfilecheck)             Checksum: 2C45C2AAF8ACED27F295BD514108DB91;2828.
 
-
-Package rerunfilecheck Warning: File `ACSAC_DYNAMICS.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `ACSAC_DYNAMICS.out':
-(rerunfilecheck)             Before: 910955E27F64D03DBBDB46818F66BC0D;1509
-(rerunfilecheck)             After:  698880579363CDABCF00566D07F5B04D;1946.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 18057 strings out of 492615
- 270705 string characters out of 6131391
- 394458 words of memory out of 5000000
- 21256 multiletter control sequences out of 15000+600000
- 122685 words of font info for 204 fonts, out of 8000000 for 9000
+ 18141 strings out of 492615
+ 272320 string characters out of 6131391
+ 394627 words of memory out of 5000000
+ 21301 multiletter control sequences out of 15000+600000
+ 129488 words of font info for 226 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  60i,11n,94p,1442b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
@@ -1355,11 +1342,12 @@ f-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist
 ype1/public/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/libertine/LinLibertineTI.pfb>
-Output written on ACSAC_DYNAMICS.pdf (4 pages, 355157 bytes).
+e1/public/libertine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/newtx/txsys.pfb>
+Output written on ACSAC_DYNAMICS.pdf (5 pages, 493602 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 105 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 500000)
- 39005 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 178 PDF objects out of 1000 (max. 8388607)
+ 148 compressed objects within 2 object streams
+ 40 named destinations out of 1000 (max. 500000)
+ 41623 words of extra memory for PDF output out of 42996 (max. 10000000)
 
