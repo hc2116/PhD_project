@@ -234,6 +234,7 @@ We could base the ratios of protocols in our own dataset off of those found in a
 Synthetic datasets often contain traffic from a given protocol, but the manner in which that protocol is used is highly-restricted. It is thus unclear if such traffic is representative of its real-world equivalent usage. For instance, in CIC-IDS 2017 the vast majority of successful FTP transfers consist of a client downloading a .txt file containing the Wikipedia page for 'Encryption' several hundred times in a day. This lack of variation in the breadth of a protocol's network trace results in unrealistic levels of homogeneity in a dataset, and can therefore lead in overoptimistic detection rates of an IDS that do not translate to real-world scenarios. For example, an IDS trained on the CICIDS-17 dataset may trigger a false positive when a larger file is downloaded over FTP due to the difference in the duration or backwards packet length of the connection. 
 
 
+
 \subsection{Randomisation within Subscenarios}
 \label{sec:randomsubscen}
 
@@ -245,29 +246,54 @@ Synthetic datasets often contain traffic from a given protocol, but the manner i
 \paragraph{Netem stuff}
 
 
+
+
+
 \subsection{Implementation Process}
 
 The implementation process for each scenario followes broadly the same outline: 
 
 \begin{enumerate}
 
-\item Firstly, we draw up a broad outline of a given protocol, scenario or attack. We select containers which provide the required services 
+\item Firstly, we draw up a broad outline of a given protocol, scenario or attack. We select containers which provide the required services and identify the \textit{primary} container/s for a given scenario which is/are dictating the container interaction. We then create and build a Dockerfile containing all necessary dependencies. 
 
-We identify the \textit{primary} container/s for a given scenario which is/are dictating the container interaction. We then create and build a Dockerfile containing all necessary dependencies. 
+\item We identify the number of IP-addresses, and hook containers to the same network interface if necessary
   
 %\item We now run this container which allows us to develop the scripts necessary to enact the desired behaviour from the host machine. For instance, if the primary container is a vulnerable server and we want to capture the traffic from a DoS attack, we ensure that such an attack is possible by launching it from the host machine initially. 
 
-\item We now identify 
+\item We now identify the general configuration for secondary containers to react to \textcolor{red}{...} and script. 
+
+ 
+\item Identify subscenarios
+
+\item Identify variation of subscenarios 
  
 \item Having scripted the behaviour of the secondary containers from the host machine, we simply need to build Dockerfiles which download and install all necessary dependencies before transferring any scripts to their respective containers.
 
-\item We then create a docker-compose file that launches all containers simultaneously and executes all necessary commands. Finally, we develop a script that, upon running, calls this docker-compose file and allows the user to specify the various parameters of the scenario --- for instance, how many times a scenario should be run and how long each scenario should be run for.
+\item We then create a docker-compose file that launches all containers simultaneously and executes all necessary commands. 
+
+\item Finally, we develop a script that, upon running, calls this docker-compose file and allows the user to specify the various parameters of the scenario, for instance, how many times a scenario should be run and how long each scenario should be run for.
+
+\item Add delays/packet drops/out of orders via netem to each interface
+
+\item \textcolor{red}{add tcpdump containers to every container that save the data}
+
+
 
 \end{enumerate}
 
 Following the Docker \textit{best practise} guidelines \cite{bestpractise}, each Docker container in our framework consists of a single service with a specialised purpose, with as few additional dependencies as possible. When possible, we will opt to use Alpine Linux as our base image to house our containers, which is far more lightweight than Ubuntu or Debian as this improves the scalability of our scenarios. Moreover, we ensure that there are minimal inter-dependencies between the containers of a scenario. This allows us to easily modify and update our containers as new versions of the underlying software are released with minimal interference with other containers.
 
+
+
+\subsection{Capture}
+
+While traversing between to parties, a network packet can pass multiple connecting devices which direct the packet in the right direction. Any device in the immediate circuit traversed by a packet can capture and store it. In a monitoring setting, packets are usually captured by network routers and stored in the widespread \textit{pcap} format. In case of space shortage or privacy concerns, the payload of a packet can be dropped in the saving process.
+
+Automated CaptureUpon running their respective startup scripts,  all of our sce-narios launch the needed containers, proceed with the specified scenario, capture alltraffic and then take down all containers and networks.  Moreover, our scenarios areephemeral; we can run each scenario repeatedly with no additional configuration.
   
+
+
 \subsection{Simple Example Scenario - FTP server}
 \begin{figure}[h!]
 \centering
@@ -288,24 +314,26 @@ We shall review the design of a prototypical capture scenario, namely, an FTP se
     For this particular interaction between an FTP server and client, we want to ensure that it is possible to capture the many ways in which an FTP session may develop. For instance, the client may seek to download files via the \texttt{get} command or the \texttt{put} command, alongside many other possibilities. There are 13 possible capture scenarios intended to encapsulate a wide range of potential FTP sessions. These include downloading a single file using \texttt{get} or \texttt{put}, downloading every file using \texttt{mget} or \texttt{mput}, deleting every file from the server and requesting files from the server without the necessary authentication.
 
     Finally, after the scenario ends, both the \textit{User} directory and any downloaded files are then removed from the host machine. Following this, the containers are then stopped and the bridge network is torn down. All necessary containers, volumes and scripts are in the same position prior to initiating the scenario --- barring any generated .pcap files --- allowing for the scenarios to be started repeatedly with minimal human interaction.
-    
-    \begin{figure}[H]
-\centering
-\includegraphics[width=0.75\textwidth]{images/pcap.png}
-\caption{Wireshark view of a .pcap file from our FTP scenario}
-\end{figure}
-    
+        
+
+\subsection{Dataset creation}
+Write how to combine individual .pcap files to one dataset. Do we have a script for this?
+
+\subsection{Existing scenarios}
 
 
+\section{Validation experiments}
+
+\subsection{Verification experiments - Henry}
+
+Use Rob's Deterministic Scenarios section
+
+\subsection{Exploration of Artificial Delays}
+
+\subsection{Classifying Application Flows using IATs}
+The name needs to be changed, be clear what this verifies about our framework
 
 
-
-
-
-
-\subsection{Capture}
-
-While traversing between to parties, a network packet can pass multiple connecting devices which direct the packet in the right direction. Any device in the immediate circuit traversed by a packet can capture and store it. In a monitoring setting, packets are usually captured by network routers and stored in the widespread \textit{pcap} format. In case of space shortage or privacy concerns, the payload of a packet can be dropped in the saving process.
 
 
 \section{Acknowledgments}
