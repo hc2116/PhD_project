@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{17}
+\begin{thebibliography}{18}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -60,6 +60,16 @@
   learning-based botnet detection approaches}. In
   \bibinfo{booktitle}{\emph{2014 IEEE Conference on Communications and Network
   Security}}. IEEE, \bibinfo{pages}{247--255}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Brownlee, Mills, and Ruth}{Brownlee
+  et~al\mbox{.}}{1999}]%
+        {brownlee1999traffic}
+\bibfield{author}{\bibinfo{person}{Nevil Brownlee}, \bibinfo{person}{Cyndi
+  Mills}, {and} \bibinfo{person}{Greg Ruth}.} \bibinfo{year}{1999}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Traffic flow measurement: Architecture}}.
+\newblock \bibinfo{type}{{T}echnical {R}eport}.
 \newblock
 
 

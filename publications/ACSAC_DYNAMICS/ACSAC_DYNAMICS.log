@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.14)  22 SEP 2019 19:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.14)  22 SEP 2019 20:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1114,12 +1114,8 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 9.0pt on input line 92.
-
-
-Package natbib Warning: Citation `brownlee1999traffic' on page 1 undefined on i
-nput line 107.
-
 LaTeX Font Info:    Try loading font information for T1+zi4 on input line 114.
+
 (/usr/local/texlive/2019/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
@@ -1156,7 +1152,7 @@ Overfull \hbox (8.8364pt too wide) in paragraph at lines 205--221
  []
 
 [3.3]
-<images/ftp_example.png, id=148, 934.49126pt x 548.0475pt>
+<images/ftp_example.png, id=191, 934.49126pt x 548.0475pt>
 File: images/ftp_example.png Graphic file (type png)
 <use images/ftp_example.png>
 Package pdftex.def Info: images/ftp_example.png  used on input line 300.
@@ -1176,9 +1172,6 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 307.
  [4.4 <./images/ftp_example.png>] (./ACSAC_DYNAMICS.bbl)
 
-Package natbib Warning: There were undefined citations.
-
-
 Class acmart Warning: Some images may lack descriptions.
 
 
@@ -1186,29 +1179,23 @@ Package balance Warning: You have called \balance in second column
 (balance)                Columns might not be balanced.
 
 [5.5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 359.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 359.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 366.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 366.
  (./ACSAC_DYNAMICS.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 359.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 359.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 366.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 366.
+Package rerunfilecheck Info: File `ACSAC_DYNAMICS.out' has not changed.
+(rerunfilecheck)             Checksum: CC8AC82DAF0F5877B69061509E573898;4866.
 
-
-Package rerunfilecheck Warning: File `ACSAC_DYNAMICS.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `ACSAC_DYNAMICS.out':
-(rerunfilecheck)             Before: B5F70D6AC1676BC0EA9554D4AAAD56E8;2924
-(rerunfilecheck)             After:  BAD70B1C4F03B1C4AA2771635DDB7F4E;4225.
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18292 strings out of 492616
- 276828 string characters out of 6129481
- 398440 words of memory out of 5000000
- 21379 multiletter control sequences out of 15000+600000
+ 18310 strings out of 492616
+ 277144 string characters out of 6129481
+ 397514 words of memory out of 5000000
+ 21392 multiletter control sequences out of 15000+600000
  134415 words of font info for 258 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  60i,11n,94p,1427b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1227,10 +1214,10 @@ bertineT.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/L
 inLibertineTB.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libert
 ine/LinLibertineTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/n
 ewtx/txsys.pfb>
-Output written on ACSAC_DYNAMICS.pdf (5 pages, 496944 bytes).
+Output written on ACSAC_DYNAMICS.pdf (5 pages, 509852 bytes).
 PDF statistics:
- 243 PDF objects out of 1000 (max. 8388607)
- 212 compressed objects within 3 object streams
- 70 named destinations out of 1000 (max. 500000)
- 45210 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 281 PDF objects out of 1000 (max. 8388607)
+ 250 compressed objects within 3 object streams
+ 75 named destinations out of 1000 (max. 500000)
+ 45290 words of extra memory for PDF output out of 51595 (max. 10000000)
 

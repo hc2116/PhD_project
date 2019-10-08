@@ -99,7 +99,7 @@ Allowing researchers to create datasets dynamically to circumvent these issues w
 
 This is the primary goal of this work. Furthermore, we demonstrate the utility of this framework by performing a series of experiments: one that measures the realism of the network traffic produced by our Docker scenarios and two that would be difficult to perform using a conventional dataset.
 
-\section{Data formats and existing datasets}
+\subsection{Data formats and existing datasets}
 
 Computers in a network mostly communicate with each other by sending \textit{network packets} to each other, which are split into the control information, also called packet header, and the user information, called payload. The payload of a packet in general carries the information on behalf of an application and can in be encrypted, while the header contains the necessary information for the correct transmission of the packet, including the transmission protocol layer, IP addresses, etc. Packet-level methods can be divided into payload inspection, header-based, or hybrid. Packets are usually stored in the widespread \textit{pcap} format.
 
@@ -107,7 +107,7 @@ Computers in a network mostly communicate with each other by sending \textit{net
 The majority of packets are exchanged between two hosts within bidirectional connections. Another common format of network traffic information is based on connection summaries, also called \textbf{network flows}. RFC 3697 \cite{brownlee1999traffic} defines a network flow as a sequence of packets that share the same source and destination IP address, IP protocol, and for TCP and UDP connections the same source and destination port. A network flow is usually saved containing these informations along with additional information such as the start and duration of the connection as well as the number of packets and bytes transferred in the connection.
 
 
-\section{Problems in existing datasets and traffic generators}
+\subsection{Problems in existing datasets and traffic generators}
 
 Capturing network traffic into a public dataset is marred by several difficulties and has seen a wealth of criticism. As discussed by Sperotto et al. \cite{sperotto2009labeled}, simply monitoring the usage of several internet users and collecting the resultant traffic into a single dataset, although possible, introduces serious ethical concerns due to the large amount of sensitive or personally identifiable information that average internet users transmit during daily use --- such as passwords, GPS coordinates, private material. Despite these difficulties, a few network traffic datasets  designed for network intrusion detection exist.
 
@@ -334,7 +334,14 @@ Use Rob's Deterministic Scenarios section
 The name needs to be changed, be clear what this verifies about our framework
 
 
+\section{Difficulties and limitations}
 
+\section{Conclusion}
+
+
+\subsection{Future work}
+
+\subsection{Related work}
 
 \section{Acknowledgments}
 

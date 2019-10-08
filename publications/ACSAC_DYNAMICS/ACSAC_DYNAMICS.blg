@@ -5,15 +5,6 @@ The style file: ACM-Reference-Format.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: ACSAC_DYNAMICS.bib
-Repeated entry---line 1386 of file ACSAC_DYNAMICS.bib
- : @inproceedings{tavallaee2009detailed
- :                                     ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1415 of file ACSAC_DYNAMICS.bib
- : @inproceedings{sharafaldin2018toward
- :                                     ,
-I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "brownlee1999traffic"
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=20001) to 20 items from 10.
@@ -21,6 +12,7 @@ Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty publisher in beigi2014towards
 Warning--empty address in beigi2014towards
+Warning--empty institution in brownlee1999traffic
 Warning--no number and no volume in bujlow2013comparison
 Warning--page numbers missing in both pages and numpages fields in bujlow2013comparison
 Warning--empty publisher in carela2014our
@@ -45,45 +37,45 @@ Warning--empty publisher in sperotto2009labeled
 Warning--empty address in sperotto2009labeled
 Warning--empty publisher in tavallaee2009detailed
 Warning--empty address in tavallaee2009detailed
-You've used 17 entries,
+You've used 18 entries,
             5719 wiz_defined-function locations,
-            1377 strings with 17678 characters,
-and the built_in function-call counts, 18325 in all, are:
-= -- 1994
-> -- 671
+            1380 strings with 17767 characters,
+and the built_in function-call counts, 19209 in all, are:
+= -- 2089
+> -- 712
 < -- 0
-+ -- 220
-- -- 217
-* -- 1296
-:= -- 1932
-add.period$ -- 90
-call.type$ -- 17
-change.case$ -- 117
-chr.to.int$ -- 14
-cite$ -- 43
-duplicate$ -- 1696
-empty$ -- 1191
-format.name$ -- 265
-if$ -- 4280
++ -- 233
+- -- 229
+* -- 1367
+:= -- 2037
+add.period$ -- 95
+call.type$ -- 18
+change.case$ -- 125
+chr.to.int$ -- 15
+cite$ -- 45
+duplicate$ -- 1770
+empty$ -- 1242
+format.name$ -- 281
+if$ -- 4471
 int.to.chr$ -- 5
 int.to.str$ -- 1
 missing$ -- 58
-newline$ -- 174
-num.names$ -- 133
-pop$ -- 742
+newline$ -- 182
+num.names$ -- 141
+pop$ -- 767
 preamble$ -- 1
-purify$ -- 242
+purify$ -- 258
 quote$ -- 0
-skip$ -- 587
+skip$ -- 617
 stack$ -- 0
-substring$ -- 1238
-swap$ -- 159
+substring$ -- 1292
+swap$ -- 165
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 464
-warning$ -- 26
-while$ -- 118
+type$ -- 494
+warning$ -- 27
+while$ -- 122
 width$ -- 0
-write$ -- 334
-(There were 2 error messages)
+write$ -- 350
+(There were 27 warnings)
