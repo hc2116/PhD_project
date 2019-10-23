@@ -193,6 +193,48 @@ author's own version, with {\itshape very} few changes to the source.
 
 \cite{tavallaee2009detailed}
 
+
+\section{Review Procedure}
+This section describes the inclusion criterions for the review, the method used to identify the relevant literature, the elements extracted from the literature and process of extracting this information.
+
+
+\subsection{Research Questions}
+
+\paragraph{Research Question 1:} What predictive analytics metrics have been proposed in the literature?
+
+\paragraph{Research Question 2:} ....?
+
+\subsection{Inclusion Criterion}
+As noted above, the issue predicting adversarial cyber operations involves both straightforward cases were a known threat is to be recognized and more or less impossible cases where previously unknown attacks performed by professionals should be predicted. The panel and the literature search aimed at focusing on research in-between these two extremes. It was also recognized that much of the extant research on cyber security have some relation to prediction. For example, when the relationship between cyber variables are investigated in terms of statistical relationships this offers potential input to prediction models. However, as this review is mostly concerned with existing prediction models, and not surveying potential building blocks of new ones, such research was excluded. Thus, the primary inclusion criteria was that the papers should describe a model explicitly developed for predicting adversarial cyber operations. 
+In addition, the predictions produced by the model should be able to support a decision maker within an organization to secure their cyber environment. This meant that papers listing attacks that were possible to perform against the cyber environment were excluded they did not make statements about the likelihood that the attacks would be performed within a certain time frame. For instance, most papers on attack graphs, which rarely state how likely attacks are to happen, were excluded. Similarly, papers on models producing generic predictions, such as “more attacks of type X will happen next year”, were excluded unless it was possible to tune the predictions based on information related to a specific organization or cyber environment. Finally, some papers were excluded because they were too abstract and superficial.  For example, papers stating basic ideas about how threat intelligence could foster prediction, without detailing what this threat intelligence comprise of, were excluded.
+
+\subsection{Literature Search}
+Some initial attempt with the definition of search terms that could be used to target literature related to predicting adversarial cyber operations. However, it was soon acknowledged that this literature was too diverse and scattered to be identified by a straightforward search in literature databases. Fortunately, the panel members participating in the review process was diverse set of researchers, with backgrounds in cyber security, mathematics, forensics, combat assessments, visualisation, and military intelligence . This diversity helped to identify a fifteen topics that were related. These topics included, among others, “the cyber OODA-loop”, “cyber attack profiling”, “data fusion approaches”, “risk and incident management”, “situation description methods”, “the relationship between capabilities and actions”, “unknown vulnerability detection”, “attack probability indicators”, and “multi-step attack models”. 
+Panel members were assigned to topics they had previous knowledge of and searched for literature within this topic that could match the search criterion. These searches typically started with searches in scholarly databases to identify research papers and internet searches to find “grey literature” (e.g. technical reports). Such searches were complemented by inspection of references used in papers considered relevant. The search process hardly can be described as structured. However, the range of competences and background among the panel members ensured that it covered a wide range of topics related to cyber security. A database of 36 papers had been identified and passed the inclusion criterion after the group screened the paper’s title and abstract. After review of the full text XX papers were found to meet the inclusion criterion. These XX can not be said to represent an all available papers related to prediction of adversarial cyber operations, but it is the group’s opinion that they are likely to indicate the state of research in this area. 
+
+
+
+\subsection{Information Extraction}
+The literature addressed the prediction problem from a number of different angles, and at different levels of abstraction. At first, an input-output-perspective attempted to broadly characterize the data the models used. The model of STIX [REF] was used for this purpose. However, the analysis soon showed that it was that most of the models used more or less the same data objects in STIX, namely: vulnerability-information, attack patterns, indicators, intrusion sets, and other observed data. In addition, it turned out to be non-trivial to classify the data used in a reliable manner, partly because of the different levels of abstraction used in the papers. Instead, the following information was extracted to characterize the models:
+\begin{enumerate}
+\item If a particular formalism was used or proposed.
+\item Data used as input for the prediction model.
+\item The data produced as output by the prediction model.
+\item The scalability of the solution or implementation. 
+To further characterize the models it was extracted how they handled the following issues:
+\item Adversaries attempting to tampering with/fooling the prediction method.
+\item The time it takes to make the prediction and timing issues.
+\item Availability of data needed for analysis or model construction.
+\item Assumptions concerning knowledge of system vulnerabilities and attacks.
+Furthermore, information was extracted to characterize the maturity of the research in terms by assessing:
+\item If the model had been implemented in prototype and what Technology Readiness Level the model was on.
+\item If the model’s its usefulness for was demonstrated, e.g. in a case study.
+\item Tests or other evaluations of accuracy of the prediction model.
+These nine information elements was extracted as quotes and descriptive summaries of descriptions provided in the reviewed 
+\end{enumerate}
+
+
+
 %%
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
