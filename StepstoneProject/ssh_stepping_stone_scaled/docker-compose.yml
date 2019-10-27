@@ -1,0 +1,114 @@
+version: '2'
+services:
+  relay_stepstone:
+    image: 'detlearsom/sshd'
+    #container_name: relay_stepstone
+    networks:
+      capture:
+        ipv4_address: $RELAY_IP
+    privileged: true
+    ports:
+      - "${IP_RANGE}08:22"
+    volumes:
+      - $PWD/SSH_folders/.relay_stepstone:/root/.ssh
+      - $PWD/scripts:/scripts
+    environment:
+      - SSH_ENABLE_ROOT=true
+
+  relay_endpoint:
+    image: 'detlearsom/sshd'
+    #container_name: relay_endpoint
+    networks:
+      capture:
+        ipv4_address: $ENDPOINT_IP
+    ports:
+      - "${IP_RANGE}09:22"
+    volumes:
+      - $PWD/SSH_folders/.relay_endpoint:/root/.ssh
+      - $PWD/dataToShare_server:/dataToShare 
+      - $PWD/scripts:/scripts_server
+    environment:
+      - SSH_ENABLE_ROOT=true
+
+  relay_startpoint:
+    image: 'detlearsom/sshd'
+    #container_name: relay_startpoint
+    volumes:
+      - $PWD/dataToShare_server:/dataToShare
+      - $PWD/SSH_folders/.relay_startpoint:/root/.ssh
+      - $PWD/scripts:/scripts:ro
+      - $PWD/receive:/receive
+    networks:
+      capture:
+        ipv4_address: $STARTPOINT_IP
+    ports:
+      - "${IP_RANGE}07:22"
+    privileged: true
+    environment:
+      - SSH_ENABLE_ROOT=true
+      - GATEWAY_PORTS=true
+    depends_on:
+      - relay_endpoint
+
+####################################################################################################################
+
+  netcat_send:
+    image: 'detlearsom/netcat'
+    #container_name: netcat_send
+    volumes:
+      - $PWD/scripts:/usr/share/scripts
+    network_mode: "service:relay_startpoint"
+    depends_on:
+      - relay_startpoint
+    command: sleep 10000
+
+  netcat_stepstone:
+    image: 'detlearsom/netcat'
+    #container_name: netcat_stepstone
+    volumes:
+      - $PWD/scripts:/usr/share/scripts
+    network_mode: "service:relay_stepstone"
+    depends_on:
+      - netcat_send
+    command: /usr/share/scripts/netcat_receive.sh localhost 18 $IP_RANGE
+
+  netcat_receive:
+    image: 'detlearsom/netcat'
+    #container_name: netcat_receive
+    volumes:
+      - $PWD/scripts:/usr/share/scripts
+    network_mode: "service:relay_endpoint"
+    depends_on:
+      - netcat_send
+    command: /usr/share/scripts/netcat_receive.sh localhost 16 $IP_RANGE
+
+####################################################################################################################
+####################################################################################################################
+
+  tcpdump_relay_stepstone:
+    image: 'detlearsom/tcpdump'
+    #container_name: tcpdump_relay_stepstone
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/${PROJECT_NAME}_relay_stepstone-${CAPTURETIME}-sc${SCENARIO}-$REPNUM.pcap"
+    volumes:
+      - '${DATADIR}:/data'
+    depends_on:
+      - dummy
+    network_mode: "service:relay_stepstone"
+
+####################################################################################################################
+####################################################################################################################
+
+  dummy:
+    image: 'ubuntu'
+    #container_name: dummy
+    depends_on:
+      - relay_startpoint
+
+networks:
+  capture:
+    driver: "bridge"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.${IP_RANGE}.238.0/24
+        gateway: 172.${IP_RANGE}.238.1
