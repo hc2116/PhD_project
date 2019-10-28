@@ -1,0 +1,50 @@
+Questions regarding NATO paper:
+
+How do get knowledge about what an attacker has already done? To base predictions on, for recommendation systems we usually have easily accessible information about past events.
+
+What kind of events, other than example about release of vulnerability are we talking about?
+
+How and where would such a system be deployed?
+
+Suggestions on future work is a bit vague and maybe a bit naive?
+
+Talk about unobservable attacks - what are observable attacks?
+
+
+
+--------------------------------------------------------------------------------------------------
+To Do --------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+
+Do my own literature survey, don't focus on their papers
+Look up STIX
+Talk to BT security people about data information/(STIX?) threat intelligence data
+Mention to Alex that David got in touch with a researcher from BT from Northern Ireland, David is sending the contact through, Karen Murphy, generating data
+Alex - security for AI for security
+
+
+--------------------------------------------------------------------------------------------------
+ACSAC rejection ----------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+
+- LSTMs have been used for anomaly detection and security event prediction before.
+	- Aggregated traffic time series is easier to model, more stable features, numerical features
+	- Tiresias introduced prediction of discrete security event sequences
+		- better for R2L and U2R detection
+		- assumption of pre-existing alphabet
+		- too large alphabets are expensive, require massive amounts of training data
+
+- our novel contribution
+	- present a model that uses discrete event prediction on network traffic to detect contextually anomalous events
+	- developed efficient generation of well-sized event alphabets from network connection
+	- novel LSTM architecture that relies on multiple smaller alphabets and learns from multiple machines simultaneously
+
+
+- split evaluation into R2L and U2R and other attacks
+- make section about evasion, look at Tiresias paper
+
+- show comparison plot of benign data for Markov chain, Automata, LSTM
+
+
+
+
