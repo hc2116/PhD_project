@@ -40,3 +40,22 @@ cyber risk and incident management
 unknown vulnerability detection
 
 cyber attack probability indicators
+
+multi-step attack models
+
+
+
+Estimate:
+
+Reviewing literature and creating summaries: 2-3 weeks
+
+Grouping, organisation, graphics, tables etc. : 4-5 days
+
+Creating detailed evaluation : 4 days
+
+Writing down the literature review : 1 week+
+
+Theme, introduction, conclusion: 5 days 
+
+
+
