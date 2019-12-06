@@ -1,0 +1,31 @@
+version: '2'
+services:
+  spider:
+    image: 'scrapy'
+    volumes:
+      - '$PWD/scrapy:/scrapy'
+    networks:
+      capture:
+        ipv4_address: "172.16.238.2"
+    ports:
+      - "3129:3128"
+    command: sleep 10000
+
+  tcpdump_spider:
+    image: 'detlearsom/tcpdump'
+    command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/${PROJECT_NAME}_spider-${CAPTURETIME}-sc${SCENARIO}-$REPNUM.pcap"
+    volumes:
+      - '$PWD/data:/data'
+    depends_on:
+      - spider
+    network_mode: "service:spider"
+
+
+networks:
+  capture:
+    driver: "bridge"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.238.0/24
+        gateway: 172.16.238.1
