@@ -1,0 +1,6 @@
+\contentsline {chapter}{\numberline {1}Short-term contextual model of network flows using LSTM networks}{2}
+\contentsline {chapter}{\numberline {2}Traffic Generation using Containerization for Machine Learning}{4}
+\contentsline {section}{\numberline {2.1}1. stint at BT - Stepping stone detection and connection correlation}{5}
+\contentsline {section}{\numberline {2.2}Modelling of connection establishment via LSTM encoders}{5}
+\contentsline {section}{\numberline {2.3}Problems with publishing in Network Anomaly Detection}{5}
+\contentsline {section}{\numberline {2.4}Future plans}{5}
