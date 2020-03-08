@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  7 MAR 2020 17:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  8 MAR 2020 18:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -296,68 +296,69 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 40.
  (./report.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 3.
+(Font)              <12> on input line 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 3.
+(Font)              <8> on input line 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 3.
+(Font)              <6> on input line 1.
 )
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
 
+Overfull \hbox (9.57443pt too wide) in paragraph at lines 50--50
+[]\OT1/cmr/bx/n/17.28 Problems with pub-lish-ing in Net-work Anomaly
+ []
+
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Chapter 1.
-[2
-
-]
-<images/LSTM_design_new2.jpg, id=12, 950.55125pt x 655.44875pt>
+<images/LSTM_design_new2.jpg, id=8, 950.55125pt x 655.44875pt>
 File: images/LSTM_design_new2.jpg Graphic file (type jpg)
 <use images/LSTM_design_new2.jpg>
-Package pdftex.def Info: images/LSTM_design_new2.jpg  used on input line 69.
+Package pdftex.def Info: images/LSTM_design_new2.jpg  used on input line 78.
 (pdftex.def)             Requested size: 298.75264pt x 206.00739pt.
- [3 <./images/LSTM_design_new2.jpg>]
-Chapter 2.
+ [2]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 85.
-<images/Dockernet.jpg, id=16, 887.315pt x 514.92375pt>
+(Font)              <5> on input line 94.
+<images/Dockernet.jpg, id=13, 887.315pt x 514.92375pt>
 File: images/Dockernet.jpg Graphic file (type jpg)
 <use images/Dockernet.jpg>
-Package pdftex.def Info: images/Dockernet.jpg  used on input line 89.
+Package pdftex.def Info: images/Dockernet.jpg  used on input line 98.
 (pdftex.def)             Requested size: 298.75264pt x 173.36676pt.
-[4
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 105.
 
- <./images/Dockernet.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 96.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 96.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
+ [3 <./images/LSTM_design_new2.jpg>] [4 <./images/Dockernet.jpg>]
+<images/Step_stones.png, id=24, 676.5275pt x 442.65375pt>
+File: images/Step_stones.png Graphic file (type png)
+<use images/Step_stones.png>
+Package pdftex.def Info: images/Step_stones.png  used on input line 131.
+(pdftex.def)             Requested size: 298.75264pt x 195.47745pt.
 
-Overfull \hbox (26.84438pt too wide) in paragraph at lines 114--114
+Overfull \hbox (26.84438pt too wide) in paragraph at lines 144--144
 []\OT1/cmr/bx/n/17.28 Modelling of con-nec-tion es-tab-lish-ment via LSTM
  []
 
+(./report.bbl
+Underfull \vbox (badness 3148) has occurred while \output is active []
 
-Overfull \hbox (9.57443pt too wide) in paragraph at lines 116--116
-[]\OT1/cmr/bx/n/17.28 Problems with pub-lish-ing in Net-work Anomaly
- []
-
-(./report.bbl [5]) [6
+ [5 <./images/Step_stones.png>] [6]) [7
 
 ] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 4511 strings out of 492982
- 68964 string characters out of 6134895
- 141910 words of memory out of 5000000
- 8012 multiletter control sequences out of 15000+600000
- 9761 words of font info for 34 fonts, out of 8000000 for 9000
+ 4517 strings out of 492982
+ 69096 string characters out of 6134895
+ 142957 words of memory out of 5000000
+ 8016 multiletter control sequences out of 15000+600000
+ 9454 words of font info for 33 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,8n,40p,988b,280s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,8n,40p,988b,278s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
@@ -365,10 +366,10 @@ usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (6 pages, 246456 bytes).
+Output written on report.pdf (7 pages, 278833 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
- 35 compressed objects within 1 object stream
+ 61 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

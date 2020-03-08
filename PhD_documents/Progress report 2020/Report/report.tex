@@ -10,11 +10,11 @@
 \usepackage{dirtytalk}
 
 \makeatletter
-\def\@makechapterhead#1{%
+\def\@makesectionhead#1{%
   \vspace*{50\p@}%
   {\parindent \z@ \raggedright \normalfont
     \interlinepenalty\@M
-    \Huge\bfseries  \thechapter.\quad #1\par\nobreak
+    \Huge\bfseries  \thesection.\quad #1\par\nobreak
     \vskip 40\p@
   }}
 \makeatother
@@ -47,8 +47,17 @@
 %\end{abstract}
 
 
+\section{Problems with publishing in Network Anomaly Detection}
 
-\chapter{Short-term contextual model of network flows using LSTM networks}
+The original scope of this PhD-project was to built contextual models that represent software behaviour primarily from network traffic and potentially other external data sources, for adaptive anomaly intrusion detection.  
+Over the course of the last year, it became clear that the successful publication of anomaly-based methods network intrusion detection methods is difficult today. This 
+
+This \textcolor{red}{...} was reflected during our unsuccessful attempts to publish \textcolor{red}{...} at the ACSAC and CODASPY conferences. Despite improving detection rates and false positive rates significantly on U2R and R2L on contemporary datasets, the main criticisms were a lack of novelty in terms of intrusion detection model and a general scepticism of real-world applicability. This is in line with conversations I had with senior researchers at the ACSAC conferences, who highlighted that anomaly-based methods have been applied to network traffic for over 15 years without convincing results. General advice were to identify very specific applications that have the potential to yield good results. A similar advice comes from
+\textcolor{red}{bring in Sommer and Paxson, who advise carfing out specific applications}
+
+
+
+\section{Short-term contextual model of network flows using LSTM networks}
 
 In the context of the overall research goal of this project, some exploratory work on contextual anomaly detection for network events was conducted before my PhD started by Marc Sabate, Gudmund Grov, Wei Chen, and David Aspinall. 
 This work uses a recurrent neural network to capture meaningful sequences of \textit{NetFlows} and reflect reccurring patterns in a model. For that, recorded NetFlows are grouped according to the generating host. Furthermore, to filter out sequences of flows that are unrelated to each other, a squence of flows that are close in time is grouped into what is called a \say{session} as an approximation of the true relation. Each session then serves as a training or test sequence for a behavioural model. Learned semantic behaviour is reflected through the capability of the model to predict traffic protocols and network ports of flows in a session from a smaller subset of flows, with more accurate predictions being rewarded in the training process. Sessions which deviate from previously observed behaviour are then predicted poorly by the model and flagged as potentially malicious.
@@ -76,7 +85,7 @@ Since the paper is now in under my responsibility, and due to all the efforts I 
 \textcolor{red}{difficulties}
 \cite{sommer_outside_2010}
 
-\chapter{Traffic Generation using Containerization for Machine Learning}
+\section{Traffic Generation using Containerization for Machine Learning}
 
 Building contextual models of network traffic means to build an understanding how different network interactions can be distinguished via their traffic trace. However, available network traffic datasets do not contain ground truth labels about the nature of computer interactions and often suffer from a lack of realism. To improve this and ensure that our models extract meaningful sets of sequences that represent these different interactions, we started developing a containerised traffic generation framework to generate traffic with ground truth labels. 
 
@@ -109,13 +118,31 @@ Due to very positive feedback at the workshop as well as encouragements and sugg
 
 \section{1. stint at BT - Stepping stone detection and connection correlation}
 
-As part of my CASE PhD scholarship, I spent six weeks with my industrial sponsor at BT Labs Adastral Park in August and September 2019. Before starting this stint, I met with my industrial supervisors to define a project to work on that is both related to my PhD and is a relevant problem for BT. During this meeting, we agreed that the problem of detecting stepping stones
+As part of my CASE PhD scholarship, I spent six weeks with my industrial sponsor at BT Labs Adastral Park in August and September 2019. Before starting this stint, I met with my industrial supervisors to define a project to work on that is both related to my PhD and is a relevant problem for BT. During this meeting, we agreed that the problem of detecting stepping stones was a suitable topic. 
+
+In a stepping stone scenario, an attacker launches an attack not from their own computer but from intermediary hosts within an enterprise network that were previously compromised, often using an interactive relay session. A common approach in the literature to detect stepping stones is to identify correlation between an two connections on a potential intermediary host \textcolor{red}{citations}. Attackers try to evade detection by inserting chaff packets and delays to make the connection appear uncorrelated.
+
+The biggest challenge for this problem is that there are no available datasets available that describe stepping stone behaviour. Due to the success of the implemented traffic generation framework, I started to implement several scenarios of interactive traffic relays using ssh-tunnels and netcat/netem for chaff and delay insertion. With this, I was able to generate significant amounts of traffic with a controllable amount of noise and delay to train and assess correlation models. 
+I furthermore implemented a state-of-the-art method for connection correlation \textcolor{red}{insert DeepCorr citation} that uses a deep convolutional neural network as a benchmark to compare a future model with. 
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{images/Step_stones.png}
+\caption{Implementation of ...}\label{stepstone}
+\end{figure}
+
+After finishing the stint at BT Labs, I continued to work on the traffic generation for a bit further before we had a call with Jake Hill, a security expert at BT. This call was meant to provide field knowledge to confirm and/or improve the data generation set-up. However, Jake stated that the problem of attackers launching attacks from intermediary hosts is after all not of great relevance for BT's operations. Instead, his notion of stepping stones described simple proxies relaying services (more on this in Section \textcolor{red}{reference}. In addition, further investigation suggests that the consensus in the literature is that connection correlation produces too many false positives and is not applicable in real-world scenarios. 
+
+With this information, I decided to scale this project down and produce a simple evaluation of existing connection correlation methods. Since the major contribution of this work so far is the large amount of detailed and varied data I can produce, this allows for the first time an independent assessment of existing methods. So far I have implemented and evaluated four different methods, and am in the process of finishing this project. I am currently producing a small paper from it, which I intend to publish at a smaller workshop or conference. 
+
+
+
 
 
 
 \section{Modelling of connection establishment via LSTM encoders}
 
-\section{Problems with publishing in Network Anomaly Detection}
 
 \section{Future plans}
 
