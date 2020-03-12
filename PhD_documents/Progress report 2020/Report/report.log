@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  8 MAR 2020 18:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  12 MAR 2020 16:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,20 +6,19 @@ entering extended mode
 (./report.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
-(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
-Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
-\c@chapter=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
@@ -41,9 +40,9 @@ Package ifvtex Info: VTeX not detected.
 (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count88
-\Gm@cntv=\count89
-\c@Gm@tempcnt=\count90
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
 \Gm@bindingoffset=\dimen103
 \Gm@wd@mp=\dimen104
 \Gm@odd@mp=\dimen105
@@ -96,49 +95,6 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 \Gin@req@height=\dimen111
 \Gin@req@width=\dimen112
 )
-(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-Package: pdfpages 2017/10/31 v0.5l Insert pages of external PDF documents (AM)
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count91
-\calc@Bcount=\count92
-\calc@Adimen=\dimen113
-\calc@Bdimen=\dimen114
-\calc@Askip=\skip43
-\calc@Bskip=\skip44
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count93
-\calc@Cskip=\skip45
-)
-(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
-Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/atbegshi.sty
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)))
-\AM@pagewidth=\dimen115
-\AM@pageheight=\dimen116
-
-(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
-File: pppdftex.def 2017/10/31 v0.5l Pdfpages driver for pdfTeX (AM)
-)
-\AM@pagebox=\box26
-\AM@global@opts=\toks16
-\AM@toc@title=\toks17
-\c@AM@survey=\count94
-\AM@templatesizebox=\box27
-)
 (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
 
@@ -148,46 +104,22 @@ Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen117
-\captionmargin@=\dimen118
-\captionwidth=\dimen119
-\caption@tempdima=\dimen120
-\caption@indent=\dimen121
-\caption@parindent=\dimen122
-\caption@hangindent=\dimen123
+\captionmargin=\dimen113
+\captionmargin@=\dimen114
+\captionwidth=\dimen115
+\caption@tempdima=\dimen116
+\caption@indent=\dimen117
+\caption@parindent=\dimen118
+\caption@hangindent=\dimen119
 )
-\c@ContinuedFloat=\count95
+\c@ContinuedFloat=\count90
 )
-\c@subfigure=\count96
-\c@subtable=\count97
+\c@subfigure=\count91
+\c@subtable=\count92
 )
-(/usr/share/texlive/texmf-dist/tex/latex/dirtytalk/dirtytalk.sty
-Package: dirtytalk 2010/11/21 A package making "quoting" easier
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-\c@dirtytalk@qdepth=\count98
-)
-\c@hypothesis=\count99
-\c@rquestion=\count100
-
-(./report.aux)
+\c@hypothesis=\count93
+\c@rquestion=\count94
+ (./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
@@ -202,7 +134,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
 LaTeX Font Info:    ... okay on input line 32.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
 LaTeX Font Info:    ... okay on input line 32.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -239,26 +170,50 @@ LaTeX Font Info:    ... okay on input line 32.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count101
-\scratchdimen=\dimen124
-\scratchbox=\box28
-\nofMPsegments=\count102
-\nofMParguments=\count103
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count104
-\MPscratchDim=\dimen125
-\MPnumerator=\count105
-\makeMPintoPDFobject=\count106
-\everyMPtoPDFconversion=\toks19
+\scratchcounter=\count95
+\scratchdimen=\dimen120
+\scratchbox=\box26
+\nofMPsegments=\count96
+\nofMParguments=\count97
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count98
+\MPscratchDim=\dimen121
+\MPnumerator=\count99
+\makeMPintoPDFobject=\count100
+\everyMPtoPDFconversion=\toks17
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-))
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -278,98 +233,92 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box29
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
-Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
-Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
-)
-Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
-)
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 40.
- (./report.toc
+
+(./report.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 1.
+(Font)              <12> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 1.
+(Font)              <8> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 1.
+(Font)              <6> on input line 2.
 )
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
+ [1
 
-Overfull \hbox (9.57443pt too wide) in paragraph at lines 50--50
-[]\OT1/cmr/bx/n/17.28 Problems with pub-lish-ing in Net-work Anomaly
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Overfull \hbox (17.14647pt too wide) in paragraph at lines 133--133
+[]\OT1/cmr/bx/n/14.4 Short-term con-tex-tual model of net-work flows us-ing LST
+M
  []
 
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<images/LSTM_design_new2.jpg, id=8, 950.55125pt x 655.44875pt>
+[3]
+<images/LSTM_design_new2.jpg, id=15, 950.55125pt x 655.44875pt>
 File: images/LSTM_design_new2.jpg Graphic file (type jpg)
 <use images/LSTM_design_new2.jpg>
-Package pdftex.def Info: images/LSTM_design_new2.jpg  used on input line 78.
+Package pdftex.def Info: images/LSTM_design_new2.jpg  used on input line 151.
 (pdftex.def)             Requested size: 298.75264pt x 206.00739pt.
- [2]
+ [4 <./images/LSTM_design_new2.jpg>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 94.
-<images/Dockernet.jpg, id=13, 887.315pt x 514.92375pt>
+(Font)              <5> on input line 169.
+<images/Dockernet.jpg, id=19, 887.315pt x 514.92375pt>
 File: images/Dockernet.jpg Graphic file (type jpg)
 <use images/Dockernet.jpg>
-Package pdftex.def Info: images/Dockernet.jpg  used on input line 98.
+Package pdftex.def Info: images/Dockernet.jpg  used on input line 173.
 (pdftex.def)             Requested size: 298.75264pt x 173.36676pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 105.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 180.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
- [3 <./images/LSTM_design_new2.jpg>] [4 <./images/Dockernet.jpg>]
-<images/Step_stones.png, id=24, 676.5275pt x 442.65375pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 180.
+ [5 <./images/Dockernet.jpg>]
+<images/Step_stones.png, id=27, 676.5275pt x 442.65375pt>
 File: images/Step_stones.png Graphic file (type png)
 <use images/Step_stones.png>
-Package pdftex.def Info: images/Step_stones.png  used on input line 131.
+Package pdftex.def Info: images/Step_stones.png  used on input line 206.
 (pdftex.def)             Requested size: 298.75264pt x 195.47745pt.
-
-Overfull \hbox (26.84438pt too wide) in paragraph at lines 144--144
-[]\OT1/cmr/bx/n/17.28 Modelling of con-nec-tion es-tab-lish-ment via LSTM
- []
-
-(./report.bbl
-Underfull \vbox (badness 3148) has occurred while \output is active []
-
- [5 <./images/Step_stones.png>] [6]) [7
-
-] (./report.aux) ) 
+ [6] [7 <./images/Step_stones.png>]
+<images/LSTM_Encoder.jpg, id=37, 657.45625pt x 491.8375pt>
+File: images/LSTM_Encoder.jpg Graphic file (type jpg)
+<use images/LSTM_Encoder.jpg>
+Package pdftex.def Info: images/LSTM_Encoder.jpg  used on input line 248.
+(pdftex.def)             Requested size: 213.39568pt x 159.63515pt.
+<images/MNIST.png, id=38, 315.1775pt x 244.915pt>
+File: images/MNIST.png Graphic file (type png)
+<use images/MNIST.png>
+Package pdftex.def Info: images/MNIST.png  used on input line 252.
+(pdftex.def)             Requested size: 145.10748pt x 112.75941pt.
+ [8 <./images/LSTM_Encoder.jpg> <./images/MNIST.png>] [9] [10] (./report.bbl [1
+1]) [12] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 4517 strings out of 492982
- 69096 string characters out of 6134895
- 142957 words of memory out of 5000000
- 8016 multiletter control sequences out of 15000+600000
- 9454 words of font info for 33 fonts, out of 8000000 for 9000
+ 3676 strings out of 492982
+ 55549 string characters out of 6134895
+ 126268 words of memory out of 5000000
+ 7204 multiletter control sequences out of 15000+600000
+ 9762 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,8n,40p,988b,278s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (7 pages, 278833 bytes).
+ 42i,8n,40p,988b,458s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on report.pdf (12 pages, 345356 bytes).
 PDF statistics:
- 61 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 79 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
