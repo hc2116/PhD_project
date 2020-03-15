@@ -121,7 +121,7 @@ What will a contextual model be able to prevent?
 The original scope of this PhD-project was to built contextual models that represent software behaviour primarily from network traffic and potentially other external data sources, for adaptive anomaly intrusion detection.  
 Over the course of the last year, it became clear that the successful publication of anomaly-based methods network intrusion detection methods is difficult today. This realisation was reflected during our unsuccessful attempts to publish the contextual network flow model described in Section \ref{Sec:Short-term} at the ACSAC and CODASPY conferences. Despite improving detection rates and false positive rates significantly on U2R and R2L on contemporary datasets, the main criticisms were a lack of novelty in terms of intrusion detection model and a general scepticism of real-world applicability. Prior attempts publication attempts by my supervisor and collaborating researchers yielded similar responses.
 
-This is in line with conversations I had with senior researchers at the ACSAC conferences, who highlighted that anomaly-based methods have been applied to network traffic for over 15 years without convincing results. There seems to be a general scepticism of the detection capabilities and improvements that general-purpose anomaly-detection methods can provide in real-world scenarios due to high false-positive rates, in particular for network traffic. In the context of the proposed project, this raises doubt if \textcolor{red}{research question 4} can be answered adequately for a PhD-project concerning general models of network behaviour. This also made us re-evaluate the scope of the project discussed in Section \ref{Sec:Encoder}.
+This is in line with conversations I had with senior researchers at the ACSAC conferences, who highlighted that anomaly-based methods have been applied to network traffic for over 15 years without convincing results. There seems to be a general scepticism of the detection capabilities and improvements that general-purpose anomaly-detection methods can provide in real-world scenarios due to high false-positive rates, in particular for network traffic. In the context of the proposed project, this raises doubt if research question 4 can be answered adequately for a PhD-project concerning general models of network behaviour. This also made us re-evaluate the scope of the project discussed in Section \ref{Sec:Encoder}.
 
 General advice were to identify very specific applications for which taylored machine learning methods have the potential to yield good results. This is in line with the findings of Sommer and Paxson \cite{sommer_outside_2010} that anomaly detection methods should be "keeping the scope narrow" and providing an answer for "why the particular choice promises to perform well in the intended setting, considering domain-specific properties". "If one cannot make a solid argument for the relation of the features to the attacks of interest, the resulting study risks founderingon serious flaws."
 
@@ -234,7 +234,7 @@ Learning precise contextual representations of this initial negotiation phase fr
 %\item The translation of contextual negotiation structures into different behaviour groups could be used to associate the corresponding flow with particular actions, i.e. to give the flow one or more labels. To be meaningful, the identified groups have to correspond to actual contextual behaviours and should be consistent along similar actions. 
 %Such a flow labelling could be very helpful for understanding contextual structures of flow traffic, and consequently for anomaly detection on a higher level, such as the described work by Chen et al.\cite{chen_more_2016}. I will describe this more in Section \ref{Curmet}.
 
-\item Malicious traffic that tries to disguise itself by using common ports can be identified as a \textcolor{red}{behavioural mismatch}.
+\item Malicious traffic that tries to disguise itself by using common ports can be identified as a mismatch.
 
 %\item As applications are updated, their particular traffic generation distribution $P(X)$ can also  gradually change, causing corresponding traffic to be potentially flagged as anomalous by current anomaly detection methods. A representational model could identify common contextual substructures between traffic instances and thus indicate that they originate from an updated application. More detail will be given in Section \ref{Robustness}.
 
@@ -339,18 +339,17 @@ Since I am not the lead on this project, I currently do not have a timescale for
 
 \subsection{Thesis submission}
 
-In the light of the problems described in Section \ref{Sec:Problems} that we encountered in the field of anomaly-based intrusion detection, I believe that the \textcolor{red}{theme} of this PhD-project has to be altered \textcolor{red}{a bit}. 
+In the light of the problems described in Section \ref{Sec:Problems} that we encountered in the field of anomaly-based intrusion detection, I believe that the scope of this PhD-project has to be altered slightly. As there will not be enough material directly concerning anomaly detection, the formulation of building anomaly-detection models describing software behaviour should be relaxed to general applications of ML (not just anomaly detection) in specific areas related to software defined behaviour. This could be based of the reoccurring theme of traffic (and potentially system/program logs) generation for machine learning. The generated traffic could then be verified as valuable by the implemented intrusion detection applications.
 
-reoccurring theme traffic generation for specific machine learning applications, and ML applications as examples
-
-All applications so far driven by traffic generation:
+All applications implemented so far are driven (in part) by our traffic generation:
 \begin{itemize}
-\item stepping stone
+\item stepping stone detection
 \item traffic relay
 \item LSTM encoder
-\item QUIC anomaly detection?
+\item QUIC anomaly detection
 \end{itemize}
 
+Overall, all these applications are concerned with software-defined fine-grained structures.
 
 
 %\addcontentsline{toc}{section}{Bibliography}
