@@ -63,6 +63,7 @@ T. He, L. Tong, 2007, Cornell, 93
 DBDC: detect-bounded-memory-chaff
 
 - chaff packet injection rate can be at least 1/(1+gamma*delta) of original traffic, gamma= parameter of Poisson distribution, delta is upper bound of packet delays
+- also "Detecting  encrypted  interactive  stepping-stone connections", 2006, 14 for bounded memory (very similar)
 
 ###### Detecting Stepping-Stone Intruders with Long Connection Chains
 
@@ -70,6 +71,16 @@ W. Ding, M. Hausknecht, Stephen Huang, 2009, Houston, 12
 
 - Estimated round trip time in long connection chains
 - applied to keystroke sessions, Time Diff=RTT + user delay time
+
+###### Stepping-Stone Detection Via Request-Response Traffic Analysis
+
+Stephen Huang, J Yang, 2007, Houston, 10
+
+- analyze  correlations between the frequencies  of  the  cumulative  numbers  of  packets  sent  in  incoming  and outgoing   connections
+- supplementing of Blum et al.
+- paper incomplete as experiments did not yield all the required results
+
+
 
 ###### Detecting Stepping-Stone Intrudersby Identifying Crossover Packets in SSH Connections
 
@@ -80,6 +91,72 @@ Improves above
 - distinguish and identify long chains from short ones
 - if connection chain is long, RTT may be longer than time between two keystrokes
 
+###### Detection of stepping stone attack under delay and chaff perturbations
+
+L. Zhang, 2006, Iowa state, 53
+
+The   authors   assumed   time synchronization   between   hosts,   bounded   delay,   chaff   perturbation independent ofthe original flow, and no packet loss
+
+should include this
+
+However, stepping-stone traffic  can  be detected if chaff is only inserted in the departing stream
+
+###### Performance of neural networks in stepping-stone intrusion detection
+
+H. Wu, Stephen Huang, 2008, Houston, 11
+
+- Uses packet variables to compute RTT
+- Only short interval required
+- Performance varies
+- extended in "Neural  networks-based  detection  of stepping-stone  intrusion" (29 citations, 2010)
+
+
+
+######  Efficient multi-dimensional flow correlation
+
+W. Strayer, 2007, BBN Technologies, 12
+
+Ten characteristics, PCA to select proper characteristics which contribute most variance for all flows and least variance for correlated flows, 
+
+advantages: track more than one flow, not scaling with N^2
+
+
+
+###### Efficient Detection of Delay-Constrained Relay Nodes
+
+Coskun, Memon, 2007, Polytechnic University NY, 9 
+
+- check IP addresses from and to a node (potential stepping stone) in sequential windows
+  - if two pairs occur together often, likely a stepping stone pair
+  - traffic needs to be sparse, with many empty windows, as well as a delay constraint
+
+
+
+###### Detecting Connection-Chains: A Data Mining Approach
+
+A. Almulhem, I. Traore, 2008, U. of Victoria, Canada, 9
+
+- association rule mining between inbound and outbound packets
+- claim to achieve TPR of 100% and FPR of 0%
+- not affected by chaff and delay
+
+
+
+###### Improving   Stepping-Stone   Detection   Algorithms   using   Anomaly Detection   Techniques
+
+Kampasi, Y. Zhang, 2007, Houston, 11
+
+Anomaly engine for:
+
+- response-time method that detects jitter anomalies, 
+- edit-distance method to detect chaff 
+- causality method to detect chaff
+
+###### Detecting Chaff Perturbation on Stepping-Stone Connection
+
+Stephen Huang, Y. Kuo, 2011, Houston, 6
+
+Anomaly-based, complements correlation-based techniques
 
 
 #### Watermarking
