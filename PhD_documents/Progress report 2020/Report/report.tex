@@ -31,7 +31,8 @@
 \let\endtitlepage\relax
 \begin{document}
 
-\title{\LARGE {\bf Progress Report: Henry Clausen}\\
+\title{\LARGE {\bf Semantic Modelling of Network Traffic for Anomaly Detection}\\
+PhD 2\textsuperscript{nd} Year Progress Report
  \vspace*{-5mm}
 }
 \author{Henry Clausen}
@@ -60,7 +61,7 @@ This PhD-project was outlined to use the idea of semantic software models and ap
 
 \end{enumerate}
 
-These were formulating in last years proposal into the following \textcolor{red}{projects}:
+These were formulating in last years proposal into the following sub-projects:
 
 \begin{enumerate}
 \item Modelling of connection establishment via LSTM encoders
@@ -75,12 +76,13 @@ These were formulating in last years proposal into the following \textcolor{red}
 Furthermore, the following (summarised) research questions were defined for each of these goals:
 
 \begin{rquestion}\ \\ 
-How well-structured is the space of contextual behaviours observed in the traffic of a machine or a network structured? How much does noise or input variation blur the observable contextual differences between clearly distinct actions?
+How well-structured is the space of contextual behaviours observed in the traffic of a machine or a network? How much does noise or input variation blur the observable contextual differences between clearly distinct actions?
 
 %\begin{enumerate}
 %\item How can we scientifically quantify closeness between individual actions, and does it translate into the similarity of corresponding traffic structures? 
 %\end{enumerate}
 \end{rquestion}
+
 
 
 \begin{rquestion}\ \\
@@ -93,8 +95,6 @@ To what degree can contextual structure in network traffic be captured in a mode
 %\item How can a model adapt to changes of normal contextual structures?
 %\end{enumerate}
 \end{rquestion}
-
-
 
 \begin{rquestion}\ \\
 What is a meaningful representation of traffic structures? What requirements must a labelled traffic generation framework fulfill to provide realistic data?
@@ -115,20 +115,42 @@ What will a contextual model be able to prevent?
 \end{rquestion}
 
 
-
-\subsection{Problems with publishing in Network Anomaly Detection and ACSAC conference}\label{Sec:Problems}
-
-The original scope of this PhD-project was to built contextual models that represent software behaviour primarily from network traffic and potentially other external data sources, for adaptive anomaly intrusion detection.  
-Over the course of the last year, it became clear that the successful publication of anomaly-based methods network intrusion detection methods is difficult today. This realisation was reflected during our unsuccessful attempts to publish the contextual network flow model described in Section \ref{Sec:Short-term} at the ACSAC and CODASPY conferences. Despite improving detection rates and false positive rates significantly on U2R and R2L on contemporary datasets, the main criticisms were a lack of novelty in terms of intrusion detection model and a general scepticism of real-world applicability. Prior attempts publication attempts by my supervisor and collaborating researchers yielded similar responses.
-
-This is in line with conversations I had with senior researchers at the ACSAC conferences, who highlighted that anomaly-based methods have been applied to network traffic for over 15 years without convincing results. There seems to be a general scepticism of the detection capabilities and improvements that general-purpose anomaly-detection methods can provide in real-world scenarios due to high false-positive rates, in particular for network traffic. In the context of the proposed project, this raises doubt if research question 4 can be answered adequately for a PhD-project concerning general models of network behaviour. This also made us re-evaluate the scope of the project discussed in Section \ref{Sec:Encoder}.
-
-General advice were to identify very specific applications for which taylored machine learning methods have the potential to yield good results. This is in line with the findings of Sommer and Paxson \cite{sommer_outside_2010} that anomaly detection methods should be "keeping the scope narrow" and providing an answer for "why the particular choice promises to perform well in the intended setting, considering domain-specific properties". "If one cannot make a solid argument for the relation of the features to the attacks of interest, the resulting study risks founderingon serious flaws."
+There has been substantial progress on research questions 1 and 3, which I outline below. Research question 2 has been answered partly, with research question 4 still to be addressed.  
 
 
 
+\section{Research progress in the last year}
+  
+\subsection{Traffic Generation using Containerization for Machine Learning}
 
-\section{Progress in the last year}
+Building contextual models of network traffic means to build an understanding how different network interactions can be distinguished via their traffic trace. However, available network traffic datasets do not contain ground truth labels about the nature of computer interactions and often suffer from a lack of realism. To improve this and ensure that our models extract meaningful sets of sequences that represent these different interactions, we started developing a containerised traffic generation framework to generate traffic with ground truth labels. 
+
+%Network traffic datasets are already hard to obtain due to privacy concerns. However, as  the correspondence between individual network traffic events and their particular purpose is virtually never recorded on a computer, very few datasets contain ground truth about the captured events. For that reason, a particular aspect of this project is to generate useful ground truth data with appropriate content myself.
+
+This framework, called \textit{DetGen}, generates controlled and isolated network traffic from a variety of applications and tasks. For this, a virtual network was created using the virtualisation program \textit{Docker}. In this network, two or more parties can communicate through containers,  which are sandboxes containing programs inside a minimal virtualised operating system. The benefit of this design is that individual containers can only communicate with each other via the virtualised network while the host is in complete control of the parallel execution of tasks in multiple containers. To capture the traffic, every container in the network was complemented with a \textit{tcpdump}\footnote{A common packet capture utility} container hooked onto the network interface, see Fig. \ref{docker}. The captured traffic can then be labelled according to the particular scenario it was generated by. We implemented a variety of network service  scenarios to capture a diverse set of network traffic.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{images/Dockernet.jpg}
+\caption{Visualisation of the virtual network in Docker}\label{docker}
+\end{figure}
+
+
+We emphasised the following particular strengths in the DetGen framework, which makes the generated data particularly suitable for ML-applications:
+\begin{itemize}
+\item traffic variation through a diversity of generation scenarios as well as transmission disturbances,
+\item ground truth labels through containerised separation of generation scenarios,
+\item scalability of the amount of generated traffic,
+\item and modularity of the framework to easily extend and update the set of scenarios.
+\end{itemize}
+
+
+
+This work was started in summer 2018 by me and Nikola Pavlov (an LFCS summer intern), and continued in summer 2019 by me and Robert Flood (an LFCS MSc student). My responsibilities lied in overall design of the framework as well as the requirements on the generation features, testing and extending individual scenarios as well as implemention, and the design and conduction of validation experiments. 
+
+In autumn of 2019, Robert Flood and I described DetGen in a paper of which I am first author, which was submitted and accepted at the ACSAC DYNAMICS workshop 2019, and will appear in the corresponding proceedings this March. 
+
+Due to very positive feedback at the workshop as well as encouragements and suggestions to extend DetGen, we are working further on this project, which is described in Section \ref{Sec:dockerext}.
 
 \subsection{Short-term contextual model of network flows using LSTM networks}\label{Sec:Short-term}
 
@@ -141,88 +163,65 @@ In particular, I made the following major changes:
 \begin{enumerate}
 \item I specified the scope of the model to the detection of U2R and R2L attacks, to which it is more suited than high volume attacks. I also exchanged the evaluation datasets to mutiple ones that are more suitable for this task and more realistic in nature.
 \item Originally, the model only incorporated the protocol and the port for each flow. I extended this to the direction (from or to host) as well as the size of each flow, which improved detection rates especially for brute-force attacks and sql injections. For this, I came up with an efficient way to process these additional inputs without significant increase of model size.
-\item Similarly, the original model was a standard recurrent neural network with one layer. I extended this to a bidirectional LSTM network with multiple layers, which required careful parameter calibration and further boosted detection rates.
+\item Similarly, the original model was a standard recurrent neural network with one layer. I extended this to a bidirectional LSTM network with multiple layers, which required careful parameter calibration and further boosted detection rates. Depicted in Fig. \ref{fig:LSTM} is a comparison between the original model and my extended model.
 \item The detection method was changed from an overall host classification to a session classification using a scoring threshold, which is more realistic in a real-world deployment due to the high imbalance between benign and malicious traffic.
-\item I carfed out the novelty and contribution of this work more, and implemented three comparision benchmark models to highlight the benefit of our model. I also highlighted the differences between our work and recent applications of LSTMs to intrusion detection.
+\item I replaced the CTU-14-dataset with the more suitable datasets CICIDS-17 and UGR-16, and identified suitable data traces for modelling and analysis. 
+\item I carved out the novelty and contribution of this work more, and implemented three comparision benchmark models to highlight the benefit of our model. I also highlighted the differences between our work and recent applications of LSTMs to intrusion detection.
 \end{enumerate}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{images/LSTM_design_new2.jpg}
-\caption{Architecture of the LSTM network for modelling sequences of network flows.}
+
+\includegraphics[width=0.49\textwidth]{images/rnn_FSA.png}
+\includegraphics[width=0.49\textwidth]{images/LSTM_design_bi2.jpg}
+\caption{Architectures of the initial model (left) and the extended
+LSTM network I created (right) for modelling sequences of network flows.}
 \label{fig:LSTM}
 \end{figure}
 
-Since the paper is now in under my responsibility, and due to all the efforts I put into its improvement, we agreed that I would be the first author of this work in the event of publication. Unfortunately, due to the difficulties describes in Section \ref{Sec:Problems}, we were so far unable to get this work accepted at a suitable venue. We first submitted the manuscript to the ACSAC conference, where the general consensus was that the application of LSTM networks for network anomaly detection is not novel enough, and that there is not enough connection between the used methodology and the detected attacks.
+The developed model achieves significantly better results than the implemented benchmark models, with 6 out of 7 attacks being detected reliably and an overall AUC (area under ROC-curve) improvement of more than 100\% to the next best model.
+
+Since the paper is now in under my responsibility, and due to all the efforts I put into its improvement, we agreed that I would be the first author of this work in the event of publication. Unfortunately, due to the challenges described in Section \ref{Sec:Problems}, we were so far unable to get this work accepted at a suitable venue. We first submitted the manuscript to the ACSAC conference, where the general consensus was that the application of LSTM networks for network anomaly detection is not novel enough, and that there is not enough connection between the used methodology and the detected attacks.
 After efforts to improve on these issues, we attempted a revised manuscript to the CODASPY conference. Again, the main criticism here was novelty and scope of the methodology, and scepticism about the translation of results to real-world application. After more thorough revisions, highlighting of the papers novelty as well as the addition of additional modern baseline models, we have submitted a new manuscript to the DIMVA 2020 conference as a final attempt. 
 
 Due to these difficulties, I spent a lot more time with this project than I originally intended, in total about 6.5 months. We are awaiting the response of the reviewers at the DIMVA 2020 conference, but do not intend to further pursue any substantial flow-based models.
 
+\subsubsection{Datasets and data wrangling} 
+ 
+A vital part of this project is the quality and understanding of available datasets. I spent a considerable amount of time, both for this sub-project and in general, gathering different datasets, studying information describing them, and exploring their content to prepare suitable data for each sub-project.
 
 
-\subsection{Traffic Generation using Containerization for Machine Learning}
+\subsection{Stint at BT - Stepping stone detection}\label{Sec:BTstint}
 
-Building contextual models of network traffic means to build an understanding how different network interactions can be distinguished via their traffic trace. However, available network traffic datasets do not contain ground truth labels about the nature of computer interactions and often suffer from a lack of realism. To improve this and ensure that our models extract meaningful sets of sequences that represent these different interactions, we started developing a containerised traffic generation framework to generate traffic with ground truth labels. 
+%As part of my CASE PhD scholarship, I spent six weeks with my industrial sponsor at BT Labs Adastral Park in August and September 2019. Before starting this stint, I met with my industrial supervisors to define a project to work on that is both related to my PhD and is a relevant problem for BT. During this meeting, we agreed that the problem of detecting stepping stones was a suitable topic. 
 
-%Network traffic datasets are already hard to obtain due to privacy concerns. However, as  the correspondence between individual network traffic events and their particular purpose is virtually never recorded on a computer, very few datasets contain ground truth about the captured events. For that reason, a particular aspect of this project is to generate useful ground truth data with appropriate content myself.
+In a stepping stone scenario, an attacker launches an attack not from their own computer but from intermediary hosts within an enterprise network that were previously compromised, often using an interactive relay session. A common approach in the literature to detect stepping stones is to identify correlation between two connections on a potential intermediary host. Attackers try to evade detection by inserting chaff packets and delays to make the connection appear uncorrelated. Before starting this 6-week stint, I met with my industrial supervisors where we agreed that the problem of detecting stepping stones is of relevance for them and therefore a suitable topic for my time at BT Labs
 
-This framework generates controlled and isolated network traffic from a variety of applications and tasks. For this, a virtual network was created using the virtualisation program \textit{Docker}. In this network, two or more parties can communicate through containers,  which are sandboxes containing programs inside a minimal virtualised operating system. The benefit of this design is that individual containers can only communicate with each other via the virtualised network while the host is in complete control of the parallel execution of tasks in multiple containers. To capture the traffic, every container in the network was complemented with a \textit{tcpdump}\footnote{A common packet capture utility} container hooked onto the network interface. The captured traffic can then be labelled according to the particular scenario it was generated by. We implemented a variety of network service  scenarios to capture a diverse set of network traffic.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{images/Dockernet.jpg}
-\caption{Visualisation of the virtual network in Docker}\label{docker}
-\end{figure}
-
-
-We emphasised the following particular strengths in our framework, which makes the generated data particularly suitable for ML-applications:
-\begin{itemize}
-\item traffic variation through a diversity of generation scenarios as well as transmission disturbances,
-\item ground truth labels through containerised separation of generation scenarios,
-\item scalability of the amount of generated traffic,
-\item and modularity of the framework to easily extend and update the set of scenarios.
-\end{itemize}
-
-
-
-This work was started in summer 2018 by me and Nikola Pavlov\footnote{an LFCS summer intern}, and continued in summer 2019 by me and Robert Flood\footnote{an LFCS MSc student}. My responsibilities lied in overall design of the framework as well as the requirements on the generation features, testing and extending individual scenarios as well as implemention, and the design and conduction of validation experiments. 
-
-In autumn of 2019, Robert Flood and I described the framework in a paper of which I am first author, which was submitted and accepted at the ACSAC DYNAMICS workshop 2019, and will appear in the corresponding proceedings this March. 
-
-Due to very positive feedback at the workshop as well as encouragements and suggestions to extend the framework, we are working further on this project, which is described in Section \ref{Sec:dockerext}.
-
-\subsection{Stint at BT - Stepping stone detection and connection correlation}\label{Sec:BTstint}
-
-As part of my CASE PhD scholarship, I spent six weeks with my industrial sponsor at BT Labs Adastral Park in August and September 2019. Before starting this stint, I met with my industrial supervisors to define a project to work on that is both related to my PhD and is a relevant problem for BT. During this meeting, we agreed that the problem of detecting stepping stones was a suitable topic. 
-
-In a stepping stone scenario, an attacker launches an attack not from their own computer but from intermediary hosts within an enterprise network that were previously compromised, often using an interactive relay session. A common approach in the literature to detect stepping stones is to identify correlation between an two connections on a potential intermediary host. Attackers try to evade detection by inserting chaff packets and delays to make the connection appear uncorrelated.
-
-The biggest challenge for this problem is that there are no available datasets available that describe stepping stone behaviour. Due to the success of the implemented traffic generation framework, I started to implement several scenarios of interactive traffic relays using ssh-tunnels and netcat/netem for chaff and delay insertion. With this, I was able to generate significant amounts of traffic with a controllable amount of noise and delay to train and assess correlation models. 
-I furthermore implemented a state-of-the-art method for connection correlation \cite{nasr2018deepcorr} that uses a deep convolutional neural network as a benchmark to compare a future model with. 
+The biggest challenge for this problem is that there are no available datasets available that describe stepping stone behaviour. Due to the success of the  DetGen framework, I started to implement several scenarios of interactive traffic relays using ssh-tunnels and netcat/netem for chaff and delay insertion, depicted in Fig. \ref{stepstone}. With this, I was able to generate significant amounts of traffic with a controllable amount of noise and delay to train and assess correlation models. 
+I furthermore implemented a state-of-the-art method for connection correlation \cite{nasr2018deepcorr} that uses a deep convolutional neural network as a benchmark to compare a future model with. The model was able to identify relayed traffic when the connections were not subject to the mentioned evasion tactics, but degraded significantly when chaff and delays were added, which makes it unsuitable for real-world deployment and does not improve the current state-of-the-art. 
 
 
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{images/Step_stones.png}
-\caption{Implementation of ...}\label{stepstone}
+\caption{Implementation of the stepping stone scenario for traffic generation.}\label{stepstone}
 \end{figure}
 
-After finishing the stint at BT Labs, I continued to work on the traffic generation for a bit further before we had a call with Jake Hill, a security expert at BT. This call was meant to provide field knowledge to confirm and/or improve the data generation set-up. However, Jake stated that the problem of attackers launching attacks from intermediary hosts is after all not of great relevance for BT's operations. Instead, his notion of stepping stones described simple proxies relaying services (more on this in Section \ref{Sec:Relay}). In addition, further investigation suggests that the consensus in the literature is that connection correlation produces too many false positives and is not applicable in real-world scenarios. 
+After more consultation with a security expert, the scope of this project has been altered, which I describe in Section \ref{Bla}
 
-\subsubsection{Scope of the project for publication}
-
-With this information, I decided to scale this project down and produce a simple evaluation of existing connection correlation methods. Since the major contribution of this work so far is the large amount of detailed and varied data I can produce, this allows for the first time an independent assessment of existing methods. So far I have implemented and evaluated four different methods, and am in the process of finishing this project. I am currently producing a small paper from it, which I intend to publish at a smaller workshop or conference. 
+%After finishing the stint at BT Labs, I continued to work on the traffic generation for a bit further before we had a call with Jake Hill, a security expert at BT. This call was meant to provide field knowledge to confirm and/or improve the data generation set-up. However, Jake stated that the problem of attackers launching attacks from intermediary hosts is after all not of great relevance for BT's operations. Instead, his notion of stepping stones described simple proxies relaying services (more on this in Section \ref{Sec:Relay}). In addition, further investigation suggests that the consensus in the literature is that connection correlation produces too many false positives and is not applicable in real-world scenarios. 
 
 
 
 
 
 
-\subsection{Modelling of connection establishment via LSTM encoders}\label{Sec:Encoder}
+
+\subsection{Modelling of connection setup via LSTM encoders}\label{Sec:Encoder}
 
 The distinct contextual behaviour of an applications manifests itself most clearly in the first few packets exchanged in a connection. This is the stage in a connection during which a specific client or server request is transmitted, encryption keys are exchanged, users authenticate themselves with passwords, ports for successive connections are defined, etc. This distinction goes far beyond individual traffic protocols, as even a single application usually can exert different actions which translate to different contextual behaviours in this initial negotiation phase. 
 
-The significance of the initial negitiation phase is bolstered by two publications on the area of traffic classification that share the same conclusion and train clusters and classifiers on the metadata of the first five to ten packets to distinguish different applications \cite{bernaille2006traffic,crotti2007traffic}.
+The significance of the initial negotiation phase is bolstered by two publications on the area of traffic classification that share the same conclusion and train clusters and classifiers on the metadata of the first five to ten packets to distinguish different applications \cite{bernaille2006traffic,crotti2007traffic}.
 
 Learning precise contextual representations of this initial negotiation phase from applications running on a computer has several main benefits for this project: 
 
@@ -240,7 +239,7 @@ Learning precise contextual representations of this initial negotiation phase fr
 
 \end{itemize}
 
-In order to generate accurate representations of negotiation phases, I have implemented an LSTM-autoencoder model that can simultaneously work as an anomaly detection model as well as an embedding generator for sequence clustering. I have tested this model on initial test-datasets, on which it achieves excellent results while being able to spot anomalies accurately. I have also added a simple k-nearest neighbour clustering algorithm, however its performance will have to be evaluated on a larger dataset. 
+In order to generate accurate representations of negotiation phases, I have implemented an LSTM-autoencoder model that can simultaneously work as an anomaly detection model as well as an embedding generator for sequence clustering, see Fig. \ref{LSTM2}. I have tested this model on initial test-datasets, on which it achieves excellent results while being able to spot artificial anomalies accurately. I have also added a simple k-nearest neighbour clustering algorithm, however its performance as well as the ability to identify anomalies related to malicious activity will have to be evaluated on the larger CICIDS-17 dataset.  
 
 \begin{figure}\label{LSTM_Enc}
 \centering
@@ -255,17 +254,100 @@ In order to generate accurate representations of negotiation phases, I have impl
 \caption{Visualisation of the design of an LSTM Autoencoder (a), taken from https://machinelearningmastery.com/lstm-autoencoders/, and the embedding of different types of handwritten digits by an autoencoder.}
 \end{figure}
 
-\subsection{Scope of the project for publication}
+\subsubsection{Scope of the project for publication}
 
 Due to the difficulties described in Section \ref{Sec:Problems} of publishing anomaly-based methods in network intrusion detection, we are currently rethinking the scope this project should take for publication. One idea is to pitch it simply as a traffic classification and clustering method, since the evaluation and applicability demonstration is more straightforward.
 
 
+
+\section{Developments in related work}
+
+Last year, I prepared an extensive literature review on network intrusion and general anomaly-based intrusion detection methods as well as datasets and data sources. Here, I will outline some recent developments in the literature related to this project.
+
+\subsubsection{Network intrusion detection}
+
+%Contextually closest to our work might be the BASTA system by Pellegrino et al. \cite{Pellegrino2017}. In their approach, a timed automata of malware behaviour is learned and used to detect malicious behaviour. Their results indicate that behavioural models of both benign and malicious patterns show promise in detecting new malware. However, their approach learns behaviour from malicious traffic and is thus not robust to unknown attacks.
+
+One of the most significant developments recently is the increasing adoption of artificial neural networks to build intrusion detection classifiers or anomaly-based models. LSTM-based models and 
+
+Notable work includes Tiresias \cite{shen2018tiresias}, an LSTM network for security event forecasting with tremendous accuracy. The authors use one-step forecasting of symbolic security event sequences to predict future steps of an attack in a noisy environment. 
+
+Outside of network traffic, Du et al. \cite{du2017deeplog} proposed DeepLog, an LSTM network to learn a system's log patterns (e.g., log key patterns and parameter values) from normal execution. The authors present a novel log parser to create a sequence of symbolic log keys, which is then also modelled using one-step forecasting.
+The authors achieve good detection results in regulated environments such as Hadoop with limited variety of events (e.g., 29 events in Hadoop).
+
+%Common approaches to anomaly-based network intrusion detection attempt to characterise networks with suitable aggregate values such as traffic volume, entropy of destination ports~\cite{Lakhina2005}, and statistical variables on flows~\cite{Gu2008}, or via automatic feature engineering \cite{cordero2016analyzing}. Models of normal or abnormal behaviour can be trained by exploring patterns between these features~\cite{Gu2007,Wurzinger2009}. Detection is usually by a threshold function on the deviation from, or the similarity to, these trained models. 
+
+Some anomaly-based methods look at the anomaly of individual events, mostly isolated flows or packets. These approaches are often based on classification or  clustering algorithms \cite{lin2015cann,javaid2016deep}. Other approaches motivate statistical methods to identify anomalous events in network traffic \cite{mahoney2002learning}. %Unlike approaches on aggregated traffic, an event-based approach is independent of the traffic volume and therefore more suitable to identify low volume activities, such as data exfiltration, R2L/U2R attacks, or C\&C communication. 
+%However, many event-based approaches are tested on older datasets no longer considered relevant ~\cite{garcia_empirical_2014}. Nisioti et al. \cite{nisioti2018intrusion} conclude that data exfiltration, R2L, and U2R attacks are not yet reliably detected by anomaly-based methods. 
+
+%Very few approaches try to model temporal dependencies of unaggregated events, and those that do are usually targeted towards very specific misbehaviours \cite{bodenham_adaptive_2014,noble_real-time_2018,zhang2000detecting}. 
+
+
+\subsection{Recurrent Neural Network Applications}
+
+%A recurrent neural network (RNN) is a directed chain of regular feedforward network, with each individual network cell taking a vector $x_k$ of the input sequence $\{x_1,\dots,x_n\}$ as input. The RNN is able to retain information about the state of a sequence by also passing a value of the internal layer as additional input to the next network cell in the chain. LSTM (long short-term memory) and GRU (gated recurrent units) networks improve several shortcomings of RNNs such as the vanishing gradient problem, and their performance is generally thought to be superior.
+
+The application of recurrent neural networks to cyber security %and in particular intrusion detection 
+has risen in popularity recently. 
+Notable work includes Tiresias \cite{shen2018tiresias}, an LSTM network for security event forecasting with tremendous accuracy. The authors use one-step forecasting of symbolic security event sequences to predict future steps of an attack in a noisy environment. 
+%%Both the scope and the methodology of Tiresias have significant differences to our approach.
+The aim of Tiresias is not intrusion or anomaly detection, but attack forecasting, and the evaluation is therefore done solely in terms of event prediction accuracy of individual events. 
+Methodologically, the authors rely on a pre-existing event vocabulary provided through the data format.% and predict a univariate output probability. \textcolor{red}{verify this}
+
+
+To date, we count eleven published applications of recurrent neural networks (RNNs) to network traffic for intrusion detection. The majority of these approaches  relies on labelled attack data for classification.%, and therefore does not offer the benefits of anomaly detection. 
+A prominent example of this comes from Kim et al. \cite{kim2016long}, who classify flow sequences based on 41 numeric input features.
+Anomaly-based approaches usually rely on iterative one-step ahead forecasts within sequences, with the forecasting error acting as the anomaly indicator. This is for instance done by Bontemps et~al.~\cite{Bontemps2016}, who use sequences of aggregated traffic features as input. Input features in these approaches are mostly numerical, with only \cite{radford2018network} creating event vocabularies from flow protocols and sizes.
+Little exploration of the usage of stacked recurrent layers or input embeddings has been done.
+%However, all RNN-based approaches share several common evaluation pitfalls, which make it impossible to assess their suitability for U2R and R2L detection in real-world applications. We describe these problems in Section \ref{Sec:Evalmal}.
+% in each of the presented approaches , which we discuss in Section \textcolor{red}{xxxx}. This makes it difficult to assess ....
+
+%A related application to ours was presented by Bontemps et~al.~\cite{Bontemps2016}, which uses LSTM model to detect group anomalies in network traffic via sequential modelling. The model uses three numerical input parameters from aggregated traffic for one-step forecasting, which is then compared to the actual values. Evaluation is done on the outdated KDD-99 dataset. The model construction and anomaly scoring differs substantially from ours as the raw input can be fed directly to the model input layer. Similarly, the detection scope focuses on long-term group anomalies with larger volume rather than contextual anomalies.
+
+Outside of network traffic, Du et al. \cite{du2017deeplog} proposed DeepLog, an LSTM network to learn a system's log patterns (e.g., log key patterns and parameter values) from normal execution. The authors present a novel log parser to create a sequence of symbolic log keys, which is then also modelled using one-step forecasting. %In contrast to our model, DeepLog incorporates additional numerical values in a case-by-case manner, and creates no sequential dependencies between the keys and the values as their anomaly is assessed independently of each other. 
+The authors achieve good detection results in regulated environments such as Hadoop with limited variety of events (e.g., 29 events in Hadoop).%, where they trained on small fractions of normal traffic. Network traffic in contrast is significantly more heterogenous and multi-step attacks occur in noisy environments,  which makes predictions in this setup a far harder problem.
+
+
+%as the model is not suitable for attack discovery. Our approach in contrast does not emphasise the accuracy of individual event predictions, but uses the joint predicted likelihoods to examine the contextual anomaly of sequence and whether a separation in the anomaly score distributions of benign and malicious events exists. Methodologically, the authors rely on a pre-existing event vocabulary provided through the data format and predict a univariate output probability from a univariate input vocabulary using a shallow LSTM architecure. Our work discusses efficient vocabulary construction for multiple variables, and presents an extended LSTM architecture that produces multivariate output probability from multiple input vocabularies via embedding layers.
+
+
+To evaluate their ability to model the behaviour of a network and to identify malicious activity and network intrusions, new methods have to be tested using existing datasets of network traffic. This network should ideally contain realistic and representative benign network traffic as well as a variety of different network intrusions. However, as network traffic contains a vast amount of information about a network and its users, it is notoriously difficult to release a comprehensive dataset without infringing the privacy rights of the network users \cite{sperotto2009labeled}. Furthermore, the identification of malicious traffic in network traces is not straightforward and often requires a significant amount of manual labelling work. Introducing malicious software into an enterprise network would be impossible for ethical and security reasons. For that reason, only about four structured datasets for network intrusion containing real-world traffic and attacks are available openly. The most recent and notable real-world datasets have been released from the Los Alamos National Laboratory (LANL) in 2015 and 2017 \cite{akent-2015-enterprise-data, turcotte17}, and the University of Granada (UGR) in 2016 \cite{macia2018ugr}. Both datasets contain network flow traffic data from a large number of hosts collected over multiple months, giving an accurate representation of medium- to large-scale structures in benign traffic. However, the amount of attack data is small and insufficient for accurate detection rate estimation. Furthermore, packet-level data is not available for both datasets. Other real-world datasets, such as CAIDA 2016 \cite{walsworth2015caida} or MAWI 2000 \cite{sony2000traffic}, provide packet headers, but are unstructured and contain no labeled attack data at all.
+
+To improve the lack of attack traffic in NIDS datasets, several artificially created datasets have been proposed. For this, a testbed of virtual machines is usually hosted in an enclosed environment to prevent any malicious code from spreading to other machines on other networks. To generate attack traffic, these machines are then subject to a selection of attack carried out by other machines in the environment. Benign traffic is generated using commercial traffic generators such as the \emph{IXIA PerfectStorm tool}, or by scripting a selection of tasks for each machine. Synthetic datasets cover a smaller timeframe and contain traffic from a small number of hosts. Notable examples are the CIC-IDS 2017 dataset from the Canadian Institute for Cybersecurity \cite{sharafaldin2018towards}, %the CTU-2013 dataset from the \emph{Stratosphere Laboratory} in Prague \cite{noauthor_ctu-13_nodate},
+and the UNSW-NB 2015 dataset from the University of New South Wales \cite{moustafa_unsw-nb15:_2015}. Both datasets contain traffic from a variety of attacks, and are available as packet headers or as network flows with additional features crafted for machine-learning. While the benign traffic for the CIC-IDS 2017 data was generated using scripted tasks from a number of host profiles, the benign data for the UNSW-NB 2015 data is a mixture of captured real traffic from another subnet and traffic generated using a commercial traffic replicator. 
+
+
+We omitted the synthetic KDD-Cup 1999 and the DARPA 1998 datasets along with their derivates from the discussion as they are well-known to be outdated and contain unrealistic benign traffic, artificially high benign/attack data ratios, and artifacts stemming from communication simulations \cite{tavallaee2009detailed,mchugh2000testing}, problems which have been addressed by most modern datasets.
+
+Container networks have recently been adopted to conduct traffic generation experiments, such by Fujdiak et al. \cite{fujdiak2018ip} who use containerized web servers to collect DoS-traffic. Furthermore, significant effort has been put into the creation of large-scale virtualization frameworks to provide automatized network testbeds \cite{crussell2015minimega, badiger2018violet}.
+
+
 \section{Future plans}
+
+\subsection{Challenges with publishing in Network Anomaly Detection and ACSAC conference}\label{Sec:Problems}
+
+The original scope of this PhD-project was to built contextual models that represent software behaviour primarily from network traffic and potentially other external data sources, for adaptive anomaly intrusion detection.  
+Over the course of the last year, it became clear that the successful publication of anomaly-based methods network intrusion detection methods is difficult today. This realisation was reflected during our unsuccessful attempts to publish the contextual network flow model described in Section \ref{Sec:Short-term} at the ACSAC and CODASPY conferences. Despite improving detection rates and false positive rates significantly on U2R and R2L on contemporary datasets, the main criticisms were a lack of novelty in terms of intrusion detection model and a general scepticism of real-world applicability. Prior attempts publication attempts by my supervisor and collaborating researchers yielded similar responses.
+
+This is in line with conversations I had with senior researchers at the ACSAC conferences, who highlighted that anomaly-based methods have been applied to network traffic for over 15 years without convincing results. There seems to be a general scepticism of the detection capabilities and improvements that general-purpose anomaly-detection methods can provide in real-world scenarios due to high false-positive rates, in particular for network traffic. In the context of the proposed project, this raises doubt if research question 4 can be answered adequately for a PhD-project concerning general models of network behaviour. This also made us re-evaluate the scope of the project discussed in Section \ref{Sec:Encoder}.
+
+General advice were to identify very specific applications for which taylored machine learning methods have the potential to yield good results. This is in line with the findings of Sommer and Paxson \cite{sommer_outside_2010} that anomaly detection methods should be "keeping the scope narrow" and providing an answer for "why the particular choice promises to perform well in the intended setting, considering domain-specific properties". "If one cannot make a solid argument for the relation of the features to the attacks of interest, the resulting study risks foundering on serious flaws."
+
+\subsection{Bla}\label{Bla}
+
+As part of my CASE PhD scholarship, I spent six weeks with my industrial sponsor at BT Labs Adastral Park in August and September 2019. Before starting this stint, I met with my industrial supervisors to define a project to work on that is both related to my PhD and is a relevant problem for BT. During this meeting, we agreed that the problem of detecting stepping stones was a suitable topic. 
+
+
+After finishing the stint at BT Labs, I continued to work on the traffic generation for a bit further before we had a call with Jake Hill, a security expert at BT. This call was meant to provide field knowledge to confirm and/or improve the data generation set-up. However, Jake stated that the problem of attackers launching attacks from intermediary hosts is after all not of great relevance for BT's operations. Instead, his notion of stepping stones described simple proxies relaying services (more on this in Section \ref{Sec:Relay}). In addition, further investigation suggests that the consensus in the literature is that connection correlation produces too many false positives and is not applicable in real-world scenarios. 
+
+\subsubsection{Scope of the project for publication}
+
+With this information, I decided to scale this project down and produce a simple evaluation of existing connection correlation methods. Since the major contribution of this work so far is the large amount of detailed and varied data I can produce, this allows for the first time an independent assessment of existing methods. So far I have implemented and evaluated four different methods, and am in the process of finishing this project. I am currently producing a small paper from it, which I intend to publish at a smaller workshop or conference. 
 
 \subsection{Submission of Stepping stone project and negotiation phase model}
 %\section{Introduction and motivation}
 
-With work being almost finished for the stepping stone project and the negotiation phase model also being well on the way, I am planning to write each project up into a paper for publication. Since the scope for each project was scaled back a bit, I am intending to submit them to smaller venues with a higher acceptance rate, and do not intend to spent more than three months completing both. \textcolor{red}{find venue}.
+With work being almost finished for the stepping stone project and the negotiation phase model also being well on the way, I am planning to write each project up into a paper for publication. Since the scope for each project was scaled back a bit, I am intending to submit them to smaller venues with a higher acceptance rate, and do not intend to spent more than three months completing both. A suitable venue for both might be the 2020 Conference on Machine Learning for Cyber Security.
 
 \subsection{QUIC anomaly detection}
 
@@ -273,8 +355,7 @@ An advice I received at the ACSAC conference from Guofei Gu, the Program Chair, 
 
 According to an NGINX-spokesperson, "since the protocol is new and things like stack optimization etc. still to catch up and since it's all user-space, there is a possibility to make changes to protocol very rapidly. This generates a higher attack surface than you would have over more layered approach with TCP and http on top." Initial investigations showed that there exists no research on mitigating intrusions over the QUIC protocol.%, which \textcolor{red}{...}
 
-
-\textcolor{red}{Due to the implementation in user-space}, QUIC may introduce vulnerabilities that allow remote code execution on a host, such as in \textit{CVE-2017-15407} and \textit{CVE-2017-15398}. The detection of such code executions by building a combined model of QUIC packet exchanges and process starts/system calls therefore seems like a promising project that provides both novelty and relevance.
+Due to the implementation in user-space, QUIC may introduce vulnerabilities that allow remote code execution on a host, such as in \textit{CVE-2017-15407} and \textit{CVE-2017-15398}. The detection of such code executions by building a combined model of QUIC packet exchanges and process starts/system calls therefore seems like a promising project that provides both novelty and relevance.
 
 In particular, I believe the following conditions would allow for interesting results:
 \begin{itemize}
@@ -284,8 +365,10 @@ In particular, I believe the following conditions would allow for interesting re
 \item Traffic and system call/process log collection using a containerized framework.
 \end{itemize}
 
-One difficulty in this project is that there do not exist many identified vulnerabilities in the QUIC protocol yet, of which none are known to have been used in a successful attack. Therefore, it might be difficult to get enough malicious data for result validation. In total, I would asign four months work in this project to conclude.
+In total, I would assign about six months work in this project to conclude.
 
+
+One difficulty in this project is that there do not exist many identified vulnerabilities in the QUIC protocol yet, of which none are known to have been used in a successful attack. Therefore, it might be difficult to get enough malicious data for result validation. At this stage of my PhD, beginning a project that is not certain to be successful bears significant risk.  I am therefore currently spending a small amount of time reaching out to experts to verify that data for model validation is available and that the scope of this project is of relevance before fully committing to it.
 
 
 
@@ -299,7 +382,7 @@ As mentioned in Section \ref{Sec:BTstint}, disussion with a security expert at B
 \item Benign proxies exist that can increase false-positives.
 \end{itemize}
 
-Initial investigations that I conducted showed that there are no publications yet that address this problem in any way, which indicates the potential for novel contributions. Since there exists no description or analysis of such proxies at all, this however also means that we are reliant on BT for knowledge and guidance on the problem definition and proxy operation mode. Also since no public dataset exists, we would have to implement and generate our own dataset and feedback with BT to check if it resembles the behaviour of such proxies, . At the moment it seems that a suitable start would be to focus on video relay. Necessary steps for this project are:
+Initial investigations that I conducted showed that there are no publications yet that address this problem in any way, which indicates the potential for novel contributions. Since there exists no description or analysis of such proxies at all, this however also means that we are reliant on BT for knowledge and guidance on the problem definition and proxy operation mode. Also since no public dataset exists, we would have to implement and generate our own dataset and feedback with BT to check if it resembles the behaviour of such proxies. At the moment it seems that a suitable start would be to focus on video relay. Necessary steps for this project are:
 
 \begin{itemize}
 
@@ -310,11 +393,13 @@ Initial investigations that I conducted showed that there are no publications ye
 
 \end{itemize}
 
-As we are reliant on the cooperation with BT Labs, we are not completely certain yet if this project will go ahead yet. We will have a further discussion with them later this month, which will bring more clarity. 
+As we are reliant on the cooperation with BT Labs, we are not completely certain yet if this project will go ahead yet. Currently, they are retrieving data of service relay examples. We will have a further discussion with them later in April, which will bring more clarity. 
 
 \subsection{Extension of Docker framework}\label{Sec:dockerext}
 
-Due to very positive feedback at the workshop as well as encouragements and suggestions to extend the framework, Robert Flood and I are working further to extend the current traffic generation framework. Particular goals are:
+Due to very positive feedback at the workshop as well as encouragements and suggestions to extend the framework, Robert Flood and I are working further to extend the current traffic generation framework. The overall goal is to provide a tool that enables researchers to generate large data quantities of specific services of interest in arbitrary network configurations, complemented by multi-step attack scenarios in differing executions. This would be of specific interests to researchers who apply machine-learning techniques to specific network applications for which there is not sufficient realistic public data available.
+
+Particular goals are:
 
 \begin{enumerate}
 \item Extend the framework to create datasets that resemble full fledged computer network with variable topology. For this, several subtasks need to be completed:
@@ -334,10 +419,11 @@ Due to very positive feedback at the workshop as well as encouragements and sugg
 
 \end{enumerate}
 
-Since I am not the lead on this project, I currently do not have a timescale for its completion.
+An advantage of this project is the pre-existing DetGen body, that is being extended here. This means that the timescale of the project depends on how many extensions should be implemented. It should be relatively easy to finish the project quikcly at any given time after about two months of work while having sufficient results to publish. 
+%Since I am not the lead on this project, I currently do not have a timescale for its completion.
 
 
-\subsection{Thesis submission}
+\section{Thesis plan}
 
 In the light of the problems described in Section \ref{Sec:Problems} that we encountered in the field of anomaly-based intrusion detection, I believe that the scope of this PhD-project has to be altered slightly. As there will not be enough material directly concerning anomaly detection, the formulation of building anomaly-detection models describing software behaviour should be relaxed to general applications of ML (not just anomaly detection) in specific areas related to software defined behaviour. This could be based of the reoccurring theme of traffic (and potentially system/program logs) generation for machine learning. The generated traffic could then be verified as valuable by the implemented intrusion detection applications.
 
@@ -350,6 +436,22 @@ All applications implemented so far are driven (in part) by our traffic generati
 \end{itemize}
 
 Overall, all these applications are concerned with software-defined fine-grained structures.
+
+\subsection{Introduction and related work}
+
+This chapter could largely draw from the existing introduction in the research proposal as well as the extensive literature survey I conducted. Updates on the scope as well as recent developments in related work would have to be added. This should take less then three weeks.
+
+\subsection{Background: Anomaly detection and challenges in security}
+
+\subsection{Background: NLP and its application to security}
+
+\subsection{Data sources, datasets and data generation}
+
+
+\subsection{Traffic structures and effect of malicious behaviour to traffic structures}
+
+\subsection{Anomaly detection approach and detection models}
+
 
 
 %\addcontentsline{toc}{section}{Bibliography}
