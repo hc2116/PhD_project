@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{badiger2018violet}
+S.~Badiger, S.~Baheti, and Y.~Simmhan.
+\newblock Violet: A large-scale virtual environment for internet of things.
+\newblock In {\em European Conference on Parallel Processing}, pages 309--324.
+  Springer, 2018.
+
 \bibitem{bernaille2006traffic}
 L.~Bernaille, R.~Teixeira, I.~Akodkenou, A.~Soule, and K.~Salamatian.
 \newblock Traffic classification on the fly.
@@ -10,6 +16,12 @@ M.~Crotti, M.~Dusi, F.~Gringoli, and L.~Salgarelli.
 \newblock Traffic classification through simple statistical fingerprinting.
 \newblock {\em ACM SIGCOMM Computer Communication Review}, 37(1):5--16, 2007.
 
+\bibitem{crussell2015minimega}
+J.~Crussell, J.~Erickson, D.~Fritz, and J.~Floren.
+\newblock minimega v. 3.0.
+\newblock Technical report, Sandia National Lab.(SNL-NM), Albuquerque, NM
+  (United States), 2015.
+
 \bibitem{du2017deeplog}
 M.~Du, F.~Li, G.~Zheng, and V.~Srikumar.
 \newblock Deeplog: Anomaly detection and diagnosis from system logs through
@@ -17,47 +29,19 @@ M.~Du, F.~Li, G.~Zheng, and V.~Srikumar.
 \newblock In {\em Proceedings of the 2017 ACM SIGSAC Conference on Computer and
   Communications Security}, pages 1285--1298. ACM, 2017.
 
-\bibitem{javaid2016deep}
-A.~Javaid, Q.~Niyaz, W.~Sun, and M.~Alam.
-\newblock A deep learning approach for network intrusion detection system.
-\newblock In {\em Proceedings of the 9th EAI International Conference on
-  Bio-inspired Information and Communications Technologies (formerly
-  BIONETICS)}, pages 21--26. ICST (Institute for Computer Sciences,
-  Social-Informatics and Telecommunications Engineering), 2016.
+\bibitem{fujdiak2018ip}
+R.~Fujdiak, V.~Uher, P.~Mlynek, P.~Blazek, J.~Slacik, V.~Sedlacek, J.~Misurec,
+  M.~Volkova, and P.~Chmelar.
+\newblock Ip traffic generator using container virtualization technology.
+\newblock In {\em 2018 10th International Congress on Ultra Modern
+  Telecommunications and Control Systems and Workshops (ICUMT)}, pages 1--6.
+  IEEE, 2018.
 
-\bibitem{akent-2015-enterprise-data}
-A.~D. Kent.
-\newblock {Cybersecurity Data Sources for Dynamic Network Research}.
-\newblock In {\em Dynamic Networks in Cybersecurity}. Imperial College Press,
-  June 2015.
-
-\bibitem{lin2015cann}
-W.-C. Lin, S.-W. Ke, and C.-F. Tsai.
-\newblock Cann: An intrusion detection system based on combining cluster
-  centers and nearest neighbors.
-\newblock {\em Knowledge-based systems}, 78:13--21, 2015.
-
-\bibitem{macia2018ugr}
-G.~Maci{\'a}-Fern{\'a}ndez, J.~Camacho, R.~Mag{\'a}n-Carri{\'o}n,
-  P.~Garc{\'\i}a-Teodoro, and R.~Ther{\'o}n.
-\newblock Ugr ‘16: A new dataset for the evaluation of
-  cyclostationarity-based network idss.
-\newblock {\em Computers \& Security}, 73:411--424, 2018.
-
-\bibitem{mahoney2002learning}
-M.~V. Mahoney and P.~K. Chan.
-\newblock Learning nonstationary models of normal network traffic for detecting
-  novel attacks.
-\newblock In {\em Proceedings of the eighth ACM SIGKDD international conference
-  on Knowledge discovery and data mining}, pages 376--385. ACM, 2002.
-
-\bibitem{moustafa_unsw-nb15:_2015}
-N.~Moustafa and J.~Slay.
-\newblock {UNSW}-{NB}15: a comprehensive data set for network intrusion
-  detection systems ({UNSW}-{NB}15 network data set).
-\newblock In {\em 2015 {Military} {Communications} and {Information} {Systems}
-  {Conference} ({MilCIS})}, pages 1--6, Nov. 2015.
-\newblock 00074.
+\bibitem{mirsky2018kitsune}
+Y.~Mirsky, T.~Doitshman, Y.~Elovici, and A.~Shabtai.
+\newblock Kitsune: an ensemble of autoencoders for online network intrusion
+  detection.
+\newblock {\em arXiv preprint arXiv:1802.09089}, 2018.
 
 \bibitem{nasr2018deepcorr}
 M.~Nasr, A.~Bahramali, and A.~Houmansadr.
@@ -65,10 +49,27 @@ M.~Nasr, A.~Bahramali, and A.~Houmansadr.
 \newblock In {\em Proceedings of the 2018 ACM SIGSAC Conference on Computer and
   Communications Security}, pages 1962--1976, 2018.
 
+\bibitem{radford2018network}
+B.~J. Radford, L.~M. Apolonio, A.~J. Trias, and J.~A. Simpson.
+\newblock Network traffic anomaly detection using recurrent neural networks.
+\newblock {\em arXiv preprint arXiv:1803.10769}, 2018.
+
+\bibitem{roshan2018adaptive}
+S.~Roshan, Y.~Miche, A.~Akusok, and A.~Lendasse.
+\newblock Adaptive and online network intrusion detection system using
+  clustering and extreme learning machines.
+\newblock {\em Journal of the Franklin Institute}, 355(4):1752--1779, 2018.
+
 \bibitem{sharafaldin2018towards}
 I.~Sharafaldin, A.~Gharib, A.~H. Lashkari, and A.~A. Ghorbani.
 \newblock Towards a reliable intrusion detection benchmark dataset.
 \newblock {\em Software Networking}, 2018(1):177--200, 2018.
+
+\bibitem{shen2018tiresias}
+Y.~Shen, E.~Mariconti, P.~A. Vervier, and G.~Stringhini.
+\newblock Tiresias: Predicting security events through deep learning.
+\newblock In {\em Proceedings of the 2018 ACM SIGSAC Conference on Computer and
+  Communications Security}, pages 592--605, 2018.
 
 \bibitem{sommer_outside_2010}
 R.~Sommer and V.~Paxson.
@@ -77,19 +78,10 @@ R.~Sommer and V.~Paxson.
 \newblock In {\em 2010 {IEEE} {Symposium} on {Security} and {Privacy}}, pages
   305--316, May 2010.
 
-\bibitem{sony2000traffic}
-C.~Sony and K.~Cho.
-\newblock Traffic data repository at the wide project.
-\newblock In {\em Proceedings of USENIX 2000 Annual Technical Conference:
-  FREENIX Track}, pages 263--270, 2000.
-
-\bibitem{turcotte17}
-M.~J.~M. {Turcotte}, A.~D. {Kent}, and C.~{Hash}.
-\newblock {Unified Host and Network Data Set}.
-\newblock {\em ArXiv e-prints}, Aug. 2017.
-
-\bibitem{walsworth2015caida}
-C.~Walsworth, E.~Aben, K.~Claffy, and D.~Andersen.
-\newblock The caida ucsd anonymized internet traces 2012,”, 2015.
+\bibitem{wu2018novel}
+K.~Wu, Z.~Chen, and W.~Li.
+\newblock A novel intrusion detection model for a massive network using
+  convolutional neural networks.
+\newblock {\em IEEE Access}, 6:50850--50859, 2018.
 
 \end{thebibliography}

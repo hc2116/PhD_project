@@ -264,62 +264,66 @@ Due to the difficulties described in Section \ref{Sec:Problems} of publishing an
 
 Last year, I prepared an extensive literature review on network intrusion and general anomaly-based intrusion detection methods as well as datasets and data sources. Here, I will outline some recent developments in the literature related to this project.
 
-\subsubsection{Network intrusion detection}
+\subsubsection{Intrusion detection}
 
 %Contextually closest to our work might be the BASTA system by Pellegrino et al. \cite{Pellegrino2017}. In their approach, a timed automata of malware behaviour is learned and used to detect malicious behaviour. Their results indicate that behavioural models of both benign and malicious patterns show promise in detecting new malware. However, their approach learns behaviour from malicious traffic and is thus not robust to unknown attacks.
 
-One of the most significant developments recently is the increasing adoption of artificial neural networks to build intrusion detection classifiers or anomaly-based models. LSTM-based models and 
+Researchers continue to apply ML techniques to intrusion detection. One of the developments recently is the increasing adoption of artificial neural networks to build intrusion detection classifiers or anomaly-based models, especially using networks based around convolutional, encoding, or recurrent layers have.
+Notable examples include Kitsune, an ensemble of autoencoders for classification \cite{mirsky2018kitsune}, a light-weight recurrent network for anomaly detection by Radford et al. \cite{radford2018network}, or a hybrid model for classification and anomaly-detection using convolutional layers by Wu et al. \cite{wu2018novel}, which I discussed in more detail in the paper described in Section \ref{Sec:Short-term}.
+Outside of network intrusion detection, notable applications of LSTM networks in security include Tiresias \cite{shen2018tiresias}, an LSTM network for security event forecasting with tremendous accuracy, and DeepLog \cite{du2017deeplog}, an LSTM network to learn a system's log patterns (e.g., log key patterns and parameter values) from normal execution in regulated environments such as Hadoop with limited variety of events.
 
-Notable work includes Tiresias \cite{shen2018tiresias}, an LSTM network for security event forecasting with tremendous accuracy. The authors use one-step forecasting of symbolic security event sequences to predict future steps of an attack in a noisy environment. 
+Additionally, more attention has been paid to create advances in adaptive online learning methods for network intrusion detection, such as Kitsune \cite{mirsky2018kitsune} or by Roshan et al. \cite{roshan2018adaptive}.
 
-Outside of network traffic, Du et al. \cite{du2017deeplog} proposed DeepLog, an LSTM network to learn a system's log patterns (e.g., log key patterns and parameter values) from normal execution. The authors present a novel log parser to create a sequence of symbolic log keys, which is then also modelled using one-step forecasting.
-The authors achieve good detection results in regulated environments such as Hadoop with limited variety of events (e.g., 29 events in Hadoop).
+%Notable work includes Tiresias \cite{shen2018tiresias}, an LSTM network for security event forecasting with tremendous accuracy. The authors use one-step forecasting of symbolic security event sequences to predict future steps of an attack in a noisy environment. 
+
+%Outside of network traffic, Du et al. \cite{du2017deeplog} proposed DeepLog, an LSTM network to learn a system's log patterns (e.g., log key patterns and parameter values) from normal execution. The authors present a novel log parser to create a sequence of symbolic log keys, which is then also modelled using one-step forecasting.
+%The authors achieve good detection results in regulated environments such as Hadoop with limited variety of events (e.g., 29 events in Hadoop).
 
 %Common approaches to anomaly-based network intrusion detection attempt to characterise networks with suitable aggregate values such as traffic volume, entropy of destination ports~\cite{Lakhina2005}, and statistical variables on flows~\cite{Gu2008}, or via automatic feature engineering \cite{cordero2016analyzing}. Models of normal or abnormal behaviour can be trained by exploring patterns between these features~\cite{Gu2007,Wurzinger2009}. Detection is usually by a threshold function on the deviation from, or the similarity to, these trained models. 
 
-Some anomaly-based methods look at the anomaly of individual events, mostly isolated flows or packets. These approaches are often based on classification or  clustering algorithms \cite{lin2015cann,javaid2016deep}. Other approaches motivate statistical methods to identify anomalous events in network traffic \cite{mahoney2002learning}. %Unlike approaches on aggregated traffic, an event-based approach is independent of the traffic volume and therefore more suitable to identify low volume activities, such as data exfiltration, R2L/U2R attacks, or C\&C communication. 
+%Some anomaly-based methods look at the anomaly of individual events, mostly isolated flows or packets. These approaches are often based on classification or  clustering algorithms \cite{lin2015cann,javaid2016deep}. Other approaches motivate statistical methods to identify anomalous events in network traffic \cite{mahoney2002learning}. %Unlike approaches on aggregated traffic, an event-based approach is independent of the traffic volume and therefore more suitable to identify low volume activities, such as data exfiltration, R2L/U2R attacks, or C\&C communication. 
 %However, many event-based approaches are tested on older datasets no longer considered relevant ~\cite{garcia_empirical_2014}. Nisioti et al. \cite{nisioti2018intrusion} conclude that data exfiltration, R2L, and U2R attacks are not yet reliably detected by anomaly-based methods. 
 
 %Very few approaches try to model temporal dependencies of unaggregated events, and those that do are usually targeted towards very specific misbehaviours \cite{bodenham_adaptive_2014,noble_real-time_2018,zhang2000detecting}. 
 
 
-\subsection{Recurrent Neural Network Applications}
+%\subsection{Recurrent Neural Network Applications}
 
 %A recurrent neural network (RNN) is a directed chain of regular feedforward network, with each individual network cell taking a vector $x_k$ of the input sequence $\{x_1,\dots,x_n\}$ as input. The RNN is able to retain information about the state of a sequence by also passing a value of the internal layer as additional input to the next network cell in the chain. LSTM (long short-term memory) and GRU (gated recurrent units) networks improve several shortcomings of RNNs such as the vanishing gradient problem, and their performance is generally thought to be superior.
 
-The application of recurrent neural networks to cyber security %and in particular intrusion detection 
-has risen in popularity recently. 
-Notable work includes Tiresias \cite{shen2018tiresias}, an LSTM network for security event forecasting with tremendous accuracy. The authors use one-step forecasting of symbolic security event sequences to predict future steps of an attack in a noisy environment. 
+
+%The application of recurrent neural networks to cyber security %and in particular intrusion detection 
+%has risen in popularity recently. 
+%Notable work includes Tiresias \cite{shen2018tiresias}, an LSTM network for security event forecasting with tremendous accuracy. The authors use one-step forecasting of symbolic security event sequences to predict future steps of an attack in a noisy environment. 
 %%Both the scope and the methodology of Tiresias have significant differences to our approach.
-The aim of Tiresias is not intrusion or anomaly detection, but attack forecasting, and the evaluation is therefore done solely in terms of event prediction accuracy of individual events. 
-Methodologically, the authors rely on a pre-existing event vocabulary provided through the data format.% and predict a univariate output probability. \textcolor{red}{verify this}
+%The aim of Tiresias is not intrusion or anomaly detection, but attack forecasting, and the evaluation is therefore done solely in terms of event prediction accuracy of individual events. 
+%Methodologically, the authors rely on a pre-existing event vocabulary provided through the data format.% and predict a univariate output probability. \textcolor{red}{verify this}
 
 
-To date, we count eleven published applications of recurrent neural networks (RNNs) to network traffic for intrusion detection. The majority of these approaches  relies on labelled attack data for classification.%, and therefore does not offer the benefits of anomaly detection. 
-A prominent example of this comes from Kim et al. \cite{kim2016long}, who classify flow sequences based on 41 numeric input features.
-Anomaly-based approaches usually rely on iterative one-step ahead forecasts within sequences, with the forecasting error acting as the anomaly indicator. This is for instance done by Bontemps et~al.~\cite{Bontemps2016}, who use sequences of aggregated traffic features as input. Input features in these approaches are mostly numerical, with only \cite{radford2018network} creating event vocabularies from flow protocols and sizes.
-Little exploration of the usage of stacked recurrent layers or input embeddings has been done.
+%To date, we count eleven published applications of recurrent neural networks (RNNs) to network traffic for intrusion detection. The majority of these approaches  relies on labelled attack data for classification.%, and therefore does not offer the benefits of anomaly detection. 
+%A prominent example of this comes from Kim et al. \cite{kim2016long}, who classify flow sequences based on 41 numeric input features.
+%Anomaly-based approaches usually rely on iterative one-step ahead forecasts within sequences, with the forecasting error acting as the anomaly indicator. This is for instance done by Bontemps et~al.~\cite{Bontemps2016}, who use sequences of aggregated traffic features as input. Input features in these approaches are mostly numerical, with only \cite{radford2018network} creating event vocabularies from flow protocols and sizes.
+%Little exploration of the usage of stacked recurrent layers or input embeddings has been done.
 %However, all RNN-based approaches share several common evaluation pitfalls, which make it impossible to assess their suitability for U2R and R2L detection in real-world applications. We describe these problems in Section \ref{Sec:Evalmal}.
 % in each of the presented approaches , which we discuss in Section \textcolor{red}{xxxx}. This makes it difficult to assess ....
 
 %A related application to ours was presented by Bontemps et~al.~\cite{Bontemps2016}, which uses LSTM model to detect group anomalies in network traffic via sequential modelling. The model uses three numerical input parameters from aggregated traffic for one-step forecasting, which is then compared to the actual values. Evaluation is done on the outdated KDD-99 dataset. The model construction and anomaly scoring differs substantially from ours as the raw input can be fed directly to the model input layer. Similarly, the detection scope focuses on long-term group anomalies with larger volume rather than contextual anomalies.
 
-Outside of network traffic, Du et al. \cite{du2017deeplog} proposed DeepLog, an LSTM network to learn a system's log patterns (e.g., log key patterns and parameter values) from normal execution. The authors present a novel log parser to create a sequence of symbolic log keys, which is then also modelled using one-step forecasting. %In contrast to our model, DeepLog incorporates additional numerical values in a case-by-case manner, and creates no sequential dependencies between the keys and the values as their anomaly is assessed independently of each other. 
-The authors achieve good detection results in regulated environments such as Hadoop with limited variety of events (e.g., 29 events in Hadoop).%, where they trained on small fractions of normal traffic. Network traffic in contrast is significantly more heterogenous and multi-step attacks occur in noisy environments,  which makes predictions in this setup a far harder problem.
+%Outside of network traffic, Du et al. \cite{du2017deeplog} proposed DeepLog, an LSTM network to learn a system's log patterns (e.g., log key patterns and parameter values) from normal execution. The authors present a novel log parser to create a sequence of symbolic log keys, which is then also modelled using one-step forecasting. %In contrast to our model, DeepLog incorporates additional numerical values in a case-by-case manner, and creates no sequential dependencies between the keys and the values as their anomaly is assessed independently of each other. 
+%The authors achieve good detection results in regulated environments such as Hadoop with limited variety of events (e.g., 29 events in Hadoop).%, where they trained on small fractions of normal traffic. Network traffic in contrast is significantly more heterogenous and multi-step attacks occur in noisy environments,  which makes predictions in this setup a far harder problem.
 
 
 %as the model is not suitable for attack discovery. Our approach in contrast does not emphasise the accuracy of individual event predictions, but uses the joint predicted likelihoods to examine the contextual anomaly of sequence and whether a separation in the anomaly score distributions of benign and malicious events exists. Methodologically, the authors rely on a pre-existing event vocabulary provided through the data format and predict a univariate output probability from a univariate input vocabulary using a shallow LSTM architecure. Our work discusses efficient vocabulary construction for multiple variables, and presents an extended LSTM architecture that produces multivariate output probability from multiple input vocabularies via embedding layers.
 
+\subsection{Data}
 
-To evaluate their ability to model the behaviour of a network and to identify malicious activity and network intrusions, new methods have to be tested using existing datasets of network traffic. This network should ideally contain realistic and representative benign network traffic as well as a variety of different network intrusions. However, as network traffic contains a vast amount of information about a network and its users, it is notoriously difficult to release a comprehensive dataset without infringing the privacy rights of the network users \cite{sperotto2009labeled}. Furthermore, the identification of malicious traffic in network traces is not straightforward and often requires a significant amount of manual labelling work. Introducing malicious software into an enterprise network would be impossible for ethical and security reasons. For that reason, only about four structured datasets for network intrusion containing real-world traffic and attacks are available openly. The most recent and notable real-world datasets have been released from the Los Alamos National Laboratory (LANL) in 2015 and 2017 \cite{akent-2015-enterprise-data, turcotte17}, and the University of Granada (UGR) in 2016 \cite{macia2018ugr}. Both datasets contain network flow traffic data from a large number of hosts collected over multiple months, giving an accurate representation of medium- to large-scale structures in benign traffic. However, the amount of attack data is small and insufficient for accurate detection rate estimation. Furthermore, packet-level data is not available for both datasets. Other real-world datasets, such as CAIDA 2016 \cite{walsworth2015caida} or MAWI 2000 \cite{sony2000traffic}, provide packet headers, but are unstructured and contain no labeled attack data at all.
-
-To improve the lack of attack traffic in NIDS datasets, several artificially created datasets have been proposed. For this, a testbed of virtual machines is usually hosted in an enclosed environment to prevent any malicious code from spreading to other machines on other networks. To generate attack traffic, these machines are then subject to a selection of attack carried out by other machines in the environment. Benign traffic is generated using commercial traffic generators such as the \emph{IXIA PerfectStorm tool}, or by scripting a selection of tasks for each machine. Synthetic datasets cover a smaller timeframe and contain traffic from a small number of hosts. Notable examples are the CIC-IDS 2017 dataset from the Canadian Institute for Cybersecurity \cite{sharafaldin2018towards}, %the CTU-2013 dataset from the \emph{Stratosphere Laboratory} in Prague \cite{noauthor_ctu-13_nodate},
-and the UNSW-NB 2015 dataset from the University of New South Wales \cite{moustafa_unsw-nb15:_2015}. Both datasets contain traffic from a variety of attacks, and are available as packet headers or as network flows with additional features crafted for machine-learning. While the benign traffic for the CIC-IDS 2017 data was generated using scripted tasks from a number of host profiles, the benign data for the UNSW-NB 2015 data is a mixture of captured real traffic from another subnet and traffic generated using a commercial traffic replicator. 
-
-
-We omitted the synthetic KDD-Cup 1999 and the DARPA 1998 datasets along with their derivates from the discussion as they are well-known to be outdated and contain unrealistic benign traffic, artificially high benign/attack data ratios, and artifacts stemming from communication simulations \cite{tavallaee2009detailed,mchugh2000testing}, problems which have been addressed by most modern datasets.
+The Canadian Institute of Cyber-Security has recently released a new dataset CICIDS-18 that improves on the existing CICIDS-17 dataset \cite{sharafaldin2018towards} in terms of realism of benign activity, and by creating particular attack scenarios based on the implemented network topology rather than isolated attacke events. 
 
 Container networks have recently been adopted to conduct traffic generation experiments, such by Fujdiak et al. \cite{fujdiak2018ip} who use containerized web servers to collect DoS-traffic. Furthermore, significant effort has been put into the creation of large-scale virtualization frameworks to provide automatized network testbeds \cite{crussell2015minimega, badiger2018violet}.
+
+%To evaluate their ability to model the behaviour of a network and to identify malicious activity and network intrusions, new methods have to be tested using existing datasets of network traffic. This network should ideally contain realistic and representative benign network traffic as well as a variety of different network intrusions. However, as network traffic contains a vast amount of information about a network and its users, it is notoriously difficult to release a comprehensive dataset without infringing the privacy rights of the network users \cite{sperotto2009labeled}. Furthermore, the identification of malicious traffic in network traces is not straightforward and often requires a significant amount of manual labelling work. Introducing malicious software into an enterprise network would be impossible for ethical and security reasons. For that reason, only about four structured datasets for network intrusion containing real-world traffic and attacks are available openly. The most recent and notable real-world datasets have been released from the Los Alamos National Laboratory (LANL) in 2015 and 2017 \cite{akent-2015-enterprise-data, turcotte17}, and the University of Granada (UGR) in 2016 \cite{macia2018ugr}. Both datasets contain network flow traffic data from a large number of hosts collected over multiple months, giving an accurate representation of medium- to large-scale structures in benign traffic. However, the amount of attack data is small and insufficient for accurate detection rate estimation. Furthermore, packet-level data is not available for both datasets. Other real-world datasets, such as CAIDA 2016 \cite{walsworth2015caida} or MAWI 2000 \cite{sony2000traffic}, provide packet headers, but are unstructured and contain no labeled attack data at all.
+
+
 
 
 \section{Future plans}
@@ -333,15 +337,17 @@ This is in line with conversations I had with senior researchers at the ACSAC co
 
 General advice were to identify very specific applications for which taylored machine learning methods have the potential to yield good results. This is in line with the findings of Sommer and Paxson \cite{sommer_outside_2010} that anomaly detection methods should be "keeping the scope narrow" and providing an answer for "why the particular choice promises to perform well in the intended setting, considering domain-specific properties". "If one cannot make a solid argument for the relation of the features to the attacks of interest, the resulting study risks foundering on serious flaws."
 
-\subsection{Bla}\label{Bla}
+\subsection{BT project}\label{Bla}
 
-As part of my CASE PhD scholarship, I spent six weeks with my industrial sponsor at BT Labs Adastral Park in August and September 2019. Before starting this stint, I met with my industrial supervisors to define a project to work on that is both related to my PhD and is a relevant problem for BT. During this meeting, we agreed that the problem of detecting stepping stones was a suitable topic. 
+As part of my CASE PhD scholarship, I am spending 12 weeks in total with my industrial sponsor at BT Labs Adastral Park in the context of a student placement. While there, I am supposed to conduct research that is both relevant to my PhD-topic and to the operations of BT. Choosing a suitable topic is therefore not completely straightforward and could mean that the research conducted during the placement does not align completely with my PhD-topic.
 
 
-After finishing the stint at BT Labs, I continued to work on the traffic generation for a bit further before we had a call with Jake Hill, a security expert at BT. This call was meant to provide field knowledge to confirm and/or improve the data generation set-up. However, Jake stated that the problem of attackers launching attacks from intermediary hosts is after all not of great relevance for BT's operations. Instead, his notion of stepping stones described simple proxies relaying services (more on this in Section \ref{Sec:Relay}). In addition, further investigation suggests that the consensus in the literature is that connection correlation produces too many false positives and is not applicable in real-world scenarios. 
+In August and September 2019, I spent the first six weeks at Adastral Park. Before starting this stint, I met with my industrial supervisors to define a suitable project to work on. During this meeting, we agreed that the problem of detecting stepping stones was a suitable topic, as it was identified as a pressing issue for BT by their operational team, and could potentially benefit from from the developed DetGen framework described in Section \ref{Sec:BTstint} and the traffic sequence embedding techniques described in Section \ref{Sec:Encoder}.
 
-\subsubsection{Scope of the project for publication}
 
+After finishing the stint at BT Labs, I continued to work on the traffic generation for a bit further before we had a call with Jake Hill, a security expert at BT. This call was meant to provide field knowledge to confirm and/or improve the data generation set-up. However, Jake stated that the problem of attackers launching attacks from intermediary hosts is after all not of great relevance for BT's operations. Instead, his notion of stepping stones described simple proxies relaying services (more on this in Section \ref{Sec:Relay}). In addition, further investigation suggests that the consensus in the literature is that connection correlation produces too many false positives and is not applicable in real-world scenarios.
+
+%\subsubsection{Scope of the project for publication}
 With this information, I decided to scale this project down and produce a simple evaluation of existing connection correlation methods. Since the major contribution of this work so far is the large amount of detailed and varied data I can produce, this allows for the first time an independent assessment of existing methods. So far I have implemented and evaluated four different methods, and am in the process of finishing this project. I am currently producing a small paper from it, which I intend to publish at a smaller workshop or conference. 
 
 \subsection{Submission of Stepping stone project and negotiation phase model}
@@ -425,32 +431,104 @@ An advantage of this project is the pre-existing DetGen body, that is being exte
 
 \section{Thesis plan}
 
-In the light of the problems described in Section \ref{Sec:Problems} that we encountered in the field of anomaly-based intrusion detection, I believe that the scope of this PhD-project has to be altered slightly. As there will not be enough material directly concerning anomaly detection, the formulation of building anomaly-detection models describing software behaviour should be relaxed to general applications of ML (not just anomaly detection) in specific areas related to software defined behaviour. This could be based of the reoccurring theme of traffic (and potentially system/program logs) generation for machine learning. The generated traffic could then be verified as valuable by the implemented intrusion detection applications.
+In the light of the problems described in Section \ref{Sec:Problems} that we encountered in the field of anomaly-based intrusion detection, I believe that the scope of this PhD-project has to be altered slightly. As there will not be enough material directly concerning anomaly detection, the formulation of building anomaly-detection models describing software behaviour should be relaxed to general applications of ML (not just anomaly detection) in specific areas related to software defined behaviour. 
+The overall unifying theme of this PhD so far has been centered around small-scale traffic structures generated by software-defined computer interactions and applications of ML language models to it, in other words \textbf{Modelling computer interactions as a language}.
+This could be based of the reoccurring use of traffic (and potentially system/program logs) generation for machine learning. The generated traffic could then be verified as valuable by the implemented intrusion detection applications.
 
-All applications implemented so far are driven (in part) by our traffic generation:
+All applications implemented so far except for the flow-level model are driven (in part) by our traffic generation:
 \begin{itemize}
+\item Flow-level LSTM model
+
 \item stepping stone detection
 \item traffic relay
 \item LSTM encoder
 \item QUIC anomaly detection
 \end{itemize}
 
-Overall, all these applications are concerned with software-defined fine-grained structures.
+Overall, all these applications except for the traffic relay detection are concerned with software-defined fine-grained structures. Below, I outline the different chapters that I believe should be included in my thesis:
 
-\subsection{Introduction and related work}
-
-This chapter could largely draw from the existing introduction in the research proposal as well as the extensive literature survey I conducted. Updates on the scope as well as recent developments in related work would have to be added. This should take less then three weeks.
-
-\subsection{Background: Anomaly detection and challenges in security}
-
-\subsection{Background: NLP and its application to security}
-
-\subsection{Data sources, datasets and data generation}
+\begin{enumerate}
 
 
-\subsection{Traffic structures and effect of malicious behaviour to traffic structures}
+\item Introduction and related work
 
-\subsection{Anomaly detection approach and detection models}
+This chapter could largely draw from the existing introduction in the research proposal as well as the extensive literature survey I conducted. Updates on the scope as well as recent developments in related work would have to be added. %This should take less then three weeks.
+
+\item Background: Anomaly detection and challenges in security
+
+This chapter outlines the motivation to use anomaly-based detection models instead of classification-based ones. It furthermore highlights why anomaly detection is more difficult in security than in other areas, and what currently prevents it from being deployed outside of academia.
+
+\item Background: Language models and their application to security
+
+This chapter briefly outlines different techniques used in language modelling,  and how they can be used to build data representation useful for anomaly-detection. It also discusses previous applications of language models in security.
+
+\item Data sources, datasets, and data generation with realistic small scale structures
+
+This chapter will draw largely on the work conducted for the DetGen traffic generation framework.
+
+\item Computer communication structures and the effect of malicious behaviour on them
+
+This chapter will describe the different structures that the different layers of software-defined communication can have on the collected data. These descriptions and their corroboration can be taken from work in each of the projects described above. Furthermore, this chapter will describe how attacks can alter these structures due to the distinct approach they are taking, and why it is worth building models that focus on small-scale traffic structures.
+
+\item Traffic as a language and detection models
+
+This chapter will describe how network traffic can be described by a language model, and how to construct anomaly-based models from it. The chapter will then proceed to describe the different approaches I worked on and their respective results:
+
+\begin{enumerate}
+
+\item Flow-based modelling
+
+\item Connection setup model
+
+\item Traffic relating to process initialisations in the QUIC protocol
+
+\item Detecting similarity in computer connections
+
+
+\end{enumerate}
+
+\item Conclusions
+
+\end{enumerate}
+
+\subsection{Thesis completion plan}
+
+\begin{enumerate}
+
+\item month
+\begin{itemize}
+\item Revise literature review
+\item Complete chapter 1 and 2
+\item Compile a map of different language models for chapter 3
+\end{itemize}
+\item month
+\begin{itemize}
+\item Complete chapter 3
+\item Assess the requirements for chapter 4 and compare to results of DetGen project
+\item Start working on chapter 4
+\end{itemize}
+
+\item month
+\begin{itemize}
+\item Complete chapter 4
+\item Compile a map of different traffic structures observed in each project
+\item Compile a map of different attacks and their effect on respective structures
+\item Start chapter 5
+
+\end{itemize}
+\item month
+\begin{itemize}
+\item Complete chapter 5
+\item Assess the results of each project, and decide order and weight of each project on chapter 6
+\item Decide if anything is needed as input for chapter 6
+\item Start chapter 6
+\end{itemize}
+
+\item month
+\begin{itemize}
+\item Complete chapter 6
+\end{itemize}
+\end{enumerate}
 
 
 
