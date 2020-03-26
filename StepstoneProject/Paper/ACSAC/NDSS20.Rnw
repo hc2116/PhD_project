@@ -1,0 +1,85 @@
+\documentclass[conference]{IEEEtran}
+\pagestyle{plain}
+\usepackage[cmex10]{amsmath}
+%\usepackage{caption} 
+%\captionsetup[table]{skip=3pt}
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\begin{document}
+
+\title{Comparison of connection correlation techniques under chaff and delay}
+
+
+\author{\IEEEauthorblockN{Michael Shell}
+\IEEEauthorblockA{Georgia Institute of Technology\\
+someemail@somedomain.com}
+\and
+\IEEEauthorblockN{Homer Simpson}
+\IEEEauthorblockA{Twentieth Century Fox\\
+homer@thesimpsons.com}
+\and
+\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
+\IEEEauthorblockA{Starfleet Academy\\
+someemail@somedomain.com}}
+
+
+\IEEEoverridecommandlockouts
+\makeatletter\def\@IEEEpubidpullup{6.5\baselineskip}\makeatother
+\IEEEpubid{\parbox{\columnwidth}{
+    Network and Distributed Systems Security (NDSS) Symposium 2020\\
+    23-26 February 2020, San Diego, CA, USA\\
+    ISBN 1-891562-61-4\\
+    https://dx.doi.org/10.14722/ndss.2020.23xxx\\
+    www.ndss-symposium.org
+}
+\hspace{\columnsep}\makebox[\columnwidth]{}}
+
+
+\maketitle          
+
+\begin{abstract}
+
+Bla
+\end{abstract}
+
+
+\section{Introduction}
+
+
+%\begin{tabular}{r|cccc|cccc}
+%\multicolumn{1}{r|}{ }&\multicolumn{4}{c|}{SSH}&\multicolumn{4}{c}{HTTP}\\
+%bla& no pert.&var. delays&var. chaff&delay\&chaff & no pert.&var. delays&var. chaff&delay\&chaff \\
+%\end{tabular}
+
+\begin{tabular}{r|cccc}
+%\multicolumn{1}{r|}{ }&\multicolumn{4}{c|}{SSH}&\multicolumn{4}{c}{HTTP}\\
+SSH 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
+HTTP 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
+SSH 3 node& no pert.&var. delays&var. chaff&delay\&chaff \\
+HTTP 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
+\end{tabular}
+
+
+
+\cite{sommer_outside_2010}
+
+\subsection{Regular traffic congestion}
+
+Packet transmission in Docker's virtual network is almost instantaneous and not subject to transmission errors. 
+To emulate realistic traffic as close as possible, we add emulated traffic congestion in the form of packet delivery delays and packet losses. These are implemented between individual hosts using tc-netem.
+
+Delays are added to incoming and outgoing packets on each host individually, and are drawn from a normal distribution. The mean and standard deviation are drawn before each simulation for each host 
+
+
+\bibliographystyle{IEEEtranS}
+\bibliography{NDSSrefs}
+
+\appendix
+
+
+
+
+ 
+
+\end{document}
