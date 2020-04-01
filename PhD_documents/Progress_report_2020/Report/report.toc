@@ -8,8 +8,8 @@
 \contentsline {subsection}{\numberline {2.4}Modelling of connection setup via LSTM encoders}{6}
 \contentsline {subsubsection}{\numberline {2.4.1}Scope of the project for publication}{8}
 \contentsline {section}{\numberline {3}Developments in related work}{8}
-\contentsline {subsubsection}{\numberline {3.0.1}Intrusion detection}{8}
-\contentsline {subsection}{\numberline {3.1}Data}{9}
+\contentsline {subsection}{\numberline {3.1}Intrusion detection}{8}
+\contentsline {subsection}{\numberline {3.2}Data}{9}
 \contentsline {section}{\numberline {4}Future plans}{9}
 \contentsline {subsection}{\numberline {4.1}Challenges with publishing in Network Anomaly Detection and ACSAC conference}{9}
 \contentsline {subsection}{\numberline {4.2}BT project}{10}

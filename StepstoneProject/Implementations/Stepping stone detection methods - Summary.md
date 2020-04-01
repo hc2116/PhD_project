@@ -2,6 +2,10 @@
 
 
 
+#### Correlation
+
+Correlating TCP/IP Packet contexts to detect stepping-stone intrusion
+
 
 
 #### Random Walk techniques
@@ -82,7 +86,7 @@ Stephen Huang, J Yang, 2007, Houston, 10
 
 
 
-###### Detecting Stepping-Stone Intrudersby Identifying Crossover Packets in SSH Connections
+###### Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections
 
 Stephen Huang, H. Zhang, 2016, Houston, 5
 
@@ -95,7 +99,7 @@ Improves above
 
 L. Zhang, 2006, Iowa state, 53
 
-The   authors   assumed   time synchronization   between   hosts,   bounded   delay,   chaff   perturbation independent ofthe original flow, and no packet loss
+The   authors   assumed   time synchronization   between   hosts,   bounded   delay,   chaff   perturbation independent of the original flow, and no packet loss
 
 should include this
 
@@ -152,11 +156,35 @@ Anomaly engine for:
 - edit-distance method to detect chaff 
 - causality method to detect chaff
 
+
+
+###### Detecting Anomalies in Active Insider Stepping Stone Attacks
+
+A, Kampasi, Crescenzo, Abhrajit Ghosh, 2011, Houston&Princeton, 13
+
+three anomaly detection algo to detect presence of jitter and chaff
+
+- response-time based
+  - detect delays
+  - if ack-packet takes longer than RTT+d_t
+    - anomalous if threshold and packet ratio is exceeded
+- edit-distance based
+  - detect chaff
+  - break into ON periods
+  - for each period, compare the interarrival times in forward with backwards direction
+  - should be similar, calculate edit distance
+- causality-based
+  - check if there are no or more than one on periods in one direction during an on period in the other
+
+
+
 ###### Detecting Chaff Perturbation on Stepping-Stone Connection
 
 Stephen Huang, Y. Kuo, 2011, Houston, 6
 
 Anomaly-based, complements correlation-based techniques
+
+Our study  shows  the  probability  distribution  of  the  inter-arrival  time  of  a  chaffed  connection  differs  from  that  of  one  without  chaff.
 
 
 #### Watermarking
@@ -182,8 +210,13 @@ The authors proved analytically and verified by experiment that the proposed sch
 
 
 
+
+
 #### Chaffing
 
 ###### Sniffing and Chaffing Network Traffic in Stepping-Stone Intrusion Detection
 
 J. Yang, Y. Zhang, Columbus state
+
+
+

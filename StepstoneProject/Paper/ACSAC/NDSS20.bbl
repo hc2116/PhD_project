@@ -21,6 +21,17 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{di2011detecting}
+G.~Di~Crescenzo, A.~Ghosh, A.~Kampasi, R.~Talpade, and Y.~Zhang, ``Detecting
+  anomalies in active insider stepping stone attacks.'' \emph{JoWUA}, vol.~2,
+  no.~1, pp. 103--120, 2011.
+
+\bibitem{huang2011detecting}
+S.-H.~S. Huang and Y.-W. Kuo, ``Detecting chaff perturbation on stepping-stone
+  connection,'' in \emph{2011 IEEE 17th International Conference on Parallel
+  and Distributed Systems}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2011,
+  pp. 660--667.
+
 \bibitem{sommer_outside_2010}
 R.~Sommer and V.~Paxson, ``Outside the {Closed} {World}: {On} {Using} {Machine}
   {Learning} for {Network} {Intrusion} {Detection},'' in \emph{2010 {IEEE}

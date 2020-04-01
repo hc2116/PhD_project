@@ -8,7 +8,7 @@
 
 \begin{document}
 
-\title{Comparison of connection correlation techniques under chaff and delay}
+\title{Evaluation of passiv stepping stone detection techniques under chaff and delay}
 
 
 \author{\IEEEauthorblockN{Michael Shell}
@@ -46,6 +46,119 @@ Bla
 
 \section{Introduction}
 
+\textcolor{red}{Network attackers frequently use a chain of compromised intermediate nodes to attack a targetmachine and maintain anonymity. This chain of nodes between the attacker and the target is calleda stepping stone chain. }
+
+\subsection{Related work}
+
+
+
+\cite{shullich2011survey}
+
+\cite{wang2018research}
+
+\cite{almulhem2007survey}
+
+Stepping Stone Detection Techniques: Classification and State-of-the-Art, bad though
+
+Metrics: A Study on the Performance Metrics forEvaluating Stepping Stone Detection (SSD)
+Stepping Stone Detection: Measuring the SSD Capability
+
+
+\section{Selected approaches}
+
+\subsection{Packet-correlation-based approaches}
+
+Efficient multi-dimensional flow correlation
+
+Detecting Connection-Chains: A Data Mining Approach
+
+Correlating TCP/IP Packet contexts to detectstepping-stone intrusion 2011
+
+\subsection{RTT-based approaches}
+
+Another prominent approach to detect stepping stones is based on \textit{Round-trip/times} (RTTs). The RTT of a connection is the time it takes for a packet to be sent to the receiver plus the time it takes for an acknowledgement of that packet to be received. For a normal connection, the measured RTTs should be centered closely around one value. However, since information is relayed over one or more hosts in a stepping stone chain, \textcolor{red}{the assumption for RTT-based detection} is that the responses from different hosts within the chain generate multiple RTTs. Observing multiple RTTs is therefore a clear indication of relaying behaviour.
+
+Yang et al. \cite{yang2015rtt,yang2007mining} and Huang et al. \cite{huang2016detecting,ding2009detecting,huang2007stepping}  both have proposed multiple approaches for estimating and employing RTTs for stepping stone detection. We have selected two papers that depict the \textcolor{red}{state-of-the-art}...
+
+\subsubsection{RTT-based Random Walk Approach to Detect Stepping-Stone Intrusion \cite{yang2015rtt}}
+
+
+
+\subsubsection{Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections \cite{huang2016detecting}}
+
+This method improves the detection methods proposed by Ding et al. \cite{ding2009detecting}. The authors target specifically relayed interactive SSH communication at the end of a connection chain. They build their detection model on the fact that in a long connection chain, the round-trip time of a packet may be longer than the intervals between two consecutive keystrokes. Normally after sending a request packet, a client will wait for the server response before sending another request. However, TCP/IP allows a client to send a limited number of packets to the server without having to wait for the response. In a long connectin chain, this will result in cross-overs between request and response, which causes the curve of sorted Upstream RTTs to rise steeply. 7 
+%Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections
+
+%.
+
+%.
+
+%RTT-based Random Walk Approach to Detect Stepping-Stone Intrusion 
+
+%Detecting Stepping-Stone Intruders with Long Connection Chains? 2009
+
+
+\subsection{Anomaly-based approaches}
+
+Crescenzo et al. \cite{di2011detecting}
+\subsection{Detecting Anomalies in Active Insider Stepping Stone Attacks}
+
+Huang et al. \cite{huang2011detecting}.
+
+\subsection{Neural networks}
+
+Performance of neural networks in stepping-stone intrusion detection 2008
+but no good results, better in Neural  networks-based  detection  of stepping-stone  intrusion
+
+
+\section{Dataset creation}
+
+\subsection{Simulating stepping stones with SSH-tunnels and Docker}
+
+insert figure with one and with three stepping stones
+
+
+
+SSH tunnel on respective port on the starting point of the chain, tunnels to port on the next point in the chain. Finally, Refer to figure. 
+
+\subsubsection{Adding network congestion}
+
+Docker communication takes place over virtual bridge networks, so the throughput is far higher and more reliable than in real-world networks. %This level of speed and consistency is worrying for our purposes as packet timings will be largely identical on repeated runs of a scenario and any collected data could be overly homogeneous.
+To retard the quality of the Docker network to realistic levels, we rely on the emulation tools Netem. Netem \textcolor{red}{add reference} is a Linux command line tool that allows users to artificially simulate network conditions such as high latency, low bandwidth or packet corruption in a flexible manner.
+We apply Netem commands to the network interface of each container, which adds correlated delays to incoming and outgoing packets that are drawn from a normal distribution with mean $\mu$, variance $\sigma^2$, and correlation $\rho_1$. We furthermore apply correlated packet loss and corruption drawn from a binomial distribution with probability $p$ and correlation $\rho_2$.
+
+We set the network settings for the starting point and the end point container individually and draw each of the given parameters from a suitable distribution \textcolor{red}{(should I specify which one for each? Seems a bit much...)} before each \textcolor{red}{run} to allow for a good amount of variation in the generated data.
+
+%providing us with the flexibility to set each container's network settings uniquely. 
+
+
+
+
+%This script randomizes the values of each parameter, such as packet drop rate, bandwidth limit, latency, ensuring that every run of a scenario has some degree of network randomization if desired.
+
+
+
+\subsubsection{Adding delays and chaff}
+
+To add artifical delays to forwarded packets on a stepping stone host for detection evasion, we can again use NetEm. We draw delays for departing packets from a uniform distribution, as suggested by \textcolor{red}{add reference}, covering the interval $[0,\delta_d]$, with no packet correlation. 
+
+To add chaff packets to the relayed connection, we forward two additional ports through the SSH-tunnel of a stepping stone host. We then use NetCat \textcolor{red}{add reference} to send data to both ports from either direction and collect it at the other side. Figure \textcolor{red}{...} depicts this setup for an individual tunnel. 
+The data sent through tunnel $i$ consists of strings with random size $x$ drawn from a Cauchy-distribution with mean $xx_i$, and is sent in intervals of random length $\delta_c$ drawn from an exponential distribution with mean $yy_i$. By adjusting $yy_i$, we can control the amount of chaff sent through a tunnel. 
+
+\subsection{Simulating interactive SSH-traffic}
+
+In order to generate enough data instances representing interactive stepping stone behaviour, we automatised the communication between the start point and the end point of the stepping stone chain. To do so, we generate a script with SSH-commands at the start of each \textcolor{red}{execution} that is passed and run by the \textcolor{red}{starting point} of the chain. The generated script consists of a sequence of ordinary SSH-commands \textcolor{red}{list them here?}, which are drawn randomly from a command catalogue and are each separated by \textit{sleep}-commands for a time $t$ that is drawn each time from a Cauchy-distribution. The average sleep-time is around \textcolor{red}{insert}. The length of the script is reached when the \textit{end}-command is drawn from the catalogue.
+%To evaluate the stepping stone detection capabilities of different proposed methods, we created a \textcolor{red}{realistic dataset...}
+\textcolor{red}{Insert example}
+
+\subsection{HTTP-interactions}
+ 
+In order to provide an additional, different type of interaction between the \textcolor{red}{starting point} and \textcolor{red}{end point}, we directed HTTP traffic over the stepping stone chain. Here, the starting point hosts Scrapy, a web crawling service \textcolor{red}{insert citation}, that surfs the 1 million most popular website by clicking links on them. The requests are sent over the stepping stone chain to the web. 
+
+This type of traffic is not meant to necessarily represent realistic stepping stone behaviour, but to provide an additional source of interactive traffic that differs substantially from SSH in order to test detection methods from another angle.
+
+
+
 
 %\begin{tabular}{r|cccc|cccc}
 %\multicolumn{1}{r|}{ }&\multicolumn{4}{c|}{SSH}&\multicolumn{4}{c}{HTTP}\\
@@ -61,15 +174,23 @@ HTTP 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
 \end{tabular}
 
 
-
+ 
 \cite{sommer_outside_2010}
 
-\subsection{Regular traffic congestion}
+%\subsection{Regular traffic congestion}
 
-Packet transmission in Docker's virtual network is almost instantaneous and not subject to transmission errors. 
-To emulate realistic traffic as close as possible, we add emulated traffic congestion in the form of packet delivery delays and packet losses. These are implemented between individual hosts using tc-netem.
+%Packet transmission in Docker's virtual network is almost instantaneous and not subject to transmission errors. 
+%To emulate realistic traffic as close as possible, we add emulated traffic congestion in the form of packet delivery delays and packet losses. These are implemented between individual hosts using tc-netem.
 
-Delays are added to incoming and outgoing packets on each host individually, and are drawn from a normal distribution. The mean and standard deviation are drawn before each simulation for each host 
+%Delays are added to incoming and outgoing packets on each host individually, and are drawn from a normal distribution. The mean and standard deviation are drawn before each simulation for each host.
+
+
+\section{Results}
+
+\subsection{Unperturbed data}
+
+
+
 
 
 \bibliographystyle{IEEEtranS}
