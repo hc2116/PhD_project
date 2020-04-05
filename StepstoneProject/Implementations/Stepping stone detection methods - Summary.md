@@ -8,7 +8,47 @@ Correlating TCP/IP Packet contexts to detect stepping-stone intrusion
 
 
 
-#### Random Walk techniques
+
+
+#### Counting
+
+###### Monitoring Network Traffic to Detect Stepping-Stone Intrusion
+
+J Yang, B. Lee, 2008, Houston, 8
+
+- time interval of length t
+- packets captured N_1 and N_2 in both connections during interval
+- N_1-N_2 follows random walk process, must be close to yero
+
+###### Detection of Interactive Stepping-Stones: Algorithms and Confidence Bounds
+
+Blum, 2004, Carnegie Mellon, 253
+
+- difference between send packets in two connections
+- difference is bounded iff the connections are relayed
+- needs large number of packets if small amount of chaff is present
+- mathematical paper
+
+###### Detecting encrypted stepping-stone connections
+
+T. He, L. Tong, 2007, Cornell, 93
+
+DBDC: detect-bounded-memory-chaff
+
+- chaff packet injection rate can be at least 1/(1+gamma*delta) of original traffic, gamma= parameter of Poisson distribution, delta is upper bound of packet delays
+- also "Detecting  encrypted  interactive  stepping-stone connections", 2006, 14 for bounded memory (very similar)
+
+###### Stepping-Stone Detection Via Request-Response Traffic Analysis
+
+Stephen Huang, J Yang, 2007, Houston, 10
+
+- analyze  correlations between the frequencies  of  the  cumulative  numbers  of  packets  sent  in  incoming  and outgoing   connections
+- supplementing of Blum et al.
+- paper incomplete as experiments did not yield all the required results
+
+
+
+#### RTT
 
 
 
@@ -29,18 +69,6 @@ Approach:
 
 
 
-###### Monitoring Network Traffic to Detect Stepping-Stone Intrusion
-
-J Yang, B. Lee, 2008, Houston, 8
-
-- time interval of length t
-- packets captured N_1 and N_2 in both connections during interval
-- N_1-N_2 follows random walk process, must be close to yero
-
-
-
-
-
 ###### RTT-based Random Walk Approach to Detect Stepping-Stone Intrusion 
 
 J Yang, Zhang, 2015, Columbus State, 5
@@ -51,38 +79,12 @@ J Yang, Zhang, 2015, Columbus State, 5
 - If the value changes, but is bounded by Gamma, this indicates a stepping stone
   - value modelled as random walk
 
-###### Detection of Interactive Stepping-Stones: Algorithms and Confidence Bounds
-
-Blum, 2004, Carnegie Mellon, 253
-
-- difference between send packets in two connecctions
-- difference is bounded iff the connections are relayed
-- needs large number of packets if small amount of chaff is present
-- mathematical paper
-
-###### Detecting encrypted stepping-stone connections
-
-T. He, L. Tong, 2007, Cornell, 93
-
-DBDC: detect-bounded-memory-chaff
-
-- chaff packet injection rate can be at least 1/(1+gamma*delta) of original traffic, gamma= parameter of Poisson distribution, delta is upper bound of packet delays
-- also "Detecting  encrypted  interactive  stepping-stone connections", 2006, 14 for bounded memory (very similar)
-
 ###### Detecting Stepping-Stone Intruders with Long Connection Chains
 
 W. Ding, M. Hausknecht, Stephen Huang, 2009, Houston, 12
 
 - Estimated round trip time in long connection chains
 - applied to keystroke sessions, Time Diff=RTT + user delay time
-
-###### Stepping-Stone Detection Via Request-Response Traffic Analysis
-
-Stephen Huang, J Yang, 2007, Houston, 10
-
-- analyze  correlations between the frequencies  of  the  cumulative  numbers  of  packets  sent  in  incoming  and outgoing   connections
-- supplementing of Blum et al.
-- paper incomplete as experiments did not yield all the required results
 
 
 
@@ -165,6 +167,7 @@ A, Kampasi, Crescenzo, Abhrajit Ghosh, 2011, Houston&Princeton, 13
 three anomaly detection algo to detect presence of jitter and chaff
 
 - response-time based
+  - group packets in ON OFF periods
   - detect delays
   - if ack-packet takes longer than RTT+d_t
     - anomalous if threshold and packet ratio is exceeded

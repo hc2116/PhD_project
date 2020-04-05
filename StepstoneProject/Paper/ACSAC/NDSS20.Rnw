@@ -1,4 +1,4 @@
-\documentclass[conference]{IEEEtran}
+ \documentclass[conference]{IEEEtran}
 \pagestyle{plain}
 \usepackage[cmex10]{amsmath}
 %\usepackage{caption} 
@@ -67,11 +67,31 @@ The remaining of this paper is organized as follows. InSection2, we present some
 
 \subsection{Related work}
 
+Xin et al. \cite{xin2006testbed} developed a standard test bed for stepping-stone detection, called \textit{SST}. 
+The main objectives in the development of SST was to provide (1) reproducible evaluation of stepping stone chain detection algorithms, (2) scalability and expandability, and (3) easy configuration, management and operation. The  tool generates scripts to mimic an interactive SSH and TelNet connections. 
+
+To insert time delays and chaff perturbations, the authors modified the OpenSSH proto
+They   demonstrated this with   an experiment   comparing   two stepping-stone   detection   approaches,
 
 
-\cite{shullich2011survey}
+It does not require special hardware, yet provides features like interactive session generation with  
 
-\cite{wang2018research}
+Wang et al. \cite{wang2018research} recently conducted an extensive survey of  stepping stone intrusion detection. The authors group methods according to the respective methodology into 
+\begin{itemize}
+\item content-thumbprint,
+\item time-thumbprint,
+\item packet counting,
+\item random-walk-based,
+\item cross-over packet-based,
+\item watermarking,
+\item network-based,
+\item and software-defined-networking-based, 
+\end{itemize} 
+but do not cover \textcolor{red}{graph-based methods} such as \cite{gamarra2018analysis} %or \cite{apruzzese2017detection}, 
+or anomaly-based methods such as \cite{di2011detecting}, which are increasing in popularity recently.
+The authors then proceed to explain the different methods and highlight their benefits and shortcomings. The authors discuss open problems, but do not provide a comparison of detection rates. 
+
+Shullich et al. \cite{shullich2011survey} in 2011 also conducted a survey on stepping stone intrusion detection. The authors perform a similar grouping of methods, but also discuss related work in evasion tactics and test frameworks. The authors furthermore give an outlook on areas for future research, such as hacker motivation, the cardinality problem when correlating connection pairs, the difficulty of tracing back chains through firewalls, the lack of real-world data examples, or detection in covert channels or protocols such as UDP.  
 
 \cite{almulhem2007survey}
 
@@ -103,7 +123,7 @@ Yang et al. \cite{yang2015rtt,yang2007mining} and Huang et al. \cite{huang2016de
 The model combines packet-counting methods and RTT mining methods to improve detection results from \cite{yang2007mining}. 
 
 A widely-used approach is to compare the number of incoming packets in one connection with the number of outgoing packets in another connection  to determine if the pair represents a stepping stone relay. However, the insertation of chaff can \textcolor{red}{separate} these numbers substantially. 
-To resist intruders’  evasion,  the authors  propose  to use the  number of  round-trips in  a  connection  to  determine  if  the  connection  is being  relayed.
+To resist intruders  evasion,  the authors  propose  to use the  number of  round-trips in  a  connection  to  determine  if  the  connection  is being  relayed.
 Packet pairs representing a round-trip for each connection are estimated using a combination of packet matching and clustering, and counted as $N_{in}$ and $N_{out}$. The authors then claim that the value of $N_{in}-N_{out}$ is only bounded if the two connections are relayed.
 
 
@@ -123,8 +143,16 @@ This method improves the detection methods proposed by Ding et al. \cite{ding200
 
 \subsection{Anomaly-based approaches}
 
-Crescenzo et al. \cite{di2011detecting}
+Since the insertion of time delays and chaff perturbations is so far relatively successful at evading detection, two authors have proposed algorithms to detect these two activities in a connection as deviations from typical TCP-behaviour to indicate of suspicious behaviour. 
+
 \subsection{Detecting Anomalies in Active Insider Stepping Stone Attacks}
+
+Crescenzo et al. \cite{di2011detecting} have proposed a \textcolor{red}{assembly} of three methods to detect time delays and chaff perturbations in a selected connection. 
+\begin{enumerate}
+\item The response-time based method is targeted at detecting packet time-delays. It estimates the RTT of a connection, and then flags acknowledgement packets if their response-time exceeds (RTT+$\delta_{RT}$). The authors claim that an attacker would have to impose delays on more than 70\% of all packets to evade this method.
+\item The edit-distance based method is targeted at detecting 
+\end{enumerate}
+
 
 Huang et al. \cite{huang2011detecting}.
 
@@ -173,6 +201,9 @@ The data sent through tunnel $i$ consists of strings with random size $x$ drawn 
 In order to generate enough data instances representing interactive stepping stone behaviour, we automatised the communication between the start point and the end point of the stepping stone chain. To do so, we generate a script with SSH-commands at the start of each \textcolor{red}{execution} that is passed and run by the \textcolor{red}{starting point} of the chain. The generated script consists of a sequence of ordinary SSH-commands \textcolor{red}{list them here?}, which are drawn randomly from a command catalogue and are each separated by \textit{sleep}-commands for a time $t$ that is drawn each time from a Cauchy-distribution. The average sleep-time is around \textcolor{red}{insert}. The length of the script is reached when the \textit{end}-command is drawn from the catalogue.
 %To evaluate the stepping stone detection capabilities of different proposed methods, we created a \textcolor{red}{realistic dataset...}
 \textcolor{red}{Insert example}
+
+For script-based session creation, several measures havebeen taken to make them realistic. First, each session tries tomimic a real user’s action. All users of the scripts are real useraccounts in the clients. The users are divided into four groups:administrators, secretaries, programmers, and researchers. Foreach type of user, there is large command database which con-sists of the common commands and their historic frequency ofexp_version -exit 5.0if {$argc!=1} {send_user "usage: ftp-rfc \[#] \[-index]\n"exit}set file "rfc$argv.Z"set timeout 60spawn ftp ftp.uu.netexpect "Name*:"send "anonymous\r"expect "Password:"send "expect@nist.gov\r"expect "ftp>"send "binary\r"expect "ftp>"send "cd inet/rfc\r"expect "550*ftp>" exit "250*ftp>"send "get $file\r"expect "550*ftp>" exit "200*226*ftp>"closewaitsend_user "\nuncompressing file - wait...\n"exec uncompress $fileFig. 7.  Example script for a TELNET sessionuse [22]. A portion of the command database for programmersare shown in Table I. Each Expect script is associated witha user, and the commands within the script are drawn fromcorresponding database according to their frequency. Thereare two types of commands: atomic and compound. Atomiccommands only need the user type the command line andthe system will parse the command and print the output.Examples are “ls -la”, “pwd”. Compound commands requiremore interaction. A simple example is “mail xxxx”. After theuser enters “mail xxxx” and “Enter” key, the system promptsthe user to enter “subject”, content and “cc” field of the email.Second, the human typing simulation feature of Expect is usedfor all commands of users. Third, more than 50 human actorsfrom four classes were invited to our lab to generate certainstepping stone chains that were recorded by autoExpect.
+
 
 \subsection{HTTP-interactions}
  
