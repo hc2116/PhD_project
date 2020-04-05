@@ -65,7 +65,7 @@ Stepping-stone intruders can make a connection chainshown as in Fig.1 using teln
 
 The remaining of this paper is organized as follows. InSection2, we present some significant host-based ap-proaches for SSID. In Section3, we summarize sometypically known network-based (connection-chain based)approaches for SSID. In Section4, we propose severalopen problems in this area. Finally, we conclude ourpaper in Section5 and provide the funding informationof this research work in the declarations section.
 
-\subsection{Related work}
+\subsection{Related work}\label{Sec:Relatedwork}
 
 Xin et al. \cite{xin2006testbed} developed a standard test bed for stepping-stone detection, called \textit{SST}. 
 The main objectives in the development of SST was to provide (1) reproducible evaluation of stepping stone chain detection algorithms, (2) scalability and expandability, and (3) easy configuration, management and operation. The  tool generates scripts to mimic an interactive SSH and TelNet connections. 
@@ -99,67 +99,6 @@ Stepping Stone Detection Techniques: Classification and State-of-the-Art, bad th
 
 Metrics: A Study on the Performance Metrics forEvaluating Stepping Stone Detection (SSD)
 Stepping Stone Detection: Measuring the SSD Capability
-
-
-\section{Selected approaches}
-
-\subsection{Packet-correlation-based approaches}
-
-Efficient multi-dimensional flow correlation
-
-Detecting Connection-Chains: A Data Mining Approach
-
-Correlating TCP/IP Packet contexts to detectstepping-stone intrusion 2011
-
-\subsection{RTT-based approaches}
-
-Another prominent approach to detect stepping stones is based on \textit{Round-trip/times} (RTTs). The RTT of a connection is the time it takes for a packet to be sent to the receiver plus the time it takes for an acknowledgement of that packet to be received. For a normal connection, the measured RTTs should be centered closely around one value. However, since information is relayed over one or more hosts in a stepping stone chain, \textcolor{red}{the assumption for RTT-based detection} is that the responses from different hosts within the chain generate multiple RTTs. Observing multiple RTTs is therefore a clear indication of relaying behaviour.
-
-Yang et al. \cite{yang2015rtt,yang2007mining} and Huang et al. \cite{huang2016detecting,ding2009detecting,huang2007stepping}  both have proposed multiple approaches for estimating and employing RTTs for stepping stone detection. We have selected two papers that depict the \textcolor{red}{state-of-the-art}...
-
-\subsubsection{RTT-based Random Walk Approach to Detect Stepping-Stone Intrusion \cite{yang2015rtt}}
-
-
-The model combines packet-counting methods and RTT mining methods to improve detection results from \cite{yang2007mining}. 
-
-A widely-used approach is to compare the number of incoming packets in one connection with the number of outgoing packets in another connection  to determine if the pair represents a stepping stone relay. However, the insertation of chaff can \textcolor{red}{separate} these numbers substantially. 
-To resist intruders  evasion,  the authors  propose  to use the  number of  round-trips in  a  connection  to  determine  if  the  connection  is being  relayed.
-Packet pairs representing a round-trip for each connection are estimated using a combination of packet matching and clustering, and counted as $N_{in}$ and $N_{out}$. The authors then claim that the value of $N_{in}-N_{out}$ is only bounded if the two connections are relayed.
-
-
-\subsubsection{Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections \cite{huang2016detecting}}
-
-This method improves the detection methods proposed by Ding et al. \cite{ding2009detecting}. The authors target specifically relayed interactive SSH communication at the end of a connection chain. They build their detection model on the fact that in a long connection chain, the round-trip time of a packet may be longer than the intervals between two consecutive keystrokes. Normally after sending a request packet, a client will wait for the server response before sending another request. However, TCP/IP allows a client to send a limited number of packets to the server without having to wait for the response. In a long connectin chain, this will result in cross-overs between request and response, which causes the curve of sorted Upstream RTTs to rise more steeply than in a regular connection. A stepping stone is detected if the maximum increase in the curve exceeds a threshold. The authors do not state a universal threshold value and instead suggest a method to estimate the appropriate value for a given setting.
-%Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections
-
-%.
-
-%.
-
-%RTT-based Random Walk Approach to Detect Stepping-Stone Intrusion 
-
-%Detecting Stepping-Stone Intruders with Long Connection Chains? 2009
-
-
-\subsection{Anomaly-based approaches}
-
-Since the insertion of time delays and chaff perturbations is so far relatively successful at evading detection, two authors have proposed algorithms to detect these two activities in a connection as deviations from typical TCP-behaviour to indicate of suspicious behaviour. 
-
-\subsection{Detecting Anomalies in Active Insider Stepping Stone Attacks}
-
-Crescenzo et al. \cite{di2011detecting} have proposed a \textcolor{red}{assembly} of three methods to detect time delays and chaff perturbations in a selected connection. 
-\begin{enumerate}
-\item The response-time based method is targeted at detecting packet time-delays. It estimates the RTT of a connection, and then flags acknowledgement packets if their response-time exceeds (RTT+$\delta_{RT}$). The authors claim that an attacker would have to impose delays on more than 70\% of all packets to evade this method.
-\item The edit-distance based method is targeted at detecting 
-\end{enumerate}
-
-
-Huang et al. \cite{huang2011detecting}.
-
-\subsection{Neural networks}
-
-Performance of neural networks in stepping-stone intrusion detection 2008
-but no good results, better in Neural  networks-based  detection  of stepping-stone  intrusion
 
 
 \section{Dataset creation}
@@ -239,10 +178,86 @@ HTTP 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
 %Delays are added to incoming and outgoing packets on each host individually, and are drawn from a normal distribution. The mean and standard deviation are drawn before each simulation for each host.
 
 
+\section{Selected approaches}
+
+\subsection{Packet-correlation-based approaches}
+
+Efficient multi-dimensional flow correlation
+
+Detecting Connection-Chains: A Data Mining Approach
+
+Correlating TCP/IP Packet contexts to detectstepping-stone intrusion 2011
+
+\subsection{RTT-based approaches}
+
+Another prominent approach to detect stepping stones is based on \textit{Round-trip/times} (RTTs). The RTT of a connection is the time it takes for a packet to be sent to the receiver plus the time it takes for an acknowledgement of that packet to be received. For a normal connection, the measured RTTs should be centered closely around one value. However, since information is relayed over one or more hosts in a stepping stone chain, \textcolor{red}{the assumption for RTT-based detection} is that the responses from different hosts within the chain generate multiple RTTs. Observing multiple RTTs is therefore a clear indication of relaying behaviour.
+
+Yang et al. \cite{yang2015rtt,yang2007mining} and Huang et al. \cite{huang2016detecting,ding2009detecting,huang2007stepping}  both have proposed multiple approaches for estimating and employing RTTs for stepping stone detection. We have selected two papers that depict the \textcolor{red}{state-of-the-art}...
+
+\subsubsection{RTT-based Random Walk Approach to Detect Stepping-Stone Intrusion \cite{yang2015rtt}}
+
+
+The model combines packet-counting methods and RTT mining methods to improve detection results from \cite{yang2007mining}. 
+
+A widely-used approach is to compare the number of incoming packets in one connection with the number of outgoing packets in another connection  to determine if the pair represents a stepping stone relay. However, the insertation of chaff can \textcolor{red}{separate} these numbers substantially. 
+To resist intruders  evasion,  the authors  propose  to use the  number of  round-trips in  a  connection  to  determine  if  the  connection  is being  relayed.
+Packet pairs representing a round-trip for each connection are estimated using a combination of packet matching and clustering, and counted as $N_{in}$ and $N_{out}$. The authors then claim that the value of $N_{in}-N_{out}$ is only bounded if the two connections are relayed.
+
+
+\subsubsection{Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections \cite{huang2016detecting}}
+
+This method improves the detection methods proposed by Ding et al. \cite{ding2009detecting}. The authors target specifically relayed interactive SSH communication at the end of a connection chain. They build their detection model on the fact that in a long connection chain, the round-trip time of a packet may be longer than the intervals between two consecutive keystrokes. Normally after sending a request packet, a client will wait for the server response before sending another request. However, TCP/IP allows a client to send a limited number of packets to the server without having to wait for the response. In a long connectin chain, this will result in cross-overs between request and response, which causes the curve of sorted Upstream RTTs to rise more steeply than in a regular connection. A stepping stone is detected if the maximum increase in the curve exceeds a threshold. The authors do not state a universal threshold value and instead suggest a method to estimate the appropriate value for a given setting.
+%Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections
+
+%.
+
+%.
+
+%RTT-based Random Walk Approach to Detect Stepping-Stone Intrusion 
+
+%Detecting Stepping-Stone Intruders with Long Connection Chains? 2009
+
+
+\subsection{Anomaly-based approaches}
+
+Since the insertion of time delays and chaff perturbations is so far relatively successful at evading detection, two authors have proposed algorithms to detect these two activities in a connection as deviations from typical TCP-behaviour to indicate of suspicious behaviour. 
+
+\subsection{Detecting Anomalies in Active Insider Stepping Stone Attacks}
+
+Crescenzo et al. \cite{di2011detecting} have proposed a \textcolor{red}{assembly} of three methods to detect time delays and chaff perturbations in a selected connection. 
+\begin{enumerate}
+\item The response-time based method is targeted at detecting packet time-delays. It estimates the RTT of a connection, and then flags acknowledgement packets if their response-time exceeds (RTT+$\delta_{RT}$). The authors claim that an attacker would have to impose delays on more than 70\% of all packets to evade this method.
+\item The edit-distance based method is targeted at detecting 
+\end{enumerate}
+
+
+Huang et al. \cite{huang2011detecting}.
+
+\subsection{Neural networks}
+
+Performance of neural networks in stepping-stone intrusion detection 2008
+but no good results, better in Neural  networks-based  detection  of stepping-stone  intrusion
+
+\subsection{Behaviour-based approaches}
+
+A different direction in the detection of stepping stones focuses more on the general communication behaviour of selected hosts rather than individual connections. Features include the timely correlation of connecting IP-address on a selected host or unusual paths of simultaneously existing connections within a computer network.
+
+Emulating these features realistically in network traffic datasets is difficult, and there exist little research on how strongly actual attack behaviour influences these features. Since our dataset focuses only on individual connections and corresponding evasion, \textcolor{red}{we are not able to include behaviour-based approaches in our evaluation}.
+
+
+
+
+\subsection{Evaluation methods}
+All of the above presented methods classify individual connections or pairs of connections as malicious or benign. As discussed by \textcolor{red}{insert citation}, true stepping stone connections are rare compared to benign ones. 
+
+
+
+
+
+
 \section{Results}
 
 \subsection{Unperturbed data}
-
 
 
 
