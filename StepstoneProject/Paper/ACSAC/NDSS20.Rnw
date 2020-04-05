@@ -235,8 +235,14 @@ Huang et al. \cite{huang2011detecting}.
 
 \subsection{Neural networks}
 
+Similar to other areas in intrusion detection, researchers have recently begun to train artificial neural networks to identify stepping stones. A notable initial example came from \textcolor{red}{citation}, who ...
 Performance of neural networks in stepping-stone intrusion detection 2008
-but no good results, better in Neural  networks-based  detection  of stepping-stone  intrusion
+however, the authors concluded that the achieved results did not improve existing detection rates. but no good results, better in Neural  networks-based  detection  of stepping-stone  intrusion
+
+
+
+A more recent example comes from \textcolor{red}{citaton}, who train a convolutional neural network to identify correlation between two simultaneous connections from the upstream and downstream interarrival times and packet sizes in each connection. The trained network is large, with over 200 input filters and consists of three convolutional and three feed-forward layers. The trained model was initially applied to a dataset of Tor-connections as well, where the authors achieved strong results. 
+The authors achieve a $90\%$ detection rate with $0.02 \%$ false positives. 
 
 \subsection{Behaviour-based approaches}
 
@@ -248,9 +254,19 @@ Emulating these features realistically in network traffic datasets is difficult,
 
 
 \subsection{Evaluation methods}
-All of the above presented methods classify individual connections or pairs of connections as malicious or benign. As discussed by \textcolor{red}{insert citation}, true stepping stone connections are rare compared to benign ones. 
+All of the above presented methods classify individual connections or pairs of connections as malicious or benign. True stepping stone connections are rare compared to benign ones, making their detection an imbalanced classification problem. As discussed by \textcolor{red}{insert citation}, an appropriate measure to evaluate SSD methods are false positive and false negative rates as well as the \textit{Area-under-ROC-curve} (AUC) for threshold-based methods.
 
+The false positive rate is defined as
 
+\begin{align*}
+\frac{\text{number of benign connections classified as malicious}}{overall number of benign connections},
+\end{align*}
+
+while the false negative rate is defined as
+
+\begin{align*}
+\frac{\text{number of malicious connections classified as benign}}{overall number of malicious connections}.
+\end{align*}
 
 
 
