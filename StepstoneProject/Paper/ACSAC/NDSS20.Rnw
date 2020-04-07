@@ -182,11 +182,18 @@ HTTP 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
 
 \subsection{Packet-correlation-based approaches}
 
-Efficient multi-dimensional flow correlation
+%Efficient multi-dimensional flow correlation
 
-Detecting Connection-Chains: A Data Mining Approach
+\subsubsection{Detecting Connection-Chains: A Data Mining Approach, 2010}
+
+
+TPR 100\% and FPR 0\%
 
 Correlating TCP/IP Packet contexts to detectstepping-stone intrusion 2011
+
+
+Detecting Stepping-Stones under the  Influence of Packet Jittering, 2013
+
 
 \subsection{RTT-based approaches}
 
