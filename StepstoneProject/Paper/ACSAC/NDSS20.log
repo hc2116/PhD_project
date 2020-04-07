@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  5 APR 2020 11:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  5 APR 2020 23:28
 entering extended mode
 **./NDSS20.tex
 (NDSS20.tex
@@ -363,8 +363,7 @@ Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
 Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
-))
-No file NDSS20.aux.
+)) (NDSS20.aux)
 \openout1 = `NDSS20.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
@@ -381,6 +380,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
 LaTeX Font Info:    ... okay on input line 59.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 59.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 59.
+
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
@@ -465,137 +465,28 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 ** ATTENTION: Overriding command lockouts (line 77).
-
-! Package inputenc Error: Unicode character − (U+2212)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.114 ...promisedhosts Host 1, Host 2,...,Hosti−
-                                                  1, Hosti,Hosti+1,...,and  ...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character − (U+2212)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.114 ...osti−1, Hosti,Hosti+1,...,and  HostN−
-                                                  1.  SSID  can  occur  at  ...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character − (U+2212)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.114 ...pping-stone. The connection from Hosti−
-                                                  1toHostiis called an incom...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 117.
+(Font)              <7> on input line 131.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 117.
+(Font)              <5> on input line 131.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 117.
+(Font)              <8> on input line 149.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 149.
 [1{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
 ]
-
-LaTeX Warning: Citation `wang2018research' on page 2 undefined on input line 12
-0.
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 122.
-
-LaTeX Warning: Citation `gamarra2018analysis' on page 2 undefined on input line
- 131.
-
-
-LaTeX Warning: Citation `apruzzese2017detection' on page 2 undefined on input l
-ine 131.
-
-
-LaTeX Warning: Citation `shullich2011survey' on page 2 undefined on input line 
-135.
-
-
-LaTeX Warning: Citation `almulhem2007survey' on page 2 undefined on input line 
-137.
-
-
-LaTeX Warning: Citation `yang2015rtt' on page 2 undefined on input line 159.
-
-
-LaTeX Warning: Citation `yang2007mining' on page 2 undefined on input line 159.
-
-
-
-LaTeX Warning: Citation `huang2016detecting' on page 2 undefined on input line 
-159.
-
-
-LaTeX Warning: Citation `ding2009detecting' on page 2 undefined on input line 1
-59.
-
-
-LaTeX Warning: Citation `huang2007stepping' on page 2 undefined on input line 1
-59.
-
-
-LaTeX Warning: Citation `yang2015rtt' on page 2 undefined on input line 164.
-
-
-LaTeX Warning: Citation `yang2007mining' on page 2 undefined on input line 164.
-
-
-
-LaTeX Warning: Citation `huang2016detecting' on page 2 undefined on input line 
-173.
-
-
-LaTeX Warning: Citation `ding2009detecting' on page 2 undefined on input line 1
-73.
-
-
-Underfull \hbox (badness 6608) in paragraph at lines 173--175
- []\OT1/ptm/m/it/10 Detecting Stepping-Stone In-trud-ers by Iden-ti-fy-ing
- []
-
-
-LaTeX Warning: Citation `di2011detecting' on page 2 undefined on input line 187
-.
-
-
-LaTeX Warning: Citation `huang2011detecting' on page 2 undefined on input line 
-190.
-
-[2]
-Overfull \hbox (40.89893pt too wide) in paragraph at lines 252--259
+Overfull \hbox (40.89893pt too wide) in paragraph at lines 211--218
 [][] 
  []
 
+[2]
+Underfull \hbox (badness 6608) in paragraph at lines 259--261
+ []\OT1/ptm/m/it/10 Detecting Stepping-Stone In-trud-ers by Iden-ti-fy-ing
+ []
 
-LaTeX Warning: Citation `sommer_outside_2010' on page 3 undefined on input line
- 262.
-
-(NDSS20.bbl)
+(NDSS20.bbl [3])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -607,37 +498,32 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3] (NDSS20.aux)
+[4
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+] (NDSS20.aux) ) 
 Here is how much of TeX's memory you used:
- 3404 strings out of 492970
- 52103 string characters out of 3126595
- 122901 words of memory out of 3000000
+ 3406 strings out of 492970
+ 52190 string characters out of 3126595
+ 121959 words of memory out of 3000000
  7234 multiletter control sequences out of 15000+200000
  37073 words of font info for 70 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,8n,25p,3123b,241s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
-}<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmmi10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmmi7.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/henry/AppData/Local/Programs/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/henry/AppData/Local/
-Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/henry/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/hen
-ry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/User
-s/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/
-Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb
->
-Output written on NDSS20.pdf (3 pages, 114168 bytes).
+ 41i,11n,25p,3100b,251s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvi
+ps/base/8r.enc}<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmmi10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/henry/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/henry/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/henry/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:
+/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb
+><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8
+a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/u
+tmr8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/tim
+es/utmri8a.pfb>
+Output written on NDSS20.pdf (4 pages, 120285 bytes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
+ 52 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

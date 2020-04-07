@@ -27,11 +27,6 @@ A.~Almulhem and I.~Traore, ``A survey of connection-chains detection
   Computers and Signal Processing}.\hskip 1em plus 0.5em minus 0.4em\relax
   IEEE, 2007, pp. 219--222.
 
-\bibitem{apruzzese2017detection}
-G.~Apruzzese, F.~Pierazzi, M.~Colajanni, and M.~Marchetti, ``Detection and
-  threat prioritization of pivoting attacks in large networks,'' \emph{IEEE
-  Transactions on Emerging Topics in Computing}, 2017.
-
 \bibitem{di2011detecting}
 G.~Di~Crescenzo, A.~Ghosh, A.~Kampasi, R.~Talpade, and Y.~Zhang, ``Detecting
   anomalies in active insider stepping stone attacks.'' \emph{JoWUA}, vol.~2,
@@ -81,6 +76,14 @@ R.~Sommer and V.~Paxson, ``Outside the {Closed} {World}: {On} {Using} {Machine}
 L.~Wang and J.~Yang, ``A research survey in stepping-stone intrusion
   detection,'' \emph{EURASIP Journal on Wireless Communications and
   Networking}, vol. 2018, no.~1, p. 276, 2018.
+
+\bibitem{xin2006testbed}
+J.~Xin, L.~Zhang, B.~Aswegan, J.~Dickerson, T.~Daniels, and Y.~Guan, ``A
+  testbed for evaluation and analysis of stepping stone attack attribution
+  techniques,'' in \emph{2nd International Conference on Testbeds and Research
+  Infrastructures for the Development of Networks and Communities, 2006.
+  TRIDENTCOM 2006.}\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2006, pp.
+  9--pp.
 
 \bibitem{yang2007mining}
 J.~Yang and S.-H.~S. Huang, ``Mining tcp/ip packets to detect stepping-stone
