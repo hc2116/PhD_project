@@ -231,7 +231,7 @@ Crescenzo et al. \cite{di2011detecting} have proposed a \textcolor{red}{assembly
 \end{enumerate}
 
 
-Huang et al. \cite{huang2011detecting}.
+Huang et al. \cite{huang2011detecting} proposed a method to detect chaff perturbations in individual connections based on their assessment that interarrival times in regular connections tend to follow a Pareto or Lognormal distribution whereas chaffed connections do not. To detect whether a connection contains chaff perturbations, the authors extract packet interarrival times and fit a probability distribution to the data using maximum likelihood estimation. Afterwards, the goodness-of-fit is tested using two statistical tests, which yield a \textit{disagreement score}. If this disagreement score exceeds a threshold, which was determined from a set of know regular connections, the connection is seen as being subject to chaff perturbations. The authors generate a small set of chaffed interactive SSH stepping-stone chains, where they achieve a $95\%$ detection rate on connections which are subject to a $50\%$ chaff ratio while retaining zero false positives. For lower chaff ratios, the detection rate decreases significantly. 
 
 \subsection{Neural networks}
 
