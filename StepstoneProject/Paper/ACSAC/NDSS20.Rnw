@@ -184,7 +184,7 @@ HTTP 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
 
 %Efficient multi-dimensional flow correlation
 
-\subsubsection{Detecting Connection-Chains: A Data Mining Approach, 2010}
+%\subsubsection{Detecting Connection-Chains: A Data Mining Approach, 2010}
 
 
 TPR 100\% and FPR 0\%
@@ -201,19 +201,19 @@ Another prominent approach to detect stepping stones is based on \textit{Round-t
 
 Yang et al. \cite{yang2015rtt,yang2007mining} and Huang et al. \cite{huang2016detecting,ding2009detecting,huang2007stepping}  both have proposed multiple approaches for estimating and employing RTTs for stepping stone detection. We have selected two papers that depict the \textcolor{red}{state-of-the-art}...
 
-\subsubsection{RTT-based Random Walk Approach to Detect Stepping-Stone Intrusion \cite{yang2015rtt}}
+\subsubsection{RTT-based Random Walk Approach to Detect Stepping-Stone Intrusion }
 
 
-The model combines packet-counting methods and RTT mining methods to improve detection results from \cite{yang2007mining}. 
+This model by Yang et al. \cite{yang2015rtt} combines packet-counting methods and RTT mining methods to improve detection results from \cite{yang2007mining}. 
 
 A widely-used approach is to compare the number of incoming packets in one connection with the number of outgoing packets in another connection  to determine if the pair represents a stepping stone relay. However, the insertation of chaff can \textcolor{red}{separate} these numbers substantially. 
 To resist intruders  evasion,  the authors  propose  to use the  number of  round-trips in  a  connection  to  determine  if  the  connection  is being  relayed.
 Packet pairs representing a round-trip for each connection are estimated using a combination of packet matching and clustering, and counted as $N_{in}$ and $N_{out}$. The authors then claim that the value of $N_{in}-N_{out}$ is only bounded if the two connections are relayed.
 
 
-\subsubsection{Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections \cite{huang2016detecting}}
+\subsubsection{Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections, 2016}
 
-This method improves the detection methods proposed by Ding et al. \cite{ding2009detecting}. The authors target specifically relayed interactive SSH communication at the end of a connection chain. They build their detection model on the fact that in a long connection chain, the round-trip time of a packet may be longer than the intervals between two consecutive keystrokes. Normally after sending a request packet, a client will wait for the server response before sending another request. However, TCP/IP allows a client to send a limited number of packets to the server without having to wait for the response. In a long connectin chain, this will result in cross-overs between request and response, which causes the curve of sorted Upstream RTTs to rise more steeply than in a regular connection. A stepping stone is detected if the maximum increase in the curve exceeds a threshold. The authors do not state a universal threshold value and instead suggest a method to estimate the appropriate value for a given setting.
+This method by Huang et al. \cite{huang2016detecting} improves the detection methods proposed by Ding et al. \cite{ding2009detecting}. The authors target specifically relayed interactive SSH communication at the end of a connection chain. They build their detection model on the fact that in a long connection chain, the round-trip time of a packet may be longer than the intervals between two consecutive keystrokes. Normally after sending a request packet, a client will wait for the server response before sending another request. However, TCP/IP allows a client to send a limited number of packets to the server without having to wait for the response. In a long connectin chain, this will result in cross-overs between request and response, which causes the curve of sorted Upstream RTTs to rise more steeply than in a regular connection. A stepping stone is detected if the maximum increase in the curve exceeds a threshold. The authors do not state a universal threshold value and instead suggest a method to estimate the appropriate value for a given setting.
 %Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections
 
 %.
@@ -229,7 +229,7 @@ This method improves the detection methods proposed by Ding et al. \cite{ding200
 
 Since the insertion of time delays and chaff perturbations is so far relatively successful at evading detection, two authors have proposed algorithms to detect these two activities in a connection as deviations from typical TCP-behaviour to indicate of suspicious behaviour. 
 
-\subsection{Detecting Anomalies in Active Insider Stepping Stone Attacks}
+\subsection{Detecting Anomalies in Active Insider Stepping Stone Attacks, 2011}
 
 Crescenzo et al. \cite{di2011detecting} have proposed a \textcolor{red}{assembly} of three methods to detect time delays and chaff perturbations in a selected connection. 
 \begin{enumerate}
@@ -237,8 +237,12 @@ Crescenzo et al. \cite{di2011detecting} have proposed a \textcolor{red}{assembly
 \item The edit-distance based method is targeted at detecting 
 \end{enumerate}
 
+\subsection{Detecting Chaff Perturbation on Stepping-Stone Connections, 2011, and Detecting Stepping-Stones under the  Influence of Packet Jittering, 2013}
+Huang et al. \cite{huang2011detecting} proposed a method to detect chaff perturbations in individual connections based on their assessment that interarrival times in regular connections tend to follow a Pareto or Lognormal distribution whereas chaffed connections do not. To detect whether a connection contains chaff perturbations, the authors extract packet interarrival times and fit a probability distribution to the data using maximum likelihood estimation. Afterwards, the goodness-of-fit is tested using two statistical tests, which yield a \textit{disagreement-of-fit score}. If this disagreement score exceeds a threshold, which was determined from a set of know regular connections, the connection is seen as being subject to chaff perturbations. The authors generate a small set of chaffed interactive SSH stepping-stone chains, where they achieve a $95\%$ detection rate on connections which are subject to a $50\%$ chaff ratio while retaining zero false positives. For lower chaff ratios, the detection rate decreases significantly. 
 
-Huang et al. \cite{huang2011detecting} proposed a method to detect chaff perturbations in individual connections based on their assessment that interarrival times in regular connections tend to follow a Pareto or Lognormal distribution whereas chaffed connections do not. To detect whether a connection contains chaff perturbations, the authors extract packet interarrival times and fit a probability distribution to the data using maximum likelihood estimation. Afterwards, the goodness-of-fit is tested using two statistical tests, which yield a \textit{disagreement score}. If this disagreement score exceeds a threshold, which was determined from a set of know regular connections, the connection is seen as being subject to chaff perturbations. The authors generate a small set of chaffed interactive SSH stepping-stone chains, where they achieve a $95\%$ detection rate on connections which are subject to a $50\%$ chaff ratio while retaining zero false positives. For lower chaff ratios, the detection rate decreases significantly. 
+A similar approach from the same authors \cite{ding2013detecting} is directed towards the detection of packet jittering. However, instead of estimating a disagreement-of-fit score, the authors use the estimated distribution parameters as input to train a support vector machine. 
+
+
 
 \subsection{Neural networks}
 
