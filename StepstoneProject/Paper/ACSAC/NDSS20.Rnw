@@ -8,7 +8,8 @@
 
 \begin{document}
 
-\title{Evaluation of passiv stepping stone detection techniques under chaff and delay}
+\title{Evading passiv stepping stone detection by using enough chaff}
+%Evaluation of passiv stepping stone detection techniques under chaff and delay}
 
 
 \author{\IEEEauthorblockN{Michael Shell}
@@ -46,41 +47,53 @@ Bla
 
 \section{Introduction}
 
-\textcolor{red}{Network attackers frequently use a chain of compromised intermediate nodes to attack a targetmachine and maintain anonymity. This chain of nodes between the attacker and the target is calleda stepping stone chain. }
+%\textcolor{red}{Network attackers frequently use a chain of compromised intermediate nodes to attack a target machine and maintain anonymity. This chain of nodes between the attacker and the target is calleda stepping stone chain. }
 
 
-Malicious actors on the Internet frequently use chains of compromised hosts to relay their attack, in order to obtain access to restricted resources and to reduce the chance of being detected. These hosts, called \textbf{stepping-stones}, are used by the attacker as relay machines, to which they log in using tools such as SSH or telnet \textcolor{red}{reference}. 
+Malicious actors on the Internet frequently use chains of compromised hosts to relay their attack, in order to obtain access to restricted resources and to reduce the chance of being detected. These hosts, called \textbf{stepping-stones}, are used by the attacker as relay machines, to which they maintain access using tools such as SSH or telnet \textcolor{red}{reference}. 
 
-Accessing a server via multiple relayed TCP connections can make it harder to tell the intruder’s geographical location, and enables attackers to hide behind a long interactive stepping-stone chain. Furthermore, it is often required to relay an attack via privileged hosts in a network that have access to restricted resources. 
+Accessing a server via multiple relayed TCP connections can make it harder to tell the intruder's geographical location, and enables attackers to hide behind a long interactive stepping-stone chain. Furthermore, it is often required to relay an attack via privileged hosts in a network that have access to restricted resources. 
 
-However, detecting that a host is used in a stepping stone chain is a clear indication of malicious behaviour. If a stepping-stone intrusion can be detected during the attack stage, the connection can be terminated to interrupt the attack. Stepping-stone detection primarily looks at network traffic, with most approaches aiming to identify potential correlation between two connections going from or to a particular host. 
+However, detecting that a host is used in a stepping-stone chain is a clear indication of malicious behaviour. If a stepping-stone intrusion can be detected during the attack stage, the connection can be terminated to interrupt the attack. Stepping-stone detection (SSD) primarily looks at network traffic, with many approaches aiming to identify potential correlation between two connections going from or to a particular host. To hide correlation between relayed packets, intruders can impose delays on packet transfer and inject additional \textit{chaff} packets into the connections.
 
-There are a number of approaches to detect stepping-stones, with the earliest one having been proposed by Zhang and Paxson in 2000 \textcolor{red}{citation needed?}. However, no 
+There are a number of approaches to detect stepping-stones, with the earliest one having been proposed by Zhang and Paxson in 2000 \textcolor{red}{citation needed?}. However like many intrusion attacks, stepping-stones are rare and there exists no public data representing real stepping-stone behaviour, and researchers have to rely on synthetic data. Some attempts have been made to create publicly available stepping-stone testbeds, but most researchers evaluate their SSD methods on self-provided data. The underlying generating implementations often differ significantly, which makes their direct comparison of the achieved results impossible. Additionally, we find that implemented evasive behaviours are often too simplistic and thus increase detection rates. 
+
+In this work, we provide an independent framework to generate data representing stepping-stone behaviour ....
+We use this data to provide an in-depth evaluation of current passive SSD methods and compare their results. Furthermore, we show that by inserting enough chaff perturbations in the right form, an intruder can evade all current SSD methods successfully
 
 
+\section{Background}
+
+When a person logs into one computer and from there logs into another computer and so on, we refer to the sequence of logins as a connection chain[18]. 
+In an interactive stepping-stone attack, an attacker located at the origin host, which we call \textit{host O} sends commands to and awaits their response from a target, \textit{host T}, typically by using terminal emulation programs like TelNet or SSH. These commands and responses are proxied via a chain of one or more intermediary hosts, the stepping-stones, which we call \textit{host} $S_1$, \dots, $S_N$, such as depicted in Fig. \textcolor{red}{insert image}. 
+
+Stepping-stone detection (SSD) is a process of observing all incoming and outgoing connections in a network and determining which ones are parts of a connection chain. %This problem is closely related to the problem of tracing intruders through the Internet by following the connection chain. 
+SSD typically either aims at classifying a host as a stepping stone if two connections involving this host appear to be correlated, or at classifying a connection as part of a chain if its behaviour differs from regular connections. In addition, several SSD methods aim to estimate the overall length of the stepping-stone chain to help tracing the intruder by following the connection chain. 
+A traffic collection sensor is typically placed in the vicinity of the examined host to provide the necessary data. 
+
+\textcolor{red}{insert citation} identify another form of stepping-stones called \textit{store-and-forward}, which transfer data within files in a non-interactive manner. Though harder to detect than interactive connections, this procedure limits the attackers ability to explore the target, which is why SSD research has been primarily concerned with interactive stepping-stones.
+
+\subsection{Packet delays}
+
+\subsection{Chaff perturbations}
 
 
-\subsection{Explain normal setup}
-%Stepping-stone intruders can make a connection chainshown as in Fig.1 using telnet/rlogin/ssh to launch theirattacks. In Fig.1, we assume that Host 0 is used by an in-truder to launch an attack to Host N via compromisedhosts Host 1, Host 2,...,Host1, Hosti,Hosti+1,...,and  HostN1.  SSID  can  occur  at  one  of  thestepping-stones. It is assumed that the detection programresides in Hostiwhich is called a (detecting) sensor. SSIDis to determine whether the sensor Hostiis used as astepping-stone. The connection from Hosti1toHostiis called an incoming connection to Hosti, and the con-nection from Hostito Hosti+ 1 is called an outgoingconnection from Hosti. A necessary condition that Hostiis used as a stepping-stone is that there is at least onerelayed pair between all the incoming connections and allthe outgoing connections.One type of approach to detect stepping-stone intru-sion is to compare all the incoming connections with allthe outgoing connections of the same host to see if thereexists a relayed pair. This type of approach is calledhos-t-basedSSID. We will discuss all the significant researchwork for host-based SSID in Section2. The primaryissue of this type of approach is that high false-positiveerrors can be easily introduced since some legal applica-tions may use stepping-stones to access remote servers.Another type of approach to overcome the issues ofhost-based detection is to estimate the number of con-nections from Host 0 to HostN(as shown in Fig.1),which is referred to as the length of the connectionchain. If there are more than three connections involvedin a connection chain, it indicates that the user obvi-ously tries to access HostNvia more than three com-puter hosts. Clearly, the more hosts involved in aninteractive session to access a server, the slower the net-work communication, unless there are something hid-den; otherwise, it does not make sense to access aremote sever via more than three hosts. The numberthreeis used because it was found that most legal ap-plications rarely used more than three stepping-stonesto access a remote server. This type of approach is callednetwork-based(orconnection-chain based) SSID.Estimating the length of the connection chain fromHost 0 to Hostias shown in Fig.1 is called upstreamdetection. Similarly, estimating the length of the connec-tion chain form Hostito HostNis called downstreamdetection. Accurate estimation of the length of the wholeconnection chain requires both downstream and up-stream detections. Unfortunately, performing upstreamdetection is extremely challenging. Such a problem is still open and remains unsolved. Therefore, it is ex-tremely hard to estimate the length of the whole connec-tion  chain. So  most  researchers  in  SSID  primarilyfocused on using the length of downstream connectionto decide whether there is a stepping-stone intrusion.Compared to using the length of the whole connectionchain, this simplified method may introduce false nega-tive errors, but it performs much better than host-baseddetection as well as largely reduces false positive errors.
-
-The remaining of this paper is organized as follows. InSection2, we present some significant host-based ap-proaches for SSID. In Section3, we summarize sometypically known network-based (connection-chain based)approaches for SSID. In Section4, we propose severalopen problems in this area. Finally, we conclude ourpaper in Section5 and provide the funding informationof this research work in the declarations section.
 
 \section{Related work}\label{Sec:Relatedwork}
 
-\subsubsection{Evaluation of evasion tactics}
+%\subsubsection{Evasion tactics}
+
+%Padhye et al. \cite{padhye2010evading} have 
+
+\subsection{Datasets}
 
 
+In 2006, Xin et al. \cite{xin2006testbed} developed a standard test bed for stepping-stone detection, called \textit{SST}. 
+The main objectives in the development of SST were to enable a reproducible evaluation of stepping stone chain detection algorithms with easy configuration, management and operation. The tool allows for an arbitrary number of intermediate hosts and generates scripts to mimic interactive SSH and TelNet connections. 
+To insert time delays and chaff perturbations, the authors modified the OpenSSH protocol on the intermediary hosts. Delays can be drawn from a uniform distribution while chaff can be drawn from a Poisson or Pareto distribution. To our knowledge, SST has only been used for evaluation by Zhang et al. \cite{zhang2005stepping}, and is not available anymore. \textcolor{red}{say something why evasion not sufficiently implemented}
 
-\subsection{Evaluation data}
+Another approach to use publicly available data comes from Houmansadr et al. \textcolor{red}{insert citations}. The authors use the well-known CAIDA 2016 anonymized data traces \textcolor{red}{insert citation} to evaulate different watermarking methods for SSD. To simulate stepping stone behaviour, packet delays and drops are imposed retroactively on selected connections using Laplace and Bernoulli distributions with different rates. While this procedure seems sufficient for the evaluation of watermarking methods, it falls short on simulating an actual connection chain and leaves out chaff perturbations. 
 
-Xin et al. \cite{xin2006testbed} developed a standard test bed for stepping-stone detection, called \textit{SST}. 
-The main objectives in the development of SST was to provide (1) reproducible evaluation of stepping stone chain detection algorithms, (2) scalability and expandability, and (3) easy configuration, management and operation. The  tool generates scripts to mimic an interactive SSH and TelNet connections. 
-
-To insert time delays and chaff perturbations, the authors modified the OpenSSH proto
-They   demonstrated this with   an experiment   comparing   two stepping-stone   detection   approaches,
-
-
-It does not require special hardware, yet provides features like interactive session generation with  
 
 Wang et al. \cite{wang2018research} recently conducted an extensive survey of  stepping stone intrusion detection. The authors group methods according to the respective methodology into 
 \begin{itemize}
@@ -108,6 +121,8 @@ Stepping Stone Detection: Measuring the SSD Capability
 
 
 \section{Dataset creation}
+
+
 
 \subsection{Simulating stepping stones with SSH-tunnels and Docker}
 
@@ -187,6 +202,8 @@ HTTP 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
 
 
 \section{Selected approaches}
+
+Researchers have so far proposed two main approaches: passive monitoring and active perturbation. In the latter
 
 \subsection{Packet-correlation-based approaches}
 
