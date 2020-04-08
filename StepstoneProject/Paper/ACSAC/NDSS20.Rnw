@@ -65,7 +65,13 @@ There are a number of approaches to detect stepping-stones, with the earliest on
 
 The remaining of this paper is organized as follows. InSection2, we present some significant host-based ap-proaches for SSID. In Section3, we summarize sometypically known network-based (connection-chain based)approaches for SSID. In Section4, we propose severalopen problems in this area. Finally, we conclude ourpaper in Section5 and provide the funding informationof this research work in the declarations section.
 
-\subsection{Related work}\label{Sec:Relatedwork}
+\section{Related work}\label{Sec:Relatedwork}
+
+\subsubsection{Evaluation of evasion tactics}
+
+
+
+\subsection{Evaluation data}
 
 Xin et al. \cite{xin2006testbed} developed a standard test bed for stepping-stone detection, called \textit{SST}. 
 The main objectives in the development of SST was to provide (1) reproducible evaluation of stepping stone chain detection algorithms, (2) scalability and expandability, and (3) easy configuration, management and operation. The  tool generates scripts to mimic an interactive SSH and TelNet connections. 
@@ -128,12 +134,14 @@ We set the network settings for the starting point and the end point container i
 
 
 
-\subsubsection{Adding delays and chaff}
+\subsubsection{Adding delays}
 
 To add artifical delays to forwarded packets on a stepping stone host for detection evasion, we can again use NetEm. We draw delays for departing packets from a uniform distribution, as suggested by \textcolor{red}{add reference}, covering the interval $[0,\delta_d]$, with no packet correlation. 
 
+\subsubsection{Adding chaff perturbation}
+
 To add chaff packets to the relayed connection, we forward two additional ports through the SSH-tunnel of a stepping stone host. We then use NetCat \textcolor{red}{add reference} to send data to both ports from either direction and collect it at the other side. Figure \textcolor{red}{...} depicts this setup for an individual tunnel. 
-The data sent through tunnel $i$ consists of strings with random size $x$ drawn from a Cauchy-distribution with mean $xx_i$, and is sent in intervals of random length $\delta_c$ drawn from an exponential distribution with mean $yy_i$. By adjusting $yy_i$, we can control the amount of chaff sent through a tunnel. 
+The data sent through tunnel $i$ consists of strings with random size $x$ drawn from a Cauchy-distribution with mean $xx_i$, and is sent in intervals of random length $\delta_c$ drawn from an \textcolor{red}{paretonormal} distribution with mean $yy_i$. By adjusting $yy_i$, we can control the amount of chaff sent through a tunnel. 
 
 \subsection{Simulating interactive SSH-traffic}
 
@@ -187,12 +195,32 @@ HTTP 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
 %\subsubsection{Detecting Connection-Chains: A Data Mining Approach, 2010}
 
 
-TPR 100\% and FPR 0\%
+%TPR 100\% and FPR 0\%
 
-Correlating TCP/IP Packet contexts to detectstepping-stone intrusion 2011
+\subsubsection{Correlating TCP/IP Packet contexts to detect stepping-stone intrusion 2011}
+
+Yang et al. \cite{yang2011correlating} compare sequences of interarrival times in connection pairs to detect potential stepping-stone behaviour. For that, the context of a packet is defined as the packet interarrival times around that packet. The context of  packets is extracted from each connection, and their respective contextual distance is estimated using the Pearson correlation. Packets with high correlation are defined as `matched', and two connections are classified as relayed if the ratio of matched packets exceeds a threshold. The authors propose to only collect interarrival times from \textit{Echo}-packets instead of \textit{Send}-packets to resist evasion tactics such as chaff and jitter, as the sending of \textit{Echo}-packets is subject to more constraints and less easy to manipulate.
+
+The authors evaluate their results on connection pairs with up to $100\%$ chaff ratio, with the model being able to successfully detect connection relays in all cases. 
 
 
-Detecting Stepping-Stones under the  Influence of Packet Jittering, 2013
+\subsection{Neural networks}
+
+Similar to other areas in intrusion detection, researchers have recently begun to train artificial neural networks to identify stepping stones. 
+
+A notable initial example came from \textcolor{red}{citation}, who ...
+Performance of neural networks in stepping-stone intrusion detection 2008
+however, the authors concluded that the achieved results did not improve existing detection rates. but no good results, better in Neural  networks-based  detection  of stepping-stone  intrusion
+
+The authors present two networks to identify stepping stones. 
+The first method uses eight packet variables of an individual packet as input to predict the number of stepping-stones.
+
+The second method is based on sequences of RTTs. For this, a packet matching algorithm is used to compute RTTs, which are then fed as a fixed-length sequence into a feed-forward network to predict the downstream length. The network itself only contains one hidden layer and is relatively small. The results from the packet-based method are however inconclusive, and the RTT-based methods achieves good results only if RTTs are small, i.e. the stepping-stone chain is completely contained within one LAN-network.
+
+
+
+A more recent example comes from \textcolor{red}{citaton}, who train a convolutional neural network to identify correlation between two simultaneous connections from the upstream and downstream interarrival times and packet sizes in each connection. The trained network is large, with over 200 input filters and consists of three convolutional and three feed-forward layers. The trained model was initially applied to a dataset of Tor-connections as well, where the authors achieved strong results. 
+The authors achieve a $90\%$ detection rate with $0.02 \%$ false positives. 
 
 
 \subsection{RTT-based approaches}
@@ -243,22 +271,6 @@ Huang et al. \cite{huang2011detecting} proposed a method to detect chaff perturb
 A similar approach from the same authors \cite{ding2013detecting} is directed towards the detection of packet jittering. However, instead of estimating a disagreement-of-fit score, the authors use the estimated distribution parameters as input to train a support vector machine. 
 
 
-
-\subsection{Neural networks}
-
-Similar to other areas in intrusion detection, researchers have recently begun to train artificial neural networks to identify stepping stones. A notable initial example came from \textcolor{red}{citation}, who ...
-Performance of neural networks in stepping-stone intrusion detection 2008
-however, the authors concluded that the achieved results did not improve existing detection rates. but no good results, better in Neural  networks-based  detection  of stepping-stone  intrusion
-
-The authors present two networks to identify stepping stones. 
-The first method uses eight packet variables of an individual packet as input to predict the number of stepping-stones.
-
-The second method is based on sequences of RTTs. For this, a packet matching algorithm is used to compute RTTs, which are then fed as a fixed-length sequence into a feed-forward network to predict the downstream length. The network itself only contains one hidden layer and is relatively small. The results from the packet-based method are however inconclusive, and the RTT-based methods achieves good results only if RTTs are small, i.e. the stepping-stone chain is completely contained within one LAN-network.
-
-
-
-A more recent example comes from \textcolor{red}{citaton}, who train a convolutional neural network to identify correlation between two simultaneous connections from the upstream and downstream interarrival times and packet sizes in each connection. The trained network is large, with over 200 input filters and consists of three convolutional and three feed-forward layers. The trained model was initially applied to a dataset of Tor-connections as well, where the authors achieved strong results. 
-The authors achieve a $90\%$ detection rate with $0.02 \%$ false positives. 
 
 \subsection{Behaviour-based approaches}
 
