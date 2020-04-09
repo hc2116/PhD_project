@@ -38,6 +38,12 @@ W.~Ding, M.~J. Hausknecht, S.-H.~S. Huang, and Z.~Riggle, ``Detecting
   International Conference on Information Assurance and Security},
   vol.~2.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2009, pp. 665--669.
 
+\bibitem{ding2013detecting}
+W.~Ding, K.~Le, and S.-H.~S. Huang, ``Detecting stepping-stones under the
+  influence of packet jittering,'' in \emph{2013 9th International Conference
+  on Information Assurance and Security (IAS)}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2013, pp. 31--36.
+
 \bibitem{gamarra2018analysis}
 M.~Gamarra, S.~Shetty, D.~M. Nicol, O.~Gonazlez, C.~A. Kamhoua, and L.~Njilla,
   ``Analysis of stepping stone attacks in dynamic vulnerability graphs,'' in
@@ -90,10 +96,21 @@ J.~Yang and S.-H.~S. Huang, ``Mining tcp/ip packets to detect stepping-stone
   intrusion,'' \emph{computers \& security}, vol.~26, no. 7-8, pp. 479--484,
   2007.
 
+\bibitem{yang2011correlating}
+J.~Yang and D.~Woolbright, ``Correlating tcp/ip packet contexts to detect
+  stepping-stone intrusion,'' \emph{Computers \& Security}, vol.~30, no. 6-7,
+  pp. 538--546, 2011.
+
 \bibitem{yang2015rtt}
 J.~Yang and Y.~Zhang, ``Rtt-based random walk approach to detect stepping-stone
   intrusion,'' in \emph{2015 IEEE 29th International Conference on Advanced
   Information Networking and Applications}.\hskip 1em plus 0.5em minus
   0.4em\relax IEEE, 2015, pp. 558--563.
+
+\bibitem{zhang2005stepping}
+L.~Zhang, A.~Persaud, A.~Johnson, and Y.~Guan, ``Stepping stone attack
+  attribution in non-cooperative ip networks,'' in \emph{Proc. of the 25th IEEE
+  International Performance Computing and Communications Conference (IPCCC
+  2006)}, 2005.
 
 \end{thebibliography}
