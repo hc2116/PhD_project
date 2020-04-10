@@ -128,15 +128,24 @@ Our goal is to simulate data that reflects the different aspects of interactive 
 
 In order to consider all these factors, we rely on the virtualisation framework Docker. Docker enables us to script the repeated creation of steppings-stone chains within a virtual network in a scalable manner. \textcolor{red}{while allowing network different settings}. 
 
+\textcolor{red}{write about Docker advantages in terms of speed and controllability}
+
 \subsection{Simulating stepping stones with SSH-tunnels and Docker}
 
+We want to capture data not only from one interaction in a fixed stepping-stone chain, but from many interactions and chains with different settings. For that, we run multiple simulations, with each simulation establishing a stepping-stone chain and controlling the interactions between host O and host T. A simulation and the corresponding traffic capture is \textit{red}{described} a capture-script. 
+
+A simulation begins with the start-up of the necessary containers and ends with their takedown. We represent host O, host T, and host $S_1,\dots,S_n$ with SSH-daemon containers.  To establish a connection chain, we connect these containers via SSH-tunnels, with the first tunnel forwarding the required port from host O to host $S_1$, which is then forwarded to host $S_2$ by the second tunnel etc. One benefit of SSH-tunnels from an attackers perspective is that they do not just simply forward packets, but act as independent encrypted TCP-connections along with independent packet confirmations.  Fig. \textcolor{red}{...} depicts a packet transfer via an exemplary chain. 
+
+Traffic is captured both at host T and host $S_n$, which acts as the final stepping-stone in the chain and is most likely the target of a detection algorithm. 
 
 
-insert figure with one and with three stepping stones
+
+
+%insert figure with one and with three stepping stones
 
 
 
-SSH tunnel on respective port on the starting point of the chain, tunnels to port on the next point in the chain. Finally, Refer to figure. 
+%SSH tunnel on respective port on the starting point of the chain, tunnels to port on the next point in the chain. Finally, Refer to figure. 
 
 \subsection{Simulating interactive SSH-traffic}
 
@@ -169,9 +178,10 @@ Hosts in a stepping-stone chains can be separated by varying distances. Some may
 Docker communication takes place over virtual bridge networks, so the throughput is far higher and more reliable than in real-world networks. %This level of speed and consistency is worrying for our purposes as packet timings will be largely identical on repeated runs of a scenario and any collected data could be overly homogeneous.
 To retard the quality of the Docker network to realistic levels, we rely on the emulation tool Netem. Netem \textcolor{red}{add reference} is a Linux command line tool that allows users to artificially simulate network conditions such as high latency, low bandwidth, or packet corruption/drop in a flexible manner.
 
-We apply Netem commands to the network interface of each container, which adds correlated delays to incoming and outgoing packets that are drawn from a normal distribution with mean $\mu$, variance $\sigma^2$, and correlation $\rho_1$. We furthermore apply correlated packet loss and corruption drawn from a binomial distribution with probability $p$ and correlation $\rho_2$. \textcolor{red}{bandwith limiting}.
+We apply Netem commands to the network interface of each container, which adds correlated delays to incoming and outgoing packets that are drawn from a normal distribution with mean $\mu$, variance $\sigma^2$, and correlation $\rho_1$. We furthermore apply correlated packet loss and corruption drawn from a binomial distribution with probability $p$ and correlation $\rho_2$. Lastly, we apply an overall limit $B$ on the bandwidth of containers container network interfaces.
+ \textcolor{red}{bandwith limiting}.
 
-To allow for different types of host separation, we set the network settings for each host container individually before each simulation and draw each of the given parameters from a suitable distribution. This allows for some hosts to experience very fast and reliable communication while others experience more congested network communication.  \textcolor{red}{(should I specify which one for each? Seems a bit much...)} %before each \textcolor{red}{run} to allow for a good amount of variation in the generated data.
+To allow for different types of host separation, we set the network settings and bandwidth limit for each host container individually before each simulation, and draw each of the given parameters from a suitable distribution. This allows for some hosts to experience very fast and reliable communication while others experience more congested network communication.  \textcolor{red}{(should I specify which one for each? Seems a bit much...)} %before each \textcolor{red}{run} to allow for a good amount of variation in the generated data.
 We store the set parameters along with the collected traffic for each simulation to include the effect of network congestion in the evaluation. 
 
 %providing us with the flexibility to set each container's network settings uniquely. 
@@ -185,20 +195,31 @@ We store the set parameters along with the collected traffic for each simulation
 
 \subsubsection{Adding delays}
 
-To add artifical delays to forwarded packets on a stepping stone host for detection evasion, we can again use NetEm. We draw delays for departing packets from a uniform distribution, as suggested by \textcolor{red}{add reference}, covering the interval $[0,\delta_d]$, with no packet correlation. 
+To increase detection difficulty as suggested by  \cite{padhye2010evading}, we add transfer delays to packets forwarded by stepping stone hosts. This method, often called \textit{jittering}, can destroy time-based watermarks in packet flows and help decrease observable correlation between two connections. 
+
+We add transfer delays to forward packets again by using NetEm. We draw delays for departing packets on a hosts from a uniform distribution, as suggested by \textcolor{red}{add reference}, covering the interval $[0,\delta_d]$, with zero packet correlation. The value of $\delta_d$ is fixed before each simulation and can be varied to allow for different degrees of packet jittering. 
+
+\textcolor{red}{insert citation} suggested to use long packet delays to decrease decorrelation between packet streams. However, this often leads to difficulties in the TCP-protocol due to the significant increase of packet reordering and response time-outs. We therefore set the maximum value for  $\delta_d$  at $1s$. As we will see in Section \textcolor{red}{...}, this is enough to render watermarking methods obsolete while flow decorrelation can be achieved more effectively by using chaff perturbations. 
+
+
+
+
 
 \subsubsection{Adding chaff perturbation}
 
-To add chaff packets to the relayed connection, we forward two additional ports through the SSH-tunnel of a stepping stone host. We then use NetCat \textcolor{red}{add reference} to send data to both ports from either direction and collect it at the other side. Figure \textcolor{red}{...} depicts this setup for an individual tunnel. 
-The data sent through tunnel $i$ consists of strings with random size $x$ drawn from a Cauchy-distribution with mean $xx_i$, and is sent in intervals of random length $\delta_c$ drawn from an \textcolor{red}{paretonormal} distribution with mean $yy_i$. By adjusting $yy_i$, we can control the amount of chaff sent through a tunnel. 
+We furthermore insert chaff packets to individual connections in the chain to increase detection difficulty \textcolor{red}{citation?}. These chaff packets do not contain actual information and act as noise to decorrelate connections in the chain. To add and filter out packets in a connection, we add additional ports in each SSH-tunnel that are not forwarded through the entire chain.
+We then use a NetCat client containers to send and receive packets on these additional ports in both directions. Figure \textcolor{red}{...} depicts this setup. 
+
+%\textcolor{red}{add reference} to send data to both ports from either direction and collect it at the other side. 
+The data sent by the client $i$ consists of strings with random size $x$ drawn from a Cauchy-distribution with mean $xx_i$, and is sent in intervals of random length $\delta_c$ drawn from an \textcolor{red}{paretonormal} distribution with mean $yy_i$. Huang et al. \cite{huang2011detecting} have pointed out that packet interarrivals in benign connections often follow a paretonormal distribution, so it seems to be a good choice to make the inserted chaff appear as benign traffic. By adjusting $yy_i$, we can control the rate of chaff sent.
 
 
 
-\subsection{HTTP-interactions}
+%\subsection{HTTP-interactions}
  
-In order to provide an additional, different type of interaction between the \textcolor{red}{starting point} and \textcolor{red}{end point}, we directed HTTP traffic over the stepping stone chain. Here, the starting point hosts Scrapy, a web crawling service \textcolor{red}{insert citation}, that surfs the 1 million most popular website by clicking links on them. The requests are sent over the stepping stone chain to the web. 
+%In order to provide an additional, different type of interaction between the \textcolor{red}{starting point} and \textcolor{red}{end point}, we directed HTTP traffic over the stepping stone chain. Here, the starting point hosts Scrapy, a web crawling service \textcolor{red}{insert citation}, that surfs the 1 million most popular website by clicking links on them. The requests are sent over the stepping stone chain to the web. 
 
-This type of traffic is not meant to necessarily represent realistic stepping stone behaviour, but to provide an additional source of interactive traffic that differs substantially from SSH in order to test detection methods from another angle.
+%This type of traffic is not meant to necessarily represent realistic stepping stone behaviour, but to provide an additional source of interactive traffic that differs substantially from SSH in order to test detection methods from another angle.
 
 
 
