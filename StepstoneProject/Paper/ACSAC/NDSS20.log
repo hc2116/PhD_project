@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  9 APR 2020 11:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  11 APR 2020 14:46
 entering extended mode
 **./NDSS20.tex
 (NDSS20.tex
@@ -466,27 +466,145 @@ G,.JBIG2,.JB2,.eps]
 )
 ** ATTENTION: Overriding command lockouts (line 78).
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 118.
+(Font)              <7> on input line 119.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 118.
+(Font)              <5> on input line 119.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 144.
+(Font)              <8> on input line 141.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 144.
+(Font)              <6> on input line 141.
 [1{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
 ] [2]
-Overfull \hbox (40.89893pt too wide) in paragraph at lines 234--241
-[][] 
- []
-
-
-Underfull \hbox (badness 6608) in paragraph at lines 311--313
+[3]
+Underfull \hbox (badness 6608) in paragraph at lines 360--362
  []\OT1/ptm/m/it/10 Detecting Stepping-Stone In-trud-ers by Iden-ti-fy-ing
  []
 
-[3] (NDSS20.bbl [4])
+[4]
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.437 #
+       nodes & no evasion & delays & chaff & delays\& chaff \hline \\
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.437 ... & delays & chaff & delays\& chaff \hline
+                                                   \\
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! You can't use `\hrule' here except with leaders.
+\hline ->\noalign {\ifnum 0=`}\fi \hrule 
+                                         \@height \arrayrulewidth \futurelet...
+l.437 ... & delays & chaff & delays\& chaff \hline
+                                                   \\
+To put a horizontal rule in an hbox or an alignment,
+you should use \leaders or \hrulefill (see The TeXbook).
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \futurelet 
+l.437 ... & delays & chaff & delays\& chaff \hline
+                                                   \\
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \futurelet 
+l.437 ... & delays & chaff & delays\& chaff \hline
+                                                   \\
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.439 ... 10.000 & 10.000 & 10.000 & 10.000 \hline
+                                                   \\
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! You can't use `\hrule' here except with leaders.
+\hline ->\noalign {\ifnum 0=`}\fi \hrule 
+                                         \@height \arrayrulewidth \futurelet...
+l.439 ... 10.000 & 10.000 & 10.000 & 10.000 \hline
+                                                   \\
+To put a horizontal rule in an hbox or an alignment,
+you should use \leaders or \hrulefill (see The TeXbook).
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \futurelet 
+l.439 ... 10.000 & 10.000 & 10.000 & 10.000 \hline
+                                                   \\
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \futurelet 
+l.439 ... 10.000 & 10.000 & 10.000 & 10.000 \hline
+                                                   \\
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.440 ... 10.000 & 10.000 & 10.000 & 10.000 \hline
+                                                   \\
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! You can't use `\hrule' here except with leaders.
+\hline ->\noalign {\ifnum 0=`}\fi \hrule 
+                                         \@height \arrayrulewidth \futurelet...
+l.440 ... 10.000 & 10.000 & 10.000 & 10.000 \hline
+                                                   \\
+To put a horizontal rule in an hbox or an alignment,
+you should use \leaders or \hrulefill (see The TeXbook).
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \futurelet 
+l.440 ... 10.000 & 10.000 & 10.000 & 10.000 \hline
+                                                   \\
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \futurelet 
+l.440 ... 10.000 & 10.000 & 10.000 & 10.000 \hline
+                                                   \\
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+(NDSS20.bbl [5])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -498,17 +616,17 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5
+[6
 
 ] (NDSS20.aux) ) 
 Here is how much of TeX's memory you used:
- 3410 strings out of 492970
- 52265 string characters out of 3126595
- 122966 words of memory out of 3000000
- 7238 multiletter control sequences out of 15000+200000
- 37073 words of font info for 70 fonts, out of 3000000 for 9000
+ 3420 strings out of 492970
+ 52430 string characters out of 3126595
+ 122070 words of memory out of 3000000
+ 7247 multiletter control sequences out of 15000+200000
+ 38797 words of font info for 72 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,11n,25p,1830b,249s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,11n,29p,1103b,253s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvi
 ps/base/8r.enc}<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmmi10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/f
@@ -521,9 +639,9 @@ AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:
 a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/u
 tmr8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on NDSS20.pdf (5 pages, 126630 bytes).
+Output written on NDSS20.pdf (6 pages, 133369 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
+ 58 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -68,15 +68,15 @@ S.-H.~S. Huang, R.~Lychev, and J.~Yang, ``Stepping-stone detection via
   Autonomic and Trusted Computing}.\hskip 1em plus 0.5em minus 0.4em\relax
   Springer, 2007, pp. 276--285.
 
+\bibitem{padhye2010evading}
+J.~D. Padhye, K.~Kothari, M.~Venkateshaiah, and M.~Wright, ``Evading
+  stepping-stone detection under the cloak of streaming media with sneak,''
+  \emph{Computer Networks}, vol.~54, no.~13, pp. 2310--2325, 2010.
+
 \bibitem{shullich2011survey}
 R.~Shullich, J.~Chu, P.~Ji, and W.~Chen, ``A survey of research in
   stepping-stone detection,'' \emph{" International Journal of Electronic
   Commerce Studies"}, vol.~2, no.~2, pp. 103--126, 2011.
-
-\bibitem{sommer_outside_2010}
-R.~Sommer and V.~Paxson, ``Outside the {Closed} {World}: {On} {Using} {Machine}
-  {Learning} for {Network} {Intrusion} {Detection},'' in \emph{2010 {IEEE}
-  {Symposium} on {Security} and {Privacy}}, May 2010, pp. 305--316.
 
 \bibitem{wang2018research}
 L.~Wang and J.~Yang, ``A research survey in stepping-stone intrusion
@@ -106,6 +106,13 @@ J.~Yang and Y.~Zhang, ``Rtt-based random walk approach to detect stepping-stone
   intrusion,'' in \emph{2015 IEEE 29th International Conference on Advanced
   Information Networking and Applications}.\hskip 1em plus 0.5em minus
   0.4em\relax IEEE, 2015, pp. 558--563.
+
+\bibitem{yang2018sniffing}
+J.~Yang, Y.~Zhang, R.~King, and T.~Tolbert, ``Sniffing and chaffing network
+  traffic in stepping-stone intrusion detection,'' in \emph{2018 32nd
+  International Conference on Advanced Information Networking and Applications
+  Workshops (WAINA)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2018, pp.
+  515--520.
 
 \bibitem{zhang2005stepping}
 L.~Zhang, A.~Persaud, A.~Johnson, and Y.~Guan, ``Stepping stone attack

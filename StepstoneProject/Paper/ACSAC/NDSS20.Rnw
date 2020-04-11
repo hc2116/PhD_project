@@ -45,6 +45,7 @@ Bla
 \end{abstract}
 
 
+
 \section{Introduction}
 
 %\textcolor{red}{Network attackers frequently use a chain of compromised intermediate nodes to attack a target machine and maintain anonymity. This chain of nodes between the attacker and the target is calleda stepping stone chain. }
@@ -122,7 +123,7 @@ Metrics: A Study on the Performance Metrics forEvaluating Stepping Stone Detecti
 Stepping Stone Detection: Measuring the SSD Capability
 
 
-\section{Dataset creation}
+\section{Dataset creation}\label{Sec:Datasetcreation}
 
 Our goal is to simulate data that reflects the different aspects of interactive stepping-stone behaviour in a reproducable manner. For a fair and thorough evaluation, we want to cover different settings and interactions to incorporate enough variation in the data to highlight strengths and weaknesses of different SSD methods. Furthermore, we need to generate sufficient data to effectively train some of the included methods. 
 
@@ -130,7 +131,7 @@ In order to consider all these factors, we rely on the virtualisation framework 
 
 \textcolor{red}{write about Docker advantages in terms of speed and controllability}
 
-\subsection{Simulating stepping stones with SSH-tunnels and Docker}
+\subsection{Simulating stepping stones with SSH-tunnels and Docker}\label{Sec:Setup}
 
 We want to capture data not only from one interaction in a fixed stepping-stone chain, but from many interactions and chains with different settings. For that, we run multiple simulations, with each simulation establishing a stepping-stone chain and controlling the interactions between host O and host T. A simulation and the corresponding traffic capture is \textit{red}{described} a capture-script. 
 
@@ -147,7 +148,7 @@ Traffic is captured both at host T and host $S_n$, which acts as the final stepp
 
 %SSH tunnel on respective port on the starting point of the chain, tunnels to port on the next point in the chain. Finally, Refer to figure. 
 
-\subsection{Simulating interactive SSH-traffic}
+\subsection{Simulating interactive SSH-traffic}\label{Sec:Simulating_interactive}
 
 In order to generate enough data instances representing interactive stepping stone behaviour, we automatised the communication between host O and host T.  For each simulation, we generate a script which passes SSH-commands from host O to host T.
 
@@ -171,7 +172,7 @@ Scripts are of varying length and end once the \textit{End}-command is drawn fro
 
 
 
-\subsubsection{Adding network congestion}
+\subsubsection{Adding network congestion}\label{Sec:congestion}
 
 Hosts in a stepping-stone chains can be separated by varying distances. Some may sit in the same LAN, while others may communicate via the Internet from distant geographical locations. The type of separation between two hosts influences the round-trip-time, bandwidth, and network reliability. 
 
@@ -193,7 +194,7 @@ We store the set parameters along with the collected traffic for each simulation
 
 
 
-\subsubsection{Adding delays}
+\subsubsection{Adding delays}\label{Sec:delays_desc}
 
 To increase detection difficulty as suggested by  \cite{padhye2010evading}, we add transfer delays to packets forwarded by stepping stone hosts. This method, often called \textit{jittering}, can destroy time-based watermarks in packet flows and help decrease observable correlation between two connections. 
 
@@ -205,13 +206,13 @@ We add transfer delays to forward packets again by using NetEm. We draw delays f
 
 
 
-\subsubsection{Adding chaff perturbation}
+\subsubsection{Adding chaff perturbation}\label{Sec:chaff_desc}
 
 We furthermore insert chaff packets to individual connections in the chain to increase detection difficulty \textcolor{red}{citation?}. These chaff packets do not contain actual information and act as noise to decorrelate connections in the chain. To add and filter out packets in a connection, we add additional ports in each SSH-tunnel that are not forwarded through the entire chain.
 We then use a NetCat client containers to send and receive packets on these additional ports in both directions. Figure \textcolor{red}{...} depicts this setup. 
 
 %\textcolor{red}{add reference} to send data to both ports from either direction and collect it at the other side. 
-The data sent by the client $i$ consists of strings with random size $x$ drawn from a Cauchy-distribution with mean $xx_i$, and is sent in intervals of random length $\delta_c$ drawn from an \textcolor{red}{paretonormal} distribution with mean $yy_i$. Huang et al. \cite{huang2011detecting} have pointed out that packet interarrivals in benign connections often follow a paretonormal distribution, so it seems to be a good choice to make the inserted chaff appear as benign traffic. By adjusting $yy_i$, we can control the rate of chaff sent.
+The data sent by the client $i$ consists of strings with random size $x$ drawn from a Cauchy-distribution with mean $xx_i$, and is sent in intervals of random length $\delta_c$ drawn from an \textcolor{red}{paretonormal} distribution with mean $yy_i$. Huang et al. \cite{huang2011detecting} have pointed out that packet interarrivals in benign connections often follow a paretonormal distribution, so it seems to be a good choice to make the inserted chaff appear as benign traffic. By adjusting $yy_i$, we can control the rate of chaff sent. \textcolor{red}{explain more}
 
 
 
@@ -229,17 +230,17 @@ The data sent by the client $i$ consists of strings with random size $x$ drawn f
 %bla& no pert.&var. delays&var. chaff&delay\&chaff & no pert.&var. delays&var. chaff&delay\&chaff \\
 %\end{tabular}
 
-\begin{tabular}{r|cccc}
+%\begin{tabular}{r|cccc}
 %\multicolumn{1}{r|}{ }&\multicolumn{4}{c|}{SSH}&\multicolumn{4}{c}{HTTP}\\
-SSH 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
-HTTP 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
-SSH 3 node& no pert.&var. delays&var. chaff&delay\&chaff \\
-HTTP 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
-\end{tabular}
+%SSH 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
+%HTTP 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
+%SSH 3 node& no pert.&var. delays&var. chaff&delay\&chaff \\
+%HTTP 1 node& no pert.&var. delays&var. chaff&delay\&chaff \\
+%\end{tabular}
 
 
  
-\cite{sommer_outside_2010}
+%\cite{sommer_outside_2010}
 
 %\subsection{Regular traffic congestion}
 
@@ -366,6 +367,47 @@ while the false negative rate is defined as
 \end{align*}
 
 Some methods additionally try to predict the length of the stepping stone chain. 
+
+
+\section{Evaluation data}
+
+
+\subsection{Stepping-stone data}
+
+We generate data as described in Section \ref{Sec:Datasetcreation}. We create one dataset using a stepping-stone chain with only one stepping-stone $S_1$, and one with a longer chain of four stepping-stones $S_1, S_2, S_3$, and $S_4$. 
+
+For each set, we subdivide the stepping-stone data furthermore according to the two included evasion tactics, transfer delays and chaff perturbations. We first capture data without either of these methods. We then capture data one time with added transfer delays with varying $\delta_d$, and one time with added chaff perturbations of varying \textcolor{red}{rate}. Lastly, we capture data with delays and chaff added simultaneously, again with varying $\delta_d$ and \textcolor{red}{rate}.
+
+Table \ref{Tab:Stepstone_data} depicts the number of connection pairs included in each dataset.
+
+\begin{table}
+\centering
+\begin{tabular}{r|c|c|c|c}
+%\multicolumn{1}{r|}{ }&\multicolumn{4}{c|}{SSH}&\multicolumn{4}{c}{HTTP}\\
+#nodes & no evasion & delays & chaff & delays\& chaff  \\
+\hline
+1-node & 10.000 & 10.000 & 10.000 & 10.000 \\
+4-node & 10.000 & 10.000 & 10.000 & 10.000 \\
+\end{tabular}
+\caption{}\label{Tab:Stepstone_data}
+\end{table}
+
+
+
+
+
+
+
+ 
+\subsection{Benign data}
+
+We need to provide a realistic background of benign data that reflects the heterogeneous nature of regular network traffic, both for evaluation of false positives and for the training of ML-based methods.
+
+First, we created a set of interactive SSH-connections that are held directly between the client and the server. We follow the same procedure as described in Section \ref{Sec:Simulating_interactive} with the same randomised network congestion settings as described in \ref{Sec:congestion}. We then proceed to pair connections by random and remove the first 20 seconds of each connections to ...
+
+Secondly, we include real-world traffic traces, taken from the CAIDA 2018 dataset \textcolor{red}{insert citation and description}. Again, we pair connections randomly and remove the first 20 seconds of each connection. 
+
+\textcolor{red}{Thirdly, we added a set of VoIP dataset?}
 
 
 \section{Results}
