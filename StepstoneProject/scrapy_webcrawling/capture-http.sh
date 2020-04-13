@@ -64,25 +64,6 @@ do
     rm -f $PWD/scripts/localhost-*
 #    rm -f $PWD/receive/*
 #    rm -r -f dataToShare_server
-    array=()
-    while read line ; do
-        array+=($line)
-    done < <(python3 trafficgeneration.py -s ${IP_RANGE})
-
-    NETCAT_PARA1=${array[0]}
-    NETCAT_PARA2=${array[1]}
-    NETCAT_PARA3=${array[2]}
-
-    NETCAT_PARA4=${array[3]}
-    NETCAT_PARA5=${array[4]}
-    NETCAT_PARA6=${array[5]}
-
-    DELAY_PARA1=${array[6]}
-    DELAY_PARA2=${array[7]}
-    DELAY_PARA3=300 #${array[8]}
-    DELAY_PARA4=600 #${array[9]}
-    DELAY_PARA5=${array[10]}
-    DELAY_PARA6=${array[11]}
 
     rm -f scrapy/spider_${PROJECT_NAME}.py
     cp scrapy/spider_backup/spider.py scrapy/spider_${PROJECT_NAME}.py
