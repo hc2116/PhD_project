@@ -17,8 +17,6 @@ services:
     command: not(ip6 or arp or (udp and (src port 5353 or src port 57621))) -v -w "/data/${PROJECT_NAME}_spider-${CAPTURETIME}-sc${SCENARIO}-$REPNUM.pcap"
     volumes:
       - '${DATADIR}:/data'
-    depends_on:
-      - dummy
     network_mode: "service:spider"
 
   # tcpdump_relay_endpoint:
