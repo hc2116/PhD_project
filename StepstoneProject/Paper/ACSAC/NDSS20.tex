@@ -51,6 +51,7 @@
 \usepackage{alltt}
 \pagestyle{plain}
 \usepackage[cmex10]{amsmath}
+\usepackage{multirow}
 %\usepackage{caption} 
 %\captionsetup[table]{skip=3pt}
 
@@ -262,7 +263,7 @@ We furthermore insert chaff packets to individual connections in the chain to in
 We then use a NetCat client containers to send and receive packets on these additional ports in both directions. Figure \textcolor{red}{...} depicts this setup. 
 
 %\textcolor{red}{add reference} to send data to both ports from either direction and collect it at the other side. 
-The data sent by the client $i$ consists of strings with random size $x$ drawn from a Cauchy-distribution with mean $xx_i$, and is sent in intervals of random length $\delta_c$ drawn from an \textcolor{red}{paretonormal} distribution with mean $yy_i$. Huang et al. \cite{huang2011detecting} have pointed out that packet interarrivals in benign connections often follow a paretonormal distribution, so it seems to be a good choice to make the inserted chaff appear as benign traffic. By adjusting $yy_i$, we can control the rate of chaff sent. \textcolor{red}{explain more}
+The data sent by the client $i$ consists of strings with random size $x$ drawn from a Cauchy-distribution with mean $xx_i$, and is sent in intervals of random length $\delta_c$ drawn from a truncated \textcolor{red}{paretonormal} distribution with mean $yy_i$. Huang et al. \cite{huang2011detecting} have pointed out that packet interarrivals in benign connections often follow a paretonormal distribution, so it seems to be a good choice to make the inserted chaff appear as benign traffic. By adjusting $yy_i$, we can control the rate of chaff sent. \textcolor{red}{explain more}
 
 
 
@@ -388,7 +389,13 @@ A similar approach from the same authors \cite{ding2013detecting} is directed to
 
 \subsection{Watermarking}
 
-Good explanation in \cite{padhye2010evading}.
+Watermarking consists of two complementary processes: embedding the watermark and decoding the watermark. A watermark is simply an unique binary string.The process of embedding one bit of this string consists of changing some property, usually ... of a traffic flow such that the change represents a bit. Decoding the watermark involves capturing candidate flows that might match the water-marked flow and looking for the bits in the flow characteristics. The bits of the watermark should have enough redundancy to ensure that they are decoded correctly with high probability.
+
+Flow watermarking is, as found by \cite{iacovazzi2016network}, usually not very robust against timing and chaff perturbation attacks. We have selected the approach developed by Wang et al. \cite{wang2010robust} to be included in our evaluation because the authors state at least some resistance against timing perturbations. The authors assume some limits to an adversary's  timing perturbations, such as a bound on the delays. The authors divide a sequence of packets into two groups of length $m$, and match packets from both groups into pairs. Each pair interarrival time is then perturbed using a watermarking function in dependence of an overall perturbation value $s$. 
+The introduced watermark is invisible for third-parties and can be decoded in packet sequences longer than 600 packets using $m=12$ when $s=400ms$.  The authors achieve $100\%$ TP with $0.5\%$ FP and claim resistance against timing perturbations of up to $1.4s$.
+
+
+%Iacovazzi et al. \cite{iacovazzi2016network} found that flow watermarking is done overwhelmingly through 
 
 
 \subsection{Behaviour-based approaches}
@@ -397,6 +404,21 @@ A different direction in the detection of stepping stones focuses more on the ge
 
 Emulating these features realistically in network traffic datasets is difficult, and there exist little research on how strongly actual attack behaviour influences these features. Since our dataset focuses only on individual connections and corresponding evasion, \textcolor{red}{we are not able to include behaviour-based approaches in our evaluation}.
 
+\begin{table}
+\centering
+\begin{tabular}{l|c|c|c|c|c}
+Category & Approach & TP & FP & Tested resistance & Label\\ \hline
+Packet-correlation & Yang, 2011 \cite{yang2011correlating} & $100\%$ & $0\%$& Resistance to jitter and $80\%$ chaff & A\\ \hline
+\multirow{2}{*}{Neural networks} & Nasr, 2018 \cite{nasr2018deepcorr} &$90\%$ & $0.0002\%$& small jitter & B\\ \cline{2-5}
+ & Wu, 2010 \cite{wu2010neural} &  & & $50\%$ chaff & C\\ \hline
+\multirow{2}{*}{RTT-based} & Yang, 2015 \cite{yang2015rtt}&  & & &D\\ \cline{2-5}
+ & Huang, 2016 \cite{huang2016detecting} & $0.85\%$ & $5\%$ & & E\\ \hline
+\multirow{2}{*}{Anomaly-based} & Crescenzo \cite{di2011detecting} & $99\%$ & $1\%$ & &F\\ \cline{2-5}
+ & Huang/Ding 2011/13 \cite{huang2011detecting,ding2013detecting} & $95\%$ & $0\%$ & &G\\ \hline
+Watermarking & Wang, 2011 \cite{wang2010robust} & $100\%$ & $0.5\%$ & 1.4s jitter & H\\ \hline
+\end{tabular}
+\caption{Summary of included SSD-methods.}\label{Tab:Summary}
+\end{table}
 
 
 
@@ -416,8 +438,9 @@ while the false negative rate is defined as
 \frac{\text{number of malicious connections classified as benign}}{\text{overall number of malicious connections}}.
 \end{align*}
 
-Some methods additionally try to predict the length of the stepping stone chain. 
+Some methods additionally try to predict the length of the stepping stone chain.
 
+Write that we grant each method enough packets
 
 \section{Evaluation data}
 
@@ -428,25 +451,21 @@ We generate data as described in Section \ref{Sec:Datasetcreation}. We create on
 
 For each set, we subdivide the stepping-stone data furthermore according to the two included evasion tactics, transfer delays and chaff perturbations. We first capture data without either of these methods. We then capture data one time with added transfer delays with varying $\delta_d$, and one time with added chaff perturbations of varying \textcolor{red}{rate}. Lastly, we capture data with delays and chaff added simultaneously, again with varying $\delta_d$ and \textcolor{red}{rate}.
 
+Since the initialisation of the SSH-tunnels usually follows a distinct pattern that can be revealing and consequently boost detection rates for ML-based methods, we remove the first twenty seconds of the captured connections. 
+
 Table \ref{Tab:Stepstone_data} depicts the number of connection pairs included in each dataset.
 
 \begin{table}
 \centering
 \begin{tabular}{r|c|c|c|c}
 %\multicolumn{1}{r|}{ }&\multicolumn{4}{c|}{SSH}&\multicolumn{4}{c}{HTTP}\\
-#nodes & no evasion & delays & chaff & delays\& chaff \hline \\
+nodes & no evasion & delays & chaff & delays\& chaff  \\
 \hline
-1-node & 10.000 & 10.000 & 10.000 & 10.000 \hline \\
-4-node & 10.000 & 10.000 & 10.000 & 10.000 \hline \\
+1-node & 10.000 & 10.000 & 10.000 & 10.000 \\
+4-node & 10.000 & 10.000 & 10.000 & 10.000 \\
 \end{tabular}
 \caption{}\label{Tab:Stepstone_data}
 \end{table}
-
-
-
-
-
-
 
  
 \subsection{Benign data}
@@ -455,14 +474,76 @@ We need to provide a realistic background of benign data that reflects the heter
 
 First, we created a set of interactive SSH-connections that are held directly between the client and the server. We follow the same procedure as described in Section \ref{Sec:Simulating_interactive} with the same randomised network congestion settings as described in \ref{Sec:congestion}. We then proceed to pair connections by random and remove the first 20 seconds of each connections to ...
 
-Secondly, we include real-world traffic traces, taken from the CAIDA 2018 dataset \textcolor{red}{insert citation and description}. Again, we pair connections randomly and remove the first 20 seconds of each connection. 
+Secondly, we include real-world traffic traces, taken from the CAIDA 2018 dataset \textcolor{red}{insert citation and description}. To allow for a fair comparison, we only selected connections that contain at least 1000 packets. Again, we pair connections randomly and remove the first 20 seconds of each connection. 
 
-\textcolor{red}{Thirdly, we added a set of VoIP dataset?}
+%\textcolor{red}{Thirdly, we added a set of VoIP dataset?}
+
+The reason for relying on two different 
+
+Must be larger than ... (which excludes ...), trimmed to same number of packets since the algorithm cannot wait until the connection terminates to alarm
+
+\subsection{Implementation of selected approaches}
 
 
 \section{Results}
 
-\subsection{Unperturbed data}
+
+\subsection{Data without evasion tactics}
+
+First, we look at the detection rates for traffic from stepping-stones that did not use any evasive tactics. 
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/Noevasion_4nodes-1} \caption[4 nodes]{4 nodes}\label{fig:Noevasion_4nodes}
+\end{figure}
+
+
+\end{knitrout}
+
+\subsection{Delays}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/Delaydetection-1} \caption[..]{...}\label{fig:Delaydetection}
+\end{figure}
+
+
+\end{knitrout}
+
+
+\subsection{Chaff}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/Chaffdetection-1} \caption[..]{...}\label{fig:Chaffdetection}
+\end{figure}
+
+
+\end{knitrout}
+
+
+
+\subsection{Combination of delays and chaff}
+
+
+
+
+
+\subsection{Influence of chain length on RTT-based methods}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/Influencechainl-1} \caption[..]{...}\label{fig:Influencechainl}
+\end{figure}
+
+
+\end{knitrout}
+
+
+I could insert comparison of prediction accuracy on chain length
+
+
+\subsection{Influence of network congestion}
 
 
 

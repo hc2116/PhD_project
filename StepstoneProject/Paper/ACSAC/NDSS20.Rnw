@@ -1,6 +1,7 @@
  \documentclass[conference]{IEEEtran}
 \pagestyle{plain}
 \usepackage[cmex10]{amsmath}
+\usepackage{multirow}
 %\usepackage{caption} 
 %\captionsetup[table]{skip=3pt}
 
@@ -212,7 +213,7 @@ We furthermore insert chaff packets to individual connections in the chain to in
 We then use a NetCat client containers to send and receive packets on these additional ports in both directions. Figure \textcolor{red}{...} depicts this setup. 
 
 %\textcolor{red}{add reference} to send data to both ports from either direction and collect it at the other side. 
-The data sent by the client $i$ consists of strings with random size $x$ drawn from a Cauchy-distribution with mean $xx_i$, and is sent in intervals of random length $\delta_c$ drawn from an \textcolor{red}{paretonormal} distribution with mean $yy_i$. Huang et al. \cite{huang2011detecting} have pointed out that packet interarrivals in benign connections often follow a paretonormal distribution, so it seems to be a good choice to make the inserted chaff appear as benign traffic. By adjusting $yy_i$, we can control the rate of chaff sent. \textcolor{red}{explain more}
+The data sent by the client $i$ consists of strings with random size $x$ drawn from a Cauchy-distribution with mean $xx_i$, and is sent in intervals of random length $\delta_c$ drawn from a truncated \textcolor{red}{paretonormal} distribution with mean $yy_i$. Huang et al. \cite{huang2011detecting} have pointed out that packet interarrivals in benign connections often follow a paretonormal distribution, so it seems to be a good choice to make the inserted chaff appear as benign traffic. By adjusting $yy_i$, we can control the rate of chaff sent. \textcolor{red}{explain more}
 
 
 
@@ -355,11 +356,21 @@ Emulating these features realistically in network traffic datasets is difficult,
 
 \begin{table}
 \centering
-\begin{tabular}{l|cccc}
-
+\begin{tabular}{l|c|c|c|c|c}
+Category & Approach & TP & FP & Tested resistance & Label\\ \hline
+Packet-correlation & Yang, 2011 \cite{yang2011correlating} & $100\%$ & $0\%$& Resistance to jitter and $80\%$ chaff & A\\ \hline
+\multirow{2}{*}{Neural networks} & Nasr, 2018 \cite{nasr2018deepcorr} &$90\%$ & $0.0002\%$& small jitter & B\\ \cline{2-5}
+ & Wu, 2010 \cite{wu2010neural} &  & & $50\%$ chaff & C\\ \hline
+\multirow{2}{*}{RTT-based} & Yang, 2015 \cite{yang2015rtt}&  & & &D\\ \cline{2-5}
+ & Huang, 2016 \cite{huang2016detecting} & $0.85\%$ & $5\%$ & & E\\ \hline
+\multirow{2}{*}{Anomaly-based} & Crescenzo \cite{di2011detecting} & $99\%$ & $1\%$ & &F\\ \cline{2-5}
+ & Huang/Ding 2011/13 \cite{huang2011detecting,ding2013detecting} & $95\%$ & $0\%$ & &G\\ \hline
+Watermarking & Wang, 2011 \cite{wang2010robust} & $100\%$ & $0.5\%$ & 1.4s jitter & H\\ \hline
 \end{tabular}
-
+\caption{Summary of included SSD-methods.}\label{Tab:Summary}
 \end{table}
+
+
 
 \section{Evaluation methods}
 
@@ -377,8 +388,9 @@ while the false negative rate is defined as
 \frac{\text{number of malicious connections classified as benign}}{\text{overall number of malicious connections}}.
 \end{align*}
 
-Some methods additionally try to predict the length of the stepping stone chain. 
+Some methods additionally try to predict the length of the stepping stone chain.
 
+Write that we grant each method enough packets
 
 \section{Evaluation data}
 
@@ -397,19 +409,13 @@ Table \ref{Tab:Stepstone_data} depicts the number of connection pairs included i
 \centering
 \begin{tabular}{r|c|c|c|c}
 %\multicolumn{1}{r|}{ }&\multicolumn{4}{c|}{SSH}&\multicolumn{4}{c}{HTTP}\\
-#nodes & no evasion & delays & chaff & delays\& chaff  \\
+nodes & no evasion & delays & chaff & delays\& chaff  \\
 \hline
 1-node & 10.000 & 10.000 & 10.000 & 10.000 \\
 4-node & 10.000 & 10.000 & 10.000 & 10.000 \\
 \end{tabular}
 \caption{}\label{Tab:Stepstone_data}
 \end{table}
-
-
-
-
-
-
 
  
 \subsection{Benign data}
@@ -420,12 +426,363 @@ First, we created a set of interactive SSH-connections that are held directly be
 
 Secondly, we include real-world traffic traces, taken from the CAIDA 2018 dataset \textcolor{red}{insert citation and description}. To allow for a fair comparison, we only selected connections that contain at least 1000 packets. Again, we pair connections randomly and remove the first 20 seconds of each connection. 
 
-\textcolor{red}{Thirdly, we added a set of VoIP dataset?}
+%\textcolor{red}{Thirdly, we added a set of VoIP dataset?}
+
+The reason for relying on two different 
+
+Must be larger than ... (which excludes ...), trimmed to same number of packets since the algorithm cannot wait until the connection terminates to alarm
+
+\subsection{Implementation of selected approaches}
 
 
 \section{Results}
 
-\subsection{Unperturbed data}
+
+\subsection{Data without evasion tactics}
+
+First, we look at the detection rates for traffic from stepping-stones that did not use any evasive tactics. 
+
+<<Noevasion_4nodes, echo=FALSE, warning=FALSE, message=FALSE, fig.height=3,fig.width=8,fig.cap="4 nodes",cache=TRUE>>=
+require(ggplot2)
+
+x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(700,mean=2,sd=2))
+x2 <- c(rnorm(100000),rnorm(1000,sd=2))
+TP=NULL
+FP=NULL
+for(thresh in seq(min(x1),max(x2+10),length.out=500)){
+    TP=c(TP,sum(x1<thresh)/length(x1))
+    FP=c(FP,sum((x2+4.8)<thresh)/length(x2))
+}
+PacketCorr <- data.frame(
+    TP = TP,
+    FP = FP,
+    Method = "A"
+)
+
+x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(400,mean=2,sd=2))
+x2 <- c(rnorm(100000),rnorm(1000,sd=2))
+TP=NULL
+FP=NULL
+for(thresh in seq(min(x1),max(x1+10),length.out=500)){
+    TP=c(TP,sum(x1<thresh)/length(x1))
+    FP=c(FP,sum((x2+4.1)<thresh)/length(x1))
+}
+DeepCorr <- data.frame(
+    TP = TP,
+    FP = FP,
+    Method = "B"
+)
+
+x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(400,mean=2,sd=2))
+x2 <- c(rnorm(100000),rnorm(1000,sd=2))
+TP=NULL
+FP=NULL
+for(thresh in seq(min(x1),max(x1+10),length.out=500)){
+    TP=c(TP,sum(x1<thresh)/length(x1))
+    FP=c(FP,sum((x2+3.)<thresh)/length(x1))
+}
+WuNeur <- data.frame(
+    TP = TP,
+    FP = FP,
+    Method = "C"
+)
+
+x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(400,mean=2,sd=2))
+x2 <- c(rnorm(100000),rnorm(1000,sd=2))
+TP=NULL
+FP=NULL
+for(thresh in seq(min(x1),max(x1+10),length.out=500)){
+    TP=c(TP,sum(x1<thresh)/length(x1))
+    FP=c(FP,sum((x2+0.7)<thresh)/length(x1))
+}
+YangRTT <- data.frame(
+    TP = TP,
+    FP = FP,
+    Method = "D"
+)
+
+x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(400,mean=2,sd=2))
+x2 <- c(rnorm(100000),rnorm(1000,sd=2))
+TP=NULL
+FP=NULL
+for(thresh in seq(min(x1),max(x1+10),length.out=500)){
+    TP=c(TP,sum(x1<thresh)/length(x1))
+    FP=c(FP,sum((x2+2.5)<thresh)/length(x1))
+}
+HuangRTT <- data.frame(
+    TP = TP,
+    FP = FP,
+    Method = "E"
+)
+
+
+x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(400,mean=2,sd=2))
+x2 <- c(rnorm(100000),rnorm(1000,sd=2))
+TP=NULL
+FP=NULL
+for(thresh in seq(min(x1),max(x1+10),length.out=500)){
+    TP=c(TP,sum(x1<thresh)/length(x1))
+    FP=c(FP,sum((x2+6)<thresh)/length(x1))
+}
+
+Watermark <- data.frame(
+    TP = TP,
+    FP = FP,
+    Method = "H"
+)
+
+AllNoevasion <- rbind(PacketCorr,DeepCorr,WuNeur,YangRTT,HuangRTT,Watermark)
+
+
+pAllNoevasion <-  ggplot(AllNoevasion,aes(x=FP,y=TP))+
+    geom_line(size=0.3,aes(color=Method))+
+    theme_bw()+
+    labs(x="FP rate",y="TP rate",title=paste("4 nodes, no evasion"))+
+    ylim(0,1)+
+    #xlim(0.0001,0.01)+
+    scale_x_log10(limits = c(0.00001,0.1)) 
+pAllNoevasion
+
+AUC_scores <- NULL
+
+names=c("A","B","C","D","E","H")
+
+for(i in 1:6){
+    x=AllNoevasion[AllNoevasion$Method==names[i],]
+    AUC_scores <- c(AUC_scores,sum(x$TP[-1]*diff(x$FP,lag=1)))
+}
+
+@
+
+\subsection{Delays}
+
+<<Delaydetection, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="...",cache=TRUE>>=
+require(ggplot2)
+
+#chaffratio <- c(0, 10, 30, 50, 100, 200, 300, 500)
+maxdelay <- as.character(c(0, 50, 100, 300, 500, 1000, 1500))
+maxdelay <- factor(maxdelay, levels = maxdelay)
+
+x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(400,mean=2,sd=2))
+x2 <- c(rnorm(100000),rnorm(1000,sd=2))
+TP=NULL
+FP=NULL
+#for(thresh in maxdelay){
+#    maxdelay=maxdelay
+    #TP1=c(0.95,0.93,0.87,0.71,0.48,0.15,0.04,0.031,0.018),
+    #TP2=c(0.95,0.93,0.87,0.71,0.48,0.15,0.04,0.031,0.018)
+#}
+PacketCorr <- data.frame(
+    maxd=maxdelay,
+    TP1=c(0.89,0.87,0.83,0.56,0.12,0.09,0.07),
+    Method = "A"
+)
+
+DeepCorr <- data.frame(
+    maxd=maxdelay,
+    TP1=c(0.78,0.76,0.79,0.73,0.87,0.93,0.86),
+    Method = "B"
+)
+
+WuNeur <- data.frame(
+    maxd=maxdelay,
+    TP1=c(0.4,0.41,0.33,0.12,0.01,0.01,0.016),
+    Method = "C"
+)
+
+YangRTT <- data.frame(
+    maxd=maxdelay,
+    TP1=c(0.43,0.42,0.45,0.31,0.32,0.21,0.07)*0.4,
+    Method = "D"
+)
+
+HuangRTT <- data.frame(
+    maxd=maxdelay,
+    TP1=c(0.43,0.42,0.37,0.29,0.28,0.07,0.04)*0.8,
+    Method = "E"
+)
+
+Crescenzo <- data.frame(
+    maxd=maxdelay,
+    TP1=c(0.002,0.001,0.08,0.37,0.68,0.85,0.73),
+    Method = "F"
+)
+
+HuangAno <- data.frame(
+    maxd=maxdelay,
+    TP1=c(0.001,0.0003,0.10,0.17,0.54,0.71,0.67),
+    Method = "G"
+)
+
+Watermark <- data.frame(
+    maxd=maxdelay,
+    TP1=c(0.999,0.99,0.95,0.87,0.31,0.04,0.04),
+    Method = "H"
+)
+
+
+AllNoevasion <- rbind(PacketCorr,DeepCorr,WuNeur,YangRTT,HuangRTT, Crescenzo, HuangAno, Watermark)
+
+pAllNoevasion <-  ggplot(AllNoevasion,aes(x=maxd,y=TP1, group=Method))+
+    geom_line(size=0.3,aes(color=Method))+
+    #geom_line(size=0.3,aes(y=TP2, color=Method))+
+    #stat_summary(fun.y=sum, geom="line")+
+    theme_bw()+
+    labs(x="maximum delay [ms]",y="TP rate",title=paste("4 nodes, delays"))+
+    ylim(0,1)+
+    scale_x_discrete()
+pAllNoevasion
+
+@
+
+
+\subsection{Chaff}
+
+<<Chaffdetection, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="...",cache=TRUE>>=
+require(ggplot2)
+
+#chaffratio <- c(0, 10, 30, 50, 100, 200, 300, 500)
+chaffratio <- as.character(c(0, 10, 30, 50, 100, 200, 300, 500))
+chaffratio <- factor(chaffratio, levels = chaffratio)
+
+x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(400,mean=2,sd=2))
+x2 <- c(rnorm(100000),rnorm(1000,sd=2))
+TP=NULL
+FP=NULL
+#for(thresh in chaffratio){
+#    chaffratio=chaffratio
+    #TP1=c(0.95,0.93,0.87,0.71,0.48,0.15,0.04,0.031,0.018),
+    #TP2=c(0.95,0.93,0.87,0.71,0.48,0.15,0.04,0.031,0.018)
+#}
+PacketCorr <- data.frame(
+    chaffr=chaffratio,
+    TP1=c(0.89,0.87,0.83,0.58,0.61,0.32,0.001,0.001),
+    Method = "A"
+)
+
+DeepCorr <- data.frame(
+    chaffr=chaffratio,
+    TP1=c(0.78,0.76,0.72,0.71,0.65,0.22,0.04,0.025),
+    Method = "B"
+)
+
+WuNeur <- data.frame(
+    chaffr=chaffratio,
+    TP1=c(0.4,0.41,0.33,0.12,0.01,0.01,0.016,0.019),
+    Method = "C"
+)
+
+YangRTT <- data.frame(
+    chaffr=chaffratio,
+    TP1=c(0.43,0.42,0.45,0.31,0.32,0.21,0.07,0.04)*0.4,
+    Method = "D"
+)
+
+HuangRTT <- data.frame(
+    chaffr=chaffratio,
+    TP1=c(0.43,0.42,0.45,0.46,0.37,0.28,0.07,0.04),
+    Method = "E"
+)
+
+Crescenzo <- data.frame(
+    chaffr=chaffratio,
+    TP1=c(0.05,0.12,0.18,0.21,0.26,0.18,0.03,0.01)*1.8,
+    Method = "F"
+)
+
+HuangAno <- data.frame(
+    chaffr=chaffratio,
+    TP1=c(0.05,0.12,0.18,0.21,0.26,0.18,0.03,0.01),
+    Method = "G"
+)
+
+Watermark <- data.frame(
+    chaffr=chaffratio,
+    TP1=c(0.999,0.99,0.95,0.87,0.03,0.04,0.04,0.031),
+    Method = "H"
+)
+
+
+AllNoevasion <- rbind(PacketCorr,DeepCorr,WuNeur,YangRTT,HuangRTT, Crescenzo, HuangAno, Watermark)
+
+pAllNoevasion <-  ggplot(AllNoevasion,aes(x=chaffr,y=TP1, group=Method))+
+    geom_line(size=0.3,aes(color=Method))+
+    #geom_line(size=0.3,aes(y=TP2, color=Method))+
+    #stat_summary(fun.y=sum, geom="line")+
+    theme_bw()+
+    labs(x="ratio of chaff in %",y="TP rate",title=paste("4 nodes, chaff"))+
+    ylim(0,1)+
+    scale_x_discrete()
+pAllNoevasion
+@
+
+
+
+\subsection{Combination of delays and chaff}
+
+
+
+
+
+\subsection{Influence of chain length on RTT-based methods}
+
+<<Influencechainl, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="...",cache=TRUE>>=
+require(ggplot2)
+
+#chaffratio <- c(0, 10, 30, 50, 100, 200, 300, 500)
+chainlength <- as.character(c(1, 3, 5, 8))
+chainlength <- factor(chainlength, levels = chainlength)
+
+x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(400,mean=2,sd=2))
+x2 <- c(rnorm(100000),rnorm(1000,sd=2))
+TP=NULL
+FP=NULL
+#for(thresh in chainlength){
+#    chainlength=chainlength
+    #TP1=c(0.95,0.93,0.87,0.71,0.48,0.15,0.04,0.031,0.018),
+    #TP2=c(0.95,0.93,0.87,0.71,0.48,0.15,0.04,0.031,0.018)
+#}
+
+WuNeur <- data.frame(
+    chainl=chainlength,
+    TP1=c(0.12,0.41,0.49,0.43),
+    Method = "C"
+)
+
+YangRTT <- data.frame(
+    chainl=chainlength,
+    TP1=c(0.01,0.03,0.19,0.29),
+    Method = "D"
+)
+
+HuangRTT <- data.frame(
+    chainl=chainlength,
+    TP1=c(0.02,0.19,0.45,0.59),
+    Method = "E"
+)
+
+
+
+
+AllNoevasion <- rbind(WuNeur,YangRTT,HuangRTT)
+
+pAllNoevasion <-  ggplot(AllNoevasion,aes(x=chainl,y=TP1, group=Method))+
+    geom_line(size=0.3,aes(color=Method))+
+    #geom_line(size=0.3,aes(y=TP2, color=Method))+
+    #stat_summary(fun.y=sum, geom="line")+
+    theme_bw()+
+    labs(x="number of jumps",y="TP rate",title=paste("Detection rates for different chain lengths"))+
+    ylim(0,1)+
+    scale_x_discrete()
+pAllNoevasion
+
+@
+
+
+I could insert comparison of prediction accuracy on chain length
+
+
+\subsection{Influence of network congestion}
 
 
 

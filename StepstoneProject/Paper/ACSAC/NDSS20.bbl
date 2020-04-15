@@ -68,6 +68,17 @@ S.-H.~S. Huang, R.~Lychev, and J.~Yang, ``Stepping-stone detection via
   Autonomic and Trusted Computing}.\hskip 1em plus 0.5em minus 0.4em\relax
   Springer, 2007, pp. 276--285.
 
+\bibitem{iacovazzi2016network}
+A.~Iacovazzi and Y.~Elovici, ``Network flow watermarking: A survey,''
+  \emph{IEEE Communications Surveys \& Tutorials}, vol.~19, no.~1, pp.
+  512--530, 2016.
+
+\bibitem{nasr2018deepcorr}
+M.~Nasr, A.~Bahramali, and A.~Houmansadr, ``Deepcorr: Strong flow correlation
+  attacks on tor using deep learning,'' in \emph{Proceedings of the 2018 ACM
+  SIGSAC Conference on Computer and Communications Security}, 2018, pp.
+  1962--1976.
+
 \bibitem{padhye2010evading}
 J.~D. Padhye, K.~Kothari, M.~Venkateshaiah, and M.~Wright, ``Evading
   stepping-stone detection under the cloak of streaming media with sneak,''
@@ -82,6 +93,16 @@ R.~Shullich, J.~Chu, P.~Ji, and W.~Chen, ``A survey of research in
 L.~Wang and J.~Yang, ``A research survey in stepping-stone intrusion
   detection,'' \emph{EURASIP Journal on Wireless Communications and
   Networking}, vol. 2018, no.~1, p. 276, 2018.
+
+\bibitem{wang2010robust}
+X.~Wang and D.~Reeves, ``Robust correlation of encrypted attack traffic through
+  stepping stones by flow watermarking,'' \emph{IEEE Transactions on Dependable
+  and Secure Computing}, vol.~8, no.~3, pp. 434--449, 2010.
+
+\bibitem{wu2010neural}
+H.-C. Wu and S.-H.~S. Huang, ``Neural networks-based detection of
+  stepping-stone intrusion,'' \emph{expert systems with applications}, vol.~37,
+  no.~2, pp. 1431--1437, 2010.
 
 \bibitem{xin2006testbed}
 J.~Xin, L.~Zhang, B.~Aswegan, J.~Dickerson, T.~Daniels, and Y.~Guan, ``A
