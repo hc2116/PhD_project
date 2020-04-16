@@ -1,4 +1,4 @@
- \documentclass[conference]{IEEEtran}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[runningheads]{llncs}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -49,9 +49,9 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
-\pagestyle{plain}
 \usepackage[cmex10]{amsmath}
 \usepackage{multirow}
+\usepackage{makecell}
 %\usepackage{caption} 
 %\captionsetup[table]{skip=3pt}
 
@@ -62,30 +62,7 @@
 \title{Evading stepping stone detection by using enough chaff}
 %Evaluation of passiv stepping stone detection techniques under chaff and delay}
 
-
-\author{\IEEEauthorblockN{Michael Shell}
-\IEEEauthorblockA{Georgia Institute of Technology\\
-someemail@somedomain.com}
-\and
-\IEEEauthorblockN{Homer Simpson}
-\IEEEauthorblockA{Twentieth Century Fox\\
-homer@thesimpsons.com}
-\and
-\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
-\IEEEauthorblockA{Starfleet Academy\\
-someemail@somedomain.com}}
-
-
-\IEEEoverridecommandlockouts
-\makeatletter\def\@IEEEpubidpullup{6.5\baselineskip}\makeatother
-\IEEEpubid{\parbox{\columnwidth}{
-    Network and Distributed Systems Security (NDSS) Symposium 2020\\
-    23-26 February 2020, San Diego, CA, USA\\
-    ISBN 1-891562-61-4\\
-    https://dx.doi.org/10.14722/ndss.2020.23xxx\\
-    www.ndss-symposium.org
-}
-\hspace{\columnsep}\makebox[\columnwidth]{}}
+%\hspace{\columnsep}\makebox[\columnwidth]{}}
 
 
 \maketitle          
@@ -327,12 +304,13 @@ Similar to other areas in intrusion detection, researchers have recently begun t
 
 A notable initial example came from \textcolor{red}{citation}, who ...
 Performance of neural networks in stepping-stone intrusion detection 2008
-however, the authors concluded that the achieved results did not improve existing detection rates. but no good results, better in Neural  networks-based  detection  of stepping-stone  intrusion
+however, the authors concluded that the achieved results did not improve existing detection rates. but no good results, better in Neural  networks-based  detection  of stepping-stone  intrusion.
+The method is based on sequences of RTTs. For this, a packet matching algorithm is used to compute RTTs, which are then fed as a fixed-length sequence into a feed-forward network to predict the downstream length. The network itself only contains one hidden layer and is relatively small. The results from the packet-based method are however inconclusive, and the RTT-based methods achieves good results only if RTTs are small, i.e. the stepping-stone chain is completely contained within one LAN-network.
 
-The authors present two networks to identify stepping stones. 
-The first method uses eight packet variables of an individual packet as input to predict the number of stepping-stones.
 
-The second method is based on sequences of RTTs. For this, a packet matching algorithm is used to compute RTTs, which are then fed as a fixed-length sequence into a feed-forward network to predict the downstream length. The network itself only contains one hidden layer and is relatively small. The results from the packet-based method are however inconclusive, and the RTT-based methods achieves good results only if RTTs are small, i.e. the stepping-stone chain is completely contained within one LAN-network.
+%The authors present two networks to identify stepping stones. 
+%The first method uses eight packet variables of an individual packet as input to predict the number of stepping-stones.
+
 
 
 
@@ -404,18 +382,27 @@ A different direction in the detection of stepping stones focuses more on the ge
 
 Emulating these features realistically in network traffic datasets is difficult, and there exist little research on how strongly actual attack behaviour influences these features. Since our dataset focuses only on individual connections and corresponding evasion, \textcolor{red}{we are not able to include behaviour-based approaches in our evaluation}.
 
+
 \begin{table}
 \centering
 \begin{tabular}{l|c|c|c|c|c}
 Category & Approach & TP & FP & Tested resistance & Label\\ \hline
-Packet-correlation & Yang, 2011 \cite{yang2011correlating} & $100\%$ & $0\%$& Resistance to jitter and $80\%$ chaff & A\\ \hline
-\multirow{2}{*}{Neural networks} & Nasr, 2018 \cite{nasr2018deepcorr} &$90\%$ & $0.0002\%$& small jitter & B\\ \cline{2-5}
- & Wu, 2010 \cite{wu2010neural} &  & & $50\%$ chaff & C\\ \hline
-\multirow{2}{*}{RTT-based} & Yang, 2015 \cite{yang2015rtt}&  & & &D\\ \cline{2-5}
- & Huang, 2016 \cite{huang2016detecting} & $0.85\%$ & $5\%$ & & E\\ \hline
-\multirow{2}{*}{Anomaly-based} & Crescenzo \cite{di2011detecting} & $99\%$ & $1\%$ & &F\\ \cline{2-5}
- & Huang/Ding 2011/13 \cite{huang2011detecting,ding2013detecting} & $95\%$ & $0\%$ & &G\\ \hline
-Watermarking & Wang, 2011 \cite{wang2010robust} & $100\%$ & $0.5\%$ & 1.4s jitter & H\\ \hline
+
+Packet-correlation & Yang, 2011 \cite{yang2011correlating} & $100\%$ & $0\%$& \makecell{Resistance to jitter \\and $80\%$ chaff} & PContext\\ \hline
+
+\multirow{2}{*}{Neural networks} & Nasr, 2018 \cite{nasr2018deepcorr} &$90\%$ & $0.0002\%$& small jitter & DeepCorr\\ \cline{2-6}
+
+ & Wu, 2010 \cite{wu2010neural} &  & & $50\%$ chaff & WuNeur\\ \hline
+ 
+\multirow{2}{*}{RTT-based} & Yang, 2015 \cite{yang2015rtt}&  & & &RWalk\\ \cline{2-6}
+
+& Huang, 2016 \cite{huang2016detecting} & $0.85\%$ & $5\%$ & & Crossover\\ \hline
+ 
+\multirow{2}{*}{Anomaly-based} & Crescenzo \cite{di2011detecting} & $99\%$ & $1\%$ & &Ano1\\ \cline{2-6}
+
+& Huang 2011 \cite{huang2011detecting,ding2013detecting} & $95\%$ & $0\%$ & &Ano2\\ \hline
+
+Watermarking & Wang, 2011 \cite{wang2010robust} & $100\%$ & $0.5\%$ & 1.4s jitter & WM\\ \hline
 \end{tabular}
 \caption{Summary of included SSD-methods.}\label{Tab:Summary}
 \end{table}
@@ -444,14 +431,19 @@ Write that we grant each method enough packets
 
 \section{Evaluation data}
 
+The quality of both the stepping-stone and background data is crucial for a fair evaluation.
+
+Different approaches require different amounts of packets to make predictions. To create a fair playing field, we only look at connections that exchange more than 1500 packets, which seems like a suitable minimal limit for a successful interactive stepping-stone chain. The first 1500 packets are then passed to each SSD method to make a prediction.
+\textcolor{red}{add validation?}
+
+The initialisation of the SSH-tunnels usually follows a distinct pattern that can be learned and consequently boost detection rates for ML-based methods. Since this pattern is not necessarily representative of actual stepping-stone behaviour, we remove the first thirty packets of all captured connections. If necessary, we also remove the last thirty packets to avoid the same issue for connection closures. 
 
 \subsection{Stepping-stone data}
 
-We generate data as described in Section \ref{Sec:Datasetcreation}. We create one dataset using a stepping-stone chain with only one stepping-stone $S_1$, and one with a longer chain of four stepping-stones $S_1, S_2, S_3$, and $S_4$. 
+We generate stepping-stone data following the steps described in Section \ref{Sec:Datasetcreation}. We create a main dataset using a chain of four stepping-stones $S_1, S_2, S_3$, and $S_4$. We furthermore create four smaller datasets with differing numbers of stepping-stones to evaluate this effect on RTT-based methods.
 
-For each set, we subdivide the stepping-stone data furthermore according to the two included evasion tactics, transfer delays and chaff perturbations. We first capture data without either of these methods. We then capture data one time with added transfer delays with varying $\delta_d$, and one time with added chaff perturbations of varying \textcolor{red}{rate}. Lastly, we capture data with delays and chaff added simultaneously, again with varying $\delta_d$ and \textcolor{red}{rate}.
+We subdivide the stepping-stone data in the main dataset according to the two discussed evasion tactics, transfer delays and chaff perturbations. We first capture data without either of these methods. We then capture data once with added transfer delays with varying $\delta_d$ to control delays, and once with added chaff perturbations of varying \textcolor{red}{rate}. Lastly, we capture data with delays and chaff added simultaneously, with both varying $\delta_d$ and \textcolor{red}{rate}.
 
-Since the initialisation of the SSH-tunnels usually follows a distinct pattern that can be revealing and consequently boost detection rates for ML-based methods, we remove the first twenty seconds of the captured connections. 
 
 Table \ref{Tab:Stepstone_data} depicts the number of connection pairs included in each dataset.
 
@@ -492,10 +484,52 @@ Must be larger than ... (which excludes ...), trimmed to same number of packets 
 
 First, we look at the detection rates for traffic from stepping-stones that did not use any evasive tactics. 
 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/Noevasion_4nodes-1} \caption[4 nodes]{4 nodes}\label{fig:Noevasion_4nodes}
+\end{figure}
 
-\subsection{Combination of delays and chaff}
+
+\end{knitrout}
+
+\subsection{Delays}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/Delaydetection-1} \caption[..]{...}\label{fig:Delaydetection}
+\end{figure}
 
 
+\end{knitrout}
+
+
+\subsection{Chaff}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/Chaffdetection-1} \caption[..]{...}\label{fig:Chaffdetection}
+\end{figure}
+
+
+\end{knitrout}
+
+
+
+%\subsection{Combination of delays and chaff}
+
+
+
+
+
+\subsection{Influence of chain length on RTT-based methods}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}
+\includegraphics[width=\maxwidth]{figure/Influencechainl-1} \caption[..]{...}\label{fig:Influencechainl}
+\end{figure}
+
+
+\end{knitrout}
 
 
 I could insert comparison of prediction accuracy on chain length
@@ -504,8 +538,28 @@ I could insert comparison of prediction accuracy on chain length
 \subsection{Influence of network congestion}
 
 
+\begin{table}
+\centering
+\begin{tabular}{l|c|c|c|c|c}
+& Value & \multicolumn{4}{c}{TP deviation from average}\\ \hline
+ &  & C & D& E & H \\ \hline
+\multirow{2}{*}{RTT} & 5ms& $+41.3\%$& $-42\%$ & $-36\%$ & $+0.03\%$ \\ \cline{2-6}
+ & 70ms  & $-61.6\%$ & $+35\%$ & $+51\%$& $-2.2\%$\\ \hline
 
-\bibliographystyle{IEEEtranS}
+\multirow{2}{*}{Packet loss} & $0\%$ & $+1.3\%$ & $+2.1\%$ & $+4.3\%$ & $+0.02\%$\\ \cline{2-6}
+ & $7\%$  & $-1.1\%$ & $-3.1\%$ & $-7.3\%$ & $-3.7\%$\\ \hline
+
+%\multirow{2}{*}{Bandwidth} & no limit& & & & \\ \cline{2-6}
+% & 50 kb/s  &  & & & \\ \hline s
+\end{tabular}
+\caption{Influence of network congestion on detection rates at \textcolor{red}{...}. The given percentages are describing the change of the detection rate under the given congestion setting when compared to the overall average.}\label{Tab:Congestion}
+\end{table}
+
+
+
+
+%\bibliographystyle{IEEEtranS}
+\bibliographystyle{plain}
 \bibliography{NDSSrefs}
 
 \appendix

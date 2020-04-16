@@ -1,0 +1,34 @@
+
+maybe do a bit of foundational research on language models/dialogue models for 2. chapters
+	- have a look around and specify person to talk to for combination of language models and anomaly detection
+	- work on agenda for call, and look at Lauras work again
+
+
+
+
+look at criteria for award of PhD at Edinburgh
+	- describe contributions that can be made
+	- 
+
+get date for annual review
+	- mahesh
+	- paul
+	- 
+
+	Have a look at the previous publications of ml4cs conference
+
+	David is forwarding it to secureworks guy
+
+	Verify call with BT date
+	Get final version ready
+	data wrangling paragraph, put a number on the time taken
+
+Check with person where I should submit progress support
+
+drop a line to mahesh and gordon, include progress report, suggest that maybe we can find a date at the end of April, uncertain if the lockdown will be lifted, mention I am in Germany. Would potentially be the final week of April be ok? Doodle poll
+Good times for David,
+Friday 1st, Monday any time, Tuesday, Thursday morning
+minimal amount of data from people that might be helpful for modelling propagation
+
+
+share progress report with Michael, Alex, maybe invite them to Panel?
