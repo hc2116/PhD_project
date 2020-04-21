@@ -1,10 +1,8 @@
 \begin{thebibliography}{10}
 
-\bibitem{almulhem2007survey}
-Ahmad Almulhem and Issa Traore.
-\newblock A survey of connection-chains detection techniques.
-\newblock In {\em 2007 IEEE Pacific Rim Conference on Communications, Computers
-  and Signal Processing}, pages 219--222. IEEE, 2007.
+\bibitem{CAIDA2018}
+{The CAIDA UCSD Anonymized Internet Traces 2018}, 2018.
+\newblock Accessed: 2020-02-10.
 
 \bibitem{di2011detecting}
 Giovanni Di~Crescenzo, Abhrajit Ghosh, Abhinay Kampasi, Rajesh Talpade, and Yin
@@ -45,12 +43,6 @@ Shou-Hsuan~Stephen Huang, Hongyang Zhang, and Michael Phay.
   Information Networking and Applications (AINA)}, pages 1043--1050. IEEE,
   2016.
 
-\bibitem{huang2007stepping}
-Shou-Husan~Stephen Huang, Robert Lychev, and Jianhua Yang.
-\newblock Stepping-stone detection via request-response traffic analysis.
-\newblock In {\em International Conference on Autonomic and Trusted Computing},
-  pages 276--285. Springer, 2007.
-
 \bibitem{iacovazzi2016network}
 Alfonso Iacovazzi and Yuval Elovici.
 \newblock Network flow watermarking: A survey.
@@ -86,6 +78,12 @@ Xinyuan Wang and Douglas Reeves.
   stones by flow watermarking.
 \newblock {\em IEEE Transactions on Dependable and Secure Computing},
   8(3):434--449, 2010.
+
+\bibitem{wu2008performance}
+Han-Ching Wu and Shou-Hsuan~Stephen Huang.
+\newblock Performance of neural networks in stepping-stone intrusion detection.
+\newblock In {\em 2008 IEEE International Conference on Networking, Sensing and
+  Control}, pages 608--613. IEEE, 2008.
 
 \bibitem{wu2010neural}
 Han-Ching Wu and Shou-Hsuan~Stephen Huang.
