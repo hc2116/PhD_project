@@ -4,6 +4,12 @@
 {The CAIDA UCSD Anonymized Internet Traces 2018}, 2018.
 \newblock Accessed: 2020-02-10.
 
+\bibitem{coskun2007efficient}
+Baris Coskun and Nasir Memon.
+\newblock Efficient detection of delay-constrained relay nodes.
+\newblock In {\em Twenty-Third Annual Computer Security Applications Conference
+  (ACSAC 2007)}, pages 353--362. IEEE, 2007.
+
 \bibitem{di2011detecting}
 Giovanni Di~Crescenzo, Abhrajit Ghosh, Abhinay Kampasi, Rajesh Talpade, and Yin
   Zhang.
@@ -115,13 +121,6 @@ Jianhua Yang and Yongzhong Zhang.
 \newblock Rtt-based random walk approach to detect stepping-stone intrusion.
 \newblock In {\em 2015 IEEE 29th International Conference on Advanced
   Information Networking and Applications}, pages 558--563. IEEE, 2015.
-
-\bibitem{yang2018sniffing}
-Jianhua Yang, Yongzhong Zhang, Robert King, and Tim Tolbert.
-\newblock Sniffing and chaffing network traffic in stepping-stone intrusion
-  detection.
-\newblock In {\em 2018 32nd International Conference on Advanced Information
-  Networking and Applications Workshops (WAINA)}, pages 515--520. IEEE, 2018.
 
 \bibitem{zhang2005stepping}
 Linfeng Zhang, Anthony Persaud, Alan Johnson, and Yong Guan.
