@@ -88,7 +88,6 @@ do
     sleep 2
     ###########################################################################################
     echo "Creating tunnels in $DURATION seconds...."
-    sleep $DURATION
     timeout -k $(($DURATION2+2)) $DURATION2 docker exec -ti $(sudo docker ps -aqf "name=${PROJECT_NAME}_spider_1") scrapy runspider "scrapy/spider_${PROJECT_NAME}.py"; EXIT_CODE=$?
     sleep 1
     teardown
