@@ -5,15 +5,13 @@
 - network congestion added
 - 808 flows
 
-
-
-#### 140 SQL traffic
+#### SQL traffic
 
 - 62209 flows
 - network congestion added
 - 1 scenario, but well randomised
 
-#### 150 SQL attack traffic
+#### SQL attack traffic
 
 - 12288 flows
 - 3 scenarios, not randomised
@@ -44,7 +42,11 @@
 
 0
 
-#### NGINX HTTP_attack traffic
+#### NGINX HTTP attack traffic
 
 - 1060 flows
-- no congestion, but maybe through SIEGE
+- no congestion
+
+## Perturbations
+
+150ms constant delay

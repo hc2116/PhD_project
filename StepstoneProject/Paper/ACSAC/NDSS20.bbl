@@ -66,6 +66,11 @@ Jaideep~D Padhye, Kush Kothari, Madhu Venkateshaiah, and Matthew Wright.
   with sneak.
 \newblock {\em Computer Networks}, 54(13):2310--2325, 2010.
 
+\bibitem{paxson1995wide}
+Vern Paxson and Sally Floyd.
+\newblock Wide area traffic: the failure of poisson modeling.
+\newblock {\em IEEE/ACM Transactions on networking}, 3(3):226--244, 1995.
+
 \bibitem{shullich2011survey}
 Robert Shullich, Jie Chu, Ping Ji, and Weifeng Chen.
 \newblock A survey of research in stepping-stone detection.

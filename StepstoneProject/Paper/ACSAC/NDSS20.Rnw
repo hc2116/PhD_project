@@ -120,12 +120,23 @@ Padhye et al. \cite{padhye2010evading} in 2010 have proposed a packet buffering 
 
 \section{Dataset creation}\label{Sec:Datasetcreation}
 
-Our goal is to simulate data that reflects the different aspects of interactive stepping-stone behaviour in a reproducable manner. For a fair and thorough evaluation, we want to cover different settings and interactions to incorporate enough variation in the data to highlight strengths and weaknesses of different SSD methods. Furthermore, we need to generate sufficient data to effectively train some of the included methods. 
+Our goal is to simulate data that reflects the different aspects of interactive stepping-stone behaviour in a reproducible manner. For a fair and thorough evaluation, we want to cover different settings and interactions to incorporate enough variation in the data to highlight strengths and weaknesses of different SSD methods. Furthermore, we need to generate sufficient data to effectively train some of the included methods. 
 
-In order to consider all these factors, we rely on the virtualisation framework Docker. Docker enables us to script the repeated creation of steppings-stone chains within a virtual network in a scalable manner while allowing us to emulate different network settings. %\textcolor{red}{while allowing network different settings}. 
 
-\textcolor{red}{can we cite DetGen here?}
+\subsection{Containerisation}
+
+In order to consider all these factors, we rely on the virtualisation of networks using containerisation. In contrast to standard virtual machines, containers forego a hypervisor and the shared resources are instead kernel artifacts, which can be shared simultaneously across several containers. Although this prevents the host environment from running different operating systems, containerization incurs minimal CPU, memory, and networking overhead whilst maintaining a great deal of isolation. %\cite{kolyshkin2006virtualization}. 
+
+Containers are intended to be highly specialized in their purpose with each container running only a specific piece of software or application. After each command is executed, the intermediate, read-only image is saved as a \textit{layer}, which is discarded when the container is stopped. This allows containers to be run repeatedly whilst always starting from an identical state. 
+
+These advantages of containers over virtual machines enable us to easily control, modify, repeat, and scale our traffic generation framework while emulating different network settings. The use of containerisation for this project is a continuation of a traffic generation paradigm designed for machine learning, which was originally introduced in [citation currently blinded].
+
+%. Docker enables us to script the repeated creation of steppings-stone chains within a virtual network in a scalable manner while allowing us to emulate different network settings. %\textcolor{red}{while allowing network different settings}. 
+
+%\textcolor{red}{can we cite DetGen here?}
 %\textcolor{red}{write more about Docker advantages in terms of speed and controllability}
+
+We build our traffic generation framework on the popular containerisation platform \textit{Docker}. Docker allows the creation of virtualised networks to which containers can connect via a virtualised network bridge. Containers attached to the bridge network are assigned an IP address and are able to communicate with other containers on their subnetwork.
 
 \subsection{Simulating stepping stones with SSH-tunnels and Docker}\label{Sec:Setup}
 
@@ -157,12 +168,14 @@ In order to generate enough data instances representing interactive stepping sto
 
 For script-based session creation, several measures have been taken to make them realistic. First, each session tries to mimic a real user's action. We compiled a command database which consists of common commands and their usage frequency, similar to \cite{xin2006testbed}.% \cite{rossey2002lariat}. 
 Commands are drawn randomly according to their usage frequency and concatenated to a script. 
-Commands can either be atomic, such as "ls-la" or "pwd", or compound. Compound commands need additional input such as the directory and name of a specific file that is transferred, or input text to fill a file. The content and sometimes length of these inputs as well as transferred files are randomised appropriately when a compound command is drawn. 
-
-To simulate human behaviour that is reacting to the response from host T, all commands are separating by \textit{sleep}-commands for time $t$, which is drawn from a truncated Cauchy-distribution. By using a Cauchy-distribution, we allow for a small number of large $t$-values that simulate longer thinking periods.  
+Commands can either be atomic, such as "ls-la" or "pwd", or compound. Compound commands need additional input such as the directory and name of a specific file that is transferred, or input text to fill a file. The content and sometimes length of these inputs as well as transferred files are randomised appropriately when a compound command is drawn. Scripts are of varying length and end once the \textit{End}-command is drawn from the command catalogue. 
 
 
-Scripts are of varying length and end once the \textit{End}-command is drawn from the command catalogue. 
+To simulate human behaviour that is reacting to the response from host T, all commands are separating by \textit{sleep}-commands for time $t$, which is drawn from a truncated Pareto-distribution. Paxson et al. \cite{paxson1995wide} have shown that interpacket spacings corresponding to typing and "think time" pauses are well described by Pareto distributions with a shape parameter $\alpha\approx 1.0$. We use a truncated distribution capped at $10$s to avoid infinite waiting times since we already included a mechanism to end a script. 
+
+%By using a Cauchy-distribution, we allow for a small number of large $t$-values that simulate longer thinking periods.  
+
+
 
 \textcolor{red}{show exemplary script}.
 
@@ -200,9 +213,9 @@ We store the set parameters along with the collected traffic for each simulation
 
 To increase detection difficulty as suggested by  \cite{padhye2010evading}, we add random transfer delays to individual packets forwarded by stepping stone hosts. This method, often called \textit{jittering}, can destroy time-based watermarks in packet flows and help decrease observable correlation between two connections. 
 
-We add transfer delays to forward packets again by using NetEm. We draw delays for departing packets on a hosts from a uniform distribution, as suggested by \textcolor{red}{add reference}, covering the interval $[0,\delta_d]$, with zero packet correlation. The value of $\delta_d$ is fixed before each simulation and can be varied to allow for different degrees of packet jittering. 
+We add transfer delays to forward packets again by using NetEm. We draw delays for departing packets on a hosts from a uniform distribution, as suggested by \textcolor{red}{add reference}, covering the interval $[0,\delta_D]$, with zero packet correlation. The value of $\delta_D$ is fixed before each simulation and can be varied to allow for different degrees of packet jittering. 
 
-\textcolor{red}{insert citation} suggested to use significantly longer packet delays of several seconds to request packets and their answers in order to decrease temporal correlation between active periods in two connections. However, this often leads to difficulties in the TCP-protocol due to the significant increase of packet reordering and response time-outs. We set the maximum value for  $\delta_d$  at $1500$ ms. As we will see in Section \ref{Sec:Results}, this is enough to render watermarking methods obsolete while flow decorrelation can be achieved more effectively by using chaff perturbations. 
+\textcolor{red}{insert citation} suggested to use significantly longer packet delays of several seconds to request packets and their answers in order to decrease temporal correlation between active periods in two connections. However, this often leads to difficulties in the TCP-protocol due to the significant increase of packet reordering and response time-outs. We set the maximum value for  $\delta_D$  at $1500$ ms. As we will see in Section \ref{Sec:Results}, this is enough to render watermarking methods obsolete while flow decorrelation can be achieved more effectively by using chaff perturbations. 
 
 
 
@@ -414,7 +427,7 @@ The initialisation of the SSH-tunnels usually follows a distinct pattern that ca
 
 \subsection{Stepping-stone data}
 
-We generate stepping-stone data following the steps described in Section \ref{Sec:Datasetcreation}. We create a main dataset using a chain of four stepping-stones $S_1, S_2, S_3$, and $S_4$. We subdivide this main dataset according to the two discussed evasion tactics, transfer delays and chaff perturbations. We first capture data without either of these methods. We then capture data once with added transfer delays with varying $\delta_d$ to control delays, and once with added chaff perturbations of varying $\delta_C$. %Lastly, we capture data with delays and chaff added simultaneously, with both varying $\delta_d$ and $\delta_C$.
+We generate stepping-stone data following the steps described in Section \ref{Sec:Datasetcreation}. We create a main dataset using a chain of four stepping-stones $S_1, S_2, S_3$, and $S_4$. We subdivide this main dataset according to the two discussed evasion tactics, transfer delays and chaff perturbations. We first capture data without either of these methods. We then capture data once with added transfer delays with varying $\delta_D$ to control delays, and once with added chaff perturbations of varying $\delta_C$. %Lastly, we capture data with delays and chaff added simultaneously, with both varying $\delta_D$ and $\delta_C$.
 
 We furthermore create four smaller datasets with differing numbers of stepping-stones to evaluate this effect on RTT-based methods.
 
@@ -509,7 +522,7 @@ Write that we grant each method enough packets
 
 \subsection{Data without evasion tactics}
 
-<<Noevasion_4nodes, echo=FALSE, warning=FALSE, message=FALSE, fig.height=3,fig.width=8,fig.cap="4 nodes",cache=TRUE>>=
+<<Noevasion_4nodes, echo=FALSE, warning=FALSE, message=FALSE, fig.height=3,fig.width=8,fig.cap="ROC-curves for different SSD methods on dataset A (no evasive tactics).",cache=TRUE>>=
 require(ggplot2)
 require(xtable)
 
@@ -606,7 +619,7 @@ pAllNoevasion <-  ggplot(AllNoevasion,aes(x=FP,y=TP))+
     geom_line(size=0.7,aes(color=Method))+
     geom_point(size=1,aes(shape=Method))+
     theme_bw()+
-    labs(x="FP rate",y="TP rate",title=paste("4 nodes, no evasion"))+
+    labs(x="FP rate",y="TP rate",title=paste("ROC-curves on dataset A"))+
     ylim(0,1)+
     #xlim(0.0001,0.01)+
     scale_x_log10(limits = c(0.00001,0.1)) 
@@ -630,7 +643,7 @@ colnames(AUCdf) <- names
 \begin{table}
 \centering
 <<AUCtable, echo=FALSE,results="asis",cache=TRUE>>=
-tabAUC <- xtable(AUCdf,caption = "AUC-scores for different methods on stepping-stone data without evasive tactics.",floating = TRUE, latex.environments = "center", digits=c(0,3,3,3,3,3,4),label = "tab:dfAUC",include.colnames=FALSE)
+tabAUC <- xtable(AUCdf,caption = "AUC-scores for different methods on dataset A.",floating = TRUE, latex.environments = "center", digits=c(0,3,3,3,3,3,4),label = "tab:dfAUC",include.colnames=FALSE)
 align(tabAUC) <- "l|r|r|r|r|r|r"
 print(tabAUC,floating=FALSE)
 @
@@ -656,12 +669,12 @@ RTT-based methods seem to not perform as well compared to the other included met
 
 We now consider the effect of transfer delays added by the attacker to packets on the detection rates. For that, we pick detection thresholds for each SSD methods corresponding to a FP rate of $0.4\%$ as most methods are able to achieve some detection results at this rate. 
 
-We look at delays added to only to outgoing packets on $S_4$, the last stepping stone in the chain. Fig. \ref{fig:Delaydetection} depicts evolution of detection rates in dependence of the maximum delay $\delta_d$.
+We look at delays added to only to outgoing packets on $S_4$, the last stepping stone in the chain. Fig. \ref{fig:Delaydetection} depicts evolution of detection rates in dependence of the maximum delay $\delta_D$.
 
 
 %\textcolor{red}{consider two types of delays?}
 
-<<Delaydetection, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="...",cache=TRUE>>=
+<<Delaydetection, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="Detection rates in dependence of $\\delta_D$ for different methods on dataset B with a fixed FP rate of $0.4\\%$.",cache=TRUE>>=
 require(ggplot2)
 
 #chaffratio <- c(0, 10, 30, 50, 100, 200, 300, 500)
@@ -732,13 +745,13 @@ pAllNoevasion <-  ggplot(AllNoevasion,aes(x=maxd,y=TP1, group=Method))+
     geom_line(size=0.7,aes(color=Method))+
     geom_point(size=1,aes(shape=Method))+
     theme_bw()+
-    labs(x="maximum delay [ms]",y="TP rate",title=paste("4 nodes, delays"))+
+    labs(x="maximum delay [ms]",y="TP rate",title=paste("Detection rates on delay dataset B"))+
     ylim(0,1)+
     scale_x_discrete()
 pAllNoevasion
 @
 
-As visible, both anomaly-based methods are capable of detecting added delays relatively reliably. Furthermore, both the detection rates of DeepCorr and the rtt-based C.Over only decrease slightly under the influence of delays. Detection rates for all other methods decrease significantly to the point where no meaningful predictions can be made. This is also reflected by the AUC-scores for traffic with $\delta_d=1000ms$, given in Table \ref{Tab:AUCdelays}.
+As visible, both anomaly-based methods are capable of detecting added delays relatively reliably. Furthermore, both the detection rates of DeepCorr and the rtt-based C.Over only decrease slightly under the influence of delays. Detection rates for all other methods decrease significantly to the point where no meaningful predictions can be made. This is also reflected by the AUC-scores for traffic with $\delta_D=1000ms$, given in Table \ref{Tab:AUCdelays}.
 
 \begin{table}
 \centering
@@ -887,7 +900,7 @@ tabAUC <- xtable(AUCdf,caption = "AUC-scores for different methods on stepping-s
 align(tabAUC) <- "l|r|r|r|r|r|r|r|r"
 print(tabAUC,floating=FALSE)
 @
-\caption{AUC-scores with added transfer delays at $\delta_d=1000ms$.}\label{Tab:AUCdelays}
+\caption{AUC-scores for SSD methods with added transfer delays at $\delta_D=1000ms$.}\label{Tab:AUCdelays}
 \end{table}
 
 
@@ -899,7 +912,7 @@ We now consider the effect of chaff perturbations added by the attacker to indiv
 Chaff packets are added to both the connection between $S_3$ and $S_4$ as well as between $S_4$ and host $T$ as described in Section \ref{Sec:chaff_desc}. Fig. \ref{fig:Chaffdetection} depicts evolution of detection rates in dependence of the ratio of number of chaff packets to packets from the actual interaction.
 
 
-<<Chaffdetection, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="...",cache=TRUE>>=
+<<Chaffdetection, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="Detection rates in dependence of $\\delta_C$ for different methods on dataset C with a fixed FP rate of $0.4\\%$",cache=TRUE>>=
 require(ggplot2)
 
 #chaffratio <- c(0, 10, 30, 50, 100, 200, 300, 500)
@@ -970,7 +983,7 @@ pAllNoevasion <-  ggplot(AllNoevasion,aes(x=chaffr,y=TP1, group=Method))+
     geom_line(size=0.7,aes(color=Method))+
     geom_point(size=1,aes(shape=Method))+
     theme_bw()+
-    labs(x="ratio of chaff in %",y="TP rate",title=paste("4 nodes, chaff"))+
+    labs(x="ratio of chaff in %",y="TP rate",title=paste("Detection rates for chaff dataset C"))+
     ylim(0,1)+
     scale_x_discrete()
 pAllNoevasion
@@ -1127,7 +1140,7 @@ tabAUC <- xtable(AUCdf,caption = "AUC-scores for different methods on stepping-s
 align(tabAUC) <- "l|r|r|r|r|r|r|r|r"
 print(tabAUC,floating=FALSE)
 @
-\caption{AUC-scores with added chaff at 300\% ratio.}\label{Tab:AUCdelays}
+\caption{AUC-scores for SSD methods with added chaff at 300\% ratio.}\label{Tab:AUCchaff}
 \end{table}
 
 
@@ -1190,18 +1203,14 @@ tabFP <- xtable(FPdf,caption = "Relative contribution of different benign data t
 align(tabFP) <- "l|r|r|r|r|r|r|r|r"
 print(tabFP,floating=FALSE)
 @
-\caption{Relative contribution in \% of different benign data to FP rate at $FP=0.4\%$.}\label{Tab:dfFP}
+\caption{Relative contribution in \% of different benign data to the FP rate.}\label{Tab:dfFP}
 \end{table}
-
-
-
-
 
 \subsection{Influence of chain length and probe placement}
 
 In this section, we look at the effect of differing chain lengths on the detection rates. We only focus on RTT-based methods here since the other methods do not seem to be significantly influenced. Since RTT-based methods aim to measure the effect of packets travelling via multiple hosts, it is unsurprising that they perform better at detecting longer chains. 
 
-<<Influencechainl, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="...",cache=TRUE>>=
+<<Influencechainl, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="Detection rates in dependence of chain length for different methods on dataset D with a fixed FP rate of $0.4\\%$",cache=TRUE>>=
 require(ggplot2)
 
 #chaffratio <- c(0, 10, 30, 50, 100, 200, 300, 500)
@@ -1245,7 +1254,7 @@ pAllNoevasion <-  ggplot(AllNoevasion,aes(x=chainl,y=TP1, group=Method))+
     geom_line(size=0.7,aes(color=Method))+
     geom_point(size=1,aes(shape=Method))+
     theme_bw()+
-    labs(x="number of jumps",y="TP rate",title=paste("Detection rates for different chain lengths"))+
+    labs(x="number of jumps",y="TP rate",title=paste("Detection rates on chain length dataset D"))+
     ylim(0,1)+
     scale_x_discrete()
 pAllNoevasion
@@ -1277,7 +1286,7 @@ Interestingly, if the C.Over method is applied to connections between $S_3$ and 
 %\multirow{2}{*}{Bandwidth} & no limit& & & & \\ \cline{2-6}
 % & 50 kb/s  &  & & & \\ \hline s
 \end{tabular}
-\caption{Influence of network congestion on detection rates at $FP=0.4\%$. The given percentages are describing the change of the detection rate under the given congestion setting when compared to the overall average.}\label{Tab:Congestion}
+\caption{Influence of network congestion on detection rates at a fixed FP rate of $0.4\%$. The given percentages are describing the change of the detection rate under the given congestion setting when compared to the overall average.}\label{Tab:Congestion}
 \end{table}
 
 Finally, we look at the effect of different nework settings. We only show methods that show significant effects and omitted bandwidth from the evaluation as different values do not seem to have any effect on detection rates.
