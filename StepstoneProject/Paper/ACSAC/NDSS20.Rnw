@@ -42,7 +42,7 @@ The rest of the paper is organised as following: Section \ref{Sec:Introduction} 
 
 \subsection{Background}
 
-When a person logs into one computer and from there logs into another computer and so on, we refer to the sequence of logins as a connection chain. In an interactive stepping-stone attack, an attacker located at the origin host, which we call \textit{host O} sends commands to and awaits their response from a target, \textit{host T}, typically by using terminal emulation programs like TelNet, SSH, or Netcat  \textcolor{red}{reference}. These commands and responses are proxied via a chain of one or more intermediary hosts, the stepping-stones, which we call \textit{host} $S_1$, \dots, $S_N$, such as depicted in Fig. \ref{Fig:Stepstone}. 
+When a person logs into one computer and from there logs into another computer and so on, we refer to the sequence of logins as a connection chain. In an interactive stepping-stone attack, an attacker located at the origin host, which we call \textit{host O} sends commands to and awaits their response from a target, \textit{host T}, typically by using terminal emulation programs like TelNet or SSH, or via backdoors with tools such as Netcat  \textcolor{red}{reference}. These commands and responses are proxied via a chain of one or more intermediary hosts, the stepping-stones, which we call \textit{host} $S_1$, \dots, $S_N$, such as depicted in Fig. \ref{Fig:Stepstone}. 
 
 \begin{figure}
 \centering
@@ -75,47 +75,6 @@ Repacketisation is the practice of combining closely adjacent packets into a lar
 
 Since SSD is mostly done on singular connections, an attacker can split the flow of packets to two or more connections and merge them at the target. 
 
-\subsection{Related work}\label{Sec:Relatedwork}
-
-
-%\subsection{Data generation}
-
-
-In 2006, Xin et al. \cite{xin2006testbed} developed a standard test bed for stepping-stone detection, called \textit{SST}. 
-The main objectives in the development of SST were to enable a reproducible evaluation of stepping stone chain detection algorithms with easy configuration, management and operation. The tool allows for an arbitrary number of intermediate hosts and generates scripts to mimic interactive SSH and TelNet connections. 
-To insert time delays and chaff perturbations, the authors modified the OpenSSH protocol on the intermediary hosts. Delays can be drawn from a uniform distribution while chaff can be drawn from a Poisson or Pareto distribution. To our knowledge, SST has only been used for evaluation by Zhang et al. \cite{zhang2005stepping}, and is not available anymore. The authors give little details about the implemented evasive tactics.%\textcolor{red}{say something why evasion not sufficiently implemented}
-
-Another approach to use publicly available data comes from Houmansadr et al. \textcolor{red}{insert citations}. The authors use the well-known CAIDA anonymized data traces \cite{CAIDA2018} to evaulate different watermarking methods for SSD. To simulate stepping stone behaviour, packet delays and drops are imposed retroactively on selected connections using Laplace and Bernoulli distributions with different rates. While this procedure seems sufficient for the evaluation of watermarking methods, it falls short on simulating an actual connection chain and leaves out chaff perturbations. 
-
-
-Wang et al. \cite{wang2018research} recently conducted an extensive survey of  stepping stone intrusion detection. The authors group methods according to the respective methodology  
-%\begin{itemize}
-%\item content-thumbprint,
-%\item time-thumbprint,
-%\item packet counting,
-%\item random-walk-based,
-%\item cross-over packet-based,
-%\item watermarking,
-%\item network-based,
-%\item and software-defined-networking-based, 
-%\end{itemize} 
-but do not cover \textcolor{red}{graph-based methods} such as \cite{gamarra2018analysis}, %or \cite{apruzzese2017detection}, 
-or anomaly-based methods such as \cite{di2011detecting}.%, which are increasing in popularity recently.
-The authors then proceed to explain the different methods and highlight their benefits and shortcomings. The authors discuss open problems, but do not provide a direct comparison of detection rates. 
-
-Shullich et al. \cite{shullich2011survey} in 2011 also conducted a survey on stepping stone intrusion detection. The authors perform a similar grouping of methods, but also discuss related work in evasion tactics and test frameworks. The authors furthermore give an outlook on areas for future research, such as hacker motivation, the cardinality problem when correlating connection pairs, the difficulty of tracing back chains through firewalls, the lack of real-world data examples, or detection in covert channels or protocols such as UDP.  
-
-Padhye et al. \cite{padhye2010evading} in 2010 have proposed a packet buffering method to decorrelate packets in the input flow from the output flow. Using this technique and enough chaff packets, the authors generate a constant-rate flow that resembles multimedia streams such as Voice over IP. However, the authors only test their framework against watermark-based SSD methods. 
-
-%Yang et al. \cite{yang2018sniffing} have recently 
-
-
-%\cite{almulhem2007survey}
-
-%Stepping Stone Detection Techniques: Classification and State-of-the-Art, bad though
-
-%Metrics: A Study on the Performance Metrics forEvaluating Stepping Stone Detection (SSD)
-%Stepping Stone Detection: Measuring the SSD Capability
 
 
 \section{Dataset creation}\label{Sec:Datasetcreation}
@@ -173,8 +132,6 @@ Commands can either be atomic, such as "ls-la" or "pwd", or compound. Compound c
 
 To simulate human behaviour that is reacting to the response from host T, all commands are separating by \textit{sleep}-commands for time $t$, which is drawn from a truncated Pareto-distribution. Paxson et al. \cite{paxson1995wide} have shown that interpacket spacings corresponding to typing and "think time" pauses are well described by Pareto distributions with a shape parameter $\alpha\approx 1.0$. We use a truncated distribution capped at $10$s to avoid infinite waiting times since we already included a mechanism to end a script. 
 
-%By using a Cauchy-distribution, we allow for a small number of large $t$-values that simulate longer thinking periods.  
-
 
 
 \textcolor{red}{show exemplary script}.
@@ -229,7 +186,7 @@ We then use a NetCat client containers to send and receive packets on the additi
 %\textcolor{red}{add reference} to send data to both ports from either direction and collect it at the other side. 
 
 
-The data sent consists of strings with random size $x$ drawn from a truncated Cauchy-distribution with mean $\mu_C$ to mimic video-streaming traffic as suggested by Padhye et al \cite{padhye2010evading}. Similarly, packets are sent in intervals of random length $\delta_c$ drawn from a uniform distribution that covers the interval $[\delta_c/2,\delta_c]$ to mimic a relatively constant packet flow, typical for video-streaming. By adjusting $\delta_C$, we can control the amount of chaff sent. 
+The data sent consists of strings with random size $x$ drawn from a truncated Lognormal-distribution with mean $\mu_C$ to mimic video-streaming traffic as suggested by Padhye et al \cite{padhye2010evading}. Similarly, packets are sent in intervals of random length $\delta_c$ drawn from a uniform distribution that covers the interval $[\delta_c/2,\delta_c]$ to mimic a relatively constant packet flow, typical for video-streaming. By adjusting $\delta_C$, we can control the amount of chaff sent. 
 
 
 
@@ -298,9 +255,9 @@ Packet-corr. & Yang, 2011 \cite{yang2011correlating} & $100\%$ & $0\%$& jitter/$
 
 & Huang, 2016 \cite{huang2016detecting} & $85\%$ & $5\%$ & - & Crossover\\ \hline
  
-\multirow{2}{*}{Anomaly-based} & Crescenzo \cite{di2011detecting} & $99\%$ & $1\%$ & jitter/chaff &Ano1\\ \cline{2-6}
+\multirow{2}{*}{Anomaly-based} & Crescenzo, 2011 \cite{di2011detecting} & $99\%$ & $1\%$ & jitter/chaff &Ano1\\ \cline{2-6}
 
-& Huang 2011 \cite{huang2011detecting,ding2013detecting} & $95\%$ & $0\%$ & $>25\%$ chaff/ $>0.2$s jitter &Ano2\\ \hline
+& Huang, 2011 \cite{huang2011detecting,ding2013detecting} & $95\%$ & $0\%$ & $>25\%$ chaff/ $>0.2$s jitter &Ano2\\ \hline
 
 Watermarking & Wang, 2011 \cite{wang2010robust} & $100\%$ & $0.5\%$ &  $<1.4$s jitter & WM\\ \hline
 \end{tabular}
@@ -344,7 +301,7 @@ The authors achieve a $90\%$ detection rate with $0.02 \%$ false positives.
 
 \subsection{RTT-based approaches}
 
-Another prominent approach to detect stepping stones is based on \textit{Round-trip/times} (RTTs). The RTT of a connection is the time it takes for a packet to be sent to the receiver plus the time it takes for an acknowledgement of that packet to be received. Since information is relayed over one or more hosts in a stepping stone chain, this has an effect on the overall RTTs which can be observed within individual connections in the chain.
+Another prominent approach to detect stepping stones is based on \textit{round-trip-times} (RTTs). The RTT of a connection is the time it takes for a packet to be sent to the receiver plus the time it takes for an acknowledgement of that packet to be received. Since information is relayed over one or more hosts in a stepping stone chain, this has an effect on the overall RTTs which can be observed within individual connections in the chain.
 %Yang et al. \cite{yang2015rtt,yang2007mining} and Huang et al. \cite{huang2016detecting,ding2009detecting,huang2007stepping}  both have proposed multiple approaches for estimating and employing RTTs for stepping stone detection. We have selected two papers that depict the \textcolor{red}{state-of-the-art}...
 
 
@@ -365,7 +322,7 @@ Packet pairs representing a round-trip for each connection are estimated using a
 
 \subsubsection{Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections, 2016}
 
-This method by Huang et al. \cite{huang2016detecting} improves the detection methods proposed by Ding et al. \cite{ding2009detecting}. The authors target specifically relayed interactive SSH communication at the end of a connection chain. They build their detection model on the fact that in a long connection chain, the round-trip time of a packet may be longer than the intervals between two consecutive keystrokes. Normally after sending a request packet, a client will wait for the server response before sending another request. However, TCP/IP allows a client to send a limited number of packets to the server without having to wait for the response. In a long connection chain, this will result in cross-overs between request and response, which causes the curve of sorted Upstream RTTs to rise more steeply than in a regular connection. A stepping stone is detected if the maximum increase in the curve exceeds a threshold. The authors do not state a universal threshold value and instead suggest a method to estimate the appropriate value for a given setting.
+This method by Huang et al. \cite{huang2016detecting} improves the detection methods proposed by Ding et al. \cite{ding2009detecting}. The authors target specifically relayed interactive SSH communication at the end of a connection chain. They build their detection model on the fact that in a long connection chain, the round-trip-time of a packet may be longer than the intervals between two consecutive keystrokes. Normally after sending a request packet, a client will wait for the server response before sending another request. However, TCP/IP allows a client to send a limited number of packets to the server without having to wait for the response. In a long connection chain, this will result in cross-overs between request and response, which causes the curve of sorted Upstream RTTs to rise more steeply than in a regular connection. A stepping stone is detected if the maximum increase in the curve exceeds a threshold. The authors do not state a universal threshold value and instead suggest a method to estimate the appropriate value for a given setting.
 %Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections
 
 %.
@@ -408,15 +365,7 @@ The introduced watermark is invisible for third-parties and can be decoded in pa
 %Iacovazzi et al. \cite{iacovazzi2016network} found that flow watermarking is done overwhelmingly through 
 
 
-\subsection{Behaviour-based approaches}
-
-A different direction in the detection of stepping stones focuses more on the general communication behaviour of selected hosts rather than individual connections. Features include the timely correlation of connecting IP-address on a selected host or unusual paths of simultaneously existing connections within a computer network.
-
-Emulating these features realistically in network traffic datasets is difficult, and there exist little research on how strongly actual attack behaviour influences these features. Since our dataset focuses only on individual connections and corresponding evasion, we are not able to include behaviour-based approaches in our evaluation.
-
-
-
-\subsection{Evaluation data and methods}\label{Sec:Evaldata}
+\section{Evaluation data and methods}\label{Sec:Evaldata}
 
 The quality of both the stepping-stone and background data is crucial for a fair evaluation.
 
@@ -1291,9 +1240,55 @@ Interestingly, if the C.Over method is applied to connections between $S_3$ and 
 
 Finally, we look at the effect of different nework settings. We only show methods that show significant effects and omitted bandwidth from the evaluation as different values do not seem to have any effect on detection rates.
 
-As visible in Table \ref{Tab:Congestion}, the three RTT-based methods show different responses to small/large average round-trip times. While WuNeur, as expected from prior results, performs better in LAN settings, detection rates of the RWalk and C.Over methods are boosted by larger RTTs. 
+As visible in Table \ref{Tab:Congestion}, the three RTT-based methods show different responses to small/large average round-trip-times. While WuNeur, as expected from prior results, performs better in LAN settings, detection rates of the RWalk and C.Over methods are boosted by larger RTTs. 
 
 All methods profit from lower packet losses.
+
+
+\section{Related work}\label{Sec:Relatedwork}
+
+
+In 2006, Xin et al. \cite{xin2006testbed} developed a standard test bed for stepping-stone detection, called \textit{SST}. 
+The main objectives in the development of SST were to enable a reproducible evaluation of stepping stone chain detection algorithms with easy configuration, management and operation. The tool allows for an arbitrary number of intermediate hosts and generates scripts to mimic interactive SSH and TelNet connections. 
+To insert time delays and chaff perturbations, the authors modified the OpenSSH protocol on the intermediary hosts. Delays can be drawn from a uniform distribution while chaff can be drawn from a Poisson or Pareto distribution. To our knowledge, SST has only been used for evaluation by Zhang et al. \cite{zhang2005stepping}, and is not available anymore. The authors give little details about the implemented evasive tactics.%\textcolor{red}{say something why evasion not sufficiently implemented}
+
+Another approach to use publicly available data comes from Houmansadr et al. \textcolor{red}{insert citations}. The authors use the well-known CAIDA anonymized data traces \cite{CAIDA2018} to evaulate different watermarking methods for SSD. To simulate stepping stone behaviour, packet delays and drops are imposed retroactively on selected connections using Laplace and Bernoulli distributions with different rates. While this procedure seems sufficient for the evaluation of watermarking methods, it falls short on simulating an actual connection chain and leaves out chaff perturbations. 
+
+
+Wang et al. \cite{wang2018research} recently conducted an extensive survey of  stepping stone intrusion detection. The authors group methods according to the respective methodology  
+%\begin{itemize}
+%\item content-thumbprint,
+%\item time-thumbprint,
+%\item packet counting,
+%\item random-walk-based,
+%\item cross-over packet-based,
+%\item watermarking,
+%\item network-based,
+%\item and software-defined-networking-based, 
+%\end{itemize} 
+but do not cover \textcolor{red}{graph-based methods} such as \cite{gamarra2018analysis}, %or \cite{apruzzese2017detection}, 
+or anomaly-based methods such as \cite{di2011detecting}.%, which are increasing in popularity recently.
+The authors then proceed to explain the different methods and highlight their benefits and shortcomings. The authors discuss open problems, but do not provide a direct comparison of detection rates. 
+
+Shullich et al. \cite{shullich2011survey} in 2011 also conducted a survey on stepping stone intrusion detection. The authors perform a similar grouping of methods, but also discuss related work in evasion tactics and test frameworks. The authors furthermore give an outlook on areas for future research, such as hacker motivation, the cardinality problem when correlating connection pairs, the difficulty of tracing back chains through firewalls, the lack of real-world data examples, or detection in covert channels or protocols such as UDP.  
+
+Padhye et al. \cite{padhye2010evading} in 2010 have proposed a packet buffering method to decorrelate packets in the input flow from the output flow. Using this technique and enough chaff packets, the authors generate a constant-rate flow that resembles multimedia streams such as Voice over IP. However, the authors only test their framework against watermark-based SSD methods. 
+
+%Yang et al. \cite{yang2018sniffing} have recently 
+
+
+%\cite{almulhem2007survey}
+
+%Stepping Stone Detection Techniques: Classification and State-of-the-Art, bad though
+
+%Metrics: A Study on the Performance Metrics forEvaluating Stepping Stone Detection (SSD)
+%Stepping Stone Detection: Measuring the SSD Capability
+
+A different direction in SSD that we did not discuss in this work focuses more on the general communication behaviour of selected hosts rather than individual connections. Features include the timely correlation of connecting IP-address on a selected host or unusual paths of simultaneously existing connections within a computer network. Notable examples include Apruzzese et al. \cite{apruzzese2017detection} and Gamarra et al. \cite{gamarra2018analysis}, who both use graph-based models of network connections to identify suspicious relay hosts.
+
+Emulating these features realistically in network traffic datasets is difficult, and there exist little research on how strongly actual attack behaviour influences these features. Since our dataset focuses only on individual connections and corresponding evasion, we are not able to include behaviour-based approaches in our evaluation.
+
+
 
 
 \section{Conclusion}
