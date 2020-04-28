@@ -4,6 +4,12 @@
 {The CAIDA UCSD Anonymized Internet Traces 2018}, 2018.
 \newblock Accessed: 2020-02-10.
 
+\bibitem{apruzzese2017detection}
+Giovanni Apruzzese, Fabio Pierazzi, Michele Colajanni, and Mirco Marchetti.
+\newblock Detection and threat prioritization of pivoting attacks in large
+  networks.
+\newblock {\em IEEE Transactions on Emerging Topics in Computing}, 2017.
+
 \bibitem{coskun2007efficient}
 Baris Coskun and Nasir Memon.
 \newblock Efficient detection of delay-constrained relay nodes.
