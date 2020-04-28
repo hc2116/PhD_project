@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  28 APR 2020 12:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  28 APR 2020 14:58
 entering extended mode
 **./NDSS20.tex
 (NDSS20.tex
@@ -404,57 +404,58 @@ Overfull \hbox (13.83998pt too wide) in paragraph at lines 295--314
  []
 
 [7] [8] [9] [10]
-Overfull \hbox (6.98814pt too wide) in paragraph at lines 431--432
-[]\OT1/cmr/m/n/10 We fur-ther-more cre-ate four smaller datasets with dif-fer-i
-ng num-bers of stepping-
+Overfull \hbox (6.48802pt too wide) in paragraph at lines 432--433
+[]\OT1/cmr/m/n/10 We fur-ther-more cre-ate a smaller \OT1/cmr/bx/n/10 dataset D
+ \OT1/cmr/m/n/10 with dif-fer-ing num-bers of stepping-
  []
 
 [11]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 472.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 474.
 
  ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 472.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 474.
  [12]
-Package color Info: Redefining color shadecolor on input line 525.
+Package color Info: Redefining color shadecolor on input line 533.
 <figure/Noevasion_4nodes-1.pdf, id=55, 578.16pt x 216.81pt>
 File: figure/Noevasion_4nodes-1.pdf Graphic file (type pdf)
 <use figure/Noevasion_4nodes-1.pdf>
-Package pdftex.def Info: figure/Noevasion_4nodes-1.pdf  used on input line 526.
+Package pdftex.def Info: figure/Noevasion_4nodes-1.pdf  used on input line 534.
 
 (pdftex.def)             Requested size: 347.12354pt x 130.1697pt.
- [13] [14 <./figure/Noevasion_4nodes-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 572.
-<figure/Delaydetection-1.pdf, id=68, 578.16pt x 216.81pt>
+ [13 <./figure/Noevasion_4nodes-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 580.
+<figure/Delaydetection-1.pdf, id=65, 578.16pt x 216.81pt>
 File: figure/Delaydetection-1.pdf Graphic file (type pdf)
 <use figure/Delaydetection-1.pdf>
-Package pdftex.def Info: figure/Delaydetection-1.pdf  used on input line 573.
+Package pdftex.def Info: figure/Delaydetection-1.pdf  used on input line 581.
 (pdftex.def)             Requested size: 347.12354pt x 130.1697pt.
-Package color Info: Redefining color shadecolor on input line 606.
-<figure/Chaffdetection-1.pdf, id=69, 578.16pt x 216.81pt>
+ [14]
+Package color Info: Redefining color shadecolor on input line 614.
+<figure/Chaffdetection-1.pdf, id=70, 578.16pt x 216.81pt>
 File: figure/Chaffdetection-1.pdf Graphic file (type pdf)
 <use figure/Chaffdetection-1.pdf>
-Package pdftex.def Info: figure/Chaffdetection-1.pdf  used on input line 607.
+Package pdftex.def Info: figure/Chaffdetection-1.pdf  used on input line 615.
 (pdftex.def)             Requested size: 347.12354pt x 130.1697pt.
- [15 <./figure/Delaydetection-1.pdf>] [16 <./figure/Chaffdetection-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 664.
-<figure/Influencechainl-1.pdf, id=88, 578.16pt x 216.81pt>
+ [15 <./figure/Delaydetection-1.pdf> <./figure/Chaffdetection-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 672.
+<figure/Influencechainl-1.pdf, id=84, 578.16pt x 216.81pt>
 File: figure/Influencechainl-1.pdf Graphic file (type pdf)
 <use figure/Influencechainl-1.pdf>
-Package pdftex.def Info: figure/Influencechainl-1.pdf  used on input line 665.
+Package pdftex.def Info: figure/Influencechainl-1.pdf  used on input line 673.
 (pdftex.def)             Requested size: 347.12354pt x 130.1697pt.
- [17 <./figure/Influencechainl-1.pdf>] [18] (NDSS20.bbl [19] [20]) [21] (NDSS20
+ [16] [17 <./figure/Influencechainl-1.pdf>] [18] (NDSS20.bbl [19]) [20] (NDSS20
 .aux) ) 
 Here is how much of TeX's memory you used:
- 2955 strings out of 492970
- 41054 string characters out of 3126595
- 119701 words of memory out of 3000000
- 6770 multiletter control sequences out of 15000+200000
+ 2954 strings out of 492970
+ 41047 string characters out of 3126595
+ 118694 words of memory out of 3000000
+ 6769 multiletter control sequences out of 15000+200000
  7980 words of font info for 28 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,11n,25p,1104b,313s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,10n,25p,1104b,313s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmbx10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmbx12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 
@@ -473,9 +474,9 @@ ers/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
 9.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmti10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmti9.pfb>
-Output written on NDSS20.pdf (21 pages, 366284 bytes).
+Output written on NDSS20.pdf (20 pages, 364629 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
+ 156 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

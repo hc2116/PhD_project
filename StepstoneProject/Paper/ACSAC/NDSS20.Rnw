@@ -42,7 +42,7 @@ The rest of the paper is organised as following: Section \ref{Sec:Introduction} 
 
 \subsection{Background}
 
-When a person logs into one computer and from there logs into another computer and so on, we refer to the sequence of logins as a connection chain. In an interactive stepping-stone attack, an attacker located at the origin host, which we call \textit{host O} sends commands to and awaits their response from a target, \textit{host T}, typically by using terminal emulation programs like TelNet or SSH, or via backdoors with tools such as Netcat  \textcolor{red}{reference}. These commands and responses are proxied via a chain of one or more intermediary hosts, the stepping-stones, which we call \textit{host} $S_1$, \dots, $S_N$, such as depicted in Fig. \ref{Fig:Stepstone}. 
+When a person logs into one computer and from there logs into another computer and so on, we refer to the sequence of logins as a connection chain. In an interactive stepping-stone attack, an attacker located at the origin host, which we call \textit{host O} sends commands to and awaits their response from a target, \textit{host T}, typically by using terminal emulation programs like TelNet or SSH, or via backdoors using tools such as Netcat  \textcolor{red}{reference}. These commands and responses are proxied via a chain of one or more intermediary hosts, the stepping-stones, which we call \textit{host} $S_1$, \dots, $S_N$, such as depicted in Fig. \ref{Fig:Stepstone}. 
 
 \begin{figure}
 \centering
@@ -365,37 +365,39 @@ The introduced watermark is invisible for third-parties and can be decoded in pa
 %Iacovazzi et al. \cite{iacovazzi2016network} found that flow watermarking is done overwhelmingly through 
 
 
-\section{Evaluation data and methods}\label{Sec:Evaldata}
+\section{Evaluation data}\label{Sec:Evaldata}
 
-The quality of both the stepping-stone and background data is crucial for a fair evaluation.
+The quality of both the stepping-stone and background data is crucial for a fair evaluation. 
 
-Different approaches require different amounts of packets to make predictions. To create a fair playing field, we only look at connections that exchange more than 1500 packets and exclude shorter connections from both the background data. This number seems like a suitable minimal limit for a successful interactive stepping-stone chain, and there were no connections with less packets in the stepping-stone dataset \textcolor{red}{add validation about how this is sufficient for all approaches?}
-. The first 1500 packets are then passed to each SSD method to make a prediction.
+First of all, we want to look at a variety of attack scenarios to highlight the strengths and weaknesses of different approaches. We created three main attack datasets that contain different forms and amounts of evasive behaviour, and a smaller dataset to highlight the influence of different network settings and chain lengths. 
+To present a valuable false positive test, we provide three datasets with benign background traffic. The first contains general real-world traffic, while the second and third contain benign data that bears similar traffic characteristics as the attack data. 
 
-The initialisation of the SSH-tunnels usually follows a distinct pattern that can be learned and consequently boost detection rates for ML-based methods. Since this pattern is not necessarily representative of actual stepping-stone behaviour, we remove the first thirty packets of all captured connections. If necessary, we also remove the last thirty packets to avoid the same issue for connection closures. 
+We now describe our data assembly in more detail.
 
 \subsection{Stepping-stone data}
 
-We generate stepping-stone data following the steps described in Section \ref{Sec:Datasetcreation}. We create a main dataset using a chain of four stepping-stones $S_1, S_2, S_3$, and $S_4$. We subdivide this main dataset according to the two discussed evasion tactics, transfer delays and chaff perturbations. We first capture data without either of these methods. We then capture data once with added transfer delays with varying $\delta_D$ to control delays, and once with added chaff perturbations of varying $\delta_C$. %Lastly, we capture data with delays and chaff added simultaneously, with both varying $\delta_D$ and $\delta_C$.
+We generate stepping-stone data following the steps described in Section \ref{Sec:Datasetcreation}. We create our main datasets using a chain of four stepping-stones $S_1, S_2, S_3$, and $S_4$. We subdivide into three datasets according to the two discussed evasion tactics, transfer delays and chaff perturbations. We first capture data without either of these methods in \textbf{dataset A}. We then capture data once with added transfer delays with varying $\delta_D$ to control delays in \textbf{dataset B}, and once with added chaff perturbations of varying $\delta_C$ in \textbf{dataset C}. Each dataset contains 30.000 connection pairs. 
+%Lastly, we capture data with delays and chaff added simultaneously, with both varying $\delta_D$ and $\delta_C$.
 
-We furthermore create four smaller datasets with differing numbers of stepping-stones to evaluate this effect on RTT-based methods.
+We furthermore create a smaller \textbf{dataset D} with differing numbers of stepping-stones (1,3,5, and 8 jumps) without evasive tactics to evaluate this effect on RTT-based methods. For every jump, we generated 1.000 connection pairs. 
 
-Table \ref{Tab:MalData} provides a summary of the connection pair numbers in each part of the dataset.
-\begin{table}
-\centering
-\begin{tabular}{l|r}
-4 jumps&\# connection pairs \\ \hline
-No evasion& 30.000\\ \hline
-Delays& 30.000 \\ \hline
-Chaff&30.000 \\ \hline
-\hline
-1 jump& 1.000\\ \hline
-3 jump& 1.000 \\ \hline
-5 jump& 1.000 \\ \hline
-8 jump& 1.000 \\ \hline
-\end{tabular}
-\caption{Number of connection pairs in each part of the stepping-stone dataset.}\label{Tab:MalData}
-\end{table}
+For all datasets, we randomise and record network settings. In Section \ref{Sec:InfluenceNetwork}, we examine the effect of extreme network settings on detection rates. 
+%Table \ref{Tab:MalData} provides a summary of the connection pair numbers in each part of the dataset.
+%\begin{table}
+%\centering
+%\begin{tabular}{l|r}
+%4 jumps&\# connection pairs \\ \hline
+%No evasion& 30.000\\ \hline
+%Delays& 30.000 \\ \hline
+%Chaff&30.000 \\ \hline
+%\hline
+%1 jump& 1.000\\ \hline
+%3 jump& 1.000 \\ \hline
+%5 jump& 1.000 \\ \hline
+%8 jump& 1.000 \\ \hline
+%\end{tabular}
+%\caption{Number of connection pairs in each part of the stepping-stone dataset.}\label{Tab:MalData}
+%\end{table}
 
 %Table \ref{Tab:Stepstone_data} depicts the number of connection pairs included in each dataset.
 
@@ -416,8 +418,8 @@ Chaff&30.000 \\ \hline
 
 We need to provide a realistic background of benign data that reflects the heterogeneous nature of regular network traffic, both for evaluation of false positives and for the training of ML-based methods.
 
-We include real-world traffic traces, taken from the \textit{CAIDA 2018 Anonymized Internet Traces} dataset \cite{CAIDA2018}.
-\textcolor{red}{insert citation and description}. 
+We include real-world traffic traces, taken from the \textit{CAIDA 2018 Anonymized Internet Traces} dataset \cite{CAIDA2018}. This data contains traces collected from high-speed monitors on a commercial backbone link, and is often used  for research on the characteristics of Internet traffic, including application breakdown, security events, geographic and topological distribution, flow volume and duration.
+%\textcolor{red}{insert citation and description}.
 
 We group packets to connections according to the usual 5-tuple consisting of \{Src. IP, Dst. IP, Src. port, Dst. port, IP protocol\}. We select and pair TCP-connections at random to make 100.000 connection pairs. 
 
@@ -426,41 +428,47 @@ The CAIDA dataset provides suitable general background traffic. However, to suff
 Additionally, we include a third type of benign traffic to test false-positives of methods aiming to spot chaff perturbations. Since we followed the findings of Padhye et al. \cite{padhye2010evading} to generate chaff perturbations that resemble multimedia streams, we want to include actual multimedia streams. For that, we captured traffic from a server streaming video to a client. Video content is randomised and multiple values for the streaming quality are used.
 The server and client are hosted in the same virtual Docker network with randomised network congestion settings. Again, we pair generated connections by random. However, for each pair the direction of the transfer has to be either to or from the common host to either resemble a client requesting two videos or a server sending to videos.
 
-We merge the three datasets to create our benign background dataset according to the following ratios:
+We merge the three datasets to create our benign background dataset, with the CAIDA part containing 60.000 connection pairs, while the other two each contain 20.000 connection pairs. 
 
-\begin{table}
-\centering
-\begin{tabular}{l|r}
-&\# pairs \\ \hline
-CAIDA& 60.000\\ \hline
-SSH& 20.000 \\ \hline
-multimedia& 20.000 \\ \hline
-\end{tabular}
-\caption{Ratio of traffic in the benign dataset.}\label{Tab:Benigndata}
-\end{table}
+% according to the following ratios:
+
+%\begin{table}
+%\centering
+%\begin{tabular}{l|r}
+%&\# pairs \\ \hline
+%CAIDA& 60.000\\ \hline
+%SSH& 20.000 \\ \hline
+%multimedia& 20.000 \\ \hline
+%\end{tabular}
+%\caption{Ratio of traffic in the benign dataset.}\label{Tab:Benigndata}
+%\end{table}
 
 We are aware that the amount of interactive SSH traffic and multimedia streams in this setting is inflated from a realistic setting, but we believe that this setting is more suitable to highlight the strengths and drawbacks of SSD methods. In the evaluation, we will also state individual false positives for each of the three datasets to indicate which type of traffic present the biggest challenge for the selected SSD methods.  
 
+\subsection{Data preparation}
+Different approaches require different amounts of packets to make predictions. To create a fair playing field, we only look  at connections that exchange more than 1500 packets and exclude shorter connections from both the background data. This number seems like a suitable minimal limit for a successful interactive stepping-stone chain, and there were no connections with less packets in the stepping-stone dataset \textcolor{red}{add validation about how this is sufficient for all approaches?}. The first 1500 packets are then passed to each SSD method to make a prediction.
 
-\subsection{Evaluation methods}
+The initialisation of the SSH-tunnels usually follows a distinct pattern that can be learned and consequently boost detection rates for ML-based methods. Since this pattern is not necessarily representative of actual stepping-stone behaviour, we remove the first thirty packets of all captured connections. If necessary, we also remove the last thirty packets to avoid the same issue for connection closures. 
+
+%\subsection{Evaluation methods}
 
 All of the above presented methods classify individual connections or pairs of connections as malicious or benign. True stepping stone connections are rare compared to benign ones, making their detection an imbalanced classification problem. As discussed by \textcolor{red}{insert citation}, an appropriate measure to evaluate SSD methods are false positive and false negative rates as well as the \textit{Area-under-ROC-curve} (AUC) for threshold-based methods.
 
-The false positive rate is defined as
-
-\begin{align*}
-\frac{\text{number of benign connections classified as malicious}}{\text{overall number of benign connections}},
-\end{align*}
-
-while the false negative rate is defined as
-
-\begin{align*}
-\frac{\text{number of malicious connections classified as benign}}{\text{overall number of malicious connections}}.
-\end{align*}
-
-Some methods additionally try to predict the length of the stepping stone chain.
-
-Write that we grant each method enough packets
+%The false positive rate is defined as
+%
+%\begin{align*}
+%\frac{\text{number of benign connections classified as malicious}}{\text{overall number of benign connections}},
+%\end{align*}
+%
+%while the false negative rate is defined as
+%
+%\begin{align*}
+%\frac{\text{number of malicious connections classified as benign}}{\text{overall number of malicious connections}}.
+%\end{align*}
+%
+%Some methods additionally try to predict the length of the stepping stone chain.
+%
+%Write that we grant each method enough packets
 
 \subsection{Implementation of selected approaches}
 
@@ -1219,7 +1227,7 @@ Interestingly, if the C.Over method is applied to connections between $S_3$ and 
 %\textcolor{red}{I could insert comparison of prediction accuracy on chain length}
 
 
-\subsection{Influence of network settings}
+\subsection{Influence of network settings}\label{Sec:InfluenceNetwork}
 
 \begin{table}
 \centering
