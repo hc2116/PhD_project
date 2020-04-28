@@ -27,6 +27,12 @@
 
 %\textcolor{red}{Network attackers frequently use a chain of compromised intermediate nodes to attack a target machine and maintain anonymity. This chain of nodes between the attacker and the target is calleda stepping stone chain. }
 
+Attackers typically begin by compromising any vulnerable internal host and then try to  reach  the  most  valuable  targets  by  moving  host-to-host  laterally  and  deeper  into  the  enterprise  network. 
+To  this  purpose,  attackers  are  increasingly  adopting  theso  calledpivotingtechnique  [2]  in  which  a  commandpropagation tunnel is created through one or more com-promised internal host calledpivoters. 
+
+Unaware pivoters propagate  malicious  commands  to  the  last  host  of  the pivoting  chain  and  return  the  results  to  the  initial  host. The  terminal  host  can  either  represent  the  final  target or be used by attackers to further increase the length of the  pivoting  tunnel. 
+
+Several  examples  of  pivoting  can be  found  in  the Operation  Aurora[3],  in  the Operation Night  Dragon[4],  in  the Black Energy[5]  malware  that in  December  2015  compromised  the  Ukrainian  powergrid, in the MEDJACK[6] attack in 2016 where attackersstole  health  data  by  using  medical  devices  as  pivoters.Among the most recent cases at the time of writing, wecan  cite  theArchimedestool  [7]  that  leverages  pivotingto   reach   the   LAN   of   target   hosts,   passively   gathers•The authors are with the Department of Engineering “Enzo Ferrari”, Uni-versity of Modena and Reggio Emilia, Italy. Email:{giovanni.apruzzese,fabio.pierazzi, michele.colajanni, mirco.marchetti}@unimore.ittheir Web traffic, and injects forged Web pages with thegoal  of  compromising  hosts  or  stealing  credentials.  Allthese examples demonstrate that pivoting is an emergingand  challenging  research  problem.  Pivoting  attacks  arefacilitated  and  the  complexity  of  their  detection  is  ag-gravated by various factors: the large number of hetero-geneous  host  activities  and  the  hundreds  of  thousandsof communications occurring every day in any medium-large enterprise, which are difficult to analyze and mayease  attackers  evasion;  the  risk  of  false  alarms  becausesome  activities  detected  as  pivoting  may  be  benign,such as SSH tunnels created by network administrators.Identifying  malicious  pivoting  actions  would  require  tokeep  stateful  traces  of  all  consecutive  communicationsbetween  internal  hosts  over  long  time  periods  but  thisapproach  is  not  viable  in  terms  of  computational  andmemory costs.
 
 Malicious actors on the Internet frequently use chains of compromised hosts to relay their attack, in order to obtain access to restricted resources and to reduce the chance of being detected. These hosts, called \textbf{stepping-stones}, are used by the attacker as relay machines, to which they maintain access using tools such as SSH or Telnet. 
 
@@ -1163,7 +1169,7 @@ print(tabFP,floating=FALSE)
 \caption{Relative contribution in \% of different benign data to the FP rate.}\label{Tab:dfFP}
 \end{table}
 
-\subsection{Influence of chain length and probe placement}
+\subsection{Influence of chain length}
 
 In this section, we look at the effect of differing chain lengths on the detection rates. We only focus on RTT-based methods here since the other methods do not seem to be significantly influenced. Since RTT-based methods aim to measure the effect of packets travelling via multiple hosts, it is unsurprising that they perform better at detecting longer chains. 
 
