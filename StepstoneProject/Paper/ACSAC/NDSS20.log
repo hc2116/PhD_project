@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  28 APR 2020 14:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  28 APR 2020 20:07
 entering extended mode
 **./NDSS20.tex
 (NDSS20.tex
@@ -372,109 +372,124 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 68.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 68.
- [1
+
+! Too many }'s.
+l.81 ...ropagation tunnel \cite{cisco2014report}.}
+                                                  
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+
+LaTeX Warning: Citation `mcafee2014report' on page 1 undefined on input line 87
+.
+
+
+LaTeX Warning: Citation `eisac2017report' on page 1 undefined on input line 87.
+
+
+[1
 
 {C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 <images/Stepstone_temp.png, id=11, 648.5028pt x 126.2316pt>
 File: images/Stepstone_temp.png Graphic file (type png)
 <use images/Stepstone_temp.png>
-Package pdftex.def Info: images/Stepstone_temp.png  used on input line 99.
+Package pdftex.def Info: images/Stepstone_temp.png  used on input line 112.
 (pdftex.def)             Requested size: 347.12354pt x 67.56693pt.
-
-[2 <./images/Stepstone_temp.png>] [3]
-<images/Packetway.png, id=22, 726.5544pt x 320.397pt>
+ [2]
+[3 <./images/Stepstone_temp.png>] [4]
+<images/Packetway.png, id=25, 726.5544pt x 320.397pt>
 File: images/Packetway.png Graphic file (type png)
 <use images/Packetway.png>
-Package pdftex.def Info: images/Packetway.png  used on input line 159.
+Package pdftex.def Info: images/Packetway.png  used on input line 172.
 (pdftex.def)             Requested size: 312.40906pt x 137.76802pt.
- [4]
-Overfull \hbox (8.07149pt too wide) in paragraph at lines 202--204
+ [5 <./images/Packetway.png>]
+Overfull \hbox (8.07149pt too wide) in paragraph at lines 215--217
 []\OT1/cmr/m/n/10 Docker com-mu-ni-ca-tion takes place over vir-tual bridge net
 -works, so the through-
  []
 
-[5 <./images/Packetway.png>] [6]
+[6]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 295.
+(Font)              <9> on input line 308.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 295.
+(Font)              <6> on input line 308.
 
-Overfull \hbox (13.83998pt too wide) in paragraph at lines 295--314
+Overfull \hbox (18.12778pt too wide) in paragraph at lines 308--327
  [][] 
  []
 
-[7] [8] [9] [10]
-Overfull \hbox (6.48802pt too wide) in paragraph at lines 432--433
+[7] [8] [9] [10] [11]
+Overfull \hbox (6.48802pt too wide) in paragraph at lines 445--446
 []\OT1/cmr/m/n/10 We fur-ther-more cre-ate a smaller \OT1/cmr/bx/n/10 dataset D
  \OT1/cmr/m/n/10 with dif-fer-ing num-bers of stepping-
  []
 
-[11]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 474.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 487.
 
- ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 474.
- [12]
-Package color Info: Redefining color shadecolor on input line 533.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 487.
+
+[12]
+Package color Info: Redefining color shadecolor on input line 546.
 <figure/Noevasion_4nodes-1.pdf, id=55, 578.16pt x 216.81pt>
 File: figure/Noevasion_4nodes-1.pdf Graphic file (type pdf)
 <use figure/Noevasion_4nodes-1.pdf>
-Package pdftex.def Info: figure/Noevasion_4nodes-1.pdf  used on input line 534.
+Package pdftex.def Info: figure/Noevasion_4nodes-1.pdf  used on input line 547.
 
 (pdftex.def)             Requested size: 347.12354pt x 130.1697pt.
- [13 <./figure/Noevasion_4nodes-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 580.
-<figure/Delaydetection-1.pdf, id=65, 578.16pt x 216.81pt>
+ [13]
+Package color Info: Redefining color shadecolor on input line 593.
+<figure/Delaydetection-1.pdf, id=60, 578.16pt x 216.81pt>
 File: figure/Delaydetection-1.pdf Graphic file (type pdf)
 <use figure/Delaydetection-1.pdf>
-Package pdftex.def Info: figure/Delaydetection-1.pdf  used on input line 581.
+Package pdftex.def Info: figure/Delaydetection-1.pdf  used on input line 594.
 (pdftex.def)             Requested size: 347.12354pt x 130.1697pt.
- [14]
-Package color Info: Redefining color shadecolor on input line 614.
-<figure/Chaffdetection-1.pdf, id=70, 578.16pt x 216.81pt>
+ [14 <./figure/Noevasion_4nodes-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 627.
+<figure/Chaffdetection-1.pdf, id=69, 578.16pt x 216.81pt>
 File: figure/Chaffdetection-1.pdf Graphic file (type pdf)
 <use figure/Chaffdetection-1.pdf>
-Package pdftex.def Info: figure/Chaffdetection-1.pdf  used on input line 615.
+Package pdftex.def Info: figure/Chaffdetection-1.pdf  used on input line 628.
 (pdftex.def)             Requested size: 347.12354pt x 130.1697pt.
- [15 <./figure/Delaydetection-1.pdf> <./figure/Chaffdetection-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 672.
-<figure/Influencechainl-1.pdf, id=84, 578.16pt x 216.81pt>
+ [15 <./figure/Delaydetection-1.pdf>] [16 <./figure/Chaffdetection-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 685.
+<figure/Influencechainl-1.pdf, id=88, 578.16pt x 216.81pt>
 File: figure/Influencechainl-1.pdf Graphic file (type pdf)
 <use figure/Influencechainl-1.pdf>
-Package pdftex.def Info: figure/Influencechainl-1.pdf  used on input line 673.
+Package pdftex.def Info: figure/Influencechainl-1.pdf  used on input line 686.
 (pdftex.def)             Requested size: 347.12354pt x 130.1697pt.
- [16] [17 <./figure/Influencechainl-1.pdf>] [18] (NDSS20.bbl [19]) [20] (NDSS20
-.aux) ) 
+ [17 <./figure/Influencechainl-1.pdf>] [18] (NDSS20.bbl [19]) [20] (NDSS20.aux)
+ ) 
 Here is how much of TeX's memory you used:
- 2954 strings out of 492970
- 41047 string characters out of 3126595
- 118694 words of memory out of 3000000
- 6769 multiletter control sequences out of 15000+200000
+ 2959 strings out of 492970
+ 41138 string characters out of 3126595
+ 120714 words of memory out of 3000000
+ 6774 multiletter control sequences out of 15000+200000
  7980 words of font info for 28 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,10n,25p,1104b,313s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmbx10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmbx12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/henry/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/henry/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users
-/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.p
-fb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmmi9.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmr10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/henry/AppData/Local/Programs/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/henry/AppData/Local/
-Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/henry/App
-Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Us
-ers/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
-9.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmti10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmti9.pfb>
-Output written on NDSS20.pdf (20 pages, 364629 bytes).
+ 41i,10n,25p,1104b,315s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmbx10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmbx12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/henry/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/henry/AppData/Lo
+cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/henr
+y/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C
+:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmmi9.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmr6.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/henry/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/henry/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/h
+enry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb
+><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmti10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmti9.pfb>
+Output written on NDSS20.pdf (20 pages, 367286 bytes).
 PDF statistics:
  156 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

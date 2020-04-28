@@ -65,7 +65,7 @@
 %\hspace{\columnsep}\makebox[\columnwidth]{}}
 
 
-\maketitle          
+\maketitle     
 
 \begin{abstract}
 
@@ -76,6 +76,19 @@
 \section{Introduction}\label{Sec:Introduction}
 
 %\textcolor{red}{Network attackers frequently use a chain of compromised intermediate nodes to attack a target machine and maintain anonymity. This chain of nodes between the attacker and the target is calleda stepping stone chain. }
+
+Malicious actors on the Internet frequently use chains of compromised hosts to relay their attack, in order to obtain access to restricted resources and to reduce the chance of being detected. 
+Attackers typically begin by compromising any vulnerable internal host and then try to move deeper into the network to reach the most valuable targets \cite{Mandiant2015trends}. For this, a technique called \textit{pivoting} is used where commands are moved via compromised hosts, called \textbf{stepping-stones}, to the target using a command propagation tunnel \cite{cisco2014report}.}
+%, are used by the attacker as relay machines, to which they maintain access using tools such as SSH or Telnet. 
+
+
+%Unaware pivoters propagate malicious commands to the last host of the pivoting chain and return the results to the initial host. The terminal host can either represent the final target or be used by attackers to further increase the length of the pivoting tunnel. 
+
+Several examples of pivoting can be found in the Operation Aurora \cite{tankard2011advanced}, in the Operation Night Dragon \cite{mcafee2014report}, in the Black Energy \cite{eisac2017report} malware that in December 2015 compromised the Ukrainian powergrid, in the MEDJACK \cite{ayala2016active} attack in 2016 where attackers stole health data by using medical devices as stepping-stones. The infamous Archimedes tool \cite{archimedes2017} used by the CIA leverages stepping-stone chains to reach the LAN of target hosts.
+
+All these examples demonstrate that pivoting is an emerging and challenging research problem. 
+Pivoting attacks are facilitated and the complexity of their detection is aggravated by various factors: the large number of heterogeneous host activities and the hundreds of thousands of communications occurring every day in any medium-large enterprise, which are difficult to analyse and may ease attackers evasion; the risk of false alarms because some activities detected as pivoting may be benign, such as SSH tunnels created by network administrators.
+
 
 
 Malicious actors on the Internet frequently use chains of compromised hosts to relay their attack, in order to obtain access to restricted resources and to reduce the chance of being detected. These hosts, called \textbf{stepping-stones}, are used by the attacker as relay machines, to which they maintain access using tools such as SSH or Telnet. 
@@ -92,7 +105,7 @@ The rest of the paper is organised as following: Section \ref{Sec:Introduction} 
 
 \subsection{Background}
 
-When a person logs into one computer and from there logs into another computer and so on, we refer to the sequence of logins as a connection chain. In an interactive stepping-stone attack, an attacker located at the origin host, which we call \textit{host O} sends commands to and awaits their response from a target, \textit{host T}, typically by using terminal emulation programs like TelNet or SSH, or via backdoors using tools such as Netcat  \textcolor{red}{reference}. These commands and responses are proxied via a chain of one or more intermediary hosts, the stepping-stones, which we call \textit{host} $S_1$, \dots, $S_N$, such as depicted in Fig. \ref{Fig:Stepstone}. 
+When a person logs into one computer and from there logs into another computer and so on, we refer to the sequence of logins as a connection chain. In an interactive stepping-stone attack, an attacker located at the origin host, which we call \textit{host O} sends commands to and awaits their response from a target, \textit{host T}, typically by using terminal emulation programs like TelNet or SSH, or via backdoors using tools such as Netcat \textcolor{red}{reference}. These commands and responses are proxied via a chain of one or more intermediary hosts, the stepping-stones, which we call \textit{host} $S_1$, \dots, $S_N$, such as depicted in Fig. \ref{Fig:Stepstone}. 
 
 \begin{figure}
 \centering
@@ -151,7 +164,7 @@ We build our traffic generation framework on the popular containerisation platfo
 
 We want to capture data not only from one interaction in a fixed stepping-stone chain, but from many interactions and chains with different settings. For that, we run multiple simulations, with each simulation establishing a stepping-stone chain and controlling the interactions between host O and host T. A simulation and the corresponding traffic capture is in a capture-script. 
 
-A simulation begins with the start-up of the necessary containers and ends with their takedown. We represent host O, host T, and host $S_1,\dots,S_n$ with SSH-daemon containers.  To establish a connection chain, we connect these containers via SSH-tunnels, with the first tunnel forwarding the required port from host O to host $S_1$, which is then forwarded to host $S_2$ by the second tunnel etc. One benefit of SSH-tunnels from an attackers perspective is that they do not just simply forward packets, but act as independent encrypted TCP-connections along with independent packet confirmations and repacketisation.  Fig. \ref{Fig:Packetway} depicts a packet transfer via an exemplary chain. 
+A simulation begins with the start-up of the necessary containers and ends with their takedown. We represent host O, host T, and host $S_1,\dots,S_n$ with SSH-daemon containers. To establish a connection chain, we connect these containers via SSH-tunnels, with the first tunnel forwarding the required port from host O to host $S_1$, which is then forwarded to host $S_2$ by the second tunnel etc. One benefit of SSH-tunnels from an attackers perspective is that they do not just simply forward packets, but act as independent encrypted TCP-connections along with independent packet confirmations and repacketisation. Fig. \ref{Fig:Packetway} depicts a packet transfer via an exemplary chain. 
 
 
 \begin{figure}
@@ -173,7 +186,7 @@ Traffic is captured both at host $T$ and host $S_n$, which acts as the final ste
 
 \subsubsection{Simulating interactive SSH-traffic}\label{Sec:Simulating_interactive}
 
-In order to generate enough data instances representing interactive stepping stone behaviour, we automatised the communication between host O and host T.  For each simulation, we generate a script which passes SSH-commands from host O to host T.
+In order to generate enough data instances representing interactive stepping stone behaviour, we automatised the communication between host O and host T. For each simulation, we generate a script which passes SSH-commands from host O to host T.
 
 For script-based session creation, several measures have been taken to make them realistic. First, each session tries to mimic a real user's action. We compiled a command database which consists of common commands and their usage frequency, similar to \cite{xin2006testbed}.% \cite{rossey2002lariat}. 
 Commands are drawn randomly according to their usage frequency and concatenated to a script. 
@@ -190,7 +203,7 @@ To simulate human behaviour that is reacting to the response from host T, all co
 %To evaluate the stepping stone detection capabilities of different proposed methods, we created a \textcolor{red}{realistic dataset...}
 %\textcolor{red}{Insert example}
 
-%For script-based session creation, several measures havebeen taken to make them realistic. First, each session tries tomimic a real user’s action. All users of the scripts are real useraccounts in the clients. The users are divided into four groups:administrators, secretaries, programmers, and researchers. For each type of user, there is large command database which con-sists of the common commands and their historic frequency ofexp_version -exit 5.0if {$argc!=1} {send_user "usage: ftp-rfc \[#] \[-index]\n"exit}set file "rfc$argv.Z"set timeout 60spawn ftp ftp.uu.netexpect "Name*:"send "anonymous\r"expect "Password:"send "expect@nist.gov\r"expect "ftp>"send "binary\r"expect "ftp>"send "cd inet/rfc\r"expect "550*ftp>" exit "250*ftp>"send "get $file\r"expect "550*ftp>" exit "200*226*ftp>"closewaitsend_user "\nuncompressing file - wait...\n"exec uncompress $fileFig. 7.  Example script for a TELNET session
+%For script-based session creation, several measures havebeen taken to make them realistic. First, each session tries tomimic a real user’s action. All users of the scripts are real useraccounts in the clients. The users are divided into four groups:administrators, secretaries, programmers, and researchers. For each type of user, there is large command database which con-sists of the common commands and their historic frequency ofexp_version -exit 5.0if {$argc!=1} {send_user "usage: ftp-rfc \[#] \[-index]\n"exit}set file "rfc$argv.Z"set timeout 60spawn ftp ftp.uu.netexpect "Name*:"send "anonymous\r"expect "Password:"send "expect@nist.gov\r"expect "ftp>"send "binary\r"expect "ftp>"send "cd inet/rfc\r"expect "550*ftp>" exit "250*ftp>"send "get $file\r"expect "550*ftp>" exit "200*226*ftp>"closewaitsend_user "\nuncompressing file - wait...\n"exec uncompress $fileFig. 7. Example script for a TELNET session
 %use [22]. A portion of the command database for programmersare shown in Table I. Each Expect script is associated witha user, and the commands within the script are drawn fromcorresponding database according to their frequency. Thereare two types of commands: atomic and compound. Atomiccommands only need the user type the command line andthe system will parse the command and print the output.Examples are “ls -la”, “pwd”. Compound commands requiremore interaction. A simple example is “mail xxxx”. After theuser enters “mail xxxx” and “Enter” key, the system promptsthe user to enter “subject”, content and “cc” field of the email.Second, the human typing simulation feature of Expect is usedfor all commands of users. Third, more than 50 human actorsfrom four classes were invited to our lab to generate certainstepping stone chains that were recorded by autoExpect.
 
 
@@ -204,7 +217,7 @@ To retard the quality of the Docker network to realistic levels, we rely on the 
 
 We apply Netem commands to the network interface of each container, which adds correlated delays to incoming and outgoing packets that are drawn from a normal distribution with mean $\mu$, variance $\sigma^2$, and correlation $\rho_1$. We furthermore apply correlated packet loss and corruption drawn from a binomial distribution with probability $p$ and correlation $\rho_2$. Lastly, we apply an overall limit $B$ on the bandwidth of container network interfaces.
 
-To allow for different types of host separation, we set the network settings and bandwidth limit for each host container individually before each simulation, and draw each of the given parameters from a suitable distribution. This allows for some hosts to experience very fast and reliable communication while others experience more congested network communication.  \textcolor{red}{(should I specify which one for each? Seems a bit much...)} %before each \textcolor{red}{run} to allow for a good amount of variation in the generated data.
+To allow for different types of host separation, we set the network settings and bandwidth limit for each host container individually before each simulation, and draw each of the given parameters from a suitable distribution. This allows for some hosts to experience very fast and reliable communication while others experience more congested network communication. \textcolor{red}{(should I specify which one for each? Seems a bit much...)} %before each \textcolor{red}{run} to allow for a good amount of variation in the generated data.
 We store the set parameters along with the collected traffic for each simulation to include the effect of network congestion in the evaluation. 
 
 %providing us with the flexibility to set each container's network settings uniquely. 
@@ -218,11 +231,11 @@ We store the set parameters along with the collected traffic for each simulation
 \subsection{Evasive tactics}
 \subsubsection{Adding transfer delays}\label{Sec:delays_desc}
 
-To increase detection difficulty as suggested by  \cite{padhye2010evading}, we add random transfer delays to individual packets forwarded by stepping stone hosts. This method, often called \textit{jittering}, can destroy time-based watermarks in packet flows and help decrease observable correlation between two connections. 
+To increase detection difficulty as suggested by \cite{padhye2010evading}, we add random transfer delays to individual packets forwarded by stepping stone hosts. This method, often called \textit{jittering}, can destroy time-based watermarks in packet flows and help decrease observable correlation between two connections. 
 
 We add transfer delays to forward packets again by using NetEm. We draw delays for departing packets on a hosts from a uniform distribution, as suggested by \textcolor{red}{add reference}, covering the interval $[0,\delta_D]$, with zero packet correlation. The value of $\delta_D$ is fixed before each simulation and can be varied to allow for different degrees of packet jittering. 
 
-\textcolor{red}{insert citation} suggested to use significantly longer packet delays of several seconds to request packets and their answers in order to decrease temporal correlation between active periods in two connections. However, this often leads to difficulties in the TCP-protocol due to the significant increase of packet reordering and response time-outs. We set the maximum value for  $\delta_D$  at $1500$ ms. As we will see in Section \ref{Sec:Results}, this is enough to render watermarking methods obsolete while flow decorrelation can be achieved more effectively by using chaff perturbations. 
+\textcolor{red}{insert citation} suggested to use significantly longer packet delays of several seconds to request packets and their answers in order to decrease temporal correlation between active periods in two connections. However, this often leads to difficulties in the TCP-protocol due to the significant increase of packet reordering and response time-outs. We set the maximum value for $\delta_D$ at $1500$ ms. As we will see in Section \ref{Sec:Results}, this is enough to render watermarking methods obsolete while flow decorrelation can be achieved more effectively by using chaff perturbations. 
 
 
 
@@ -309,7 +322,7 @@ Packet-corr. & Yang, 2011 \cite{yang2011correlating} & $100\%$ & $0\%$& jitter/$
 
 & Huang, 2011 \cite{huang2011detecting,ding2013detecting} & $95\%$ & $0\%$ & $>25\%$ chaff/ $>0.2$s jitter &Ano2\\ \hline
 
-Watermarking & Wang, 2011 \cite{wang2010robust} & $100\%$ & $0.5\%$ &  $<1.4$s jitter & WM\\ \hline
+Watermarking & Wang, 2011 \cite{wang2010robust} & $100\%$ & $0.5\%$ & $<1.4$s jitter & WM\\ \hline
 \end{tabular}
 \caption{Summary of included SSD-methods along with the true positive and false positive rates and evasion resistance provided by the authors. }\label{Tab:Summary}
 \end{table}
@@ -331,7 +344,7 @@ Packet-correlation approaches attempt to identify correlations between two conne
 
 \subsubsection{Correlating TCP/IP Packet contexts to detect stepping-stone intrusion, 2011}
 
-Yang et al. \cite{yang2011correlating} compare sequences of interarrival times in connection pairs to detect potential stepping-stone behaviour. For that, the context of a packet is defined as the packet interarrival times around that packet. The context of  packets is extracted from each connection, and their respective contextual distance is estimated using the Pearson correlation. Packets with high correlation are defined as `matched', and two connections are classified as relayed if the ratio of matched packets exceeds a threshold. The authors propose to only collect interarrival times from \textit{Echo}-packets instead of \textit{Send}-packets to resist evasion tactics such as chaff and jitter, as the sending of \textit{Echo}-packets is subject to more constraints and less easy to manipulate.
+Yang et al. \cite{yang2011correlating} compare sequences of interarrival times in connection pairs to detect potential stepping-stone behaviour. For that, the context of a packet is defined as the packet interarrival times around that packet. The context of packets is extracted from each connection, and their respective contextual distance is estimated using the Pearson correlation. Packets with high correlation are defined as `matched', and two connections are classified as relayed if the ratio of matched packets exceeds a threshold. The authors propose to only collect interarrival times from \textit{Echo}-packets instead of \textit{Send}-packets to resist evasion tactics such as chaff and jitter, as the sending of \textit{Echo}-packets is subject to more constraints and less easy to manipulate.
 
 The authors evaluate their results on connection pairs with up to $100\%$ chaff ratio, with the model being able to successfully detect connection relays in all cases. 
 
@@ -352,13 +365,13 @@ The authors achieve a $90\%$ detection rate with $0.02 \%$ false positives.
 \subsection{RTT-based approaches}
 
 Another prominent approach to detect stepping stones is based on \textit{round-trip-times} (RTTs). The RTT of a connection is the time it takes for a packet to be sent to the receiver plus the time it takes for an acknowledgement of that packet to be received. Since information is relayed over one or more hosts in a stepping stone chain, this has an effect on the overall RTTs which can be observed within individual connections in the chain.
-%Yang et al. \cite{yang2015rtt,yang2007mining} and Huang et al. \cite{huang2016detecting,ding2009detecting,huang2007stepping}  both have proposed multiple approaches for estimating and employing RTTs for stepping stone detection. We have selected two papers that depict the \textcolor{red}{state-of-the-art}...
+%Yang et al. \cite{yang2015rtt,yang2007mining} and Huang et al. \cite{huang2016detecting,ding2009detecting,huang2007stepping} both have proposed multiple approaches for estimating and employing RTTs for stepping stone detection. We have selected two papers that depict the \textcolor{red}{state-of-the-art}...
 
 
 \subsubsection{Neural networks-based detection of stepping-stone intrusion, 2010}
 
 A notable initial example of neural network applications to SSD came from Wu et al. \cite{wu2008performance}, and which was later improved by the authors \cite{wu2008performance}.
-%however, the authors concluded that the achieved results did not improve existing detection rates. but no good results, better in Neural  networks-based  detection  of stepping-stone  intrusion.
+%however, the authors concluded that the achieved results did not improve existing detection rates. but no good results, better in Neural networks-based detection of stepping-stone intrusion.
 The designed nerual network model is based on sequences of RTTs. For this, a packet matching algorithm is used to compute RTTs, which are then fed as a fixed-length sequence into a feed-forward network to predict the downstream length of the chain. The network itself only contains one hidden layer and is relatively small. RTT-based methods achieves good results only if RTTs are small, i.e. the stepping-stone chain is completely contained within one LAN-network.
 
 
@@ -366,8 +379,8 @@ The designed nerual network model is based on sequences of RTTs. For this, a pac
 
 
 This model by Yang et al. \cite{yang2015rtt} combines packet-counting methods and RTT mining methods to improve detection results from \cite{yang2007mining}. 
-A widely-used approach is to compare the number of incoming packets in one connection with the number of outgoing packets in another connection  to determine if the pair represents a stepping stone relay. However, the insertion of chaff can separate these numbers substantially.
-To resist intruders  evasion,  the authors  propose  to use the  number of  round-trips in  a  connection  to  determine  if  the  connection  is being  relayed.
+A widely-used approach is to compare the number of incoming packets in one connection with the number of outgoing packets in another connection to determine if the pair represents a stepping stone relay. However, the insertion of chaff can separate these numbers substantially.
+To resist intruders evasion, the authors propose to use the number of round-trips in a connection to determine if the connection is being relayed.
 Packet pairs representing a round-trip for each connection are estimated using a combination of packet matching and clustering, and counted as $N_{in}$ and $N_{out}$. The authors then claim that the value of $N_{in}-N_{out}$ is only bounded if the two connections are relayed.
 
 \subsubsection{Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections, 2016}
@@ -386,7 +399,7 @@ This method by Huang et al. \cite{huang2016detecting} improves the detection met
 
 \subsection{Anomaly-based approaches}
 
-%Since  is so far relatively successful at evading detection, t
+%Since is so far relatively successful at evading detection, t
 Two authors have proposed algorithms to detect the insertion of time delays and chaff perturbations in a connection as deviations from typical TCP-behaviour to indicate of suspicious behaviour. 
 
 \subsubsection{Detecting Anomalies in Active Insider Stepping Stone Attacks, 2011}
@@ -398,7 +411,7 @@ Crescenzo et al. \cite{di2011detecting} have proposed an assembly of three metho
 \item The causality-based method is verifying that the number of ON-intervals in upstream and downstream direction match each other to detect chaff.
 \end{enumerate}
 
-\subsubsection{Detecting Chaff Perturbation on Stepping-Stone Connections, 2011, \\Detecting Stepping-Stones under the  Influence of Packet Jittering, 2013}
+\subsubsection{Detecting Chaff Perturbation on Stepping-Stone Connections, 2011, \\Detecting Stepping-Stones under the Influence of Packet Jittering, 2013}
 Huang et al. \cite{huang2011detecting} proposed a method to detect chaff perturbations in individual connections based on their assessment that interarrival times in regular connections tend to follow a Pareto or Lognormal distribution whereas chaffed connections do not. To detect whether a connection contains chaff perturbations, the authors extract packet interarrival times and fit a probability distribution to the data using maximum likelihood estimation. Afterwards, the goodness-of-fit is tested using two statistical tests, which yield a \textit{disagreement-of-fit score}. If this disagreement score exceeds a threshold, which was determined from a set of know regular connections, the connection is seen as being subject to chaff perturbations. The authors generate a small set of chaffed interactive SSH stepping-stone chains, where they achieve a $95\%$ detection rate on connections which are subject to a $50\%$ chaff ratio while retaining zero false positives. For lower chaff ratios, the detection rate decreases significantly. 
 
 A similar approach from the same authors \cite{ding2013detecting} is directed towards the detection of packet jittering. However, instead of estimating a disagreement-of-fit score, the authors use the estimated distribution parameters as input to train a support vector machine. 
@@ -408,14 +421,14 @@ A similar approach from the same authors \cite{ding2013detecting} is directed to
 Watermarking is the only active SSD mechanism and consists of two complementary processes: embedding the watermark and decoding the watermark. A watermark is simply an unique binary string. The process of embedding one bit of this string consists of changing some property, usually packet interarrivals, of a traffic flow such that the change represents a bit. Decoding the watermark involves capturing candidate flows that might match the water-marked flow and looking for the bits in the flow characteristics. The bits of the watermark should have enough redundancy to ensure that they are decoded correctly with high probability.
 
 \subsubsection{Robust correlation of encrypted attack traffic through stepping stones by flow watermarking, 2010}
-Flow watermarking is the most effective way at correlating connections with low false positives. However, as found by \cite{iacovazzi2016network}, usually not very robust against timing and chaff perturbation attacks. We have selected the approach developed by Wang et al. \cite{wang2010robust} to be included in our evaluation because the authors state at least some resistance against timing perturbations. The authors assume some limits to an adversary's  timing perturbations, such as a bound on the delays. The authors divide a sequence of packets into two groups of length $m$, and match packets from both groups into pairs. Each pair interarrival time is then perturbed using a watermarking function in dependence of an overall perturbation value $s$. 
-The introduced watermark is invisible for third-parties and can be decoded in packet sequences longer than 600 packets using $m=12$ when $s=400ms$.  The authors achieve $100\%$ TP with $0.5\%$ FP and claim resistance against timing perturbations of up to $1.4s$.
+Flow watermarking is the most effective way at correlating connections with low false positives. However, as found by \cite{iacovazzi2016network}, usually not very robust against timing and chaff perturbation attacks. We have selected the approach developed by Wang et al. \cite{wang2010robust} to be included in our evaluation because the authors state at least some resistance against timing perturbations. The authors assume some limits to an adversary's timing perturbations, such as a bound on the delays. The authors divide a sequence of packets into two groups of length $m$, and match packets from both groups into pairs. Each pair interarrival time is then perturbed using a watermarking function in dependence of an overall perturbation value $s$. 
+The introduced watermark is invisible for third-parties and can be decoded in packet sequences longer than 600 packets using $m=12$ when $s=400ms$. The authors achieve $100\%$ TP with $0.5\%$ FP and claim resistance against timing perturbations of up to $1.4s$.
 
 
 %Iacovazzi et al. \cite{iacovazzi2016network} found that flow watermarking is done overwhelmingly through 
 
 
-\section{Evaluation data and methods}\label{Sec:Evaldata}
+\section{Evaluation data}\label{Sec:Evaldata}
 
 The quality of both the stepping-stone and background data is crucial for a fair evaluation. 
 
@@ -455,7 +468,7 @@ For all datasets, we randomise and record network settings. In Section \ref{Sec:
 %\centering
 %\begin{tabular}{r|c|c|c|c}
 %\multicolumn{1}{r|}{ }&\multicolumn{4}{c|}{SSH}&\multicolumn{4}{c}{HTTP}\\
-%nodes & no evasion & delays & chaff & delays\& chaff  \\
+%nodes & no evasion & delays & chaff & delays\& chaff \\
 %\hline
 %1-node & 10.000 & 10.000 & 10.000 & 10.000 \\
 %4-node & 10.000 & 10.000 & 10.000 & 10.000 \\
@@ -468,7 +481,7 @@ For all datasets, we randomise and record network settings. In Section \ref{Sec:
 
 We need to provide a realistic background of benign data that reflects the heterogeneous nature of regular network traffic, both for evaluation of false positives and for the training of ML-based methods.
 
-We include real-world traffic traces, taken from the \textit{CAIDA 2018 Anonymized Internet Traces} dataset \cite{CAIDA2018}. This data contains traces collected from high-speed monitors on a commercial backbone link, and is often used  for research on the characteristics of Internet traffic, including application breakdown, security events, geographic and topological distribution, flow volume and duration.
+We include real-world traffic traces, taken from the \textit{CAIDA 2018 Anonymized Internet Traces} dataset \cite{CAIDA2018}. This data contains traces collected from high-speed monitors on a commercial backbone link, and is often used for research on the characteristics of Internet traffic, including application breakdown, security events, geographic and topological distribution, flow volume and duration.
 %\textcolor{red}{insert citation and description}.
 
 We group packets to connections according to the usual 5-tuple consisting of \{Src. IP, Dst. IP, Src. port, Dst. port, IP protocol\}. We select and pair TCP-connections at random to make 100.000 connection pairs. 
@@ -493,10 +506,10 @@ We merge the three datasets to create our benign background dataset, with the CA
 %\caption{Ratio of traffic in the benign dataset.}\label{Tab:Benigndata}
 %\end{table}
 
-We are aware that the amount of interactive SSH traffic and multimedia streams in this setting is inflated from a realistic setting, but we believe that this setting is more suitable to highlight the strengths and drawbacks of SSD methods. In the evaluation, we will also state individual false positives for each of the three datasets to indicate which type of traffic present the biggest challenge for the selected SSD methods.  
+We are aware that the amount of interactive SSH traffic and multimedia streams in this setting is inflated from a realistic setting, but we believe that this setting is more suitable to highlight the strengths and drawbacks of SSD methods. In the evaluation, we will also state individual false positives for each of the three datasets to indicate which type of traffic present the biggest challenge for the selected SSD methods. 
 
 \subsection{Data preparation}
-Different approaches require different amounts of packets to make predictions. To create a fair playing field, we only look  at connections that exchange more than 1500 packets and exclude shorter connections from both the background data. This number seems like a suitable minimal limit for a successful interactive stepping-stone chain, and there were no connections with less packets in the stepping-stone dataset \textcolor{red}{add validation about how this is sufficient for all approaches?}. The first 1500 packets are then passed to each SSD method to make a prediction.
+Different approaches require different amounts of packets to make predictions. To create a fair playing field, we only look at connections that exchange more than 1500 packets and exclude shorter connections from both the background data. This number seems like a suitable minimal limit for a successful interactive stepping-stone chain, and there were no connections with less packets in the stepping-stone dataset \textcolor{red}{add validation about how this is sufficient for all approaches?}. The first 1500 packets are then passed to each SSD method to make a prediction.
 
 The initialisation of the SSH-tunnels usually follows a distinct pattern that can be learned and consequently boost detection rates for ML-based methods. Since this pattern is not necessarily representative of actual stepping-stone behaviour, we remove the first thirty packets of all captured connections. If necessary, we also remove the last thirty packets to avoid the same issue for connection closures. 
 
@@ -589,12 +602,12 @@ As visible, both anomaly-based methods are capable of detecting added delays rel
 \begin{table}
 \centering
 % latex table generated in R 3.5.3 by xtable 1.8-3 package
-% Sat Apr 18 13:37:33 2020
+% Tue Apr 28 20:07:48 2020
 \begin{tabular}{l|r|r|r|r|r|r|r|r}
   \hline
  & PContext & DeepCorr & WuNeur & RWalk & C.Over & Ano1 & Ano2 & WM \\ 
   \hline
-AUC & 0.636 & 0.995 & 0.614 & 0.642 & 0.953 & 0.997 & 0.996 & 0.561 \\ 
+AUC & 0.639 & 0.995 & 0.619 & 0.639 & 0.953 & 0.997 & 0.996 & 0.559 \\ 
    \hline
 \end{tabular}
 
@@ -625,12 +638,12 @@ It is surprising that the anomaly detection methods do not perform better at det
 \begin{table}
 \centering
 % latex table generated in R 3.5.3 by xtable 1.8-3 package
-% Sat Apr 18 16:16:28 2020
+% Tue Apr 28 20:07:52 2020
 \begin{tabular}{l|r|r|r|r|r|r|r|r}
   \hline
  & PContext & DeepCorr & WuNeur & RWalk & C.Over & Ano1 & Ano2 & WM \\ 
   \hline
-AUC & 0.637 & 0.884 & 0.615 & 0.644 & 0.585 & 0.780 & 0.737 & 0.839 \\ 
+AUC & 0.637 & 0.885 & 0.613 & 0.642 & 0.590 & 0.781 & 0.738 & 0.838 \\ 
    \hline
 \end{tabular}
 
@@ -664,7 +677,7 @@ CAIDA & 0.37 & 0.37 & 0.51 & 0.67 & 0.57 & 0.49 & 0.36 & 0.82 \\
 \caption{Relative contribution in \% of different benign data to the FP rate.}\label{Tab:dfFP}
 \end{table}
 
-\subsection{Influence of chain length and probe placement}
+\subsection{Influence of chain length}
 
 In this section, we look at the effect of differing chain lengths on the detection rates. We only focus on RTT-based methods here since the other methods do not seem to be significantly influenced. Since RTT-based methods aim to measure the effect of packets travelling via multiple hosts, it is unsurprising that they perform better at detecting longer chains. 
 
@@ -693,13 +706,13 @@ Interestingly, if the C.Over method is applied to connections between $S_3$ and 
 & Value & \multicolumn{5}{c}{TP deviation from average}\\ \hline
  & &DeepCorr & WuNeur & RWalk& C.Over & WM \\ \hline
 \multirow{2}{*}{RTT} & 5ms& $-0.2\%$ & $+41.3\%$& $-42.3\%$ & $-36\%$ & $+0.03\%$ \\ \cline{2-7}
- & 70ms  & $-5.6\%$ & $-5.8\%$& $+35.1\%$ & $+51\%$& $-2.2\%$\\ \hline
+ & 70ms & $-5.6\%$ & $-5.8\%$& $+35.1\%$ & $+51\%$& $-2.2\%$\\ \hline
 
-\multirow{2}{*}{Packet loss} & $0\%$ & $+1.2\%$&  $+1.3\%$ & $+2.1\%$ & $+4.3\%$ & $+0.02\%$\\ \cline{2-7}
- & $7\%$  & $-9.1\%$& $-1.1\%$ & $-3.1\%$ & $-7.3\%$ & $-9.7\%$\\ \hline
+\multirow{2}{*}{Packet loss} & $0\%$ & $+1.2\%$& $+1.3\%$ & $+2.1\%$ & $+4.3\%$ & $+0.02\%$\\ \cline{2-7}
+ & $7\%$ & $-9.1\%$& $-1.1\%$ & $-3.1\%$ & $-7.3\%$ & $-9.7\%$\\ \hline
 
 %\multirow{2}{*}{Bandwidth} & no limit& & & & \\ \cline{2-6}
-% & 50 kb/s  &  & & & \\ \hline s
+% & 50 kb/s & & & & \\ \hline s
 \end{tabular}
 \caption{Influence of network congestion on detection rates at a fixed FP rate of $0.4\%$. The given percentages are describing the change of the detection rate under the given congestion setting when compared to the overall average.}\label{Tab:Congestion}
 \end{table}
@@ -721,7 +734,7 @@ To insert time delays and chaff perturbations, the authors modified the OpenSSH 
 Another approach to use publicly available data comes from Houmansadr et al. \textcolor{red}{insert citations}. The authors use the well-known CAIDA anonymized data traces \cite{CAIDA2018} to evaulate different watermarking methods for SSD. To simulate stepping stone behaviour, packet delays and drops are imposed retroactively on selected connections using Laplace and Bernoulli distributions with different rates. While this procedure seems sufficient for the evaluation of watermarking methods, it falls short on simulating an actual connection chain and leaves out chaff perturbations. 
 
 
-Wang et al. \cite{wang2018research} recently conducted an extensive survey of  stepping stone intrusion detection. The authors group methods according to the respective methodology  
+Wang et al. \cite{wang2018research} recently conducted an extensive survey of stepping stone intrusion detection. The authors group methods according to the respective methodology 
 %\begin{itemize}
 %\item content-thumbprint,
 %\item time-thumbprint,
@@ -736,7 +749,7 @@ but do not cover \textcolor{red}{graph-based methods} such as \cite{gamarra2018a
 or anomaly-based methods such as \cite{di2011detecting}.%, which are increasing in popularity recently.
 The authors then proceed to explain the different methods and highlight their benefits and shortcomings. The authors discuss open problems, but do not provide a direct comparison of detection rates. 
 
-Shullich et al. \cite{shullich2011survey} in 2011 also conducted a survey on stepping stone intrusion detection. The authors perform a similar grouping of methods, but also discuss related work in evasion tactics and test frameworks. The authors furthermore give an outlook on areas for future research, such as hacker motivation, the cardinality problem when correlating connection pairs, the difficulty of tracing back chains through firewalls, the lack of real-world data examples, or detection in covert channels or protocols such as UDP.  
+Shullich et al. \cite{shullich2011survey} in 2011 also conducted a survey on stepping stone intrusion detection. The authors perform a similar grouping of methods, but also discuss related work in evasion tactics and test frameworks. The authors furthermore give an outlook on areas for future research, such as hacker motivation, the cardinality problem when correlating connection pairs, the difficulty of tracing back chains through firewalls, the lack of real-world data examples, or detection in covert channels or protocols such as UDP. 
 
 Padhye et al. \cite{padhye2010evading} in 2010 have proposed a packet buffering method to decorrelate packets in the input flow from the output flow. Using this technique and enough chaff packets, the authors generate a constant-rate flow that resembles multimedia streams such as Voice over IP. However, the authors only test their framework against watermark-based SSD methods. 
 
