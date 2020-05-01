@@ -54,6 +54,13 @@ function teardown {
     echo "Done."
 }
 
+function add_delays {
+    echo "Adding delays to the network..."
+    DELAY1=$((RANDOM % 400 + 101))
+
+    ../container_tc.sh scrapy_webcrawling_spider_1 $DELAY1
+}
+
 trap '{ echo "Interrupted."; teardown; exit 1; }' INT
 
 
