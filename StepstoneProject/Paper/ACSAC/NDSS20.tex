@@ -78,34 +78,54 @@
 %\textcolor{red}{Network attackers frequently use a chain of compromised intermediate nodes to attack a target machine and maintain anonymity. This chain of nodes between the attacker and the target is calleda stepping stone chain. }
 
 Malicious actors on the Internet frequently use chains of compromised hosts to relay their attack, in order to obtain access to restricted resources and to reduce the chance of being detected. 
-Attackers typically begin by compromising any vulnerable internal host and then try to move deeper into the network to reach the most valuable targets \cite{Mandiant2015trends}. For this, a technique called \textit{pivoting} is used where commands are moved via compromised hosts, called \textbf{stepping-stones}, to the target using a command propagation tunnel \cite{cisco2014report}.}
+Attackers typically begin by compromising any vulnerable internal host, called a foothold, and then try to move deeper into the network to reach the most valuable targets \cite{Mandiant2015trends}. For this, a technique called \textit{pivoting}\footnote{also called \textit{island hopping}} is used where commands are moved via compromised hosts, called \textbf{stepping-stones}, to the target using a command propagation tunnel \cite{cisco2014report}.
 %, are used by the attacker as relay machines, to which they maintain access using tools such as SSH or Telnet. 
-
+Furthermore, accessing a target via multiple relayed TCP connections can make it hard to tell the intruder's geographical location, and enables attackers to hide behind a long interactive stepping-stone chain. For this reason, attacks involving stepping-stone chains are often called multi-layered attacks. %Furthermore, it is often required to relay an attack via privileged hosts in a network that have access to restricted resources. 
+ %To hide correlation between relayed packets, intruders can impose delays on packet transfer and inject additional \textit{chaff} packets into the connections.
 
 %Unaware pivoters propagate malicious commands to the last host of the pivoting chain and return the results to the initial host. The terminal host can either represent the final target or be used by attackers to further increase the length of the pivoting tunnel. 
 
-Several examples of pivoting can be found in the Operation Aurora \cite{tankard2011advanced}, in the Operation Night Dragon \cite{mcafee2014report}, in the Black Energy \cite{eisac2017report} malware that in December 2015 compromised the Ukrainian powergrid, in the MEDJACK \cite{ayala2016active} attack in 2016 where attackers stole health data by using medical devices as stepping-stones. The infamous Archimedes tool \cite{archimedes2017} used by the CIA leverages stepping-stone chains to reach the LAN of target hosts.
+\textcolor{black}{Several examples of the use of stepping-stone chains can be found in the Operation Aurora \cite{tankard2011advanced}, in the Operation Night Dragon \cite{mcafee2015report}, in the Black Energy \cite{eisac2017report} malware that in December 2015 compromised the Ukrainian powergrid, in the MEDJACK \cite{ayala2016active} attack in 2016 where attackers stole health data by using medical devices as stepping-stones.} The infamous Archimedes tool \cite{archimedes2017} used by the CIA leverages stepping-stone chains to reach the LAN of target hosts. The recent emergence of connected IoT-devices increases the potential attack surface as printers, cameras, or even thermostates can been successfully used as stepping stones \textcolor{red}{insert citation from Infosec Resources, 2019}.
 
-All these examples demonstrate that pivoting is an emerging and challenging research problem. 
-Pivoting attacks are facilitated and the complexity of their detection is aggravated by various factors: the large number of heterogeneous host activities and the hundreds of thousands of communications occurring every day in any medium-large enterprise, which are difficult to analyse and may ease attackers evasion; the risk of false alarms because some activities detected as pivoting may be benign, such as SSH tunnels created by network administrators.
+However, detecting that a host is used in a stepping-stone chain is a clear indication of malicious behaviour. If a stepping-stone can be identified during the attack stage, the connection can be terminated to interrupt the attack.
+
+\textcolor{black}{All these examples demonstrate that stepping-stones are an important and challenging research problem. 
+Pivoting attacks are facilitated and the complexity of their detection is aggravated by various factors: the large number of heterogeneous host activities and the hundreds of thousands of communications occurring every day in any medium-large enterprise, which are difficult to analyse and may ease attackers evasion; the risk of false alarms because some activities detected as pivoting may be benign, such as SSH tunnels created by network administrators.}
+
+%Malicious actors on the Internet frequently use chains of compromised hosts to relay their attack, in order to obtain access to restricted resources and to reduce the chance of being detected. These hosts, called \textbf{stepping-stones}, are used by the attacker as relay machines, to which they maintain access using tools such as SSH or Telnet. 
 
 
+%Stepping-stone detection (SSD) primarily looks at network traffic, with many approaches aiming to identify potential correlation between two connections going from or to a particular host.
 
-Malicious actors on the Internet frequently use chains of compromised hosts to relay their attack, in order to obtain access to restricted resources and to reduce the chance of being detected. These hosts, called \textbf{stepping-stones}, are used by the attacker as relay machines, to which they maintain access using tools such as SSH or Telnet. 
+%There are a number of approaches to detect stepping-stones, with the earliest one having been proposed by Staniford and Heberlein in 1995 \textcolor{red}{citation needed?}. 
+The problem of stepping-stones detection (SSD) has been studied for over 20 years, yet the body of literature fails at providing an informative overview of the detection capabilities of current methods. In this paper, we set out to do just that by evaluating and comparing a number of selected state-of-the-art approaches on a new and independent dataset. 
 
-Accessing a server via multiple relayed TCP connections can make it harder to tell the intruder's geographical location, and enables attackers to hide behind a long interactive stepping-stone chain. Furthermore, it is often required to relay an attack via privileged hosts in a network that have access to restricted resources. 
 
-However, detecting that a host is used in a stepping-stone chain is a clear indication of malicious behaviour. If a stepping-stone intrusion can be detected during the attack stage, the connection can be terminated to interrupt the attack. Stepping-stone detection (SSD) primarily looks at network traffic, with many approaches aiming to identify potential correlation between two connections going from or to a particular host. To hide correlation between relayed packets, intruders can impose delays on packet transfer and inject additional \textit{chaff} packets into the connections.
+Like many intrusion attacks, stepping-stones are rare and there exists no public data representing real stepping-stone behaviour, and researchers have to rely on synthetic data. Some attempts have been made to create publicly available stepping-stone testbeds, yet most researchers evaluate their SSD methods on self-provided data. The underlying traffic generation implementations often vary significantly, which makes a direct comparison of the achieved results impossible. Additionally, we find that implemented evasive behaviours are often too simplistic and thus increase detection rates \textcolor{red}{do we have to back this up with more than just one or two sentences in the discussion? takes up more space...}. 
 
-There are a number of approaches to detect stepping-stones, with the earliest one having been proposed by Staniford and Heberlein in 1995 \textcolor{red}{citation needed?}. Like many intrusion attacks, stepping-stones are rare and there exists no public data representing real stepping-stone behaviour, and researchers have to rely on synthetic data. Some attempts have been made to create publicly available stepping-stone testbeds, but most researchers evaluate their SSD methods on self-provided data. The underlying traffic generation implementations often differ significantly, which makes a direct comparison of the achieved results impossible. Additionally, we find that implemented evasive behaviours are often too simplistic and thus increase detection rates. 
+In this work, we provide the following:
 
-In this work, we provide an independent framework to generate data that represents realistic stepping-stone data. Our framework is scalable and capable of generating sufficient variety in terms of network settings and conducted activity. This allows us to generate a large and comprehensive dataset suitable for the training of ML-based methods and in-depth performance evaluation. We use this data to provide comparison of the capabilities of eight state-of-the-art stepping-stone detection methods that we re-implemented. Furthermore, we show that by inserting enough chaff perturbations in the right form, an intruder can evade all current SSD methods successfully.
+\begin{itemize}
+\item An independent framework to generate data that represents realistic stepping-stone data. Our framework is scalable and capable of generating sufficient variety in terms of network settings and conducted activity. This allows us to generate a large and comprehensive dataset suitable for the training of ML-based methods and in-depth performance evaluation.
+\item We surveyed the space of SSD methods carefully and selected eight methods that represent the current state-of-the-art according to three selection criteria.
+\item We re-implemented these eight methods and provide a fair comparison of their capabilities in a number of settings based on our generated data. 
+%use this data to provide comparison of the capabilities of eight state-of-the-art stepping-stone detection methods that we re-implemented. Furthermore, we show that by inserting enough chaff perturbations in the right form, an intruder can evade all current SSD methods successfully.
+\item Our evaluation shows that while most methods can accurately detect command propagation in different settings, detection rates vanish for all methods when enough chaff is inserted. This result disproves the \textcolor{red}{claims} made for multiple methods that detection rates are robust against chaff perturbations.
+\end{itemize} %an independent framework to generate data that represents realistic stepping-stone data. Our framework is scalable and capable of generating sufficient variety in terms of network settings and conducted activity. This allows us to generate a large and comprehensive dataset suitable for the training of ML-based methods and in-depth performance evaluation. We use this data to provide comparison of the capabilities of eight state-of-the-art stepping-stone detection methods that we re-implemented. Furthermore, we show that by inserting enough chaff perturbations in the right form, an intruder can evade all current SSD methods successfully.
 
-The rest of the paper is organised as following: Section \ref{Sec:Introduction} provides an introduction and background to the problem of stepping-stone detection, with Section \ref{Sec:Relatedwork} discussing related work. Section \ref{Sec:Datasetcreation} discusses the particular design of the data generation framework. Section \ref{Sec:Selection} discusses a eight different SSD methods that we selected and implemented for evaluation. Section \ref{Sec:Evaldata} presents the dataset arrangement in terms of background and attack data and discusses evaluation methods. Section \ref{Sec:Results} discusses the results achieved by the implemented methods on the given data. 
+The rest of the paper is organised as following: Section \ref{Sec:Introduction} provides an introduction and background to the problem of stepping-stone detection. Section \ref{Sec:Datasetcreation} discusses the particular design of the data generation framework. Section \ref{Sec:Selection} discusses a eight different SSD methods that we selected and implemented for evaluation. Section \ref{Sec:Evaldata} presents the dataset arrangement in terms of background and attack data and discusses evaluation methods. Section \ref{Sec:Results} discusses the results achieved by the implemented methods on the given data. Section \ref{Sec:Relatedwork} discussing related work.
 
 \subsection{Background}
 
-When a person logs into one computer and from there logs into another computer and so on, we refer to the sequence of logins as a connection chain. In an interactive stepping-stone attack, an attacker located at the origin host, which we call \textit{host O} sends commands to and awaits their response from a target, \textit{host T}, typically by using terminal emulation programs like TelNet or SSH, or via backdoors using tools such as Netcat \textcolor{red}{reference}. These commands and responses are proxied via a chain of one or more intermediary hosts, the stepping-stones, which we call \textit{host} $S_1$, \dots, $S_N$, such as depicted in Fig. \ref{Fig:Stepstone}. 
+
+%Stepping-stone detection (SSD) primarily looks at network traffic, with many approaches aiming to identify potential correlation between two connections going from or to a particular host.
+%There are a number of approaches to detect stepping-stones, with the earliest one having been proposed by Staniford and Heberlein in 1995 \textcolor{red}{citation needed?}. Like many intrusion attacks, stepping-stones are rare and there exists no public data representing real stepping-stone behaviour, and researchers have to rely on synthetic data. Some attempts have been made to create publicly available stepping-stone testbeds, but most researchers evaluate their SSD methods on self-provided data. The underlying traffic generation implementations often differ significantly, which makes a direct comparison of the achieved results impossible. Additionally, we find that implemented evasive behaviours are often too simplistic and thus increase detection rates. 
+ 
+%When a person logs into one computer and from there logs into another computer and so on, we refer to the sequence of logins as a connection chain. 
+
+In an interactive stepping-stone attack, an attacker located at the origin host, which we call \textit{host O}, sends commands to and awaits their response from a target, \textit{host T}. The commands and responses are proxied via a chain of one or more intermediary stepping-stone hosts, which we call \textit{host} $S_1$, \dots, $S_N$, such as depicted in Fig. \ref{Fig:Stepstone}. 
+Once a host is brought under control, it can be turned into a stepping-stone with simple tools and steps. Some of the most common set-ups are port forwarding via SSH-tunnels, setting up a backpipe with NetCat, or using metasploit to set up a SOCKS proxy \cite{pivoting2015}.
+% typically by using terminal emulation programs like TelNet or SSH, or via backdoors using tools such as Netcat \textcolor{red}{reference}. These commands and responses are 
 
 \begin{figure}
 \centering
@@ -132,7 +152,7 @@ Chaff packets are packets without meaningful content that are added to individua
 
 \subsubsection{Repacketisation}
 
-Repacketisation is the practice of combining closely adjacent packets into a larger packet or splitting a packet into multiple smaller packets to alter observed packet sizes and numbers.
+Repacketisation is the practice of combining closely adjacent packets into a larger packet, splitting a packet into multiple smaller packets, or altering the packet content to change observed packet sizes and numbers.
 
 \subsubsection{Flow splitting/merging}
 
@@ -164,7 +184,7 @@ We build our traffic generation framework on the popular containerisation platfo
 
 We want to capture data not only from one interaction in a fixed stepping-stone chain, but from many interactions and chains with different settings. For that, we run multiple simulations, with each simulation establishing a stepping-stone chain and controlling the interactions between host O and host T. A simulation and the corresponding traffic capture is in a capture-script. 
 
-A simulation begins with the start-up of the necessary containers and ends with their takedown. We represent host O, host T, and host $S_1,\dots,S_n$ with SSH-daemon containers. To establish a connection chain, we connect these containers via SSH-tunnels, with the first tunnel forwarding the required port from host O to host $S_1$, which is then forwarded to host $S_2$ by the second tunnel etc. One benefit of SSH-tunnels from an attackers perspective is that they do not just simply forward packets, but act as independent encrypted TCP-connections along with independent packet confirmations and repacketisation. Fig. \ref{Fig:Packetway} depicts a packet transfer via an exemplary chain. 
+A simulation begins with the start-up of the necessary containers and ends with their takedown. We represent host O, host T, and host $S_1,\dots,S_n$ with SSH-daemon containers. To establish a connection chain, we connect these containers via SSH-tunnels, with the first tunnel forwarding the required port from host O to host $S_1$, which is then forwarded to host $S_2$ by the second tunnel etc. As mentioned by Gordon Fraser \cite{pivoting2015}, this is one of the most common pivoting methods for attackers. Fig. \ref{Fig:Packetway} depicts a packet transfer via an exemplary chain. 
 
 
 \begin{figure}
@@ -197,7 +217,7 @@ To simulate human behaviour that is reacting to the response from host T, all co
 
 
 
-\textcolor{red}{show exemplary script}.
+%\textcolor{red}{show exemplary script}.
 
 %To do so, we generate a script with SSH-commands at the start of each \textcolor{red}{execution} that is passed and run by the \textcolor{red}{starting point} of the chain. The generated script consists of a sequence of ordinary SSH-commands \textcolor{red}{list them here?}, which are drawn randomly from a command catalogue and are each separated by \textit{sleep}-commands for a time $t$ that is drawn each time from a Cauchy-distribution. The average sleep-time is around \textcolor{red}{insert}. The length of the script is reached when the \textit{end}-command is drawn from the catalogue.
 %To evaluate the stepping stone detection capabilities of different proposed methods, we created a \textcolor{red}{realistic dataset...}
@@ -213,7 +233,7 @@ To simulate human behaviour that is reacting to the response from host T, all co
 Hosts in a stepping-stone chains can be separated by varying distances. Some may sit in the same LAN, while others may communicate via the Internet from distant geographical locations. The type of separation between two hosts influences the round-trip-time, bandwidth, and network reliability. 
 
 Docker communication takes place over virtual bridge networks, so the throughput is far higher and more reliable than in real-world networks. %This level of speed and consistency is worrying for our purposes as packet timings will be largely identical on repeated runs of a scenario and any collected data could be overly homogeneous.
-To retard the quality of the Docker network to realistic levels, we rely on the emulation tool Netem. Netem \textcolor{red}{add reference} is a Linux command line tool that allows users to artificially simulate network conditions such as high latency, low bandwidth, or packet corruption/drop in a flexible manner.
+To retard the quality of the Docker network to realistic levels, we rely on the emulation tool Netem. Netem  is a Linux command line tool that allows users to artificially simulate network conditions such as high latency, low bandwidth, or packet corruption/drop in a flexible manner \cite{hemminger2005network}.
 
 We apply Netem commands to the network interface of each container, which adds correlated delays to incoming and outgoing packets that are drawn from a normal distribution with mean $\mu$, variance $\sigma^2$, and correlation $\rho_1$. We furthermore apply correlated packet loss and corruption drawn from a binomial distribution with probability $p$ and correlation $\rho_2$. Lastly, we apply an overall limit $B$ on the bandwidth of container network interfaces.
 
@@ -229,6 +249,7 @@ We store the set parameters along with the collected traffic for each simulation
 
 
 \subsection{Evasive tactics}
+
 \subsubsection{Adding transfer delays}\label{Sec:delays_desc}
 
 To increase detection difficulty as suggested by \cite{padhye2010evading}, we add random transfer delays to individual packets forwarded by stepping stone hosts. This method, often called \textit{jittering}, can destroy time-based watermarks in packet flows and help decrease observable correlation between two connections. 
@@ -248,8 +269,16 @@ We then use a NetCat client containers to send and receive packets on the additi
 
 %\textcolor{red}{add reference} to send data to both ports from either direction and collect it at the other side. 
 
-
 The data sent consists of strings with random size $x$ drawn from a truncated Lognormal-distribution with mean $\mu_C$ to mimic video-streaming traffic as suggested by Padhye et al \cite{padhye2010evading}. Similarly, packets are sent in intervals of random length $\delta_c$ drawn from a uniform distribution that covers the interval $[\delta_c/2,\delta_c]$ to mimic a relatively constant packet flow, typical for video-streaming. By adjusting $\delta_C$, we can control the amount of chaff sent. 
+
+
+\subsubsection{Repacketisation}
+
+One benefit of using SSH-tunnels from an attackers perspective is that packets are not simply forwarded, but a tunnel acts as an independent encrypted TCP-connection along with independent packet confirmations and repacketisation.
+
+\subsubsection{Flow splitting/merging}
+
+None of the methods we encountered are currently capable of dealing with flow splitting or merging. We therefore did not implement this tactic as the results would be uninformative.
 
 
 
@@ -574,7 +603,7 @@ To get clear picture of the capabilities of the selected methods, we look at the
 
 Unsurprisingly, the watermarking method achieves already high detection results without any false-positives. Both the PContext and DeepCorr models start to yield good detection results of around $80\%$ at a FP rate lower than $0.1\%$, with the PContext method slightly outpacing the DeepCorr method. 
 
-RTT-based methods seem to not perform as well compared to the other included methods, however the observed ROC curve seems to be in general in agreement of the stated detection rates \textcolor{red}{check this again}.
+RTT-based methods seem to not perform as well compared to the other included methods, however the observed ROC curve seems to be in general in agreement of the stated detection rates. %\textcolor{red}{check this again}.
 
 
 
@@ -635,6 +664,10 @@ As visible, all methods struggle to detect stepping stones once the chaff packet
 
 It is surprising that the anomaly detection methods do not perform better at detecting chaff perturbations. Chaff in both approaches was however evaluated with different traffic generation distribution and not compared against a background of traffic following the same generation distribution, which could explain the disagreement between the results we are finding here. 
 
+
+
+Overall, this result is in disagreement with the "robustness against chaff" claims made for four of the selected approaches, namely PContext, RWalk, Ano1, and Ano2.
+
 \begin{table}
 \centering
 % latex table generated in R 3.5.3 by xtable 1.8-3 package
@@ -689,7 +722,7 @@ In this section, we look at the effect of differing chain lengths on the detecti
 
 \end{knitrout}
 
-\textcolor{red}{add comparison of results at different positions}
+%\textcolor{red}{add comparison of results at different positions}
 
 Of the RTT-based methods, only C.Over was able to yield consistent detection rates under transfer delays. 
 Interestingly, if the C.Over method is applied to connections between $S_3$ and $S_4$ instead of between $S_4$ and the target, detection rates decrease in the same manner as for other RTT-based methods. This is not surprising as the underlying assumption for robustness for this approach relies on Echo-packets not being delayed.
@@ -731,7 +764,7 @@ In 2006, Xin et al. \cite{xin2006testbed} developed a standard test bed for step
 The main objectives in the development of SST were to enable a reproducible evaluation of stepping stone chain detection algorithms with easy configuration, management and operation. The tool allows for an arbitrary number of intermediate hosts and generates scripts to mimic interactive SSH and TelNet connections. 
 To insert time delays and chaff perturbations, the authors modified the OpenSSH protocol on the intermediary hosts. Delays can be drawn from a uniform distribution while chaff can be drawn from a Poisson or Pareto distribution. To our knowledge, SST has only been used for evaluation by Zhang et al. \cite{zhang2005stepping}, and is not available anymore. The authors give little details about the implemented evasive tactics.%\textcolor{red}{say something why evasion not sufficiently implemented}
 
-Another approach to use publicly available data comes from Houmansadr et al. \textcolor{red}{insert citations}. The authors use the well-known CAIDA anonymized data traces \cite{CAIDA2018} to evaulate different watermarking methods for SSD. To simulate stepping stone behaviour, packet delays and drops are imposed retroactively on selected connections using Laplace and Bernoulli distributions with different rates. While this procedure seems sufficient for the evaluation of watermarking methods, it falls short on simulating an actual connection chain and leaves out chaff perturbations. 
+Another approach to use publicly available data comes from Houmansadr et al. \cite{nasr2018deepcorr}. The authors use the well-known CAIDA anonymized data traces \cite{CAIDA2018} to evaulate different watermarking methods for SSD. To simulate stepping stone behaviour, packet delays and drops are imposed retroactively on selected connections using Laplace and Bernoulli distributions with different rates. While this procedure seems sufficient for the evaluation of watermarking methods, it falls short on simulating the effects of an actual connection chain and leaves out chaff perturbations. 
 
 
 Wang et al. \cite{wang2018research} recently conducted an extensive survey of stepping stone intrusion detection. The authors group methods according to the respective methodology 
@@ -745,11 +778,10 @@ Wang et al. \cite{wang2018research} recently conducted an extensive survey of st
 %\item network-based,
 %\item and software-defined-networking-based, 
 %\end{itemize} 
-but do not cover \textcolor{red}{graph-based methods} such as \cite{gamarra2018analysis}, %or \cite{apruzzese2017detection}, 
+but do not cover graph-based methods such as \cite{gamarra2018analysis}, %or \cite{apruzzese2017detection}, 
 or anomaly-based methods such as \cite{di2011detecting}.%, which are increasing in popularity recently.
-The authors then proceed to explain the different methods and highlight their benefits and shortcomings. The authors discuss open problems, but do not provide a direct comparison of detection rates. 
-
-Shullich et al. \cite{shullich2011survey} in 2011 also conducted a survey on stepping stone intrusion detection. The authors perform a similar grouping of methods, but also discuss related work in evasion tactics and test frameworks. The authors furthermore give an outlook on areas for future research, such as hacker motivation, the cardinality problem when correlating connection pairs, the difficulty of tracing back chains through firewalls, the lack of real-world data examples, or detection in covert channels or protocols such as UDP. 
+The authors then proceed to explain the different methods and highlight their benefits and shortcomings as well as open problems. 
+Shullich et al. \cite{shullich2011survey} in 2011 also conducted a survey on stepping stone intrusion detection. The authors perform a similar grouping of methods, but also discuss related work in evasion tactics and test frameworks. The authors furthermore give an outlook on areas for future research, such as hacker motivation, the cardinality problem when correlating connection pairs, the difficulty of tracing back chains through firewalls, the lack of real-world data examples, or detection in covert channels or protocols such as UDP. Both surveys neither provide an evaluation of detection rates nor a direct comparison of the rates achieved by the corresponding authors. 
 
 Padhye et al. \cite{padhye2010evading} in 2010 have proposed a packet buffering method to decorrelate packets in the input flow from the output flow. Using this technique and enough chaff packets, the authors generate a constant-rate flow that resembles multimedia streams such as Voice over IP. However, the authors only test their framework against watermark-based SSD methods. 
 
@@ -772,7 +804,7 @@ Emulating these features realistically in network traffic datasets is difficult,
 
 \section{Conclusion}
 
-\textcolor{red}{...}
+Overall, this result indicates that attackers can reliably evade SSD-methods using the right type and amount of chaff.\textcolor{red}{...}
 
 %\bibliographystyle{IEEEtranS}
 \bibliographystyle{plain}

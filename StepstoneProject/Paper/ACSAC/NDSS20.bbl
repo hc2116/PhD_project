@@ -8,9 +8,12 @@ Cisco annual security report.
 M-trends 2015: A view from the front lines.
 \newblock Technical report, 2015.
 
+\bibitem{mcafee2015report}
+Mcafee technical report on night dragon operation.
+\newblock Technical report, 2015.
+
 \bibitem{archimedes2017}
-Archimedes documentation.
-\newblock Technical report, CIA, 2017.
+Archimedes documentation, 2017.
 
 \bibitem{CAIDA2018}
 {The CAIDA UCSD Anonymized Internet Traces 2018}, 2018.
@@ -52,12 +55,22 @@ Wei Ding, Khoa Le, and Shou-Hsuan~Stephen Huang.
 \newblock In {\em 2013 9th International Conference on Information Assurance
   and Security (IAS)}, pages 31--36. IEEE, 2013.
 
+\bibitem{pivoting2015}
+Gordon Fraser.
+\newblock Tunneling, pivoting, and webapplication penetrationtesting.
+\newblock Technical report, SANS, 2015.
+
 \bibitem{gamarra2018analysis}
 Marco Gamarra, Sachin Shetty, David~M Nicol, Oscar Gonazlez, Charles~A Kamhoua,
   and Laurent Njilla.
 \newblock Analysis of stepping stone attacks in dynamic vulnerability graphs.
 \newblock In {\em 2018 IEEE International Conference on Communications (ICC)},
   pages 1--7. IEEE, 2018.
+
+\bibitem{hemminger2005network}
+Stephen Hemminger et~al.
+\newblock Network emulation with netem.
+\newblock In {\em Linux conf au}, pages 18--23, 2005.
 
 \bibitem{huang2011detecting}
 Shou-Hsuan~Stephen Huang and Ying-Wei Kuo.
@@ -77,6 +90,11 @@ Shou-Hsuan~Stephen Huang, Hongyang Zhang, and Michael Phay.
 Alfonso Iacovazzi and Yuval Elovici.
 \newblock Network flow watermarking: A survey.
 \newblock {\em IEEE Communications Surveys \& Tutorials}, 19(1):512--530, 2016.
+
+\bibitem{eisac2017report}
+Robert~M. Lee, Michael~J. Assante, and Tim Conway.
+\newblock Analysis of the cyber attack onthe ukrainian power grid.
+\newblock Technical report, E-ISAC, 2016.
 
 \bibitem{nasr2018deepcorr}
 Milad Nasr, Alireza Bahramali, and Amir Houmansadr.
