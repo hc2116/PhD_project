@@ -93,7 +93,7 @@ do
     bringup;
     echo "WAITING FOR TCPDUMP TO LAUNCH"
     sleep 2
-    add_delays;
+#    add_delays;
     ###########################################################################################
     echo "Creating tunnels in $DURATION seconds...."
     timeout -k $(($DURATION2+2)) $DURATION2 docker exec -ti $(sudo docker ps -aqf "name=${PROJECT_NAME}_spider_1") scrapy runspider "scrapy/spider_${PROJECT_NAME}.py"; EXIT_CODE=$?
