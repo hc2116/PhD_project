@@ -1,9 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{cisco2014report}
-Cisco annual security report.
-\newblock Technical report, 2014.
-
 \bibitem{Mandiant2015trends}
 M-trends 2015: A view from the front lines.
 \newblock Technical report, 2015.
@@ -54,6 +50,14 @@ Wei Ding, Khoa Le, and Shou-Hsuan~Stephen Huang.
 \newblock Detecting stepping-stones under the influence of packet jittering.
 \newblock In {\em 2013 9th International Conference on Information Assurance
   and Security (IAS)}, pages 31--36. IEEE, 2013.
+
+\bibitem{donoho2002multiscale}
+David~L Donoho, Ana~Georgina Flesia, Umesh Shankar, Vern Paxson, Jason Coit,
+  and Stuart Staniford.
+\newblock Multiscale stepping-stone detection: Detecting pairs of jittered
+  interactive streams by exploiting maximum tolerable delay.
+\newblock In {\em International Workshop on Recent Advances in Intrusion
+  Detection}, pages 17--35. Springer, 2002.
 
 \bibitem{pivoting2015}
 Gordon Fraser.
@@ -118,6 +122,12 @@ Robert Shullich, Jie Chu, Ping Ji, and Weifeng Chen.
 \newblock A survey of research in stepping-stone detection.
 \newblock {\em " International Journal of Electronic Commerce Studies"},
   2(2):103--126, 2011.
+
+\bibitem{staniford1995holding}
+Stuart Staniford-Chen and L~Todd Heberlein.
+\newblock Holding intruders accountable on the internet.
+\newblock In {\em Proceedings 1995 IEEE Symposium on Security and Privacy},
+  pages 39--49. IEEE, 1995.
 
 \bibitem{tankard2011advanced}
 Colin Tankard.

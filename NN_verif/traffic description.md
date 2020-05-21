@@ -8,14 +8,14 @@
 #### SQL traffic
 
 - 62209 flows
-- network congestion added
+- network congestion added, corrected
 - 1 scenario, but well randomised
 
 #### SQL attack traffic
 
 - 12288 flows
 - 3 scenarios, not randomised
-- congestion added
+- congestion added, corrected
 
 #### SSH-traffic
 
@@ -26,7 +26,7 @@
 #### SSH attack traffic
 
 - 98719 flows
-- 
+- congestion added
 
 #### HTTP traffic scrapy webcrawling
 
