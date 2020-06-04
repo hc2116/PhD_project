@@ -13,7 +13,6 @@ Lastly, the usage of QUIC could make intrusion detection based on traffic metada
 
 
 
-
 Goal:
 Examine how structured the space of QUIC traffic is in comparison to TCP/HTTP2 and TCP/HTTP1.1. Make statements whether fingerprinting of individual services is possible. 
 
