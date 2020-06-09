@@ -1,0 +1,35 @@
+## Machine-learning based analysis of QUIC traffic structures and its effect on fingerprinting and intrusion detection
+
+
+
+#### Background:
+QUIC traffic emulates TCP-like behaviour via UDP, which contains less information in the visible metadata. It furthermore significantly extends parallel multiplexing of transfers in one connections, which decreases the amount of opened connections by a browser to retrieve a webpage. Additionally, compression is used both on the HTTP3 layer as well as directly in QUIC (called QPACK). These three characteristics suggest that QUIC reveals less information about the transferred content and make traffic appear more uniformly across the breadth of QUIC traffic.
+
+On the other side, QUIC implementations are done in user space, allowing for differences across a broad spectrum of applications (Chrome vs Firefox, openssl vs boringssl, different versions of the same application) that could potentially be visible in the traffic structures and allow for device fingerprinting etc. 
+
+Lastly, the usage of QUIC could make intrusion detection based on traffic metadata such as via attack fingerprints more difficult if traffic appears more uniformly.
+
+
+
+#### Goal:
+Examine how structured the space of QUIC traffic is in comparison to TCP/HTTP2 and TCP/HTTP1.1. Make statements whether fingerprinting of individual services is possible. 
+
+#### Data:
+
+Collect QUIC data and TCP/HTTP data using detgen paradigm into several datasets.
+
+- First dataset, use client container to crawl a decent number of webpages, both for QUIC and for TCP/HTTP2 and TCP/HTTP1.1. Do this for multiple clients using different implementations. This 
+- Second dataset, put a small number of webpages on multiple webservers that are based on different QUIC implementations. Retrieve webpages from them using the implemented clients. This dataset should highlight implementation differences visible in the data
+- Third dataset is concerned with different operations performed, such as file posting, SQL information retrieval, or error messages. To minimise work, we can do this on just one server implementation, potentially with different clients. 
+- The fourth dataset
+
+#### Methodology:
+
+Here, we can rely on two approaches. Using an encoder for structure analysis, and training a classifier to see if websites or implementations can be fingerprinted. 
+
+For the analysis of 
+We can use the existing LSTM-autoencoder to analyse the overall structure of the traffic. This is done by training on a dataset mixed between QUIC and TCP/HTTP traffic, and comparing the divergence of the embeddings the encoder creates for different tasks. This gives us a measure of how individual actions manifest in traffic structures, and how well separated the structures for different implementations are. The overall uniformity of the traffic can be compared by the reconstruction error, i.e. a higher reconstruction error means the traffic contains less visible structure. 
+
+We can then go ahead and see if we can actually fingerprint webpages (primarily), but also server and client implementations. This is done by training an LSTM-classifier following a similar architecture as the encoder. 
+
+We can also investigate potentially fingerprinting individual actions and attacks, however the training might be a bit more difficult. 
