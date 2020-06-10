@@ -4,6 +4,16 @@
 
 #### What we can currently do
 
+We have 26 scenarios for different protocols and malicious activity. From these, we can generate "atomic" traffic traces (and now also system logs).
+
+Characteristics:
+
+- Ground truth due to "atomic" nature of traces
+- Modularity since senarios are independent
+- Scalability due to stand-alone nature of container scenarios
+- Variability due to randomisation, network emulation, subscenarios
+
+What we are not doing so far is embed these traces in a larger network context.
 
 
 #### Motivation
@@ -11,6 +21,8 @@
 - Several testbeds (give examples) exist to allow the simulation of network-like settings in a scalable manner. However, these settings are always static, i.e. any generated data comes from the same network topology with the same services etc.
 
   Furthermore, there are no attempts at fusing network traffic and other types of data into one dataset
+
+- Larger network traffic datasets do no contain any ground truth labels about the stuff going on (apart from malicious/benign labels)
 
 - Attack simulation tools and testbeds exist, but to my knowledge only for specific individual attacks, not for multi-stage attack. 
 
