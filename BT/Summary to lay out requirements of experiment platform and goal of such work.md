@@ -26,7 +26,7 @@ An easy way to ensure the perspective constraint is met is by recording the traf
 
 Relay proxies are supposedly contacted by many different hosts that all request similar content. 
 
-The number of hosts contacting the proxy should be quite high to resemble realistic behaviour, as this is an important feature 
+The number of hosts contacting the proxy should be quite high to resemble realistic behaviour, as this is an important feature
 
 ##### Content requirements
 
@@ -34,7 +34,7 @@ Depending on the assumption we make, the number of hosts the proxy relays reques
 
 ##### Forwarding requirements
 
-The type of content each of the targeted servers provides may vary, i.e. for BT Sports it might be both live video (via UDP?) as well as regular video (TCP/HTTP). We have to account for the fact that the used traffic protocols might as well
+The type of content each of the targeted servers provides may vary, i.e. for BT Sports it might be both live video (via UDP?) as well as regular video (TCP/HTTP). We have to account for the fact that the used traffic protocols might as well.
 
 
 
@@ -42,7 +42,7 @@ The type of content each of the targeted servers provides may vary, i.e. for BT 
 
 I think the realism of the network setting in terms of bandwidth, packet loss etc. is negligible since to my knowledge we do not capture interarrival distributions etc.
 
-To our knowledge, the IP address of the proxies is quite sticky, might only change once a day. Not really worth considering this constraint. 
+To our knowledge, the IP address of the proxies is quite sticky, might only change once a day. Not really worth considering this constraint.
 
 
 
@@ -50,3 +50,12 @@ To our knowledge, the IP address of the proxies is quite sticky, might only chan
 
 - How narrow are proxies in their scope? Are they restricted to a specific set forwarded services, i.e. one proxy exclusively for BT Sports, or are they set-up t provide many different services? Could one proxy even have multiple functionalities, such as one proxy acting simultaneously as a DNS resolver and a video forwarder?
 - How are these proxies advertised/contacted? Do users need specific implementations/software, or specific configurations? Or are they contacted via existing websites? How does the "user" actually use them? Does this vary a lot?
+
+
+
+- are there any methods to detect Tor-nodes
+- research on Tor-data and testbeds
+- Jake is talking to TV guys to get test-tv account
+- shadowserver 
+
+- 

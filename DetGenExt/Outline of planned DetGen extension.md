@@ -57,8 +57,50 @@ We have already figured out how to embed the scenarios in Mininet and how to col
 
 
 
+#### Related work
 
 
+######ContainerNet or MeDICINE: Rapid prototyping of production-ready network services in multi-PoP environments
+
+
+###### Reproducible Network ExperimentsUsing Container-Based Emulation
+<img src="Rep_cont.png" width="50%">.
+
+Aims at providing performance isolation for benchmarking
+
+Goals: 
+
+**Functional realism.**
+The system must have the same func-tionality as real hardware in a real deployment, and shouldexecute exactly the same code.
+
+**Timing realism**
+The timing behavior of the system must be close  to  (or  indistinguishable  from)  the  behavior  of  de-ployed hardware. The system should detect when timing re-alism is violated.
+
+**Traffic realism.**
+The system should be capable of generat-ing and receiving real, interactive network traffic to and fromthe Internet, or from users or systems on a local network.In addition to providing realism, the system must make iteasy to reproduce results, enabling an entire network experi-ment workflow – from input data to final results – to be easilycreated, duplicated, and run by other researchers:
+
+**Topology flexibility.**
+It should be easy to create an experi-ment with any topology.
+
+**Easy replication.**
+It should be easy to duplicate an experi-mental setup and run an experiment.Low cost.It should be inexpensive to duplicate an experi-ment, e.g. for students in a course.
+
+
+
+
+#### Contribution
+
+- 
+
+- Several testbeds (give examples) exist to allow the simulation of network-like settings in a scalable manner. However, these settings are always static, i.e. any generated data comes from the same network topology with the same services etc.
+
+  Furthermore, there are no attempts at fusing network traffic and other types of data into one dataset
+
+- Larger network traffic datasets do no contain any ground truth labels about the stuff going on (apart from malicious/benign labels)
+
+- Attack simulation tools and testbeds exist, but to my knowledge only for specific individual attacks, not for multi-stage attack. 
+
+- Due to the self-sufficiency of the docker containers, our existing framework provides an easy way to create communicating networks in a randomised manner. 
 
 
 
