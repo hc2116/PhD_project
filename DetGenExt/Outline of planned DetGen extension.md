@@ -90,17 +90,12 @@ It should be easy to duplicate an experi-mental setup and run an experiment.Low 
 
 #### Contribution
 
-- 
+- A specialised reproducible testbed that provides data for ML-based intrusion detection. Similar to the original DetGen paper, we should focus on benefits for ML since current solutions are lacking here. In a nutshell, the idea is that this framework can be used to create multiple datasets of networks with slightly different properties, which would make the training and evaluation of ML-based methods much more in-depth. In particular, the following features distinguish it from other testbeds:
+	- automatised and randomised topology-creation. The randomisation aspect particularly important for network-wide methods (graph-based for example) that are influenced by the topology, where a regular dataset such as LANL 15 or CICIDS 17 only provide one topology example each, which is insufficient for a proper evaluation. 
+	- generation of randomised execution script that steers when, where and which data exchanges are conducted through our container scenarios. By being able to generate such an execution script, we can tune the amount of traffic for different traffic types/scenarios in a given dataset and make events that are rare in one dataset appear more common in another dataset. We can also add niche-services in one dataset that are not included in another dataset (works better if we have more scenarios). Again, this is not even remotely addressed by existing datasets. 
+	- Multi-stage attack simulation: Attack simulation tools and testbeds exist, but to my knowledge only for specific individual attacks, not for multi-stage attack. Due to the randomised topology, we could potentially provide a very diverse selection of multi-stage attacks that are unique for each topology. 
+	- We will include the possibility to pass certain requirements to generation of the topology and execution script (such as a minimum of subnets, or which services should/should not be included). This will allow researchers to create data taylored to their methods, and generate sufficient amounts to effectively train ML-methods.
+	- We could construct a API that allows the live-testing of an IDS (probably just for python) to let researchers evaluate how operational their methods are.  
+	- All the distinguishing features of the existing DetGen-framework, but scaled to produce traffic for a whole network
 
-- Several testbeds (give examples) exist to allow the simulation of network-like settings in a scalable manner. However, these settings are always static, i.e. any generated data comes from the same network topology with the same services etc.
-
-  Furthermore, there are no attempts at fusing network traffic and other types of data into one dataset
-
-- Larger network traffic datasets do no contain any ground truth labels about the stuff going on (apart from malicious/benign labels)
-
-- Attack simulation tools and testbeds exist, but to my knowledge only for specific individual attacks, not for multi-stage attack. 
-
-- Due to the self-sufficiency of the docker containers, our existing framework provides an easy way to create communicating networks in a randomised manner. 
-
-
-
+- We can also provide an examplary dataset that includes data from multiple networks as well as some attack data. This can be used for some experiments such as the ones we performed for the previous DetGen paper, and highlight the benefits of our approach. A more comprehensible dataset should include the multi-stage attack scenarios though as this would be a very strong feature for a dataset. 
