@@ -58,7 +58,7 @@
 
 \begin{document}
 
-\title{Traffic Generation using Containerization for Machine Learning}
+\title{Dynamic Traffic Generation with Containerization for Machine Learning}
 
 
 
@@ -82,29 +82,53 @@
 This work provides the following contributions:
 
 \begin{enumerate}
- \item We present a novel network traffic generation framework that is designed to improve several shortcomings of current datasets for NIDS evaluation. These include
- \begin{enumerate}
- \item Increased data diversity 
- \end{enumerate}
+\item We present a novel network traffic generation framework that is designed to improve several shortcomings of current datasets for NIDS evaluation in the following aspects:
+\begin{enumerate}
+\item Ground truth labels documenting conducted activities
+\item Increased \textcolor{red}{richness} of data
+\item Tunable topology and data composition
+\item Additional capture of program logs and system calls
+\end{enumerate}
+This framework is openly accessible for researchers and allows for straightforward customization.
  
- 
- This framework is openly accessible for researchers and allows for straightforward customization.
- \item We define four new requirements a network intrusion dataset should fulfil in order to be suitable to train machine-learning based intrusion detection methods. 
+%\item We define four new requirements a network intrusion dataset should fulfil in order to be suitable to train machine-learning based intrusion detection methods. 
  %\item how to build new modules that can be added to the existing framework, and how this procedure enables data generation that is more suitable for data-driven methods than currently available datasets.
- \item We perform a number of experiments to demonstrate the suitability and utility of our framework. 
+\item We perform a number of experiments to demonstrate the fidelity to realism of the generated data.
+\item We present a number of use-cases to demonstrate how the design of our framework can boost performance for ML-based network intrusion detection systems, in particular for false-positive analysis and effective model training.
 \end{enumerate}
 
 \subsection{Outline}
 
-The remainder of the paper is organized as follows. Section \ref{Sec:background} discusses existing NIDS datasets and the problems that arise during their usage as well as background information about network traffic data formats and virtualization methods. The section concludes with a set of requirements we propose to improve the training and evaluation of machine-learning-based methods. Section \ref{Sec:Design} describes the general design of our framework, and how it improves on the discussed problems in existing datasets. We also discuss a specific example in detail. Section \ref{Sec:Experiments} discusses several experiments to validate the improvements and utility our framework provides. 
-Section \ref{Sec:Conclusion} concludes the results and discusses limitations of our work and directions for future work.
+%The remainder of the paper is organized as follows. Section \ref{Sec:background} discusses existing NIDS datasets and the problems that arise during their usage as well as background information about network traffic data formats and virtualization methods. The section concludes with a set of requirements we propose to improve the training and evaluation of machine-learning-based methods. Section \ref{Sec:Design} describes the general design of our framework, and how it improves on the discussed problems in existing datasets. We also discuss a specific example in detail. Section \ref{Sec:Experiments} discusses several experiments to validate the improvements and utility our framework provides. 
+%Section \ref{Sec:Conclusion} concludes the results and discusses limitations of our work and directions for future work.
 
+\dots \dots
+
+\dots \dots
+
+\dots \dots
 
 \section{Background}\label{Sec:background}
 
+\dots \dots
+
+\dots \dots
+
+\dots \dots
+
 \subsection{Data formats}
+\dots \dots
+
+\dots \dots
+
+\dots \dots
 
 \subsection{Related work and existing datasets}
+\dots \dots
+
+\dots \dots
+
+\dots \dots
 
 \subsection{Problems in modern datasets}\label{Sec:problems}
 
@@ -142,54 +166,58 @@ These include:
 \subsection{Benefits of our framework}
 
 This should potentially be merged with the dataset requirements, I am currently unsure where to put this. 
-
-1. Fidelity to real traffic
-	1. Real traffic, consistent (not invalid after Cordero et al.)
-	2. Structural richness on packet level (in contrast to )
+\begin{enumerate}
+\item Fidelity to real traffic
+\begin{itemize}
+	\item Real traffic, consistent (not invalid after Cordero et al.)
+	\item Structural richness on packet level (in contrast to )
 		Induced due to the different levels at which traffic variation is introduced
-	3. Temporal activity levels? (actually not something we improve)
+	\item Temporal activity levels? (actually not something we improve)
 			We can look at test for realism of distributions (IP discovery, etc)
-
-2. Ground truth labels through containerisation
-	1. Ground truth for attack behaviour, able to label 100% of the generated events to specific activities
-	2. Labels for different types of behaviour, reproducable
+\end{itemize}
+\item Ground truth labels through containerisation
+\begin{itemize}
+	\item Ground truth for attack behaviour, able to label 100% of the generated events to specific activities
+	\item Labels for different types of behaviour, reproducable
 		useful for evaluation of model failures, what kind of behaviours cause failure
 			applies to a large range of models
 		also useful for evaluation of privacy infiltration methods, more niche
-	3. Ground truth for label matching between traffic and program logs/sys logs
+	\item Ground truth for label matching between traffic and program logs/sys logs
 		useful for models that try to correlate events for detection
 			this is more niche, but potentially because of the lack of data
-
-3. Extensive capture
-	1. Packet availability
-	2. Syslogs and for multiple scenarios program logs
-	3. Potentially host logs? Depends if we want to cater to cloud computing applicability
-
-
-4. Better for ML-based methods
-	1. Flexibility 
+\end{itemize}
+\item Extensive capture
+\begin{itemize}
+	\item Packet availability
+	\item Syslogs and for multiple scenarios program logs
+	\item Potentially host logs? Depends if we want to cater to cloud computing applicability
+\end{itemize}
+\item Better for ML-based methods
+\begin{itemize}
+	\item Flexibility 
 		"The models should allow researchers to generate different classes of data, such as augmenting the amount of data representing sparse events, or choose different topology"
-	2. Automisation of variable datasets through randomisation, automatically create structurally different datasets, but faithful to realism
+	\item Automisation of variable datasets through randomisation, automatically create structurally different datasets, but faithful to realism
 		Especially novel in terms of network topologies, should emphasise this in use-cases
-	3. Structural richness 
+	\item Structural richness 
 			allows for learning deeper and more generalisable knowledge in models, less prone to overfitting
-	2. Scalability
+	\item Scalability
 		"Train on as much data as necessary"
+\end{itemize}
 
-
-\paragraph{Variation}
- 
-\paragraph{Ground truth} 
-
-\paragraph{Modularity}
-
-\paragraph{Scalability} 
-
+\end{enumerate}
 
 \section{Design}\label{Sec:Design}
+\dots \dots
 
+\dots \dots
+
+\dots \dots
 \subsection{Modes of Operation}
+\dots \dots
 
+\dots \dots
+
+\dots \dots
 
 \begin{figure}
  \centering 
@@ -203,12 +231,24 @@ This should potentially be merged with the dataset requirements, I am currently 
 \label{Sec:Scenarios}
 
 \subsection{Randomization}\label{Sec:randomsubscen}
+\dots \dots
 
+\dots \dots
+
+\dots \dots
 \subsection{Network transmission}\label{Sec:Netrand}
+\dots \dots
 
+\dots \dots
+
+\dots \dots
 
 \subsection{Implementation Process}
+\dots \dots
 
+\dots \dots
+
+\dots \dots
  
 \subsection{Implemented scenarios}\label{Sec:ExistScen}
 
@@ -221,13 +261,25 @@ This should potentially be merged with the dataset requirements, I am currently 
 
 
 \subsection{Network-simulation mode}
+\dots \dots
 
+\dots \dots
+
+\dots \dots
 \subsubsection{Dataset coalescence}\label{Sec:datasetcreation}
+\dots \dots
 
+\dots \dots
+
+\dots \dots
 
 \subsection{Network-simulation mode}
 
+\dots \dots
 
+\dots \dots
+
+\dots \dots
 
 
 \section{Fidelity confirmation experiments}\label{Sec:Experiments}
@@ -235,6 +287,7 @@ This should potentially be merged with the dataset requirements, I am currently 
 This section is important to demonstrate that our data is valid and overcomes the difficulties entailed with synthetic data generation. Cordero et al. have proposed some more simple test that we can refer to first
 
 \textcolor{red}{Question to be answered}: What requirements are there for the additional data, program logs and system logs, that we collect? Should we put less emphasise on these data sources in general if we are not able to perform these tests, and refer to them in future work? I am not aware of any papers that discuss these requirements in a similar way. 
+
 
 \subsection{Data correctness tests}
 
@@ -245,28 +298,31 @@ This section is concerned with dataset defects, artifacts, or invalid data (inco
 
 These tests, also from Cordero et al. quantify diversity via the entropy of different quantities such as IP diversity, Time-to-Live, Maximum-segment-size, Window size, ToS. I think we should keep this relatively short and omit comparison to other datasets since this is already done by Cordero et al. 
 
-\subsection{Structural richness and predictability}
 
-To quantify the 
+\subsection{Structural dataset dimensionality}
 
-This experiment is more novel and should be a more significant contribution to the paper
+Autoencoders are often used to compress non-deterministic, noisy data. Bahadur et al. have developed a procedure to estimate the ,,dimensionality'' (to be understood as the complexity) of a dataset using variational autoencoders. I believe we can transfer this concept to sequence compression and estimate the overall complexity of connection sequences in our framework with both real traffic captures and existing network intrusion datasets. Showing that our data is closer to real-world data would be a good test for "artificially predictable patterns", as described by Cordero et al., and go hand-in-hand with demonstrating the benefits of our framework for the training of deep-learning models.
 
 
-Measure structural richness of
-Also measure divergence across same activities (same activity and same port)
-Demonstrate benefit of structural richness
-Closer to reality
+%Measure structural richness of
+%Also measure divergence across same activities (same activity and same port)
+%Demonstrate benefit of structural richness
+%Closer to reality
 
 
 
 \subsection{Reproducible scenarios}\label{Sec:deterministic}
 
+\dots \dots
 
-\begin{figure}
-\includegraphics[width=0.45\textwidth]{images/combined3.png} % first figure itself
-\caption{Means of IATs \& packet sizes along with standard deviation bars for the first twelve packets in the Apache scenario.}
-\label{fig:size1}
-\end{figure}
+\dots \dots
+
+\dots \dots
+%\begin{figure}
+%\includegraphics[width=0.45\textwidth]{images/combined3.png} % first figure itself
+%\caption{Means of IATs \& packet sizes along with standard deviation bars for the first twelve packets in the Apache scenario.}
+%\label{fig:size1}
+%\end{figure}
 
  
 
@@ -277,83 +333,87 @@ Closer to reality
 
 This section is already existing, we could potentially expand this. I think it is sufficient and analysing it more does not add much to the paper as the performance of TC netem is relatively well accepted. I think we could even move this section to the appendix
 
-\begin{figure}
-\captionsetup{justification=centering}
-\centering
-\includegraphics[width=0.45\textwidth]{images/1-plot_exp1.png}
-\caption{Results of Random Forest Classifier for a given distribution at the best performing delay mean $\mu$. Note that a score of .5 indicates total indistinguishability.}
-\label{Fig:rf_graph}
-\end{figure}
-
-
-
-\begin{table}[ht!]
-\begin{center}
-\begin{small}
-\begin{sc}
-\begin{tabular}{ccccc}
-\hline
-Distribution & Mean & Jitter & RF Accuracy\\
-\hline
-No Delays (Baseline) & 0 & 0ms & 0.8176 \\
-Constant Delay & 40ms & 0ms & 0.6730 \\
-Normal & 60ms & 5ms & 0.6028 \\
-Pareto & 60ms & 10ms & 0.5979 \\
-Paretonormal & 50ms & 10ms & 0.6015 \\
-Weibull & 60ms & 10ms & 0.5540 \\
-\hline
-\end{tabular}
-\end{sc}
-\end{small}
-\caption{Worst Random Forest accuracy rates for a given distribution}
-\label{tab:results-iat_rf}
-\end{center}
-\vskip -4mm
-\end{table}
+%\begin{figure}
+%\captionsetup{justification=centering}
+%\centering
+%\includegraphics[width=0.45\textwidth]{images/1-plot_exp1.png}
+%\caption{Results of Random Forest Classifier for a given distribution at the best performing delay mean $\mu$. Note that a score of .5 indicates total indistinguishability.}
+%\label{Fig:rf_graph}
+%\end{figure}
+%
+%
+%
+%\begin{table}[ht!]
+%\begin{center}
+%\begin{small}
+%\begin{sc}
+%\begin{tabular}{ccccc}
+%\hline
+%Distribution & Mean & Jitter & RF Accuracy\\
+%\hline
+%No Delays (Baseline) & 0 & 0ms & 0.8176 \\
+%Constant Delay & 40ms & 0ms & 0.6730 \\
+%Normal & 60ms & 5ms & 0.6028 \\
+%Pareto & 60ms & 10ms & 0.5979 \\
+%Paretonormal & 50ms & 10ms & 0.6015 \\
+%Weibull & 60ms & 10ms & 0.5540 \\
+%\hline
+%\end{tabular}
+%\end{sc}
+%\end{small}
+%\caption{Worst Random Forest accuracy rates for a given distribution}
+%\label{tab:results-iat_rf}
+%\end{center}
+%\vskip -4mm
+%\end{table}
 
 
 
 \section{Use-cases}
 
 
-\subsection{Benefits of ground-truth labels/Benefits of Dynamic Dataset Generation}
+\subsection{Benefits of ground-truth labels/dynamic dataset generation}
 
-Extensive ground-truth labels for our activities are arguably the most important contribution of the DetGen framework, so we should highlight their benefit more. Since the benefit of ground-truth attack data is obvious, we should emphasise the benefit of having labels for different activities. In my eyes, the most striking benefit arises for false-positive analysis, which we could then combine with showcasing the benefit of being able to generate different amounts of traffic for different activities.
+Possible title: \textbf{Dataset tuning to decrease false-positives}
+
+Extensive ground-truth labels for our activities are arguably the most important contribution of the DetGen framework, so we should highlight their benefit most. Since ground-truth labels on attack data are existing in other datasets, we should emphasise the benefit of having labels for different activities. In my eyes, the most striking benefit arises for false-positive analysis, which we could then combine with showcasing the benefit of being able to generate different amounts of traffic for different activities.
 
 
-Idea 1: 
-Implement the LSTM in the paper "An LSTM-Based Deep Learning Approach forClassifying Malicious Traffic at the Packet Level", train it on our data (both benign and attack traffic). Extract labels of traffic responsible for false-positives, show how much they are clustered around particular activities (potentially rare activities) compared to the overall traffic. Give potential reason for this. Generate a new dataset with increased amounts of the activities responsible for false positivies. Demonstrate that false-positives decrease.
+\paragraph{Plan}
+Implement the LSTM-model in the paper "An LSTM-Based Deep Learning Approach forClassifying Malicious Traffic at the Packet Level", train it on our data (both benign and attack traffic). Extract labels of traffic responsible for false-positives, show how much they are clustered around particular activities (potentially rare activities) compared to the overall traffic. Give potential reason for this. Generate a new dataset with increased amounts of the activities responsible for false positivies. Demonstrate that false-positives decrease.
 
-Idea 2: 
 
 
 %\subsubsection{Show utility of tuning amount of rare events}
 
-\subsubsection{Show utility of flexible topology}
+\subsection{Show utility of flexible topology}
+
+
 	o	Find useful model, show that training on one topology leads to overfitting
 	o	Show that training on multiple datasets prevents overfitting
 		Or that detection results can differ vastly
 •	Measure effect of new traffic types on IDS performance
  	- 
 
-\subsubsection{Show utility of tuning amount of rare events}
 
 
+%\begin{figure}%[ht!]
+%\subfloat{%
+% \includegraphics[width=0.4\textwidth]{images/bw_100_exp_3.png}}
+%\subfloat{
+% \includegraphics[width=0.4\textwidth]{images/bw_500_exp_3.png}}
+%\caption{Results of Random Forest Classification on Primary dataset (Above) and Secondary dataset (Below)}
+%\label{Fig:Primary}
+%\end{figure}
 
-\begin{figure}%[ht!]
+\subsection{Customisable attack traffic by using metasploitable}
 
-\subfloat{%
- \includegraphics[width=0.4\textwidth]{images/bw_100_exp_3.png}
-}
+Rob and I discussed this, and by using a combination of a metasploit-attack container and a metasploitable-victim container, we could generate and embed a significantly larger number of attack traffic types more efficiently than we are currently. Since we can attach the metasploitable-container to the network interface of regular containers, we can embed the implemented vulnerabilities very easily in a given scenario. Furthermore, since both containers are well maintained, we can keep the attack catalogue up-to-date.
 
-\subfloat{
- \includegraphics[width=0.4\textwidth]{images/bw_500_exp_3.png}
-}
+I think the best use-case is to showcase the process of adding a new type of attack to the dataset, embedding it in a proper way to a given scenario, generating data from it. We could additionally implement a corresponding detection method, but I think this would not demonstrate anything. 
 
-\caption{Results of Random Forest Classification on Primary dataset (Above) and Secondary dataset (Below)}
-\label{Fig:Primary}
-\end{figure}
 
+ 
 
 
 \subsection{Benefits of structural richness}
