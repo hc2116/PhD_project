@@ -102,6 +102,8 @@ This framework is openly accessible for researchers and allows for straightforwa
 %The remainder of the paper is organized as follows. Section \ref{Sec:background} discusses existing NIDS datasets and the problems that arise during their usage as well as background information about network traffic data formats and virtualization methods. The section concludes with a set of requirements we propose to improve the training and evaluation of machine-learning-based methods. Section \ref{Sec:Design} describes the general design of our framework, and how it improves on the discussed problems in existing datasets. We also discuss a specific example in detail. Section \ref{Sec:Experiments} discusses several experiments to validate the improvements and utility our framework provides. 
 %Section \ref{Sec:Conclusion} concludes the results and discusses limitations of our work and directions for future work.
 
+Outline of the coming sections.
+
 \dots \dots
 
 \dots \dots
@@ -110,13 +112,11 @@ This framework is openly accessible for researchers and allows for straightforwa
 
 \section{Background}\label{Sec:background}
 
-\dots \dots
-
-\dots \dots
-
-\dots \dots
 
 \subsection{Data formats}
+
+A brief description on network flow and packets, as well as system and program logs since we also capture those.
+
 \dots \dots
 
 \dots \dots
@@ -124,48 +124,51 @@ This framework is openly accessible for researchers and allows for straightforwa
 \dots \dots
 
 \subsection{Related work and existing datasets}
+
+A similar description on existing frameworks and datasets as in the existing paper, with a slightly higher focus on existing testbeds and existing container tools.
 \dots \dots
 
 \dots \dots
 
 \dots \dots
 
-\subsection{Problems in modern datasets}\label{Sec:problems}
+\subsubsection{Problems in modern datasets}\label{Sec:problems}
 
 We can import here a lot from the existing paper, but add the following issues:
-
 \begin{enumerate}
-
-\item 
-
-\item 
-
-\item 
-
+\item Invalid/Inconsistent traffic
+\item Extensibility of the attacks
+\item Lack of open-source implementation of attack traffic generation, which makes difficult to understand what exactly was detected
+\item Lack of related data sources
 \end{enumerate}
 
 
-\subsection{Containerization with Docker}
+\subsection{Containerization with Docker and Mininet}
 %\textcolor{red}{to do:need to improve
 
-\subsection{MiniNet}
+A similar description on Containers and Docker as before, extended by a description of Mininet
+\dots \dots
+
+\dots \dots
+
+\dots \dots
+
+\subsubsection{Metasploit and Metasploitable containers}
+
+A description of the capabilities and limitations of both metasploit and the metasploitable VM and the corresponding containers, which we will use.
 
 
+%\section{Dataset Requirements}\label{Sec:require}
 
-\section{Dataset Requirements}\label{Sec:require}
+%We can refer to requirements by Cordero et al. (https://arxiv.org/pdf/1905.00304.pdf) on requirements for generating synthetic datasets, and combine them with the existing set of requirements by us. 
 
-
-
-We can refer to requirements by Cordero et al. (https://arxiv.org/pdf/1905.00304.pdf) on requirements for generating synthetic datasets, and combine them with the existing set of requirements by us. 
-
-These include:
+%These include:
 
 
+\subsection{Dataset Requirements and benefits of our framework}
 
-
-\subsection{Benefits of our framework}
-
-This should potentially be merged with the dataset requirements, I am currently unsure where to put this. 
+Here, we can point to a set of requirements by Cordero et al. (https://arxiv.org/pdf/1905.00304.pdf) for generating synthetic datasets.
+%This should potentially be merged with the dataset requirements, I am currently unsure where to put this. 
 \begin{enumerate}
 \item Fidelity to real traffic
 \begin{itemize}
@@ -206,18 +209,43 @@ This should potentially be merged with the dataset requirements, I am currently 
 
 \end{enumerate}
 
+
 \section{Design}\label{Sec:Design}
+
+Explain the general idea and benefit of using containers for traffic generation in comparison to regular testbeds, similar to the existing paper.
+
 \dots \dots
 
 \dots \dots
 
 \dots \dots
 \subsection{Modes of Operation}
-\dots \dots
 
-\dots \dots
+\begin{enumerate}
+\item Stand-alone scenarios for traffic generation
+\begin{itemize}
+\item Straightforward generation of traffic for the selected service
+\item Easy to costumize and can be used as prior testing for modifying services in the other two options
+\end{itemize}
+\item Network-wide activity emulation
+\begin{itemize}
+\item A topology is generated randomly with a set of hosts and corresponding services running on them
+\item Scenarios are started and hooked to corresponding host network interfaces according to a launch script that emulates empirical activity measurements
+\item These activity measurements come in the form of a timeline of events that can be drawn from a set of basic distributions that we provide or can be generated by third party such as the GAN in the Doppelganger paper (this way we can avoid being scrutinised for a lack of realism in this field).
+\end{itemize}
 
-\dots \dots
+
+\item Microservice activity emulation
+\begin{itemize}
+\item In this mode, we set up a VM that hosts a number of service containers and emulates the situation of a typical microservice host
+\item We run the same scenarios, but the client containers are located on another machine. 
+\item We collect system call logs from both the containers and the host
+\item This is the least developed mode, but the additionally collected system calls give the most realistic picture in this state
+\item It might be good to define and describe this setting already if we want to implement any container-specific attacks and models in the future
+\end{itemize}
+
+\end{enumerate}
+
 
 \begin{figure}
  \centering 
@@ -229,51 +257,72 @@ This should potentially be merged with the dataset requirements, I am currently 
 
 \subsection{Scenarios and subscenarios}
 \label{Sec:Scenarios}
+Here we describe the design process of the scenarios, just like in the previous paper.
 
-\subsection{Randomization}\label{Sec:randomsubscen}
+\subsubsection{Randomization}\label{Sec:randomsubscen}
 \dots \dots
 
 \dots \dots
 
 \dots \dots
-\subsection{Network transmission}\label{Sec:Netrand}
+\subsubsection{Network transmission}\label{Sec:Netrand}
 \dots \dots
 
 \dots \dots
 
 \dots \dots
 
-\subsection{Implementation Process}
+\subsubsection{Implementation Process}
+\dots \dots
+
+\dots \dots
+
+\dots \dots
+
+\subsubsection{Attack generation with Metasploit/Metasploitable}
 \dots \dots
 
 \dots \dots
 
 \dots \dots
  
-\subsection{Implemented scenarios}\label{Sec:ExistScen}
+%\subsection{Implemented scenarios}\label{Sec:ExistScen}
 
 
-\begin{figure}%[h!]
-\centering
-\includegraphics[width=0.49\textwidth]{images/ftp_new1.png}
-\caption{Diagram of FTP scenario}
-\end{figure}
+%\begin{figure}%[h!]
+%\centering
+%\includegraphics[width=0.49\textwidth]{images/ftp_new1.png}
+%\caption{Diagram of FTP scenario}
+%\end{figure}
 
 
-\subsection{Network-simulation mode}
+\subsection{Network-emulation}
+
+Describe the design of how the topology is generated before the data capture is started, and how the scenarios are launched and stopped during the data capture.
+\subsubsection{Topology generation}
 \dots \dots
 
 \dots \dots
 
 \dots \dots
+\subsubsection{Launch-script}
+
+\dots \dots
+
+\dots \dots
+
+\dots \dots
+
 \subsubsection{Dataset coalescence}\label{Sec:datasetcreation}
 \dots \dots
 
 \dots \dots
 
 \dots \dots
+\subsubsection{Activity timeline input}
+Here, we describe how the activity timeline in the launch script can come from unsophisticated distributions that we include, or from sophisticated 3rd party models such as Doppelganger. Since the modelling of computer activity is a field of ongoing research, it seems best to shift the responsibility for realistic models away by allowing this input. 
 
-\subsection{Network-simulation mode}
+\subsection{Microservice-emulation mode}
 
 \dots \dots
 
@@ -301,7 +350,11 @@ These tests, also from Cordero et al. quantify diversity via the entropy of diff
 
 \subsection{Structural dataset dimensionality}
 
-Autoencoders are often used to compress non-deterministic, noisy data. Bahadur et al. have developed a procedure to estimate the ,,dimensionality'' (to be understood as the complexity) of a dataset using variational autoencoders. I believe we can transfer this concept to sequence compression and estimate the overall complexity of connection sequences in our framework with both real traffic captures and existing network intrusion datasets. Showing that our data is closer to real-world data would be a good test for "artificially predictable patterns", as described by Cordero et al., and go hand-in-hand with demonstrating the benefits of our framework for the training of deep-learning models.
+
+
+Autoencoders are often used to compress non-deterministic, noisy data. Bahadur et al. have developed a procedure to estimate the ,,dimensionality'' (to be understood as the complexity) of a dataset using variational autoencoders. I believe we can transfer this concept to sequence compression and estimate the overall complexity of connection sequences in our framework with both real traffic captures and existing network intrusion datasets. 
+
+Showing that our data is closer to real-world data would be a good test for "artificially predictable patterns", as described by Cordero et al., and go hand-in-hand with demonstrating the benefits of our framework for the training of deep-learning models. The importance of data that is less artificially predictable and closer to real-life traffic in terms of statistical variations lies in its suitability as a benchmark for detection rates, since less complex data is easier to train on and yields unrealistically high detection rates. 
 
 
 %Measure structural richness of
@@ -311,13 +364,13 @@ Autoencoders are often used to compress non-deterministic, noisy data. Bahadur e
 
 
 
-\subsection{Reproducible scenarios}\label{Sec:deterministic}
+%\subsection{Reproducible scenarios}\label{Sec:deterministic}
 
-\dots \dots
+%\dots \dots
 
-\dots \dots
+%\dots \dots
 
-\dots \dots
+%\dots \dots
 %\begin{figure}
 %\includegraphics[width=0.45\textwidth]{images/combined3.png} % first figure itself
 %\caption{Means of IATs \& packet sizes along with standard deviation bars for the first twelve packets in the Apache scenario.}
@@ -331,7 +384,7 @@ Autoencoders are often used to compress non-deterministic, noisy data. Bahadur e
 
 \subsection{Explorating Artificial Delays}
 
-This section is already existing, we could potentially expand this. I think it is sufficient and analysing it more does not add much to the paper as the performance of TC netem is relatively well accepted. I think we could even move this section to the appendix
+This section is already existing, we could potentially expand this. I think it is sufficient and analysing it more does not add much to the paper as the performance of TC netem is relatively well accepted. I think we could even move this section to the appendix.
 
 %\begin{figure}
 %\captionsetup{justification=centering}
@@ -373,7 +426,6 @@ This section is already existing, we could potentially expand this. I think it i
 
 
 \subsection{Benefits of ground-truth labels/dynamic dataset generation}
-
 Possible title: \textbf{Dataset tuning to decrease false-positives}
 
 Extensive ground-truth labels for our activities are arguably the most important contribution of the DetGen framework, so we should highlight their benefit most. Since ground-truth labels on attack data are existing in other datasets, we should emphasise the benefit of having labels for different activities. In my eyes, the most striking benefit arises for false-positive analysis, which we could then combine with showcasing the benefit of being able to generate different amounts of traffic for different activities.
@@ -382,19 +434,27 @@ Extensive ground-truth labels for our activities are arguably the most important
 \paragraph{Plan}
 Implement the LSTM-model in the paper "An LSTM-Based Deep Learning Approach forClassifying Malicious Traffic at the Packet Level", train it on our data (both benign and attack traffic). Extract labels of traffic responsible for false-positives, show how much they are clustered around particular activities (potentially rare activities) compared to the overall traffic. Give potential reason for this. Generate a new dataset with increased amounts of the activities responsible for false positivies. Demonstrate that false-positives decrease.
 
+\subsubsection{Benefits of structural richness}
 
+Possible title: \textbf{Harder benchmarks}
+
+As described above, the importance of data that is less artificially predictable and closer to real-life traffic in terms of statistical variations lies in its suitability as a benchmark for detection rates. In particular, we want to demonstrate that our data functions is a more difficult and realistic benchmark that is less prone to inflating detection rates than existing datasets, something that is often a point of criticism for models evaluated on synthetic data. 
+
+To show that the training and detection is harder on our data, we could generate a dataset with similar attacks and services as the CICIDS-17 dataset, and train the above described LSTM model on both datasets. We could show that the training loss goes down more slowly on our data, as well as other metrics (increased validation loss --> overfitting etc.). We could then go ahead and show that the same attacks are detected easier by the same model in the CICIDS-17 data than in our data, concluding that it is a less realistic benchmark.
+
+It would be good to also include a comparison with actual real-world traffic here to bolster our conclusion, but due to the lack of structured real-life datasets it is difficult to create a fair and scientific comparison. 
 
 %\subsubsection{Show utility of tuning amount of rare events}
 
 \subsection{Show utility of flexible topology}
 
+This is another possibility to demonstrate that the flexibility provided through containerisation allows for better benchmarking and more in-depth evaluation.
 
-	o	Find useful model, show that training on one topology leads to overfitting
-	o	Show that training on multiple datasets prevents overfitting
-		Or that detection results can differ vastly
-•	Measure effect of new traffic types on IDS performance
- 	- 
+Methods aiming at modelling network structures are an established method for botnet and pivoting detection. Even though the network topology is a crucial variable in their training, their evaluation is to my knowledge only done on single static datasets such as the LANL-15. 
 
+My idea is that we generate about 10 datasets with different topologies, (especially different numbers of subnets and servers), and highlight the variation in prediction accuracy, i.e. the accuracy on one dataset is significantly higher/lower, and the average across the different datasets is a better indicator that eliminates the topology as a variable. We do not necessarily need to implement any attack traffic here since the modelling accuracy on benign traffic should be sufficiently quantifiable. 
+
+A suitable candidate for the evaluation would be the paper "Link prediction in dynamic networks using randomdot product graphs", which comes from people at Imperial College that I know. The model tries to give a probability for each connection to appear in a network, in order to spot connections between unlikely pairs as anomalous behaviour. I could ask the people for the implemented model so we do not have to do it ourselves, or we could even have a chat with them.
 
 
 %\begin{figure}%[ht!]
@@ -408,20 +468,12 @@ Implement the LSTM-model in the paper "An LSTM-Based Deep Learning Approach forC
 
 \subsection{Customisable attack traffic by using metasploitable}
 
-Rob and I discussed this, and by using a combination of a metasploit-attack container and a metasploitable-victim container, we could generate and embed a significantly larger number of attack traffic types more efficiently than we are currently. Since we can attach the metasploitable-container to the network interface of regular containers, we can embed the implemented vulnerabilities very easily in a given scenario. Furthermore, since both containers are well maintained, we can keep the attack catalogue up-to-date.
+Rob and I discussed that by using a combination of a metasploit-attack container and a metasploitable-victim container, we could generate and embed a significantly larger number of attack traffic types more efficiently than we are currently. Since we can attach the metasploitable-container to the network interface of regular containers, we can embed the implemented vulnerabilities very easily in a given scenario. Furthermore, since both containers are well maintained, we can keep the attack catalogue up-to-date.
 
 I think the best use-case is to showcase the process of adding a new type of attack to the dataset, embedding it in a proper way to a given scenario, generating data from it. We could additionally implement a corresponding detection method, but I think this would not demonstrate anything. 
 
 
- 
-
-
-\subsection{Benefits of structural richness}
-
-
-- Learned model larger and detection problem is closer to reality
-- Demonstrate this by learning a model with less
-
+\subsection{Simple use-case for the microservice mode?}
 
 \section{Conclusions}\label{Sec:Conclusion}
 
