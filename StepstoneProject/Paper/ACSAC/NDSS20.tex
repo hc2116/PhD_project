@@ -146,7 +146,7 @@ Typically, host O is located outside the targeted network, and the attack is sta
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\textwidth]{images/Stepstone_final.png}
+\includegraphics[width=0.75\textwidth]{images/Stepstone_final.png}
 \caption{Depiction of an exemplary stepping-stone chain.}\label{Fig:Stepstone}
 \end{figure}
 
@@ -297,14 +297,10 @@ Again,  Padhye et al. \cite{padhye2010evading} suggest to generate chaff in a wa
 Therefore, the size of the transferred data is drawn from a truncated Lognormal-distribution with mean $\mu_C$ to mimic video-streaming traffic. Similarly, packets are sent in intervals of random length $\delta_c$ drawn from a uniform distribution that covers the interval $[\delta_c/2,\delta_c]$ to mimic a relatively constant packet flow, typical for video-streaming. By adjusting $\delta_C$, we can control the amount of chaff sent. 
 
 
-\subsubsection{Repacketisation}
+\subsubsection{Repacketisation and Flow splitting/merging}
 
 One benefit of using SSH-tunnels from an attackers perspective is that packets are not simply forwarded, but a tunnel acts as an independent encrypted TCP-connection along with independent packet confirmations and repacketisation.
-
-\subsubsection{Flow splitting/merging}
-
 None of the methods we encountered are currently capable of dealing with flow splitting or merging. We therefore did not implement this tactic as the results would be uninformative.
-
 
 Fig. \ref{Fig:Simulation_setup} depicts the interplay of the different containers in our simulation.
 
@@ -313,6 +309,7 @@ Fig. \ref{Fig:Simulation_setup} depicts the interplay of the different container
 \includegraphics[width=0.9\textwidth]{images/Docker_framework.png}
 \caption{Depiction the simulation setup for each host in the chain.}\label{Fig:Simulation_setup}
 \end{figure}
+
 
 
 %\subsection{HTTP-interactions}

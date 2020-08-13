@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  13 AUG 2020 16:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  13 AUG 2020 17:43
 entering extended mode
 **./NDSS20.tex
 (NDSS20.tex
@@ -442,11 +442,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 File: images/Stepstone_final.png Graphic file (type png)
 <use images/Stepstone_final.png>
 Package pdftex.def Info: images/Stepstone_final.png  used on input line 149.
-(pdftex.def)             Requested size: 350.15141pt x 166.28856pt.
+(pdftex.def)             Requested size: 308.95491pt x 146.72467pt.
  [2]
-Underfull \vbox (badness 2556) has occurred while \output is active []
-
- [3 <./images/Stepstone_final.png>]
+[3 <./images/Stepstone_final.png>]
 <images/Packetway.png, id=25, 726.5544pt x 320.397pt>
 File: images/Packetway.png Graphic file (type png)
 <use images/Packetway.png>
@@ -456,54 +454,56 @@ Package pdftex.def Info: images/Packetway.png  used on input line 227.
 <images/Docker_framework.png, id=36, 1291.07344pt x 445.665pt>
 File: images/Docker_framework.png Graphic file (type png)
 <use images/Docker_framework.png>
-Package pdftex.def Info: images/Docker_framework.png  used on input line 313.
+Package pdftex.def Info: images/Docker_framework.png  used on input line 309.
 (pdftex.def)             Requested size: 370.74338pt x 127.97469pt.
- [7 <./images/Docker_framework.png>] [8]
+
+[7 <./images/Docker_framework.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 433.
+(Font)              <9> on input line 430.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 433.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 554.
+(Font)              <5> on input line 430.
+ [8]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 551.
 
 
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 554.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 551.
 
 [9] [10] [11]
-Package color Info: Redefining color shadecolor on input line 753.
+Package color Info: Redefining color shadecolor on input line 750.
 <figure/Noevasion_4nodes-1.pdf, id=56, 578.16pt x 216.81pt>
 File: figure/Noevasion_4nodes-1.pdf Graphic file (type pdf)
 <use figure/Noevasion_4nodes-1.pdf>
-Package pdftex.def Info: figure/Noevasion_4nodes-1.pdf  used on input line 754.
+Package pdftex.def Info: figure/Noevasion_4nodes-1.pdf  used on input line 751.
 
 (pdftex.def)             Requested size: 411.9399pt x 154.47542pt.
  [12]
-Package color Info: Redefining color shadecolor on input line 799.
+Package color Info: Redefining color shadecolor on input line 796.
 <figure/Delaydetection-1.pdf, id=60, 578.16pt x 216.81pt>
 File: figure/Delaydetection-1.pdf Graphic file (type pdf)
 <use figure/Delaydetection-1.pdf>
-Package pdftex.def Info: figure/Delaydetection-1.pdf  used on input line 800.
+Package pdftex.def Info: figure/Delaydetection-1.pdf  used on input line 797.
 (pdftex.def)             Requested size: 411.9399pt x 154.47542pt.
  [13 <./figure/Noevasion_4nodes-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 836.
+Package color Info: Redefining color shadecolor on input line 833.
 <figure/Chaffdetection-1.pdf, id=70, 578.16pt x 216.81pt>
 File: figure/Chaffdetection-1.pdf Graphic file (type pdf)
 <use figure/Chaffdetection-1.pdf>
-Package pdftex.def Info: figure/Chaffdetection-1.pdf  used on input line 837.
+Package pdftex.def Info: figure/Chaffdetection-1.pdf  used on input line 834.
 (pdftex.def)             Requested size: 411.9399pt x 154.47542pt.
  [14 <./figure/Delaydetection-1.pdf>] [15 <./figure/Chaffdetection-1.pdf>] [16]
  [17] (NDSS20.bbl
-[18]) [19]
-Package color Info: Redefining color shadecolor on input line 975.
-<figure/Influencechainl-1.pdf, id=101, 578.16pt x 172.645pt>
+[18])
+Package color Info: Redefining color shadecolor on input line 972.
+<figure/Influencechainl-1.pdf, id=97, 578.16pt x 172.645pt>
 File: figure/Influencechainl-1.pdf Graphic file (type pdf)
 <use figure/Influencechainl-1.pdf>
-Package pdftex.def Info: figure/Influencechainl-1.pdf  used on input line 976.
+Package pdftex.def Info: figure/Influencechainl-1.pdf  used on input line 973.
 (pdftex.def)             Requested size: 411.9399pt x 123.0082pt.
- [20 <./figure/Influencechainl-1.pdf>] [21] (NDSS20.aux) ) 
+ [19] [20 <./figure/Influencechainl-1.pdf>] (NDSS20.aux) ) 
 Here is how much of TeX's memory you used:
  3476 strings out of 492970
  49079 string characters out of 3126595
@@ -532,9 +532,9 @@ a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/
 henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.p
 fb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmti9.pfb>
-Output written on NDSS20.pdf (21 pages, 436943 bytes).
+Output written on NDSS20.pdf (20 pages, 436395 bytes).
 PDF statistics:
- 164 PDF objects out of 1000 (max. 8388607)
+ 161 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
