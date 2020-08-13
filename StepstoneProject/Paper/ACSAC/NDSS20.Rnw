@@ -151,7 +151,7 @@ Our goal is to simulate data that reflects the different aspects of interactive 
 
 In order to consider all these factors, we rely on the virtualisation of networks using containerisation. A container is a standard unit of software that runs standalone in an isolated user space in order to remove platform dependencies. Compared to virtual machines, containers are more lightweight, always start from an identical state, and are highly specialized in their purpose with each container running only a specific piece of software or application. 
 
-The advantages of containers over virtual machines enable us to easily control, modify, repeat, and scale a network of hosts while emulating different network settings. The use of containerisation for this project is a continuation of a traffic generation paradigm designed for machine learning, which was originally introduced in [citation currently blinded]. We build our traffic generation framework on the popular containerisation platform \textit{Docker} \textcolor{red}{citation needed?}.
+The advantages of containers over virtual machines enable us to easily control, modify, repeat, and scale a network of hosts while emulating different network settings. The use of containerisation for this project is a continuation of a traffic generation paradigm designed for machine learning, which was originally introduced in [citation currently blinded]. We build our traffic generation framework on the popular containerisation platform \textit{Docker}.
 
 %packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.
 
@@ -195,21 +195,10 @@ In order to generate enough data instances representing interactive stepping sto
 
 For script-based session creation, several measures have been taken to make them realistic. First, each session tries to mimic a real user's action. We compiled a command database which consists of common commands and their usage frequency, similar to \cite{xin2006testbed}.% \cite{rossey2002lariat}. 
 Commands are drawn randomly according to their usage frequency and concatenated to a script. 
-Commands can either be atomic, such as "ls-la" or "pwd", or compound. Compound commands need additional input such as the directory and name of a specific file that is transferred, or input text to fill a file. The content and sometimes length of these inputs as well as transferred files are randomised appropriately when a compound command is drawn. Scripts are of varying length and end once the \textit{End}-command is drawn from the command catalogue. 
+Commands can either be atomic, such as "ls-la" or "pwd", or compound. Compound commands need additional input such as the directory and name of a specific file that is transferred, or input text to fill a file. The content and sometimes length of these inputs as well as transferred files are randomised appropriately when a compound command is drawn. Scripts are of varying length and end once the \textit{End}-command is drawn at random from the command catalogue. 
 
 
 To simulate human behaviour that is reacting to the response from host T, all commands are separating by \textit{sleep}-commands for time $t$, which is drawn from a truncated Pareto-distribution. Paxson et al. \cite{paxson1995wide} have shown that interpacket spacings corresponding to typing and "think time" pauses are well described by Pareto distributions with a shape parameter $\alpha\approx 1.0$. We use a truncated distribution capped at $10$s to avoid infinite waiting times since we already included a mechanism to end a script. 
-
-
-
-%\textcolor{red}{show exemplary script}.
-
-%To do so, we generate a script with SSH-commands at the start of each \textcolor{red}{execution} that is passed and run by the \textcolor{red}{starting point} of the chain. The generated script consists of a sequence of ordinary SSH-commands \textcolor{red}{list them here?}, which are drawn randomly from a command catalogue and are each separated by \textit{sleep}-commands for a time $t$ that is drawn each time from a Cauchy-distribution. The average sleep-time is around \textcolor{red}{insert}. The length of the script is reached when the \textit{end}-command is drawn from the catalogue.
-%To evaluate the stepping stone detection capabilities of different proposed methods, we created a \textcolor{red}{realistic dataset...}
-%\textcolor{red}{Insert example}
-
-%For script-based session creation, several measures havebeen taken to make them realistic. First, each session tries tomimic a real user’s action. All users of the scripts are real useraccounts in the clients. The users are divided into four groups:administrators, secretaries, programmers, and researchers. For each type of user, there is large command database which con-sists of the common commands and their historic frequency ofexp_version -exit 5.0if {$argc!=1} {send_user "usage: ftp-rfc \[#] \[-index]\n"exit}set file "rfc$argv.Z"set timeout 60spawn ftp ftp.uu.netexpect "Name*:"send "anonymous\r"expect "Password:"send "expect@nist.gov\r"expect "ftp>"send "binary\r"expect "ftp>"send "cd inet/rfc\r"expect "550*ftp>" exit "250*ftp>"send "get $file\r"expect "550*ftp>" exit "200*226*ftp>"closewaitsend_user "\nuncompressing file - wait...\n"exec uncompress $fileFig. 7. Example script for a TELNET session
-%use [22]. A portion of the command database for programmersare shown in Table I. Each Expect script is associated witha user, and the commands within the script are drawn fromcorresponding database according to their frequency. Thereare two types of commands: atomic and compound. Atomiccommands only need the user type the command line andthe system will parse the command and print the output.Examples are “ls -la”, “pwd”. Compound commands requiremore interaction. A simple example is “mail xxxx”. After theuser enters “mail xxxx” and “Enter” key, the system promptsthe user to enter “subject”, content and “cc” field of the email.Second, the human typing simulation feature of Expect is usedfor all commands of users. Third, more than 50 human actorsfrom four classes were invited to our lab to generate certainstepping stone chains that were recorded by autoExpect.
 
 
 
@@ -320,10 +309,10 @@ We now describe our data assembly in more detail.
 
 \subsection{Stepping-stone data}
 
-We generate stepping-stone data following the steps described in Section \ref{Sec:Datasetcreation}. We create our main datasets using a chain of four stepping-stones $S_1, S_2, S_3$, and $S_4$. We subdivide into three datasets according to the two discussed evasion tactics, transfer delays and chaff perturbations. We first capture data without either of these methods in \textbf{dataset A}. We then capture data once with added transfer delays with varying $\delta_D$ to control delays in \textbf{dataset B}, and once with added chaff perturbations of varying $\delta_C$ in \textbf{dataset C}. Each dataset contains 30.000 connection pairs. 
+We generate stepping-stone data following the steps described in Section \ref{Sec:Datasetcreation}. We create our main datasets using a chain of four stepping-stones $S_1, S_2, S_3$, and $S_4$. We subdivide into three datasets according to the two discussed evasion tactics, transfer delays and chaff perturbations. We first capture data without either of these methods in \textbf{dataset BA} (\textbf{b}aseline \textbf{a}ttack). We then capture data once with added transfer delays with varying $\delta_D$ to control delays in \textbf{dataset DA} (\textbf{d}elay \textbf{a}ttack), and once with added chaff perturbations of varying $\delta_C$ in \textbf{dataset CA} (\textbf{c}haff \textbf{a}ttack). Each dataset contains 30.000 connection pairs. 
 %Lastly, we capture data with delays and chaff added simultaneously, with both varying $\delta_D$ and $\delta_C$.
 
-We furthermore create a smaller \textbf{dataset D} with differing numbers of stepping-stones (1,3,5, and 8 jumps) without evasive tactics to evaluate this effect on RTT-based methods. For every jump, we generated 1.000 connection pairs. 
+We furthermore create a smaller \textbf{dataset CL} (\textbf{c}hain \textbf{l}ength) with differing numbers of stepping-stones (1,3,5, and 8 jumps) without evasive tactics to evaluate this effect on RTT-based methods. For every jump, we generated 1.000 connection pairs. 
 
 For all datasets, we randomise and record network settings. In Section \ref{Sec:InfluenceNetwork}, we examine the effect of extreme network settings on detection rates. 
 %Table \ref{Tab:MalData} provides a summary of the connection pair numbers in each part of the dataset.
@@ -393,10 +382,10 @@ Again, we pair generated connections by random, but we ensure that the direction
 \centering
 \begin{tabular}{l|l|l|l}
 & Label  &Nr. of conn. & Purpose\\ \hline
-\multirow{5}{*}{SS data}& set A & 30,000& \makecell[l]{Baseline attack data without\\evasion tactics} \\ \cline{2-4}
-						& set B & 30,000& Inclusion of delays with varying $\delta_D$ \\ \cline{2-4}
-						& set C & 30,000& Inclusion of chaff with varying $\delta_C$ \\ \cline{2-4}
-						& set D & 40,000& \makecell[l]{Data from chains of different\\lengths,  no evasion tactics} \\ \hline
+\multirow{5}{*}{SS data}& set BA & 30,000& \makecell[l]{Baseline attack data without\\evasion tactics} \\ \cline{2-4}
+						& set DA & 30,000& Inclusion of delays with varying $\delta_D$ \\ \cline{2-4}
+						& set CA & 30,000& Inclusion of chaff with varying $\delta_C$ \\ \cline{2-4}
+						& set CL & 40,000& \makecell[l]{Data from chains of different\\lengths,  no evasion tactics} \\ \hline
 \multirow{5}{*}{Benign data}&CAIDA & 60,000& General background data \\ \cline{2-4}
 							&SSH & 20,000& \makecell[l]{Background data similar to\\attack commands} \\ \cline{2-4}
 							&Multimedia & 20,000& \makecell[l]{Background data similar to\\chaff perturbations} \\ \hline
@@ -471,7 +460,7 @@ Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 %        }
 %		child {
 %            node [punkt, rectangle split, rectangle split parts=2]{
-%                \textbf{set D}
+%                \textbf{set CL}
 %                \nodepart{second}
 %                mult. jumps, 4,000
 %            }
@@ -479,7 +468,7 @@ Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 %                node[kant, above] {}}
 %        child {
 %            node [punkt, rectangle split, rectangle split parts=2]{
-%                \textbf{set C}
+%                \textbf{set CA}
 %                \nodepart{second}
 %                chaff, 30,000
 %            }
@@ -487,7 +476,7 @@ Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 %                node[kant, above] {}}
 %		child {
 %            node [punkt, rectangle split, rectangle split parts=2]{
-%                \textbf{set B}
+%                \textbf{set DA}
 %                \nodepart{second}
 %                delays, 30,000
 %            }
@@ -496,7 +485,7 @@ Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 %         child {
 %            node [punkt,rectangle split, rectangle split,
 %            rectangle split parts=2] {
-%                \textbf{set A}
+%                \textbf{set BA}
 %                \nodepart{second}
 %                no evasion, 30,000
 %            }
@@ -581,9 +570,9 @@ Watermarking & Wang, 2011 \cite{wang2010robust} & $100\%$ & $0.5\%$ & $<1.4$s ji
 
 \subsubsection{PContext, 2011}
 
-Yang et al. \cite{yang2011correlating} compare sequences of interarrival times in connection pairs to detect potential stepping-stone behaviour. For that, the context of a packet is defined as the packet interarrival times around that packet. The context of packets is extracted from each connection, and their respective contextual distance is estimated using the Pearson correlation. %Packets with high correlation are defined as `matched', and two connections are classified as relayed if the ratio of matched packets exceeds a threshold. 
-The authors propose to only collect interarrival times from \textit{Echo}-packets instead of \textit{Send}-packets to resist evasion tactics such as chaff and jitter.%, as the sending of \textit{Echo}-packets is subject to more constraints and less easy to manipulate.
-The authors evaluate their results on connection pairs with up to $100\%$ chaff ratio, with the model being able to successfully detect connection relays in all cases. 
+Yang et al. \cite{yang2011correlating} compare sequences of interarrival times in connection pairs to detect potential stepping-stone behaviour. For that, the context of a packet is defined as the packet interarrival times around that packet. The respective contextual distance between packets is estimated using the Pearson correlation. %Packets with high correlation are defined as `matched', and two connections are classified as relayed if the ratio of matched packets exceeds a threshold. 
+The authors focus on \textit{Echo}-packets instead of \textit{Send}-packets to resist evasion tactics.%, as the sending of \textit{Echo}-packets is subject to more constraints and less easy to manipulate.
+The authors evaluate their results with up to $100\%$ chaff ratio with $100\%$ detection rate.
 
 
 %\subsection{Neural networks}
@@ -598,13 +587,14 @@ The authors evaluate their results on connection pairs with up to $100\%$ chaff 
 
 A notable initial example of neural network applications to SSD came from Wu et al. \cite{wu2008performance}, and which was later improved by the authors \cite{wu2008performance}.
 %however, the authors concluded that the achieved results did not improve existing detection rates. but no good results, better in Neural networks-based detection of stepping-stone intrusion.
-The designed neural network model is based on sequences of RTTs. For this, a packet matching algorithm is used to compute RTTs, which are then fed as a fixed-length sequence into a feed-forward network to predict the downstream length of the chain. The network itself only contains one hidden layer and is relatively small. RTT-based methods achieves good results only if RTTs are small, i.e. the stepping-stone chain is completely contained within one LAN-network.
+The designed neural network model is based on sequences of RTTs%. For this, a packet matching algorithm is used to compute RTTs, which are then fed as a fixed-length sequence
+, which are fed into a feed-forward network to predict the downstream length of the chain. The network itself only contains one hidden layer and achieves good results only if RTTs are small, i.e. when the stepping-stone chain is completely contained within one LAN-network.
 
 
 \subsubsection{DeepCorr, 2018}
 
-A more recent example of neural network application comes from Nasr et al. \cite{nasr2018deepcorr}, who train a deep convolutional neural network to identify correlation between two connections from the upstream and downstream interarrival times and packet sizes in each connection. The trained network is large, with over 200 input filters and consists of three convolutional and three feed-forward layers. The trained model was initially applied to a dataset of Tor-connections as well, where the authors achieved strong results. 
-The authors achieve a $90\%$ detection rate with $0.02 \%$ false positives. 
+A more recent example of neural network application comes from Nasr et al. \cite{nasr2018deepcorr}, who train a deep convolutional neural network to identify correlation between two connections from the upstream and downstream interarrival times and packet sizes in each connection. The trained network is large with over 200 input filters, and consists of three convolutional and three feed-forward layers. %The trained model was initially applied to a dataset of Tor-connections.%, where the authors achieved strong results. 
+On stepping-stones, the authors achieve a $90\%$ detection rate with $0.02 \%$ false positives. 
 
 
 \subsubsection{RWalk, 2015}
@@ -614,14 +604,16 @@ This model by Yang et al. \cite{yang2015rtt} combines packet-counting methods an
 %A widely-used approach is to compare the number of incoming packets in one connection with the number of outgoing packets in another connection to determine if the pair represents a stepping stone relay. However, the insertion of chaff can separate these numbers substantially.
 The authors improve widely-used packet-counting methods to resist chaff perturbation by counting the number of round-trips in a connection to determine if the connection is being relayed.
 %To resist intruders evasion, the authors propose to use the 
-Packet pairs representing a round-trip for each connection are estimated using a combination of packet matching and clustering, and counted as $N_{in}$ and $N_{out}$. The authors then claim that the value of $N_{in}-N_{out}$ is only bounded if the two connections are relayed.
+Packet pairs representing a round-trip for each connection are estimated using a combination of packet matching and clustering, and counted as $N_{in}$ and $N_{out}$. %The authors then claim that the value of $N_{in}-N_{out}$ is only bounded if the two connections are relayed.
 
-\subsubsection{C.Over, 2016}
+\subsubsection{C-Over, 2016}
 
-This method by Huang et al. \cite{huang2016detecting} improves the detection methods proposed by Ding et al. \cite{ding2009detecting}. The authors target relayed interactive SSH communication at the end of a connection chain. Their detection model is built on the fact that in a long connection chain, the round-trip-time of a packet may be longer than the intervals between two consecutive keystrokes. %Normally after sending a request packet, a client will wait for the server response before sending another request. 
+This method by Huang et al. \cite{huang2016detecting} improves the detection methods proposed by Ding et al. \cite{ding2009detecting}. %The authors target relayed interactive SSH communication at the end of a connection chain. 
+Their detection model is built on the fact that in a long connection chain, the round-trip-time of a packet may be longer than the intervals between two consecutive keystrokes. %Normally after sending a request packet, a client will wait for the server response before sending another request. 
 %TCP/IP allows a client to send a limited number of packets to the server without having to wait for the response. 
 In a long connection chain, this will result in cross-overs between request and response, which causes the curve of sorted upstream RTTs to rise more steeply than in a regular connection. %A stepping stone is detected if the maximum increase in the curve exceeds a threshold. 
-The authors do not state a universal threshold value and instead suggest a method to estimate the appropriate value for a given setting.
+%The authors do not state overall detection rates.
+%a universal threshold value and instead suggest a method to estimate the appropriate value for a given setting.
 %Detecting Stepping-Stone Intruders by Identifying Crossover Packets in SSH Connections
 
 %.
@@ -637,7 +629,7 @@ The authors do not state a universal threshold value and instead suggest a metho
 \subsubsection{Ano1, 2011}
 
 Crescenzo et al. \cite{di2011detecting} have proposed an assembly of three anomaly-based methods to detect time delays and chaff perturbations in a selected connection. 
-A response-time based method is targeted at detecting packet time-delays by flagging acknowledgement packets if their response-time exceeds the average RTT by a fixed threshold. A distance-based method compares the similarity of downstream with upstream packet sequences in order to detect inserted chaff packets. Finally, a causality-based method verifies that the number of ON-intervals in upstream and downstream direction match each other to detect chaff.
+Packet time-delays are detected by flagging acknowledgement packets if their response-time exceeds the average RTT. A distance-based chaff detection method compares the similarity of downstream with upstream packet sequences. Finally, a causality-based method verifies that the number of ON-intervals in upstream and downstream direction match.
 The authors claim successful detection for chaff ratios 25\% or more, and for delays introduced to up to 70\% of all packets.
 
 %. It estimates the RTT of a connection, and then flags acknowledgement packets if their response-time exceeds (RTT+$\delta_{RT}$). The authors claim that an attacker would have to impose delays on more than 70\% of all packets to evade this method.
@@ -646,9 +638,10 @@ The authors claim successful detection for chaff ratios 25\% or more, and for de
 %\end{enumerate}
 
 \subsubsection{Ano2, 2011/2013}
-Huang et al. \cite{huang2011detecting} proposed an anomaly-based method to detect chaff perturbations based on their assessment that interarrival times in regular connections tend to follow a Pareto or Lognormal distribution, which chaffed connections supposedly do not. The authors extract packet interarrival times and calculate statistical score describing the fit to the distributions that is used to classify connections into normal and chaffed connections.
+Huang et al. \cite{huang2011detecting} proposed an anomaly-based method to detect chaff perturbations since interarrival times in regular connections tend to follow a Pareto or Lognormal distribution, which chaffed connections supposedly do not. The authors perform a statistical test whether packets in a connection follow these distributions.% in order to classify them into normal and chaffed connections.
+%describing the fit of interarrival times to these distributions that is used to classify connections into normal and chaffed connections.
 A similar approach from the same authors \cite{ding2013detecting} is directed towards the detection of packet jittering.
-The authors achieve $95\%$ detection rate on connections with $50\%$ chaff ratio and more while retaining zero false positives using a small set of chaffed interactive SSH stepping-stone connections.
+The authors state $95\%$ detection rate on connections with $50\%$ chaff ratio and more while retaining zero false positives using a small set of chaffed interactive SSH stepping-stone connections.
 % generate a small set of chaffed interactive SSH stepping-stone chains, where they achieve a $95\%$ detection rate on connections which are subject to a $50\%$ chaff ratio while retaining zero false positives. For lower chaff ratios, the detection rate decreases significantly. 
 
 % Afterwards, the goodness-of-fit is tested using two statistical tests, which yield a \textit{disagreement-of-fit score}. If this disagreement score exceeds a threshold, which was determined from a set of know regular connections, the connection is seen as being subject to chaff perturbations. The authors generate a small set of chaffed interactive SSH stepping-stone chains, where they achieve a $95\%$ detection rate on connections which are subject to a $50\%$ chaff ratio while retaining zero false positives. For lower chaff ratios, the detection rate decreases significantly. 
@@ -659,8 +652,9 @@ The authors achieve $95\%$ detection rate on connections with $50\%$ chaff ratio
 %A watermark is simply an unique binary string. The process of embedding one bit of this string consists of changing some property, usually packet interarrivals, of a traffic flow such that the change represents a bit. Decoding the watermark involves capturing candidate flows that might match the water-marked flow and looking for the bits in the flow characteristics. The bits of the watermark should have enough redundancy to ensure that they are decoded correctly with high probability.
 
 \subsubsection{WM, 2010}
-Flow watermarking is the most effective way at correlating connections with low false positives. However, as found by \cite{iacovazzi2016network}, usually not very robust against timing and chaff perturbation attacks. We have selected the approach developed by Wang et al. \cite{wang2010robust} to be included in our evaluation because the authors state at least some resistance against timing perturbations. The authors assume some limits to an adversary's timing perturbations, such as a bound on the delays. The authors divide a sequence of packets into pairs, whose interarrival time is perturbed using a new watermarking function. The introduced watermark is invisible for third-parties, and % and can be decoded in packet sequences longer than 600 packets using $m=12$ when $s=400ms$. 
-the authors achieve $100\%$ TP with $0.5\%$ FP while claiming resistance against timing perturbations of up to $1.4s$.
+Watermarking typically yields very low false-positives for connection correlation. %However, as found by \cite{iacovazzi2016network}, usually not very robust against timing and chaff perturbation attacks. 
+Wang et al. \cite{wang2010robust} provide an approach that offers at least some resistance against timing perturbations. The authors assume some limits to an adversary's timing perturbations, such as a bound on the delays, divide a sequence of packets into pairs, whose interarrival time is perturbed using a new watermarking function. %The introduced watermark is invisible for third-parties, and % and can be decoded in packet sequences longer than 600 packets using $m=12$ when $s=400ms$. 
+The authors state $100\%$ TP with $0.5\%$ FP with resistance against timing perturbations of up to $1.4s$.
 
 %two groups of length $m$, and match packets from both groups into pairs. Each pair interarrival time is then perturbed using a watermarking function in dependence of an overall perturbation value $s$. 
 %The introduced watermark is invisible for third-parties and can be decoded in packet sequences longer than 600 packets using $m=12$ when $s=400ms$. The authors achieve $100\%$ TP with $0.5\%$ FP and claim resistance against timing perturbations of up to $1.4s$.
@@ -688,14 +682,14 @@ the authors achieve $100\%$ TP with $0.5\%$ FP while claiming resistance against
 
 \subsection{Implementation of selected approaches}
 
-In order to evaluate the above selected method on our generated data, we had to reimplement the algorithms according to the steps and design described in the corresponding publications. We implemented all methods in Python, and PyTorch if necessary. To overcome unclear points or adjust to the new setting, we had to make a small number of judgement calls, the most important of which we mention here for completeness:
+In order to evaluate the above selected method on our generated data, we had to reimplement the algorithms according to the steps and design described in the corresponding publications. We implemented all methods in Python, and PyTorch if necessary. %To overcome unclear points or adjust to the new setting, we had to make a small number of judgement calls, the most important of which we mention here for completeness:
 
-For all methods, either varied the particular separation threshold AUC calculation, or estimated it to yield a particular false positive rate across all methods. For both anomaly-based methods, we had to estimate multiple thresholds. We found appropriate values that yield the required FP rate and maximise the detection rate over all datasets via grid-search optimisation.
+For all methods, we either varied the particular separation threshold AUC calculation, or estimated it to yield a particular false positive rate across all methods. For both anomaly-based methods, we had to estimate multiple thresholds, for which we found the optimal combination via grid-search. %We found appropriate values that yield the required FP rate and maximise the detection rate over all datasets via grid-search optimisation.
 
 
-For the WM approach, we had to set the quantization step size $s=0.4$s, and the redundancy number $m=11$ to consistently embed the watermark in the first 1500 packets. These values were also used by the authors.
+For the WM approach, we set the quantization step size $s=0.4$s, and the redundancy number $m=11$ to consistently embed the watermark in the first 1500 packets. These values were also used by the authors.
 
-Both DeepCorr and WuNeur are machine-learning based algorithms, which need to be trained on appropriate training data before the evaluation. Since DeepCorr is a large model and requires a lot of training data, we train it using $80$\% of the evaluation data with the proportions described in Table \ref{Fig:Datasim}. WuNeur requires less amounts of training data and is more sensitive to differing chain lengths, which is why we use 1000 connection pairs from each dataset A,B,C, and D, as well as 6000 connection pairs from the training data. We train each method for 500 epochs. 
+Both DeepCorr and WuNeur are machine-learning based algorithms, which need to be trained on appropriate training data before the evaluation. Since DeepCorr is a large model and requires a lot of training data, we train it using $80$\% of the evaluation data with the proportions described in Table \ref{Fig:Datasim}. WuNeur is sensitive to differing chain lengths, which is why we use 1000 connection pairs from each dataset BA, DA, CA, and CL, as well as 6000 connection pairs from the training data. %We train each method for 500 epochs. 
 
 
 %\textcolor{red}{add short description how we trained approaches}
@@ -705,7 +699,7 @@ Both DeepCorr and WuNeur are machine-learning based algorithms, which need to be
 
 \subsection{Data without evasion tactics}
 
-<<Noevasion_4nodes, echo=FALSE, warning=FALSE, message=FALSE, fig.height=3,fig.width=8,fig.cap="ROC-curves for different SSD methods on dataset A (no evasive tactics). Anomaly-based methods are excluded.",cache=TRUE>>=
+<<Noevasion_4nodes, echo=FALSE, warning=FALSE, message=FALSE, fig.height=3,fig.width=8,fig.cap="ROC-curves for different SSD methods on dataset BA (no evasive tactics). Anomaly-based methods are excluded.",cache=TRUE>>=
 require(ggplot2)
 require(xtable)
 
@@ -776,7 +770,7 @@ for(thresh in seq(min(x1),max(x1+10),length.out=100)){
 HuangRTT <- data.frame(
  TP = TP,
  FP = FP,
- Method = "C.Over"
+ Method = "C-Over"
 )
 
 
@@ -802,7 +796,7 @@ pAllNoevasion <- ggplot(AllNoevasion,aes(x=FP,y=TP))+
  geom_line(size=0.7,aes(color=Method))+
  geom_point(size=1,aes(shape=Method))+
  theme_bw()+
- labs(x="FP rate",y="TP rate",title=paste("ROC-curves on dataset A"))+
+ labs(x="FP rate",y="TP rate",title=paste("ROC-curves on dataset BA"))+
  ylim(0,1)+
  #xlim(0.0001,0.01)+
  scale_x_log10(limits = c(0.00001,0.1)) 
@@ -810,7 +804,7 @@ pAllNoevasion
 
 AUC_scores <- NULL
 
-names=c("PContext","DeepCorr","WuNeur","RWalk","C.Over","WM")
+names=c("PContext","DeepCorr","WuNeur","RWalk","C-Over","WM")
 for(i in 1:6){
  x=AllNoevasion[AllNoevasion$Method==names[i],]
  AUC_scores <- c(AUC_scores,sum(x$TP[-1]*diff(x$FP,lag=1)))
@@ -826,7 +820,7 @@ colnames(AUCdf) <- names
 \begin{table}
 \centering
 <<AUCtable, echo=FALSE,results="asis",cache=TRUE>>=
-tabAUC <- xtable(AUCdf,caption = "AUC-scores for different methods on dataset A.",floating = TRUE, latex.environments = "center", digits=c(0,3,3,3,3,3,4),label = "tab:dfAUC",include.colnames=FALSE)
+tabAUC <- xtable(AUCdf,caption = "AUC-scores for different methods on dataset BA.",floating = TRUE, latex.environments = "center", digits=c(0,3,3,3,3,3,4),label = "tab:dfAUC",include.colnames=FALSE)
 align(tabAUC) <- "l|r|r|r|r|r|r"
 print(tabAUC,floating=FALSE)
 @
@@ -856,7 +850,7 @@ We look at delays added to only to outgoing packets on $S_4$, the last stepping 
 
 %\textcolor{red}{consider two types of delays?}
 
-<<Delaydetection, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="Detection rates in dependence of $\\delta_D$ for different methods on dataset B with a fixed FP rate of $0.4\\%$.",cache=TRUE>>=
+<<Delaydetection, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="Detection rates in dependence of $\\delta_D$ for different methods on dataset DA with a fixed FP rate of $0.4\\%$.",cache=TRUE>>=
 require(ggplot2)
 
 #chaffratio <- c(0, 10, 30, 50, 100, 200, 300, 500)
@@ -899,7 +893,7 @@ YangRTT <- data.frame(
 HuangRTT <- data.frame(
  maxd=maxdelay,
  TP1=c(0.43,0.42,0.37,0.48,0.51,0.48,0.50),
- Method = "C.Over"
+ Method = "C-Over"
 )
 
 Crescenzo <- data.frame(
@@ -927,13 +921,13 @@ pAllNoevasion <- ggplot(AllNoevasion,aes(x=maxd,y=TP1, group=Method))+
  geom_line(size=0.7,aes(color=Method))+
  geom_point(size=1,aes(shape=Method))+
  theme_bw()+
- labs(x="maximum delay [ms]",y="TP rate",title=paste("Detection rates on delay dataset B"))+
+ labs(x="maximum delay [ms]",y="TP rate",title=paste("Detection rates on delay dataset DA"))+
  ylim(0,1)+
  scale_x_discrete()
 pAllNoevasion
 @
 
-As visible, both anomaly-based methods are capable of detecting added delays relatively reliably. Furthermore, both the detection rates of DeepCorr and the rtt-based C.Over only decrease slightly under the influence of delays. Detection rates for all other methods decrease significantly to the point where no meaningful predictions can be made. This is also reflected by the AUC-scores for traffic with $\delta_D=1000ms$, given in Table \ref{Tab:AUCdelays}. 
+As visible, both anomaly-based methods are capable of detecting added delays relatively reliably. Furthermore, both the detection rates of DeepCorr and the rtt-based C-Over only decrease slightly under the influence of delays. Detection rates for all other methods decrease significantly to the point where no meaningful predictions can be made. This is also reflected by the AUC-scores for traffic with $\delta_D=1000ms$, given in Table \ref{Tab:AUCdelays}. 
 
 While the WM method is robust against transfer delays up to $\delta_D=500$ms, this value is smaller than the one claimed by the authors. This might however be a result of the slightly smaller quantisation step size that we used. It is surprising that the PContext method shows only little robustness against transfer delays, which contradicts the authors claims. A possible explanation is the false assumption that relying on \textit{Echo}-packets increases robustness, since we also successfully apply delays to them while additional non-delayed \textit{Echo}-packets are generated by the tunnels. 
 
@@ -1008,7 +1002,7 @@ for(thresh in seq(min(x1),max(x1+10),length.out=100)){
 HuangRTT <- data.frame(
  TP = TP,
  FP = FP,
- Method = "C.Over"
+ Method = "C-Over"
 )
 
 x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(400,mean=2,sd=2))
@@ -1070,7 +1064,7 @@ AllNoevasion <- rbind(PacketCorr,DeepCorr,WuNeur,YangRTT,HuangRTT,Ano1,Ano2,Wate
 
 AUC_scores <- NULL
 
-names=c("PContext","DeepCorr","WuNeur","RWalk","C.Over","Ano1","Ano2","WM")
+names=c("PContext","DeepCorr","WuNeur","RWalk","C-Over","Ano1","Ano2","WM")
 for(i in 1:8){
  x=AllNoevasion[AllNoevasion$Method==names[i],]
  AUC_scores <- c(AUC_scores,sum(x$TP[-1]*diff(x$FP,lag=1)))
@@ -1097,7 +1091,7 @@ We now consider the effect of chaff perturbations added by the attacker to indiv
 Chaff packets are added to both the connection between $S_3$ and $S_4$ as well as between $S_4$ and host $T$ as described in Section \ref{Sec:chaff_desc}. Fig. \ref{fig:Chaffdetection} depicts evolution of detection rates in dependence of the ratio of number of chaff packets to packets from the actual interaction.
 
 
-<<Chaffdetection, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="Detection rates in dependence of $\\delta_C$ for different methods on dataset C with a fixed FP rate of $0.4\\%$",cache=TRUE>>=
+<<Chaffdetection, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="Detection rates in dependence of $\\delta_C$ for different methods on dataset CA with a fixed FP rate of $0.4\\%$",cache=TRUE>>=
 require(ggplot2)
 
 #chaffratio <- c(0, 10, 30, 50, 100, 200, 300, 500)
@@ -1140,7 +1134,7 @@ YangRTT <- data.frame(
 HuangRTT <- data.frame(
  chaffr=chaffratio,
  TP1=c(0.43,0.42,0.45,0.46,0.37,0.28,0.07,0.04),
- Method = "C.Over"
+ Method = "C-Over"
 )
 
 Crescenzo <- data.frame(
@@ -1168,7 +1162,7 @@ pAllNoevasion <- ggplot(AllNoevasion,aes(x=chaffr,y=TP1, group=Method))+
  geom_line(size=0.7,aes(color=Method))+
  geom_point(size=1,aes(shape=Method))+
  theme_bw()+
- labs(x="ratio of chaff in %",y="TP rate",title=paste("Detection rates for chaff dataset C"))+
+ labs(x="ratio of chaff in %",y="TP rate",title=paste("Detection rates for chaff dataset CA"))+
  ylim(0,1)+
  scale_x_discrete()
 pAllNoevasion
@@ -1252,7 +1246,7 @@ for(thresh in seq(min(x1),max(x1+10),length.out=100)){
 HuangRTT <- data.frame(
  TP = TP,
  FP = FP,
- Method = "C.Over"
+ Method = "C-Over"
 )
 
 x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(400,mean=2,sd=2))
@@ -1314,7 +1308,7 @@ AllNoevasion <- rbind(PacketCorr,DeepCorr,WuNeur,YangRTT,HuangRTT,Ano1,Ano2,Wate
 
 AUC_scores <- NULL
 
-names=c("PContext","DeepCorr","WuNeur","RWalk","C.Over","Ano1","Ano2","WM")
+names=c("PContext","DeepCorr","WuNeur","RWalk","C-Over","Ano1","Ano2","WM")
 for(i in 1:8){
  x=AllNoevasion[AllNoevasion$Method==names[i],]
  AUC_scores <- c(AUC_scores,sum(x$TP[-1]*diff(x$FP,lag=1)))
@@ -1385,6 +1379,7 @@ WM <- c(WM,1-sum(WM))
 
 FPdf <- t(rbind(PContext,DeepCorr,WuNeur,RWalk,C.Over,Ano1,Ano2,WM))
 rownames(FPdf) <- c("CAIDA","SSH","multimedia")
+colnames(FPdf) <- c("PContext","DeepCorr","WuNeur","RWalk","C-Over","Ano1","Ano2","WM")
 
 #FPdf <- paste(as.character(round(FPdf,digits = 2)),"%", sep = "")
 
@@ -1395,96 +1390,13 @@ print(tabFP,floating=FALSE)
 \caption{Relative contribution in \% of different benign data to the FP rate.}\label{Tab:dfFP}
 \end{table}
 
-\subsection{Influence of chain length}
-
-In this section, we look at the effect of differing chain lengths on the detection rates. We only focus on RTT-based methods here since the other methods do not seem to be significantly influenced. Since RTT-based methods aim to measure the effect of packets travelling via multiple hosts, it is unsurprising that they perform better at detecting longer chains. 
-
-<<Influencechainl, echo=FALSE, warning=FALSE,message=FALSE, fig.height=3,fig.width=8,fig.cap="Detection rates in dependence of chain length for different methods on dataset D with a fixed FP rate of $0.4\\%$",cache=TRUE>>=
-require(ggplot2)
-
-#chaffratio <- c(0, 10, 30, 50, 100, 200, 300, 500)
-chainlength <- as.character(c(1, 3, 5, 8))
-chainlength <- factor(chainlength, levels = chainlength)
-
-x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(400,mean=2,sd=2))
-x2 <- c(rnorm(100000),rnorm(1000,sd=2))
-TP=NULL
-FP=NULL
-#for(thresh in chainlength){
-# chainlength=chainlength
- #TP1=c(0.95,0.93,0.87,0.71,0.48,0.15,0.04,0.031,0.018),
- #TP2=c(0.95,0.93,0.87,0.71,0.48,0.15,0.04,0.031,0.018)
-#}
-
-WuNeur <- data.frame(
- chainl=chainlength,
- TP1=c(0.17,0.41,0.49,0.43),
- Method = "WuNeur"
-)
-
-YangRTT <- data.frame(
- chainl=chainlength,
- TP1=c(0.04,0.08,0.19,0.29),
- Method = "RWalk"
-)
-
-HuangRTT <- data.frame(
- chainl=chainlength,
- TP1=c(0.12,0.19,0.45,0.59),
- Method = "C.Over"
-)
-
-
-
-
-AllNoevasion <- rbind(WuNeur,YangRTT,HuangRTT)
-
-pAllNoevasion <- ggplot(AllNoevasion,aes(x=chainl,y=TP1, group=Method))+
- geom_line(size=0.7,aes(color=Method))+
- geom_point(size=1,aes(shape=Method))+
- theme_bw()+
- labs(x="number of jumps",y="TP rate",title=paste("Detection rates on chain length dataset D"))+
- ylim(0,1)+
- scale_x_discrete()
-pAllNoevasion
-
-@
-
-%\textcolor{red}{add comparison of results at different positions}
-
-Of the RTT-based methods, only C.Over was able to yield consistent detection rates under transfer delays. 
-Interestingly, if the C.Over method is applied to connections between $S_3$ and $S_4$ instead of between $S_4$ and the target, detection rates decrease in the same manner as for other RTT-based methods. This is not surprising as the underlying assumption for robustness for this approach relies on Echo-packets not being delayed.
-
 
 %\textcolor{red}{I could insert comparison of prediction accuracy on chain length}
 
 
-\subsection{Influence of network settings}\label{Sec:InfluenceNetwork}
-
-\begin{table}
-\centering
-\begin{tabular}{l|c|c|c|c|c|c}
-& Value & \multicolumn{5}{c}{TP deviation from average}\\ \hline
- & &DeepCorr & WuNeur & RWalk& C.Over & WM \\ \hline
-\multirow{2}{*}{RTT} & 5ms& $-0.2\%$ & $+41.3\%$& $-42.3\%$ & $-36\%$ & $+0.03\%$ \\ \cline{2-7}
- & 70ms & $-5.6\%$ & $-5.8\%$& $+35.1\%$ & $+51\%$& $-2.2\%$\\ \hline
-
-\multirow{2}{*}{Packet loss} & $0\%$ & $+1.2\%$& $+1.3\%$ & $+2.1\%$ & $+4.3\%$ & $+0.02\%$\\ \cline{2-7}
- & $7\%$ & $-9.1\%$& $-1.1\%$ & $-3.1\%$ & $-7.3\%$ & $-9.7\%$\\ \hline
-
-%\multirow{2}{*}{Bandwidth} & no limit& & & & \\ \cline{2-6}
-% & 50 kb/s & & & & \\ \hline s
-\end{tabular}
-\caption{Influence of network congestion on detection rates at a fixed FP rate of $0.4\%$. The given percentages are describing the change of the detection rate under the given congestion setting when compared to the overall average.}\label{Tab:Congestion}
-\end{table}
-
-Finally, we look at the effect of different nework settings. We only show methods that show significant effects and omitted bandwidth from the evaluation as different values do not seem to have any effect on detection rates.
-
-As visible in Table \ref{Tab:Congestion}, the three RTT-based methods show different responses to small/large average round-trip-times. While WuNeur, as expected from prior results, performs better in LAN settings, detection rates of the RWalk and C.Over methods are boosted by larger RTTs. All methods profit from lower packet losses.
-
 \subsection{Summary}
 
-Overall, detection rates on dataset A are mostly in line with the claimed capabilities except for RWalk, although detection rates are slightly lower than stated by most authors. Delay perturbation increases detection difficulty for most methods, except for Ano1, Ano2, and DeepCorr, which contradicts robustness claims for PContext and to some extend WM. Our inserted chaff perturbations however render detection impossible for all methods examined, which contradicts robustness claims for PContext, Ano1, Ano2, and RWalk, although the claims were made based on lower chaff levels than we tested. 
+Overall, detection rates on dataset BA are mostly in line with the claimed capabilities except for RWalk, although detection rates are slightly lower than stated by most authors. Delay perturbation increases detection difficulty for most methods, except for Ano1, Ano2, and DeepCorr, which contradicts robustness claims for PContext and to some extend WM. Our inserted chaff perturbations however render detection impossible for all methods examined, which contradicts robustness claims for PContext, Ano1, Ano2, and RWalk, although the claims were made based on lower chaff levels than we tested. 
 
 Unsurprisingly, longer chains yield higher detection rates for RTT-based methods. Different network transmission settings seem to have little influence on detection rates. 
 
@@ -1555,6 +1467,94 @@ Currently, it seems that watermarking methods are currently most suited at detec
 \appendix
 
 
+\section{Influence of chain length}
+
+In this section, we look at the effect of differing chain lengths on the detection rates. We only focus on RTT-based methods here since the other methods should and do not see a significant effect from varying chain lengths\footnote{For non-RTT-methods, the detection rate error ($2.6\%-6.5\%$) for each length was larger than the detection rate differences ($0.2\%-3.7\%$) across different lengths.}. Since RTT-based methods aim to measure the effect of packets travelling via multiple hosts, it is unsurprising that they perform better at detecting longer chains. 
+
+<<Influencechainl, echo=FALSE, warning=FALSE,message=FALSE, fig.height=2.4,fig.width=8,fig.cap="Detection rates in dependence of chain length for different methods on dataset CL with a fixed FP rate of $0.4\\%$",cache=TRUE>>=
+require(ggplot2)
+
+#chaffratio <- c(0, 10, 30, 50, 100, 200, 300, 500)
+chainlength <- as.character(c(1, 3, 5, 8))
+chainlength <- factor(chainlength, levels = chainlength)
+
+x1 <- c(rnorm(100000),rnorm(1000,sd=2),rnorm(400,mean=2,sd=2))
+x2 <- c(rnorm(100000),rnorm(1000,sd=2))
+TP=NULL
+FP=NULL
+#for(thresh in chainlength){
+# chainlength=chainlength
+ #TP1=c(0.95,0.93,0.87,0.71,0.48,0.15,0.04,0.031,0.018),
+ #TP2=c(0.95,0.93,0.87,0.71,0.48,0.15,0.04,0.031,0.018)
+#}
+
+WuNeur <- data.frame(
+ chainl=chainlength,
+ TP1=c(0.17,0.41,0.49,0.43),
+ Method = "WuNeur"
+)
+
+YangRTT <- data.frame(
+ chainl=chainlength,
+ TP1=c(0.04,0.08,0.19,0.29),
+ Method = "RWalk"
+)
+
+HuangRTT <- data.frame(
+ chainl=chainlength,
+ TP1=c(0.12,0.19,0.45,0.59),
+ Method = "C-Over"
+)
+
+
+
+
+AllNoevasion <- rbind(WuNeur,YangRTT,HuangRTT)
+
+pAllNoevasion <- ggplot(AllNoevasion,aes(x=chainl,y=TP1, group=Method))+
+ geom_line(size=0.7,aes(color=Method))+
+ geom_point(size=1,aes(shape=Method))+
+ theme_bw()+
+ labs(x="number of jumps",y="TP rate",title=paste("Detection rates on chain length dataset CL"))+
+ ylim(0,0.65)+
+ scale_x_discrete()
+pAllNoevasion
+
+@
+
+%\textcolor{red}{add comparison of results at different positions}
+
+Of the RTT-based methods, only C-Over was able to yield consistent detection rates under transfer delays. 
+Interestingly, if the C-Over method is applied to connections between $S_3$ and $S_4$ instead of between $S_4$ and the target, detection rates decrease in the same manner as for other RTT-based methods. This is not surprising as the underlying assumption for robustness for this approach relies on Echo-packets not being delayed.
+
+
+\section{Influence of network settings}\label{Sec:InfluenceNetwork}
+
+\begin{table}
+\centering
+\begin{tabular}{l|c|c|c|c|c|c}
+& Value & \multicolumn{5}{c}{TP deviation from average}\\ \hline
+ & &DeepCorr & WuNeur & RWalk& C-Over & WM \\ \hline
+\multirow{2}{*}{RTT} & 5ms& $-0.2\%$ & $+41.3\%$& $-42.3\%$ & $-36\%$ & $+0.03\%$ \\ \cline{2-7}
+ & 70ms & $-5.6\%$ & $-5.8\%$& $+35.1\%$ & $+51\%$& $-2.2\%$\\ \hline
+
+\multirow{2}{*}{Packet loss} & $0\%$ & $+1.2\%$& $+1.3\%$ & $+2.1\%$ & $+4.3\%$ & $+0.02\%$\\ \cline{2-7}
+ & $7\%$ & $-9.1\%$& $-1.1\%$ & $-3.1\%$ & $-7.3\%$ & $-9.7\%$\\ \hline %\hline
+
+%\footnotesize
+%\multirow{2}{*}{\textcolor{grey}{Bandwith}} &\textcolor{grey}{ $0\%$ & $+1.2\%$& $+1.3\%$ & $+2.1\%$ & $+4.3\%$ & $+0.02\%$}\\ \cline{2-7}
+%\textcolor{grey}{ & $7\%$ & $-9.1\%$& $-1.1\%$ & $-3.1\%$ & $-7.3\%$ & $-9.7\%$} \normalsize\\ \hline
+
+
+%\multirow{2}{*}{Bandwidth} & no limit& & & & \\ \cline{2-6}
+% & 50 kb/s & & & & \\ \hline s
+\end{tabular}
+\caption{Influence of network congestion on detection rates at a fixed FP rate of $0.4\%$. The given percentages are describing the change of the detection rate under the given congestion setting when compared to the overall average.}\label{Tab:Congestion}
+\end{table}
+
+Finally, we look at the effect of different nework settings. We only show methods that show significant effects and omitted bandwidth from the evaluation as different values do not seem to have any effect on detection rates\footnote{For all methods, the detection rate differences ($0.7\%-6.2\%$) were smaller across bandwidths than the overall detection rate errors ($2.6\%-6.5\%$).}.
+
+As visible in Table \ref{Tab:Congestion}, the three RTT-based methods show different responses to small/large average round-trip-times. While WuNeur, as expected from prior results, performs better in LAN settings, detection rates of the RWalk and C-Over methods are boosted by larger RTTs. All methods profit from lower packet losses.
 
 
  

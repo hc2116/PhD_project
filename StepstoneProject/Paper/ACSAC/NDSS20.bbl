@@ -90,11 +90,6 @@ Shou-Hsuan~Stephen Huang, Hongyang Zhang, and Michael Phay.
   Information Networking and Applications (AINA)}, pages 1043--1050. IEEE,
   2016.
 
-\bibitem{iacovazzi2016network}
-Alfonso Iacovazzi and Yuval Elovici.
-\newblock Network flow watermarking: A survey.
-\newblock {\em IEEE Communications Surveys \& Tutorials}, 19(1):512--530, 2016.
-
 \bibitem{eisac2017report}
 Robert~M. Lee, Michael~J. Assante, and Tim Conway.
 \newblock Analysis of the cyber attack onthe ukrainian power grid.
@@ -133,6 +128,13 @@ Stuart Staniford-Chen and L~Todd Heberlein.
 Colin Tankard.
 \newblock Advanced persistent threats and how to monitor and deter them.
 \newblock {\em Network security}, 2011(8):16--19, 2011.
+
+\bibitem{velan2016network}
+Petr Velan, Jana Medkov{\'a}, Tom{\'a}{\v{s}} Jirs{\'\i}k, and Pavel
+  {\v{C}}eleda.
+\newblock Network traffic characterisation using flow-based statistics.
+\newblock In {\em NOMS 2016-2016 IEEE/IFIP Network Operations and Management
+  Symposium}, pages 907--912. IEEE, 2016.
 
 \bibitem{wang2018research}
 Lixin Wang and Jianhua Yang.
