@@ -1,16 +1,8 @@
-\documentclass[runningheads]{llncs}
+\documentclass[runningheads,11pt]{llncs}
 \usepackage[cmex10]{amsmath}
 \usepackage{multirow}
 \usepackage{makecell}
-%\usepackage{tikz}
-%\usetikzlibrary{shapes}
-%\usepackage{amsmath}
-%\usepackage{xspace}
-%\newcommand{\A}{\ensuremath{\mathcal{A}}\xspace}
-%\newcommand{\B}{\ensuremath{\mathcal{B}}\xspace}
-%\newcommand\pa[1]{\ensuremath{\left(#1\right)}}
-%\usepackage{caption} 
-%\captionsetup[table]{skip=3pt}
+\usepackage[margin=1.4in]{geometry}
 
 \hyphenation{op-tical net-works semi-conduc-tor}
 
@@ -374,12 +366,14 @@ We include real-world traffic traces, taken from the \textbf{CAIDA} \textit{2018
 %\textcolor{red}{insert citation and description}.
 
 
-The CAIDA dataset provides suitable general background traffic. However, to sufficiently test for false-positive, we need to include benign traffic that has similar characteristics to the attack traffic and was generated in a similar network environment, which the CAIDA dataset not necessarily provides. For that, we created a set of interactive SSH-connections that are conducted directly between the client and the server instead of via a stepping-stone. We follow the same procedure as described in Section \ref{Sec:Simulating_interactive} with the same randomised network congestion settings as described in \ref{Sec:congestion}. We then proceed to pair connections by random.
+The CAIDA dataset provides suitable general background traffic. To sufficiently test for false-positive, we also need to include benign traffic that has similar characteristics to the attack traffic and was generated in a similar network environment. We created a set of interactive SSH-connections that communicate directly between the client and the server without a stepping-stone. We follow the same procedure as described in Section \ref{Sec:Simulating_interactive} with the same randomised network congestion settings as described in \ref{Sec:congestion}. We then proceed to pair connections by random.
 
-Additionally, we include a third type of benign traffic to test false-positives of methods aiming to spot chaff perturbations. Since we followed the findings of Padhye et al. \cite{padhye2010evading} to generate perturbations that resemble multimedia streams, we want to include actual multimedia streams. For that, we captured traffic from a server streaming video to a client. Video content is randomised and multiple values for the streaming quality are used.
-The server and client are hosted in the same virtual Docker network with randomised network congestion settings. Again, we pair generated connections by random. However, for each pair the direction of the transfer has to be either to or from the common host to either resemble a client requesting two videos or a server sending to videos.
+%Additionally, we include a third type of benign traffic . 
+Since we followed the findings of Padhye et al. \cite{padhye2010evading} to generate perturbations that resemble multimedia streams, we additionally want to include traffic actual multimedia streams to test false-positives of methods aiming to spot chaff perturbations. For that, we captured traffic from a Nginx-server streaming video to a client. Video content is generated randomly from a set of video files and multiple values for the streaming quality are used.
+%The server and client are hosted in the same virtual Docker network with randomised network congestion settings. 
+Again, we pair generated connections by random, but we ensure that the direction of the streams forms a chain. 
+%However, for each pair the direction of the transfer has to be either to or from the common host to either resemble a client requesting two videos or a server sending to videos.
 
-We merge the three datasets to create our benign background dataset, with the CAIDA part containing 60.000 connection pairs, while the other two each contain 20.000 connection pairs. 
 
 % according to the following ratios:
 
@@ -411,8 +405,11 @@ We merge the three datasets to create our benign background dataset, with the CA
 \end{table}
 
 
+We merge the three datasets to create our benign background dataset, with the CAIDA part containing 60.000 connection pairs, while the other two each contain 20.000 connection pairs. 
+The amount of SSH traffic and multimedia streams in this setting is inflated from a realistic setting in order to highlight the strengths and drawbacks of SSD methods. Nevertheless, SSH and especially video streaming represent a significant proportion of overall network traffic (up to $0.2\%$ of flows for SSH and up $3\%$ for video streaming according to Velan et al. in 2016 \cite{velan2016network}), and need to generate low false-positives for an SSD-method to be operational.
+Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 
-We are aware that the amount of interactive SSH traffic and multimedia streams in this setting is inflated from a realistic setting, but we believe that this setting is more suitable to highlight the strengths and drawbacks of SSD methods. In the evaluation, we will also state individual false positives for each of the three datasets to indicate which type of traffic present the biggest challenge for the selected SSD methods. Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
+%but we believe that this setting is more suitable to highlight the strengths and drawbacks of SSD methods. In the evaluation, we will also state individual false positives for each of the three datasets to indicate which type of traffic present the biggest challenge for the selected SSD methods. 
 
 %\begin{figure}
 %\begin{tikzpicture}[
@@ -530,7 +527,8 @@ All of the above presented methods classify individual connections or pairs of c
 
 \section{Selected SSD methods and Implementation}\label{Sec:Selection}
 
-The main contribution of this work is to offer a modern evaluation of the current state of SSD methods. A range of underlying techniques exist for SSD, and we try to include approaches from every area to create an informative overview and highlight strengths and weaknesses. 
+%The main contribution of this work is to offer a modern evaluation of the current state of SSD methods. 
+A range of underlying techniques exist for SSD, and we try to include approaches from every area to create an informative overview and highlight strengths and weaknesses. 
 
 We surveyed publications to create a collection of SSD methods. We started with the publications from surveys \cite{shullich2011survey,wang2018research}, and then added impactful recent publications found via Google Scholar\footnote{keywords ``connection'', ``correlation'' ``stepping-stone'', ``detection'', ``attack'', ``chaff perturbation''}.
 % from 2018 and 2011, mentioned in Section \ref{Sec:Relatedwork}. We expanded this collection via finding publications that cited these papers. Lastly, we found publications by browsing Google Scholar with different combinations of the keywords ``connection'', ``correlation'' ``stepping-stone'', ``detection'', ``attack'', ``chaff perturbation''. Our final collection contained 60 publications. 

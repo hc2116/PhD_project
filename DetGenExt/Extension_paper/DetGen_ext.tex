@@ -1,72 +1,25 @@
-\documentclass[sigconf]{acmart}
+%\documentclass[sigconf]{acmart}
+\documentclass{article}
+\usepackage[margin=1.1in]{geometry}
 
 \usepackage[]{graphicx}
 \usepackage[]{color}
-\makeatletter
-\def\maxwidth{ %
- \ifdim\Gin@nat@width>\linewidth
- \linewidth
- \else
- \Gin@nat@width
- \fi
-}
-\makeatother
-
-
 \usepackage{subfig}
-\usepackage{listings}
-\makeatletter
-\newenvironment{kframe}{%
- \def\at@end@of@kframe{}%
- \ifinner\ifhmode%
- \def\at@end@of@kframe{\end{minipage}}%
- \begin{minipage}{\columnwidth}%
- \fi\fi%
- \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
- \colorbox{shadecolor}{##1}\hskip-\fboxsep
- % There is no \\@totalrightmargin, so:
- \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
- \MakeFramed {\advance\hsize-\width
- \@totalleftmargin\z@ \linewidth\hsize
- \@setminipage}}%
- {\par\unskip\endMakeFramed%
- \at@end@of@kframe}
-\makeatother
+%\usepackage{listings}
 
-\usepackage{alltt}
+
+%\usepackage{alltt}
 \usepackage{multicol}
-\pagestyle{plain}
+%\pagestyle{plain}
 %\usepackage{amsmath}
 %\usepackage{caption} 
 %\captionsetup[table]{skip=3pt}
 
-\AtBeginDocument{%
- \providecommand\BibTeX{{%
- \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
-
-\setcopyright{acmcopyright}
-\copyrightyear{2019}
-\acmYear{2019}
-\acmDOI{10.1145/1122445.1122456}
-
-\acmConference[DYNAMICS '19]{DYNAMICS '19: DYnamic and Novel Advances in Machine Learning and Intelligent Cyber Security Workshop}{December 09--10, 2019}{San Juan, PR}
-\acmBooktitle{DYNAMICS '19: DYnamic and Novel Advances in Machine Learning and Intelligent Cyber Security Workshop,
- December 09--10, 2019, San Juan, PR}
-\acmPrice{15.00}
-\acmISBN{978-1-4503-9999-9/18/06}
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-
 \begin{document}
 
-\title{Dynamic Traffic Generation with Containerization for Machine Learning}
+\title{How to make traffic generation more dynamic using containerisation}
+%Dynamic Traffic Generation with Containerization for Machine Learning}
 
-
-
-\begin{abstract}
-
-\end{abstract}
-
-\keywords{Network security, datasets, machine learning, intrusion detection}
 
 \maketitle
 
@@ -97,6 +50,79 @@ This framework is openly accessible for researchers and allows for straightforwa
 \item We present a number of use-cases to demonstrate how the design of our framework can boost performance for ML-based network intrusion detection systems, in particular for false-positive analysis and effective model training.
 \end{enumerate}
 
+
+\subsection{Contributions}
+
+\subsubsection{Main contributions}
+
+
+\begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}}
+Contribution&How containers enable itt& VM-based & Real traffic capture &Other framework  \\ \hline
+
+Ground truth labels on granular activities & Isolated process in container, no additional events. Easy to separate even when containers & Background events (system activitiy, artifacts from earlier activity, ...), overlaying activities hard to separate & No knowledge about conducted activity & Technically possible, no attempts yet \\ \hline
+
+Flexibility to regenerate customized datasets & Launching a network of containers is easy, modularity allows finer control of fine-grain activity  & Difficult to regenerate data as set-up and launching of VM is less straightforward, might be addressed with MiniMega & No & Yes \\ \hline
+
+Easy to update, include new attacks & 
+Attack/victim containers remove dependence on vulnerabilities, can be hooked to existing scenarios with shared resources & Since attacks happen on the VM, it is very hard to compose a VM with enough vulnerabilities to include many attacks & - & Some work has been done to "replay" or artificially inject attacks  \\ \hline
+
+Reproducability & Container state the same after repeated launches, isolation means that other task have little effect on  & To a lesser degree, simultaneously conducted activity can affect each other & - & Depends \\ \hline
+
+Fidelity to real traffic heterogeneity, structural richness & Not a lot except that scripting and randomising different scenarios is slightly easier  & Potentially, but little attention has been paid & Yes & Not on a packet level yet \\ \hline \hline
+
+
+Data on attacks on container isolation & In need of existing scenarios for background data & No & No & No \\ \hline
+
+
+
+
+
+
+
+\end{tabular}
+
+\begin{enumerate}
+\item Fidelity to real traffic
+\begin{itemize}
+	\item Real traffic, consistent (not invalid after Cordero et al.)
+	\item Structural richness on packet level (in contrast to )
+		Induced due to the different levels at which traffic variation is introduced
+	\item Temporal activity levels? (actually not something we improve)
+			We can look at test for realism of distributions (IP discovery, etc)
+\end{itemize}
+\item Ground truth labels through containerisation
+\begin{itemize}
+	\item Ground truth for attack behaviour, able to label 100% of the generated events to specific activities
+	\item Labels for different types of behaviour, reproducable
+		useful for evaluation of model failures, what kind of behaviours cause failure
+			applies to a large range of models
+		also useful for evaluation of privacy infiltration methods, more niche
+	\item Ground truth for label matching between traffic and program logs/sys logs
+		useful for models that try to correlate events for detection
+			this is more niche, but potentially because of the lack of data
+\end{itemize}
+\item Extensive capture
+\begin{itemize}
+	\item Packet availability
+	\item Syslogs and for multiple scenarios program logs
+	\item Potentially host logs? Depends if we want to cater to cloud computing applicability
+\end{itemize}
+\item Better for ML-based methods
+\begin{itemize}
+	\item Flexibility 
+		"The models should allow researchers to generate different classes of data, such as augmenting the amount of data representing sparse events, or choose different topology"
+	\item Automisation of variable datasets through randomisation, automatically create structurally different datasets, but faithful to realism
+		Especially novel in terms of network topologies, should emphasise this in use-cases
+	\item Structural richness 
+			allows for learning deeper and more generalisable knowledge in models, less prone to overfitting
+	\item Scalability
+		"Train on as much data as necessary"
+\end{itemize}
+
+\end{enumerate}
+
+
+
 \subsection{Outline}
 
 %The remainder of the paper is organized as follows. Section \ref{Sec:background} discusses existing NIDS datasets and the problems that arise during their usage as well as background information about network traffic data formats and virtualization methods. The section concludes with a set of requirements we propose to improve the training and evaluation of machine-learning-based methods. Section \ref{Sec:Design} describes the general design of our framework, and how it improves on the discussed problems in existing datasets. We also discuss a specific example in detail. Section \ref{Sec:Experiments} discusses several experiments to validate the improvements and utility our framework provides. 
@@ -125,12 +151,107 @@ A brief description on network flow and packets, as well as system and program l
 
 \subsection{Related work and existing datasets}
 
-A similar description on existing frameworks and datasets as in the existing paper, with a slightly higher focus on existing testbeds and existing container tools.
-\dots \dots
+%A similar description on existing frameworks and datasets as in the existing paper, with a slightly higher focus on existing testbeds and existing container tools.
+%\dots \dots
+%\dots \dots
+%\dots \dots
 
-\dots \dots
+\subsubsection{Datasets}
 
-\dots \dots
+real:
+Los Alamos National Laboratory (LANL)
+University of Granada (UGR)
+
+SANTA
+Only flows, manually labelled
+
+
+CAIDA 2016
+
+MAWI 2000
+
+LITNET
+
+synthetic:
+
+CICIDS-17
+UNSB-16
+
+CIDDS-001
+Python scripts are used for emulating benign user behaviour like browsing the web, sending and receiving emails, as well as exchanging files. To ensure as realistic user behaviour as possible, clients perform their activities with respect to an individual working schedule which considers working hours and lunch breaks.
+
+NGIDS-DS
+Uses IXIA Perfect Storm, also collects host logs
+
+
+
+frameworks:
+
+FLAME
+ID2T
+Use real traffic as input to add attack traffic
+GEN-ESIDS
+HTTP attack traffic after user-based attack description
+NDSec-1 - Also overlaying normal data with attack traffic
+
+Moirai
+
+
+A flow trace generator using graph-based traffic classification techniques
+extractstraffictemplatesfromrealnetworktraf-fic.Then,theirgeneratorusesthesetraffictemplatesinordertocreatenewsyntheticflow-basednetworktraffic
+
+INSECS-DCS
+
+
+
+
+Flow-based network traffic generation using Generative Adversarial Networks
+DoppelGANger
+
+weak:
+PACGAN
+PCAPGAN
+SynGAN
+
+
+surveys:
+A Taxonomy of Network Threats and the Effect of Current Datasets on Intrusion Detection Systems
+
+On the generation of synthetic attacks
+
+
+Docker data generation 
+
+weak on activity generation, only system calls:
+A dataset generator for next generation system call host intrusion detection systems
+Standardized container virtualization approach for collecting host intrusion detection data
+
+
+Notes:
+However, currently available datasets lackreal-life characteristics of recent network traffic. ... IDS is unableto adapt to constant changes in networks (i.e. new nodes,changing traffic loads, changing topology, etc.). Networks areconstantly changing, for this reason depending solely on olddatasets doesn’t help the advancement of IDS(Taxonomy ...)
+
+
+%To evaluate their ability to model the behaviour of a network and to identify malicious activity and network intrusions, new methods have to be tested using existing datasets of network traffic. 
+
+%This network should ideally contain realistic and representative benign network traffic as well as a variety of different network intrusions. 
+
+
+Network traffic contains a vast amount of information about a network and its users which makes it  notoriously difficult to release a comprehensive dataset without infringing the privacy and security rights of the network users \cite{sperotto2009labeled}. In addition, the identification of malicious traffic in network traces is not straightforward and often requires a significant amount of manual labelling work. Currently, only \textcolor{red}{four} intrusion detection datasets exist that contain traffic from real networks, all of which are \textcolor{red}{presented} as anomimised network flows . 
+
+\textcolor{red}{Rework!}The most recent and notable real-world datasets have been released from the Los Alamos National Laboratory (LANL) in 2015 and 2017 \cite{akent-2015-enterprise-data, turcotte17}, and the University of Granada (UGR) in 2016 \cite{macia2018ugr}. Both datasets contain network flow traffic data from a large number of hosts collected over multiple months, giving an accurate representation of medium- to large-scale structures in benign traffic. However, the amount of attack data is small and insufficient for accurate detection rate estimation. Furthermore, packet-level data is not available for both datasets. 
+
+Other real-world datasets, such as CAIDA 2016 \cite{walsworth2015caida} or MAWI 2000 \cite{sony2000traffic}, provide packet headers, but are unstructured and contain no labeled attack data at all.
+
+To improve the lack of attack traffic in NIDS datasets, several artificially created datasets have been proposed. For this, a testbed of virtual machines is usually hosted in an enclosed environment to prevent any malicious code from spreading to other machines on other networks. To generate attack traffic, these machines are then subject to a selection of attack carried out by other machines in the environment. Benign traffic is generated using commercial traffic generators such as the \emph{IXIA PerfectStorm tool}, or by scripting a selection of tasks for each machine. Synthetic datasets cover a smaller timeframe and contain traffic from a small number of hosts. Notable examples are the CIC-IDS 2017 dataset from the Canadian Institute for Cybersecurity \cite{sharafaldin2018towards}, %the CTU-2013 dataset from the \emph{Stratosphere Laboratory} in Prague \cite{noauthor_ctu-13_nodate},
+and the UNSW-NB 2015 dataset from the University of New South Wales \cite{moustafa_unsw-nb15:_2015}. Both datasets contain traffic from a variety of attacks, and are available as packet headers or as network flows with additional features crafted for machine-learning. While the benign traffic for the CIC-IDS 2017 data was generated using scripted tasks from a number of host profiles, the benign data for the UNSW-NB 2015 data is a mixture of captured real traffic from another subnet and traffic generated using a commercial traffic replicator. 
+
+
+%We omitted the synthetic KDD-Cup 1999 and the DARPA 1998 datasets along with their derivates from the discussion as they are well-known to be outdated and contain unrealistic benign traffic, artificially high benign/attack data ratios, and artifacts stemming from communication simulations \cite{tavallaee2009detailed,mchugh2000testing}, problems which have been addressed by most modern datasets.
+
+Container networks have recently been adopted to conduct traffic generation experiments, such by Fujdiak et al. \cite{fujdiak2018ip} who use containerized web servers to collect DoS-traffic. Furthermore, significant effort has been put into the creation of large-scale virtualization frameworks to provide automatized network testbeds \cite{crussell2015minimega, badiger2018violet}.
+
+
+
 
 \subsubsection{Problems in modern datasets}\label{Sec:problems}
 
@@ -474,7 +595,7 @@ I think the best use-case is to showcase the process of adding a new type of att
 
 
 \subsection{Simple use-case for the microservice mode?}
-
+This use-case depends a lot on the state of the framework, but we could in principle show the benefits of the framework for the recently published model in "AppMine: Behavioral Analytics for Web Application Vulnerability Detection" on a more extensive dataset, since they only had very limited data available. 
 \section{Conclusions}\label{Sec:Conclusion}
 
 
@@ -496,47 +617,11 @@ I think the best use-case is to showcase the process of adding a new type of att
 
 %Full funding sources after currently blinded.
 
-\bibliographystyle{ACM-Reference-Format}
+\bibliographystyle{abbrv}
  
 \bibliography{DetGen_ext}
 
 %\appendix
 
-%\section{Protocol Coverage}
-
-%We initially investigated the protocols and applications present in existing network traffic datasets. Our analysis includes CIC-IDS 2017 \cite{sharafaldin2018toward}, UNSW-NB15 \cite{moustafa2015unsw}, ICSX Botnet \cite{beigi2014towards} and Mawi \cite{fontugne2010mawilab}. We chose these datasets as they provide \texttt{.pcap}-files of their network traffic which enables us to more easily see what protocols are present. To do this, we used the Bro IDS tool to generate log files, listing the results in table \ref{tab:results-bro}.
-
-%The protocols listed in table \ref{tab:results-bro} make up over 90\% of the benign traffic in these datasets. Moreover, although the ratio of protocols in datasets can differ significantly, we see some patterns: namely, protocols associated with general browser usage, such as HTTP, SSL, DNS, are the most common in each dataset. 
-
-%\begin{table}[ht!]
-%\begin{center}
-%\begin{small}
-%\begin{sc}
-%\begin{tabular}{ccccc}
-%\hline
-%Protocol & UNSW-NB15 & ISCX & CIC-IDS 2017 & Mawi\\
-%\hline
-%HTTP & 196195 & 2372 & 276405 & 156179 \\
-%SSL & 540 & 141 & 285760 & 591551 \\
-%DNS & 372748 & 200009 & 1820105 & 1581858 \\
-%X509 & 459 & 331 & 2758590 & Unknown \\
-%FTP & 111685 & 1989 & 5540 & 278 \\
-%SSH & 31320 & 434 & 5600 & 5503 \\
-%IRC & 202 & 27 & 0 & Unknown \\
-%SMTP & 44455 & 125 & 0 & 4601 \\
-%\hline
-%\end{tabular}
-%\end{sc}
-%\end{small}
-%\vskip -2mm
-%\caption{Bro Log Flow Count}
-%\label{tab:results-bro}
-%\end{center}
-%%\vskip -4mm
-%\end{table}
-
-
-
-%We could base the ratios of protocols in our own dataset off of those found in an existing dataset where the traffic has been artificially generated. However, this would be problematic. In the case of CIC-IDS 2017, some protocols that make up a substantial amount of real-world traffic are glaringly omitted, such as BitTorrent or video streaming protocols. In contrast, although UNSW-NB15 contains a better range of protocols, only a small percentage of their web traffic is transmitted over SSL which is unrepresentative of real-world traffic. Furthermore, in both these datasets, it appears that a non-negligible amount of traffic is the result of remote desktop protocols being used to interact with the virtual machines generating data, such as X11, VNC and RDP, which we consider to be unwanted noise. Instead, we opt to use these datasets as a rough guideline for constructing datasets but not closely following any one in particular.
 
 \end{document}
