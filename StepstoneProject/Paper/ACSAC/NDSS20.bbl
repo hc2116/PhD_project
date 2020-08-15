@@ -27,6 +27,12 @@ Luis Ayala.
 \newblock In {\em Cybersecurity for Hospitals and Healthcare Facilities}, pages
   19--37. Springer, 2016.
 
+\bibitem{clausen2019traffic}
+Henry Clausen, Robert Flood, and David Aspinall.
+\newblock Traffic generation using containerization for machine learning.
+\newblock In {\em Proceedings of the Dynamic and Novel Advances in Machine
+  Learning and Intelligent Cyber Security Workshop}. ACM, 2019.
+
 \bibitem{coskun2007efficient}
 Baris Coskun and Nasir Memon.
 \newblock Efficient detection of delay-constrained relay nodes.
@@ -58,6 +64,11 @@ David~L Donoho, Ana~Georgina Flesia, Umesh Shankar, Vern Paxson, Jason Coit,
   interactive streams by exploiting maximum tolerable delay.
 \newblock In {\em International Workshop on Recent Advances in Intrusion
   Detection}, pages 17--35. Springer, 2002.
+
+\bibitem{enisa2017baseline}
+EU~ENISA.
+\newblock Baseline security recommendations for iot in the context of critical
+  information infrastructures, 2017.
 
 \bibitem{pivoting2015}
 Gordon Fraser.

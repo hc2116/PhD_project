@@ -174,16 +174,17 @@ The advantages of containers over virtual machines enable us to easily control, 
 
 We want to capture data not only from one interaction in a fixed stepping-stone chain, but from many interactions and chains with different settings. For that, we run multiple simulations, with each simulation establishing a stepping-stone chain and controlling the interactions between host $O$ and host $T$. %A simulation and the corresponding traffic capture is in a capture-script. 
 
-A simulation begins with the start-up of the necessary containers and ends with their takedown. We simulate host $O$, host $T$, and host $S_1,\dots,S_n$ with SSH-daemon containers. To establish a connection chain, we connect these containers via SSH-tunnels, with the first tunnel forwarding a port from host $O$ to host $S_1$, which is then forwarded to host $S_2$ by the second tunnel etc. As mentioned by Gordon Fraser \cite{pivoting2015}, this is one of the most common pivoting methods for attackers. Fig. \ref{Fig:Packetway} depicts a packet transfer via an exemplary chain. 
+A simulation begins with the start-up of the necessary containers and ends with their takedown. We simulate host $O$, host $T$, and host $S_1,\dots,S_n$ with SSH-daemon containers. To establish a connection chain, we connect these containers via SSH-tunnels, with the first tunnel forwarding a port from host $O$ to host $S_1$, which is then forwarded to host $S_2$ by the second tunnel etc. As mentioned by Gordon Fraser \cite{pivoting2015}, this is one of the most common pivoting methods for attackers. Traffic is captured both at host $T$ and host $S_n$, which acts as the final stepping-stone in the chain.
+Fig. \ref{Fig:Packetway} depicts a packet transfer via an exemplary chain. 
 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\textwidth]{images/Packetway.png}
+\includegraphics[width=1\textwidth]{images/Packetway_2.png}
 \caption{Depiction of the way a command is packetised, encrypted, and travels through the different stages of the stepping-stone chain via SSH-tunnels.}\label{Fig:Packetway}
 \end{figure}
 
-Traffic is captured both at host $T$ and host $S_n$, which acts as the final stepping-stone in the chain.% and is most thus likely the target of a detection algorithm. 
+.% and is most thus likely the target of a detection algorithm. 
 
 
 
@@ -231,37 +232,38 @@ We store the drawn parameters along with the collected traffic for each simulati
 
 \subsubsection{Adding transfer delays}\label{Sec:delays_desc}
 
-To increase detection difficulty, we add random transfer delays to individual packets forwarded by stepping stone hosts. This method, often called \textit{jittering}, can destroy time-based watermarks in packet flows and help decrease observable correlation between two connections. 
-
-We add transfer delays to forward packets again by using NetEm. We draw delays for departing packets on a hosts from a uniform distribution, covering the interval $[0,\delta_D]$. This particular choice has been suggested by Padhye et al. \cite{padhye2010evading} in order to mimic the interarrival distributions of streaming services. The value of $\delta_D$ is fixed before each simulation and can be varied to allow for different degrees of packet jittering. 
+To simulate evasive behaviour, we add transfer delays to forwarded packets. This method, often called \textit{jittering}, can destroy time-based watermarks in packet flows and help decrease observable correlation between two connections. The delays are added using NetEm. We draw delays from a uniform distribution, covering the interval $[0,\delta_D]$. This particular choice has been suggested by Padhye et al. \cite{padhye2010evading} in order to mimic the interarrival distributions of streaming services. The value of $\delta_D$ is fixed before each simulation and can be varied to allow for different degrees of packet jittering.
 
 %\textcolor{red}{insert citation} suggested to use significantly longer packet delays of several seconds to request packets and their answers in order to decrease temporal correlation between active periods in two connections.
-As pointed out by Donoho et al. \cite{donoho2002multiscale}, excessively long delays often lead to difficulties in the TCP-protocol due to the significant increase of packet reordering and response time-outs. We set the maximum value for $\delta_D$ at $1500$ ms. As we will see in Section \ref{Sec:Results}, this is enough to render watermarking methods obsolete while flow decorrelation can be achieved more effectively by using chaff perturbations. 
+As pointed out by Donoho et al. \cite{donoho2002multiscale}, excessively long delays often lead to difficulties in the TCP-protocol due to the significant increase of packet reordering and response time-outs. We explore values for $\delta_D$ up to $1500$ ms, with values above leading to unstable communication. Results in Section \ref{Sec:Results} show that this is enough to render watermarking methods and most flow correlation methods obsolete.% while flow decorrelation can be achieved more effectively by using chaff perturbations.
 
 
 
 \subsubsection{Adding chaff perturbation}\label{Sec:chaff_desc}
 
-In addition to transfer delays, we insert chaff packets to individual connections in the chain to increase detection difficulty. These chaff packets do not contain actual information and act as noise to decorrelate individual connections in the chain. To add and filter packets in a connection, we open additional ports in each SSH-tunnel that are however not forwarded through the entire chain. This means that each chaff packet only appears in the connection it was inserted to, making the chaff perturbation in two different connections independent of each other. 
-We then use a NetCat client containers to send and receive packets on the additional ports in both directions. %Figure \textcolor{red}{...} depicts this setup. 
+We insert chaff packets to individual connections in the chain using a Netcat client. The inserted chaff packets do not contain actual information and act as noise to decorrelate individual connections in the chain. To add and filter packets in a connection, we open additional ports in each SSH-tunnel that are however not forwarded through the entire chain. %This means that each chaff packet only appears in the connection it was inserted to, making the chaff perturbation in two different connections independent of each other. 
+%We then use a NetCat client containers to send and receive packets on the additional ports in both directions. %Figure \textcolor{red}{...} depicts this setup. 
 
 
 
 %\textcolor{red}{add reference} to send data to both ports from either direction and collect it at the other side. 
 Again,  Padhye et al. \cite{padhye2010evading} suggest to generate chaff in a way that mimics the flow characteristics of streaming services in order to both spread the added perturbations evenly across the connection and increase the difficulty of detecting the perturbation itself.
-Therefore, the size of the transferred data is drawn from a truncated Lognormal-distribution with mean $\mu_C$ to mimic video-streaming traffic. Similarly, packets are sent in intervals of random length $\delta_c$ drawn from a uniform distribution that covers the interval $[\delta_c/2,\delta_c]$ to mimic a relatively constant packet flow, typical for video-streaming. By adjusting $\delta_C$, we can control the amount of chaff sent. 
+For this, packet sizes Are drawn from a truncated Lognormal-distribution with mean $\mu_C$, while transmission intervals are drawn from a uniform distribution that covers the interval $[\delta_c/2,\delta_c]$ to mimic a relatively constant packet flow. By adjusting $\delta_C$, we can control the amount of chaff sent. 
 
 
 \subsubsection{Repacketisation and Flow splitting/merging}
 
-One benefit of using SSH-tunnels from an attackers perspective is that packets are not simply forwarded, but a tunnel acts as an independent encrypted TCP-connection along with independent packet confirmations and repacketisation.
-None of the methods we encountered are currently capable of dealing with flow splitting or merging. We therefore did not implement this tactic as the results would be uninformative.
+%From an attackers perspective, a benefit of using SSH-tunnels is that packets are not simply forwarded, but a tunnel acts as an independent encrypted TCP-connection along with independent packet confirmations and repacketisation.
+
+By design, SSH-tunnels perform repacketisation along with re-encryption and independent packet confirmations.
+Flow splitting is currently not addressed by existing methods, which is why we did not include this tactic in our implementation.
+%None of the methods we encountered are currently capable of dealing with flow splitting or merging. We therefore did not implement this tactic as the results would be uninformative.
 
 Fig. \ref{Fig:Simulation_setup} depicts the interplay of the different containers in our simulation.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{images/Docker_framework.png}
+\includegraphics[width=0.85\textwidth]{images/Docker_framework.png}
 \caption{Depiction the simulation setup for each host in the chain.}\label{Fig:Simulation_setup}
 \end{figure}
 
@@ -302,21 +304,22 @@ Fig. \ref{Fig:Simulation_setup} depicts the interplay of the different container
 
 \section{Evaluation data}\label{Sec:Evaldata}
 
-The quality of both the stepping-stone and background data is crucial for a fair evaluation. 
+%The quality of both the stepping-stone and background data is crucial for a fair evaluation. 
 
-First of all, we want to look at a variety of attack scenarios to highlight the strengths and weaknesses of different approaches. We created three main attack datasets that contain different forms and amounts of evasive behaviour, and a smaller dataset to highlight the influence of different network settings and chain lengths. 
-To present a valuable false positive test, we provide three datasets with benign background traffic. The first contains general real-world traffic, while the second and third contain benign data that bears similar traffic characteristics as the attack data. Furthermore, we need to generate sufficient data to effectively train some of the included methods. 
+We want to look at a variety of attack scenarios to highlight the strengths and weaknesses of different SSD approaches. We created three main attack datasets that contain different forms and amounts of evasive behaviour, and a smaller dataset to highlight the influence of different chain lengths. 
 
-We now describe our data assembly in more detail.
+To present a valuable false positive test, we provide three datasets with benign background traffic. The first contains general real-world traffic, while the second and third contain benign data that bears similar traffic characteristics as the generated attack data. %Furthermore, we need to generate sufficient data to effectively train some of the included methods. 
+
+%We now describe our data assembly in more detail.
 
 \subsection{Stepping-stone data}
 
-We generate stepping-stone data following the steps described in Section \ref{Sec:Datasetcreation}. We create our main datasets using a chain of four stepping-stones $S_1, S_2, S_3$, and $S_4$. We subdivide into three datasets according to the two discussed evasion tactics, transfer delays and chaff perturbations. We first capture data without either of these methods in \textbf{dataset BA} (\textbf{b}aseline \textbf{a}ttack). We then capture data once with added transfer delays with varying $\delta_D$ to control delays in \textbf{dataset DA} (\textbf{d}elay \textbf{a}ttack), and once with added chaff perturbations of varying $\delta_C$ in \textbf{dataset CA} (\textbf{c}haff \textbf{a}ttack). Each dataset contains 30.000 connection pairs. 
+We generate stepping-stone data using the setup described in Section \ref{Sec:Datasetcreation}. We create our main datasets using a chain of four stepping-stones $S_1, S_2, S_3$, and $S_4$. We subdivide into three datasets: We first capture data without transfer delays and chaff perturbations in \textbf{dataset BA} (\textbf{b}aseline \textbf{a}ttack). We then capture data once with added transfer delays with varying $\delta_D$ to control delays in \textbf{dataset DA} (\textbf{d}elay \textbf{a}ttack), and once with added chaff perturbations of varying $\delta_C$ in \textbf{dataset CA} (\textbf{c}haff \textbf{a}ttack). Each dataset contains 30.000 connection pairs.
 %Lastly, we capture data with delays and chaff added simultaneously, with both varying $\delta_D$ and $\delta_C$.
 
-We furthermore create a smaller \textbf{dataset CL} (\textbf{c}hain \textbf{l}ength) with differing numbers of stepping-stones (1,3,5, and 8 jumps) without evasive tactics to evaluate this effect on RTT-based methods. For every jump, we generated 1.000 connection pairs. 
+We furthermore create a smaller \textbf{dataset CL} (\textbf{c}hain \textbf{l}ength) with differing numbers of stepping-stones (1,3,5, and 8 jumps) without transfer delays and chaff perturbations to evaluate this effect on RTT-based methods. For every jump, we generated 1.000 connection pairs.
 
-For all datasets, we randomise and record network settings. In Section \ref{Sec:InfluenceNetwork}, we examine the effect of extreme network settings on detection rates. 
+For all datasets, we randomise network settings. In Section \ref{Sec:InfluenceNetwork}, we examine the effect of extreme network settings on detection rates. 
 %Table \ref{Tab:MalData} provides a summary of the connection pair numbers in each part of the dataset.
 %\begin{table}
 %\centering
@@ -360,9 +363,9 @@ We include real-world traffic traces, taken from the \textbf{CAIDA} \textit{2018
 The CAIDA dataset provides suitable general background traffic. To sufficiently test for false-positive, we also need to include benign traffic that has similar characteristics to the attack traffic and was generated in a similar network environment. We created a set of interactive SSH-connections that communicate directly between the client and the server without a stepping-stone. We follow the same procedure as described in Section \ref{Sec:Simulating_interactive} with the same randomised network congestion settings as described in \ref{Sec:congestion}. We then proceed to pair connections by random.
 
 %Additionally, we include a third type of benign traffic . 
-Since we followed the findings of Padhye et al. \cite{padhye2010evading} to generate perturbations that resemble multimedia streams, we additionally want to include traffic actual multimedia streams to test false-positives of methods aiming to spot chaff perturbations. For that, we captured traffic from a Nginx-server streaming video to a client. Video content is generated randomly from a set of video files and multiple values for the streaming quality are used.
+Since we generate perturbations with multimedia streams characteristics, we additionally want to include traffic actual multimedia stream traffic to test for false-positives. For that, we captured traffic from a Nginx-server streaming video to a client. Video content is generated randomly from a set of video files and multiple values for the streaming quality are used.
 %The server and client are hosted in the same virtual Docker network with randomised network congestion settings. 
-Again, we pair generated connections by random, but we ensure that the direction of the streams forms a chain. 
+%Again, we pair connections by random, but we ensure that the direction of the streams forms a chain. 
 %However, for each pair the direction of the transfer has to be either to or from the common host to either resemble a client requesting two videos or a server sending to videos.
 
 
@@ -390,14 +393,14 @@ Again, we pair generated connections by random, but we ensure that the direction
 						& set CL & 40,000& \makecell[l]{Data from chains of different\\lengths,  no evasion tactics} \\ \hline
 \multirow{5}{*}{Benign data}&CAIDA & 60,000& General background data \\ \cline{2-4}
 							&SSH & 20,000& \makecell[l]{Background data similar to\\attack commands} \\ \cline{2-4}
-							&Multimedia & 20,000& \makecell[l]{Background data similar to\\chaff perturbations} \\ \hline
+							&Multim.& 20,000& \makecell[l]{Background data similar to\\chaff perturbations} \\ \hline
 \end{tabular}
 \caption{Summary of different components in our evaluation data.}\label{Fig:Datasim}
 \end{table}
 
 
 We merge the three datasets to create our benign background dataset, with the CAIDA part containing 60.000 connection pairs, while the other two each contain 20.000 connection pairs. 
-The amount of SSH traffic and multimedia streams in this setting is inflated from a realistic setting in order to highlight the strengths and drawbacks of SSD methods. Nevertheless, SSH and especially video streaming represent a significant proportion of overall network traffic (up to $0.2\%$ of flows for SSH and up $3\%$ for video streaming according to Velan et al. in 2016 \cite{velan2016network}), and need to generate low false-positives for an SSD-method to be operational.
+The amount of SSH traffic and multimedia streams in this setting is inflated from a realistic setting in order to highlight the strengths and drawbacks of SSD methods. Nevertheless, SSH and especially video streaming represent a significant proportion of overall network traffic (up to $0.2\%$ of flows for SSH and up $3\%$ for video streaming according to Velan et al. in 2016 \cite{velan2016network}), and need to generate low false-positives for an SSD-method to be operational. In Section \ref{Sec:FPana}, we analyse false-positives for each dataset individually.
 Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 
 %but we believe that this setting is more suitable to highlight the strengths and drawbacks of SSD methods. In the evaluation, we will also state individual false positives for each of the three datasets to indicate which type of traffic present the biggest challenge for the selected SSD methods. 
@@ -503,17 +506,19 @@ Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 \subsection{Data preparation}
 
 
-We group packets to connections according to the usual 5-tuple consisting of \{Src. IP, Dst. IP, Src. port, Dst. port, IP protocol\}. We select and pair TCP-connections at random to make %100.000 
+We collect packets to connections according to the usual 5-tuple consisting of \{Src. IP, Dst. IP, Src. port, Dst. port, IP protocol\}. We select and pair TCP-connections at random to make %100.000 
 connection pairs. 
 
-Different approaches require different amounts of packets to make predictions. To create a fair playing field, we only look at connections that exchange more than 1500 packets and exclude shorter connections from both the background data. This number seems like a suitable minimal limit for a successful interactive stepping-stone chain as all of the selected methods are supposed to make successful detection with less packets, and there were no connections with less packets in the stepping-stone dataset. %\textcolor{red}{add validation about how this is sufficient for all approaches?}. 
-The first 1500 packets are then passed to each SSD method to make a prediction.
+%Different approaches require different amounts of packets to make predictions. 
+To create a fair playing field for the selected SSD methods, we only look at connections that exchange more than 1500 packets and exclude shorter connections from both the background data. This number seems like a suitable minimal limit for a successful interactive stepping-stone chain as all of the selected methods are supposed to make successful detection with less packets, and there were no connections with less packets in the stepping-stone dataset. %\textcolor{red}{add validation about how this is sufficient for all approaches?}.
+%The first 1500 packets are then passed to each SSD method to make a prediction.
 
-The initialisation of the SSH-tunnels usually follows a distinct pattern that can be learned and consequently boost detection rates for ML-based methods. Since this pattern is not necessarily representative of actual stepping-stone behaviour, we remove the first thirty packets of all captured connections. If necessary, we also remove the last thirty packets to avoid the same issue for connection closures. 
+The initialisation and takedown of the SSH-tunnels usually follows a distinct pattern that can be learned and consequently boost detection rates for ML-based methods. Since this pattern is not necessarily representative of actual stepping-stone behaviour, we remove the first and last thirty packets in the attack connections. %If necessary, we also remove the last thirty packets to avoid the same issue for connection closures. 
 
 %\subsection{Evaluation methods}
 
-All of the above presented methods classify individual connections or pairs of connections as malicious or benign. True stepping stone connections are rare compared to benign ones, making their detection an imbalanced classification problem. An appropriate measure to evaluate SSD methods are false positive and false negative rates as well as the \textit{Area-under-ROC-curve} (AUC) for threshold-based methods.
+%All of the above presented methods classify individual connections or pairs of connections as malicious or benign. 
+True stepping stone connections are rare compared to benign ones, making their detection an imbalanced classification problem. An appropriate evaluation measure for imbalanced data are false positive and false negative rates as well as the \textit{Area-under-ROC-curve} (AUC) for threshold-based methods.
 
 
 \section{Selected SSD methods and Implementation}\label{Sec:Selection}
@@ -686,12 +691,10 @@ The authors state $100\%$ TP with $0.5\%$ FP with resistance against timing pert
 
 In order to evaluate the above selected method on our generated data, we had to reimplement the algorithms according to the steps and design described in the corresponding publications. We implemented all methods in Python, and PyTorch if necessary. %To overcome unclear points or adjust to the new setting, we had to make a small number of judgement calls, the most important of which we mention here for completeness:
 
-For all methods, we either varied the particular separation threshold AUC calculation, or estimated it to yield a particular false positive rate across all methods. For both anomaly-based methods, we had to estimate multiple thresholds, for which we found the optimal combination via grid-search. %We found appropriate values that yield the required FP rate and maximise the detection rate over all datasets via grid-search optimisation.
-
-
+For all methods, we either varied the classification threshold for AUC calculation, or estimated it to yield a specific false positive rate across all methods. For anomaly-based methods, we had to estimate multiple thresholds, for which we found the optimal combination via grid-search. %We found appropriate values that yield the required FP rate and maximise the detection rate over all datasets via grid-search optimisation.
 For the WM approach, we set the quantization step size $s=0.4$s, and the redundancy number $m=11$ to consistently embed the watermark in the first 1500 packets. These values were also used by the authors.
 
-Both DeepCorr and WuNeur are machine-learning based algorithms, which need to be trained on appropriate training data before the evaluation. Since DeepCorr is a large model and requires a lot of training data, we train it using $80$\% of the evaluation data with the proportions described in Table \ref{Fig:Datasim}. WuNeur is sensitive to differing chain lengths, which is why we use 1000 connection pairs from each dataset BA, DA, CA, and CL, as well as 6000 connection pairs from the training data. %We train each method for 500 epochs. 
+Both DeepCorr and WuNeur are machine-learning based algorithms that require training. Since DeepCorr is a large model and requires a lot of training data, we train it using $80$\% of the evaluation data. WuNeur is sensitive to differing chain lengths, which is why we use 1000 connection pairs from each dataset BA, DA, CA, and CL, as well as 6000 connection pairs from the training data. %We train each method for 500 epochs. 
 
 
 %\textcolor{red}{add short description how we trained approaches}
@@ -829,16 +832,15 @@ print(tabAUC,floating=FALSE)
 \caption{AUC-scores for different methods on stepping-stone data without evasive tactics.}\label{Tab:dfAUC}
 \end{table}
 
-First, we look at the detection rates for traffic from stepping-stones that did not use any evasive tactics, i.e. $S_1,\dots,S_4$ are only forwarding the commands and responses. The successful detection of this tytpe of behaviour with low false-positives should be the minimum requirement for any of the selected methods except for the anomaly-based approaches. Since these aim to detect evasive behaviour, we exclude them from this analysis. 
+First, we look at the detection rates for traffic from stepping-stones that did not use any evasive tactics, i.e. $S_1,\dots,S_4$ are only forwarding commands and responses. The successful detection of this activity with low false-positives should be the minimum requirement for any SSD method. Since anomaly-based approaches aim to only detect evasive behaviour, we exclude them from this analysis. 
 
-To get clear picture of the capabilities of the selected methods, we look at the ROC-curve in Fig. \ref{fig:Noevasion_4nodes}, which plots the true positive rate against the false positive rate for various detection threshold settings. Table \ref{Tab:dfAUC} depicts the overall AUC-scores.
+Fig. \ref{fig:Noevasion_4nodes} depicts the calculated ROC-curves, which plot the true positive rate against the false positive rate for varying detection thresholds. Table \ref{Tab:dfAUC} depicts the overall AUC-scores.
 
 
 %\textcolor{red}{insert NN approaches trained without noise?}
 
-Unsurprisingly, the watermarking method achieves already high detection results without any false-positives. Both the PContext and DeepCorr models start to yield good detection results of around $80\%$ at a FP rate lower than $0.1\%$, with the PContext method slightly outpacing the DeepCorr method. 
-
-RTT-based methods seem to not perform as well compared to the other included methods, however the observed ROC curve seems to be in general in agreement of the stated detection rates. %\textcolor{red}{check this again}.
+Unsurprisingly, the watermarking method achieves high detection results with very low false-positives. Both the PContext and DeepCorr models start to yield good detection results of around $80\%$ at a FP rate lower than $0.1\%$, with the PContext method slightly outpacing the DeepCorr method. 
+RTT-based methods seem to not perform as well compared to the other included methods. Overall, the observed ROC curves seem to be in agreement with the stated detection rates of the selected methods except for RWalk. %\textcolor{red}{check this again}.
 
 
 
@@ -846,7 +848,7 @@ RTT-based methods seem to not perform as well compared to the other included met
 
 \subsection{Delays}
 
-We now consider the effect of transfer delays added by the attacker to packets on the detection rates. For that, we pick detection thresholds for each SSD methods corresponding to a FP rate of $0.4\%$ as most methods are able to achieve some detection results at this rate. 
+We now consider the effect of transfer delays added by the attacker to packets on the detection rates. For that, we pick detection thresholds for each SSD methods corresponding to a FP rate of $0.4\%$ as most methods are able to achieve at least moderate detection results at this rate. 
 We look at delays added to only to outgoing packets on $S_4$, the last stepping stone in the chain. Fig. \ref{fig:Delaydetection} depicts evolution of detection rates in dependence of the maximum delay $\delta_D$.
 
 
@@ -929,9 +931,10 @@ pAllNoevasion <- ggplot(AllNoevasion,aes(x=maxd,y=TP1, group=Method))+
 pAllNoevasion
 @
 
-As visible, both anomaly-based methods are capable of detecting added delays relatively reliably. Furthermore, both the detection rates of DeepCorr and the rtt-based C-Over only decrease slightly under the influence of delays. Detection rates for all other methods decrease significantly to the point where no meaningful predictions can be made. This is also reflected by the AUC-scores for traffic with $\delta_D=1000ms$, given in Table \ref{Tab:AUCdelays}. 
+As visible, both anomaly-based methods are capable of detecting added delays relatively reliably above a certain threshold. Furthermore, both the detection rates of DeepCorr and the RTT-based C-Over only decrease slightly under the influence of delays. Detection rates for all other methods decrease significantly to the point where no meaningful predictions can be made. This is also reflected by the AUC-scores for traffic with $\delta_D=1000ms$, given in Table \ref{Tab:AUCdelays}.
 
-While the WM method is robust against transfer delays up to $\delta_D=500$ms, this value is smaller than the one claimed by the authors. This might however be a result of the slightly smaller quantisation step size that we used. It is surprising that the PContext method shows only little robustness against transfer delays, which contradicts the authors claims. A possible explanation is the false assumption that relying on \textit{Echo}-packets increases robustness, since we also successfully apply delays to them while additional non-delayed \textit{Echo}-packets are generated by the tunnels. 
+While the WM method is robust against transfer delays up to $\delta_D=500$ms, this value is smaller than the one claimed by the authors. This might however be a result of the slightly smaller quantisation step size that we used. It is surprising that the PContext method shows only little robustness against transfer delays, which contradicts the authors claims, potentially due to the incorrect assumption that relying on \textit{Echo}-packets are not subject to transfer delays.
+%, since we also successfully apply delays to them while additional non-delayed \textit{Echo}-packets are generated by the tunnels. 
 
 
 \begin{table}
@@ -1170,13 +1173,12 @@ pAllNoevasion <- ggplot(AllNoevasion,aes(x=chaffr,y=TP1, group=Method))+
 pAllNoevasion
 @
 
-As visible, all methods struggle to detect stepping stones once the chaff packets become the majority of the transferred traffic. This is also evident from the AUC-scores given in Table \ref{Tab:AUCdelays}. Several approaches claimed to be resistent to chaff perturbations, however prior evaluations never looked at chaff ratios that exceed $100\%$. 
+As visible, all methods struggle to detect stepping stones once the chaff packets become the majority of the transferred traffic. This is also evident from the AUC-scores given in Table \ref{Tab:AUCdelays}. Several approaches claimed to be resistent to chaff perturbations, however prior evaluations were limited chaff ratios below $100\%$ without obvious reason.
 
-It is surprising that the anomaly detection methods do not perform better at detecting chaff perturbations. Chaff in both approaches was however evaluated with different traffic generation distribution and not compared against a background of traffic following a similar generation distribution, which could explain the disagreement between the results we are finding here. 
+It is surprising that the anomaly detection methods do not perform better at detecting chaff perturbations. Chaff in both approaches was however evaluated with different traffic generation distribution and not compared against a background of traffic following a similar generation distribution, which could explain the disagreement between the results we are finding here.
 
 
-
-Overall, this result is in disagreement with the "robustness against chaff" claims made for four of the selected approaches, namely PContext, RWalk, Ano1, and Ano2.
+Overall, these results are in disagreement with the "robustness" claims made for four of the selected approaches, namely PContext, RWalk, Ano1, and Ano2.
 
 \begin{table}
 \centering
@@ -1332,7 +1334,85 @@ print(tabAUC,floating=FALSE)
 %\subsection{Combination of delays and chaff}
 
 
-\subsection{False positives}
+
+\subsection{Summary}
+
+Overall, detection rates on dataset BA are mostly in line with the claimed capabilities except for RWalk, although detection rates are slightly lower than stated by most authors. Delay perturbation increases detection difficulty for most methods, except for Ano1, Ano2, and DeepCorr, which contradicts robustness claims for PContext and to some extend WM. Our inserted chaff perturbations however render detection impossible for all methods examined, which contradicts robustness claims for PContext, Ano1, Ano2, and RWalk, even though the claims were based on lower chaff levels. 
+
+As discussed in Section \ref{Sec:Chainl} and \ref{Sec:InfluenceNetwork}, longer chains yield higher detection rates for RTT-based methods while Different network transmission settings seem to have overall little influence on detection rates. 
+
+
+\section{Related work}\label{Sec:Relatedwork}
+
+\subsection{Testbeds and data}
+
+In 2006, Xin et al. \cite{xin2006testbed} developed a standard test bed for stepping-stone detection, called \textit{SST}, with the goal to enable a reproducible evaluation of stepping stone chain detection algorithms with easy configuration and operation. The tool allows for an arbitrary number of intermediate hosts and generates scripts to mimic interactive SSH and TelNet connections. 
+In contrast to our work, the authors give little detail on implemented evasive tactics.
+%To insert time delays and chaff perturbations, the authors modified the OpenSSH protocol on the intermediary hosts. Delays can be drawn from a uniform distribution while chaff can be drawn from a Poisson or Pareto distribution. 
+To our knowledge, SST has only been used for evaluation by Zhang et al. \cite{zhang2005stepping}, and is not available anymore. %The authors give little details about the implemented evasive tactics.%\textcolor{red}{say something why evasion not sufficiently implemented}
+
+An approach to use publicly available data comes from Houmansadr et al. \cite{nasr2018deepcorr}. The authors simulate stepping stone behaviour using the well-known CAIDA anonymised data traces \cite{CAIDA2018} by adding packet delays and drops retroactively on selected connections.
+While this procedure seems sufficient for the evaluation of watermarking methods, it falls short on simulating the effects of an actual connection chain and leaves out chaff perturbations. 
+%to evaluate different watermarking methods for SSD. To simulate stepping stone behaviour, packet delays and drops are imposed retroactively on selected connections using Laplace and Bernoulli distributions with different rates. 
+
+We find that when authors evaluate methods on self-generated data, tested evasive behaviours are often lacking analytical discussion and their implementations are too simplistic, leading to increased detection rates. An example of this can be seen in the evaluation of Ano1 \cite{di2011detecting}, where a standard option in netcat is used to generate chaff perturbations for evaluation, or for PContext \cite{yang2015rtt} where simulated chaff is added randomly after the traffic collection.% without consideration of the underlying generation model and its consequences to the detection rates. 
+Furthermore, often a relatively low limit on the amount of inserted chaff perturbations is assumed without obvious reason, thus avoiding evaluation at higher ratios. %None of the methods we reviewed evaluate at chaff ratios above $100\%$.
+
+% \textcolor{red}{do we have to back this up with more than just one or two sentences in the discussion? takes up more space...}. 
+
+\subsection{Surveys}
+Wang et al. \cite{wang2018research} recently conducted an extensive survey of stepping stone intrusion detection. The authors group methods according to the respective methodology 
+%\begin{itemize}
+%\item content-thumbprint,
+%\item time-thumbprint,
+%\item packet counting,
+%\item random-walk-based,
+%\item cross-over packet-based,
+%\item watermarking,
+%\item network-based,
+%\item and software-defined-networking-based, 
+%\end{itemize} 
+but do not cover graph-based methods such as \cite{gamarra2018analysis}, %or \cite{apruzzese2017detection}, 
+or anomaly-based methods such as \cite{di2011detecting}.%, which are increasing in popularity recently.
+%The authors then proceed to explain the different methods and highlight their benefits and shortcomings as well as open problems. 
+Shullich et al. \cite{shullich2011survey} in 2011 also conducted a survey on stepping stone intrusion detection. The authors perform a similar grouping of methods, but also discuss related work in evasion tactics and test frameworks. The authors furthermore give an outlook on areas for future research, such as hacker motivation, the cardinality problem, or the difficulty of tracing back chains through firewalls.%, the lack of real-world data examples, or detection in covert channels or protocols such as UDP. 
+Neither survey provide an evaluation of detection rates nor a direct comparison of the rates achieved by the corresponding authors. 
+
+%Padhye et al. \cite{padhye2010evading} in 2010 have proposed a packet buffering method to decorrelate packets in the input flow from the output flow. Using this technique and enough chaff packets, the authors generate a constant-rate flow that resembles multimedia streams such as Voice over IP. However, the authors only test their framework against watermark-based SSD methods. 
+
+%Yang et al. \cite{yang2018sniffing} have recently 
+
+
+%\cite{almulhem2007survey}
+
+%Stepping Stone Detection Techniques: Classification and State-of-the-Art, bad though
+
+%Metrics: A Study on the Performance Metrics forEvaluating Stepping Stone Detection (SSD)
+%Stepping Stone Detection: Measuring the SSD Capability
+\subsection{Areas not covered in this work}
+
+A different direction in SSD that we did not discuss in this work focuses more on the general communication behaviour of selected hosts rather than individual connections. Features include the timely correlation of connecting IP-address on a selected host or unusual paths of simultaneously existing connections within a computer network. Notable examples include Apruzzese et al. \cite{apruzzese2017detection} and Gamarra et al. \cite{gamarra2018analysis}, who both use graph-based models of network connections to identify suspicious relay hosts.
+Emulating these features realistically in network traffic datasets is difficult, and there exist little research on how strongly actual attack behaviour influences these features. Since our dataset focuses only on individual connections and corresponding evasion, we are not able to include behaviour-based approaches in our evaluation.
+
+Coskun et al. \cite{coskun2007efficient} identify another form of stepping-stones called \textit{store-and-forward}, which transfer data within files in a non-interactive manner. Though harder to detect than interactive connections, this procedure limits the attackers ability to explore the target, which is why SSD research has been primarily concerned with interactive stepping-stones.
+
+
+\section{Conclusion}
+
+In this work, we set out to evaluate the state-of-the-art of SSD methods using a comprehensive data generation framework. Our framework simulates realistic stepping-stone behaviour with SSH-tunnels in different  settings. The implemented evasive perturbation tactics follow the findings of Padhye et al. \cite{padhye2010evading} to resemble streaming services, and are adjustable in volume. We released a large dataset that highlights multiple aspects in SSD, and is suitable to train ML-based methods. 
+
+Overall, our results show that attackers can reliably evade detection by using the right type and amount of chaff perturbation, which disproves several claims made about the robustness against this evasive tactic. Although less significant, our implemented delay perturbations still affect detection rates for most methods, but are more visible to anomaly-based methods. 
+
+Currently, it seems that watermarking methods are currently most suited at detecting simple stepping-stones in real-life deployment due to very low false-positives. The performance of DeepCorr indicates that deep neural networks show the most potential at detecting methods that are subject to chaff or delay perturbations if they are trained on suitable data, and area we believe is worth more exploration. We find that detection and false-positive rates for RTT-based methods are significantly lower than for other methods, which makes them less suitable as stand-alone solutions.
+
+%\bibliographystyle{IEEEtranS}
+\bibliographystyle{plain}
+\bibliography{NDSSrefs}
+
+\appendix
+
+
+\subsection{False positives}\label{Sec:FPana}
 
 Table \ref{Tab:dfFP} depicts the relative contribution\footnote{after adjusting for their weight} at $FP=0.4\%$ of each of the three benign data types to the overall false positive rate. Most methods have more problems with the heterogeneous nature the CAIDA traces, with only PContext and DeepCorr seeing most false positives in the SSH traffic. 
 
@@ -1396,80 +1476,7 @@ print(tabFP,floating=FALSE)
 %\textcolor{red}{I could insert comparison of prediction accuracy on chain length}
 
 
-\subsection{Summary}
-
-Overall, detection rates on dataset BA are mostly in line with the claimed capabilities except for RWalk, although detection rates are slightly lower than stated by most authors. Delay perturbation increases detection difficulty for most methods, except for Ano1, Ano2, and DeepCorr, which contradicts robustness claims for PContext and to some extend WM. Our inserted chaff perturbations however render detection impossible for all methods examined, which contradicts robustness claims for PContext, Ano1, Ano2, and RWalk, although the claims were made based on lower chaff levels than we tested. 
-
-Unsurprisingly, longer chains yield higher detection rates for RTT-based methods. Different network transmission settings seem to have little influence on detection rates. 
-
-
-\section{Related work}\label{Sec:Relatedwork}
-
-\subsection{Testbeds and data}
-
-In 2006, Xin et al. \cite{xin2006testbed} developed a standard test bed for stepping-stone detection, called \textit{SST}. 
-The main objectives in the development of SST were to enable a reproducible evaluation of stepping stone chain detection algorithms with easy configuration, management and operation. The tool allows for an arbitrary number of intermediate hosts and generates scripts to mimic interactive SSH and TelNet connections. 
-To insert time delays and chaff perturbations, the authors modified the OpenSSH protocol on the intermediary hosts. Delays can be drawn from a uniform distribution while chaff can be drawn from a Poisson or Pareto distribution. To our knowledge, SST has only been used for evaluation by Zhang et al. \cite{zhang2005stepping}, and is not available anymore. The authors give little details about the implemented evasive tactics.%\textcolor{red}{say something why evasion not sufficiently implemented}
-
-Another approach to use publicly available data comes from Houmansadr et al. \cite{nasr2018deepcorr}. The authors use the well-known CAIDA anonymised data traces \cite{CAIDA2018} to evaluate different watermarking methods for SSD. To simulate stepping stone behaviour, packet delays and drops are imposed retroactively on selected connections using Laplace and Bernoulli distributions with different rates. While this procedure seems sufficient for the evaluation of watermarking methods, it falls short on simulating the effects of an actual connection chain and leaves out chaff perturbations. 
-
-We find that when authors evaluate methods on self-generated data, tested evasive behaviours are often lacking analytical discussion and their implementation is too simplistic, leading to increased detection rates. An example of this can be seen in the evaluation of Ano1 \cite{di2011detecting}, where a standard option in netcat is used to generate chaff perturbations for evaluation, or for PContext \cite{yang2015rtt} where simulated chaff is added randomly after the traffic collection.% without consideration of the underlying generation model and its consequences to the detection rates. 
-Furthermore, often a relatively low limit on the amount of inserted chaff perturbations is assumed without obvious reason, thus avoiding evaluation at higher ratios. None of the methods we reviewed evaluate at chaff ratios above $100\%$.
-
-% \textcolor{red}{do we have to back this up with more than just one or two sentences in the discussion? takes up more space...}. 
-
-\subsection{Surveys}
-Wang et al. \cite{wang2018research} recently conducted an extensive survey of stepping stone intrusion detection. The authors group methods according to the respective methodology 
-%\begin{itemize}
-%\item content-thumbprint,
-%\item time-thumbprint,
-%\item packet counting,
-%\item random-walk-based,
-%\item cross-over packet-based,
-%\item watermarking,
-%\item network-based,
-%\item and software-defined-networking-based, 
-%\end{itemize} 
-but do not cover graph-based methods such as \cite{gamarra2018analysis}, %or \cite{apruzzese2017detection}, 
-or anomaly-based methods such as \cite{di2011detecting}.%, which are increasing in popularity recently.
-The authors then proceed to explain the different methods and highlight their benefits and shortcomings as well as open problems. 
-Shullich et al. \cite{shullich2011survey} in 2011 also conducted a survey on stepping stone intrusion detection. The authors perform a similar grouping of methods, but also discuss related work in evasion tactics and test frameworks. The authors furthermore give an outlook on areas for future research, such as hacker motivation, the cardinality problem when correlating connection pairs, the difficulty of tracing back chains through firewalls, the lack of real-world data examples, or detection in covert channels or protocols such as UDP. Both surveys neither provide an evaluation of detection rates nor a direct comparison of the rates achieved by the corresponding authors. 
-
-%Padhye et al. \cite{padhye2010evading} in 2010 have proposed a packet buffering method to decorrelate packets in the input flow from the output flow. Using this technique and enough chaff packets, the authors generate a constant-rate flow that resembles multimedia streams such as Voice over IP. However, the authors only test their framework against watermark-based SSD methods. 
-
-%Yang et al. \cite{yang2018sniffing} have recently 
-
-
-%\cite{almulhem2007survey}
-
-%Stepping Stone Detection Techniques: Classification and State-of-the-Art, bad though
-
-%Metrics: A Study on the Performance Metrics forEvaluating Stepping Stone Detection (SSD)
-%Stepping Stone Detection: Measuring the SSD Capability
-\subsection{Areas not covered in this work}
-
-A different direction in SSD that we did not discuss in this work focuses more on the general communication behaviour of selected hosts rather than individual connections. Features include the timely correlation of connecting IP-address on a selected host or unusual paths of simultaneously existing connections within a computer network. Notable examples include Apruzzese et al. \cite{apruzzese2017detection} and Gamarra et al. \cite{gamarra2018analysis}, who both use graph-based models of network connections to identify suspicious relay hosts.
-Emulating these features realistically in network traffic datasets is difficult, and there exist little research on how strongly actual attack behaviour influences these features. Since our dataset focuses only on individual connections and corresponding evasion, we are not able to include behaviour-based approaches in our evaluation.
-
-Coskun et al. \cite{coskun2007efficient} identify another form of stepping-stones called \textit{store-and-forward}, which transfer data within files in a non-interactive manner. Though harder to detect than interactive connections, this procedure limits the attackers ability to explore the target, which is why SSD research has been primarily concerned with interactive stepping-stones.
-
-
-\section{Conclusion}
-
-In this work, we set out to evaluate the state-of-the-art of SSD methods using a comprehensive data generation framework. Our framework simulates realistic stepping-stone behaviour with SSH-tunnels in different  settings. The implemented evasive perturbation tactics follow the findings of Padhye et al. \cite{padhye2010evading} to resemble streaming services, and are adjustable in volume. We released a large dataset that highlights multiple aspects in SSD, and is suitable to train ML-based methods. 
-
-Overall, our results show that attackers can reliably evade detection by using the right type and amount of chaff perturbation, which disproves several claims made about the robustness against this evasive tactic. Although less significant, our implemented delay perturbations still affect detection rates for most methods, but are more visible to anomaly-based methods. 
-
-Currently, it seems that watermarking methods are currently most suited at detecting simple stepping-stones in real-life deployment due to very low false-positives. The performance of DeepCorr indicates that deep neural networks show the most potential at detecting methods that are subject to chaff or delay perturbations if they are trained on suitable data, and area we believe is worth more exploration. We find that detection and false-positive rates for RTT-based methods are significantly lower than for other methods, which makes them less suitable as stand-alone solutions.
-
-%\bibliographystyle{IEEEtranS}
-\bibliographystyle{plain}
-\bibliography{NDSSrefs}
-
-\appendix
-
-
-\section{Influence of chain length}
+\section{Influence of chain length}\label{Sec:Chainl}
 
 In this section, we look at the effect of differing chain lengths on the detection rates. We only focus on RTT-based methods here since the other methods should and do not see a significant effect from varying chain lengths\footnote{For non-RTT-methods, the detection rate error ($2.6\%-6.5\%$) for each length was larger than the detection rate differences ($0.2\%-3.7\%$) across different lengths.}. Since RTT-based methods aim to measure the effect of packets travelling via multiple hosts, it is unsurprising that they perform better at detecting longer chains. 
 
