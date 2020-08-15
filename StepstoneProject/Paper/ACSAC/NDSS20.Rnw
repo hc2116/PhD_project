@@ -8,7 +8,7 @@
 
 \begin{document}
 
-\title{Evading stepping stone detection by using enough chaff perturbations}
+\title{Evading stepping-stone detection by using enough chaff perturbations}
 %Evaluation of passiv stepping stone detection techniques under chaff and delay}
 
 %\hspace{\columnsep}\makebox[\columnwidth]{}}
@@ -16,6 +16,7 @@
 
 \maketitle     
 
+\vspace{-0.3cm}
 \begin{abstract}
 
 Stepping-stones are used extensively by attackers to hide their identify and access restricted targets. Many methods have been proposed to detect stepping-stones and resist evasive behaviour, but so far no benchmark dataset exists to provide a fair comparison of detection rates. We propose a comprehensive framework to simulate realistic stepping-stone behaviour with effective evasion tools, and release a large dataset to evaluate stepping-stone detection methods. 
@@ -1402,6 +1403,13 @@ In this work, we set out to evaluate the state-of-the-art of SSD methods using a
 Overall, our results show that attackers can reliably evade detection by using the right type and amount of chaff perturbation, which disproves several claims made about the robustness against this evasive tactic. Although to a lesser degree, our implemented delay perturbations still affect detection rates for most methods, but can be detected by anomaly-based methods. 
 
 Currently, it seems that watermarking methods are currently most suited to reliably detect simple stepping-stones in real-life deployment. The performance of DeepCorr indicates that deep neural networks show the most potential at detecting attacks that use chaff or delay perturbations if they are trained on suitable data. We find that detection and false-positive rates for RTT-based methods are significantly lower than for other methods, which makes them less suitable as stand-alone solutions.
+
+\section{Acknowledgments}
+%Identification of funding sources and other support, and thanks to individuals and groups that assisted in the research and the preparation of the work should be included in an acknowledgment section, which is placed just before the reference section in your document.
+
+We are grateful for our ongoing collaboration with our industry partners (blinded) on this topic area, who provided both ongoing support and guidance to this work. Discussions with them have helped reinforce the need for a better evaluation and understanding of the possibilities that new tools can provide.
+
+Full funding sources after currently blinded.
 
 %\bibliographystyle{IEEEtranS}
 \bibliographystyle{plain}
