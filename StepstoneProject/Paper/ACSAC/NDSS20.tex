@@ -70,6 +70,7 @@
 
 Stepping-stones are used extensively by attackers to hide their identify and access restricted targets. Many methods have been proposed to detect stepping-stones and resist evasive behaviour, but so far no benchmark dataset exists to provide a fair comparison of detection rates. We propose a comprehensive framework to simulate realistic stepping-stone behaviour with effective evasion tools, and release a large dataset to evaluate stepping-stone detection methods. 
 We use this data to evaluate detection rates of eight state-of-the-art methods and highlight their respective strengths and weaknesses. Our results show that currently, no method is capable to reliably detect stepping-stone when the attacker inserts suitable chaff perturbations, disproving several robustness claims.
+
 \end{abstract}
 
 
@@ -923,6 +924,7 @@ Neither survey provide an evaluation of detection rates nor a direct comparison 
 %Stepping Stone Detection: Measuring the SSD Capability
 \subsection{Areas not covered in this work}
 
+%A different direction in SSD that we did not discuss in this work focuses more on the general communication behaviour of selected hosts rather than individual connections. Features include the timely correlation of connecting IP-address on a selected host or unusual paths of simultaneously existing connections within a computer network. 
 Graph-based and behavioural models do not examine individual connections but instead focus on the overall temporal activity of one or more hosts in a network. 
 Notable examples include Apruzzese et al. \cite{apruzzese2017detection} and Gamarra et al. \cite{gamarra2018analysis}, who both developed graph-based models .
 Simulating temporal stepping-stone activity realistically is difficult, with little empirical data to support specific assumptions. Since our dataset focuses only on individual connections and corresponding evasion, we are not able to include graph-based or behavioural approaches in our evaluation.
@@ -937,7 +939,6 @@ In this work, we set out to evaluate the state-of-the-art of SSD methods using a
 Overall, our results show that attackers can reliably evade detection by using the right type and amount of chaff perturbation, which disproves several claims made about the robustness against this evasive tactic. Although to a lesser degree, our implemented delay perturbations still affect detection rates for most methods, but can be detected by anomaly-based methods. 
 
 Currently, it seems that watermarking methods are currently most suited to reliably detect simple stepping-stones in real-life deployment. The performance of DeepCorr indicates that deep neural networks show the most potential at detecting attacks that use chaff or delay perturbations if they are trained on suitable data. We find that detection and false-positive rates for RTT-based methods are significantly lower than for other methods, which makes them less suitable as stand-alone solutions.
-
 
 %\bibliographystyle{IEEEtranS}
 \bibliographystyle{plain}
