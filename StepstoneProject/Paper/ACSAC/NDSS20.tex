@@ -69,8 +69,8 @@
 \vspace{-0.3cm}
 \begin{abstract}
 
-Stepping-stones are used extensively by attackers to hide their identify and access restricted targets. Many methods have been proposed to detect stepping-stones and resist evasive behaviour, but so far no benchmark dataset exists to provide a fair comparison of detection rates. We propose a comprehensive framework to simulate realistic stepping-stone behaviour with effective evasion tools, and release a large dataset to evaluate stepping-stone detection methods. 
-We use this data to evaluate detection rates of eight state-of-the-art methods and highlight their respective strengths and weaknesses. Our results show that currently, no method is capable to reliably detect stepping-stone when the attacker inserts suitable chaff perturbations, disproving several robustness claims.
+Stepping-stones are used extensively by attackers to hide their identify and access restricted targets. Many methods have been proposed to detect stepping-stones and resist evasive behaviour, but so far no benchmark dataset exists to provide a fair comparison of detection rates. We propose a comprehensive framework to simulate realistic stepping-stone behaviour with effective evasion tools, and release a large dataset for evaluation purposes. 
+We use this data to evaluate detection rates for eight state-of-the-art methods and highlight their respective strengths and weaknesses. Our results show that currently, no method is capable to reliably detect stepping-stone when the attacker inserts suitable chaff perturbations, disproving several robustness claims.
 
 \end{abstract}
 
@@ -145,7 +145,7 @@ Typically, host O is located outside the targeted network, and the attack is sta
 
 \begin{figure}
 \centering
-\includegraphics[width=0.75\textwidth]{images/Stepstone_final.png}
+\includegraphics[width=0.75\textwidth]{images/Stepstone_final_2.png}
 \caption{Depiction of an exemplary stepping-stone chain.}\label{Fig:Stepstone}
 \end{figure}
 
@@ -572,21 +572,18 @@ True stepping stone connections are rare compared to benign ones, making their d
 
 %The main contribution of this work is to offer a modern evaluation of the current state of SSD methods. 
 A range of underlying techniques exist for SSD, and we try to include approaches from every area to create an informative overview and highlight strengths and weaknesses. 
-
 We surveyed publications to create a collection of SSD methods. We started with the publications from surveys \cite{shullich2011survey,wang2018research}, and then added impactful recent publications found via Google Scholar\footnote{keywords ``connection'', ``correlation'' ``stepping-stone'', ``detection'', ``attack'', ``chaff perturbation''}.
 % from 2018 and 2011, mentioned in Section \ref{Sec:Relatedwork}. We expanded this collection via finding publications that cited these papers. Lastly, we found publications by browsing Google Scholar with different combinations of the keywords ``connection'', ``correlation'' ``stepping-stone'', ``detection'', ``attack'', ``chaff perturbation''. Our final collection contained 60 publications. 
-
 From here, we selected approaches based on the following criteria:
 
 
 \begin{enumerate}
 \item The achieved detection and false positive rates claimed by the authors,
 \item and whether the model design shows robustness against any evasion tactics as claimed by the authors.
-\item We always selected the latest versions if a method has been improved or updated by the authors.
+\item We always selected the latest versions if a method has been improved by the authors.
 \end{enumerate}
 
-
-Below, we describe the selected methods. Table \ref{Tab:Summary} contains a summary of the included methods. We labelled each method to make referring to it in the evaluation easier.
+Table \ref{Tab:Summary} contains a summary of the included methods. We labelled each method to make referring to it in the evaluation easier.
 
 \begin{table}
 \centering
@@ -736,8 +733,9 @@ The authors state $100\%$ TP with $0.5\%$ FP with resistance against timing pert
 
 \subsection{Implementation of selected approaches}
 
-In order to evaluate the above selected method on our generated data, we had to reimplement the algorithms according to the steps and design described in the corresponding publications. We implemented all methods in Python, and PyTorch if necessary. %To overcome unclear points or adjust to the new setting, we had to make a small number of judgement calls, the most important of which we mention here for completeness:
+%In order to evaluate the above selected method on our generated data, we had to
 
+We reimplemented all selected algorithms in Python and PyTorch according to the steps and design described in the corresponding publications. %We implemented all methods in Python, and PyTorch if necessary. %To overcome unclear points or adjust to the new setting, we had to make a small number of judgement calls, the most important of which we mention here for completeness:
 For all methods, we either varied the classification threshold for AUC calculation, or estimated it to yield a specific false positive rate across all methods. For anomaly-based methods, we had to estimate multiple thresholds, for which we found the optimal combination via grid-search. %We found appropriate values that yield the required FP rate and maximise the detection rate over all datasets via grid-search optimisation.
 For the WM approach, we set the quantization step size $s=0.4$s, and the redundancy number $m=11$ to consistently embed the watermark in the first 1500 packets. These values were also used by the authors.
 
@@ -955,7 +953,7 @@ Full funding sources after currently blinded.
 \appendix
 
 
-\subsection{False positives}\label{Sec:FPana}
+\section{False positives}\label{Sec:FPana}
 
 Table \ref{Tab:dfFP} depicts the relative contribution\footnote{after adjusting for their weight} at $FP=0.4\%$ of each of the three benign data types to the overall false positive rate. Most methods have more problems with the heterogeneous nature the CAIDA traces, with only PContext and DeepCorr seeing most false positives in the SSH traffic. 
 
