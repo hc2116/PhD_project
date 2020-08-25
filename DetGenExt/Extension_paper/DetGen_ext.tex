@@ -1,12 +1,12 @@
 %\documentclass[sigconf]{acmart}
 \documentclass{article}
-\usepackage[margin=1.1in]{geometry}
+\usepackage[margin=1.8in]{geometry}
 
 \usepackage[]{graphicx}
 \usepackage[]{color}
 \usepackage{subfig}
-%\usepackage{listings}
-
+\usepackage{listings}
+\usepackage{url}
 
 %\usepackage{alltt}
 \usepackage{multicol}
@@ -17,30 +17,42 @@
 
 \begin{document}
 
-\title{How to make traffic generation more dynamic using containerisation}
+\title{How to make traffic generation and monitoring at packet level more dynamic using containerisation}
 %Dynamic Traffic Generation with Containerization for Machine Learning}
-
 
 \maketitle
 
 \section{Introduction}
 
+Data-driven traffic analysis and attack detection is a centrepiece of network intrusion detection research, as well as many other fields \textcolor{red}{citations}. Realistic network traffic datasets allow engineers to build a better understanding of existing structures, motivate design choices from actual needs, and prove that proposed new systems can indeed work in practice. \textcolor{red}{something to emphasise that packet traffic is important.}
 
-\dots \dots
+Unfortunately, privacy and security concerns discourage network administrators to release rich and realistic datasets for the public,  leading to publicly available real-world datasets being the exception and missing informative features such as captured packets or consistent IP-addresses. As a result, researchers are predominantly relying on synthetically generated data, which is currently either captured using scripted activities in a virtual or lab-environment, or generated using trained generative models of real-world traffic.
 
-\dots \dots
+Existing network intrusion detection datasets are however collected in a static manner, unable to be modified, updated, or reproduced, \textcolor{red}{citation} and therefore can neither adapt to novel attacks or traffic evolutions, nor give researchers the flexibility to focus on particular traffic types. Furthermore, the current capture setups provide no insight in the data generation process, and it is mostly impossible to match events on the packet-level with conducted activities due to the capture setup. 
+Existing testbeds and traffic generation frameworks are successful at emulating large-scale traffic characteristics \textcolor{red}{citations}, but fail to provide the necessary detail and realism for intrusion detection on a packet-level. 
 
-\dots \dots
+%This proves to be a serious defect as the ecosystem of intrusions is continually evolving.
+%Furthermore, it prohibits a more detailed analysis of specific areas of network traffic due to the available data only being a fraction of the original dataset. To combat this, new datasets must be periodically built from scratch.
+
+
+%Furthermore, VM-based traffic simulation frameworks provide little insight into the ...
+
+
+%Allowing researchers to create datasets dynamically to circumvent these issues would be extremely beneficial. 
+We propose a novel design paradigm that makes generation of network traffic and corresponding attacks significantly more flexible and offers a \textcolor{red}{new level} of insight and reproducibility for traffic micro-structures through the use of containerisation. By moving from virtual machines to containers, we enable the scalable, modular, and dynamic creation of network traffic datasets. Since containers can be arranged in complex settings with a few commands, it is a lot easier with containers to script a variety of network activities thus increase the heterogeneity and realism of the generated data.
+
+%Furthermore, each Docker container is highly specialized in its purpose, generating traffic related to only a single application process. Therefore, by scripting a variety of Docker-based \emph{scenarios} that simulate benign or malicious behaviours and collecting the resultant traffic, we can build a dataset with perfect ground truth, something that has so far not been possible for network traffic. 
+
 
 This work provides the following contributions:
 
 \begin{enumerate}
-\item We present a novel network traffic generation framework that is designed to improve several shortcomings of current datasets for NIDS evaluation in the following aspects:
+\item We present a novel network traffic generation framework that is designed to improve several shortcomings of current datasets and data generation frameworks for NIDS evaluation in the following aspects:
 \begin{enumerate}
-\item Ground truth labels documenting conducted activities
-\item Increased \textcolor{red}{richness} of data
-\item Tunable topology and data composition
-\item Additional capture of program logs and system calls
+\item Ground truth labels documenting every conducted activities
+\item Increased structural realism of the data on a packet-level
+\item Tunable topology, traffic composition, and attack types
+\item Capture of program logs and system calls for data fusion methods
 \end{enumerate}
 This framework is openly accessible for researchers and allows for straightforward customization.
  
@@ -50,76 +62,53 @@ This framework is openly accessible for researchers and allows for straightforwa
 \item We present a number of use-cases to demonstrate how the design of our framework can boost performance for ML-based network intrusion detection systems, in particular for false-positive analysis and effective model training.
 \end{enumerate}
 
+%\subsection{Contributions}
 
-\subsection{Contributions}
-
-\subsubsection{Main contributions}
-
-
-\begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}}
-Contribution&How containers enable itt& VM-based & Real traffic capture &Other framework  \\ \hline
-
-Ground truth labels on granular activities & Isolated process in container, no additional events. Easy to separate even when containers & Background events (system activitiy, artifacts from earlier activity, ...), overlaying activities hard to separate & No knowledge about conducted activity & Technically possible, no attempts yet \\ \hline
-
-Flexibility to regenerate customized datasets & Launching a network of containers is easy, modularity allows finer control of fine-grain activity  & Difficult to regenerate data as set-up and launching of VM is less straightforward, might be addressed with MiniMega & No & Yes \\ \hline
-
-Easy to update, include new attacks & 
-Attack/victim containers remove dependence on vulnerabilities, can be hooked to existing scenarios with shared resources & Since attacks happen on the VM, it is very hard to compose a VM with enough vulnerabilities to include many attacks & - & Some work has been done to "replay" or artificially inject attacks  \\ \hline
-
-Reproducability & Container state the same after repeated launches, isolation means that other task have little effect on  & To a lesser degree, simultaneously conducted activity can affect each other & - & Depends \\ \hline
-
-Fidelity to real traffic heterogeneity, structural richness & Not a lot except that scripting and randomising different scenarios is slightly easier  & Potentially, but little attention has been paid & Yes & Not on a packet level yet \\ \hline \hline
+%\subsubsection{Main contributions}
 
 
-Data on attacks on container isolation & In need of existing scenarios for background data & No & No & No \\ \hline
+%
+%\begin{enumerate}
+%\item Fidelity to real traffic
+%\begin{itemize}
+%	\item Real traffic, consistent (not invalid after Cordero et al.)
+%	\item Structural richness on packet level (in contrast to )
+%		Induced due to the different levels at which traffic variation is introduced
+%%	\item Temporal activity levels? (actually not something we improve)
+%%			We can look at test for realism of distributions (IP discovery, etc)
+%\end{itemize}
+%\item Ground truth labels through containerisation
+%\begin{itemize}
+%	\item Ground truth for attack behaviour, able to label 100\% of the generated events to specific activities
+%	\item Labels for different types of behaviour, reproducable
+%		useful for evaluation of model failures, what kind of behaviours cause failure
+%			applies to a large range of models
+%		also useful for evaluation of privacy infiltration methods, more niche
+%	\item Ground truth for label matching between traffic and program logs/sys logs
+%		useful for models that try to correlate events for detection
+%			this is more niche, but potentially because of the lack of data
+%\end{itemize}
+%\item Extensive capture
+%\begin{itemize}
+%	\item Packet availability
+%	\item Syslogs and for multiple scenarios program logs
+%	\item Potentially host logs? Depends if we want to cater to cloud computing applicability
+%\end{itemize}
+%\item Better for ML-based methods
+%\begin{itemize}
+%	\item Flexibility 
+%		"The models should allow researchers to generate different classes of data, such as augmenting the amount of data representing sparse events, or choose different topology"
+%	\item Automisation of variable datasets through randomisation, automatically create structurally different datasets, but faithful to realism
+%		Especially novel in terms of network topologies, should emphasise this in use-cases
+%	\item Structural richness 
+%			allows for learning deeper and more generalisable knowledge in models, less prone to overfitting
+%	\item Scalability
+%		"Train on as much data as necessary"
+%\end{itemize}
+%
+%\end{enumerate}
 
 
-
-
-
-
-
-\end{tabular}
-
-\begin{enumerate}
-\item Fidelity to real traffic
-\begin{itemize}
-	\item Real traffic, consistent (not invalid after Cordero et al.)
-	\item Structural richness on packet level (in contrast to )
-		Induced due to the different levels at which traffic variation is introduced
-	\item Temporal activity levels? (actually not something we improve)
-			We can look at test for realism of distributions (IP discovery, etc)
-\end{itemize}
-\item Ground truth labels through containerisation
-\begin{itemize}
-	\item Ground truth for attack behaviour, able to label 100% of the generated events to specific activities
-	\item Labels for different types of behaviour, reproducable
-		useful for evaluation of model failures, what kind of behaviours cause failure
-			applies to a large range of models
-		also useful for evaluation of privacy infiltration methods, more niche
-	\item Ground truth for label matching between traffic and program logs/sys logs
-		useful for models that try to correlate events for detection
-			this is more niche, but potentially because of the lack of data
-\end{itemize}
-\item Extensive capture
-\begin{itemize}
-	\item Packet availability
-	\item Syslogs and for multiple scenarios program logs
-	\item Potentially host logs? Depends if we want to cater to cloud computing applicability
-\end{itemize}
-\item Better for ML-based methods
-\begin{itemize}
-	\item Flexibility 
-		"The models should allow researchers to generate different classes of data, such as augmenting the amount of data representing sparse events, or choose different topology"
-	\item Automisation of variable datasets through randomisation, automatically create structurally different datasets, but faithful to realism
-		Especially novel in terms of network topologies, should emphasise this in use-cases
-	\item Structural richness 
-			allows for learning deeper and more generalisable knowledge in models, less prone to overfitting
-	\item Scalability
-		"Train on as much data as necessary"
-\end{itemize}
-
-\end{enumerate}
 
 
 
@@ -136,18 +125,161 @@ Outline of the coming sections.
 
 \dots \dots
 
-\section{Background}\label{Sec:background}
+\section{Goals and motivation}
+
+If we are to create \textit{realistic} and \textit{reproducible} \textcolor{red}{intrusion detection} experiments, then we need a platform with the following characteristics:
+
+\paragraph{Traffic realism and reproducibility} The system should generate real, interactive network traffic that resembles common traffic structures on a packet-level. The system should make it easy for researchers to verify results by enabling the duplication and running of network intrusion detection systems that are deployed within the platform.   
+
+\paragraph{Ground truth} Activities generating traffic events should run in a reproducible manner to allow replication of traffic traces. Researchers should be able to trace the origin of traffic events to the \textcolor{red}{precise} generating activity.
+
+\paragraph{Flexibility} It should be easy to tune the composition of the generated. Similarly, it should be easy to create an experiment with any topology.
+
+\paragraph{Attack diversity} Intrusion detection models are dependent on attack data that represent specific attacks. The platform should therefore enable the execution or addition of a wide variety of attacks.
+
+%\textbf{Functional realism} The system must have the same functionality as real hardware in a real deployment, and shouldexecute exactly the same code.
+
+\paragraph{Low cost} \textcolor{red}{It should be inexpensive to duplicate an experiment, e.g. for students in a course.}
+
+Table \ref{Tab:Contributions} compares how well existing methods are realising these goals compared to our framework.
 
 
-\subsection{Data formats}
+Currently, intrusion detection researchers predominantly rely on public, synthetically generated datasets, on which NID systems are evaluated subsequently.
+\textit{Real-world datasets} such as LANL-15 \cite{kent-2015-cyberdata1} or UGR-16 \cite{macia2018ugr} provide the highest amount of traffic realism, but often lack detailed information such as packet captures due to privacy reasons, and give close to no information on the content of the provided data. 
 
-A brief description on network flow and packets, as well as system and program logs since we also capture those.
+\textit{Synthetic datasets} such as the CICIDS-17 \cite{sharafaldin2018towards} or the UNSW-16  \cite{moustafa2015unsw} datasets are typically captured in virtual environments that simulate \textcolor{red}{commercial} networks with virtual machines. Traffic is generated from scripted activity, and attack data either injected or generated from carefully inserted vulnerabilities. The arranged settings normally lack the flexibility to generate customized data and by design only provide very limited attack diversity.
+%limited insights into the given traffic realism or 
 
-\dots \dots
+\textit{Attack traffic generators} typically aim at providing traces from a diverse set of attacks, and injecting them into existing traffic captures in various ways. Moirai \textcolor{red}{citation} for example calculates several quantitative characteristics to better embed the attack traffic.  However, most of the issues surrounding real-world traffic captures remain, and there is concern about the realism of injected attack traffic \textcolor{red}{citation}.
 
-\dots \dots
+Recently, some effort have been made to to generate completely artificial traffic features from \textit{generative adversarial networks} (GANs) trained on real-world traffic. While examples such as DoppelGANger or Ring et al. \textcolor{red}{citation} are successful at generating realistic large-scale network features such as activity levels or \textcolor{red}{connection graphs}, they are not aimed at intrusion detection and do not provide the necessary granularity to model connection- or packet-level features.
 
-\dots \dots
+ \textit{Testbeds} such as Mininet offer tremendous \textcolor{red}{flexibility}, but are so far not targeted for intrusion detection and lack suitable small-scale traffic generation tools, labelling capabilities, or attack scenarios. 
+
+
+
+\begin{table}
+\centering
+\begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{2cm}}
+Contribution&How containers enable it& VM-based & Real traffic capture &Other framework  \\ \hline
+
+Ground truth labels on granular activities & Isolated process in container, no additional events. Easy to separate even when containers & Background events (system activitiy, artifacts from earlier activity, ...), overlaying activities hard to separate & No knowledge about conducted activity & Technically possible, no attempts yet \\ \hline
+
+Flexibility to regenerate customized datasets & Launching a network of containers is easy, modularity allows finer control of fine-grain activity  & Difficult to regenerate data as set-up and launching of VM is less straightforward, might be addressed with MiniMega & No & Yes \\ \hline
+
+Easy to update, include new attacks & 
+Attack/victim containers remove dependence on vulnerabilities, can be hooked to existing scenarios with shared resources & Since attacks happen on the VM, it is very hard to compose a VM with enough vulnerabilities to include many attacks & - & Some work has been done to "replay" or artificially inject attacks  \\ \hline
+
+Reproducability & Container state the same after repeated launches, isolation means that other task have little effect on  & To a lesser degree, simultaneously conducted activity can affect each other & - & Depends \\ \hline
+
+Fidelity to real traffic heterogeneity, structural richness & Not a lot except that scripting and randomising different scenarios is slightly easier  & Potentially, but little attention has been paid & Yes & Not on a packet level yet \\ \hline \hline
+
+
+Data on attacks on container isolation & In need of existing scenarios for background data & No & No & No \\ \hline
+\end{tabular}
+\caption{Contributions compared to existing solutions}\label{Tab:Contributions}
+\end{table}
+
+
+\section{DetGen Architecture}
+
+DetGen is a container-based emulator that we developed to enable repeatable, realistic, and flexible network experiments. DetGen extends the widely-used Mininet testbed \textcolor{red}{insert citation} by adding scenarios for benign and attack traffic generation, event labelling, and p
+
+%\section{Background}\label{Sec:b8ackground}
+
+\subsection{Design overview}
+
+The Detgen framework uses Mininet to create a network with a \textcolor{red}{desired} topology, along with virtual software switches, Ethernet links, routers, and firewalls. The network is then populated with containers ,which perform a variety of activities for traffic generation. The conducted activities are composed of scripted \textit{scenarios} (\textcolor{red}{give examples here}), but subject to a high degree of randomisation. The captured traffic events are labelled individually after the specific generating action. 
+
+\subsection{Containerization}
+%\textcolor{red}{to do:need to improve}
+Containers are standalone packages that contain an application along with all necessary dependencies using OS-level virtualization. In contrast with standard Virtual machines (VMs), containers forego a hypervisor and the shared resources are instead kernel artifacts that can be shared simultaneously across several containers, leading to minimal CPU, memory, and networking overhead \cite{kolyshkin2006virtualization}.
+
+
+%\textcolor{red}{Although this prevents the host environment from running different operating systems, containerization incurs minimal CPU, memory, and networking overhead whilst maintaining a great deal of isolation} \cite{kolyshkin2006virtualization}. 
+
+Due to the separation of processes, containers provide significantly more isolation of programs from external effects than regular OS-level execution. This isolation enables us to monitor processes better and create more accurate links between traffic events and individual activities than on a virtual machine were multiple processes run in parallel, which can all generate traffic. The one-to-one correlation between containers and network traces allows us to produce labelled datasets with fully granular ground truths. 
+
+Containers are specified in an image-layer, which is unaffected during the container execution.
+This allows containers to be run repeatedly whilst always starting from an identical state. In combination with the container isolation, this allows us to perform network experiments that can be easily reproduced by anyone on any plattform \textcolor{red}{insert citation}. 
+
+
+The container network interface provides the connection between a network namespace and the container runtimes. We want to \textcolor{red}{highlight} that multiple containers can share on network interface, which enables us to generate traffic from multiple applications over one network address in order to emulate \textcolor{red}{fully functional network hosts}.
+ 
+
+\subsection{Scenario scripting}\label{Sec:Scenarios}
+
+We define a \emph{scenario} as a series of Docker containers conducting a specific interaction, whereby all resulting network traffic is captured from each container's perspective. This constructs network datasets with total interaction capture, as described by Shiravi et al. \cite{shiravi2012toward}. Each scenario produces traffic from either a protocol, application or a series thereof. %Both benign and malicious activities are implemented as scenarios. 
+Examples may include an FTP interaction, a music streaming application and client, an online login form paired with an SQL database, or a C\&C server communicating with an open backdoor. A full list of currently implemented scenarios can be found in Section \ref{Sec:ExistScen}.
+Each scenario is designed to be easily started via a single script and can be repeated indefinitely without further instructions, therefore allowing the generation of large amounts of data.
+
+Our framework is modular, so that individual scenarios are configured, stored, and launched independently. Adding or reconfiguring a scenario has no effect on the remaining framework.
+
+\subsubsection*{Subscenarios} \label{Sec:Subscenarios}
+
+In contrast to scenarios, \textit{subscenarios} provide a finer grain of control over the traffic to be generated, allowing the user to specify the manner in which a scenario should develop. The aim of having multiple subscenarios for each scenario is to explore the full breadth of a protocol or application's possible traffic behavior. For instance, the SSH protocol can be used to access the servers console, to retrieve or send files, or for port forwarding, all of which may or may not be successful. It is therefore appropriate to script multiple subscenarios that cover this range of tasks.
+
+%Subscenarios are specific to particular scenarios and can be specified when launching that scenario.
+
+%The same applies to malicious activity. For instance, it would be naive for an SSH password bruteforcing scenario to always successfully guess a user's password. Instead, we include a second subscenario in which the password bruteforcer fails.
+
+\subsubsection*{Randomization within Subscenarios}\label{Sec:randomsubscen}
+
+Scripting activities that are otherwise conducted by human operators often leads to a loss of random variation that is normally inherent to the activity.
+\textcolor{red}{As mentioned in Section \ref{Sec:problems}, the majority of successful FTP transfers in the CIC-IDS 2017 data consist of a client downloading a single text file.} In reality, file sizes, log-in credentials, and many other variables included in an activity are more or less drawn randomly, which naturally influences traffic quantities such as packet sizes or numbers.
+
+We identify variable input parameters within scenarios and their subscenarios and systematically draw them randomly from suitable distributions. Passwords and usernames, for instance, are generated as a random sequence of letters with a length drawn from a Cauchy distribution, before they are passed to the corresponding container. Files to be transmitted are selected at random from a larger set of files, covering different sizes and file names.
+
+\begin{figure}
+ \centering 
+ \includegraphics[width=0.480\textwidth]{images/scenario_branching.PNG}
+ \caption{Visualization of the different levels at which traffic variation is introduced in DetGen.}
+ \label{Fig:branching}
+\end{figure}
+
+\subsubsection*{Implementation process}
+
+\subsection{Network creation and population}
+
+
+To enable communication between containers, we build our framework on top Mininet \textcolor{red}{insert citation} to create virtual networks with customizable topology. 
+\textcolor{red}{A topology can be passed to a topology-creation wrapper in matrix form, with diagonal values representing the type of device (switch, container, router, ...), and off-diagonal indicating links}. This allows the import of larger, automatically generated topologies from tools such as \textcolor{red}{insert citation}. 
+
+\textcolor{red}{maybe something about subnets}. 
+
+\subsubsection*{Import of activity timeline}
+
+The modelling and generation of computer network activity has been investigated extensively \textcolor{red}{(citations?)}, and tools to automatically generate realistic network activity streams 
+
+we do not wish to \textcolor{red}{address} this topic here . Instead, our framework imports existing time-series of \textcolor{red}{host flow activity} to generate the corresponding communication. \textcolor{red}{give more info on flow generation tools} 
+
+We transform existing network flow series into an activity timeline by \textcolor{red}{expand this}. We end up with an activity timeline that contains a set of timestamps along with the corresponding scenario and the source and destination host. 
+
+\subsubsection*{Activity conduction}
+
+
+\subsubsection*{Attack traffic generation}
+
+
+
+\subsection{Benefits resulting from design choices}
+
+
+
+
+
+%In particular, Ring et al. have proposed a method to generate realistic network-wide flow-based traffic that models typical host activity levels. 
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection{Related work and existing datasets}
 
@@ -290,46 +422,6 @@ A description of the capabilities and limitations of both metasploit and the met
 
 Here, we can point to a set of requirements by Cordero et al. (https://arxiv.org/pdf/1905.00304.pdf) for generating synthetic datasets.
 %This should potentially be merged with the dataset requirements, I am currently unsure where to put this. 
-\begin{enumerate}
-\item Fidelity to real traffic
-\begin{itemize}
-	\item Real traffic, consistent (not invalid after Cordero et al.)
-	\item Structural richness on packet level (in contrast to )
-		Induced due to the different levels at which traffic variation is introduced
-	\item Temporal activity levels? (actually not something we improve)
-			We can look at test for realism of distributions (IP discovery, etc)
-\end{itemize}
-\item Ground truth labels through containerisation
-\begin{itemize}
-	\item Ground truth for attack behaviour, able to label 100% of the generated events to specific activities
-	\item Labels for different types of behaviour, reproducable
-		useful for evaluation of model failures, what kind of behaviours cause failure
-			applies to a large range of models
-		also useful for evaluation of privacy infiltration methods, more niche
-	\item Ground truth for label matching between traffic and program logs/sys logs
-		useful for models that try to correlate events for detection
-			this is more niche, but potentially because of the lack of data
-\end{itemize}
-\item Extensive capture
-\begin{itemize}
-	\item Packet availability
-	\item Syslogs and for multiple scenarios program logs
-	\item Potentially host logs? Depends if we want to cater to cloud computing applicability
-\end{itemize}
-\item Better for ML-based methods
-\begin{itemize}
-	\item Flexibility 
-		"The models should allow researchers to generate different classes of data, such as augmenting the amount of data representing sparse events, or choose different topology"
-	\item Automisation of variable datasets through randomisation, automatically create structurally different datasets, but faithful to realism
-		Especially novel in terms of network topologies, should emphasise this in use-cases
-	\item Structural richness 
-			allows for learning deeper and more generalisable knowledge in models, less prone to overfitting
-	\item Scalability
-		"Train on as much data as necessary"
-\end{itemize}
-
-\end{enumerate}
-
 
 \section{Design}\label{Sec:Design}
 
@@ -368,12 +460,7 @@ Explain the general idea and benefit of using containers for traffic generation 
 \end{enumerate}
 
 
-\begin{figure}
- \centering 
- \includegraphics[width=0.480\textwidth]{images/scenario_branching.PNG}
- \caption{Visualization of the different levels at which traffic variation is introduced in DetGen.}
- \label{Fig:branching}
-\end{figure}
+
 
 
 \subsection{Scenarios and subscenarios}

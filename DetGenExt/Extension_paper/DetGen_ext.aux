@@ -1,13 +1,34 @@
 \relax 
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Contributions}{2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.1.1}Main contributions}{2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Outline}{3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{3}\protected@file@percent }
-\newlabel{Sec:background}{{2}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Data formats}{3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Related work and existing datasets}{3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Datasets}{3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Outline}{2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Goals and motivation}{2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Traffic realism and reproducibility}{2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Ground truth}{2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Flexibility}{2}\protected@file@percent }
+\citation{kent-2015-cyberdata1}
+\citation{macia2018ugr}
+\citation{sharafaldin2018towards}
+\citation{moustafa2015unsw}
+\@writefile{toc}{\contentsline {paragraph}{Attack diversity}{3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Low cost}{3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}DetGen Architecture}{3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Contributions compared to existing solutions\relax }}{4}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{Tab:Contributions}{{1}{4}}
+\citation{kolyshkin2006virtualization}
+\citation{shiravi2012toward}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Design overview}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Containerization}{5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Scenario scripting}{5}\protected@file@percent }
+\newlabel{Sec:Scenarios}{{3.3}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Visualization of the different levels at which traffic variation is introduced in DetGen.\relax }}{6}\protected@file@percent }
+\newlabel{Fig:branching}{{1}{6}}
+\newlabel{Sec:Subscenarios}{{3.3}{6}}
+\newlabel{Sec:randomsubscen}{{3.3}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Network creation and population}{7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Benefits resulting from design choices}{7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Related work and existing datasets}{7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.6.1}Datasets}{7}\protected@file@percent }
 \citation{sperotto2009labeled}
 \citation{akent-2015-enterprise-data}
 \citation{turcotte17}
@@ -19,59 +40,60 @@
 \citation{fujdiak2018ip}
 \citation{crussell2015minimega}
 \citation{badiger2018violet}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Problems in modern datasets}{5}\protected@file@percent }
-\newlabel{Sec:problems}{{2.2.2}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Containerization with Docker and Mininet}{5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Metasploit and Metasploitable containers}{5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Dataset Requirements and benefits of our framework}{5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Design}{6}\protected@file@percent }
-\newlabel{Sec:Design}{{3}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Modes of Operation}{6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Visualization of the different levels at which traffic variation is introduced in DetGen.\relax }}{7}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{Fig:branching}{{1}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Scenarios and subscenarios}{7}\protected@file@percent }
-\newlabel{Sec:Scenarios}{{3.2}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Randomization}{7}\protected@file@percent }
-\newlabel{Sec:randomsubscen}{{3.2.1}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Network transmission}{7}\protected@file@percent }
-\newlabel{Sec:Netrand}{{3.2.2}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Implementation Process}{7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Attack generation with Metasploit/Metasploitable}{7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Network-emulation}{7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Topology generation}{7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Launch-script}{7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}Dataset coalescence}{8}\protected@file@percent }
-\newlabel{Sec:datasetcreation}{{3.3.3}{8}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.4}Activity timeline input}{8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Microservice-emulation mode}{8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Fidelity confirmation experiments}{8}\protected@file@percent }
-\newlabel{Sec:Experiments}{{4}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Data correctness tests}{8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Diversity tests}{8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Structural dataset dimensionality}{8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Explorating Artificial Delays}{9}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Use-cases}{9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Benefits of ground-truth labels/dynamic dataset generation}{9}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Plan}{9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Benefits of structural richness}{9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Show utility of flexible topology}{9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.6.2}Problems in modern datasets}{9}\protected@file@percent }
+\newlabel{Sec:problems}{{3.6.2}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Containerization with Docker and Mininet}{9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.7.1}Metasploit and Metasploitable containers}{9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Dataset Requirements and benefits of our framework}{9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Design}{10}\protected@file@percent }
+\newlabel{Sec:Design}{{4}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Modes of Operation}{10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Scenarios and subscenarios}{10}\protected@file@percent }
+\newlabel{Sec:Scenarios}{{4.2}{10}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Randomization}{11}\protected@file@percent }
+\newlabel{Sec:randomsubscen}{{4.2.1}{11}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Network transmission}{11}\protected@file@percent }
+\newlabel{Sec:Netrand}{{4.2.2}{11}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Implementation Process}{11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.4}Attack generation with Metasploit/Metasploitable}{11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Network-emulation}{11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Topology generation}{11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Launch-script}{11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Dataset coalescence}{11}\protected@file@percent }
+\newlabel{Sec:datasetcreation}{{4.3.3}{11}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.4}Activity timeline input}{12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Microservice-emulation mode}{12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Fidelity confirmation experiments}{12}\protected@file@percent }
+\newlabel{Sec:Experiments}{{5}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Data correctness tests}{12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Diversity tests}{12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Structural dataset dimensionality}{12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Explorating Artificial Delays}{13}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Use-cases}{13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Benefits of ground-truth labels/dynamic dataset generation}{13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Plan}{13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.1}Benefits of structural richness}{13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Show utility of flexible topology}{14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Customisable attack traffic by using metasploitable}{14}\protected@file@percent }
 \bibstyle{abbrv}
 \bibdata{DetGen_ext}
 \bibcite{badiger2018violet}{1}
 \bibcite{crussell2015minimega}{2}
 \bibcite{fujdiak2018ip}{3}
-\bibcite{akent-2015-enterprise-data}{4}
-\bibcite{macia2018ugr}{5}
-\bibcite{moustafa_unsw-nb15:_2015}{6}
-\bibcite{sharafaldin2018towards}{7}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Customisable attack traffic by using metasploitable}{10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Simple use-case for the microservice mode?}{10}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{10}\protected@file@percent }
-\newlabel{Sec:Conclusion}{{6}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Difficulties and limitations}{10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Future work}{10}\protected@file@percent }
-\bibcite{sony2000traffic}{8}
-\bibcite{sperotto2009labeled}{9}
-\bibcite{turcotte17}{10}
-\bibcite{walsworth2015caida}{11}
+\bibcite{docker}{4}
+\bibcite{kent-2015-cyberdata1}{5}
+\bibcite{akent-2015-enterprise-data}{6}
+\bibcite{kolyshkin2006virtualization}{7}
+\bibcite{macia2018ugr}{8}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Simple use-case for the microservice mode?}{15}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusions}{15}\protected@file@percent }
+\newlabel{Sec:Conclusion}{{7}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Difficulties and limitations}{15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Future work}{15}\protected@file@percent }
+\bibcite{moustafa2015unsw}{9}
+\bibcite{moustafa_unsw-nb15:_2015}{10}
+\bibcite{sharafaldin2018towards}{11}
+\bibcite{sony2000traffic}{12}
+\bibcite{sperotto2009labeled}{13}
+\bibcite{turcotte17}{14}
+\bibcite{walsworth2015caida}{15}
