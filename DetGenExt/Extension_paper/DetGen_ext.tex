@@ -17,7 +17,7 @@
 
 \begin{document}
 
-\title{How to make traffic generation and monitoring at packet level more dynamic using containerisation}
+\title{DetGen: How to make traffic generation and monitoring at packet level more dynamic using containerisation}
 %Dynamic Traffic Generation with Containerization for Machine Learning}
 
 \maketitle
@@ -47,7 +47,7 @@ We propose a novel design paradigm that makes generation of network traffic and 
 This work provides the following contributions:
 
 \begin{enumerate}
-\item We present a novel network traffic generation framework that is designed to improve several shortcomings of current datasets and data generation frameworks for NIDS evaluation in the following aspects:
+\item We present a novel network traffic generation framework called \textit{DetGen} that is designed to improve several shortcomings of current datasets and data generation frameworks for NIDS evaluation in the following aspects:
 \begin{enumerate}
 \item Ground truth labels documenting every conducted activities
 \item Increased structural realism of the data on a packet-level
@@ -141,6 +141,9 @@ If we are to create \textit{realistic} and \textit{reproducible} \textcolor{red}
 
 \paragraph{Low cost} \textcolor{red}{It should be inexpensive to duplicate an experiment, e.g. for students in a course.}
 
+
+\vspace{0.3cm}
+
 Table \ref{Tab:Contributions} compares how well existing methods are realising these goals compared to our framework.
 
 
@@ -152,25 +155,53 @@ Currently, intrusion detection researchers predominantly rely on public, synthet
 
 \textit{Attack traffic generators} typically aim at providing traces from a diverse set of attacks, and injecting them into existing traffic captures in various ways. Moirai \textcolor{red}{citation} for example calculates several quantitative characteristics to better embed the attack traffic.  However, most of the issues surrounding real-world traffic captures remain, and there is concern about the realism of injected attack traffic \textcolor{red}{citation}.
 
-Recently, some effort have been made to to generate completely artificial traffic features from \textit{generative adversarial networks} (GANs) trained on real-world traffic. While examples such as DoppelGANger or Ring et al. \textcolor{red}{citation} are successful at generating realistic large-scale network features such as activity levels or \textcolor{red}{connection graphs}, they are not aimed at intrusion detection and do not provide the necessary granularity to model connection- or packet-level features.
+Recently, some effort have been made to to generate completely artificial traffic data with \textit{generative adversarial networks} (GANs) trained on real-world traffic. While examples such as DoppelGANger or Ring et al. \textcolor{red}{citation} are successful at generating realistic large-scale network features such as activity levels or \textcolor{red}{connection graphs}, they are not aimed at intrusion detection and do not provide the necessary granularity to model connection- or packet-level features.
 
  \textit{Testbeds} such as Mininet offer tremendous \textcolor{red}{flexibility}, but are so far not targeted for intrusion detection and lack suitable small-scale traffic generation tools, labelling capabilities, or attack scenarios. 
 
+\subsection{Motivation \textcolor{red}{(or Use-cases?)}}
 
+While there are many potential use-cases that can benefit from a system like DetGen, we highlight two key types of interactions and three representative tasks in these cases: 
+
+\paragraph{Data-driven tasks}:
+\begin{itemize}
+
+\item \textit{In-depth model evaluation}:
+Drawing on the extensive labelling of granular activities and reproducible traffic generation, researchers have new opportunities to examine the performance of an intrusion detection model in-depth. Packet-level structures and resulting false-positives can be better associated with activities, which helps correct models better for identified weaknesses. Granular activities can be studied in a less noisy environment due to isolation and reproducibility. 
+
+
+\item \textit{Boost performance of ML-based methods}: Similarly, the performance of machine-learning-based methods can be boosted by tuning the composition of training data. Datasets can include traffic from different setups (topology, host activities, etc.) to allow for a better model generalization.
+
+\item \textit{Focus on novel attacks and traffic types}: Instead of being restricted to a restricted set of attacks and traffic types, researchers using DetGen can easily embed novel attacks such as the eternal blue exploit or new traffic types such as QUIC in a given network setup without abandoning the overall \textcolor{red}{network coherence} of the data. 
+
+
+\end{itemize}
+
+\paragraph{\textcolor{red}{Collaborative} tasks}: 
+
+\begin{itemize}
+\item \textit{Simulation of deployment}: Instead of evaluating an intrusion detection model subsequently on previously captured data, researchers can deploy their system directly in DetGen to assess issues such as computational speed or \textcolor{red}{...}.
+
+
+
+\item \textit{Reproducible, open research}: Scientific experiments should be reproduced to be considered valid, and the use of containers has recently been \textcolor{red}{promoted} to enable easy reproduction of computational work by reducing the need for plattform and library dependencies. Network researchers can use DetGen to allow for the easy reproduction of generated network settings, generated data, and deployed network intrusion solutions. 
+
+
+\end{itemize}
 
 \begin{table}
 \centering
 \begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{2cm}}
 Contribution&How containers enable it& VM-based & Real traffic capture &Other framework  \\ \hline
 
-Ground truth labels on granular activities & Isolated process in container, no additional events. Easy to separate even when containers & Background events (system activitiy, artifacts from earlier activity, ...), overlaying activities hard to separate & No knowledge about conducted activity & Technically possible, no attempts yet \\ \hline
+Ground truth labels on granular activities & Isolated process in container, no additional events. Easy to separate even when containers attached to same network interface & background events (system activitiy, artifacts from earlier activity, ...), overlaying activities hard to separate & No knowledge about conducted activity & Technically possible, no attempts yet \\ \hline
 
 Flexibility to regenerate customized datasets & Launching a network of containers is easy, modularity allows finer control of fine-grain activity  & Difficult to regenerate data as set-up and launching of VM is less straightforward, might be addressed with MiniMega & No & Yes \\ \hline
 
 Easy to update, include new attacks & 
 Attack/victim containers remove dependence on vulnerabilities, can be hooked to existing scenarios with shared resources & Since attacks happen on the VM, it is very hard to compose a VM with enough vulnerabilities to include many attacks & - & Some work has been done to "replay" or artificially inject attacks  \\ \hline
 
-Reproducability & Container state the same after repeated launches, isolation means that other task have little effect on  & To a lesser degree, simultaneously conducted activity can affect each other & - & Depends \\ \hline
+Reproducability & Container state the same after repeated launches, isolation means that other task have little effect on, plattform independence  & To a lesser degree, simultaneously conducted activity can affect each other & - & Depends \\ \hline
 
 Fidelity to real traffic heterogeneity, structural richness & Not a lot except that scripting and randomising different scenarios is slightly easier  & Potentially, but little attention has been paid & Yes & Not on a packet level yet \\ \hline \hline
 
@@ -259,6 +290,16 @@ We transform existing network flow series into an activity timeline by \textcolo
 
 
 \subsubsection*{Attack traffic generation}
+%\subsubsection{Metasploit and Metasploitable containers}
+
+A description of the capabilities and limitations of both metasploit and the metasploitable VM and the corresponding containers, which we will use.
+
+
+%\section{Dataset Requirements}\label{Sec:require}
+
+%We can refer to requirements by Cordero et al. (https://arxiv.org/pdf/1905.00304.pdf) on requirements for generating synthetic datasets, and combine them with the existing set of requirements by us. 
+
+%These include:
 
 
 
@@ -288,101 +329,101 @@ We transform existing network flow series into an activity timeline by \textcolo
 %\dots \dots
 %\dots \dots
 
-\subsubsection{Datasets}
-
-real:
-Los Alamos National Laboratory (LANL)
-University of Granada (UGR)
-
-SANTA
-Only flows, manually labelled
-
-
-CAIDA 2016
-
-MAWI 2000
-
-LITNET
-
-synthetic:
-
-CICIDS-17
-UNSB-16
-
-CIDDS-001
-Python scripts are used for emulating benign user behaviour like browsing the web, sending and receiving emails, as well as exchanging files. To ensure as realistic user behaviour as possible, clients perform their activities with respect to an individual working schedule which considers working hours and lunch breaks.
-
-NGIDS-DS
-Uses IXIA Perfect Storm, also collects host logs
-
-
-
-frameworks:
-
-FLAME
-ID2T
-Use real traffic as input to add attack traffic
-GEN-ESIDS
-HTTP attack traffic after user-based attack description
-NDSec-1 - Also overlaying normal data with attack traffic
-
-Moirai
-
-
-A flow trace generator using graph-based traffic classification techniques
-extractstraffictemplatesfromrealnetworktraf-fic.Then,theirgeneratorusesthesetraffictemplatesinordertocreatenewsyntheticflow-basednetworktraffic
-
-INSECS-DCS
-
-
-
-
-Flow-based network traffic generation using Generative Adversarial Networks
-DoppelGANger
-
-weak:
-PACGAN
-PCAPGAN
-SynGAN
-
-
-surveys:
-A Taxonomy of Network Threats and the Effect of Current Datasets on Intrusion Detection Systems
-
-On the generation of synthetic attacks
-
-
-Docker data generation 
-
-weak on activity generation, only system calls:
-A dataset generator for next generation system call host intrusion detection systems
-Standardized container virtualization approach for collecting host intrusion detection data
-
-
-Notes:
-However, currently available datasets lackreal-life characteristics of recent network traffic. ... IDS is unableto adapt to constant changes in networks (i.e. new nodes,changing traffic loads, changing topology, etc.). Networks areconstantly changing, for this reason depending solely on olddatasets doesn’t help the advancement of IDS(Taxonomy ...)
-
-
-%To evaluate their ability to model the behaviour of a network and to identify malicious activity and network intrusions, new methods have to be tested using existing datasets of network traffic. 
-
-%This network should ideally contain realistic and representative benign network traffic as well as a variety of different network intrusions. 
-
-
-Network traffic contains a vast amount of information about a network and its users which makes it  notoriously difficult to release a comprehensive dataset without infringing the privacy and security rights of the network users \cite{sperotto2009labeled}. In addition, the identification of malicious traffic in network traces is not straightforward and often requires a significant amount of manual labelling work. Currently, only \textcolor{red}{four} intrusion detection datasets exist that contain traffic from real networks, all of which are \textcolor{red}{presented} as anomimised network flows . 
-
-\textcolor{red}{Rework!}The most recent and notable real-world datasets have been released from the Los Alamos National Laboratory (LANL) in 2015 and 2017 \cite{akent-2015-enterprise-data, turcotte17}, and the University of Granada (UGR) in 2016 \cite{macia2018ugr}. Both datasets contain network flow traffic data from a large number of hosts collected over multiple months, giving an accurate representation of medium- to large-scale structures in benign traffic. However, the amount of attack data is small and insufficient for accurate detection rate estimation. Furthermore, packet-level data is not available for both datasets. 
-
-Other real-world datasets, such as CAIDA 2016 \cite{walsworth2015caida} or MAWI 2000 \cite{sony2000traffic}, provide packet headers, but are unstructured and contain no labeled attack data at all.
-
-To improve the lack of attack traffic in NIDS datasets, several artificially created datasets have been proposed. For this, a testbed of virtual machines is usually hosted in an enclosed environment to prevent any malicious code from spreading to other machines on other networks. To generate attack traffic, these machines are then subject to a selection of attack carried out by other machines in the environment. Benign traffic is generated using commercial traffic generators such as the \emph{IXIA PerfectStorm tool}, or by scripting a selection of tasks for each machine. Synthetic datasets cover a smaller timeframe and contain traffic from a small number of hosts. Notable examples are the CIC-IDS 2017 dataset from the Canadian Institute for Cybersecurity \cite{sharafaldin2018towards}, %the CTU-2013 dataset from the \emph{Stratosphere Laboratory} in Prague \cite{noauthor_ctu-13_nodate},
-and the UNSW-NB 2015 dataset from the University of New South Wales \cite{moustafa_unsw-nb15:_2015}. Both datasets contain traffic from a variety of attacks, and are available as packet headers or as network flows with additional features crafted for machine-learning. While the benign traffic for the CIC-IDS 2017 data was generated using scripted tasks from a number of host profiles, the benign data for the UNSW-NB 2015 data is a mixture of captured real traffic from another subnet and traffic generated using a commercial traffic replicator. 
-
-
-%We omitted the synthetic KDD-Cup 1999 and the DARPA 1998 datasets along with their derivates from the discussion as they are well-known to be outdated and contain unrealistic benign traffic, artificially high benign/attack data ratios, and artifacts stemming from communication simulations \cite{tavallaee2009detailed,mchugh2000testing}, problems which have been addressed by most modern datasets.
-
-Container networks have recently been adopted to conduct traffic generation experiments, such by Fujdiak et al. \cite{fujdiak2018ip} who use containerized web servers to collect DoS-traffic. Furthermore, significant effort has been put into the creation of large-scale virtualization frameworks to provide automatized network testbeds \cite{crussell2015minimega, badiger2018violet}.
-
-
+%\subsubsection{Datasets}
+%
+%real:
+%Los Alamos National Laboratory (LANL)
+%University of Granada (UGR)
+%
+%SANTA
+%Only flows, manually labelled
+%
+%
+%CAIDA 2016
+%
+%MAWI 2000
+%
+%LITNET
+%
+%synthetic:
+%
+%CICIDS-17
+%UNSB-16
+%
+%CIDDS-001
+%Python scripts are used for emulating benign user behaviour like browsing the web, sending and receiving emails, as well as exchanging files. To ensure as realistic user behaviour as possible, clients perform their activities with respect to an individual working schedule which considers working hours and lunch breaks.
+%
+%NGIDS-DS
+%Uses IXIA Perfect Storm, also collects host logs
+%
+%
+%
+%frameworks:
+%
+%FLAME
+%ID2T
+%Use real traffic as input to add attack traffic
+%GEN-ESIDS
+%HTTP attack traffic after user-based attack description
+%NDSec-1 - Also overlaying normal data with attack traffic
+%
+%Moirai
+%
+%
+%A flow trace generator using graph-based traffic classification techniques
+%extractstraffictemplatesfromrealnetworktraf-fic.Then,theirgeneratorusesthesetraffictemplatesinordertocreatenewsyntheticflow-basednetworktraffic
+%
+%INSECS-DCS
+%
+%
+%
+%
+%Flow-based network traffic generation using Generative Adversarial Networks
+%DoppelGANger
+%
+%weak:
+%PACGAN
+%PCAPGAN
+%SynGAN
+%
+%
+%surveys:
+%A Taxonomy of Network Threats and the Effect of Current Datasets on Intrusion Detection Systems
+%
+%On the generation of synthetic attacks
+%
+%
+%Docker data generation 
+%
+%weak on activity generation, only system calls:
+%A dataset generator for next generation system call host intrusion detection systems
+%Standardized container virtualization approach for collecting host intrusion detection data
+%
+%
+%Notes:
+%However, currently available datasets lackreal-life characteristics of recent network traffic. ... IDS is unableto adapt to constant changes in networks (i.e. new nodes,changing traffic loads, changing topology, etc.). Networks areconstantly changing, for this reason depending solely on olddatasets doesn’t help the advancement of IDS(Taxonomy ...)
+%
+%
+%%To evaluate their ability to model the behaviour of a network and to identify malicious activity and network intrusions, new methods have to be tested using existing datasets of network traffic. 
+%
+%%This network should ideally contain realistic and representative benign network traffic as well as a variety of different network intrusions. 
+%
+%
+%Network traffic contains a vast amount of information about a network and its users which makes it  notoriously difficult to release a comprehensive dataset without infringing the privacy and security rights of the network users \cite{sperotto2009labeled}. In addition, the identification of malicious traffic in network traces is not straightforward and often requires a significant amount of manual labelling work. Currently, only \textcolor{red}{four} intrusion detection datasets exist that contain traffic from real networks, all of which are \textcolor{red}{presented} as anomimised network flows . 
+%
+%\textcolor{red}{Rework!}The most recent and notable real-world datasets have been released from the Los Alamos National Laboratory (LANL) in 2015 and 2017 \cite{akent-2015-enterprise-data, turcotte17}, and the University of Granada (UGR) in 2016 \cite{macia2018ugr}. Both datasets contain network flow traffic data from a large number of hosts collected over multiple months, giving an accurate representation of medium- to large-scale structures in benign traffic. However, the amount of attack data is small and insufficient for accurate detection rate estimation. Furthermore, packet-level data is not available for both datasets. 
+%
+%Other real-world datasets, such as CAIDA 2016 \cite{walsworth2015caida} or MAWI 2000 \cite{sony2000traffic}, provide packet headers, but are unstructured and contain no labeled attack data at all.
+%
+%To improve the lack of attack traffic in NIDS datasets, several artificially created datasets have been proposed. For this, a testbed of virtual machines is usually hosted in an enclosed environment to prevent any malicious code from spreading to other machines on other networks. To generate attack traffic, these machines are then subject to a selection of attack carried out by other machines in the environment. Benign traffic is generated using commercial traffic generators such as the \emph{IXIA PerfectStorm tool}, or by scripting a selection of tasks for each machine. Synthetic datasets cover a smaller timeframe and contain traffic from a small number of hosts. Notable examples are the CIC-IDS 2017 dataset from the Canadian Institute for Cybersecurity \cite{sharafaldin2018towards}, %the CTU-2013 dataset from the \emph{Stratosphere Laboratory} in Prague \cite{noauthor_ctu-13_nodate},
+%and the UNSW-NB 2015 dataset from the University of New South Wales \cite{moustafa_unsw-nb15:_2015}. Both datasets contain traffic from a variety of attacks, and are available as packet headers or as network flows with additional features crafted for machine-learning. While the benign traffic for the CIC-IDS 2017 data was generated using scripted tasks from a number of host profiles, the benign data for the UNSW-NB 2015 data is a mixture of captured real traffic from another subnet and traffic generated using a commercial traffic replicator. 
+%
+%
+%%We omitted the synthetic KDD-Cup 1999 and the DARPA 1998 datasets along with their derivates from the discussion as they are well-known to be outdated and contain unrealistic benign traffic, artificially high benign/attack data ratios, and artifacts stemming from communication simulations \cite{tavallaee2009detailed,mchugh2000testing}, problems which have been addressed by most modern datasets.
+%
+%Container networks have recently been adopted to conduct traffic generation experiments, such by Fujdiak et al. \cite{fujdiak2018ip} who use containerized web servers to collect DoS-traffic. Furthermore, significant effort has been put into the creation of large-scale virtualization frameworks to provide automatized network testbeds \cite{crussell2015minimega, badiger2018violet}.
+%
+%
 
 
 \subsubsection{Problems in modern datasets}\label{Sec:problems}
@@ -396,147 +437,137 @@ We can import here a lot from the existing paper, but add the following issues:
 \end{enumerate}
 
 
-\subsection{Containerization with Docker and Mininet}
-%\textcolor{red}{to do:need to improve
-
-A similar description on Containers and Docker as before, extended by a description of Mininet
-\dots \dots
-
-\dots \dots
-
-\dots \dots
-
-\subsubsection{Metasploit and Metasploitable containers}
-
-A description of the capabilities and limitations of both metasploit and the metasploitable VM and the corresponding containers, which we will use.
-
-
-%\section{Dataset Requirements}\label{Sec:require}
-
-%We can refer to requirements by Cordero et al. (https://arxiv.org/pdf/1905.00304.pdf) on requirements for generating synthetic datasets, and combine them with the existing set of requirements by us. 
-
-%These include:
-
-
-\subsection{Dataset Requirements and benefits of our framework}
-
-Here, we can point to a set of requirements by Cordero et al. (https://arxiv.org/pdf/1905.00304.pdf) for generating synthetic datasets.
-%This should potentially be merged with the dataset requirements, I am currently unsure where to put this. 
-
-\section{Design}\label{Sec:Design}
-
-Explain the general idea and benefit of using containers for traffic generation in comparison to regular testbeds, similar to the existing paper.
-
-\dots \dots
-
-\dots \dots
-
-\dots \dots
-\subsection{Modes of Operation}
-
-\begin{enumerate}
-\item Stand-alone scenarios for traffic generation
-\begin{itemize}
-\item Straightforward generation of traffic for the selected service
-\item Easy to costumize and can be used as prior testing for modifying services in the other two options
-\end{itemize}
-\item Network-wide activity emulation
-\begin{itemize}
-\item A topology is generated randomly with a set of hosts and corresponding services running on them
-\item Scenarios are started and hooked to corresponding host network interfaces according to a launch script that emulates empirical activity measurements
-\item These activity measurements come in the form of a timeline of events that can be drawn from a set of basic distributions that we provide or can be generated by third party such as the GAN in the Doppelganger paper (this way we can avoid being scrutinised for a lack of realism in this field).
-\end{itemize}
-
-
-\item Microservice activity emulation
-\begin{itemize}
-\item In this mode, we set up a VM that hosts a number of service containers and emulates the situation of a typical microservice host
-\item We run the same scenarios, but the client containers are located on another machine. 
-\item We collect system call logs from both the containers and the host
-\item This is the least developed mode, but the additionally collected system calls give the most realistic picture in this state
-\item It might be good to define and describe this setting already if we want to implement any container-specific attacks and models in the future
-\end{itemize}
-
-\end{enumerate}
+%\subsection{Containerization with Docker and Mininet}
+%%\textcolor{red}{to do:need to improve
+%
+%A similar description on Containers and Docker as before, extended by a description of Mininet
+%\dots \dots
+%
+%\dots \dots
+%
+%\dots \dots
 
 
 
-
-
-\subsection{Scenarios and subscenarios}
-\label{Sec:Scenarios}
-Here we describe the design process of the scenarios, just like in the previous paper.
-
-\subsubsection{Randomization}\label{Sec:randomsubscen}
-\dots \dots
-
-\dots \dots
-
-\dots \dots
-\subsubsection{Network transmission}\label{Sec:Netrand}
-\dots \dots
-
-\dots \dots
-
-\dots \dots
-
-\subsubsection{Implementation Process}
-\dots \dots
-
-\dots \dots
-
-\dots \dots
-
-\subsubsection{Attack generation with Metasploit/Metasploitable}
-\dots \dots
-
-\dots \dots
-
-\dots \dots
- 
-%\subsection{Implemented scenarios}\label{Sec:ExistScen}
-
-
-%\begin{figure}%[h!]
-%\centering
-%\includegraphics[width=0.49\textwidth]{images/ftp_new1.png}
-%\caption{Diagram of FTP scenario}
-%\end{figure}
-
-
-\subsection{Network-emulation}
-
-Describe the design of how the topology is generated before the data capture is started, and how the scenarios are launched and stopped during the data capture.
-\subsubsection{Topology generation}
-\dots \dots
-
-\dots \dots
-
-\dots \dots
-\subsubsection{Launch-script}
-
-\dots \dots
-
-\dots \dots
-
-\dots \dots
-
-\subsubsection{Dataset coalescence}\label{Sec:datasetcreation}
-\dots \dots
-
-\dots \dots
-
-\dots \dots
-\subsubsection{Activity timeline input}
-Here, we describe how the activity timeline in the launch script can come from unsophisticated distributions that we include, or from sophisticated 3rd party models such as Doppelganger. Since the modelling of computer activity is a field of ongoing research, it seems best to shift the responsibility for realistic models away by allowing this input. 
-
-\subsection{Microservice-emulation mode}
-
-\dots \dots
-
-\dots \dots
-
-\dots \dots
+%\subsection{Dataset Requirements and benefits of our framework}
+%
+%Here, we can point to a set of requirements by Cordero et al. (https://arxiv.org/pdf/1905.00304.pdf) for generating synthetic datasets.
+%%This should potentially be merged with the dataset requirements, I am currently unsure where to put this. 
+%
+%\section{Design}\label{Sec:Design}
+%
+%Explain the general idea and benefit of using containers for traffic generation in comparison to regular testbeds, similar to the existing paper.
+%
+%\dots \dots
+%
+%\dots \dots
+%
+%\dots \dots
+%\subsection{Modes of Operation}
+%
+%\begin{enumerate}
+%\item Stand-alone scenarios for traffic generation
+%\begin{itemize}
+%\item Straightforward generation of traffic for the selected service
+%\item Easy to costumize and can be used as prior testing for modifying services in the other two options
+%\end{itemize}
+%\item Network-wide activity emulation
+%\begin{itemize}
+%\item A topology is generated randomly with a set of hosts and corresponding services running on them
+%\item Scenarios are started and hooked to corresponding host network interfaces according to a launch script that emulates empirical activity measurements
+%\item These activity measurements come in the form of a timeline of events that can be drawn from a set of basic distributions that we provide or can be generated by third party such as the GAN in the Doppelganger paper (this way we can avoid being scrutinised for a lack of realism in this field).
+%\end{itemize}
+%
+%
+%\item Microservice activity emulation
+%\begin{itemize}
+%\item In this mode, we set up a VM that hosts a number of service containers and emulates the situation of a typical microservice host
+%\item We run the same scenarios, but the client containers are located on another machine. 
+%\item We collect system call logs from both the containers and the host
+%\item This is the least developed mode, but the additionally collected system calls give the most realistic picture in this state
+%\item It might be good to define and describe this setting already if we want to implement any container-specific attacks and models in the future
+%\end{itemize}
+%
+%\end{enumerate}
+%
+%
+%
+%
+%
+%\subsection{Scenarios and subscenarios}
+%\label{Sec:Scenarios}
+%Here we describe the design process of the scenarios, just like in the previous paper.
+%
+%\subsubsection{Randomization}\label{Sec:randomsubscen}
+%\dots \dots
+%
+%\dots \dots
+%
+%\dots \dots
+%\subsubsection{Network transmission}\label{Sec:Netrand}
+%\dots \dots
+%
+%\dots \dots
+%
+%\dots \dots
+%
+%\subsubsection{Implementation Process}
+%\dots \dots
+%
+%\dots \dots
+%
+%\dots \dots
+%
+%\subsubsection{Attack generation with Metasploit/Metasploitable}
+%\dots \dots
+%
+%\dots \dots
+%
+%\dots \dots
+% 
+%%\subsection{Implemented scenarios}\label{Sec:ExistScen}
+%
+%
+%%\begin{figure}%[h!]
+%%\centering
+%%\includegraphics[width=0.49\textwidth]{images/ftp_new1.png}
+%%\caption{Diagram of FTP scenario}
+%%\end{figure}
+%
+%
+%\subsection{Network-emulation}
+%
+%Describe the design of how the topology is generated before the data capture is started, and how the scenarios are launched and stopped during the data capture.
+%\subsubsection{Topology generation}
+%\dots \dots
+%
+%\dots \dots
+%
+%\dots \dots
+%\subsubsection{Launch-script}
+%
+%\dots \dots
+%
+%\dots \dots
+%
+%\dots \dots
+%
+%\subsubsection{Dataset coalescence}\label{Sec:datasetcreation}
+%\dots \dots
+%
+%\dots \dots
+%
+%\dots \dots
+%\subsubsection{Activity timeline input}
+%Here, we describe how the activity timeline in the launch script can come from unsophisticated distributions that we include, or from sophisticated 3rd party models such as Doppelganger. Since the modelling of computer activity is a field of ongoing research, it seems best to shift the responsibility for realistic models away by allowing this input. 
+%
+%\subsection{Microservice-emulation mode}
+%
+%\dots \dots
+%
+%\dots \dots
+%
+%\dots \dots
 
 
 \section{Fidelity confirmation experiments}\label{Sec:Experiments}
