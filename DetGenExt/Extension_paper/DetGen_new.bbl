@@ -1,0 +1,105 @@
+\begin{thebibliography}{10}
+
+\bibitem{biernacki2017analysis}
+A.~Biernacki.
+\newblock Analysis and modelling of traffic produced by adaptive http-based
+  video.
+\newblock {\em Multimedia Tools and Applications}, 76(10):12347--12368, 2017.
+
+\bibitem{dolan2011virtuoso}
+B.~Dolan-Gavitt, T.~Leek, M.~Zhivich, J.~Giffin, and W.~Lee.
+\newblock Virtuoso: Narrowing the semantic gap in virtual machine
+  introspection.
+\newblock In {\em 2011 IEEE symposium on security and privacy}, pages 297--312.
+  IEEE, 2011.
+
+\bibitem{grieco2004performance}
+L.~A. Grieco and S.~Mascolo.
+\newblock Performance evaluation and comparison of westwood+, new reno, and
+  vegas tcp congestion control.
+\newblock {\em ACM SIGCOMM Computer Communication Review}, 34(2):25--38, 2004.
+
+\bibitem{harang2014bridging}
+R.~Harang.
+\newblock Bridging the semantic gap: Human factors in anomaly-based intrusion
+  detection systems.
+\newblock In {\em Network Science and Cybersecurity}, pages 15--37. Springer,
+  2014.
+
+\bibitem{kent-2015-cyberdata1}
+A.~D. Kent.
+\newblock {Comprehensive, Multi-Source Cyber-Security Events}.
+\newblock Los Alamos National Laboratory, 2015.
+
+\bibitem{kolyshkin2006virtualization}
+K.~Kolyshkin.
+\newblock Virtualization in linux.
+\newblock {\em White paper, OpenVZ}, 3:39, 2006.
+
+\bibitem{liu2019machine}
+H.~Liu and B.~Lang.
+\newblock Machine learning and deep learning methods for intrusion detection
+  systems: A survey.
+\newblock {\em Applied Sciences}, 9(20):4396, 2019.
+
+\bibitem{macia2018ugr}
+G.~Maci{\'a}-Fern{\'a}ndez, J.~Camacho, R.~Mag{\'a}n-Carri{\'o}n,
+  P.~Garc{\'\i}a-Teodoro, and R.~Ther{\'o}n.
+\newblock Ugr ‘16: A new dataset for the evaluation of
+  cyclostationarity-based network idss.
+\newblock {\em Computers \& Security}, 73:411--424, 2018.
+
+\bibitem{marx2020same}
+R.~Marx, J.~Herbots, W.~Lamotte, and P.~Quax.
+\newblock Same standards, different decisions: A study of quic and http/3
+  implementation diversity.
+\newblock In {\em Proceedings of the Workshop on the Evolution, Performance,
+  and Interoperability of QUIC}, pages 14--20, 2020.
+
+\bibitem{moustafa2015unsw}
+N.~Moustafa and J.~Slay.
+\newblock Unsw-nb15: a comprehensive data set for network intrusion detection
+  systems (unsw-nb15 network data set).
+\newblock In {\em 2015 military communications and information systems
+  conference (MilCIS)}, pages 1--6. IEEE, 2015.
+
+\bibitem{sharafaldin2018towards}
+I.~Sharafaldin, A.~Gharib, A.~H. Lashkari, and A.~A. Ghorbani.
+\newblock Towards a reliable intrusion detection benchmark dataset.
+\newblock {\em Software Networking}, 2018(1):177--200, 2018.
+
+\bibitem{shiravi2012toward}
+A.~Shiravi, H.~Shiravi, M.~Tavallaee, and A.~A. Ghorbani.
+\newblock Toward developing a systematic approach to generate benchmark
+  datasets for intrusion detection.
+\newblock {\em computers \& security}, 31(3):357--374, 2012.
+
+\bibitem{smith2020mind}
+M.~R. Smith, N.~T. Johnson, J.~B. Ingram, A.~J. Carbajal, R.~Ramyaa,
+  E.~Domschot, C.~C. Lamb, S.~J. Verzi, and W.~P. Kegelmeyer.
+\newblock Mind the gap: On bridging the semantic gap between machine learning
+  and information security.
+\newblock {\em arXiv preprint arXiv:2005.01800}, 2020.
+
+\bibitem{sommer2010outside}
+R.~Sommer and V.~Paxson.
+\newblock Outside the closed world: On using machine learning for network
+  intrusion detection.
+\newblock In {\em 2010 IEEE symposium on security and privacy}, pages 305--316.
+  IEEE, 2010.
+
+\bibitem{stober2013you}
+T.~St{\"o}ber, M.~Frank, J.~Schmitt, and I.~Martinovic.
+\newblock Who do you sync you are? smartphone fingerprinting via application
+  behaviour.
+\newblock In {\em Proceedings of the sixth ACM conference on Security and
+  privacy in wireless and mobile networks}, pages 7--12, 2013.
+
+\bibitem{yen2009browser}
+T.-F. Yen, X.~Huang, F.~Monrose, and M.~K. Reiter.
+\newblock Browser fingerprinting from coarse traffic summaries: Techniques and
+  implications.
+\newblock In {\em International Conference on Detection of Intrusions and
+  Malware, and Vulnerability Assessment}, pages 157--175. Springer, 2009.
+
+\end{thebibliography}

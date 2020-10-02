@@ -1,0 +1,92 @@
+\begin{thebibliography}{10}
+
+\bibitem{badiger2018violet}
+S.~Badiger, S.~Baheti, and Y.~Simmhan.
+\newblock Violet: A large-scale virtual environment for internet of things.
+\newblock In {\em European Conference on Parallel Processing}, pages 309--324.
+  Springer, 2018.
+
+\bibitem{crussell2015minimega}
+J.~Crussell, J.~Erickson, D.~Fritz, and J.~Floren.
+\newblock minimega v. 3.0.
+\newblock Technical report, Sandia National Lab.(SNL-NM), Albuquerque, NM
+  (United States), 2015.
+
+\bibitem{fujdiak2018ip}
+R.~Fujdiak, V.~Uher, P.~Mlynek, P.~Blazek, J.~Slacik, V.~Sedlacek, J.~Misurec,
+  M.~Volkova, and P.~Chmelar.
+\newblock Ip traffic generator using container virtualization technology.
+\newblock In {\em 2018 10th International Congress on Ultra Modern
+  Telecommunications and Control Systems and Workshops (ICUMT)}, pages 1--6.
+  IEEE, 2018.
+
+\bibitem{docker}
+D.~{Inc.}
+\newblock Docker.
+\newblock \url{https://www.docker.com/}.
+\newblock Accessed: 2019-08-11.
+
+\bibitem{kent-2015-cyberdata1}
+A.~D. Kent.
+\newblock {Comprehensive, Multi-Source Cyber-Security Events}.
+\newblock Los Alamos National Laboratory, 2015.
+
+\bibitem{akent-2015-enterprise-data}
+A.~D. Kent.
+\newblock {Cybersecurity Data Sources for Dynamic Network Research}.
+\newblock In {\em Dynamic Networks in Cybersecurity}. Imperial College Press,
+  June 2015.
+
+\bibitem{kolyshkin2006virtualization}
+K.~Kolyshkin.
+\newblock Virtualization in linux.
+\newblock {\em White paper, OpenVZ}, 3:39, 2006.
+
+\bibitem{macia2018ugr}
+G.~Maci{\'a}-Fern{\'a}ndez, J.~Camacho, R.~Mag{\'a}n-Carri{\'o}n,
+  P.~Garc{\'\i}a-Teodoro, and R.~Ther{\'o}n.
+\newblock Ugr ‘16: A new dataset for the evaluation of
+  cyclostationarity-based network idss.
+\newblock {\em Computers \& Security}, 73:411--424, 2018.
+
+\bibitem{moustafa2015unsw}
+N.~Moustafa and J.~Slay.
+\newblock Unsw-nb15: a comprehensive data set for network intrusion detection
+  systems (unsw-nb15 network data set).
+\newblock In {\em 2015 military communications and information systems
+  conference (MilCIS)}, pages 1--6. IEEE, 2015.
+
+\bibitem{moustafa_unsw-nb15:_2015}
+N.~Moustafa and J.~Slay.
+\newblock {UNSW}-{NB}15: a comprehensive data set for network intrusion
+  detection systems ({UNSW}-{NB}15 network data set).
+\newblock In {\em 2015 {Military} {Communications} and {Information} {Systems}
+  {Conference} ({MilCIS})}, pages 1--6, Nov. 2015.
+
+\bibitem{sharafaldin2018towards}
+I.~Sharafaldin, A.~Gharib, A.~H. Lashkari, and A.~A. Ghorbani.
+\newblock Towards a reliable intrusion detection benchmark dataset.
+\newblock {\em Software Networking}, 2018(1):177--200, 2018.
+
+\bibitem{sony2000traffic}
+C.~Sony and K.~Cho.
+\newblock Traffic data repository at the wide project.
+\newblock In {\em Proceedings of USENIX 2000 Annual Technical Conference:
+  FREENIX Track}, pages 263--270, 2000.
+
+\bibitem{sperotto2009labeled}
+A.~Sperotto, R.~Sadre, F.~Van~Vliet, and A.~Pras.
+\newblock A labeled data set for flow-based intrusion detection.
+\newblock In {\em International Workshop on IP Operations and Management},
+  pages 39--50. Springer, 2009.
+
+\bibitem{turcotte17}
+M.~J.~M. {Turcotte}, A.~D. {Kent}, and C.~{Hash}.
+\newblock {Unified Host and Network Data Set}.
+\newblock {\em ArXiv e-prints}, Aug. 2017.
+
+\bibitem{walsworth2015caida}
+C.~Walsworth, E.~Aben, K.~Claffy, and D.~Andersen.
+\newblock The caida ucsd anonymized internet traces 2012,”, 2015.
+
+\end{thebibliography}
