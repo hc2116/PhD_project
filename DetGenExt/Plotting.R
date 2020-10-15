@@ -87,3 +87,67 @@ p1  <-
   theme(axis.ticks.y=element_blank(), axis.text.y=element_blank())
 
 p1
+
+
+
+########################################################
+# Experiment 1
+########################################################
+
+require(ggplot2)
+require(cowplot)
+
+# geom_pointrange(mapping = aes(x = metric, y = x),
+#                 stat = "summary",
+#                 fun.min = function(z) {quantile(z,0.25)},
+#                 fun.max = function(z) {quantile(z,0.75)},
+#                 fun = median)
+# stat_summary(fun="mean", fun.min=function(z) { quantile(z,0.05) },fun.max=function(z) { quantile(z,0.95) },colour = "red", size = 1)
+
+# A
+x1 <- 1-abs(rnorm(30,sd=0.02))
+x2 <- 1-abs(rnorm(30,sd=0.0000001))
+x3 <- 1-abs(rnorm(30,sd=0.04))
+df=data.frame(x=c(x1,x2,x3),
+              metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
+pA <- ggplot(df, aes(x=metric, y=x)) + 
+  geom_dotplot(binaxis='y', stackdir='center')+
+stat_summary(fun.data = "mean_se", colour = "red", size = 1)+
+  theme_bw()+  labs(y="%",x="")
+  #labs(title="HTTP",y="Similarity (% of overall)")
+
+# B
+x1 <- 1-abs(rnorm(30,sd=0.02))
+x2 <- 1-abs(rnorm(30,sd=0.1))
+x3 <- 1-abs(rnorm(30,sd=0.04))
+df=data.frame(x=c(x1,x2,x3),
+              metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
+pB <- ggplot(df, aes(x=metric, y=x)) + 
+  geom_dotplot(binaxis='y', stackdir='center')+
+  stat_summary(fun.data = "mean_se", colour = "red", size = 1)+
+  theme_bw()+labs(y="%",x="")
+
+# C
+x1 <- 1-abs(rnorm(30,sd=0.02))
+x2 <- 1-abs(rnorm(30,sd=0.00001))
+x3 <- 1-abs(rnorm(30,sd=0.04))
+df=data.frame(x=c(x1,x2,x3),
+              metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
+pC <- ggplot(df, aes(x=metric, y=x)) + 
+  geom_dotplot(binaxis='y', stackdir='center')+
+  stat_summary(fun.data = "mean_se", colour = "red", size = 1)+
+  theme_bw()+labs(y="%",x="")
+
+# D
+x1 <- 1-abs(rnorm(30,sd=0.05))
+x2 <- 1-abs(rnorm(30,sd=0.1))
+x3 <- 1-abs(rnorm(30,sd=0.1))
+df=data.frame(x=c(x1,x2,x3),
+              metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
+pD <- ggplot(df, aes(x=metric, y=x)) + 
+  geom_dotplot(binaxis='y', stackdir='center')+
+  stat_summary(fun.data = "mean_se", colour = "red", size = 1)+
+  theme_bw()+labs(y="%")
+
+
+plot_grid(pA, pB,pC,pD, labels = c('A', 'B', 'C','D'), ncol = 1)

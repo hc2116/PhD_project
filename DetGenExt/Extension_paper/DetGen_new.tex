@@ -3,7 +3,8 @@
 \usepackage[margin=1.8in]{geometry}
 
 \usepackage[]{graphicx}
-\usepackage[]{color}
+%\usepackage[]{color}
+\usepackage{color, colortbl}
 \usepackage{subcaption}
 \usepackage{listings}
 \usepackage{url}
@@ -20,7 +21,7 @@
 
 %\pagebreak
 
-\section{Contribution page}
+\section*{Contribution page}
 
 \subsection*{Framework}
 
@@ -50,49 +51,49 @@ better understand the logical small-scale structures in network traffic and unde
 \end{itemize}
 \end{itemize}
 
-\section{Impact factors on traffic micro-structures}
-
-In order to provide extensive ground truth information that describe the traffic we generate, we first must understand what factors have influence on the traffic generation process. \textcolor{red}{How do we verify that this list is more or less complete?}
-
-\paragraph{Application layer protocols} 
-Without doubt the biggest impact on the captured traffic micro-structures is the choice or combination of the application layer protocols. Protocols such as HTTP/TLS perform vastly different tasks than protocols such as Peer-2-Peer or SMB, and thus perform different handshakes, experience different waiting times, transfer data in different intervals, or trigger different additional connections. 
- 
-\paragraph{Performed task and application}
-The conducted computational task ultimately drives the communication between computers, and thus hugely influences characteristics such as the direction of data transfer, the duration and packet rate, packet sizes as well as the number of connections and performed protocol handshakes to conclude the task. Furthermore, the application used for the task has a significant influence on the generated traffic, as shown for different browser choices by Yen et al. \cite{yen2009browser} or for general application behaviour fingerprinting \cite{stober2013you}. 
-
-\paragraph{Transferred data} 
-The amount of transferred data obviously influences the overall packet numbers. Furthermore, the content of the data can potentially impact packet rates and sizes, such as shown by Biernacki \cite{biernacki2017analysis} for streaming services.
-
-\paragraph{Caching/Repetition effects}
-Tools like cookies, website caching, DNS caching, known hosts in SSH, etc. can cause to parts of a communication being skipped and lead to differences in the captured traffic between initial and subsequent connections.
-
-
-\paragraph{Application layer implementations}
-Different implementations for TLS, HTTP, etc. can yield different computational performance and can perform handshakes in slightly different ways. Furthermore, things like multiplexing channel prioritisation can have tremendous impact on the IAT times and the overall duration of the transfer, as shown in a study by Marx et al.  \cite{marx2020same} for the QUIC/HTTP3 protocol.
-
-\paragraph{Networking stack load}
-TCP or IP queue filling due to other applications generating traffic can alter IATs of the traffic trace and affect available bandwidths. \textcolor{red}{We should perform an experiment using iperf, once with TCP and once with UDP to quantify the effect}.
-
-\paragraph{Host level load}
-In a similar manner, other applications exhibiting significant computational load (CPU, memory, I/O) on the host machine can affect the processing speed of incoming and outgoing traffic, which can again alter IATs and the  overall duration of a connection. \textcolor{red}{We should perform an experiment using \textit{stress} to quantify the effect}.
-
-\paragraph{LAN and WAN congestion}
-Low available bandwith, long RTTs, or packet loss can have a significant effect on TCP congestion control mechanisms, which in turn influence frame-sizes, IATs, window sizes, and the overall temporal characteristic of the sequence. \textcolor{red}{do we need to verify this? Seems very clear}
-
-\vspace{0.3cm}
-Other factors we are currently not considering:
-
-\paragraph{User and scheduled activities}
-The frequency with which a user or an application performs tasks governs the larger-scale temporal characteristic of a traffic capture. Since we are focusing on the traffic micro-structures here, we currently omit this impact factor from our analysis. 
-
-\paragraph{TCP congestion management implementation}
-Different versions of the TCP congestion manager exist on Windows and Linux such as TCP Reno/Tahoe, which can have minor influence on the traffic, as shown by Grieco et al. \cite{grieco2004performance}. Existing implementations on a machine stay mostly constant, which is why we also omit this variable at the moment.
- Implementations within a machine should stay constant.
-
-\paragraph{Network configurations}
-Network settings such as the MTU or the enabling of TCP Segment Reassembly Offloading have effects on the captured packet sizes, but like TCP implementations stay mostly constant for a host. 
-
-\textcolor{red}{....}
+%\section{Impact factors on traffic micro-structures}
+%
+%In order to provide extensive ground truth information that describe the traffic we generate, we first must understand what factors have influence on the traffic generation process. \textcolor{red}{How do we verify that this list is more or less complete?}
+%
+%\paragraph{Application layer protocols} 
+%Without doubt the biggest impact on the captured traffic micro-structures is the choice or combination of the application layer protocols. Protocols such as HTTP/TLS perform vastly different tasks than protocols such as Peer-2-Peer or SMB, and thus perform different handshakes, experience different waiting times, transfer data in different intervals, or trigger different additional connections. 
+% 
+%\paragraph{Performed task and application}
+%The conducted computational task ultimately drives the communication between computers, and thus hugely influences characteristics such as the direction of data transfer, the duration and packet rate, packet sizes as well as the number of connections and performed protocol handshakes to conclude the task. Furthermore, the application used for the task has a significant influence on the generated traffic, as shown for different browser choices by Yen et al. \cite{yen2009browser} or for general application behaviour fingerprinting \cite{stober2013you}. 
+%
+%\paragraph{Transferred data} 
+%The amount of transferred data obviously influences the overall packet numbers. Furthermore, the content of the data can potentially impact packet rates and sizes, such as shown by Biernacki \cite{biernacki2017analysis} for streaming services.
+%
+%\paragraph{Caching/Repetition effects}
+%Tools like cookies, website caching, DNS caching, known hosts in SSH, etc. can cause to parts of a communication being skipped and lead to differences in the captured traffic between initial and subsequent connections.
+%
+%
+%\paragraph{Application layer implementations}
+%Different implementations for TLS, HTTP, etc. can yield different computational performance and can perform handshakes in slightly different ways. Furthermore, things like multiplexing channel prioritisation can have tremendous impact on the IAT times and the overall duration of the transfer, as shown in a study by Marx et al.  \cite{marx2020same} for the QUIC/HTTP3 protocol.
+%
+%\paragraph{Networking stack load}
+%TCP or IP queue filling due to other applications generating traffic can alter IATs of the traffic trace and affect available bandwidths. \textcolor{red}{We should perform an experiment using iperf, once with TCP and once with UDP to quantify the effect}.
+%
+%\paragraph{Host level load}
+%In a similar manner, other applications exhibiting significant computational load (CPU, memory, I/O) on the host machine can affect the processing speed of incoming and outgoing traffic, which can again alter IATs and the  overall duration of a connection. \textcolor{red}{We should perform an experiment using \textit{stress} to quantify the effect}.
+%
+%\paragraph{LAN and WAN congestion}
+%Low available bandwith, long RTTs, or packet loss can have a significant effect on TCP congestion control mechanisms, which in turn influence frame-sizes, IATs, window sizes, and the overall temporal characteristic of the sequence. \textcolor{red}{do we need to verify this? Seems very clear}
+%
+%\vspace{0.3cm}
+%Other factors we are currently not considering:
+%
+%\paragraph{User and scheduled activities}
+%The frequency with which a user or an application performs tasks governs the larger-scale temporal characteristic of a traffic capture. Since we are focusing on the traffic micro-structures here, we currently omit this impact factor from our analysis. 
+%
+%\paragraph{TCP congestion management implementation}
+%Different versions of the TCP congestion manager exist on Windows and Linux such as TCP Reno/Tahoe, which can have minor influence on the traffic, as shown by Grieco et al. \cite{grieco2004performance}. Existing implementations on a machine stay mostly constant, which is why we also omit this variable at the moment.
+% Implementations within a machine should stay constant.
+%
+%\paragraph{Network configurations}
+%Network settings such as the MTU or the enabling of TCP Segment Reassembly Offloading have effects on the captured packet sizes, but like TCP implementations stay mostly constant for a host. 
+%
+%\textcolor{red}{....}
 
 %\begin{table}
 %\begin{tabular}{p{2.5cm}|p{3cm}|p{8cm}}
@@ -394,9 +395,12 @@ Other problems identified by Sommer and Paxson include the diversity of network 
 
 \section{Goals and motivation}
 
-Our goal in building \textit{DetGen} is to provide a framework that generates information-rich and reproducible network traffic to help researchers understand traffic micro-structures and how they impact the performance of detection models in order to close the existing semantic gap and provide reproducible and verifiable network experiments. %\textcolor{red}{order to close the .}
-\textcolor{red}{explain why focus on micro-structures and not larger structures}
-We set out the following priorities:
+Our goal in building \textit{DetGen} is to provide a framework that generates information-rich and reproducible network traffic to help researchers understand traffic micro-structures and how they impact the performance of detection models in order to close the existing semantic gap and provide reproducible and verifiable network experiments. We focus on traffic micro-structures because even though many NID systems operate on this level, there exists little comprehensive research on general traffic behaviour\footnote{Exceptions being on models for application fingerprinting} on the packet level, whereas longterm or network-wide traffic structures is far better understood \textcolor{red}{should I insert citations here? \cite{willinger1998self}}.
+
+We position our framework against NID data generation setups, such as those used in the CICIDS-17 or the UNSW-15 datasets \cite{moustafa2015unsw,sharafaldin2018towards}. These setups are regularly used to ....
+
+%\textcolor{red}{explain why focus on micro-structures and not larger structures}
+%We set out the following priorities:
 
 
 %enables researchers to conduct reproducible and informative network experiments in  
@@ -405,13 +409,19 @@ We set out the following priorities:
 
 
 
-\paragraph{Rich ground truth information} Above all, our framework should produce ground truth information about the underlying activities of all captured traffic. This information should not only distinguish between benign and malicious activity, but give detailed information about the conducted computational activities as well as outside factors such as network congestion or transmission failures to better facilitate understanding the effect of different traffic types on a detection system.
+\paragraph{Rich ground truth information} Attention in the setup of typical lab-capture environments is put primarily into attack diversity and realistic network topologies and to some extent to the overall generation mechanisms of benign traffic. No attention so far has been spend on controlling and monitoring the different factors, described in Section \ref{Sec:Impactfactors}, that influence how traffic, benign and malicious, is shaped in the generation process. 
+
+Our framework should above all produce ground truth information about the underlying activities of all captured traffic. This information should not only distinguish between benign and malicious activity, but give detailed information about the conducted computational activities. Furthermore, our framework should control and record all necessary factors that impact and shape the generated traffic such as network congestion or transmission failures to better facilitate understanding the effect of different traffic structures and particular phenomena on a detection system.
 
 %\paragraph{Functional realism} Researchers should have the ability to embed their NIDS into our framework in order to enable real-time detection experiments as well as corresponding operator decision-making.
 
-\paragraph{Reproducibility} Our framework should be able to precisely reproduce any generated traffic events and corresponding network experiments in order to facilitate verifiable and comparable research. 
+\paragraph{Reproducibility} The scientific method dictates that experiments must be reproduced  before  they  are  considered  valid. Typical setups generate and collect data in a one-shot manner, without control over various quasi-random influences that affect the capture process. Furthermore, the particular setups are often complex and difficult to recreate. This makes is difficult for researchers to reproduce datasets and corresponding network experiments, especially when proprietary customized datasets are used. 
 
-\paragraph{Traffic realism on a packet level} The framework should generate real, interactive network traffic that resembles common traffic structures on a packet-level. This is a necessary condition to provide a corresponding evaluation of NIDS systems with a plausible degree of scientific insight and relevance. Internet traffic overall is hard to model, which is why we narrow the scope to the generation of small-scale traffic scenarios that contain true interactions between software components in a realistic way. Furthermore, our framework should enable the inclusion of large-scale network activity profiles to leverage existing research in this area.
+Our framework should be able to precisely reproduce any generated traffic events and corresponding network experiments in order to facilitate verifiable and comparable research. Data should be produced in a controllable manner, with typically random impacts on traffic capture such as transferred data or host load being randomised and monitored in a controlled fashion to enable precise reproduction. We aim at avoiding complicated setups and plattform dependencies in the generation process. 
+
+\paragraph{Traffic realism on a packet level} As described in the first paragraph, attack-focused synthetic intrusion detection data setups so far have paid little attention to the realism of traffic on a packet-level, and exhibit far less event diversity than real-world captures due to the neglect of \textcolor{red}{request diversity} and the shielding from real-world factors such as excessive host load or network failures. We provide examples of this in Section \textcolor{red}{insert Section number}.
+
+The DetGen framework should address these issues and produce traffic that exhibits realistic levels of structural trafficdiversity and rare events. This is a necessary condition to provide a corresponding evaluation of NIDS systems with a plausible degree of scientific insight and relevance. %Internet traffic overall is hard to model, which is why we narrow the scope to the generation of small-scale traffic scenarios that contain true interactions between software components in a realistic way. Furthermore, our framework should enable the inclusion of large-scale network activity profiles to leverage existing research in this area.
 
 %\subsection*{Secondary goals}
 
@@ -421,13 +431,36 @@ We set out the following priorities:
 
 
 
+\begin{table}
+\centering
+\begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{2cm}}
+Contribution&How containers enable it& VM-based & Real traffic capture &Other framework  \\ \hline
+
+Ground truth labels on granular activities & Isolated process in container, no additional events. Easy to separate even when containers attached to same network interface & background events (system activitiy, artifacts from earlier activity, ...), overlaying activities hard to separate & No knowledge about conducted activity & Technically possible, no attempts yet \\ \hline
+
+Reproducability & Container state the same after repeated launches, isolation means that other task have little effect on, plattform independence  & To a lesser degree, simultaneously conducted activity can affect each other & - & Depends \\ \hline
+
+
+%Flexibility to regenerate customized datasets & Launching a network of containers is easy, modularity allows finer control of fine-grain activity  & Difficult to regenerate data as set-up and launching of VM is less straightforward, might be addressed with MiniMega & No & Yes \\ \hline
+
+Easy to update, include new attacks & 
+Attack/victim containers remove dependence on vulnerabilities, can be hooked to existing scenarios with shared resources & Since attacks happen on the VM, it is very hard to compose a VM with enough vulnerabilities to include many attacks & - & Some work has been done to "replay" or artificially inject attacks  \\ \hline
+
+
+%Fidelity to real traffic heterogeneity, structural richness & Not a lot except that scripting and randomising different scenarios is slightly easier  & Potentially, but little attention has been paid & Yes & Not on a packet level yet \\ \hline \hline
+
+
+Data on attacks on container isolation & In need of existing scenarios for background data & No & No & No \\ \hline
+\end{tabular}
+\caption{Contributions compared to existing solutions}\label{Tab:Contributions}
+\end{table}
 
 %\vspace{0.3cm}
 
 %Table \ref{Tab:Contributions} compares how well existing methods are realising these goals compared to our framework.
 
 
-\subsection{Motivation}% \textcolor{red}{(or Use-cases?)}}
+\subsection*{Motivational use-cases}% \textcolor{red}{(or Use-cases?)}}
 
 While there are many potential use-cases that can benefit from a system like DetGen, %we highlight two key types of interactions and three representative tasks in these cases: 
 
@@ -455,7 +488,7 @@ Packet-level structures and resulting false-positives can be better associated w
 
 
 
-\section{Impact factors on traffic metadata micro-structures}
+\section{Impact factors on traffic metadata micro-structures}\label{Sec:Impactfactors}
 
 In order to provide extensive ground truth information that describe the traffic we generate, we first must understand what factors have influence on the traffic generation process. \textcolor{red}{How do we verify that this list is more or less complete?}
 
@@ -481,13 +514,27 @@ The conducted computational task ultimately drives the communication between com
 \paragraph{Transferred data} 
 The amount of transferred data obviously influences the overall packet numbers. Furthermore, the content of the data can potentially impact packet rates and sizes, such as shown by Biernacki \cite{biernacki2017analysis} for streaming services.
 
+\paragraph{Encryption keys}
+
+
 \paragraph{Caching/Repetition effects}
 Tools like cookies, website caching, DNS caching, known hosts in SSH, etc. can cause to parts of a communication being skipped and lead to differences in the captured traffic between initial and subsequent connections.
 
 \paragraph{Captured traffic from background activity} 
-In traditional setups, all traffic generated on a host is recorded in the same capture, which makes it hard if not impossible to disentangle traffic from different activities and match them to their origin. Capturing background traffic typically leads to additional flows within the given time interval.
+In traditional setups, all traffic generated on a host is recorded in the same capture, which makes it hard if not impossible to disentangle traffic from different activities and match them to their origin. Capturing background traffic typically leads to additional flows within the given time interval. $74\%$ of SSH-connections and more than $95\%$ of FTP- and HTTPS-connections in the CICIDS-17 dataset lie within a 5-second interval of connections from other background activity on the same network interface, as depicted in Table \ref{Tab:Sess}.
 
-\textcolor{red}{insert number how often this is the case for traffic in CICIDS-17 dataset,explain procedure in appendix. Also insert image depicting the additional flows}
+\begin{table}[h!]
+\centering
+\begin{tabular}{l|l|l|>{\bfseries}l}
+Time&  Source-IP &Destination-IP& Dest. Port\\ \hline
+13:45:56.8 & 192.168.10.9 &  192.168.10.50 &       21 \\ \hline
+13:45:56.9 & 192.168.10.9 &  192.168.10.50 &    10602\\ \hline
+13:45:57.5 & 192.168.10.9 &  69.168.97.166 &      443\\ \hline
+13:45:59.1 & 192.168.10.9 &   192.168.10.3 &       53\\ \hline
+13:46:00.1 & 192.168.10.9 & 205.174.165.73 &     8080\\ \hline
+\end{tabular}
+\caption{Exemplary activity interval for host 192.168.10.9 in the CICIDS-17 dataset, containing FTP-, HTTPS- and DNS-, as well as additional unknown activity.}\label{Tab:Sess}
+\end{table}
 
 \paragraph{Application layer implementations}
 Different implementations for TLS, HTTP, etc. can yield different computational performance and can perform handshakes in slightly different ways. Furthermore, things like multiplexing channel prioritisation can have tremendous impact on the IAT times and the overall duration of the transfer, as shown in a study by Marx et al.  \cite{marx2020same} for the QUIC/HTTP3 protocol.
@@ -498,11 +545,9 @@ Different implementations for TLS, HTTP, etc. can yield different computational 
 \caption{Comparison of QUIC connection request multiplexing for selected implementations, taken from \cite{marx2020same}}
 \end{figure}
 
-\paragraph{Networking stack load}
-TCP or IP queue filling due to other applications generating traffic can alter IATs of the traffic trace and affect available bandwidths. \textcolor{red}{We should perform an experiment using iperf, once with TCP and once with UDP to quantify the effect}.
 
 \paragraph{Host level load}
-In a similar manner, other applications exhibiting significant computational load (CPU, memory, I/O) on the host machine can affect the processing speed of incoming and outgoing traffic, which can again alter IATs and the  overall duration of a connection. \textcolor{red}{We should perform an experiment using \textit{stress} to quantify the effect}.
+In a similar manner, other applications exhibiting significant computational load (CPU, memory, I/O) on the host machine can affect the processing speed of incoming and outgoing traffic, which can again alter IATs and the  overall duration of a connection. \textcolor{red}{Performed various experiments using \textit{stress} under sometimes enormous loads, the startup was a lot slower, but the traffic IATs etc did not change at all, but using Linux bridge and if going via loopback interface in the kernel stack}.
 
 \paragraph{LAN and WAN congestion}
 Low available bandwith, long RTTs, or packet loss can have a significant effect on TCP congestion control mechanisms, which in turn influence frame-sizes, IATs, window sizes, and the overall temporal characteristic of the sequence. \textcolor{red}{do we need to verify this? Seems very clear}
@@ -512,6 +557,12 @@ Other factors we are currently not considering:
 
 \paragraph{User and scheduled activities}
 The frequency with which a user or an application performs tasks governs the larger-scale temporal characteristic of a traffic capture. Since we are focusing on the traffic micro-structures here, we currently omit this impact factor from our analysis. 
+
+\paragraph{Networking stack load}
+TCP or IP queue filling of the kernel networking stack can in theory increase packet waiting times and therefore IATs of the traffic trace. However, we did not find any significant effect on the described traffic similarity measures for various amounts of load generated with iPerf, both for regular settings and our design.
+
+%\textcolor{red}{We should perform an experiment using iperf, once with TCP and once with UDP to quantify the effect}.
+
 
 \paragraph{TCP congestion management implementation}
 Different versions of the TCP congestion manager exist on Windows and Linux such as TCP Reno/Tahoe, which can have minor influence on the traffic, as shown by Grieco et al. \cite{grieco2004performance}. Existing implementations on a machine stay mostly constant, which is why we also omit this variable at the moment.
@@ -523,29 +574,6 @@ Network settings such as the MTU or the enabling of TCP Segment Reassembly Offlo
 
 
 
-\begin{table}
-\centering
-\begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{2cm}}
-Contribution&How containers enable it& VM-based & Real traffic capture &Other framework  \\ \hline
-
-Ground truth labels on granular activities & Isolated process in container, no additional events. Easy to separate even when containers attached to same network interface & background events (system activitiy, artifacts from earlier activity, ...), overlaying activities hard to separate & No knowledge about conducted activity & Technically possible, no attempts yet \\ \hline
-
-Reproducability & Container state the same after repeated launches, isolation means that other task have little effect on, plattform independence  & To a lesser degree, simultaneously conducted activity can affect each other & - & Depends \\ \hline
-
-
-%Flexibility to regenerate customized datasets & Launching a network of containers is easy, modularity allows finer control of fine-grain activity  & Difficult to regenerate data as set-up and launching of VM is less straightforward, might be addressed with MiniMega & No & Yes \\ \hline
-
-Easy to update, include new attacks & 
-Attack/victim containers remove dependence on vulnerabilities, can be hooked to existing scenarios with shared resources & Since attacks happen on the VM, it is very hard to compose a VM with enough vulnerabilities to include many attacks & - & Some work has been done to "replay" or artificially inject attacks  \\ \hline
-
-
-%Fidelity to real traffic heterogeneity, structural richness & Not a lot except that scripting and randomising different scenarios is slightly easier  & Potentially, but little attention has been paid & Yes & Not on a packet level yet \\ \hline \hline
-
-
-Data on attacks on container isolation & In need of existing scenarios for background data & No & No & No \\ \hline
-\end{tabular}
-\caption{Contributions compared to existing solutions}\label{Tab:Contributions}
-\end{table}
 
 
 
@@ -661,7 +689,7 @@ We identify variable input parameters within scenarios and their subscenarios an
 
 \begin{figure}
  \centering 
- \includegraphics[width=0.480\textwidth]{images/scenario_branching.PNG}
+ \includegraphics[width=0.780\textwidth]{images/scenario_branching.PNG}
  \caption{Visualization of the different levels at which traffic variation is introduced in DetGen.}
  \label{Fig:branching}
 \end{figure}
@@ -992,18 +1020,47 @@ This section is important to demonstrate that our data is valid and overcomes th
 
 \subsection{Traffic similarity metrics for determinism and realism evaluation}
 
-In this experiment, we compare our framework against a setup on a virtual machine to show that we provide deterministic control that is not achievable on a common setup. For that, we measure traffic similarity using a set of similarity metrics on traffic both from our and the comparison setup. The traffic is subject to varying degrees of influence from the above described impact factors. We show that when all factors are held constant, our traffic is much more similar than on a regular setup.
+We now assess the claim of control over the outlined traffic influence factors, and how similar traffic generated with the same settings looks like. We also demonstrate that this level of control is not achievable on regular VM-based NIDS-traffic-generation setup.
+To do so, we require a similarity metric that measures how similar or dissimilar two traffic traces are. We want to compare traffic similarity on three ...
 
-We should also demonstrate how difficult it is to match all flow events to specific events (I am still unsure how), and how often you get system background events (very straightforward using flow counting and port entropy).
+we compare our framework against a setup on a virtual machine to show that we provide deterministic control that is not achievable on a common setup. For that, we measure traffic similarity using a set of similarity metrics on traffic both from our and the comparison setup. The traffic is subject to varying degrees of influence from the above described impact factors. We show that when all factors are held constant, our traffic is much more similar than on a regular setup.
 
-Common setup: Network of VMs with each VM representing one host in a regular network. Multiple services with scheduled scripted activities running on a VM. Traffic captured at router or network interface. 
+%We should also demonstrate how difficult it is to match all flow events to specific events (I am still unsure how), and how often you get system background events (very straightforward using flow counting and port entropy).
 
+%Common setup: Network of VMs with each VM representing one host in a regular network. Multiple services with scheduled scripted activities running on a VM. Traffic captured at router or network interface. 
 
 \begin{itemize}
-\item \textbf{Connection similarity} Comparison of flow summary statistics (IAT statistics, Packet size statistics, Flow counts, TCP window size statistics using cosine similarity and/or distribution Wilcoxon test, used in traffic classification
-\item \textbf{Flow level similarity} Number and order of flows as well as port numbers in a short window
+\item \textbf{Overall connection similarity} We collect 80 flow summary statistics (IAT and packet size, TCP window sizes, flag occurrences, burst and idle periods). We compress this information using PCA to 8 significant dimensions, and measure the cosine similarity between connections, which is also used in general traffic classification \cite{aun2017review}.
+\item \textbf{Flow level similarity} To quantify the similarity of flow sequences, we assign each flow a discrete state, according to its port, size quantile, and interarrival time quantile. We then calculate for a group of captures the probabilities of flow states at each step in the sequence, and use the average sequence likelihoods of each group as a similarity measure. 
+\item \textbf{Sequential similarity} To quantify the similarity of packet sequences in traffic captures, we proceed in a similar fashion and assign packets a discrete state according to their flags, direction, sizes, and interarrival times. We then calculate the Markovian probability of each packet state conditional on the previous packet. We do this for sequences of 15 packets at the start, the middle, and the end of a connection, and use the average sequence likelihood of each group as a similarity measure. If connections are completely similar, the conditional probabilities and thus the likelihoods should converge to one.
 \end{itemize}
 
+In contrast to 
+
+
+\subsubsection{Constant settings}
+
+We now apply the described similarity measures to different groups of traffic traces to evaluate the \textcolor{red}{determinism} of our data generation process. We vary the control settings of the described influence factors, described in Section \ref{Sec:Impactfactors}, for each group, but keep them constant within each group. We use three different traffic types (HTTP, file-syncing (port 8384), and botnet), for which we both perform different application-specific activities and create different overall settings. We furthermore perform the same HTTP-activities on two regular VMs without containerisation, but with the same settings.
+
+
+\begin{table}
+\centering
+\begin{tabular}{p{1cm}|p{3cm}|p{3cm}|p{3cm}|p{2cm}}
+Label &Overall Setting&HTTP&File-Sync & Mirai-C\&C\\ \hline
+A&\textcolor{red}{Little congestion, high comp. load} & Get-request on NGINX/wget, small file & Sequence 1,  syncing to two computers & Command sequence 1 \\ \hline
+B& Moderate congestion, low comp. load &Multi-request for different fixed files, NGINX & Sequence 2,  syncing to four computers & Command sequence 2\\ \hline
+C& High congestion, no comp. load & Post-request on Apache/wget, large file &Sequence 3,  syncing to two computers & Command sequence 3\\ \hline
+D& High congestion, high comp. load & Multi-request for different fixed files with caching, Apache & Sequence 4,  syncing to four computers & Command sequence 4\\ \hline
+
+\end{tabular}
+\caption{Test}\label{Dataset}
+\end{table}
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{images/Determ-metric.png}
+\caption{HTTP}\label{determ-metric}
+\end{figure}
 
 
 \subsubsection{First test: Determinism}
@@ -1011,6 +1068,7 @@ Common setup: Network of VMs with each VM representing one host in a regular net
 
 
 \subsubsection{Second test: Realistic diversity under all impact factors}
+
 
 Here, we apply the simulation of all impact factors simultaneously to our traffic and test if the traffic similarity scores are as divergent as for traffic from a real-world dataset (i.e. CAIDA) for two or three exemplary protocols, and we also compare it to the same protocols in the CICIDS-17 dataset. This will let us argue that we can achieve realistic levels of diversity (something criticised by Sommer-Paxson), and that our framework lets researchers explore higher levels of diversity than currents labelled solutions.
 
