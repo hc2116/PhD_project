@@ -19,8 +19,8 @@
 \vspace{-0.3cm}
 \begin{abstract}
 
-Stepping-stones are used extensively by attackers to hide their identify and access restricted targets. Many methods have been proposed to detect stepping-stones and resist evasive behaviour, but so far no benchmark dataset exists to provide a fair comparison of detection rates. We propose a comprehensive framework to simulate realistic stepping-stone behaviour with effective evasion tools, and release a large dataset for evaluation purposes. 
-We use this data to evaluate detection rates for eight state-of-the-art methods and highlight their respective strengths and weaknesses. Our results show that currently, no method is capable to reliably detect stepping-stone when the attacker inserts suitable chaff perturbations, disproving several robustness claims.
+Stepping-stones are used extensively by attackers to hide their identity and access restricted targets. Many methods have been proposed to detect stepping-stones and resist evasive behaviour, but so far no benchmark dataset exists to provide a fair comparison of detection rates. We propose a comprehensive framework to simulate realistic stepping-stone behaviour that includes effective evasion tools, and release a large dataset for evaluation purposes. 
+We use this data to evaluate detection rates for eight state-of-the-art methods and highlight their respective strengths and weaknesses. Our results show that detection results for several methods fall behind the claimed detection rates, even without the presence of evasion tactics. Furthermore, currently no method is capable to reliably detect stepping-stone when the attacker inserts suitable chaff perturbations, disproving several robustness claims and indicating that further improvements of existing detection models are necessary.
 
 \end{abstract}
 
@@ -63,7 +63,7 @@ In a stepping-stone attack, malicious commands are relayed via a chain of compro
 
 
 
-The detection of interactive stepping-stones is challenging due to various reasons. Attackers are not constrained to specific proxy techniques and can obfuscate relayed traffic with  evasiive tactics. Packet-based methods are computationally expensive, with scalability and false-positives being a problem for large networks. Like many intrusion attacks, stepping-stones are rare and there exists no public data representing real stepping-stone behaviour, and researchers have to rely on synthetic data. Some attempts have been made to create publicly available stepping-stone testbeds, yet most researchers evaluate their SSD methods on self-provided private data, which makes a direct comparison of the achieved results impossible. 
+The detection of interactive stepping-stones is challenging due to various reasons. Attackers are not constrained to specific proxy techniques and can obfuscate relayed traffic with  evasive tactics. Packet-based methods are computationally expensive, with scalability and false-positives being a problem for large networks. Like many intrusion attacks, stepping-stones are rare and there exists no public data representing real stepping-stone behaviour, and researchers have to rely on synthetic data. Some attempts have been made to create publicly available stepping-stone testbeds, yet most researchers evaluate their SSD methods on self-provided private data, which makes a direct comparison of the achieved results impossible. 
 
 In this work, we provide the following contributions:
 
@@ -181,7 +181,7 @@ Fig. \ref{Fig:Packetway} depicts a packet transfer via an exemplary chain.
 \caption{Depiction of the way a command is packetised, encrypted, and travels through the different stages of the stepping-stone chain via SSH-tunnels.}\label{Fig:Packetway}
 \end{figure}
 
-.% and is most thus likely the target of a detection algorithm. 
+% and is most thus likely the target of a detection algorithm. 
 
 
 
@@ -245,7 +245,7 @@ We insert chaff packets to individual connections in the chain using a Netcat cl
 
 %\textcolor{red}{add reference} to send data to both ports from either direction and collect it at the other side. 
 Again,  Padhye et al. \cite{padhye2010evading} suggest to generate chaff in a way that mimics the flow characteristics of streaming services in order to both spread the added perturbations evenly across the connection and increase the difficulty of detecting the perturbation itself.
-For this, packet sizes Are drawn from a truncated Lognormal-distribution with mean $\mu_C$, while transmission intervals are drawn from a uniform distribution that covers the interval $[\delta_c/2,\delta_c]$ to mimic a relatively constant packet flow. By adjusting $\delta_C$, we can control the amount of chaff sent. 
+For this, packet sizes are drawn from a truncated Lognormal-distribution with mean $\mu_C$, while transmission intervals are drawn from a uniform distribution that covers the interval $[\delta_C/2,\delta_C]$ to mimic a relatively constant packet flow. By adjusting $\delta_C$, we can control the amount of chaff sent. 
 
 
 \subsubsection{Repacketisation and Flow splitting/merging}
@@ -384,13 +384,13 @@ Since we generate perturbations with multimedia streams characteristics, we addi
 \centering
 \begin{tabular}{l|l|l|l}
 & Label  &Nr. of conn. & Purpose\\ \hline
-\multirow{5}{*}{SS data}& set BA & 30,000& \makecell[l]{Baseline attack data without\\evasion tactics} \\ \cline{2-4}
-						& set DA & 30,000& Inclusion of delays with varying $\delta_D$ \\ \cline{2-4}
-						& set CA & 30,000& Inclusion of chaff with varying $\delta_C$ \\ \cline{2-4}
-						& set CL & 40,000& \makecell[l]{Data from chains of different\\lengths,  no evasion tactics} \\ \hline
-\multirow{5}{*}{Benign data}&CAIDA & 60,000& General background data \\ \cline{2-4}
-							&SSH & 20,000& \makecell[l]{Background data similar to\\attack commands} \\ \cline{2-4}
-							&Multim.& 20,000& \makecell[l]{Background data similar to\\chaff perturbations} \\ \hline
+\multirow{5}{*}{Attack data}& set BA & 30.000& \makecell[l]{Baseline attack data without\\evasion tactics} \\ \cline{2-4}
+						& set DA & 30.000& Inclusion of delays with varying $\delta_D$ \\ \cline{2-4}
+						& set CA & 30.000& Inclusion of chaff with varying $\delta_C$ \\ \cline{2-4}
+						& set CL & 40.000& \makecell[l]{Data from chains of different\\lengths,  no evasion tactics} \\ \hline
+\multirow{5}{*}{Background data}&CAIDA & 60.000& General background data \\ \cline{2-4}
+							&SSH & 20.000& \makecell[l]{Background data similar to\\attack commands} \\ \cline{2-4}
+							&Multim.& 20.000& \makecell[l]{Background data similar to\\chaff perturbations} \\ \hline
 \end{tabular}
 \caption{Summary of different components in our evaluation data.}\label{Fig:Datasim}
 \end{table}
@@ -424,13 +424,13 @@ Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 %         text ragged] {
 %            \textbf{Benign data}
 %                  \nodepart{second}
-%            100,000 connect.
+%            100.000 connect.
 %        }
 %		child {
 %            node [punkt, rectangle split, rectangle split parts=2]{
 %                \textbf{Video streaming}
 %                \nodepart{second}
-%                similar to chaff, 20,000
+%                similar to chaff, 20.000
 %            }
 %            edge from parent
 %                node[kant, above] {}}
@@ -438,7 +438,7 @@ Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 %            node [punkt,align=left, rectangle split, rectangle split parts=2]{
 %                \textbf{interactive SSH}
 %                \nodepart{second}
-%                similar to attack\\ commands,  20,000
+%                similar to attack\\ commands,  20.000
 %            }
 %            edge from parent
 %                node[kant, above] {}}
@@ -446,7 +446,7 @@ Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 %            node [punkt, rectangle split, rectangle split parts=2]{
 %                \textbf{CAIDA}
 %                \nodepart{second}
-%                gen. background, 60,000
+%                gen. background, 60.000
 %            }
 %            edge from parent
 %                node[kant, above] {}}
@@ -458,13 +458,13 @@ Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 %        node[punkt, rectangle split, rectangle split parts=2] {
 %	\textbf{SS data}
 %                \nodepart{second}
-%                94,000 connect.
+%                94.000 connect.
 %        }
 %		child {
 %            node [punkt, rectangle split, rectangle split parts=2]{
 %                \textbf{set CL}
 %                \nodepart{second}
-%                mult. jumps, 4,000
+%                mult. jumps, 4.000
 %            }
 %            edge from parent
 %                node[kant, above] {}}
@@ -472,7 +472,7 @@ Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 %            node [punkt, rectangle split, rectangle split parts=2]{
 %                \textbf{set CA}
 %                \nodepart{second}
-%                chaff, 30,000
+%                chaff, 30.000
 %            }
 %            edge from parent
 %                node[kant, above] {}}
@@ -480,7 +480,7 @@ Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 %            node [punkt, rectangle split, rectangle split parts=2]{
 %                \textbf{set DA}
 %                \nodepart{second}
-%                delays, 30,000
+%                delays, 30.000
 %            }
 %            edge from parent
 %                node[kant, above] {}}
@@ -489,7 +489,7 @@ Table \ref{Fig:Datasim} summarises the different parts in our evaluation data.
 %            rectangle split parts=2] {
 %                \textbf{set BA}
 %                \nodepart{second}
-%                no evasion, 30,000
+%                no evasion, 30.000
 %            }
 %            edge from parent
 %                node[below, kant,  pos=.3] {}}
@@ -507,7 +507,8 @@ We collect packets to connections according to the usual 5-tuple consisting of \
 connection pairs. 
 
 %Different approaches require different amounts of packets to make predictions. 
-To create a fair playing field for the selected SSD methods, we only look at connections that exchange more than 1500 packets and exclude shorter connections from both the background data. This number seems like a suitable minimal limit for a successful interactive stepping-stone chain as all of the selected methods are supposed to make successful detection with less packets, and there were no connections with less packets in the stepping-stone dataset. %\textcolor{red}{add validation about how this is sufficient for all approaches?}.
+To create a fair playing field for the selected SSD methods, we only look at connections that exchange more than 1500 packets and exclude shorter connections from both the compiled background dataset and the attack dataset. 
+The number of packets necessary for detection should ideally be a low possible to enable early detection. The chosen number of 1500 packets seems like a suitable minimal limit since all of the selected methods are designed to make successful detection with 300-1500 packets.  Furthermore, there were no connections with less packets in the stepping-stone dataset. %\textcolor{red}{add validation about how this is sufficient for all approaches?}.
 %The first 1500 packets are then passed to each SSD method to make a prediction.
 
 The initialisation and takedown of the SSH-tunnels usually follows a distinct pattern that can be learned and consequently boost detection rates for ML-based methods. Since this pattern is not necessarily representative of actual stepping-stone behaviour, we remove the first and last thirty packets in the attack connections. %If necessary, we also remove the last thirty packets to avoid the same issue for connection closures. 
@@ -1168,7 +1169,7 @@ pAllNoevasion <- ggplot(AllNoevasion,aes(x=chaffr,y=TP1, group=Method))+
 pAllNoevasion
 @
 
-As visible, all methods struggle to detect stepping stones once the chaff packets become the majority of the transferred traffic. This is also evident from the AUC-scores given in Table \ref{Tab:AUCdelays}. Several approaches claimed to be resistent to chaff perturbations, however prior evaluations were limited chaff ratios below $100\%$ without obvious reason.
+As visible, all methods struggle to detect stepping stones once the chaff packets become the majority of the transferred traffic. This is also evident from the AUC-scores given in Table \ref{Tab:AUCchaff}. Several approaches claimed to be resistent to chaff perturbations, however prior evaluations were limited chaff ratios below $100\%$ without obvious reason.
 
 It is surprising that the anomaly detection methods do not perform better at detecting chaff perturbations. Chaff in both approaches was however evaluated with different traffic generation distribution and not compared against a background of traffic following a similar generation distribution, which could explain the disagreement between the results we are finding here.
 
