@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  20 OCT 2020 16:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  22 OCT 2020 17:38
 entering extended mode
 **./NDSS20.tex
 (NDSS20.tex
@@ -430,87 +430,87 @@ G,.JBIG2,.JB2,.eps]
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 67.
+(Font)              <10.95> on input line 109.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 67.
+(Font)              <8> on input line 109.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 67.
-[1
+(Font)              <6> on input line 109.
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 109
+.
+(C:/PROGRA~1/R/R-35~1.3/share/texmf/tex/latex\omscmtt.fd
+File: omscmtt.fd 
+)
+LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 109.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 109.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 109.
+ [1
 
 {C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<images/Stepstone_final_2.png, id=9, 423.83344pt x 168.63pt>
+<images/Stepstone_final_2.png, id=14, 423.83344pt x 168.63pt>
 File: images/Stepstone_final_2.png Graphic file (type png)
 <use images/Stepstone_final_2.png>
-Package pdftex.def Info: images/Stepstone_final_2.png  used on input line 148.
-(pdftex.def)             Requested size: 308.95491pt x 122.92905pt.
- [2]
-[3 <./images/Stepstone_final_2.png>]
-<images/Packetway_2.png, id=23, 843.15pt x 182.18062pt>
+Package pdftex.def Info: images/Stepstone_final_2.png  used on input line 196.
+(pdftex.def)             Requested size: 247.16644pt x 98.34065pt.
+ [2 <./images/Stepstone_final_2.png>]
+<images/Packetway_2.png, id=21, 843.15pt x 182.18062pt>
 File: images/Packetway_2.png Graphic file (type png)
 <use images/Packetway_2.png>
-Package pdftex.def Info: images/Packetway_2.png  used on input line 230.
-(pdftex.def)             Requested size: 411.9399pt x 89.01074pt.
- [4] [5 <./images/Packetway_2.png>]
-<images/Docker_framework.png, id=30, 1291.07344pt x 445.665pt>
+Package pdftex.def Info: images/Packetway_2.png  used on input line 280.
+(pdftex.def)             Requested size: 370.74338pt x 80.10689pt.
+ [3] [4 <./images/Packetway_2.png>]
+Overfull \hbox (21.32407pt too wide) in paragraph at lines 357--360
+ \OT1/cmr/bx/n/10.95 Repack-eti-sa-tion[] \OT1/cmr/m/n/10.95 By de-sign, SSH-tu
+nnels per-form repack-eti-sa-tion along with re-encryption
+ []
+
+<images/Docker_framework.png, id=29, 1291.07344pt x 445.665pt>
 File: images/Docker_framework.png Graphic file (type png)
 <use images/Docker_framework.png>
-Package pdftex.def Info: images/Docker_framework.png  used on input line 313.
-(pdftex.def)             Requested size: 350.15141pt x 120.86838pt.
-
-[6] [7 <./images/Docker_framework.png>]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 435.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 435.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 556.
-
-
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 556.
-
-[8] [9] [10]
-Package color Info: Redefining color shadecolor on input line 753.
-<figure/Noevasion_4nodes-1.pdf, id=50, 578.16pt x 216.81pt>
+Package pdftex.def Info: images/Docker_framework.png  used on input line 364.
+(pdftex.def)             Requested size: 308.95491pt x 106.64217pt.
+[5 <./images/Docker_framework.png>] [6] [7]
+Package color Info: Redefining color shadecolor on input line 832.
+<figure/Noevasion_4nodes-1.pdf, id=42, 578.16pt x 180.675pt>
 File: figure/Noevasion_4nodes-1.pdf Graphic file (type pdf)
 <use figure/Noevasion_4nodes-1.pdf>
-Package pdftex.def Info: figure/Noevasion_4nodes-1.pdf  used on input line 754.
+Package pdftex.def Info: figure/Noevasion_4nodes-1.pdf  used on input line 833.
 
-(pdftex.def)             Requested size: 411.9399pt x 154.47542pt.
- [11]
-Package color Info: Redefining color shadecolor on input line 798.
-<figure/Delaydetection-1.pdf, id=54, 578.16pt x 216.81pt>
+(pdftex.def)             Requested size: 411.9399pt x 128.7295pt.
+ [8]
+Package color Info: Redefining color shadecolor on input line 880.
+<figure/Delaydetection-1.pdf, id=46, 578.16pt x 180.675pt>
 File: figure/Delaydetection-1.pdf Graphic file (type pdf)
 <use figure/Delaydetection-1.pdf>
-Package pdftex.def Info: figure/Delaydetection-1.pdf  used on input line 799.
-(pdftex.def)             Requested size: 411.9399pt x 154.47542pt.
- [12 <./figure/Noevasion_4nodes-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 836.
-<figure/Chaffdetection-1.pdf, id=63, 578.16pt x 216.81pt>
+Package pdftex.def Info: figure/Delaydetection-1.pdf  used on input line 881.
+(pdftex.def)             Requested size: 411.9399pt x 128.7295pt.
+ [9 <./figure/Noevasion_4nodes-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 919.
+<figure/Chaffdetection-1.pdf, id=55, 578.16pt x 180.675pt>
 File: figure/Chaffdetection-1.pdf Graphic file (type pdf)
 <use figure/Chaffdetection-1.pdf>
-Package pdftex.def Info: figure/Chaffdetection-1.pdf  used on input line 837.
-(pdftex.def)             Requested size: 411.9399pt x 154.47542pt.
- [13 <./figure/Delaydetection-1.pdf>] [14 <./figure/Chaffdetection-1.pdf>] [15]
- (NDSS20.bbl [16]
-[17]) [18]
-Package color Info: Redefining color shadecolor on input line 988.
-<figure/Influencechainl-1.pdf, id=94, 578.16pt x 172.645pt>
+Package pdftex.def Info: figure/Chaffdetection-1.pdf  used on input line 920.
+(pdftex.def)             Requested size: 411.9399pt x 128.7295pt.
+ [10 <./figure/Delaydetection-1.pdf>] [11 <./figure/Chaffdetection-1.pdf>] (NDS
+S20.bbl [12] [13])
+Package color Info: Redefining color shadecolor on input line 1078.
+<figure/Influencechainl-1.pdf, id=80, 578.16pt x 172.645pt>
 File: figure/Influencechainl-1.pdf Graphic file (type pdf)
 <use figure/Influencechainl-1.pdf>
-Package pdftex.def Info: figure/Influencechainl-1.pdf  used on input line 989.
+Package pdftex.def Info: figure/Influencechainl-1.pdf  used on input line 1079.
+
 (pdftex.def)             Requested size: 411.9399pt x 123.0082pt.
- [19 <./figure/Influencechainl-1.pdf>] [20] (NDSS20.aux) ) 
+ [14] [15 <./figure/Influencechainl-1.pdf>] (NDSS20.aux) ) 
 Here is how much of TeX's memory you used:
- 3480 strings out of 492970
- 49161 string characters out of 3126595
- 134428 words of memory out of 3000000
- 7278 multiletter control sequences out of 15000+200000
- 9808 words of font info for 34 fonts, out of 3000000 for 9000
+ 3475 strings out of 492970
+ 49038 string characters out of 3126595
+ 136393 words of memory out of 3000000
+ 7271 multiletter control sequences out of 15000+200000
+ 9975 words of font info for 35 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,15n,32p,865b,313s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,10n,32p,910b,315s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/henry/AppDa
 ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/User
 s/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12
@@ -526,14 +526,14 @@ C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 amsfonts/cm/cmr8.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmr9.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/henry/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/henry/AppDat
-a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/
-henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.p
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/henry/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users
+/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.p
 fb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmti9.pfb>
-Output written on NDSS20.pdf (20 pages, 392831 bytes).
+s/cm/cmtt9.pfb>
+Output written on NDSS20.pdf (15 pages, 381591 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
+ 142 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
