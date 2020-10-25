@@ -117,28 +117,78 @@ require(cowplot)
 
 # A
 N=100
-x1 <- 1-abs(rnorm(N,sd=0.02))
-x2 <- 1-abs(rnorm(N,sd=0.01))
-x3 <- 1-abs(rnorm(N,sd=0.04))
+x1 <- abs(rnorm(N,mean=0.002,sd=0.001))
+x2 <- abs(rnorm(N,mean=0.002,sd=0.001))
+x3 <- abs(rnorm(N,mean=0.002,sd=0.001))
 df=data.frame(x=c(x1,x2,x3),
               Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
                Metric=c("conn","flow","seq"))
-
 dfA=df
-dfB=df
-dfA$Set="A"
-dfB$Set="B"
-
 df2A=df2
-df2B=df2
+dfA$Set="A"
 df2A$Set="A"
+# B
+x1 <- abs(rnorm(N,mean=0.003,sd=0.001))
+x2 <- abs(rnorm(N,mean=0.003,sd=0.001))
+x3 <- abs(rnorm(N,mean=0.002,sd=0.001))
+df=data.frame(x=c(x1,x2,x3),
+              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
+df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
+               ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
+               y=c(median(x1),median(x2),median(x3)),
+               Metric=c("conn","flow","seq"))
+dfB=df
+df2B=df2
+dfB$Set="B"
 df2B$Set="B"
+# C
+x1 <- abs(rnorm(N,mean=0.004,sd=0.001))
+x2 <- abs(rnorm(N,mean=0.004,sd=0.001))
+x3 <- abs(rnorm(N,mean=0.003,sd=0.001))
+df=data.frame(x=c(x1,x2,x3),
+              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
+df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
+               ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
+               y=c(median(x1),median(x2),median(x3)),
+               Metric=c("conn","flow","seq"))
+dfC=df
+df2C=df2
+dfC$Set="C"
+df2C$Set="C"
+# D
+x1 <- abs(rnorm(N,mean=0.0055,sd=0.001))
+x2 <- abs(rnorm(N,mean=0.001,sd=0.001))
+x3 <- abs(rnorm(N,mean=0.002,sd=0.001))
+df=data.frame(x=c(x1,x2,x3),
+              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
+df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
+               ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
+               y=c(median(x1),median(x2),median(x3)),
+               Metric=c("conn","flow","seq"))
+dfD=df
+df2D=df2
+dfD$Set="D"
+df2D$Set="D"
+# VM
+x1 <- abs(rnorm(N,mean=0.024,sd=0.002))
+x2 <- abs(rnorm(N,mean=0.029,sd=0.002))
+x3 <- abs(rnorm(N,mean=0.022,sd=0.002))
+df=data.frame(x=c(x1,x2,x3),
+              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
+df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
+               ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
+               y=c(median(x1),median(x2),median(x3)),
+               Metric=c("conn","flow","seq"))
+dfVM=df
+df2VM=df2
+dfVM$Set="VM"
+df2VM$Set="VM"
 
-df=rbind(dfA,dfB)
-df2=rbind(df2A,df2B)
+df=rbind(dfA,dfB,dfC,dfD,dfVM)
+df2=rbind(df2A,df2B,df2C,df2D,df2VM)
 
 pA <- ggplot(df, aes(x=Metric, y=x)) + 
   #geom_dotplot(binaxis='y', stackdir='center', aes(colour=Metric,fill=Metric),
@@ -147,9 +197,10 @@ pA <- ggplot(df, aes(x=Metric, y=x)) +
   facet_grid(. ~ Set)+
   geom_errorbar(df2,mapping=aes(y=y,x=Metric,ymin=ymin, ymax=ymax), 
                 width=.2,size=1,)+
-  theme_bw()+  labs(y="%",x="")+
-  geom_point(df2,mapping=aes(y=y,x=Metric,color=Metric),fill="white",shape = 21,size=4,show.legend=FALSE)
-
+  theme_bw()+labs(y="% of max-dissimilarity",x="")+theme(legend.position = "none")+
+  #geom_point(df2,mapping=aes(y=y,x=Metric,color=Metric),fill="white",shape = 21,size=4,show.legend=FALSE)
+  geom_point(df2,mapping=aes(y=y,x=Metric),color="black",size=4,show.legend=FALSE)
+pA#+scale_y_continuous(trans='log2')
 
 plot_grid(pA, pA,pA,pA, labels = c('A', 'B', 'C','D'), ncol = 4)
 
