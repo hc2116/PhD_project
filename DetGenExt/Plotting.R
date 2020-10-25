@@ -94,10 +94,21 @@ p1
 # Experiment 1
 ########################################################
 
+dat <- structure(list(Year = c(2013L, 2013L, 2013L, 2013L, 2013L, 2014L, 2014L, 2014L, 2014L, 2014L), 
+                      Category = structure(c(1L, 2L, 3L,4L, 5L, 1L, 2L, 3L, 4L, 5L), 
+                                           .Label = c("Beverages", "Condiments","Confections", "Dairy Products", "Seafood"), class = "factor"), 
+                      TotalSales = c(102074.29, 55277.56, 36415.75, 30337.39, 53019.98, 81338.06, 55948.82, 44478.36, 84412.36, 65544.19), 
+                      AverageCount = c(22190.06, 14173.73, 12138.58, 24400, 27905.25, 35400, 19981.72, 24710,32466, 14565.37)), 
+                 .Names = c("Year", "Category", "TotalSales","AverageCount"), 
+                 class = "data.frame", row.names = c(NA, -10L))
+
+library(reshape2)
+dat_l <- melt(dat, id.vars = c("Year", "Category"))
+
 require(ggplot2)
 require(cowplot)
 
-# geom_pointrange(mapping = aes(x = metric, y = x),
+# geom_pointrange(mapping = aes(x = Metric, y = x),
 #                 stat = "summary",
 #                 fun.min = function(z) {quantile(z,0.25)},
 #                 fun.max = function(z) {quantile(z,0.75)},
@@ -105,12 +116,44 @@ require(cowplot)
 # stat_summary(fun="mean", fun.min=function(z) { quantile(z,0.05) },fun.max=function(z) { quantile(z,0.95) },colour = "red", size = 1)
 
 # A
-x1 <- 1-abs(rnorm(30,sd=0.02))
-x2 <- 1-abs(rnorm(30,sd=0.0000001))
-x3 <- 1-abs(rnorm(30,sd=0.04))
+N=100
+x1 <- 1-abs(rnorm(N,sd=0.02))
+x2 <- 1-abs(rnorm(N,sd=0.01))
+x3 <- 1-abs(rnorm(N,sd=0.04))
 df=data.frame(x=c(x1,x2,x3),
-              metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
-pA <- ggplot(df, aes(x=metric, y=x)) + 
+              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
+df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
+               ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
+               y=c(median(x1),median(x2),median(x3)),
+               Metric=c("conn","flow","seq"))
+
+dfA=df
+dfB=df
+dfA$Set="A"
+dfB$Set="B"
+
+df2A=df2
+df2B=df2
+df2A$Set="A"
+df2B$Set="B"
+
+df=rbind(dfA,dfB)
+df2=rbind(df2A,df2B)
+
+pA <- ggplot(df, aes(x=Metric, y=x)) + 
+  #geom_dotplot(binaxis='y', stackdir='center', aes(colour=Metric,fill=Metric),
+  #             dotsize =0.3,binwidth=0.01,stackratio = .3)
+  geom_point(aes(color=Metric),alpha=0.8)+
+  facet_grid(. ~ Set)+
+  geom_errorbar(df2,mapping=aes(y=y,x=Metric,ymin=ymin, ymax=ymax), 
+                width=.2,size=1,)+
+  theme_bw()+  labs(y="%",x="")+
+  geom_point(df2,mapping=aes(y=y,x=Metric,color=Metric),fill="white",shape = 21,size=4,show.legend=FALSE)
+
+
+plot_grid(pA, pA,pA,pA, labels = c('A', 'B', 'C','D'), ncol = 4)
+
+pA <- ggplot(df, aes(x=Metric, y=x)) + 
   geom_dotplot(binaxis='y', stackdir='center')+
 stat_summary(fun.data = "mean_se", colour = "red", size = 1)+
   theme_bw()+  labs(y="%",x="")
@@ -121,8 +164,8 @@ x1 <- 1-abs(rnorm(30,sd=0.02))
 x2 <- 1-abs(rnorm(30,sd=0.1))
 x3 <- 1-abs(rnorm(30,sd=0.04))
 df=data.frame(x=c(x1,x2,x3),
-              metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
-pB <- ggplot(df, aes(x=metric, y=x)) + 
+              Metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
+pB <- ggplot(df, aes(x=Metric, y=x)) + 
   geom_dotplot(binaxis='y', stackdir='center')+
   stat_summary(fun.data = "mean_se", colour = "red", size = 1)+
   theme_bw()+labs(y="%",x="")
@@ -132,8 +175,8 @@ x1 <- 1-abs(rnorm(30,sd=0.02))
 x2 <- 1-abs(rnorm(30,sd=0.00001))
 x3 <- 1-abs(rnorm(30,sd=0.04))
 df=data.frame(x=c(x1,x2,x3),
-              metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
-pC <- ggplot(df, aes(x=metric, y=x)) + 
+              Metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
+pC <- ggplot(df, aes(x=Metric, y=x)) + 
   geom_dotplot(binaxis='y', stackdir='center')+
   stat_summary(fun.data = "mean_se", colour = "red", size = 1)+
   theme_bw()+labs(y="%",x="")
@@ -143,8 +186,8 @@ x1 <- 1-abs(rnorm(30,sd=0.05))
 x2 <- 1-abs(rnorm(30,sd=0.1))
 x3 <- 1-abs(rnorm(30,sd=0.1))
 df=data.frame(x=c(x1,x2,x3),
-              metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
-pD <- ggplot(df, aes(x=metric, y=x)) + 
+              Metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
+pD <- ggplot(df, aes(x=Metric, y=x)) + 
   geom_dotplot(binaxis='y', stackdir='center')+
   stat_summary(fun.data = "mean_se", colour = "red", size = 1)+
   theme_bw()+labs(y="%")

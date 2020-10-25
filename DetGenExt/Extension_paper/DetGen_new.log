@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  15 OCT 2020 18:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  25 OCT 2020 12:52
 entering extended mode
 **./DetGen_new.tex
 (DetGen_new.tex
@@ -599,92 +599,91 @@ LaTeX Warning: Citation `aun2017review' on page 17 undefined on input line 1033
 .
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 1048--1048
+Underfull \hbox (badness 10000) in paragraph at lines 1050--1050
 []|[]\OT1/cmr/m/n/10 Little con-ges-tion,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1048--1048
+Underfull \hbox (badness 10000) in paragraph at lines 1050--1050
 []|\OT1/cmr/m/n/10 Get-request on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1048--1048
+Underfull \hbox (badness 10000) in paragraph at lines 1050--1050
 \OT1/cmr/m/n/10 NG-INX/wget,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1048--1048
+Underfull \hbox (badness 10000) in paragraph at lines 1050--1050
 []|\OT1/cmr/m/n/10 Command
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1049--1049
+Underfull \hbox (badness 10000) in paragraph at lines 1051--1051
 []|\OT1/cmr/m/n/10 Moderate con-ges-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1049--1049
+Underfull \hbox (badness 10000) in paragraph at lines 1051--1051
 \OT1/cmr/m/n/10 tion, low comp.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1049--1049
+Underfull \hbox (badness 10000) in paragraph at lines 1051--1051
 []|\OT1/cmr/m/n/10 Multi-request for
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1049--1049
+Underfull \hbox (badness 10000) in paragraph at lines 1051--1051
 []|\OT1/cmr/m/n/10 Command
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1050--1050
+Underfull \hbox (badness 10000) in paragraph at lines 1052--1052
 []|\OT1/cmr/m/n/10 Post-request on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1050--1050
+Underfull \hbox (badness 10000) in paragraph at lines 1052--1052
 []|\OT1/cmr/m/n/10 Command
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1051--1051
+Underfull \hbox (badness 10000) in paragraph at lines 1053--1053
 []|\OT1/cmr/m/n/10 High con-ges-tion,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1051--1051
+Underfull \hbox (badness 10000) in paragraph at lines 1053--1053
 []|\OT1/cmr/m/n/10 Multi-request for
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1051--1051
+Underfull \hbox (badness 10000) in paragraph at lines 1053--1053
 \OT1/cmr/m/n/10 dif-fer-ent fixed
  []
 
 
-Underfull \hbox (badness 1024) in paragraph at lines 1051--1051
+Underfull \hbox (badness 1024) in paragraph at lines 1053--1053
 \OT1/cmr/m/n/10 files with caching,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1051--1051
+Underfull \hbox (badness 10000) in paragraph at lines 1053--1053
 []|\OT1/cmr/m/n/10 Command
  []
 
 
-Overfull \hbox (48.91043pt too wide) in paragraph at lines 1046--1054
+Overfull \hbox (48.91043pt too wide) in paragraph at lines 1048--1056
  [][] 
  []
 
-<images/Determ-metric.png, id=126, 417.05812pt x 351.56343pt>
-File: images/Determ-metric.png Graphic file (type png)
-<use images/Determ-metric.png>
-Package pdftex.def Info: images/Determ-metric.png  used on input line 1059.
-(pdftex.def)             Requested size: 318.70815pt x 268.67155pt.
-[18] [19 <./images/Determ-metric.png>] (DetGen_new.bbl [20]) [21]
-(DetGen_new.aux)
+<images/Exp1.png, id=126, 649.67719pt x 232.61906pt>
+File: images/Exp1.png Graphic file (type png)
+<use images/Exp1.png>
+Package pdftex.def Info: images/Exp1.png  used on input line 1061.
+(pdftex.def)             Requested size: 354.12257pt x 126.79794pt.
+[18 <./images/Exp1.png>] (DetGen_new.bbl [19] [20]) [21] (DetGen_new.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -694,7 +693,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
  ) 
 Here is how much of TeX's memory you used:
  4911 strings out of 492970
- 76724 string characters out of 3126595
+ 76679 string characters out of 3126595
  154464 words of memory out of 3000000
  8722 multiletter control sequences out of 15000+200000
  8540 words of font info for 30 fonts, out of 3000000 for 9000
@@ -713,7 +712,7 @@ fonts/cm/cmr8.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmr9.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/henry/AppData/Local/Program
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on DetGen_new.pdf (21 pages, 667186 bytes).
+Output written on DetGen_new.pdf (21 pages, 666264 bytes).
 PDF statistics:
  176 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
