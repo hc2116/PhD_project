@@ -94,17 +94,6 @@ p1
 # Experiment 1
 ########################################################
 
-dat <- structure(list(Year = c(2013L, 2013L, 2013L, 2013L, 2013L, 2014L, 2014L, 2014L, 2014L, 2014L), 
-                      Category = structure(c(1L, 2L, 3L,4L, 5L, 1L, 2L, 3L, 4L, 5L), 
-                                           .Label = c("Beverages", "Condiments","Confections", "Dairy Products", "Seafood"), class = "factor"), 
-                      TotalSales = c(102074.29, 55277.56, 36415.75, 30337.39, 53019.98, 81338.06, 55948.82, 44478.36, 84412.36, 65544.19), 
-                      AverageCount = c(22190.06, 14173.73, 12138.58, 24400, 27905.25, 35400, 19981.72, 24710,32466, 14565.37)), 
-                 .Names = c("Year", "Category", "TotalSales","AverageCount"), 
-                 class = "data.frame", row.names = c(NA, -10L))
-
-library(reshape2)
-dat_l <- melt(dat, id.vars = c("Year", "Category"))
-
 require(ggplot2)
 require(cowplot)
 
@@ -173,9 +162,9 @@ df2D=df2
 dfD$Set="D"
 df2D$Set="D"
 # VM
-x1 <- abs(rnorm(N,mean=0.024,sd=0.002))
-x2 <- abs(rnorm(N,mean=0.029,sd=0.002))
-x3 <- abs(rnorm(N,mean=0.022,sd=0.002))
+x1 <- abs(rnorm(N,mean=0.026,sd=0.004))
+x2 <- abs(rnorm(N,mean=0.035,sd=0.01))
+x3 <- abs(rnorm(N,mean=0.022,sd=0.004))
 df=data.frame(x=c(x1,x2,x3),
               Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
@@ -189,6 +178,10 @@ df2VM$Set="VM"
 
 df=rbind(dfA,dfB,dfC,dfD,dfVM)
 df2=rbind(df2A,df2B,df2C,df2D,df2VM)
+
+df$x=df$x*100
+df2[,1:3]=df2[,1:3]*100
+
 
 pA <- ggplot(df, aes(x=Metric, y=x)) + 
   #geom_dotplot(binaxis='y', stackdir='center', aes(colour=Metric,fill=Metric),

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  25 OCT 2020 12:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  26 OCT 2020 18:35
 entering extended mode
 **./DetGen_new.tex
 (DetGen_new.tex
@@ -220,21 +220,44 @@ Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
 \mult@nat@firstbox=\box54
 \colbreak@box=\box55
 \mc@col@check@num=\count111
-) (DetGen_new.aux)
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color
+.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\dvipsnam.
+def"
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+)) (DetGen_new.aux)
 \openout1 = `DetGen_new.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -349,29 +372,29 @@ Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count118
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 20.
+(Font)              <12> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 20.
+(Font)              <8> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 20.
+(Font)              <6> on input line 28.
 
 
 LaTeX Warning: No \author given.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 32.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 40.
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 32.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 40.
 
 
-LaTeX Warning: Reference `Tab:Influence' on page 1 undefined on input line 32.
+LaTeX Warning: Reference `Tab:Influence' on page 1 undefined on input line 40.
 
 [1
 
 {C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (1.21121pt too wide) in paragraph at lines 47--49
+Overfull \hbox (1.21121pt too wide) in paragraph at lines 55--57
 \OT1/cmr/m/n/10 tic-u-lar traf-fic traces en-ables re-searchers to match par-ti
 c-u-lar traf-fic struc-
  []
@@ -379,194 +402,194 @@ c-u-lar traf-fic struc-
 <images/VM_capture.pdf, id=12, 344.28625pt x 680.5425pt>
 File: images/VM_capture.pdf Graphic file (type pdf)
 <use images/VM_capture.pdf>
-Package pdftex.def Info: images/VM_capture.pdf  used on input line 153.
+Package pdftex.def Info: images/VM_capture.pdf  used on input line 161.
 (pdftex.def)             Requested size: 162.89876pt x 321.99417pt.
 <images/Docker_capture.pdf, id=13, 640.3925pt x 540.0175pt>
 File: images/Docker_capture.pdf Graphic file (type pdf)
 <use images/Docker_capture.pdf>
-Package pdftex.def Info: images/Docker_capture.pdf  used on input line 158.
+Package pdftex.def Info: images/Docker_capture.pdf  used on input line 166.
 (pdftex.def)             Requested size: 283.29913pt x 238.89386pt.
 
-LaTeX Warning: Float too large for page by 61.09047pt on input line 161.
+LaTeX Warning: Float too large for page by 61.09047pt on input line 169.
 
 [2] [3 <./images/VM_capture.pdf> <./images/Docker_capture.pdf>] [4] [5]
 [6]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 398.
+(Font)              <7> on input line 406.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 398.
+(Font)              <5> on input line 406.
 
 
-LaTeX Warning: Citation `willinger1998self' on page 7 undefined on input line 3
-98.
+LaTeX Warning: Citation `willinger1998self' on page 7 undefined on input line 4
+06.
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 437--437
+Underfull \hbox (badness 10000) in paragraph at lines 445--445
 []|\OT1/cmr/m/n/10 Real traf-fic
  []
 
 
-Underfull \hbox (badness 3930) in paragraph at lines 439--439
+Underfull \hbox (badness 3930) in paragraph at lines 447--447
 []|\OT1/cmr/m/n/10 Ground truth la-
  []
 
 
-Underfull \hbox (badness 7649) in paragraph at lines 439--439
+Underfull \hbox (badness 7649) in paragraph at lines 447--447
 \OT1/cmr/m/n/10 to sep-a-rate even
  []
 
 
-Underfull \hbox (badness 1888) in paragraph at lines 439--439
+Underfull \hbox (badness 1888) in paragraph at lines 447--447
 []|\OT1/cmr/m/n/10 background events
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--439
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 \OT1/cmr/m/n/10 (sys-tem ac-tiv-i-
  []
 
 
-Underfull \hbox (badness 1194) in paragraph at lines 439--439
+Underfull \hbox (badness 1194) in paragraph at lines 447--447
 \OT1/cmr/m/n/10 tiy, ar-ti-facts from
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--439
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 \OT1/cmr/m/n/10 ear-lier ac-tiv-ity,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--439
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 \OT1/cmr/m/n/10 ...), over-lay-ing
  []
 
 
-Underfull \hbox (badness 3168) in paragraph at lines 439--439
+Underfull \hbox (badness 3168) in paragraph at lines 447--447
 \OT1/cmr/m/n/10 ac-tiv-i-ties hard to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--439
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 []|\OT1/cmr/m/n/10 No knowl-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--439
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 \OT1/cmr/m/n/10 edge about
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--439
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 \OT1/cmr/m/n/10 con-ducted
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--439
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 []|\OT1/cmr/m/n/10 Technically
  []
 
 
-Underfull \hbox (badness 2334) in paragraph at lines 439--439
+Underfull \hbox (badness 2334) in paragraph at lines 447--447
 \OT1/cmr/m/n/10 pos-si-ble, no
  []
 
 
-Underfull \hbox (badness 1859) in paragraph at lines 441--441
+Underfull \hbox (badness 1859) in paragraph at lines 449--449
 \OT1/cmr/m/n/10 launches, iso-la-tion
  []
 
 
-Underfull \hbox (badness 2922) in paragraph at lines 441--441
+Underfull \hbox (badness 2922) in paragraph at lines 449--449
 \OT1/cmr/m/n/10 means that other
  []
 
 
-Underfull \hbox (badness 1009) in paragraph at lines 441--441
+Underfull \hbox (badness 1009) in paragraph at lines 449--449
 \OT1/cmr/m/n/10 fect on, plat-tform
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 []|\OT1/cmr/m/n/10 Attack/victim
  []
 
 
-Underfull \hbox (badness 7133) in paragraph at lines 447--447
+Underfull \hbox (badness 7133) in paragraph at lines 455--455
 \OT1/cmr/m/n/10 con-tain-ers re-move
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 \OT1/cmr/m/n/10 de-pen-dence on
  []
 
 
-Underfull \hbox (badness 3049) in paragraph at lines 447--447
+Underfull \hbox (badness 3049) in paragraph at lines 455--455
 \OT1/cmr/m/n/10 pen on the VM,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 \OT1/cmr/m/n/10 enough vul-ner-a-
  []
 
 
-Underfull \hbox (badness 2495) in paragraph at lines 447--447
+Underfull \hbox (badness 2495) in paragraph at lines 455--455
 \OT1/cmr/m/n/10 bil-i-ties to in-clude
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 []|\OT1/cmr/m/n/10 Some work
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 \OT1/cmr/m/n/10 has been
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 \OT1/cmr/m/n/10 done to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 \OT1/cmr/m/n/10 "re-play"
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--447
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 \OT1/cmr/m/n/10 or ar-ti-fi-
  []
 
 
-Underfull \hbox (badness 5519) in paragraph at lines 447--447
+Underfull \hbox (badness 5519) in paragraph at lines 455--455
 \OT1/cmr/m/n/10 cially in-ject
  []
 
 
-Overfull \hbox (77.36319pt too wide) in paragraph at lines 436--455
+Overfull \hbox (77.36319pt too wide) in paragraph at lines 444--463
  [][] 
  []
 
 [8] [9]
-Overfull \hbox (26.7471pt too wide) in paragraph at lines 491--491
+Overfull \hbox (26.7471pt too wide) in paragraph at lines 499--499
 []\OT1/cmr/bx/n/14.4 Impact fac-tors on traf-fic meta-data micro-structures 
  []
 
 <images/FTP.png, id=93, 788.9475pt x 591.20876pt>
 File: images/FTP.png Graphic file (type png)
 <use images/FTP.png>
-Package pdftex.def Info: images/FTP.png  used on input line 501.
+Package pdftex.def Info: images/FTP.png  used on input line 509.
 (pdftex.def)             Requested size: 162.89876pt x 122.0646pt.
 <images/HTTP.png, id=95, 788.9475pt x 591.20876pt>
 File: images/HTTP.png Graphic file (type png)
 <use images/HTTP.png>
-Package pdftex.def Info: images/HTTP.png  used on input line 506.
+Package pdftex.def Info: images/HTTP.png  used on input line 514.
 (pdftex.def)             Requested size: 162.89876pt x 122.0646pt.
 [10 <./images/FTP.png> <./images/HTTP.png>]
-Overfull \hbox (10.12126pt too wide) in paragraph at lines 540--541
+Overfull \hbox (10.12126pt too wide) in paragraph at lines 548--549
  \OT1/cmr/bx/n/10 Ap-pli-ca-tion layer im-ple-men-ta-tions[] \OT1/cmr/m/n/10 Di
 f-fer-ent im-ple-men-ta-tions for TLS, HTTP,
  []
@@ -575,127 +598,129 @@ f-fer-ent im-ple-men-ta-tions for TLS, HTTP,
 File: images/Proto_differences_small.png Graphic file (type png)
 <use images/Proto_differences_small.png>
 Package pdftex.def Info: images/Proto_differences_small.png  used on input line
- 544.
+ 552.
 (pdftex.def)             Requested size: 283.29913pt x 153.34056pt.
 [11] [12 <./images/Proto_differences_small.png>]
 
-LaTeX Warning: Reference `Sec:ExistScen' on page 13 undefined on input line 670
+LaTeX Warning: Reference `Sec:ExistScen' on page 13 undefined on input line 678
 .
 
 [13]
 
-LaTeX Warning: Reference `Sec:problems' on page 14 undefined on input line 686.
+LaTeX Warning: Reference `Sec:problems' on page 14 undefined on input line 694.
 
 
 <images/scenario_branching.PNG, id=113, 1036.87375pt x 399.4925pt>
 File: images/scenario_branching.PNG Graphic file (type png)
 <use images/scenario_branching.PNG>
-Package pdftex.def Info: images/scenario_branching.PNG  used on input line 692.
+Package pdftex.def Info: images/scenario_branching.PNG  used on input line 700.
 
 (pdftex.def)             Requested size: 276.21516pt x 106.41971pt.
 [14] [15 <./images/scenario_branching.PNG>] [16]
 
-LaTeX Warning: Citation `aun2017review' on page 17 undefined on input line 1033
+LaTeX Warning: Citation `aun2017review' on page 17 undefined on input line 1041
 .
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 1050--1050
-[]|[]\OT1/cmr/m/n/10 Little con-ges-tion,
+Overfull \hbox (1.54333pt too wide) in paragraph at lines 1057--1057
+[]|\OT1/cmr/m/n/10 Label| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1050--1050
+Underfull \hbox (badness 10000) in paragraph at lines 1058--1058
+[]|[]\OT1/cmr/m/n/10 Little con-ges-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1058--1058
 []|\OT1/cmr/m/n/10 Get-request on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1050--1050
+Underfull \hbox (badness 10000) in paragraph at lines 1058--1058
 \OT1/cmr/m/n/10 NG-INX/wget,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1050--1050
-[]|\OT1/cmr/m/n/10 Command
+Underfull \hbox (badness 10000) in paragraph at lines 1058--1058
+[]|\OT1/cmr/m/n/10 Command se-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1051--1051
-[]|\OT1/cmr/m/n/10 Moderate con-ges-
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+[]|\OT1/cmr/m/n/10 Moderate con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1051--1051
-\OT1/cmr/m/n/10 tion, low comp.
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+\OT1/cmr/m/n/10 ges-tion, low
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1051--1051
-[]|\OT1/cmr/m/n/10 Multi-request for
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1051--1051
-[]|\OT1/cmr/m/n/10 Command
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1052--1052
-[]|\OT1/cmr/m/n/10 Post-request on
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1052--1052
-[]|\OT1/cmr/m/n/10 Command
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1053--1053
-[]|\OT1/cmr/m/n/10 High con-ges-tion,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1053--1053
-[]|\OT1/cmr/m/n/10 Multi-request for
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1053--1053
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
 \OT1/cmr/m/n/10 dif-fer-ent fixed
  []
 
 
-Underfull \hbox (badness 1024) in paragraph at lines 1053--1053
-\OT1/cmr/m/n/10 files with caching,
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+[]|\OT1/cmr/m/n/10 Command se-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1053--1053
-[]|\OT1/cmr/m/n/10 Command
+Underfull \hbox (badness 10000) in paragraph at lines 1062--1062
+[]|\OT1/cmr/m/n/10 High con-ges-
  []
 
 
-Overfull \hbox (48.91043pt too wide) in paragraph at lines 1048--1056
+Underfull \hbox (badness 10000) in paragraph at lines 1062--1062
+[]|\OT1/cmr/m/n/10 Post-request on
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1062--1062
+\OT1/cmr/m/n/10 Apache/wget,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1062--1062
+[]|\OT1/cmr/m/n/10 Command se-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
+[]|\OT1/cmr/m/n/10 High con-ges-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
+[]|\OT1/cmr/m/n/10 Multi-request
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
+[]|\OT1/cmr/m/n/10 Command se-
+ []
+
+
+Overfull \hbox (31.8386pt too wide) in paragraph at lines 1056--1067
  [][] 
  []
 
-<images/Exp1.png, id=126, 649.67719pt x 232.61906pt>
+<images/Exp1.png, id=126, 582.67688pt x 223.58531pt>
 File: images/Exp1.png Graphic file (type png)
 <use images/Exp1.png>
-Package pdftex.def Info: images/Exp1.png  used on input line 1061.
-(pdftex.def)             Requested size: 354.12257pt x 126.79794pt.
-[18 <./images/Exp1.png>] (DetGen_new.bbl [19] [20]) [21] (DetGen_new.aux)
+Package pdftex.def Info: images/Exp1.png  used on input line 1074.
+(pdftex.def)             Requested size: 354.12257pt x 135.88531pt.
+[18] (DetGen_new.bbl [19 <./images/Exp1.png>] [20]) [21] (DetGen_new.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 4911 strings out of 492970
- 76679 string characters out of 3126595
- 154464 words of memory out of 3000000
- 8722 multiletter control sequences out of 15000+200000
+ 5411 strings out of 492970
+ 82841 string characters out of 3126595
+ 167967 words of memory out of 3000000
+ 9213 multiletter control sequences out of 15000+200000
  8540 words of font info for 30 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,11n,40p,1038b,461s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -712,7 +737,7 @@ fonts/cm/cmr8.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmr9.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/henry/AppData/Local/Program
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on DetGen_new.pdf (21 pages, 666264 bytes).
+Output written on DetGen_new.pdf (21 pages, 668504 bytes).
 PDF statistics:
  176 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
