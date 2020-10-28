@@ -1,0 +1,151 @@
+\relax 
+\citation{tankard2011advanced}
+\citation{mcafee2015report}
+\citation{eisac2017report}
+\citation{ayala2016active}
+\citation{enisa2017baseline}
+\@writefile{toc}{\contentsline {title}{Evading stepping-stone detection by using enough chaff}{1}}
+\@writefile{toc}{\authcount {3}}
+\@writefile{toc}{\contentsline {author}{Henry Clausen \and Michael S. Gibson \and David Aspinall}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
+\newlabel{Sec:Introduction}{{1}{1}}
+\citation{staniford1995holding}
+\citation{pivoting2015}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Background}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Depiction of an exemplary stepping-stone chain.}}{2}}
+\newlabel{Fig:Stepstone}{{1}{2}}
+\citation{donoho2002multiscale}
+\citation{clausen2019traffic}
+\citation{pivoting2015}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Data generation setting}{3}}
+\newlabel{Sec:Datasetcreation}{{2}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Containerisation}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Simulating stepping stones with SSH-tunnels and Docker}{3}}
+\newlabel{Sec:Setup}{{2.2}{3}}
+\citation{xin2006testbed}
+\citation{paxson1995wide}
+\citation{hemminger2005network}
+\citation{padhye2010evading}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Depiction of the way a command is packetised, encrypted, and travels through the different stages of the stepping-stone chain via SSH-tunnels.}}{4}}
+\newlabel{Fig:Packetway}{{2}{4}}
+\newlabel{Sec:Simulating_interactive}{{2.2}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{Simulating interactive SSH-traffic}{4}}
+\newlabel{Sec:congestion}{{2.2}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{Simulating different network settings}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Evasive tactics}{4}}
+\newlabel{Sec:delays_desc}{{2.3}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{Adding transfer delays}{4}}
+\citation{padhye2010evading}
+\newlabel{Sec:chaff_desc}{{2.3}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{Adding chaff perturbation}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{Repacketisation}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Depiction the simulation setup for each host in the chain.}}{5}}
+\newlabel{Fig:Simulation_setup}{{3}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Evaluation data}{5}}
+\newlabel{Sec:Evaldata}{{3}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Stepping-stone data}{5}}
+\citation{CAIDA2018}
+\citation{velan2016network}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Benign data}{6}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Summary of different components in our evaluation data.}}{6}}
+\newlabel{Fig:Datasim}{{1}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Evaluation methodology}{6}}
+\citation{shullich2011survey,wang2018research}
+\citation{yang2011correlating}
+\citation{nasr2018deepcorr}
+\citation{wu2010neural}
+\citation{yang2015rtt}
+\citation{huang2016detecting}
+\citation{di2011detecting}
+\citation{huang2011detecting,ding2013detecting}
+\citation{wang2010robust}
+\citation{yang2011correlating}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Selected SSD methods and Implementation}{7}}
+\newlabel{Sec:Selection}{{4}{7}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Summary of included SSD-methods along with the claimed true positive and false positive rates and evasion robustness by the corresponding authors. We added labels to each method for later reference.}}{7}}
+\newlabel{Tab:Summary}{{2}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{PContext, 2011}{7}}
+\citation{wu2010neural}
+\citation{nasr2018deepcorr}
+\citation{yang2015rtt}
+\citation{yang2007mining}
+\citation{huang2016detecting}
+\citation{di2011detecting}
+\citation{huang2011detecting,ding2013detecting}
+\citation{wang2010robust}
+\@writefile{toc}{\contentsline {subsubsection}{WuNeur, 2010}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{DeepCorr, 2018}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{RWalk, 2015}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{C-Over, 2016}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{Ano1, 2011}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{Ano2, 2011/2013}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{WM, 2010}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{8}}
+\newlabel{Sec:Results}{{5}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Data without evasion tactics}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces ROC-curves for different SSD methods on dataset BA (no evasive tactics)}}{9}}
+\newlabel{fig:Noevasion_4nodes}{{4}{9}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces AUC-scores for different methods on stepping-stone data without evasive tactics.}}{9}}
+\newlabel{Tab:dfAUC}{{3}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Delays}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Detection rates in dependence of $\delta _D$ for different methods on dataset DA with a fixed FP rate of $0.4\%$}}{10}}
+\newlabel{fig:Delaydetection}{{5}{10}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces AUC-scores for SSD methods with added transfer delays at $\delta _D=1000ms$.}}{10}}
+\newlabel{Tab:AUCdelays}{{4}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Chaff}{10}}
+\citation{xin2006testbed}
+\citation{nasr2018deepcorr}
+\citation{CAIDA2018}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Detection rates in dependence of $\delta _C$ for different methods on dataset CA with a fixed FP rate of $0.4\%$}}{11}}
+\newlabel{fig:Chaffdetection}{{6}{11}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces AUC-scores for SSD methods with added chaff at 300\% ratio.}}{11}}
+\newlabel{Tab:AUCchaff}{{5}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Summary}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Related work}{11}}
+\newlabel{Sec:Relatedwork}{{6}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Testbeds and data}{11}}
+\citation{di2011detecting}
+\citation{yang2015rtt}
+\bibstyle{plain}
+\bibdata{NDSSrefs}
+\bibcite{mcafee2015report}{1}
+\bibcite{CAIDA2018}{2}
+\bibcite{ayala2016active}{3}
+\bibcite{clausen2019traffic}{4}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Acknowledgments}{12}}
+\bibcite{di2011detecting}{5}
+\bibcite{ding2013detecting}{6}
+\bibcite{donoho2002multiscale}{7}
+\bibcite{enisa2017baseline}{8}
+\bibcite{pivoting2015}{9}
+\bibcite{hemminger2005network}{10}
+\bibcite{huang2011detecting}{11}
+\bibcite{huang2016detecting}{12}
+\bibcite{eisac2017report}{13}
+\bibcite{nasr2018deepcorr}{14}
+\bibcite{padhye2010evading}{15}
+\bibcite{paxson1995wide}{16}
+\bibcite{shullich2011survey}{17}
+\bibcite{staniford1995holding}{18}
+\bibcite{tankard2011advanced}{19}
+\bibcite{velan2016network}{20}
+\bibcite{wang2018research}{21}
+\bibcite{wang2010robust}{22}
+\bibcite{wu2010neural}{23}
+\bibcite{xin2006testbed}{24}
+\bibcite{yang2007mining}{25}
+\bibcite{yang2011correlating}{26}
+\bibcite{yang2015rtt}{27}
+\@writefile{toc}{\contentsline {section}{\numberline {A}False positives}{14}}
+\newlabel{Sec:FPana}{{A}{14}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Relative contribution in \% of different benign data to the FP rate.}}{14}}
+\newlabel{Tab:dfFP}{{6}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Influence of chain length}{14}}
+\newlabel{Sec:Chainl}{{B}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Detection rates in dependence of chain length for different methods on dataset CL with a fixed FP rate of $0.4\%$}}{15}}
+\newlabel{fig:Influencechainl}{{7}{15}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Influence of network congestion on detection rates at a fixed FP rate of $0.4\%$. The given percentages are describing the change of the detection rate under the given congestion setting when compared to the overall average.}}{15}}
+\newlabel{Tab:Congestion}{{7}{15}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Influence of network settings}{15}}
+\newlabel{Sec:InfluenceNetwork}{{C}{15}}

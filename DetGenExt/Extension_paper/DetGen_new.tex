@@ -1092,12 +1092,13 @@ Table \ref{Dataset} summarises the activity and settings for the different traff
 \end{figure}
 
 
-\subsubsection{First test: Determinism}
+\subsubsection{Determinism test}
 
 
 
-\subsubsection{Second test: Realistic diversity under all impact factors}
+\subsubsection{Realistic diversity level}
 
+The above test demonstrated that while holding settings constant, DetGen generates traffic with high similarity. We now prove that this does not impede DetGen's capability to generate realistic amounts of traffic diversity observed in real-world traffic. For this, we create a mixed dataset with varying settings for each protocol, for which we extract 
 
 Here, we apply the simulation of all impact factors simultaneously to our traffic and test if the traffic similarity scores are as divergent as for traffic from a real-world dataset (i.e. CAIDA) for two or three exemplary protocols, and we also compare it to the same protocols in the CICIDS-17 dataset. This will let us argue that we can achieve realistic levels of diversity (something criticised by Sommer-Paxson), and that our framework lets researchers explore higher levels of diversity than currents labelled solutions.
 

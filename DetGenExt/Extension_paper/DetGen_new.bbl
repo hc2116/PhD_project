@@ -1,5 +1,12 @@
 \begin{thebibliography}{10}
 
+\bibitem{aun2017review}
+Y.~Aun, S.~Manickam, and S.~Karuppayah.
+\newblock A review on features' robustness in high diversity mobile traffic
+  classifications.
+\newblock {\em International journal of communication networks and information
+  security}, 9(2):294, 2017.
+
 \bibitem{biernacki2017analysis}
 A.~Biernacki.
 \newblock Analysis and modelling of traffic produced by adaptive http-based
@@ -94,6 +101,13 @@ T.~St{\"o}ber, M.~Frank, J.~Schmitt, and I.~Martinovic.
   behaviour.
 \newblock In {\em Proceedings of the sixth ACM conference on Security and
   privacy in wireless and mobile networks}, pages 7--12, 2013.
+
+\bibitem{willinger1998self}
+W.~Willinger, V.~Paxson, and M.~S. Taqqu.
+\newblock Self-similarity and heavy tails: Structural modeling of network
+  traffic.
+\newblock {\em A practical guide to heavy tails: statistical techniques and
+  applications}, 23:27--53, 1998.
 
 \bibitem{yen2009browser}
 T.-F. Yen, X.~Huang, F.~Monrose, and M.~K. Reiter.
