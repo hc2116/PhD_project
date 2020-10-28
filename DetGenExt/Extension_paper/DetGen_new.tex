@@ -1048,7 +1048,9 @@ In contrast to
 
 \subsubsection{Constant settings}
 
-We now apply the described similarity measures to different groups of traffic traces to evaluate the \textcolor{red}{determinism} of our data generation process. We vary the control settings of the described influence factors, described in Section \ref{Sec:Impactfactors}, for each group, but keep them constant within each group. We use three different traffic types (HTTP, file-syncing (port 8384), and botnet), for which we both perform different application-specific activities and create different overall settings. We furthermore perform the same HTTP-activities on two regular VMs without containerisation, but with the same settings.
+We now apply the described similarity measures to different groups of traffic traces to evaluate the \textcolor{red}{determinism} of our data generation process. We vary the control settings of the described influence factors, described in Section \ref{Sec:Impactfactors}, for each group, but keep them constant within each group. We use three different traffic types (HTTP, file-syncing (port 8384), and botnet), for which we both perform different application-specific activities and create different overall settings. 
+
+We furthermore perform the same HTTP-activities on two regular VMs without containerisation, but with the same settings.
 
 
 \begin{table}
@@ -1056,16 +1058,30 @@ We now apply the described similarity measures to different groups of traffic tr
 \begin{tabular}{p{0.8cm}|p{2.5cm}|p{2.7cm}|p{2.7cm}|p{2.7cm}}
 Label &Overall Setting&HTTP&File-Sync & Mirai-C\&C\\ \hline
 A&\textcolor{red}{Little congestion, high comp. load} & Get-request on NGINX/wget, small file & Sequence 1,  syncing to two computers & Command sequence 1 \\ \hline
- &&\footnotesize \textcolor{myred}{0.20\%}, \textcolor{mygreen}{0.11\%}, \textcolor{myblue}{0.18\%}&\footnotesize \textcolor{myred}{0.20\%}, \textcolor{mygreen}{0.11\%}, \textcolor{myblue}{0.18\%}&\footnotesize \textcolor{myred}{0.20\%}, \textcolor{mygreen}{0.11\%}, \textcolor{myblue}{0.18\%}\\ \hline \hline
+ &&\footnotesize \textcolor{myred}{0.20\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.18\%}&
+ \footnotesize \textcolor{myred}{0.12\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.19\%}&
+ \footnotesize \textcolor{myred}{0.21\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.22\%}\\ \hline \hline
 B& Moderate congestion, low comp. load &Multi-request for different fixed files, NGINX & Sequence 2,  syncing to four computers & Command sequence 2\\ \hline
- &&\footnotesize \textcolor{myred}{0.27\%}, \textcolor{mygreen}{0.30\%}, \textcolor{myblue}{0.17\%}&1&1\\ \hline \hline
+ &&\footnotesize \textcolor{myred}{0.27\%}, \textcolor{mygreen}{0.30\%}, \textcolor{myblue}{0.17\%}&
+\footnotesize \textcolor{myred}{0.11\%}, \textcolor{mygreen}{0.23\%}, \textcolor{myblue}{0.24\%}&
+\footnotesize \textcolor{myred}{0.19\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.17\%}\\ \hline \hline
 C& High congestion, no comp. load & Post-request on Apache/wget, large file &Sequence 3,  syncing to two computers & Command sequence 3\\ \hline
- &&\footnotesize \textcolor{myred}{0.41\%}, \textcolor{mygreen}{0.39\%}, \textcolor{myblue}{0.29\%}&1&1\\ \hline \hline
+ &&\footnotesize \textcolor{myred}{0.41\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.29\%}&
+ \footnotesize \textcolor{myred}{0.39\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.21\%}&
+ \footnotesize \textcolor{myred}{0.29\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.23\%}\\ \hline \hline
 D& High congestion, high comp. load & Multi-request for different fixed files with caching, Apache & Sequence 4,  syncing to four computers & Command sequence 4\\ \hline
- &&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.10\%}, \textcolor{myblue}{0.20\%}&1&1\\ \hline \hline
+ &&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.39\%}, \textcolor{myblue}{0.20\%}&
+ \footnotesize \textcolor{myred}{0.31\%}, \textcolor{mygreen}{0.15\%}, \textcolor{myblue}{0.38\%}&
+ \footnotesize \textcolor{myred}{0.24\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.32\%}\\ \hline \hline
+VM & comparison&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.39\%}, \textcolor{myblue}{0.20\%}&
+ \footnotesize \textcolor{myred}{0.31\%}, \textcolor{mygreen}{0.15\%}, \textcolor{myblue}{0.38\%}&
+ \footnotesize \textcolor{myred}{0.24\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.32\%}\\ \hline \hline
 \end{tabular}
-\caption{Test}\label{Dataset}
+\caption{Outline of the traffic groups used for the \textcolor{red}{determinism evaluation}, along with the average dissimilarity percentages for each traffic group (red=connection similarity, green=flow-level similarity, blue=sequential similarity)}\label{Dataset}
 \end{table}
+
+
+Table \ref{Dataset} summarises the activity and settings for the different traffic groups, along with the corresponding dissimilarity scores for each group. As visible, the scores yield less than $1\%$ of the dissimilarity observed on average for each protocol. Scores are especially low when compared to traffic groups collected in the VM setting, which is also visible in Fig. \ref{determ-metric} for the HTTP-traffic. Dissimilarity scores for the VM-setting are most notably higher for the flow-metric, caused by additional background flows frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
 
 %0.2043341 0.2099933 0.1892661 0.2779625 0.3052004 0.1835523 0.4104484 0.3933690 0.2935111 0.5524176 0.1028654 0.2028906 2.6549903 3.4444166 2.2215654
 

@@ -1,231 +1,230 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  26 OCT 2020 18:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.2)  27 OCT 2020 16:08
 entering extended mode
-**./DetGen_new.tex
-(DetGen_new.tex
-LaTeX2e <2018-04-01> patch level 5
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls"
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.clo"
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**DetGen_new.tex
+(./DetGen_new.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-07-17>
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen102
+\c@part=\count168
+\c@section=\count169
+\c@subsection=\count170
+\c@subsubsection=\count171
+\c@paragraph=\count172
+\c@subparagraph=\count173
+\c@figure=\count174
+\c@table=\count175
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
-sty"
-Package: geometry 2018/04/16 v5.8 Page Geometry
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.st
-y"
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks14
+\KV@toks@=\toks15
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.s
-ty"
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
-)
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.
-sty"
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-)
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.
-sty"
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-\Gm@cnth=\count88
-\Gm@cntv=\count89
-\c@Gm@tempcnt=\count90
-\Gm@bindingoffset=\dimen103
-\Gm@wd@mp=\dimen104
-\Gm@odd@mp=\dimen105
-\Gm@even@mp=\dimen106
-\Gm@layoutwidth=\dimen107
-\Gm@layoutheight=\dimen108
-\Gm@layouthoffset=\dimen109
-\Gm@layoutvoffset=\dimen110
-\Gm@dimlist=\toks15
+(/usr/local/texlive/2020basic/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
-cfg"))
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.
-sty"
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2020basic/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count176
+\Gm@cntv=\count177
+\c@Gm@tempcnt=\count178
+\Gm@bindingoffset=\dimen135
+\Gm@wd@mp=\dimen136
+\Gm@odd@mp=\dimen137
+\Gm@even@mp=\dimen138
+\Gm@layoutwidth=\dimen139
+\Gm@layoutheight=\dimen140
+\Gm@layouthoffset=\dimen141
+\Gm@layoutvoffset=\dimen142
+\Gm@dimlist=\toks16
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.
-sty"
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graph
-ics.cfg"
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 105.
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdfte
-x.def"
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen111
-\Gin@req@width=\dimen112
+\Gin@req@height=\dimen143
+\Gin@req@width=\dimen144
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\color.sty
-"
-Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color
-.cfg"
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\colortbl\colortbl.
-sty"
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array.sty"
-Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
-\col@sep=\dimen113
-\ar@mcellbox=\box26
-\extrarowheight=\dimen114
-\NC@list=\toks16
-\extratabsurround=\skip43
-\backup@length=\skip44
-\ar@cellbox=\box27
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/tools/array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen145
+\ar@mcellbox=\box45
+\extrarowheight=\dimen146
+\NC@list=\toks17
+\extratabsurround=\skip49
+\backup@length=\skip50
+\ar@cellbox=\box46
 )
-\everycr=\toks17
-\minrowclearance=\skip45
+\everycr=\toks18
+\minrowclearance=\skip51
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\subcaption
-.sty"
-Package: subcaption 2019/09/01 v1.3a Sub-captions (AR)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2020/01/22 v1.3d Sub-captions (AR)
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.st
-y"
-Package: caption 2019/09/01 v3.3d Customizing captions (AR)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/05/30 v3.4k Customizing captions (AR)
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3.s
-ty"
-Package: caption3 2019/09/01 v1.8d caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 64.
-\captionmargin=\dimen115
-\captionmargin@=\dimen116
-\captionwidth=\dimen117
-\caption@tempdima=\dimen118
-\caption@indent=\dimen119
-\caption@parindent=\dimen120
-\caption@hangindent=\dimen121
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/07/20 v1.12b caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen147
+\captionmargin@=\dimen148
+\captionwidth=\dimen149
+\caption@tempdima=\dimen150
+\caption@indent=\dimen151
+\caption@parindent=\dimen152
+\caption@hangindent=\dimen153
+Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count91
-\c@ContinuedFloat=\count92
+\c@caption@flags=\count179
+\c@continuedfloat=\count180
 )
-\c@subfigure=\count93
-\c@subtable=\count94
+\c@subfigure=\count181
+\c@subtable=\count182
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.
-sty"
-\lst@mode=\count95
-\lst@gtempboxa=\box28
-\lst@token=\toks18
-\lst@length=\count96
-\lst@currlwidth=\dimen122
-\lst@column=\count97
-\lst@pos=\count98
-\lst@lostspace=\dimen123
-\lst@width=\dimen124
-\lst@newlines=\count99
-\lst@lineno=\count100
-\lst@maxwidth=\dimen125
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count183
+\lst@gtempboxa=\box47
+\lst@token=\toks19
+\lst@length=\count184
+\lst@currlwidth=\dimen154
+\lst@column=\count185
+\lst@pos=\count186
+\lst@lostspace=\dimen155
+\lst@width=\dimen156
+\lst@newlines=\count187
+\lst@lineno=\count188
+\lst@maxwidth=\dimen157
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.s
-ty"
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count101
-\lst@skipnumbers=\count102
-\lst@framebox=\box29
+\c@lstnumber=\count189
+\lst@skipnumbers=\count190
+\lst@framebox=\box48
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.
-cfg"
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
- ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
-\Urlmuskip=\muskip10
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\epsfig.st
-y"
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics/epsfig.sty
 Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
-\epsfxsize=\dimen126
-\epsfysize=\dimen127
+\epsfxsize=\dimen158
+\epsfysize=\dimen159
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\multicol.sty
-"
-Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
-\c@tracingmulticols=\count103
-\mult@box=\box30
-\multicol@leftmargin=\dimen128
-\c@unbalance=\count104
-\c@collectmore=\count105
-\doublecol@number=\count106
-\multicoltolerance=\count107
-\multicolpretolerance=\count108
-\full@width=\dimen129
-\page@free=\dimen130
-\premulticols=\dimen131
-\postmulticols=\dimen132
-\multicolsep=\skip46
-\multicolbaselineskip=\skip47
-\partial@page=\box31
-\last@line=\box32
-\maxbalancingoverflow=\dimen133
-\mult@rightbox=\box33
-\mult@grightbox=\box34
-\mult@gfirstbox=\box35
-\mult@firstbox=\box36
-\@tempa=\box37
-\@tempa=\box38
-\@tempa=\box39
-\@tempa=\box40
-\@tempa=\box41
-\@tempa=\box42
-\@tempa=\box43
-\@tempa=\box44
-\@tempa=\box45
-\@tempa=\box46
-\@tempa=\box47
-\@tempa=\box48
-\@tempa=\box49
-\@tempa=\box50
-\@tempa=\box51
-\@tempa=\box52
-\@tempa=\box53
-\c@columnbadness=\count109
-\c@finalcolumnbadness=\count110
-\last@try=\dimen134
-\multicolovershoot=\dimen135
-\multicolundershoot=\dimen136
-\mult@nat@firstbox=\box54
-\colbreak@box=\box55
-\mc@col@check@num=\count111
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
+\c@tracingmulticols=\count191
+\mult@box=\box49
+\multicol@leftmargin=\dimen160
+\c@unbalance=\count192
+\c@collectmore=\count193
+\doublecol@number=\count194
+\multicoltolerance=\count195
+\multicolpretolerance=\count196
+\full@width=\dimen161
+\page@free=\dimen162
+\premulticols=\dimen163
+\postmulticols=\dimen164
+\multicolsep=\skip52
+\multicolbaselineskip=\skip53
+\partial@page=\box50
+\last@line=\box51
+\maxbalancingoverflow=\dimen165
+\mult@rightbox=\box52
+\mult@grightbox=\box53
+\mult@gfirstbox=\box54
+\mult@firstbox=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\c@minrows=\count197
+\c@columnbadness=\count198
+\c@finalcolumnbadness=\count199
+\last@try=\dimen166
+\multicolovershoot=\dimen167
+\multicolundershoot=\dimen168
+\mult@nat@firstbox=\box93
+\colbreak@box=\box94
+\mc@col@check@num=\count266
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color
-.cfg"
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -240,19 +239,26 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\dvipsnam.
-def"
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics/dvipsnam.def
 File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
-)) (DetGen_new.aux)
+))
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.
+def
+File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count267
+\l__pdf_internal_box=\box95
+) (./DetGen_new.aux)
 \openout1 = `DetGen_new.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
@@ -293,84 +299,63 @@ LaTeX Font Info:    ... okay on input line 23.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
-ii"
+(/usr/local/texlive/2020basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count112
-\scratchdimen=\dimen137
-\scratchbox=\box56
-\nofMPsegments=\count113
-\nofMParguments=\count114
-\everyMPshowfont=\toks19
-\MPscratchCnt=\count115
-\MPscratchDim=\dimen138
-\MPnumerator=\count116
-\makeMPintoPDFobject=\count117
-\everyMPtoPDFconversion=\toks20
+\scratchcounter=\count268
+\scratchdimen=\dimen169
+\scratchbox=\box96
+\nofMPsegments=\count269
+\nofMParguments=\count270
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count271
+\MPscratchDim=\dimen170
+\MPnumerator=\count272
+\makeMPintoPDFobject=\count273
+\everyMPtoPDFconversion=\toks21
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-
-base.sty"
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.s
+ty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+ (/usr/local/texlive/2020basic/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (/usr/local/texlive/2020basic/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
 
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infware
-rr.sty"
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+(/usr/local/texlive/2020basic/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.
+sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+))
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 )
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.st
-y"
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvdefin
-ekeys.sty"
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds
-.sty"
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)))
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptions
-.sty"
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvsetke
-ys.sty"
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\etexcmd
-s.sty"
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifluate
-x.sty"
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
+(/usr/local/texlive/2020basic/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(/usr/local/texlive/2020basic/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\pdftexc
-mds.sty"
-Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
-)
-Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
+85.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
-)
+(grfext)             \AppendGraphicsExtensions on input line 504.
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count118
+\c@lstlisting=\count274
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -381,30 +366,23 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 LaTeX Warning: No \author given.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 40.
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 40.
-
 
 LaTeX Warning: Reference `Tab:Influence' on page 1 undefined on input line 40.
 
 [1
 
-{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{/usr/local/texlive/2020basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Overfull \hbox (1.21121pt too wide) in paragraph at lines 55--57
 \OT1/cmr/m/n/10 tic-u-lar traf-fic traces en-ables re-searchers to match par-ti
 c-u-lar traf-fic struc-
  []
 
-<images/VM_capture.pdf, id=12, 344.28625pt x 680.5425pt>
+<images/VM_capture.pdf, id=13, 344.28625pt x 680.5425pt>
 File: images/VM_capture.pdf Graphic file (type pdf)
 <use images/VM_capture.pdf>
 Package pdftex.def Info: images/VM_capture.pdf  used on input line 161.
 (pdftex.def)             Requested size: 162.89876pt x 321.99417pt.
-<images/Docker_capture.pdf, id=13, 640.3925pt x 540.0175pt>
+<images/Docker_capture.pdf, id=14, 640.3925pt x 540.0175pt>
 File: images/Docker_capture.pdf Graphic file (type pdf)
 <use images/Docker_capture.pdf>
 Package pdftex.def Info: images/Docker_capture.pdf  used on input line 166.
@@ -578,12 +556,12 @@ Overfull \hbox (26.7471pt too wide) in paragraph at lines 499--499
 []\OT1/cmr/bx/n/14.4 Impact fac-tors on traf-fic meta-data micro-structures 
  []
 
-<images/FTP.png, id=93, 788.9475pt x 591.20876pt>
+<images/FTP.png, id=94, 788.9475pt x 591.20876pt>
 File: images/FTP.png Graphic file (type png)
 <use images/FTP.png>
 Package pdftex.def Info: images/FTP.png  used on input line 509.
 (pdftex.def)             Requested size: 162.89876pt x 122.0646pt.
-<images/HTTP.png, id=95, 788.9475pt x 591.20876pt>
+<images/HTTP.png, id=96, 788.9475pt x 591.20876pt>
 File: images/HTTP.png Graphic file (type png)
 <use images/HTTP.png>
 Package pdftex.def Info: images/HTTP.png  used on input line 514.
@@ -594,7 +572,7 @@ Overfull \hbox (10.12126pt too wide) in paragraph at lines 548--549
 f-fer-ent im-ple-men-ta-tions for TLS, HTTP,
  []
 
-<images/Proto_differences_small.png, id=101, 827.09pt x 447.6725pt>
+<images/Proto_differences_small.png, id=102, 827.09pt x 447.6725pt>
 File: images/Proto_differences_small.png Graphic file (type png)
 <use images/Proto_differences_small.png>
 Package pdftex.def Info: images/Proto_differences_small.png  used on input line
@@ -610,7 +588,7 @@ LaTeX Warning: Reference `Sec:ExistScen' on page 13 undefined on input line 678
 LaTeX Warning: Reference `Sec:problems' on page 14 undefined on input line 694.
 
 
-<images/scenario_branching.PNG, id=113, 1036.87375pt x 399.4925pt>
+<images/scenario_branching.PNG, id=114, 1036.87375pt x 399.4925pt>
 File: images/scenario_branching.PNG Graphic file (type png)
 <use images/scenario_branching.PNG>
 Package pdftex.def Info: images/scenario_branching.PNG  used on input line 700.
@@ -622,124 +600,124 @@ LaTeX Warning: Citation `aun2017review' on page 17 undefined on input line 1041
 .
 
 [17]
-Overfull \hbox (1.54333pt too wide) in paragraph at lines 1057--1057
+Overfull \hbox (1.54333pt too wide) in paragraph at lines 1059--1059
 []|\OT1/cmr/m/n/10 Label| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1058--1058
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
 []|[]\OT1/cmr/m/n/10 Little con-ges-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1058--1058
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
 []|\OT1/cmr/m/n/10 Get-request on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1058--1058
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
 \OT1/cmr/m/n/10 NG-INX/wget,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1058--1058
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
 []|\OT1/cmr/m/n/10 Command se-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
 []|\OT1/cmr/m/n/10 Moderate con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
 \OT1/cmr/m/n/10 ges-tion, low
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
 \OT1/cmr/m/n/10 dif-fer-ent fixed
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
 []|\OT1/cmr/m/n/10 Command se-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1062--1062
+Underfull \hbox (badness 10000) in paragraph at lines 1068--1068
 []|\OT1/cmr/m/n/10 High con-ges-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1062--1062
+Underfull \hbox (badness 10000) in paragraph at lines 1068--1068
 []|\OT1/cmr/m/n/10 Post-request on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1062--1062
+Underfull \hbox (badness 10000) in paragraph at lines 1068--1068
 \OT1/cmr/m/n/10 Apache/wget,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1062--1062
+Underfull \hbox (badness 10000) in paragraph at lines 1068--1068
 []|\OT1/cmr/m/n/10 Command se-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
+Underfull \hbox (badness 10000) in paragraph at lines 1072--1072
 []|\OT1/cmr/m/n/10 High con-ges-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
+Underfull \hbox (badness 10000) in paragraph at lines 1072--1072
 []|\OT1/cmr/m/n/10 Multi-request
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
+Underfull \hbox (badness 10000) in paragraph at lines 1072--1072
 []|\OT1/cmr/m/n/10 Command se-
  []
 
 
-Overfull \hbox (31.8386pt too wide) in paragraph at lines 1056--1067
+Overfull \hbox (31.8386pt too wide) in paragraph at lines 1058--1080
  [][] 
  []
 
-<images/Exp1.png, id=126, 582.67688pt x 223.58531pt>
+<images/Exp1.png, id=127, 582.67688pt x 223.58531pt>
 File: images/Exp1.png Graphic file (type png)
 <use images/Exp1.png>
-Package pdftex.def Info: images/Exp1.png  used on input line 1074.
+Package pdftex.def Info: images/Exp1.png  used on input line 1090.
 (pdftex.def)             Requested size: 354.12257pt x 135.88531pt.
-[18] (DetGen_new.bbl [19 <./images/Exp1.png>] [20]) [21] (DetGen_new.aux)
+[18] [19 <./images/Exp1.png>] (./DetGen_new.bbl [20]) [21] (./DetGen_new.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5411 strings out of 492970
- 82841 string characters out of 3126595
- 167967 words of memory out of 3000000
- 9213 multiletter control sequences out of 15000+200000
- 8540 words of font info for 30 fonts, out of 3000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 42i,11n,40p,1038b,461s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmbx10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmbx12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/henry/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/henry/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/henry
-/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/
-Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-r7.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmr8.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr9.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/henry/AppData/Local/Program
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on DetGen_new.pdf (21 pages, 668504 bytes).
+ 5641 strings out of 482354
+ 87430 string characters out of 5942339
+ 344490 words of memory out of 5000000
+ 20960 multiletter control sequences out of 15000+600000
+ 540323 words of font info for 46 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 45i,11n,47p,1036b,464s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </Users/henryclausen/Library/texlive/2020basic/texmf-var/fonts/pk/ljfour/jkn
+appen/ec/tcrm1000.600pk></usr/local/texlive/2020basic/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020basic/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2020basic/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2020basic/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2020basic/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2020basic/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2020basic/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2020basic/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on DetGen_new.pdf (21 pages, 645847 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
+ 180 PDF objects out of 1000 (max. 8388607)
+ 123 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
