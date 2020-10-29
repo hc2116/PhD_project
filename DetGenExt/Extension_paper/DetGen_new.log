@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  28 OCT 2020 16:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  29 OCT 2020 11:23
 entering extended mode
 **./DetGen_new.tex
 (DetGen_new.tex
@@ -612,94 +612,94 @@ Package pdftex.def Info: images/scenario_branching.PNG  used on input line 700.
 
 (pdftex.def)             Requested size: 276.21516pt x 106.41971pt.
 [14] [15 <./images/scenario_branching.PNG>] [16] [17]
-Overfull \hbox (1.54333pt too wide) in paragraph at lines 1059--1059
+Overfull \hbox (1.54333pt too wide) in paragraph at lines 1060--1060
 []|\OT1/cmr/m/n/10 Label| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1061--1061
 []|[]\OT1/cmr/m/n/10 Little con-ges-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1061--1061
 []|\OT1/cmr/m/n/10 Get-request on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1061--1061
 \OT1/cmr/m/n/10 NG-INX/wget,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1061--1061
 []|\OT1/cmr/m/n/10 Command se-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
+Underfull \hbox (badness 10000) in paragraph at lines 1065--1065
 []|\OT1/cmr/m/n/10 Moderate con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
+Underfull \hbox (badness 10000) in paragraph at lines 1065--1065
 \OT1/cmr/m/n/10 ges-tion, low
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
+Underfull \hbox (badness 10000) in paragraph at lines 1065--1065
 \OT1/cmr/m/n/10 dif-fer-ent fixed
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1064
+Underfull \hbox (badness 10000) in paragraph at lines 1065--1065
 []|\OT1/cmr/m/n/10 Command se-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1068--1068
+Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
 []|\OT1/cmr/m/n/10 High con-ges-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1068--1068
+Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
 []|\OT1/cmr/m/n/10 Post-request on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1068--1068
+Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
 \OT1/cmr/m/n/10 Apache/wget,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1068--1068
+Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
 []|\OT1/cmr/m/n/10 Command se-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1072--1072
+Underfull \hbox (badness 10000) in paragraph at lines 1073--1073
 []|\OT1/cmr/m/n/10 High con-ges-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1072--1072
+Underfull \hbox (badness 10000) in paragraph at lines 1073--1073
 []|\OT1/cmr/m/n/10 Multi-request
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1072--1072
+Underfull \hbox (badness 10000) in paragraph at lines 1073--1073
 []|\OT1/cmr/m/n/10 Command se-
  []
 
 
-Overfull \hbox (31.8386pt too wide) in paragraph at lines 1058--1080
+Overfull \hbox (31.8386pt too wide) in paragraph at lines 1059--1081
  [][] 
  []
 
 <images/Exp1.png, id=126, 582.67688pt x 223.58531pt>
 File: images/Exp1.png Graphic file (type png)
 <use images/Exp1.png>
-Package pdftex.def Info: images/Exp1.png  used on input line 1090.
+Package pdftex.def Info: images/Exp1.png  used on input line 1092.
 (pdftex.def)             Requested size: 354.12257pt x 135.88531pt.
 [18] [19 <./images/Exp1.png>] (DetGen_new.bbl [20]) [21] (DetGen_new.aux)
 
@@ -727,7 +727,7 @@ fonts/cm/cmr8.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmr9.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/henry/AppData/Local/Program
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on DetGen_new.pdf (21 pages, 670343 bytes).
+Output written on DetGen_new.pdf (21 pages, 670733 bytes).
 PDF statistics:
  176 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

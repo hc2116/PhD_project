@@ -197,44 +197,4 @@ pA#+scale_y_continuous(trans='log2')
 
 plot_grid(pA, pA,pA,pA, labels = c('A', 'B', 'C','D'), ncol = 4)
 
-pA <- ggplot(df, aes(x=Metric, y=x)) + 
-  geom_dotplot(binaxis='y', stackdir='center')+
-stat_summary(fun.data = "mean_se", colour = "red", size = 1)+
-  theme_bw()+  labs(y="%",x="")
-  #labs(title="HTTP",y="Similarity (% of overall)")
-
-# B
-x1 <- 1-abs(rnorm(30,sd=0.02))
-x2 <- 1-abs(rnorm(30,sd=0.1))
-x3 <- 1-abs(rnorm(30,sd=0.04))
-df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
-pB <- ggplot(df, aes(x=Metric, y=x)) + 
-  geom_dotplot(binaxis='y', stackdir='center')+
-  stat_summary(fun.data = "mean_se", colour = "red", size = 1)+
-  theme_bw()+labs(y="%",x="")
-
-# C
-x1 <- 1-abs(rnorm(30,sd=0.02))
-x2 <- 1-abs(rnorm(30,sd=0.00001))
-x3 <- 1-abs(rnorm(30,sd=0.04))
-df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
-pC <- ggplot(df, aes(x=Metric, y=x)) + 
-  geom_dotplot(binaxis='y', stackdir='center')+
-  stat_summary(fun.data = "mean_se", colour = "red", size = 1)+
-  theme_bw()+labs(y="%",x="")
-
-# D
-x1 <- 1-abs(rnorm(30,sd=0.05))
-x2 <- 1-abs(rnorm(30,sd=0.1))
-x3 <- 1-abs(rnorm(30,sd=0.1))
-df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("conn",30),rep("flow",30),rep("seq",30)))
-pD <- ggplot(df, aes(x=Metric, y=x)) + 
-  geom_dotplot(binaxis='y', stackdir='center')+
-  stat_summary(fun.data = "mean_se", colour = "red", size = 1)+
-  theme_bw()+labs(y="%")
-
-
-plot_grid(pA, pB,pC,pD, labels = c('A', 'B', 'C','D'), ncol = 1)
+####################################################################################################

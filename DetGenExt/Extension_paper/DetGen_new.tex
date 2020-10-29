@@ -1046,7 +1046,8 @@ we compare our framework against a setup on a virtual machine to show that we pr
 In contrast to 
 
 
-\subsubsection{Constant settings}
+\subsubsection{Determinism test}
+
 
 We now apply the described similarity measures to different groups of traffic traces to evaluate the \textcolor{red}{determinism} of our data generation process. We vary the control settings of the described influence factors, described in Section \ref{Sec:Impactfactors}, for each group, but keep them constant within each group. We use three different traffic types (HTTP, file-syncing (port 8384), and botnet), for which we both perform different application-specific activities and create different overall settings. 
 
@@ -1083,6 +1084,7 @@ VM & comparison&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.3
 
 Table \ref{Dataset} summarises the activity and settings for the different traffic groups, along with the corresponding dissimilarity scores for each group. As visible, the scores yield less than $1\%$ of the dissimilarity observed on average for each protocol. Scores are especially low when compared to traffic groups collected in the VM setting, which is also visible in Fig. \ref{determ-metric} for the HTTP-traffic. Dissimilarity scores for the VM-setting are most notably higher for the flow-metric, caused by additional background flows frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
 
+
 %0.2043341 0.2099933 0.1892661 0.2779625 0.3052004 0.1835523 0.4104484 0.3933690 0.2935111 0.5524176 0.1028654 0.2028906 2.6549903 3.4444166 2.2215654
 
 \begin{figure}
@@ -1092,13 +1094,15 @@ Table \ref{Dataset} summarises the activity and settings for the different traff
 \end{figure}
 
 
-\subsubsection{Determinism test}
 
 
 
 \subsubsection{Realistic diversity level}
 
-The above test demonstrated that while holding settings constant, DetGen generates traffic with high similarity. We now prove that this does not impede DetGen's capability to generate realistic amounts of traffic diversity observed in real-world traffic. For this, we create a mixed dataset with varying settings for each protocol, for which we extract 
+The above test demonstrated that while holding settings constant, DetGen generates traffic with high similarity. We now prove that this does not impede DetGen's capability to generate realistic amounts of traffic diversity observed in real-world traffic. For this, we create a mixed dataset with varying settings for each protocol to explore the produced traffic diversity. Again, we use the proposed traffic similarity metrics to measure the overall traffic dissimilarity. 
+We compare the observed dissimilarity for each protocol with that observed in real-world traffic from the CAIDA-2018 capture \textcolor{red}{insert citation}.
+
+
 
 Here, we apply the simulation of all impact factors simultaneously to our traffic and test if the traffic similarity scores are as divergent as for traffic from a real-world dataset (i.e. CAIDA) for two or three exemplary protocols, and we also compare it to the same protocols in the CICIDS-17 dataset. This will let us argue that we can achieve realistic levels of diversity (something criticised by Sommer-Paxson), and that our framework lets researchers explore higher levels of diversity than currents labelled solutions.
 
