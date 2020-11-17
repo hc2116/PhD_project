@@ -168,6 +168,20 @@ better understand the logical small-scale structures in network traffic and unde
 \end{subfigure}
 \end{figure}
 
+\begin{figure}
+\centering
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{images/VM_setup_final.png}
+\caption{Traditional capture setup}
+\end{subfigure}
+~
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{images/Docker_setup_final.png}
+\caption{Our container-based capture setup}
+\end{subfigure}
+\end{figure}
+
+
 \paragraph{Reproducibility}
 
 %%As computational work becomes more and more integral to many aspects of scientific research, computational reproducibility has become an issue of increasing importance to computer systems researchers and domain scientists alike.
@@ -1081,17 +1095,17 @@ VM & comparison&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.3
 \caption{Outline of the traffic groups used for the \textcolor{red}{determinism evaluation}, along with the average dissimilarity percentages for each traffic group (red=connection similarity, green=flow-level similarity, blue=sequential similarity)}\label{Dataset}
 \end{table}
 
-
-Table \ref{Dataset} summarises the activity and settings for the different traffic groups, along with the corresponding dissimilarity scores for each group. As visible, the scores yield less than $1\%$ of the dissimilarity observed on average for each protocol. Scores are especially low when compared to traffic groups collected in the VM setting, which is also visible in Fig. \ref{determ-metric} for the HTTP-traffic. Dissimilarity scores for the VM-setting are most notably higher for the flow-metric, caused by additional background flows frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
-
-
-%0.2043341 0.2099933 0.1892661 0.2779625 0.3052004 0.1835523 0.4104484 0.3933690 0.2935111 0.5524176 0.1028654 0.2028906 2.6549903 3.4444166 2.2215654
-
 \begin{figure}
 \centering
 \includegraphics[width=1\textwidth]{images/Exp1.png}
 \caption{HTTP}\label{determ-metric}
 \end{figure}
+
+
+Table \ref{Dataset} summarises the activity and settings for the different traffic groups, along with the corresponding dissimilarity scores for each group. As visible, the scores yield less than $1\%$ of the dissimilarity observed on average for each protocol. Scores are especially low when compared to traffic groups collected in the VM setting, which is also visible in Fig. \ref{determ-metric} for the HTTP-traffic. Dissimilarity scores for the VM-setting are most notably higher for the flow-metric, caused by additional background flows frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
+
+
+%0.2043341 0.2099933 0.1892661 0.2779625 0.3052004 0.1835523 0.4104484 0.3933690 0.2935111 0.5524176 0.1028654 0.2028906 2.6549903 3.4444166 2.2215654
 
 
 
@@ -1100,12 +1114,20 @@ Table \ref{Dataset} summarises the activity and settings for the different traff
 \subsubsection{Realistic diversity level}
 
 The above test demonstrated that while holding settings constant, DetGen generates traffic with high similarity. We now prove that this does not impede DetGen's capability to generate realistic amounts of traffic diversity observed in real-world traffic. For this, we create a mixed dataset with varying settings for each protocol to explore the produced traffic diversity. Again, we use the proposed traffic similarity metrics to measure the overall traffic dissimilarity. 
-We compare the observed dissimilarity for each protocol with that observed in real-world traffic from the CAIDA-2018 capture \textcolor{red}{insert citation}.
+We compare the observed dissimilarity for each protocol with that observed in real-world traffic from the CAIDA-2018 anonymized traffic traces \textcolor{red}{insert citation}, as well as the widely used synthetic CICIDS-17 intrusion detection dataset \textcolor{red}{insert citation}. Ideally, our generated traffic exhibits similar overall traffic diversity as the CAIDA real-world traffic.
 
 
 
-Here, we apply the simulation of all impact factors simultaneously to our traffic and test if the traffic similarity scores are as divergent as for traffic from a real-world dataset (i.e. CAIDA) for two or three exemplary protocols, and we also compare it to the same protocols in the CICIDS-17 dataset. This will let us argue that we can achieve realistic levels of diversity (something criticised by Sommer-Paxson), and that our framework lets researchers explore higher levels of diversity than currents labelled solutions.
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{images/HTTP_similarity.png}
+\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold}\label{fig:diversity_exp}
+\end{figure}
 
+We examine the achievable traffic diversity for HTTP-traffic, since large amounts of this protocol are present both in the CAIDA and the CICIDS-17 dataset.
+We randomly draw settings for all impact factors simultaneously during the traffic generation using realistic parameter sampling distributions, as described in Section \textcolor{red}{insert correct section}. After the traffic collection, we pair HTTP-connections at random to examine their dissimilarity. Figure \ref{fig:diversity_exp} shows the dissimilarity distribution for the three traffic metrics for each dataset. As visible, neither the data from DetGen nor the CICIDS-17 dataset fully achieves the diversity of the CAIDA-data. However, DetGen achieves significantly more diversity for overall connection features and for packet sequences, areas where the data in the CICIDS-17 data is clustered very narrowly. \textcolor{red}{insert distribution comparison measures}
+
+% and test if the traffic similarity scores are as divergent as for traffic from a real-world dataset (i.e. CAIDA) for two or three exemplary protocols, and we also compare it to the same protocols in the CICIDS-17 dataset. This will let us argue that we can achieve realistic levels of diversity (something criticised by Sommer-Paxson), and that our framework lets researchers explore higher levels of diversity than currents labelled solutions.
 
 
 
@@ -1153,9 +1175,9 @@ Here, we apply the simulation of all impact factors simultaneously to our traffi
 
 % Need to edit these sections to provide a single context for both the artificial delays & classification
 
-\subsection{Explorating Artificial Delays}
+%\subsection{Explorating Artificial Delays}
 
-This section is already existing, we could potentially expand this. I think it is sufficient and analysing it more does not add much to the paper as the performance of TC netem is relatively well accepted. I think we could even move this section to the appendix.
+%This section is already existing, we could potentially expand this. I think it is sufficient and analysing it more does not add much to the paper as the performance of TC netem is relatively well accepted. I think we could even move this section to the appendix.
 
 %\begin{figure}
 %\captionsetup{justification=centering}
@@ -1195,15 +1217,48 @@ This section is already existing, we could potentially expand this. I think it i
 
 \section{Use-cases}
 
+\subsection{Impacts of ground-truth information on model understanding}
 
-\subsection{Benefits of ground-truth labels}
-Possible title: \textbf{Exploring the effect of rare events to model performance}
+Extensive ground-truth labels on different traffic influences are arguably the most important contribution of the DetGen framework. We demonstrate the benefits of this additional information for model-understanding on two examples using a traffic classification model by Hwang et al. \cite{hwang2019lstm} and a \textcolor{red}{highly regarded} anomaly detection model by Casas et al. \cite{casas2012unsupervised}.
 
-Extensive ground-truth labels for our activities are arguably the most important contribution of the DetGen framework, so we should highlight their benefit most. Since ground-truth labels on attack data are existing in other datasets, we should emphasise the benefit of having labels for different activities. In my eyes, the most striking benefit arises for false-positive analysis, which we could then combine with showcasing the benefit of being able to generate different amounts of traffic for different activities.
+\subsubsection{Improving traffic classification with congestion information}
+%Possible title: \textbf{Exploring the effect of rare events to model performance}
+Our first use-case looks at congestion information to improve a recent state-of-the-art  traffic classification model by Hwang et al. \cite{hwang2019lstm} that aims at identifying known malicious behaviour.
+The model classifies connections on a packet-level using an LSTM-network\footnote{Long-short-term-memory neural network}, and achieves detection and false-positive (FP) rates of \textbf{99.7\%} and \textbf{0.03\%} respectively. We train the model on a set of different HTTP-activities to detect SQL-injections. Rather than providing an accurate and realistic detection setting, this use-case shows how traffic information can be linked to model failures and slumping performance.
+We use HTTP-traffic from the CAIDA data as background traffic (95\% of connections) and the SQL-injection attack traffic (2.5\%) as well as different HTTP-activities for analysis (2.5\%) using the DetGen-framework.
+
+The initial model overall performs well, with a detection rate of $99.6\%$, but an improvable FP-rate of $0.8\%$. To explore potential causes of misclassification, we analysed detection rates in dependence of different traffic influences. Looking at the left panel of Figure \ref{fig:LSTM_exp}, which depicts classification scores in dependence of simulated network congestion, we learn that while classification scores are well separated for lower congestion, increased latency leads to misclassification, especially for SQL-injection traffic. A plausible cause would be that the increased amount of retransmission sequences decreases the overall sequential coherence for the model. We try to correct the existing model by excluding retransmission sequences from the model input data, which leads to significantly better classification results during network latency, as visible in the right panel of Figure \ref{fig:LSTM_exp}. Overall detection rates and false positives improved to \textbf{99.9\%} and \textbf{0.045\%}.
 
 
-\paragraph{Plan}
-Implement the LSTM-model in the paper "An LSTM-Based Deep Learning Approach forClassifying Malicious Traffic at the Packet Level", train it on our data (both benign and attack traffic). Extract labels of traffic responsible for false-positives, show how much they are clustered around particular activities (potentially rare activities) compared to the overall traffic. Give potential reason for this. Generate a new dataset with increased amounts of the activities responsible for false positivies. Demonstrate that false-positives decrease.
+
+%, so we should highlight their benefit most. Since ground-truth labels on attack data are existing in other datasets, we should emphasise the benefit of having labels for different activities. In my eyes, the most striking benefit arises for false-positive analysis, which we could then combine with showcasing the benefit of being able to generate different amounts of traffic for different activities.
+
+
+%\paragraph{Plan}
+%Implement the LSTM-model in the paper "An LSTM-Based Deep Learning Approach forClassifying Malicious Traffic at the Packet Level", train it on our data (both benign and attack traffic). Extract labels of traffic responsible for false-positives, show how much they are clustered around particular activities (potentially rare activities) compared to the overall traffic. Give potential reason for this. Generate a new dataset with increased amounts of the activities responsible for false positivies. Demonstrate that false-positives decrease.
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{images/LSTM_exp.png}
+\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold}\label{fig:LSTM_exp}
+\end{figure}
+
+\subsection{Refining the notion of benign traffic for anomaly detection}
+
+Our second use-case looks at the effect of sudden connection terminations on an anomaly-detection model by Casas et al. \cite{casas2012unsupervised}. The model takes a number of flow summary statistics as input, which include such as packet size and interarrival statistics, number of idle and transfer periods, flag occurrencies etc. as input and projects it into different subspaces, where the connections are clustered. Anomalous outliers are detected by accumulating the Mahalanobis-distance from the cluster centers from each subspace.
+
+We train the model on benign traffic from the CICIDS-17 intrusion detection dataset (80\%). Since intrusion detection datasets often lack sufficient events that necessarily occur, but with lesser frequency (such as communication failures), we also include traffic generated using DetGen (HTTP, FTP, SSH, and SMTP, 20\%) using a wide spectrum of settings. Attack data for the evaluation was again provided through the CICIDS-17 dataset.
+
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{images/Subspace_projection.png}
+\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold}\label{fig:Subspace_projection}
+\end{figure}
+
+In the evaluation of the model, it became apparent that the model often assigns Brute-Force Web attacks and some HTTP-traffic from a particular cluster similar anomaly scores. When looking at this cluster, we notice that despite most connections being well centred well together, some 
+connections are scattered much more broadly across the cluster and mix with Brute-Force traffic.
+This is visible in Figure \ref{fig:Subspace_projection}. When looking at the activity labels from DetGen, we notice that most of this traffic corresponds to half-open connections which were dropped by the server due to network failure. One defining characteristic of such connections are that they are not closed with a termination handshake using FIN-flags. We therefore included an additional flow-summary describing whether the connection was terminated properly, which lead to half-open connections being projected very differently into a new cluster with well defined borders.
 
 %\subsubsection{Benefits of structural richness}
 %

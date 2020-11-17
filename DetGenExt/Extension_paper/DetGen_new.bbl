@@ -33,6 +33,12 @@ R.~Harang.
 \newblock In {\em Network Science and Cybersecurity}, pages 15--37. Springer,
   2014.
 
+\bibitem{hwang2019lstm}
+R.-H. Hwang, M.-C. Peng, V.-L. Nguyen, and Y.-L. Chang.
+\newblock An lstm-based deep learning approach for classifying malicious
+  traffic at the packet level.
+\newblock {\em Applied Sciences}, 9(16):3414, 2019.
+
 \bibitem{kent-2015-cyberdata1}
 A.~D. Kent.
 \newblock {Comprehensive, Multi-Source Cyber-Security Events}.
