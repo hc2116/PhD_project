@@ -13,6 +13,12 @@ A.~Biernacki.
   video.
 \newblock {\em Multimedia Tools and Applications}, 76(10):12347--12368, 2017.
 
+\bibitem{casas2012unsupervised}
+P.~Casas, J.~Mazel, and P.~Owezarski.
+\newblock Unsupervised network intrusion detection systems: Detecting the
+  unknown without knowledge.
+\newblock {\em Computer Communications}, 35(7):772--783, 2012.
+
 \bibitem{dolan2011virtuoso}
 B.~Dolan-Gavitt, T.~Leek, M.~Zhivich, J.~Giffin, and W.~Lee.
 \newblock Virtuoso: Narrowing the semantic gap in virtual machine
@@ -20,11 +26,12 @@ B.~Dolan-Gavitt, T.~Leek, M.~Zhivich, J.~Giffin, and W.~Lee.
 \newblock In {\em 2011 IEEE symposium on security and privacy}, pages 297--312.
   IEEE, 2011.
 
-\bibitem{grieco2004performance}
-L.~A. Grieco and S.~Mascolo.
-\newblock Performance evaluation and comparison of westwood+, new reno, and
-  vegas tcp congestion control.
-\newblock {\em ACM SIGCOMM Computer Communication Review}, 34(2):25--38, 2004.
+\bibitem{fricker2012impact}
+C.~Fricker, P.~Robert, J.~Roberts, and N.~Sbihi.
+\newblock Impact of traffic mix on caching performance in a content-centric
+  network.
+\newblock In {\em 2012 Proceedings IEEE INFOCOM Workshops}, pages 310--315.
+  IEEE, 2012.
 
 \bibitem{harang2014bridging}
 R.~Harang.
@@ -75,6 +82,14 @@ N.~Moustafa and J.~Slay.
   systems (unsw-nb15 network data set).
 \newblock In {\em 2015 military communications and information systems
   conference (MilCIS)}, pages 1--6. IEEE, 2015.
+
+\bibitem{sequeira2013influence}
+L.~Sequeira, J.~Fern{\'a}ndez-Navajas, L.~Casadesus, J.~Saldana, I.~Quintana,
+  and J.~Ruiz-Mas.
+\newblock The influence of the buffer size in packet loss for competing
+  multimedia and bursty traffic.
+\newblock In {\em 2013 International Symposium on Performance Evaluation of
+  Computer and Telecommunication Systems (SPECTS)}, pages 134--141. IEEE, 2013.
 
 \bibitem{sharafaldin2018towards}
 I.~Sharafaldin, A.~Gharib, A.~H. Lashkari, and A.~A. Ghorbani.
