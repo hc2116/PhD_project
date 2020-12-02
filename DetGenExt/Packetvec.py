@@ -34,7 +34,7 @@ def Packetvector(filename):
     pingpackets = PcapReader(filename)
     #Compstats=open(outputfilename,"w")
     Pktnumber=0
-    N=18
+    N=40
     IATs=[]
     Sizes=[]
     Flags=[]
@@ -53,12 +53,16 @@ def Packetvector(filename):
         if sport==False:
                 continue
         if Sport==None:
-            Sport=sport
-            Dport=dport
+            print(dport)
+            if dport=="45261":
+                Sport=sport
+                Dport=dport
+            else:
+                continue
         if (Sport==sport)&(Dport==dport):
-            Dir="S"
+            Dir="Forward"
         elif (Dport==sport)&(Sport==dport):
-            Dir="D"
+            Dir="Backward"
         else:
             continue
         Pktnumber+=1
@@ -91,7 +95,11 @@ filename5="Desktop/Ubuntu_Files/dump-090-sshd-client-sc1-2020-10-05_19-09-09-2.p
 filename6="Desktop/Ubuntu_Files/dump-090-sshd-client-sc1-2020-10-05_19-09-09-3.pcap"
 
 
-filenames=[filename1,filename2,filename3]
+filenames=[filename4,filename5,filename6]
+
+filename1="Desktop/Ubuntu_Files/dump-050-vsftpd-client-2020-10-02_17-35-18-sc1-1.pcap"
+filename2="Desktop/Ubuntu_Files/dump-050-vsftpd-server-2020-10-02_17-35-18-sc1-1.pcap"
+filenames=[filename1,filename2]
 
 IATss=[]
 Sizess=[]
@@ -104,4 +112,8 @@ for filename in filenames:
     Flagss.extend(Flags)
     Dirss.extend(Dirs)
     
+IATss
+Sizess
+Flagss
+Dirss
     

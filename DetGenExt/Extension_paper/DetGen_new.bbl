@@ -123,6 +123,10 @@ T.~St{\"o}ber, M.~Frank, J.~Schmitt, and I.~Martinovic.
 \newblock In {\em Proceedings of the sixth ACM conference on Security and
   privacy in wireless and mobile networks}, pages 7--12, 2013.
 
+\bibitem{walsworth2015caida}
+C.~Walsworth, E.~Aben, K.~Claffy, and D.~Andersen.
+\newblock The caida ucsd anonymized internet traces 2012,”, 2015.
+
 \bibitem{willinger1998self}
 W.~Willinger, V.~Paxson, and M.~S. Taqqu.
 \newblock Self-similarity and heavy tails: Structural modeling of network
