@@ -1,4 +1,4 @@
-\documentclass[sigconf]{acmart}
+ \documentclass[sigconf]{acmart}
 %\documentclass{article}
 %\usepackage[margin=1.5in]{geometry}
 
@@ -256,17 +256,17 @@ We position our framework against NID datasets and data generation setups, such 
 
 
 
-\paragraph{Rich ground truth information} Attention in the setup of typical lab-capture environments is put primarily into attack diversity and realistic network topologies and to some extent to the overall generation mechanisms of benign traffic. No attention so far has been spend on controlling and monitoring the different factors, described in Section \ref{Sec:Impactfactors}, that influence how traffic, benign and malicious, is shaped in the generation process. 
+\paragraph{1. Rich control and ground truth information} Attention in the setup of typical lab-capture environments is put primarily into attack diversity and realistic network topologies and to some extent to the overall generation mechanisms of benign traffic. No attention so far has been spend on controlling and monitoring the different factors, described in Section \ref{Sec:Impactfactors}, that influence how traffic, benign and malicious, is shaped in the generation process. 
 
 Our framework should above all produce ground truth information about the underlying activities of all captured traffic. This information should not only distinguish between benign and malicious activity, but give detailed information about the conducted computational activities. Furthermore, our framework should control and record all necessary factors that impact and shape the generated traffic such as network congestion or transmission failures to better facilitate understanding the effect of different traffic structures and particular phenomena on a detection system.
 
 %\paragraph{Functional realism} Researchers should have the ability to embed their NIDS into our framework in order to enable real-time detection experiments as well as corresponding operator decision-making.
 
-\paragraph{Reproducibility} The scientific method dictates that experiments must be reproduced  before  they  are  considered  valid. Typical setups generate and collect data in a one-shot manner, without control over various quasi-random influences that affect the capture process. Furthermore, the particular setups are often complex and difficult to recreate. This makes is difficult for researchers to reproduce datasets and corresponding network experiments, especially when proprietary customized datasets are used. 
+\paragraph{2. Reproducibility} The scientific method dictates that experiments must be reproduced  before  they  are  considered  valid. Typical setups generate and collect data in a one-shot manner, without control over various quasi-random influences that affect the capture process. Furthermore, the particular setups are often complex and difficult to recreate. This makes is difficult for researchers to reproduce datasets and corresponding network experiments, especially when proprietary customized datasets are used. 
 
 Our framework should be able to precisely reproduce any generated traffic events and corresponding network experiments in order to facilitate verifiable and comparable research. Data should be produced in a controllable manner, with typically random impacts on traffic capture such as transferred data or host load being randomised and monitored in a controlled fashion to enable precise reproduction. We aim at avoiding complicated setups and plattform dependencies in the generation process. 
 
-\paragraph{Traffic realism on a packet level} As described in the first paragraph, attack-focused synthetic intrusion detection data setups so far have paid little attention to the realism of traffic on a packet-level, and exhibit far less event diversity than real-world captures due to the neglect of \textcolor{red}{request diversity} and the shielding from real-world factors such as excessive host load or network failures. We provide examples of this in Section \textcolor{red}{insert Section number}.
+\paragraph{3. Traffic realism on a packet level} As described in the first paragraph, attack-focused synthetic intrusion detection data setups so far have paid little attention to the realism of traffic on a packet-level, and exhibit far less event diversity than real-world captures due to the neglect of \textcolor{red}{request diversity} and the shielding from real-world factors such as excessive host load or network failures. We provide examples of this in Section \textcolor{red}{insert Section number}.
 
 The DetGen framework should address these issues and produce traffic that exhibits realistic levels of structural trafficdiversity and rare events. This is a necessary condition to provide a corresponding evaluation of NIDS systems with a plausible degree of scientific insight and relevance. %Internet traffic overall is hard to model, which is why we narrow the scope to the generation of small-scale traffic scenarios that contain true interactions between software components in a realistic way. Furthermore, our framework should enable the inclusion of large-scale network activity profiles to leverage existing research in this area.
 
@@ -517,7 +517,7 @@ Network settings such as the MTU or the enabling of TCP Segment Reassembly Offlo
 
 \section{DetGen Architecture}
 
-DetGen is a container-based network traffic that we developed to enable repeatable, realistic, and flexible network experiments. DetGen is built on top of the widely used Mininet testbed \textcolor{red}{insert citation} and implements controllable communication scenarios for benign and attack traffic generation.
+%DetGen is a container-based network traffic that we developed to enable repeatable, realistic, and flexible network experiments. DetGen is built on top of the widely used Mininet testbed \textcolor{red}{insert citation} and implements controllable communication scenarios for benign and attack traffic generation.
 
 %\section{Background}\label{Sec:b8ackground}
 
@@ -526,18 +526,25 @@ DetGen is a container-based network traffic that we developed to enable repeatab
 
 \begin{figure}
 \centering
-\begin{subfigure}[b]{0.48\textwidth}
+\begin{subfigure}[b]{0.4\textwidth}
+\caption{\large Traditional capture setup}
 \includegraphics[width=\textwidth]{images/VM_setup_final.png}
-\caption{Traditional capture setup}
 \end{subfigure}
 %~
-\begin{subfigure}[b]{0.48\textwidth}
+\begin{subfigure}[b]{0.4\textwidth}
+\caption{\large DetGen container setup}
 \includegraphics[width=\textwidth]{images/Docker_setup_final.png}
-\caption{Our container-based capture setup}
 \end{subfigure}
+\caption{Design comparison of traditional NIDS-data-setups and our DetGen }
 \end{figure}
 
-The Detgen framework uses Mininet to create a network with a \textcolor{red}{desired} topology, along with virtual software switches, Ethernet links, routers, and firewalls. The network is then populated with containers ,which perform a variety of activities for traffic generation. The conducted activities are composed of scripted \textit{scenarios} (\textcolor{red}{give examples here}), but subject to a high degree of randomisation. The captured traffic events are labelled individually after the specific generating action. 
+Detgen is a container-based network traffic generation framework that we developed to enable repeatable, controllable, and \textcolor{red}{informative} network experiments. In contrast to the pool of programs running in a VM-setup, DetGen separates program executions and traffic capture into distinct containerised environments in order to shield the generated traffic from external influences and enable the fine-grained control of \textcolor{red}{traffic shaping factors}.
+
+Traffic is generated from a set of scripted \textit{scenarios} (\textcolor{red}{give examples here}) that strictly control corresponding influence factors and offer the researcher to modify the conducted activity in a wide variety of \textcolor{red}{ways}.
+
+%, but subject to a high degree of randomisation. The captured traffic events are labelled individually after the specific generating action. 
+
+uses Mininet to create a network with a \textcolor{red}{desired} topology, along with virtual software switches, Ethernet links, routers, and firewalls. The network is then populated with containers ,which perform a variety of activities for traffic generation. The conducted activities are composed of scripted \textit{scenarios} (\textcolor{red}{give examples here}), but subject to a high degree of randomisation. The captured traffic events are labelled individually after the specific generating action. 
 
 \subsection{Containerization}
 %\textcolor{red}{to do:need to improve}

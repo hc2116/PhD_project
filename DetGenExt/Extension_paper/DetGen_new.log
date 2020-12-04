@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  2 DEC 2020 17:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  4 DEC 2020 11:37
 entering extended mode
 **./DetGen_new.tex
 (DetGen_new.tex
@@ -1593,273 +1593,268 @@ Class acmart Warning: A possible image without description on input line 421.
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 429.
 
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 10.0pt on input line 530.
 <images/VM_setup_final.png, id=169, 281.57655pt x 322.64803pt>
 File: images/VM_setup_final.png Graphic file (type png)
 <use images/VM_setup_final.png>
-Package pdftex.def Info: images/VM_setup_final.png  used on input line 530.
-(pdftex.def)             Requested size: 243.01942pt x 278.47623pt.
+Package pdftex.def Info: images/VM_setup_final.png  used on input line 531.
+(pdftex.def)             Requested size: 202.51491pt x 232.06516pt.
 <images/Docker_setup_final.png, id=170, 312.77509pt x 375.96196pt>
 File: images/Docker_setup_final.png Graphic file (type png)
 <use images/Docker_setup_final.png>
-Package pdftex.def Info: images/Docker_setup_final.png  used on input line 535.
+Package pdftex.def Info: images/Docker_setup_final.png  used on input line 536.
 
-(pdftex.def)             Requested size: 243.01942pt x 292.119pt.
+(pdftex.def)             Requested size: 202.51491pt x 243.43155pt.
 
-Class acmart Warning: A possible image without description on input line 538.
-
-
-Overfull \hbox (1.87193pt too wide) in paragraph at lines 529--538
- [][] 
- []
-
-
-Overfull \hbox (1.87193pt too wide) in paragraph at lines 529--538
- [] 
- []
+Class acmart Warning: A possible image without description on input line 539.
 
 [4.4 <./images/Proto_differences_small.png> <./images/FTP_load.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Warning: Reference `Sec:ExistScen' on page 5 undefined on input line 561.
+
+
+LaTeX Warning: Reference `Sec:ExistScen' on page 5 undefined on input line 568.
 
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 568.
+(Font)              scaled to size 9.0pt on input line 575.
 
-LaTeX Warning: Reference `Sec:problems' on page 5 undefined on input line 577.
+LaTeX Warning: Reference `Sec:problems' on page 5 undefined on input line 584.
 
-[5.5 <./images/VM_setup_final.png> <./images/Docker_setup_final.png>]
-<images/scenario_branching.PNG, id=203, 1036.87375pt x 399.4925pt>
+
+Underfull \vbox (badness 1596) has occurred while \output is active []
+
+ [5.5 <./images/VM_setup_final.png> <./images/Docker_setup_final.png>]
+<images/scenario_branching.PNG, id=202, 1036.87375pt x 399.4925pt>
 File: images/scenario_branching.PNG Graphic file (type png)
 <use images/scenario_branching.PNG>
-Package pdftex.def Info: images/scenario_branching.PNG  used on input line 583.
+Package pdftex.def Info: images/scenario_branching.PNG  used on input line 590.
 
 (pdftex.def)             Requested size: 253.14749pt x 97.5321pt.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 583--584
+Overfull \hbox (12.0pt too wide) in paragraph at lines 590--591
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 586.
+Class acmart Warning: A possible image without description on input line 593.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 640--640
+Underfull \hbox (badness 10000) in paragraph at lines 647--647
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) Other frame-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 642--642
+Underfull \hbox (badness 10000) in paragraph at lines 649--649
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) Isolated pro-cess in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 642--642
+Underfull \hbox (badness 10000) in paragraph at lines 649--649
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) even when con-tain-
  []
 
 
-Underfull \hbox (badness 1881) in paragraph at lines 642--642
+Underfull \hbox (badness 1881) in paragraph at lines 649--649
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) ers at-tached to same
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 642--642
+Underfull \hbox (badness 10000) in paragraph at lines 649--649
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) over-lay-ing ac-tiv-i-ties
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 642--642
+Underfull \hbox (badness 10000) in paragraph at lines 649--649
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) No knowl-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 642--642
+Underfull \hbox (badness 10000) in paragraph at lines 649--649
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) edge about
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 642--642
+Underfull \hbox (badness 10000) in paragraph at lines 649--649
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) con-ducted
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 642--642
+Underfull \hbox (badness 10000) in paragraph at lines 649--649
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) Technically
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 642--642
+Underfull \hbox (badness 10000) in paragraph at lines 649--649
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) pos-si-ble, no
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 644--644
+Underfull \hbox (badness 10000) in paragraph at lines 651--651
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) Container state the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 644--644
+Underfull \hbox (badness 10000) in paragraph at lines 651--651
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) same af-ter re-peated
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 644--644
+Underfull \hbox (badness 10000) in paragraph at lines 651--651
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) launches, iso-la-tion
  []
 
 
-Underfull \hbox (badness 5147) in paragraph at lines 644--644
+Underfull \hbox (badness 5147) in paragraph at lines 651--651
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) have lit-tle ef-fect on,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 644--644
+Underfull \hbox (badness 10000) in paragraph at lines 651--651
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) To a lesser de-gree,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 644--644
+Underfull \hbox (badness 10000) in paragraph at lines 651--651
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) si-mul-ta-ne-ously con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 644--644
+Underfull \hbox (badness 10000) in paragraph at lines 651--651
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) ducted ac-tiv-ity can
  []
 
 
-Underfull \hbox (badness 5696) in paragraph at lines 650--650
+Underfull \hbox (badness 5696) in paragraph at lines 657--657
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) been done to
  []
 
 
-Overfull \hbox (180.33827pt too wide) in paragraph at lines 639--658
+Overfull \hbox (180.33827pt too wide) in paragraph at lines 646--665
  [][] 
  []
 
 
-Overfull \hbox (1.78807pt too wide) in paragraph at lines 678--679
+Overfull \hbox (1.78807pt too wide) in paragraph at lines 685--686
 \T1/LinuxLibertineT-TLF/m/n/9 (-20) trained on real-world traf-fic. While ex-am
 -ples such as Dop-pel-GANger
  []
 
 [6.6 <./images/scenario_branching.PNG>]
-Underfull \vbox (badness 7558) has occurred while \output is active []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 972--972
+Underfull \hbox (badness 10000) in paragraph at lines 979--979
 []|[]\T1/LinuxLibertineT-TLF/m/n/9 (+20) Little con-ges-tion,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 976--976
+Underfull \hbox (badness 10000) in paragraph at lines 983--983
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) Moderate con-ges-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 976--976
+Underfull \hbox (badness 10000) in paragraph at lines 983--983
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) tion, low comp.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 980--980
+Underfull \hbox (badness 10000) in paragraph at lines 987--987
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) High con-ges-tion,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 980--980
+Underfull \hbox (badness 10000) in paragraph at lines 987--987
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) Post-request on
  []
 
 
-Underfull \hbox (badness 6001) in paragraph at lines 980--980
+Underfull \hbox (badness 6001) in paragraph at lines 987--987
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) Apache/wget, large
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 984--984
+Underfull \hbox (badness 10000) in paragraph at lines 991--991
 []|\T1/LinuxLibertineT-TLF/m/n/9 (+20) High con-ges-tion,
  []
 
 
-Overfull \hbox (134.81367pt too wide) in paragraph at lines 970--992
+Overfull \hbox (134.81367pt too wide) in paragraph at lines 977--999
  [][] 
  []
 
 <images/Exp1.png, id=225, 582.67688pt x 223.58531pt>
 File: images/Exp1.png Graphic file (type png)
 <use images/Exp1.png>
-Package pdftex.def Info: images/Exp1.png  used on input line 997.
+Package pdftex.def Info: images/Exp1.png  used on input line 1004.
 (pdftex.def)             Requested size: 253.14749pt x 97.13599pt.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 997--998
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1004--1005
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 999.
+Class acmart Warning: A possible image without description on input line 1006.
 
 <images/HTTP_comp_crop.png, id=226, 485.56406pt x 563.10374pt>
 File: images/HTTP_comp_crop.png Graphic file (type png)
 <use images/HTTP_comp_crop.png>
-Package pdftex.def Info: images/HTTP_comp_crop.png  used on input line 1006.
+Package pdftex.def Info: images/HTTP_comp_crop.png  used on input line 1013.
 (pdftex.def)             Requested size: 253.14749pt x 293.57175pt.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1006--1014
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1013--1021
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 1015.
+Class acmart Warning: A possible image without description on input line 1022.
 
 [7.7 <./images/Exp1.png>]
 <images/HTTP_similarity.png, id=239, 566.86781pt x 220.57407pt>
 File: images/HTTP_similarity.png Graphic file (type png)
 <use images/HTTP_similarity.png>
-Package pdftex.def Info: images/HTTP_similarity.png  used on input line 1035.
+Package pdftex.def Info: images/HTTP_similarity.png  used on input line 1042.
 (pdftex.def)             Requested size: 253.14749pt x 98.5035pt.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1035--1036
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1042--1043
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 1037.
+Class acmart Warning: A possible image without description on input line 1044.
 
 [8.8 <./images/HTTP_comp_crop.png> <./images/HTTP_similarity.png>]
 <images/LSTM_exp.png, id=259, 591.71063pt x 215.30438pt>
 File: images/LSTM_exp.png Graphic file (type png)
 <use images/LSTM_exp.png>
-Package pdftex.def Info: images/LSTM_exp.png  used on input line 1154.
+Package pdftex.def Info: images/LSTM_exp.png  used on input line 1161.
 (pdftex.def)             Requested size: 253.14749pt x 92.11256pt.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1154--1155
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1161--1162
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 1156.
+Class acmart Warning: A possible image without description on input line 1163.
 
 <images/Subspace_projection.png, id=261, 493.0922pt x 209.28188pt>
 File: images/Subspace_projection.png Graphic file (type png)
 <use images/Subspace_projection.png>
-Package pdftex.def Info: images/Subspace_projection.png  used on input line 116
-7.
+Package pdftex.def Info: images/Subspace_projection.png  used on input line 117
+4.
 (pdftex.def)             Requested size: 253.14749pt x 107.44446pt.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1167--1168
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1174--1175
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 1169.
+Class acmart Warning: A possible image without description on input line 1176.
 
 
-LaTeX Warning: Reference `Tab:Influence' on page 9 undefined on input line 1236
+LaTeX Warning: Reference `Tab:Influence' on page 9 undefined on input line 1243
 .
 
 [9.9 <./images/LSTM_exp.png (PNG copy)> <./images/Subspace_projection.png>]
-Overfull \hbox (8.80597pt too wide) in paragraph at lines 1254--1255
+Overfull \hbox (8.80597pt too wide) in paragraph at lines 1261--1262
 \T1/LinuxLibertineT-TLF/m/n/9 (-20) containers with-out hav-ing to worry about 
 version-dependent
  []
@@ -1867,23 +1862,23 @@ version-dependent
 <images/VM_capture.pdf, id=273, 344.28625pt x 680.5425pt>
 File: images/VM_capture.pdf Graphic file (type pdf)
 <use images/VM_capture.pdf>
-Package pdftex.def Info: images/VM_capture.pdf  used on input line 1357.
+Package pdftex.def Info: images/VM_capture.pdf  used on input line 1364.
 (pdftex.def)             Requested size: 232.8991pt x 460.36401pt.
 <images/Docker_capture.pdf, id=274, 640.3925pt x 540.0175pt>
 File: images/Docker_capture.pdf Graphic file (type pdf)
 <use images/Docker_capture.pdf>
-Package pdftex.def Info: images/Docker_capture.pdf  used on input line 1362.
+Package pdftex.def Info: images/Docker_capture.pdf  used on input line 1369.
 (pdftex.def)             Requested size: 405.03754pt x 341.55594pt.
 
-Class acmart Warning: A possible image without description on input line 1365.
+Class acmart Warning: A possible image without description on input line 1372.
 
 
-Overfull \hbox (163.89005pt too wide) in paragraph at lines 1361--1365
+Overfull \hbox (163.89005pt too wide) in paragraph at lines 1368--1372
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 208.91995pt on input line 1365.
+LaTeX Warning: Float too large for page by 208.91995pt on input line 1372.
 
 (DetGen_new.bbl [10.10 <./images/VM_capture.pdf> <./images/Docker_capture.pdf>]
 )
@@ -1895,11 +1890,11 @@ Overfull \vbox (1.16599pt too high) has occurred while \output is active []
 
 
 [11.11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1413.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1413.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1420.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1420.
  (DetGen_new.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1413.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1413.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1420.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1420.
 
 Package rerunfilecheck Info: File `DetGen_new.out' has not changed.
 (rerunfilecheck)             Checksum: 71DD731CCFFB3BB30599A345414D47DD;4594.
@@ -1912,13 +1907,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20152 strings out of 492970
- 309772 string characters out of 3126595
- 429862 words of memory out of 3000000
- 22991 multiletter control sequences out of 15000+200000
- 169682 words of font info for 353 fonts, out of 3000000 for 9000
+ 20150 strings out of 492970
+ 309729 string characters out of 3126595
+ 430862 words of memory out of 3000000
+ 22993 multiletter control sequences out of 15000+200000
+ 174195 words of font info for 351 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,13n,94p,1082b,633s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,13n,94p,1082b,696s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/l
 btn_25tcsq.enc}{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvip
 s/libertine/lbtn_oexx6f.enc}{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/f
@@ -1938,9 +1933,9 @@ ts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/henry/AppData/Local/Prog
 rams/MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Users/henry
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/txfonts/txsya.pfb><C:/Use
 rs/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/newtx/txsys.pfb>
-Output written on DetGen_new.pdf (11 pages, 1127746 bytes).
+Output written on DetGen_new.pdf (11 pages, 1128188 bytes).
 PDF statistics:
  412 PDF objects out of 1000 (max. 8388607)
  107 named destinations out of 1000 (max. 500000)
- 49905 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 50417 words of extra memory for PDF output out of 51595 (max. 10000000)
 
