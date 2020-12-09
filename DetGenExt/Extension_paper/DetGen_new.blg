@@ -1,3 +1,46 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: DetGen_new.aux
+This is BibTeX, Version 0.99d (TeX Live 2020)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: DetGen_new.aux
 The style file: abbrv.bst
 Database file #1: DetGen_ext.bib
+You've used 25 entries,
+            2118 wiz_defined-function locations,
+            647 strings with 9025 characters,
+and the built_in function-call counts, 9916 in all, are:
+= -- 988
+> -- 491
+< -- 11
++ -- 198
+- -- 168
+* -- 683
+:= -- 1584
+add.period$ -- 83
+call.type$ -- 25
+change.case$ -- 158
+chr.to.int$ -- 0
+cite$ -- 25
+duplicate$ -- 377
+empty$ -- 763
+format.name$ -- 168
+if$ -- 2129
+int.to.chr$ -- 0
+int.to.str$ -- 25
+missing$ -- 22
+newline$ -- 128
+num.names$ -- 50
+pop$ -- 186
+preamble$ -- 1
+purify$ -- 133
+quote$ -- 0
+skip$ -- 279
+stack$ -- 0
+substring$ -- 608
+swap$ -- 116
+text.length$ -- 11
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 100
+warning$ -- 0
+while$ -- 99
+width$ -- 27
+write$ -- 280

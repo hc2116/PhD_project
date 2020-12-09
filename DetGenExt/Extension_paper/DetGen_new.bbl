@@ -33,6 +33,12 @@ C.~Fricker, P.~Robert, J.~Roberts, and N.~Sbihi.
 \newblock In {\em 2012 Proceedings IEEE INFOCOM Workshops}, pages 310--315.
   IEEE, 2012.
 
+\bibitem{iperf}
+M.~Gates and A.~Warshavsky.
+\newblock {Iperf} {Man} {Page}.
+\newblock \url{https://linux.die.net/man/1/iperf}.
+\newblock Accessed: 2019-08-11.
+
 \bibitem{harang2014bridging}
 R.~Harang.
 \newblock Bridging the semantic gap: Human factors in anomaly-based intrusion
@@ -40,11 +46,22 @@ R.~Harang.
 \newblock In {\em Network Science and Cybersecurity}, pages 15--37. Springer,
   2014.
 
+\bibitem{hemminger2005network}
+S.~Hemminger et~al.
+\newblock Network emulation with netem.
+\newblock In {\em Linux conf au}, pages 18--23, 2005.
+
 \bibitem{hwang2019lstm}
 R.-H. Hwang, M.-C. Peng, V.-L. Nguyen, and Y.-L. Chang.
 \newblock An lstm-based deep learning approach for classifying malicious
   traffic at the packet level.
 \newblock {\em Applied Sciences}, 9(16):3414, 2019.
+
+\bibitem{jurgelionis2011empirical}
+A.~Jurgelionis, J.-P. Laulajainen, M.~Hirvonen, and A.~I. Wang.
+\newblock An empirical study of netem network emulation functionalities.
+\newblock In {\em 2011 Proceedings of 20th International Conference on Computer
+  Communications and Networks (ICCCN)}, pages 1--6. IEEE, 2011.
 
 \bibitem{kent-2015-cyberdata1}
 A.~D. Kent.

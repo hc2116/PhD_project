@@ -205,8 +205,8 @@ require(cowplot)
 # A
 N=100
 x1 <- abs(rnorm(N,mean=0.002,sd=0.001))
-x2 <- abs(rnorm(N,mean=0.002,sd=0.001))
-x3 <- abs(rnorm(N,mean=0.002,sd=0.001))
+x2 <- abs(rnorm(N,mean=0.001,sd=0.0001))
+x3 <- abs(rnorm(N,mean=0.003,sd=0.004))
 df=data.frame(x=c(x1,x2,x3),
               Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
@@ -217,10 +217,12 @@ dfA=df
 df2A=df2
 dfA$Set="A"
 df2A$Set="A"
+dfA$Group="DetGen"
+df2A$Group="DetGen"
 # B
 x1 <- abs(rnorm(N,mean=0.003,sd=0.001))
-x2 <- abs(rnorm(N,mean=0.003,sd=0.001))
-x3 <- abs(rnorm(N,mean=0.002,sd=0.001))
+x2 <- abs(rnorm(N,mean=0.001,sd=0.0002))
+x3 <- abs(rnorm(N,mean=0.002,sd=0.0005))
 df=data.frame(x=c(x1,x2,x3),
               Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
@@ -231,6 +233,8 @@ dfB=df
 df2B=df2
 dfB$Set="B"
 df2B$Set="B"
+dfB$Group="DetGen"
+df2B$Group="DetGen"
 # C
 x1 <- abs(rnorm(N,mean=0.004,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.004,sd=0.001))
@@ -245,6 +249,8 @@ dfC=df
 df2C=df2
 dfC$Set="C"
 df2C$Set="C"
+dfC$Group="DetGen"
+df2C$Group="DetGen"
 # D
 x1 <- abs(rnorm(N,mean=0.0055,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.001,sd=0.001))
@@ -259,9 +265,11 @@ dfD=df
 df2D=df2
 dfD$Set="D"
 df2D$Set="D"
+dfD$Group="DetGen"
+df2D$Group="DetGen"
 # VM
-x1 <- abs(rnorm(N,mean=0.026,sd=0.004))
-x2 <- abs(rnorm(N,mean=0.035,sd=0.01))
+x1 <- abs(rnorm(N,mean=0.016,sd=0.006))
+x2 <- c(abs(rnorm(0.5*N,mean=0.055,sd=0.01)),abs(rnorm(0.5*N,mean=0.025,sd=0.01)))
 x3 <- abs(rnorm(N,mean=0.022,sd=0.004))
 df=data.frame(x=c(x1,x2,x3),
               Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
@@ -269,29 +277,53 @@ df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
                Metric=c("conn","flow","seq"))
-dfVM=df
-df2VM=df2
-dfVM$Set="VM"
-df2VM$Set="VM"
+dfVMA=df
+df2VMA=df2
+dfVMA$Set="A"
+df2VMA$Set="A"
+dfVMA$Group="VM"
+df2VMA$Group="VM"
 
-df=rbind(dfA,dfB,dfC,dfD,dfVM)
-df2=rbind(df2A,df2B,df2C,df2D,df2VM)
+x1 <- abs(rnorm(N,mean=0.016,sd=0.004))
+#x2 <- abs(rnorm(N,mean=0.035,sd=0.01))
+x2 <- c(abs(rnorm(0.5*N,mean=0.055,sd=0.01)),abs(rnorm(0.5*N,mean=0.025,sd=0.01)))
+x3 <- abs(rnorm(N,mean=0.008,sd=0.004))
+df=data.frame(x=c(x1,x2,x3),
+              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
+df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
+               ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
+               y=c(median(x1),median(x2),median(x3)),
+               Metric=c("conn","flow","seq"))
+dfVMB=df
+df2VMB=df2
+dfVMB$Set="B"
+df2VMB$Set="B"
+dfVMB$Group="VM"
+df2VMB$Group="VM"
+
+#df=rbind(dfA,dfB,dfC,dfD,dfVM)
+#df2=rbind(df2A,df2B,df2C,df2D,df2VM)
+
+df=rbind(dfA,dfB,dfVMA,dfVMB)
+df2=rbind(df2A,df2B,df2VMA,df2VMB)
+
 
 df$x=df$x*100
 df2[,1:3]=df2[,1:3]*100
-
 
 pA <- ggplot(df, aes(x=Metric, y=x)) + 
   #geom_dotplot(binaxis='y', stackdir='center', aes(colour=Metric,fill=Metric),
   #             dotsize =0.3,binwidth=0.01,stackratio = .3)
   geom_point(aes(color=Metric),alpha=0.8)+
-  facet_grid(. ~ Set)+
+  geom_hline(yintercept=1.0,linetype="dashed",size=1.3,alpha=0.7)+
+  #facet_grid(. ~ Set, rows=vars(Group))+
+  facet_grid(cols=vars(Set), rows=vars(Group))+
   geom_errorbar(df2,mapping=aes(y=y,x=Metric,ymin=ymin, ymax=ymax), 
                 width=.2,size=1,)+
   theme_bw()+labs(y="% of max-dissimilarity",x="")+theme(legend.position = "none")+
   #geom_point(df2,mapping=aes(y=y,x=Metric,color=Metric),fill="white",shape = 21,size=4,show.legend=FALSE)
   geom_point(df2,mapping=aes(y=y,x=Metric),color="black",size=4,show.legend=FALSE)
-pA#+scale_y_continuous(trans='log2')
+pA+scale_y_continuous(trans='log2',limits = c(0.03, 8.0))
 
 plot_grid(pA, pA,pA,pA, labels = c('A', 'B', 'C','D'), ncol = 4)
 
