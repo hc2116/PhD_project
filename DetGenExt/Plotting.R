@@ -208,11 +208,11 @@ x1 <- abs(rnorm(N,mean=0.002,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.001,sd=0.0001))
 x3 <- abs(rnorm(N,mean=0.003,sd=0.004))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("conn","flow","seq"))
+               Metric=c("ConSim","ConSeq","PacSeq"))
 dfA=df
 df2A=df2
 dfA$Set="A"
@@ -224,11 +224,11 @@ x1 <- abs(rnorm(N,mean=0.003,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.001,sd=0.0002))
 x3 <- abs(rnorm(N,mean=0.002,sd=0.0005))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("conn","flow","seq"))
+               Metric=c("ConSim","ConSeq","PacSeq"))
 dfB=df
 df2B=df2
 dfB$Set="B"
@@ -240,11 +240,11 @@ x1 <- abs(rnorm(N,mean=0.004,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.004,sd=0.001))
 x3 <- abs(rnorm(N,mean=0.003,sd=0.001))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("conn","flow","seq"))
+               Metric=c("ConSim","ConSeq","PacSeq"))
 dfC=df
 df2C=df2
 dfC$Set="C"
@@ -256,11 +256,11 @@ x1 <- abs(rnorm(N,mean=0.0055,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.001,sd=0.001))
 x3 <- abs(rnorm(N,mean=0.002,sd=0.001))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("conn","flow","seq"))
+               Metric=c("ConSim","ConSeq","PacSeq"))
 dfD=df
 df2D=df2
 dfD$Set="D"
@@ -272,11 +272,11 @@ x1 <- abs(rnorm(N,mean=0.016,sd=0.006))
 x2 <- c(abs(rnorm(0.5*N,mean=0.055,sd=0.01)),abs(rnorm(0.5*N,mean=0.025,sd=0.01)))
 x3 <- abs(rnorm(N,mean=0.022,sd=0.004))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("conn","flow","seq"))
+               Metric=c("ConSim","ConSeq","PacSeq"))
 dfVMA=df
 df2VMA=df2
 dfVMA$Set="A"
@@ -289,11 +289,11 @@ x1 <- abs(rnorm(N,mean=0.016,sd=0.004))
 x2 <- c(abs(rnorm(0.5*N,mean=0.055,sd=0.01)),abs(rnorm(0.5*N,mean=0.025,sd=0.01)))
 x3 <- abs(rnorm(N,mean=0.008,sd=0.004))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)))
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("conn","flow","seq"))
+               Metric=c("ConSim","ConSeq","PacSeq"))
 dfVMB=df
 df2VMB=df2
 dfVMB$Set="B"
@@ -307,6 +307,8 @@ df2VMB$Group="VM"
 df=rbind(dfA,dfB,dfVMA,dfVMB)
 df2=rbind(df2A,df2B,df2VMA,df2VMB)
 
+df$Metric=factor(df$Metric, levels=c("ConSim","ConSeq","PacSeq"))
+df2$Metric=factor(df2$Metric, levels=c("ConSim","ConSeq","PacSeq"))
 
 df$x=df$x*100
 df2[,1:3]=df2[,1:3]*100
@@ -332,15 +334,17 @@ require(ggplot2)
 require(truncdist)
 N=400
 #DetGen
-x1 <- c(rtrunc(n=0.7*N,spec="norm",a=0,b=1,mean=0.1,sd=0.1),
-        rtrunc(n=0.3*N,spec="norm",a=0,b=1,mean=0.3,sd=0.3))
+x1 <- c(rtrunc(n=0.5*N,spec="norm",a=0,b=1,mean=0.1,sd=0.1),
+        rtrunc(n=0.5*N,spec="norm",a=0,b=1,mean=0.5,sd=0.3))
 x2 <- c(rtrunc(n=0.9*N,spec="norm",a=0,b=1,mean=0.1,sd=0.05),
         rtrunc(n=0.1*N,spec="norm",a=0,b=1,mean=0.4,sd=0.3))
 x3 <- c(rtrunc(n=0.7*N,spec="norm",a=0,b=1,mean=0.1,sd=0.1),
         rtrunc(n=0.3*N,spec="norm",a=0,b=1,mean=0.3,sd=0.3))
 df1=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)),Data="DetGen")
-
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)),Data="DetGen")
+entropy(x1,unit="log2")
+entropy(x2,unit="log2")
+entropy(x3,unit="log2")
 #N=100
 #CAIDA
 x1 <- c(rtrunc(n=0.6*N,spec="norm",a=0,b=1,mean=0.1,sd=0.1),
@@ -350,8 +354,10 @@ x2 <- c(rtrunc(n=0.6*N,spec="norm",a=0,b=1,mean=0.1,sd=0.1),
 x3 <- c(rtrunc(n=0.6*N,spec="norm",a=0,b=1,mean=0.1,sd=0.1),
         rtrunc(n=0.4*N,spec="norm",a=0,b=1,mean=0.4,sd=0.3))
 df2=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)),Data="CAIDA")
-
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)),Data="CAIDA")
+entropy(x1,unit="log2")
+entropy(x2,unit="log2")
+entropy(x3,unit="log2")
 #N=100
 #CICIDS
 x1 <- c(rtrunc(n=0.9*N,spec="norm",a=0,b=1,mean=0.04,sd=0.02),
@@ -361,9 +367,15 @@ x2 <- c(rtrunc(n=0.7*N,spec="norm",a=0,b=1,mean=0.1,sd=0.06),
 x3 <- c(rtrunc(n=0.95*N,spec="norm",a=0,b=1,mean=0.03,sd=0.01),
         rtrunc(n=0.05*N,spec="norm",a=0,b=1,mean=0.2,sd=0.2))
 df3=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("conn",N),rep("flow",N),rep("seq",N)),Data="CICIDS")
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)),Data="CICIDS")
+entropy(x1,unit="log2")
+entropy(x2,unit="log2")
+entropy(x3,unit="log2")
 
 df=rbind(df1,df2,df3)
+
+df$Metric=factor(df$Metric, levels=c("ConSim","ConSeq","PacSeq"))
+df$Data=factor(df$Data, levels=c("CAIDA","DetGen","CICIDS"))
 
 pA <- ggplot(df, aes(x=x)) + 
   geom_histogram(aes(fill=Metric))+
@@ -788,8 +800,8 @@ pA <- ggplot(df_model, aes(x=x,y=y)) +
   facet_grid(. ~ Models)+
   theme_bw()+
   labs(title="LSTM-model activity classification",
-       y ="Classification score", x = "Simulated congestion RTT-delay [s]")
-#+theme(legend.position = "none")
+       y ="Classification score", x = "Simulated congestion RTT-delay [s]")+
+theme(legend.position = "bottom")
 pA+scale_x_continuous(trans='sqrt',limits = c(0, 0.21))+
   scale_y_continuous(limits = c(-1.5, 1.5))
 
@@ -841,11 +853,12 @@ df3=data.frame(x=c(x1[,1]),y=c(x1[,2]),
 
 
 pA <- ggplot(df1,aes(x=x,y=y,color=Label))+
-  geom_point(alpha=0.4,size=1)+
+  geom_point(alpha=0.6,size=1)+
   stat_ellipse(aes(x=x, y=y),level=0.9999)+#,type = "polygon", level=6)+
-  geom_point(df2,mapping=aes(x=x,y=y,color=Label),alpha=0.4,size=1)+
-  geom_point(df3,mapping=aes(x=x,y=y,color=Label),size=2)+
+  geom_point(df2,mapping=aes(x=x,y=y,color=Label),alpha=0.8,size=1)+
+  geom_point(df3,mapping=aes(x=x,y=y,color=Label),size=2.5)+
   theme_bw()+labs(y="dimension x5",x="dimension x3",title="Subspace projection of connections")+
+  theme(legend.position = "bottom")+
   xlim(-5,4.5)+ylim(-4.5,4)
 pA
 

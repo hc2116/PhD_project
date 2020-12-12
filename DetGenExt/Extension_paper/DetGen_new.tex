@@ -275,7 +275,7 @@ The DetGen framework should address these issues and produce traffic that exhibi
 \begin{table}
 \small
 \centering
-\begin{tabular}{p{1.6cm}|p{0.8cm}|p{0.8cm}|p{1.1cm}|p{0.8cm}|p{0.8cm}}
+\begin{tabular}{p{1.9cm}|p{0.8cm}|p{0.8cm}|p{1.3cm}|p{0.7cm}|p{0.7cm}}
 &&\multicolumn{2}{c|}{IDS-datasets}&   &   \\ \hline
 &Detgen& VM-based & Generator-based & Real-world  & \textcolor{red}{Better name}  \\ \hline
 Influence-monitoring &\checkmark & & & & \\ \hline
@@ -639,20 +639,6 @@ Each container network interface is hooked to a \emph{tcpdump}-container that re
 
 \subsection{Existing Scenarios}\label{Sec:ExistScen}
 
-%\textcolor{red}{to do: explain more, maybe get one of the tables here if space}
-
-Our framework contains 29 scenarios, each simulating a different benign or malicious interaction. The protocols underlying benign scenarios were chosen based on their prevalence in existing network traffic datasets.%, a list of which can be found in the Appendix in Table \ref{tab:results-bro}. 
-These datasets consist of common internet protocols such as HTTP, SSL, DNS, and SSH. According to our evaluation, our scenarios can generate datasets containing the protocols that make up at least $87.8\%$ (MAWI), $98.3\%$ (CIC-IDS 2017), $65.6\%$ (UNSW NB15), and $94.5\%$ (ISCX Botnet) of network flows in the respective dataset.
-Our evaluation shows that some protocols that make up a substantial amount of real-world traffic are glaringly omitted by current synthetic datasets, such as BitTorrent or video streaming protocols, which we decided to include.
-
-In total, we produced 17 benign scenarios, each related to a specific protocol or application. Further scenarios can be added in the future, and we do not claim that the current list exhaustive. Most of these benign scenarios also contain many subscenarios where applicable.
-
-The remaining 12 scenarios generate traffic caused by malicious behavior. These scenarios cover a wide variety of major attack classes including DoS, Botnet, Bruteforcing, Data Exfiltration, Web Attacks, Remote Code Execution, Stepping Stones, and Cryptojacking. 
-Scenarios such as stepping stone behavior or Cryptojacking previously had no available datasets for study despite need from academic and industrial researchers.
-
-%In particular the \emph{Cryptojacking} and the \emph{Stepstone} scenarios provide novel data of malicious behaviors that is currently unavaible to researchers. %\textcolor{red}{Should I mention that BT is very keen on the stepping stone scenario data, as there is none publicly available whatsoever?}
-
-We provide a complete list of implemented scenarios in Table \ref{tab:scen}.
 
 \begin{table}
 \begin{tabular}{l|l|r}
@@ -700,6 +686,21 @@ We provide a complete list of implemented scenarios in Table \ref{tab:scen}.
 \caption{Currently implemented traffic scenarios along with the number of implemented subscenarios}
 \label{tab:scen}
 \end{table}
+
+%\textcolor{red}{to do: explain more, maybe get one of the tables here if space}
+
+Our framework contains 29 scenarios, each simulating a different benign or malicious interaction. The protocols underlying benign scenarios were chosen based on their prevalence in existing network traffic datasets.%, a list of which can be found in the Appendix in Table \ref{tab:results-bro}. 
+These datasets consist of common internet protocols such as HTTP, SSL, DNS, and SSH. According to our evaluation, our scenarios can generate datasets containing the protocols that make up at least $87.8\%$ (MAWI), $98.3\%$ (CIC-IDS 2017), $65.6\%$ (UNSW NB15), and $94.5\%$ (ISCX Botnet) of network flows in the respective dataset.
+Our evaluation shows that some protocols that make up a substantial amount of real-world traffic are glaringly omitted by current synthetic datasets, such as BitTorrent or video streaming protocols, which we decided to include.
+
+In total, we produced 17 benign scenarios, each related to a specific protocol or application. Further scenarios can be added in the future, and we do not claim that the current list exhaustive. Most of these benign scenarios also contain many subscenarios where applicable.
+
+The remaining 12 scenarios generate traffic caused by malicious behavior. These scenarios cover a wide variety of major attack classes including DoS, Botnet, Bruteforcing, Data Exfiltration, Web Attacks, Remote Code Execution, Stepping Stones, and Cryptojacking. 
+Scenarios such as stepping stone behavior or Cryptojacking previously had no available datasets for study despite need from academic and industrial researchers.
+
+%In particular the \emph{Cryptojacking} and the \emph{Stepstone} scenarios provide novel data of malicious behaviors that is currently unavaible to researchers. %\textcolor{red}{Should I mention that BT is very keen on the stepping stone scenario data, as there is none publicly available whatsoever?}
+
+We provide a complete list of implemented scenarios in Table \ref{tab:scen}.
 
 
 %\subsubsection*{Import of activity timeline}
@@ -997,6 +998,13 @@ We now assess the claim of control over the outlined traffic influence factors, 
 To do so, we generate traffic from settings within which all controllable influence factors are held constant, both with DetGen framework and with a regular VM-based setup. Traffic samples from each setting should then be as similar as possible to provide sufficient experimental determinism. To measure how similar two traffic samples are, we devise a set of similarity metrics that measure dissimilarity of overall connection characteristics, connection sequence characteristics, and packet sequence characteristics:
 
 
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{images/Exp1.png}
+\caption{Comparison of HTTP-group dissimilarity scores for the DetGen-framework and a regular VM-setup, on a logarithmic scale. Samples from the VM-setting are consistently more dissimilar, in particular for flow-based metrics, where the average dissimilarity is more than 30 times higher than for the DetGen setting.}\label{Fig:determ-metric}
+\end{figure}
+
+
 %To do so, we require a similarity metric that measures how similar or dissimilar two traffic traces are. We want to compare traffic similarity on three ...
 %we compare our framework against a setup on a virtual machine to show that we provide deterministic control that is not achievable on a common setup. 
 %For that, we measure traffic similarity using a set of similarity metrics on traffic both from our and the comparison setup. The traffic is subject to varying degrees of influence from the above described impact factors. We show that when all factors are held constant, our traffic is much more similar than on a regular setup.
@@ -1008,75 +1016,69 @@ To do so, we generate traffic from settings within which all controllable influe
 \begin{itemize}
 \item \textbf{Overall connection similarity} We collect 80 flow summary statistics (IAT and packet size, TCP window sizes, flag occurrences, burst and idle periods). We compress this information using PCA to 8 significant dimensions, and measure the cosine similarity between connections, which is also used in general traffic classification \cite{aun2017review}.
 \item \textbf{Connection sequence similarity} 
-To quantify the similarity of a sequence of connections in a \textcolor{red}{retrieval} window, we use the following features to describe the window, such as used by Yen et al. \cite{yen2009browser}: The number of connections, average and max/min flow duration and size, number of distinct IP and ports addresses contacted. We then again measure the cosine similarity based on these features between different windows. 
-
-%To quantify the similarity of flow sequences, we assign each flow a discrete state, according to its port, size quantile, and interarrival time quantile. We then calculate for a group of captures the probabilities of flow states at each step in the sequence, and use the average sequence likelihoods of each group as a similarity measure. 
-\item \textbf{Sequential similarity} To quantify the similarity of packet sequences in traffic captures, we proceed in a similar fashion and assign packets a discrete state according to their flags, direction, sizes, and interarrival times. We then calculate the Markovian probability of each packet state conditional on the previous packet. We do this for sequences of 15 packets at the start, the middle, and the end of a connection, and use the average sequence likelihood of each group as a similarity measure. If connections are completely similar, the conditional probabilities and thus the likelihoods should converge to one.
+To quantify the similarity of a sequence of connections in a retrieval window, we use the following features to describe the window, such as used by Yen et al. \cite{yen2009browser} for application classification: The number of connections, average and max/min flow duration and size, number of distinct IP and ports addresses contacted. We then again measure the cosine similarity based on these features between different windows. 
+\item \textbf{Packet sequence similarity} To quantify the similarity of packet sequences in traffic captures, we assign packets a discrete state according to their flags, direction, sizes, and interarrival times (\textcolor{red}{insert citation}). We then calculate the Markovian probability of each packet state conditional on the previous packet. We do this for sequences of 15 packets at the start, the middle, and the end of a connection, and use the average sequence likelihood of each group as a similarity measure. If connections are completely similar, the conditional probabilities and thus the likelihoods should converge to one.
 \end{itemize}
 
-In contrast to 
+We normalise all dissimilarity scores by dividing them by the maximum dissimilarity score measured for each traffic type in our experiment in Section \ref{Sec:Realdiv}, so that the reader can relate the measured scores to the traffic type.
 
 
-\begin{figure}
+
+\begin{table*}
 \centering
-\includegraphics[width=0.5\textwidth]{images/Exp1.png}
-\caption{Comparison of HTTP-group dissimilarity scores for the DetGen-framework and a regular VM-setup, on a logarithmic scale. Samples from the VM-setting are consistently more dissimilar, in particular for flow-based metrics, where the average dissimilarity is more than 30 times higher than for the DetGen setting.}\label{determ-metric}
-\end{figure}
-
-
-
+\begin{tabular}{p{1cm}|p{3.2cm}|p{2.7cm}|p{2.7cm}|p{2.7cm}}
+Label &Overall Setting&HTTP&File-Sync & Mirai-C\&C\\ \hline
+A&Low congest., high load& Get-req. NGINX&  Two computers & Command seq. 1 \\ \hline
+DetGen &&\footnotesize \textcolor{myred}{0.20\%}, \textcolor{mygreen}{0.03\%}, \textcolor{myblue}{0.18\%}&
+ \footnotesize \textcolor{myred}{0.12\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.19\%}&
+ \footnotesize \textcolor{myred}{0.21\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.22\%}\\ \hline \hline
+VM & &\footnotesize \textcolor{myred}{1.5\%}, \textcolor{mygreen}{3.8\%}, \textcolor{myblue}{1.3\%}&
+ \footnotesize \textcolor{myred}{0.9\%}, \textcolor{mygreen}{1.6\%}, \textcolor{myblue}{0.38\%}&
+ \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.8\%}, \textcolor{myblue}{0.7\%}\\ \hline \hline
+B& Low congest., no load &Multi-req. NGINX & Four computers & Command seq. 2\\ \hline
+DetGen &&\footnotesize \textcolor{myred}{0.27\%}, \textcolor{mygreen}{0.30\%}, \textcolor{myblue}{0.17\%}&
+\footnotesize \textcolor{myred}{0.11\%}, \textcolor{mygreen}{0.1\%}, \textcolor{myblue}{0.24\%}&
+\footnotesize \textcolor{myred}{0.19\%}, \textcolor{mygreen}{0.02\%}, \textcolor{myblue}{0.17\%}\\ \hline \hline
+VM & &\footnotesize \textcolor{myred}{1.3\%}, \textcolor{mygreen}{2.9\%}, \textcolor{myblue}{0.9\%}&
+ \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{4.9\%}, \textcolor{myblue}{1.2\%}&
+ \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.1\%}, \textcolor{myblue}{0.6\%}\\ \hline \hline
+C& High congest., no load & Post-req. Apache &Two computers & Command seq. 3\\ \hline
+DetGen &&\footnotesize \textcolor{myred}{0.41\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.29\%}&
+ \footnotesize \textcolor{myred}{0.39\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.21\%}&
+ \footnotesize \textcolor{myred}{0.29\%}, \textcolor{mygreen}{0.02\%}, \textcolor{myblue}{0.23\%}\\ \hline \hline
+VM & &\footnotesize \textcolor{myred}{1.9\%}, \textcolor{mygreen}{1.3\%}, \textcolor{myblue}{1.5\%}&
+ \footnotesize \textcolor{myred}{1.3\%}, \textcolor{mygreen}{1.4\%}, \textcolor{myblue}{1.2\%}&
+ \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.3\%}, \textcolor{myblue}{0.9\%}\\ \hline \hline
+D& High conges., high load & Multi-req. Apache & Four computers & Command seq. 4\\ \hline
+DetGen &&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.39\%}, \textcolor{myblue}{0.20\%}&
+ \footnotesize \textcolor{myred}{0.31\%}, \textcolor{mygreen}{0.15\%}, \textcolor{myblue}{0.38\%}&
+ \footnotesize \textcolor{myred}{0.24\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.32\%}\\ \hline \hline
+VM & &\footnotesize \textcolor{myred}{1.9\%}, \textcolor{mygreen}{4.2\%}, \textcolor{myblue}{1.4\%}&
+ \footnotesize \textcolor{myred}{1.6\%}, \textcolor{mygreen}{4.8\%}, \textcolor{myblue}{1.4\%}&
+ \footnotesize \textcolor{myred}{0.9\%}, \textcolor{mygreen}{1.2\%}, \textcolor{myblue}{0.9\%}\\ \hline \hline
+\end{tabular}
+\caption{Outline of the traffic settings used for the determinism evaluation, along with the average dissimilarity percentages for each setting (red=overall connection similarity, green=connection sequence similarity, blue=packet sequence similarity)}\label{Tab:Dataset}
+\end{table*}
 
 
 %\subsubsection{Determinism test}
+As a comparison, we use a regular VM-based setup, were applications are hosted directly on two VMs that communicate over a virtual network bridge that is subject to the same NetEm effects as DetGen. To compare the amount of traffic control and the corresponding generative determinism of DetGen and the VM-setup, we generate three different types of traffic (HTTP, file-syncing, and botnet) from four different settings, within which all generative parameters are kept constant. For each setting and traffic type, we generate 100 traffic samples and apply the described dissimilarity measures to 100 randomly drawn pairs sample pairs. Fig. \ref{Fig:determ-metric} depicts the calculated dissimilarity scores for DetGen and the VM-setup, while Table \ref{Tab:Dataset} describes the different settings and the corresponding average dissimilarity scores.
+
+As visible, the scores yield less than $1\%$ of the dissimilarity observed on average for each protocol. Scores are especially low when compared to traffic groups collected in the VM setting, which is also visible in Fig. \ref{determ-metric} for the HTTP-traffic. Dissimilarity scores for the VM-setting are most notably higher for the flow-metric, caused by additional background flows frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
 
 
-We now apply the described similarity measures to different groups of traffic traces to evaluate the \textcolor{red}{determinism} of our data generation process. We vary the control settings of the described influence factors, described in Section \ref{Sec:Impactfactors}, for each group, but keep them constant within each group. We use three different traffic types (HTTP, file-syncing (port 8384), and botnet), for which we both perform different application-specific activities and create different overall settings. 
+%We now apply the described similarity measures to different settings of traffic traces to evaluate the \textcolor{red}{determinism} of our data generation process. We vary the control settings of the described influence factors, described in Section \ref{Sec:Impactfactors}, for each group, but keep them constant within each group. We use three different traffic types (HTTP, file-syncing (port 8384), and botnet), for which we both perform different application-specific activities and create different overall settings. 
 
-We furthermore perform the same HTTP-activities on two regular VMs without containerisation, but with the same settings.
+%We furthermore perform the same HTTP-activities on two regular VMs without containerisation, but with the same settings.
 
-
-\begin{table}
-\centering
-\begin{tabular}{p{0.8cm}|p{2.5cm}|p{2.7cm}|p{2.7cm}|p{2.7cm}}
-Label &Overall Setting&HTTP&File-Sync & Mirai-C\&C\\ \hline
-A&\textcolor{red}{Little congestion, high comp. load} & Get-request on NGINX/wget, small file & Sequence 1,  syncing to two computers & Command sequence 1 \\ \hline
- &&\footnotesize \textcolor{myred}{0.20\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.18\%}&
- \footnotesize \textcolor{myred}{0.12\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.19\%}&
- \footnotesize \textcolor{myred}{0.21\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.22\%}\\ \hline \hline
-B& Moderate congestion, low comp. load &Multi-request for different fixed files, NGINX & Sequence 2,  syncing to four computers & Command sequence 2\\ \hline
- &&\footnotesize \textcolor{myred}{0.27\%}, \textcolor{mygreen}{0.30\%}, \textcolor{myblue}{0.17\%}&
-\footnotesize \textcolor{myred}{0.11\%}, \textcolor{mygreen}{0.23\%}, \textcolor{myblue}{0.24\%}&
-\footnotesize \textcolor{myred}{0.19\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.17\%}\\ \hline \hline
-C& High congestion, no comp. load & Post-request on Apache/wget, large file &Sequence 3,  syncing to two computers & Command sequence 3\\ \hline
- &&\footnotesize \textcolor{myred}{0.41\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.29\%}&
- \footnotesize \textcolor{myred}{0.39\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.21\%}&
- \footnotesize \textcolor{myred}{0.29\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.23\%}\\ \hline \hline
-D& High congestion, high comp. load & Multi-request for different fixed files with caching, Apache & Sequence 4,  syncing to four computers & Command sequence 4\\ \hline
- &&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.39\%}, \textcolor{myblue}{0.20\%}&
- \footnotesize \textcolor{myred}{0.31\%}, \textcolor{mygreen}{0.15\%}, \textcolor{myblue}{0.38\%}&
- \footnotesize \textcolor{myred}{0.24\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.32\%}\\ \hline \hline
-VM & comparison&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.39\%}, \textcolor{myblue}{0.20\%}&
- \footnotesize \textcolor{myred}{0.31\%}, \textcolor{mygreen}{0.15\%}, \textcolor{myblue}{0.38\%}&
- \footnotesize \textcolor{myred}{0.24\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.32\%}\\ \hline \hline
-\end{tabular}
-\caption{Outline of the traffic groups used for the \textcolor{red}{determinism evaluation}, along with the average dissimilarity percentages for each traffic group (red=connection similarity, green=flow-level similarity, blue=sequential similarity)}\label{Dataset}
-\end{table}
 
 \begin{figure}
 \centering
-%\begin{subfigure}[b]{0.47\textwidth}
-\includegraphics[width=0.5\textwidth]{images/HTTP_comp_crop.png}
-%\caption{Packet sequence in FTP connection}
-%\end{subfigure}
-%~
-%\begin{subfigure}[b]{0.47\textwidth}
-%\includegraphics[width=\textwidth]{images/Reg_HTTP_comp_crop.png}
-%\caption{Packet sequence in HTTP connection}
-%\end{subfigure}
+\includegraphics[width=0.45\textwidth]{images/HTTP_comp_crop.png}
 \caption{Packet-sequence structure similarity comparison for HTTP-activity under constant settings generated by the DetGen framework (left) and in a regular setting (right). Colours indicate packet flags while the height of the packets indicates their size. Note that in addition to more differences in the timing, the packet sizes vary more in the regular setting. }
 \end{figure}
 
-Table \ref{Dataset} summarises the activity and settings for the different traffic groups, along with the corresponding dissimilarity scores for each group. As visible, the scores yield less than $1\%$ of the dissimilarity observed on average for each protocol. Scores are especially low when compared to traffic groups collected in the VM setting, which is also visible in Fig. \ref{determ-metric} for the HTTP-traffic. Dissimilarity scores for the VM-setting are most notably higher for the flow-metric, caused by additional background flows frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
+%Table \ref{Dataset} summarises the activity and settings for the different traffic groups, along with the corresponding dissimilarity scores for each group. 
 
 
 %0.2043341 0.2099933 0.1892661 0.2779625 0.3052004 0.1835523 0.4104484 0.3933690 0.2935111 0.5524176 0.1028654 0.2028906 2.6549903 3.4444166 2.2215654
@@ -1085,9 +1087,14 @@ Table \ref{Dataset} summarises the activity and settings for the different traff
 
 
 
-\subsubsection{Realistic diversity level}
+\subsection{Realistic diversity level evaluation}\label{Sec:Realdiv}
 
-The above test demonstrated that while holding settings constant, DetGen generates traffic with high similarity. We now prove that this does not impede DetGen's capability to generate realistic amounts of traffic diversity observed in real-world traffic. For this, we create a mixed dataset with varying settings for each protocol to explore the produced traffic diversity. Again, we use the proposed traffic similarity metrics to measure the overall traffic dissimilarity. 
+The above test demonstrated that while holding settings constant, DetGen generates traffic with high similarity. We now prove that this does not impede DetGen's capability to generate realistic amounts of traffic diversity observed in real-world traffic. This is an important issue since low diversity in training data can both lead to overfitting and to less generalizable models, which can inflate test results compared to real-world settings. However, a lack of traffic diversity and overly homogeneous traffic is inherent to all current intrusion detection datasets \cite{sommer2010outside}.
+
+An illustrative example of this restricted protocol activity in synthetic datasets can be seen in the CICIDS 2017 dataset \textcolor{red}{insert citation}. Here, the vast majority of successful HTTP transfers consist of a client downloading a single text file containing the Wikipedia page for `Encryption' several hundred times in a day. In reality, HTTP is used for a large number of tasks, which can occur in random order with varying input sizes and parameters.
+
+
+For our examination, we create a mixed dataset with varying settings for each protocol to explore the produced traffic diversity. Again, we use the proposed traffic similarity metrics to measure the overall traffic dissimilarity. 
 We compare the observed dissimilarity for each protocol with that observed in real-world traffic from the CAIDA-2018 anonymized traffic traces \textcolor{red}{insert citation}, as well as the widely used synthetic CICIDS-17 intrusion detection dataset \textcolor{red}{insert citation}. Ideally, our generated traffic exhibits similar overall traffic diversity as the CAIDA real-world traffic.
 
 
@@ -1095,11 +1102,13 @@ We compare the observed dissimilarity for each protocol with that observed in re
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{images/HTTP_similarity.png}
-\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold}\label{fig:diversity_exp}
+\caption{HTTP-traffic dissimilarity scores for each metric and each of the datasets.}\label{fig:diversity_exp}
 \end{figure}
 
 We examine the achievable traffic diversity for HTTP-traffic, since large amounts of this protocol are present both in the CAIDA and the CICIDS-17 dataset.
-We randomly draw settings for all impact factors simultaneously during the traffic generation using realistic parameter sampling distributions, as described in Section \textcolor{red}{insert correct section}. After the traffic collection, we pair HTTP-connections at random to examine their dissimilarity. Figure \ref{fig:diversity_exp} shows the dissimilarity distribution for the three traffic metrics for each dataset. As visible, neither the data from DetGen nor the CICIDS-17 dataset fully achieves the diversity of the CAIDA-data. However, DetGen achieves significantly more diversity for overall connection features and for packet sequences, areas where the data in the CICIDS-17 data is clustered very narrowly. \textcolor{red}{insert distribution comparison measures}
+We randomly draw settings for all impact factors simultaneously during the traffic generation using realistic parameter sampling distributions, as described in Section \ref{Sec:Scenarios}. After the traffic collection, we pair HTTP-connections at random to examine their dissimilarity. 
+
+Figure \ref{fig:diversity_exp} shows the dissimilarity distribution for the three traffic metrics for each dataset. As visible, neither the data from DetGen nor the CICIDS-17 dataset fully achieves the diversity of the CAIDA-data. However, DetGen achieves significantly more diversity for overall connection features and for packet sequences, areas whereas the data in the CICIDS-17 data is clustered very narrowly. Normalised entropy measures to quantify the spread of the score distributions for the CAIDA dataset are (\textcolor{myred}{8.14}, \textcolor{mygreen}{8.24}, and  \textcolor{myblue}{8.16}), whereas the DetGen framework achieves entropy scores of (\textcolor{myred}{8.02}, \textcolor{mygreen}{6.6}, and  \textcolor{myblue}{7.91}) while the CICIDS-17 dataset only achieves (\textcolor{myred}{4.3}, \textcolor{mygreen}{6.7}, and  \textcolor{myblue}{2.5})\footnote{Colours correspond to the respective similarity measure.}. This shows that by varying traffic control parameters in a controlled manner, DetGen edges significantly closer to real-world traffic for both overall connection similarity and packet sequence similarity, and performs similarly to existing methods for connection sequence similarity. 
 
 % and test if the traffic similarity scores are as divergent as for traffic from a real-world dataset (i.e. CAIDA) for two or three exemplary protocols, and we also compare it to the same protocols in the CICIDS-17 dataset. This will let us argue that we can achieve realistic levels of diversity (something criticised by Sommer-Paxson), and that our framework lets researchers explore higher levels of diversity than currents labelled solutions.
 
@@ -1217,7 +1226,7 @@ The initial model overall performs well, with a detection rate of $99.6\%$, but 
 \caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold}\label{fig:LSTM_exp}
 \end{figure}
 
-\subsection{Refining the notion of benign traffic for anomaly detection}
+\subsubsection{Refining the notion of benign traffic for anomaly detection}
 
 Our second use-case looks at the effect of sudden connection terminations on an anomaly-detection model by Casas et al. \cite{casas2012unsupervised}. The model takes a number of flow summary statistics as input, which include such as packet size and interarrival statistics, number of idle and transfer periods, flag occurrencies etc. as input and projects it into different subspaces, where the connections are clustered. Anomalous outliers are detected by accumulating the Mahalanobis-distance from the cluster centers from each subspace.
 
@@ -1235,7 +1244,14 @@ connections are scattered much more broadly across the cluster and mix with Brut
 This is visible in Figure \ref{fig:Subspace_projection}. When looking at the activity labels from DetGen, we notice that most of this traffic corresponds to half-open connections which were dropped by the server due to network failure. One defining characteristic of such connections are that they are not closed with a termination handshake using FIN-flags. We therefore included an additional flow-summary describing whether the connection was terminated properly, which lead to half-open connections being projected very differently into a new cluster with well defined borders.
 
 
-\subsection{Investigating adversarial perturbation attacks and model inversion}
+\subsection{Verifying model performance against adversarial perturbations}
+%Investigating adversarial perturbation attacks and model inversion}
+
+Recently, research to verify intrusion detection model output has gained interest in order to provide guarantees for the detection of specific attacks or against flagging certain benign events as malicious, and especially verifying robustness against traffic perturbations is seen as a pressing issue. 
+We look at a simple neural network classifier designed to detect HTTP Brute-Force attacks. Our aim is to verify the robustness of the model performance against artificial packet interarrival perturbations that an attacker could introduce to  alter the classification result. 
+To test the trained model, we generated traffic from a Brute-Force attack scenario to which we added jitter delays with varying amounts and drawn from varying distributions. 
+\cite{kokke2020neural}
+\textcolor{red}{insert results}
 
 %\subsubsection{Benefits of structural richness}
 %
@@ -1301,200 +1317,233 @@ Recently, some effort have been made to to generate completely artificial traffi
  \textit{Testbeds} such as Mininet offer tremendous \textcolor{red}{flexibility}, but are so far not targeted for intrusion detection and lack suitable small-scale traffic generation tools, labelling capabilities, or attack scenarios. 
 
 
+\section{Conclusions}\label{Sec:Conclusion}
+
+In this paper, we proposed DetGen, a framework aimed at improving researchers understanding of traffic micro-structures and their respective effect on traffic models in order to close the \emph{semantic gap} described by Sommer and Paxson \cite{sommer2010outside}. DetGen allows reproducible traffic generation experiments that allow the control and monitoring different traffic shaping aspects while delivering data that is truthful to real-world structures. Our framework achieves this through containerised applications and corresponding process and traffic separation, meticulous attention to the corresponding generating activities and their facets, and the careful emulation and control of external effects. Currently, DetGen produces traffic for 29 different activities.
+
+We verified the improvements regarding reproducibility and traffic control of DetGen compared to traditional VM-setups in an experiment as well as the fidelity of the generated traffic to real-world characteristics in another experiment. Especially regarding the exclusion of background traffic and corresponding connection sequence structures, DetGen outperformed traditional setups significantly. In terms of traffic diversity, DetGen achieved significantly better results than current state-of-the-art NIDS-datasets.
+
+DetGen offers strong insights into traffic micro-structures and their effect on traffic models, which we demonstrated in three use-cases. By allowing researchers to analyse the particular characteristics of events that lead to false-positives or model failure as well as their effect on model training for three distinct NID-models, we were able to understand where the design of those models is flawed and how to improve them to boost detection performance. 
+
+%The major design advantages of this framework are the isolation of traffic scenarios into separate container arrangements, which allows the extension of new scenarios and detailed implementation of subscenarios as well as the capture of ground truth of the computational origins of individual traffic events. Furthermore, containerization enables the generation of traffic data at scale due to containers being light-weight and easily clonable.
+
+%We verified the realism of the generated traffic and the corresponding ground truth information with two experiments, and demonstrated the usefulness of the framework in another experiment.
+%Presently, our framework consists of 29 scenarios capable of producing benign and malicious network traffic. Several of these scenarios, such as the \emph{BitTorrent} or the \emph{Stepping-Stone} scenario, provide novel traffic data of protocols or behaviours that has not been widely available to researchers previously.
+
+
+\subsection{Difficulties and limitations}
+
+DetGen is building network traffic datasets from a small-scale level up by coalescing traffic from different fine-grained activities together. While this provides great insight into traffic micro-structures, our framework will not replicate realistic network-wide temporal structures, such as port usage distributions or long-term temporal activity. These quantities would have to be statistically estimated from other real-world traffic beforehand to allow our framework to emulate such behavior reliably. Other datasets such as UGR-16 use this approach to fuse real-world and synthetic traffic and are currently better suited to build models of large-scale traffic structures.
+
+We paid meticulous attention to enable control over as many traffic impact factors as possible. However, DetGen is currently only offering insufficient control over underlying application-layer implementations such as TLS 1.3 vs 1.2. In theory, it should be unproblematic to provide containers with different implementations for each scenario to provide this control. However we faced difficulties to compile containers in a suitable manner and are currently investigating, how to improve DetGen on this shortcoming.
+
+Working with Docker containers can sometimes complicate the implementation of individual scenarios compared to working with VMs. Although several applications are officially maintained Docker containers that are free from major errors, many do not. For instance, in the \textit{BitTorrent} scenario, most common command line tools, such as \texttt{mktorrent}, \texttt{ctorrent} and \texttt{buildtorrent}, failed to actually produce functioning torrent files from within a container due to Docker's union filesystem. Furthermore, due to the unique way in which we are using these software packages, unusual configuration settings are sometimes needed. %As such, many 
+
+%Lastly, capturing \texttt{.pcap}-files from each container can quickly exceed available disc space when generating traffic at scale. Depending on specific research requirements, it is advizable to add filtering or feature extraction commands to the scenario execution scripts to enable traffic preprocessing in real-time.
+
+
 \subsection{Future work}
 
-
-\section*{Contribution page}
-
-\subsection*{Framework}
-
-\paragraph{Controlling traffic influences and detailed label creation}
-\begin{itemize}
+Our traffic generation framework is designed to be expandable and there are many avenues for future work. The continual development of scenarios and subscenarios would improve the potential realism of datasets generated using the framework. The addition of more malicious scenarios would enable a more detailed model evaluation and improve detection rate estimation. 
+Another future improvement for framework is to add scripts that emulate the usage activity of individual scenarios by a user or a network. 
 
 
-\item Attention in the setup of lab-capture is most put into attack inclusion and larger network topology, less so into the generation benign traffic, and no attention so far has been spend on controlling the different factors of influence given in Table \ref{Tab:Influence}.
+Although ground truth for particular traffic traces is provided by capturing \texttt{.pcap}-files for each container individually, we have not implemented a labelling mechanism yet for the dataset coalescence process. Though not technically difficult, some thought will have to be put how such labels would look like to satisfy different research demands.
+Furthermore, the Docker platform provides the functionality to collect system logs via the \texttt{syslog logging driver}. We plan on implementing their collection in the future, where they could act either as traffic labels providing more ground truth details, or act as a separate data source that complements the collected traffic.
 
-\item[--] We discuss the different influence layers, for well known ones we refer to previous work, for others we demonstrate the effect in experiments. We discuss how we control the influence either through simulation or specific setups
+We wish to publish this framework to a wider audience, allowing for further modification. This will be done using a GitHub repository, which contains both the implemented capture scenarios as well as the corresponding container images.
 
-\item[--]
 
-\item Traditional lab-capture setups that consist of a network of virtual or test machines typically capture all traffic in one capture-\textit{channel} at the router without a distinction of different traffic types. Variation in traffic is however introduced at many levels (application type, specific application task, caching/cookies, load/buffering, congestion/loss, etc.), for which information is not  recorded and impossible to recreate through the usual manual or rule-based labelling that is used to identify malicious activity.
 
-\item Through the use of containers, our testbed design facilitates different capture channels and enables us to record  information on these variations for a more complete and granular data capture than traditional setups. Containerised applications isolate task executions more than VM-setups and by capturing traffic directly at each container network interface, we can collect traffic from different applications in different places that would otherwise be merged into the same capture due to being send via the same network interface.
-
-\item We combine this setup with a set of scripted activities with behaviours (FTP-file-transfer, HTTP-website fetch,...) and sub-behaviours (waiting time, transfer fails, ...) that are precisely defined and for which we can extract information-rich labels. This way, we can extract traffic labels containing ground-truth with a very granular resolution on the generating activity.
-
-\item \textbf{Closing the semantic gap}
-\begin{itemize}
-
-\item Granular information about the activities and settings generating particular traffic traces enables researchers to match particular traffic structures or model misbehaviour with corresponding computational actions, something that is not possible with current datasets and testbeds. This should help researchers to
-better understand the logical small-scale structures in network traffic and understand the effect of different types of traffic on models. 
-
-\item Furthermore, the separation of applications through the use of containers makes our framework modular and enables researchers to quickly swap particular containers to measure the effect of different implementations, or to add different attack types to a setting with \textit{Metasploitable}-containers without having to worry about version-dependent vulnerabilities.
-\end{itemize}
-\end{itemize}
-
-%\section{Impact factors on traffic micro-structures}
+%\subsection*{Framework}
 %
-%In order to provide extensive ground truth information that describe the traffic we generate, we first must understand what factors have influence on the traffic generation process. \textcolor{red}{How do we verify that this list is more or less complete?}
-%
-%\paragraph{Application layer protocols} 
-%Without doubt the biggest impact on the captured traffic micro-structures is the choice or combination of the application layer protocols. Protocols such as HTTP/TLS perform vastly different tasks than protocols such as Peer-2-Peer or SMB, and thus perform different handshakes, experience different waiting times, transfer data in different intervals, or trigger different additional connections. 
-% 
-%\paragraph{Performed task and application}
-%The conducted computational task ultimately drives the communication between computers, and thus hugely influences characteristics such as the direction of data transfer, the duration and packet rate, packet sizes as well as the number of connections and performed protocol handshakes to conclude the task. Furthermore, the application used for the task has a significant influence on the generated traffic, as shown for different browser choices by Yen et al. \cite{yen2009browser} or for general application behaviour fingerprinting \cite{stober2013you}. 
-%
-%\paragraph{Transferred data} 
-%The amount of transferred data obviously influences the overall packet numbers. Furthermore, the content of the data can potentially impact packet rates and sizes, such as shown by Biernacki \cite{biernacki2017analysis} for streaming services.
-%
-%\paragraph{Caching/Repetition effects}
-%Tools like cookies, website caching, DNS caching, known hosts in SSH, etc. can cause to parts of a communication being skipped and lead to differences in the captured traffic between initial and subsequent connections.
+%\paragraph{Controlling traffic influences and detailed label creation}
+%\begin{itemize}
 %
 %
-%\paragraph{Application layer implementations}
-%Different implementations for TLS, HTTP, etc. can yield different computational performance and can perform handshakes in slightly different ways. Furthermore, things like multiplexing channel prioritisation can have tremendous impact on the IAT times and the overall duration of the transfer, as shown in a study by Marx et al.  \cite{marx2020same} for the QUIC/HTTP3 protocol.
+%\item Attention in the setup of lab-capture is most put into attack inclusion and larger network topology, less so into the generation benign traffic, and no attention so far has been spend on controlling the different factors of influence given in Table \ref{Tab:Influence}.
 %
-%\paragraph{Networking stack load}
-%TCP or IP queue filling due to other applications generating traffic can alter IATs of the traffic trace and affect available bandwidths. \textcolor{red}{We should perform an experiment using iperf, once with TCP and once with UDP to quantify the effect}.
+%\item[--] We discuss the different influence layers, for well known ones we refer to previous work, for others we demonstrate the effect in experiments. We discuss how we control the influence either through simulation or specific setups
 %
-%\paragraph{Host level load}
-%In a similar manner, other applications exhibiting significant computational load (CPU, memory, I/O) on the host machine can affect the processing speed of incoming and outgoing traffic, which can again alter IATs and the  overall duration of a connection. \textcolor{red}{We should perform an experiment using \textit{stress} to quantify the effect}.
+%\item[--]
 %
-%\paragraph{LAN and WAN congestion}
-%Low available bandwith, long RTTs, or packet loss can have a significant effect on TCP congestion control mechanisms, which in turn influence frame-sizes, IATs, window sizes, and the overall temporal characteristic of the sequence. \textcolor{red}{do we need to verify this? Seems very clear}
+%\item Traditional lab-capture setups that consist of a network of virtual or test machines typically capture all traffic in one capture-\textit{channel} at the router without a distinction of different traffic types. Variation in traffic is however introduced at many levels (application type, specific application task, caching/cookies, load/buffering, congestion/loss, etc.), for which information is not  recorded and impossible to recreate through the usual manual or rule-based labelling that is used to identify malicious activity.
 %
-%\vspace{0.3cm}
-%Other factors we are currently not considering:
+%\item Through the use of containers, our testbed design facilitates different capture channels and enables us to record  information on these variations for a more complete and granular data capture than traditional setups. Containerised applications isolate task executions more than VM-setups and by capturing traffic directly at each container network interface, we can collect traffic from different applications in different places that would otherwise be merged into the same capture due to being send via the same network interface.
 %
-%\paragraph{User and scheduled activities}
-%The frequency with which a user or an application performs tasks governs the larger-scale temporal characteristic of a traffic capture. Since we are focusing on the traffic micro-structures here, we currently omit this impact factor from our analysis. 
+%\item We combine this setup with a set of scripted activities with behaviours (FTP-file-transfer, HTTP-website fetch,...) and sub-behaviours (waiting time, transfer fails, ...) that are precisely defined and for which we can extract information-rich labels. This way, we can extract traffic labels containing ground-truth with a very granular resolution on the generating activity.
 %
-%\paragraph{TCP congestion management implementation}
-%Different versions of the TCP congestion manager exist on Windows and Linux such as TCP Reno/Tahoe, which can have minor influence on the traffic, as shown by Grieco et al. \cite{grieco2004performance}. Existing implementations on a machine stay mostly constant, which is why we also omit this variable at the moment.
-% Implementations within a machine should stay constant.
+%\item \textbf{Closing the semantic gap}
+%\begin{itemize}
 %
-%\paragraph{Network configurations}
-%Network settings such as the MTU or the enabling of TCP Segment Reassembly Offloading have effects on the captured packet sizes, but like TCP implementations stay mostly constant for a host. 
+%\item Granular information about the activities and settings generating particular traffic traces enables researchers to match particular traffic structures or model misbehaviour with corresponding computational actions, something that is not possible with current datasets and testbeds. This should help researchers to
+%better understand the logical small-scale structures in network traffic and understand the effect of different types of traffic on models. 
 %
-%\textcolor{red}{....}
-
+%\item Furthermore, the separation of applications through the use of containers makes our framework modular and enables researchers to quickly swap particular containers to measure the effect of different implementations, or to add different attack types to a setting with \textit{Metasploitable}-containers without having to worry about version-dependent vulnerabilities.
+%\end{itemize}
+%\end{itemize}
+%
+%%\section{Impact factors on traffic micro-structures}
+%%
+%%In order to provide extensive ground truth information that describe the traffic we generate, we first must understand what factors have influence on the traffic generation process. \textcolor{red}{How do we verify that this list is more or less complete?}
+%%
+%%\paragraph{Application layer protocols} 
+%%Without doubt the biggest impact on the captured traffic micro-structures is the choice or combination of the application layer protocols. Protocols such as HTTP/TLS perform vastly different tasks than protocols such as Peer-2-Peer or SMB, and thus perform different handshakes, experience different waiting times, transfer data in different intervals, or trigger different additional connections. 
+%% 
+%%\paragraph{Performed task and application}
+%%The conducted computational task ultimately drives the communication between computers, and thus hugely influences characteristics such as the direction of data transfer, the duration and packet rate, packet sizes as well as the number of connections and performed protocol handshakes to conclude the task. Furthermore, the application used for the task has a significant influence on the generated traffic, as shown for different browser choices by Yen et al. \cite{yen2009browser} or for general application behaviour fingerprinting \cite{stober2013you}. 
+%%
+%%\paragraph{Transferred data} 
+%%The amount of transferred data obviously influences the overall packet numbers. Furthermore, the content of the data can potentially impact packet rates and sizes, such as shown by Biernacki \cite{biernacki2017analysis} for streaming services.
+%%
+%%\paragraph{Caching/Repetition effects}
+%%Tools like cookies, website caching, DNS caching, known hosts in SSH, etc. can cause to parts of a communication being skipped and lead to differences in the captured traffic between initial and subsequent connections.
+%%
+%%
+%%\paragraph{Application layer implementations}
+%%Different implementations for TLS, HTTP, etc. can yield different computational performance and can perform handshakes in slightly different ways. Furthermore, things like multiplexing channel prioritisation can have tremendous impact on the IAT times and the overall duration of the transfer, as shown in a study by Marx et al.  \cite{marx2020same} for the QUIC/HTTP3 protocol.
+%%
+%%\paragraph{Networking stack load}
+%%TCP or IP queue filling due to other applications generating traffic can alter IATs of the traffic trace and affect available bandwidths. \textcolor{red}{We should perform an experiment using iperf, once with TCP and once with UDP to quantify the effect}.
+%%
+%%\paragraph{Host level load}
+%%In a similar manner, other applications exhibiting significant computational load (CPU, memory, I/O) on the host machine can affect the processing speed of incoming and outgoing traffic, which can again alter IATs and the  overall duration of a connection. \textcolor{red}{We should perform an experiment using \textit{stress} to quantify the effect}.
+%%
+%%\paragraph{LAN and WAN congestion}
+%%Low available bandwith, long RTTs, or packet loss can have a significant effect on TCP congestion control mechanisms, which in turn influence frame-sizes, IATs, window sizes, and the overall temporal characteristic of the sequence. \textcolor{red}{do we need to verify this? Seems very clear}
+%%
+%%\vspace{0.3cm}
+%%Other factors we are currently not considering:
+%%
+%%\paragraph{User and scheduled activities}
+%%The frequency with which a user or an application performs tasks governs the larger-scale temporal characteristic of a traffic capture. Since we are focusing on the traffic micro-structures here, we currently omit this impact factor from our analysis. 
+%%
+%%\paragraph{TCP congestion management implementation}
+%%Different versions of the TCP congestion manager exist on Windows and Linux such as TCP Reno/Tahoe, which can have minor influence on the traffic, as shown by Grieco et al. \cite{grieco2004performance}. Existing implementations on a machine stay mostly constant, which is why we also omit this variable at the moment.
+%% Implementations within a machine should stay constant.
+%%
+%%\paragraph{Network configurations}
+%%Network settings such as the MTU or the enabling of TCP Segment Reassembly Offloading have effects on the captured packet sizes, but like TCP implementations stay mostly constant for a host. 
+%%
+%%\textcolor{red}{....}
+%
+%%\begin{table}
+%%\begin{tabular}{p{2.5cm}|p{3cm}|p{8cm}}
+%%Influence& Level & Description \\ \hline \hline
+%%
+%%Higher level influence&
+%%User and scheduled activities&
+%%How often the user accesses which services, or how often and when a system updates information\\ \hline 
+%%
+%%
+%%Major influence&
+%%Application used&
+%%This governs what application layer protocols are used, how often and in what order. As an example, despite doing the same thing, Chrome and Firefox send HTTP-Get requests in different orders and open different numbers of connection sockets\\ \hline
+%%
+%%Minor influence&
+%%Transferred data&
+%%The size of the transferred data influences overall packet numbers, and potentially the packet rates and sizes (for example streaming high-quality vs low quality), as can the data type.\\ \hline
+%%
+%%Major influence&
+%%Application memory&
+%%Applications often cache content, credentials, DNS records or cookies from previously contacted hosts\\ \hline
+%%
+%%Biggest influence& 
+%%Application layer protocols &
+%%Different application layer protocols obviously follow different communication protocols, send data differently, and trigger additional connections in different ways\\ \hline
+%%
+%%
+%%Minor/major influence&
+%%Application layer implementations&
+%%Different implementations for TLS, HTTP, etc. can have differing performance, which influences packet IATs and potentially TCP buffering. They can furthermore often differ in minor ways such as different handshakes etc., and occasionally in major ways such as HTTP multiplexing implementations which differ wildly in the channel prioritisation\\ \hline
+%%
+%%
+%%Potential minor influence& 
+%%TCP implementation&
+%%There are different implementations of TCP on Windows and Linux such as TCP Reno/Tahoe, which can have minor influence on the traffic but they should stay the same on a machine\\ \hline
+%%
+%%Minor influence&
+%%Network interface load&
+%%TCP buffer filling due to other programms communicating (both in forward and receiving direction). Potentially other buffers or similar in the networking stack, and therefore the overall bandwidth available\\ \hline
+%%
+%%Minor influence&
+%%Host level load& \\ \hline
+%%
+%%Major influence&
+%%LAN and WAN & Congestion, low bandwith, or loss can have a significant effect on TCP (and others like QUIC) congestion control mechanisms, which in turn influence frame-sizes, IATs, window sizes, ....
+%% \\ \hline
+%%
+%%Minor influence&
+%%Network configuration&MTU, MTU path discovery, and TCP Segment Reassembly Offloading \\ \hline
+%%\end{tabular}
+%%\caption{Influence factors}\label{Tab:Influence}
+%%\end{table}
+%
+%\begin{figure}
+%\centering
+%\begin{subfigure}[b]{0.46\textwidth}
+%\includegraphics[width=\textwidth]{images/VM_capture.pdf}
+%\caption{Traditional capture setup}
+%\end{subfigure}
+%
+%\begin{subfigure}[b]{0.8\textwidth}
+%\includegraphics[width=\textwidth]{images/Docker_capture.pdf}
+%\caption{Our container-based capture setup}
+%\end{subfigure}
+%\end{figure}
+%
+%
+%\paragraph{Reproducibility}
+%
+%%%As computational work becomes more and more integral to many aspects of scientific research, computational reproducibility has become an issue of increasing importance to computer systems researchers and domain scientists alike.
+%
+%Several factors in our design contribute to making the data and corresponding network experiments \textcolor{red}{particularly} reproducible:
+%
+%\begin{itemize}
+%
+%\item Docker containers by design operate platform-independent without the need for muddled dependencies, and the separation of running containers from container images in contrast to VMs guarantees repeatable tasks without "code rot".
+%
+%\item We introduce adjustable degrees of input (files, passwords,...) and traffic (congestion, network fails) randomisation for our scenarios, with labels describing the particular setting being extracted. This way, similar scenarios and settings can be easily recreated.
+%
+%\item Intrusion detection systems in the form of firewalls or \textcolor{red}{...} can be included directly in the framework as containers to enable other researchers to verify the achieved results.
+%
+%\end{itemize}
+%
+%
+%%Ground truth labels on granular activities 
+%
+%%Isolated process in container, no additional events. Easy to separate even when containers attached to same network interface & background events (system activitiy, artifacts from earlier activity, ...), overlaying activities hard to separate & No knowledge about conducted activity & Technically possible, no attempts yet \\ \hline
+%
+%%Reproducability & Container state the same after repeated launches, isolation means that other task have little effect on, plattform independence  & To a lesser degree, simultaneously conducted activity can affect each other & - & Depends \\ \hline
+%
+%
+%\subsection*{Analysis}
+%
+%Details on our use-cases and framework analysis
+%
 %\begin{table}
-%\begin{tabular}{p{2.5cm}|p{3cm}|p{8cm}}
-%Influence& Level & Description \\ \hline \hline
+%\centering
+%\begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{2cm}}
+%Contribution&How containers enable it& VM-based & Real traffic capture &Other framework  \\ \hline
 %
-%Higher level influence&
-%User and scheduled activities&
-%How often the user accesses which services, or how often and when a system updates information\\ \hline 
+%Ground truth labels on granular activities & Isolated process in container, no additional events. Easy to separate even when containers attached to same network interface & background events (system activitiy, artifacts from earlier activity, ...), overlaying activities hard to separate & No knowledge about conducted activity & Technically possible, no attempts yet \\ \hline
 %
-%
-%Major influence&
-%Application used&
-%This governs what application layer protocols are used, how often and in what order. As an example, despite doing the same thing, Chrome and Firefox send HTTP-Get requests in different orders and open different numbers of connection sockets\\ \hline
-%
-%Minor influence&
-%Transferred data&
-%The size of the transferred data influences overall packet numbers, and potentially the packet rates and sizes (for example streaming high-quality vs low quality), as can the data type.\\ \hline
-%
-%Major influence&
-%Application memory&
-%Applications often cache content, credentials, DNS records or cookies from previously contacted hosts\\ \hline
-%
-%Biggest influence& 
-%Application layer protocols &
-%Different application layer protocols obviously follow different communication protocols, send data differently, and trigger additional connections in different ways\\ \hline
-%
-%
-%Minor/major influence&
-%Application layer implementations&
-%Different implementations for TLS, HTTP, etc. can have differing performance, which influences packet IATs and potentially TCP buffering. They can furthermore often differ in minor ways such as different handshakes etc., and occasionally in major ways such as HTTP multiplexing implementations which differ wildly in the channel prioritisation\\ \hline
-%
-%
-%Potential minor influence& 
-%TCP implementation&
-%There are different implementations of TCP on Windows and Linux such as TCP Reno/Tahoe, which can have minor influence on the traffic but they should stay the same on a machine\\ \hline
-%
-%Minor influence&
-%Network interface load&
-%TCP buffer filling due to other programms communicating (both in forward and receiving direction). Potentially other buffers or similar in the networking stack, and therefore the overall bandwidth available\\ \hline
-%
-%Minor influence&
-%Host level load& \\ \hline
-%
-%Major influence&
-%LAN and WAN & Congestion, low bandwith, or loss can have a significant effect on TCP (and others like QUIC) congestion control mechanisms, which in turn influence frame-sizes, IATs, window sizes, ....
-% \\ \hline
-%
-%Minor influence&
-%Network configuration&MTU, MTU path discovery, and TCP Segment Reassembly Offloading \\ \hline
-%\end{tabular}
-%\caption{Influence factors}\label{Tab:Influence}
-%\end{table}
-
-\begin{figure}
-\centering
-\begin{subfigure}[b]{0.46\textwidth}
-\includegraphics[width=\textwidth]{images/VM_capture.pdf}
-\caption{Traditional capture setup}
-\end{subfigure}
-
-\begin{subfigure}[b]{0.8\textwidth}
-\includegraphics[width=\textwidth]{images/Docker_capture.pdf}
-\caption{Our container-based capture setup}
-\end{subfigure}
-\end{figure}
-
-
-\paragraph{Reproducibility}
-
-%%As computational work becomes more and more integral to many aspects of scientific research, computational reproducibility has become an issue of increasing importance to computer systems researchers and domain scientists alike.
-
-Several factors in our design contribute to making the data and corresponding network experiments \textcolor{red}{particularly} reproducible:
-
-\begin{itemize}
-
-\item Docker containers by design operate platform-independent without the need for muddled dependencies, and the separation of running containers from container images in contrast to VMs guarantees repeatable tasks without "code rot".
-
-\item We introduce adjustable degrees of input (files, passwords,...) and traffic (congestion, network fails) randomisation for our scenarios, with labels describing the particular setting being extracted. This way, similar scenarios and settings can be easily recreated.
-
-\item Intrusion detection systems in the form of firewalls or \textcolor{red}{...} can be included directly in the framework as containers to enable other researchers to verify the achieved results.
-
-\end{itemize}
-
-
-%Ground truth labels on granular activities 
-
-%Isolated process in container, no additional events. Easy to separate even when containers attached to same network interface & background events (system activitiy, artifacts from earlier activity, ...), overlaying activities hard to separate & No knowledge about conducted activity & Technically possible, no attempts yet \\ \hline
-
 %Reproducability & Container state the same after repeated launches, isolation means that other task have little effect on, plattform independence  & To a lesser degree, simultaneously conducted activity can affect each other & - & Depends \\ \hline
-
-
-\subsection*{Analysis}
-
-Details on our use-cases and framework analysis
-
-\begin{table}
-\centering
-\begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{2cm}}
-Contribution&How containers enable it& VM-based & Real traffic capture &Other framework  \\ \hline
-
-Ground truth labels on granular activities & Isolated process in container, no additional events. Easy to separate even when containers attached to same network interface & background events (system activitiy, artifacts from earlier activity, ...), overlaying activities hard to separate & No knowledge about conducted activity & Technically possible, no attempts yet \\ \hline
-
-Reproducability & Container state the same after repeated launches, isolation means that other task have little effect on, plattform independence  & To a lesser degree, simultaneously conducted activity can affect each other & - & Depends \\ \hline
-
-
-%Flexibility to regenerate customized datasets & Launching a network of containers is easy, modularity allows finer control of fine-grain activity  & Difficult to regenerate data as set-up and launching of VM is less straightforward, might be addressed with MiniMega & No & Yes \\ \hline
-
-Easy to update, include new attacks & 
-Attack/victim containers remove dependence on vulnerabilities, can be hooked to existing scenarios with shared resources & Since attacks happen on the VM, it is very hard to compose a VM with enough vulnerabilities to include many attacks & - & Some work has been done to "replay" or artificially inject attacks  \\ \hline
-
-
-%Fidelity to real traffic heterogeneity, structural richness & Not a lot except that scripting and randomising different scenarios is slightly easier  & Potentially, but little attention has been paid & Yes & Not on a packet level yet \\ \hline \hline
-
-
-Data on attacks on container isolation & In need of existing scenarios for background data & No & No & No \\ \hline
-\end{tabular}
-\caption{Contributions compared to existing solutions}\label{Tab:Contributions}
-\end{table}
+%
+%
+%%Flexibility to regenerate customized datasets & Launching a network of containers is easy, modularity allows finer control of fine-grain activity  & Difficult to regenerate data as set-up and launching of VM is less straightforward, might be addressed with MiniMega & No & Yes \\ \hline
+%
+%Easy to update, include new attacks & 
+%Attack/victim containers remove dependence on vulnerabilities, can be hooked to existing scenarios with shared resources & Since attacks happen on the VM, it is very hard to compose a VM with enough vulnerabilities to include many attacks & - & Some work has been done to "replay" or artificially inject attacks  \\ \hline
+%
+%
+%%Fidelity to real traffic heterogeneity, structural richness & Not a lot except that scripting and randomising different scenarios is slightly easier  & Potentially, but little attention has been paid & Yes & Not on a packet level yet \\ \hline \hline
+%
+%
+%Data on attacks on container isolation & In need of existing scenarios for background data & No & No & No \\ \hline
+%\end{tabular}
+%\caption{Contributions compared to existing solutions}\label{Tab:Contributions}
+%\end{table}
 
 %Syslog logging driver
 %add server to capture syslogs 

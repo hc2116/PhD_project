@@ -68,6 +68,12 @@ A.~D. Kent.
 \newblock {Comprehensive, Multi-Source Cyber-Security Events}.
 \newblock Los Alamos National Laboratory, 2015.
 
+\bibitem{kokke2020neural}
+W.~Kokke, E.~Komendantskaya, D.~Kienitz, R.~Atkey, and D.~Aspinall.
+\newblock Neural networks, secure by construction.
+\newblock In {\em Asian Symposium on Programming Languages and Systems}, pages
+  67--85. Springer, 2020.
+
 \bibitem{kolyshkin2006virtualization}
 K.~Kolyshkin.
 \newblock Virtualization in linux.
