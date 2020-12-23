@@ -1,25 +1,12 @@
 \begin{thebibliography}{10}
 
-\bibitem{Mandiant2015trends}
-M-trends 2015: A view from the front lines.
-\newblock Technical report, 2015.
-
 \bibitem{mcafee2015report}
 Mcafee technical report on night dragon operation.
 \newblock Technical report, 2015.
 
-\bibitem{archimedes2017}
-Archimedes documentation, 2017.
-
 \bibitem{CAIDA2018}
 {The CAIDA UCSD Anonymized Internet Traces 2018}, 2018.
 \newblock Accessed: 2020-02-10.
-
-\bibitem{apruzzese2017detection}
-Giovanni Apruzzese, Fabio Pierazzi, Michele Colajanni, and Mirco Marchetti.
-\newblock Detection and threat prioritization of pivoting attacks in large
-  networks.
-\newblock {\em IEEE Transactions on Emerging Topics in Computing}, 2017.
 
 \bibitem{ayala2016active}
 Luis Ayala.
@@ -27,23 +14,17 @@ Luis Ayala.
 \newblock In {\em Cybersecurity for Hospitals and Healthcare Facilities}, pages
   19--37. Springer, 2016.
 
-\bibitem{coskun2007efficient}
-Baris Coskun and Nasir Memon.
-\newblock Efficient detection of delay-constrained relay nodes.
-\newblock In {\em Twenty-Third Annual Computer Security Applications Conference
-  (ACSAC 2007)}, pages 353--362. IEEE, 2007.
+\bibitem{clausen2019traffic}
+Henry Clausen, Robert Flood, and David Aspinall.
+\newblock Traffic generation using containerization for machine learning.
+\newblock In {\em Proceedings of the Dynamic and Novel Advances in Machine
+  Learning and Intelligent Cyber Security Workshop}. ACM, 2019.
 
 \bibitem{di2011detecting}
 Giovanni Di~Crescenzo, Abhrajit Ghosh, Abhinay Kampasi, Rajesh Talpade, and Yin
   Zhang.
 \newblock Detecting anomalies in active insider stepping stone attacks.
 \newblock {\em JoWUA}, 2(1):103--120, 2011.
-
-\bibitem{ding2009detecting}
-Wei Ding, Matthew~J Hausknecht, Shou-Hsuan~Stephen Huang, and Zach Riggle.
-\newblock Detecting stepping-stone intruders with long connection chains.
-\newblock In {\em 2009 Fifth International Conference on Information Assurance
-  and Security}, volume~2, pages 665--669. IEEE, 2009.
 
 \bibitem{ding2013detecting}
 Wei Ding, Khoa Le, and Shou-Hsuan~Stephen Huang.
@@ -59,17 +40,15 @@ David~L Donoho, Ana~Georgina Flesia, Umesh Shankar, Vern Paxson, Jason Coit,
 \newblock In {\em International Workshop on Recent Advances in Intrusion
   Detection}, pages 17--35. Springer, 2002.
 
+\bibitem{enisa2017baseline}
+EU~ENISA.
+\newblock Baseline security recommendations for iot in the context of critical
+  information infrastructures, 2017.
+
 \bibitem{pivoting2015}
 Gordon Fraser.
 \newblock Tunneling, pivoting, and webapplication penetrationtesting.
 \newblock Technical report, SANS, 2015.
-
-\bibitem{gamarra2018analysis}
-Marco Gamarra, Sachin Shetty, David~M Nicol, Oscar Gonazlez, Charles~A Kamhoua,
-  and Laurent Njilla.
-\newblock Analysis of stepping stone attacks in dynamic vulnerability graphs.
-\newblock In {\em 2018 IEEE International Conference on Communications (ICC)},
-  pages 1--7. IEEE, 2018.
 
 \bibitem{hemminger2005network}
 Stephen Hemminger et~al.
@@ -89,11 +68,6 @@ Shou-Hsuan~Stephen Huang, Hongyang Zhang, and Michael Phay.
 \newblock In {\em 2016 IEEE 30th International Conference on Advanced
   Information Networking and Applications (AINA)}, pages 1043--1050. IEEE,
   2016.
-
-\bibitem{iacovazzi2016network}
-Alfonso Iacovazzi and Yuval Elovici.
-\newblock Network flow watermarking: A survey.
-\newblock {\em IEEE Communications Surveys \& Tutorials}, 19(1):512--530, 2016.
 
 \bibitem{eisac2017report}
 Robert~M. Lee, Michael~J. Assante, and Tim Conway.
@@ -134,6 +108,13 @@ Colin Tankard.
 \newblock Advanced persistent threats and how to monitor and deter them.
 \newblock {\em Network security}, 2011(8):16--19, 2011.
 
+\bibitem{velan2016network}
+Petr Velan, Jana Medkov{\'a}, Tom{\'a}{\v{s}} Jirs{\'\i}k, and Pavel
+  {\v{C}}eleda.
+\newblock Network traffic characterisation using flow-based statistics.
+\newblock In {\em NOMS 2016-2016 IEEE/IFIP Network Operations and Management
+  Symposium}, pages 907--912. IEEE, 2016.
+
 \bibitem{wang2018research}
 Lixin Wang and Jianhua Yang.
 \newblock A research survey in stepping-stone intrusion detection.
@@ -146,12 +127,6 @@ Xinyuan Wang and Douglas Reeves.
   stones by flow watermarking.
 \newblock {\em IEEE Transactions on Dependable and Secure Computing},
   8(3):434--449, 2010.
-
-\bibitem{wu2008performance}
-Han-Ching Wu and Shou-Hsuan~Stephen Huang.
-\newblock Performance of neural networks in stepping-stone intrusion detection.
-\newblock In {\em 2008 IEEE International Conference on Networking, Sensing and
-  Control}, pages 608--613. IEEE, 2008.
 
 \bibitem{wu2010neural}
 Han-Ching Wu and Shou-Hsuan~Stephen Huang.
@@ -183,11 +158,5 @@ Jianhua Yang and Yongzhong Zhang.
 \newblock Rtt-based random walk approach to detect stepping-stone intrusion.
 \newblock In {\em 2015 IEEE 29th International Conference on Advanced
   Information Networking and Applications}, pages 558--563. IEEE, 2015.
-
-\bibitem{zhang2005stepping}
-Linfeng Zhang, Anthony Persaud, Alan Johnson, and Yong Guan.
-\newblock Stepping stone attack attribution in non-cooperative ip networks.
-\newblock In {\em Proc. of the 25th IEEE International Performance Computing
-  and Communications Conference (IPCCC 2006)}, 2005.
 
 \end{thebibliography}

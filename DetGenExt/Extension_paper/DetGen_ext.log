@@ -1,0 +1,578 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.2)  5 SEP 2020 12:13
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**DetGen_ext.tex
+(./DetGen_ext.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-07-17>
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count168
+\c@section=\count169
+\c@subsection=\count170
+\c@subsubsection=\count171
+\c@paragraph=\count172
+\c@subparagraph=\count173
+\c@figure=\count174
+\c@table=\count175
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count176
+\Gm@cntv=\count177
+\c@Gm@tempcnt=\count178
+\Gm@bindingoffset=\dimen135
+\Gm@wd@mp=\dimen136
+\Gm@odd@mp=\dimen137
+\Gm@even@mp=\dimen138
+\Gm@layoutwidth=\dimen139
+\Gm@layoutheight=\dimen140
+\Gm@layouthoffset=\dimen141
+\Gm@layoutvoffset=\dimen142
+\Gm@dimlist=\toks16
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen143
+\Gin@req@width=\dimen144
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/05/30 v3.4k Customizing captions (AR)
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/07/20 v1.12b caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen145
+\captionmargin@=\dimen146
+\captionwidth=\dimen147
+\caption@tempdima=\dimen148
+\caption@indent=\dimen149
+\caption@parindent=\dimen150
+\caption@hangindent=\dimen151
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count179
+\c@continuedfloat=\count180
+)
+\c@KVtest=\count181
+\sf@farskip=\skip49
+\sf@captopadj=\dimen152
+\sf@capskip=\skip50
+\sf@nearskip=\skip51
+\c@subfigure=\count182
+\c@subfigure@save=\count183
+\c@lofdepth=\count184
+\c@subtable=\count185
+\c@subtable@save=\count186
+\c@lotdepth=\count187
+\sf@top=\skip52
+\sf@bottom=\skip53
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count188
+\lst@gtempboxa=\box45
+\lst@token=\toks17
+\lst@length=\count189
+\lst@currlwidth=\dimen153
+\lst@column=\count190
+\lst@pos=\count191
+\lst@lostspace=\dimen154
+\lst@width=\dimen155
+\lst@newlines=\count192
+\lst@lineno=\count193
+\lst@maxwidth=\dimen156
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count194
+\lst@skipnumbers=\count195
+\lst@framebox=\box46
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
+\c@tracingmulticols=\count196
+\mult@box=\box47
+\multicol@leftmargin=\dimen157
+\c@unbalance=\count197
+\c@collectmore=\count198
+\doublecol@number=\count199
+\multicoltolerance=\count266
+\multicolpretolerance=\count267
+\full@width=\dimen158
+\page@free=\dimen159
+\premulticols=\dimen160
+\postmulticols=\dimen161
+\multicolsep=\skip54
+\multicolbaselineskip=\skip55
+\partial@page=\box48
+\last@line=\box49
+\maxbalancingoverflow=\dimen162
+\mult@rightbox=\box50
+\mult@grightbox=\box51
+\mult@gfirstbox=\box52
+\mult@firstbox=\box53
+\@tempa=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\c@minrows=\count268
+\c@columnbadness=\count269
+\c@finalcolumnbadness=\count270
+\last@try=\dimen163
+\multicolovershoot=\dimen164
+\multicolundershoot=\dimen165
+\mult@nat@firstbox=\box91
+\colbreak@box=\box92
+\mc@col@check@num=\count271
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.
+def
+File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count272
+\l__pdf_internal_box=\box93
+) (./DetGen_ext.aux)
+\openout1 = `DetGen_ext.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(130.08621pt, 354.12257pt, 130.08621pt)
+* v-part:(T,H,B)=(130.08621pt, 534.79756pt, 130.08621pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=354.12257pt
+* \textheight=534.79756pt
+* \oddsidemargin=57.81622pt
+* \evensidemargin=57.81622pt
+* \topmargin=20.81622pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count273
+\scratchdimen=\dimen166
+\scratchbox=\box94
+\nofMPsegments=\count274
+\nofMParguments=\count275
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count276
+\MPscratchDim=\dimen167
+\MPnumerator=\count277
+\makeMPintoPDFobject=\count278
+\everyMPtoPDFconversion=\toks19
+)
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.s
+ty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/local/texlive/2020basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count279
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 23.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 23.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 23.
+
+
+LaTeX Warning: No \author given.
+
+[1
+
+{/usr/local/texlive/2020basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2] [3]
+Overfull \hbox (1.6203pt too wide) in paragraph at lines 183--184
+[]\OT1/cmr/m/it/10 Simulation of de-ploy-ment\OT1/cmr/m/n/10 : In-stead of eval
+-u-at-ing an in-tru-sion de-tec-tion model
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 194.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 194.
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--195
+[]\OT1/cmr/m/n/10 Real traf-fic
+ []
+
+
+Underfull \hbox (badness 3930) in paragraph at lines 197--197
+[]\OT1/cmr/m/n/10 Ground truth la-
+ []
+
+
+Underfull \hbox (badness 7649) in paragraph at lines 197--197
+\OT1/cmr/m/n/10 to sep-a-rate even
+ []
+
+
+Underfull \hbox (badness 1888) in paragraph at lines 197--197
+[]\OT1/cmr/m/n/10 background events
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+\OT1/cmr/m/n/10 (sys-tem ac-tiv-i-
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 197--197
+\OT1/cmr/m/n/10 tiy, ar-ti-facts from
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+\OT1/cmr/m/n/10 ear-lier ac-tiv-ity,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+\OT1/cmr/m/n/10 ...), over-lay-ing
+ []
+
+
+Underfull \hbox (badness 3168) in paragraph at lines 197--197
+\OT1/cmr/m/n/10 ac-tiv-i-ties hard to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+[]\OT1/cmr/m/n/10 No knowl-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+\OT1/cmr/m/n/10 edge about
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+\OT1/cmr/m/n/10 con-ducted
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+[]\OT1/cmr/m/n/10 Technically
+ []
+
+
+Underfull \hbox (badness 2334) in paragraph at lines 197--197
+\OT1/cmr/m/n/10 pos-si-ble, no
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--199
+\OT1/cmr/m/n/10 er-ate cus-tomized
+ []
+
+
+Underfull \hbox (badness 3635) in paragraph at lines 199--199
+[]\OT1/cmr/m/n/10 Launching a net-
+ []
+
+
+Underfull \hbox (badness 5359) in paragraph at lines 199--199
+\OT1/cmr/m/n/10 and launch-ing of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--199
+\OT1/cmr/m/n/10 for-ward, might
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
+[]\OT1/cmr/m/n/10 Attack/victim
+ []
+
+
+Underfull \hbox (badness 7133) in paragraph at lines 202--202
+\OT1/cmr/m/n/10 con-tain-ers re-move
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
+\OT1/cmr/m/n/10 de-pen-dence on
+ []
+
+
+Underfull \hbox (badness 3049) in paragraph at lines 202--202
+\OT1/cmr/m/n/10 pen on the VM,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
+\OT1/cmr/m/n/10 enough vul-ner-a-
+ []
+
+
+Underfull \hbox (badness 2495) in paragraph at lines 202--202
+\OT1/cmr/m/n/10 bil-i-ties to in-clude
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
+[]\OT1/cmr/m/n/10 Some work
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
+\OT1/cmr/m/n/10 has been
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
+\OT1/cmr/m/n/10 done to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
+\OT1/cmr/m/n/10 "re-play"
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
+\OT1/cmr/m/n/10 or ar-ti-fi-
+ []
+
+
+Underfull \hbox (badness 5519) in paragraph at lines 202--202
+\OT1/cmr/m/n/10 cially in-ject
+ []
+
+
+Underfull \hbox (badness 1859) in paragraph at lines 204--204
+\OT1/cmr/m/n/10 launches, iso-la-tion
+ []
+
+
+Underfull \hbox (badness 2922) in paragraph at lines 204--204
+\OT1/cmr/m/n/10 means that other
+ []
+
+
+Underfull \hbox (badness 1009) in paragraph at lines 204--204
+\OT1/cmr/m/n/10 fect on, plat-tform
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--206
+\OT1/cmr/m/n/10 fic het-ero-gene-ity,
+ []
+
+
+Underfull \hbox (badness 2310) in paragraph at lines 206--206
+[]\OT1/cmr/m/n/10 Not a lot ex-cept
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--206
+\OT1/cmr/m/n/10 ran-domis-ing dif-
+ []
+
+
+Underfull \hbox (badness 1337) in paragraph at lines 206--206
+\OT1/cmr/m/n/10 fer-ent sce-nar-ios is
+ []
+
+
+Underfull \hbox (badness 6428) in paragraph at lines 206--206
+\OT1/cmr/m/n/10 tle at-ten-tion has
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--206
+[]\OT1/cmr/m/n/10 Not on a
+ []
+
+
+Underfull \hbox (badness 4832) in paragraph at lines 206--206
+\OT1/cmr/m/n/10 packet level
+ []
+
+
+Overfull \hbox (75.76321pt too wide) in paragraph at lines 194--211
+ [][] 
+ []
+
+[4] [5]
+
+LaTeX Warning: Citation `shiravi2012toward' on page 6 undefined on input line 2
+43.
+
+
+LaTeX Warning: Reference `Sec:ExistScen' on page 6 undefined on input line 244.
+
+
+[6]
+<images/scenario_branching.PNG, id=28, 1036.87375pt x 399.4925pt>
+File: images/scenario_branching.PNG Graphic file (type png)
+<use images/scenario_branching.PNG>
+Package pdftex.def Info: images/scenario_branching.PNG  used on input line 266.
+
+(pdftex.def)             Requested size: 169.97731pt x 65.48671pt.
+ [7 <./images/scenario_branching.PNG>]
+Overfull \hbox (0.6003pt too wide) in paragraph at lines 435--436
+[]\OT1/cmr/m/n/10 Lack of open-source im-ple-men-ta-tion of at-tack traf-fic ge
+n-er-a-tion, which makes
+ []
+
+[8] [9] [10] (./DetGen_ext.bbl [11] [12]) [13] (./DetGen_ext.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4601 strings out of 482354
+ 72087 string characters out of 5942339
+ 323732 words of memory out of 5000000
+ 19972 multiletter control sequences out of 15000+600000
+ 540192 words of font info for 46 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 47i,10n,49p,916b,287s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </Users/henryclausen/Library/texlive/2020basic/texmf-var/fonts/pk/ljfour/jkn
+appen/ec/tcrm1000.600pk></usr/local/texlive/2020basic/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020basic/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2020basic/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2020basic/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2020basic/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on DetGen_ext.pdf (13 pages, 162283 bytes).
+PDF statistics:
+ 81 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+

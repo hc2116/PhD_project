@@ -1,0 +1,80 @@
+DetGen paper - New outline
+
+
+Benefits over existing datasets 
+
+
+1. Fidelity to real traffic
+	1. Real traffic, consistent (not invalid after Cordero et al.)
+	2. Structural richness on packet level (in contrast to )
+		Induced due to the different levels at which traffic variation is introduced
+	3. Temporal activity levels? (actually not something we improve)
+			We can look at test for realism of distributions (IP discovery, etc)
+
+2. Ground truth labels through containerisation
+	1. Ground truth for attack behaviour, able to label 100% of the generated events to specific activities
+	2. Labels for different types of behaviour, reproducable
+		useful for evaluation of model failures, what kind of behaviours cause failure
+			applies to a large range of models
+		also useful for evaluation of privacy infiltration methods, more niche
+	3. Ground truth for label matching between traffic and program logs/sys logs
+		useful for models that try to correlate events for detection
+			this is more niche, but potentially because of the lack of data
+
+3. Extensive capture
+	1. Packet availability
+	2. Syslogs and for multiple scenarios program logs
+	3. Potentially host logs? Depends if we want to cater to cloud computing applicability
+
+
+4. Better for ML-based methods
+	1. Flexibility 
+		"The models should allow researchers to generate different classes of data, such as augmenting the amount of data representing sparse events, or choose different topology"
+	2. Automisation of variable datasets through randomisation, automatically create structurally different datasets, but faithful to realism
+		Especially novel in terms of network topologies, should emphasise this in use-cases
+	3. Structural richness 
+			allows for learning deeper and more generalisable knowledge in models, less prone to overfitting
+	2. Scalability
+		"Train on as much data as necessary"
+
+
+•	Finish topology extension
+o	No focus on multi-step attacks yet
+Ideal properties of a Data-generation framework
+•	Small-scale realism
+o	Packets sequences in a connection should represent actual interactions and have corresponding metadata properties, inter arrival times etc. 
+	Important for intrusion detection models
+o	Temporal 
+
+
+Realism-experiments/proofs
+•	Measure structural richness of
+o	Also measure divergence across same activities (same activity and same port)
+o	Demonstrate benefit of structural richness
+	Closer to reality
+	Learned model larger and detection problem is closer to reality
+	Demonstrate this by learning a model with less
+
+Use-cases
+
+•	Show utility of ground-truth labels
+	o	Build two intrusion detection models: One made of flow sequences, the other of packet sequences
+	o	Analyse false-positives, show what activity and what traffic congestion they correspond to
+	o	Build multiple datasets with excessive amounts of one traffic type that push model limits, analyse the performance
+	- Demonstrate utility of ground truth labels and mapping between syscalls and traffic, and program logs
+		- experiment 
+
+•	Show utility of flexible topology
+	o	Find useful model, show that training on one topology leads to overfitting
+	o	Show that training on multiple datasets prevents overfitting
+			Or that detection results can differ vastly
+•	Measure effect of new traffic types on IDS performance
+ 	- 
+
+
+- Rob's input: 
+	- Show that included attacks can always be up-to-date using existing tools (such as metasploitable)
+
+
+
+
