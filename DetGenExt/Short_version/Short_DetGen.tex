@@ -24,7 +24,7 @@
 \begin{document} 
 
 %\title{DetGen: Data generation to bridge the "semantic gap" in network intrusion detection}
-\title{Impact of controlled traffic generation and ground-truth labels on model development}
+\title{Impact of traffic micro-structure control and ground-truth information on model development}
 %Dynamic Traffic Generation with Containerization for Machine Learning}
 
 \maketitle
@@ -39,19 +39,27 @@
 
 \section{Introduction}
 
-\textcolor{red}{Data-centric} breakthroughs in other fields have not been achieved solely by more complex and computationally more powerful ML-methods, but have been equally reliant on a precise understanding of the data and corresponding datasets that provide researchers with richer information and enable them to analyse weak points and model failures. As an example, results in \textit{automatic speech recognition (ARS)} were not achieved by immediately training then state-of-the-art models on large annotated datasets. Initial models were reliant on highly sanitised and structured speech snippets in order to isolate low-level structures such as phonemes or time-warping, before the understanding of these structures lead to the success of more layered models of FF and LSTMneural networks and more recently fully end-to-end trained models. Lately, datasets that contain labelled specialised speech characteristics with varying intensity enable researchers to better understand ASR weak points such as emotional speech (RAVDESS), accents (Speech Accent Archive), or background noise (Urban Sound Dataset).
+\textcolor{red}{Data-centric} breakthroughs in other fields have not been achieved solely by more complex and computationally more powerful ML-methods, but have been equally reliant on a precise understanding of the corresponding data structure as well as corresponding datasets that provide researchers with richer information and enable them to analyse weak points and model failures. As an example, results in \textit{automatic speech recognition (ARS)} were not achieved by immediately training then state-of-the-art models on large annotated datasets. Initial models were reliant on highly sanitised and structured speech snippets in order to isolate low-level structures such as phonemes or time-warping, before the understanding of these structures lead to the success of more layered models of FF and LSTMneural networks and more recently fully end-to-end trained models. Lately, datasets that contain labelled specialised speech characteristics with varying intensity enable researchers to better understand ASR weak points such as emotional speech (RAVDESS), accents (Speech Accent Archive), or background noise (Urban Sound Dataset).
 
-In a similar fashion, several approaches to enhance the way information is collected and presented have been successful in closing semantic gaps between data and detection systems in other areas of information security. Virtual machine introspection monitors and analyses the runtime state of a system-level VM to improve the understanding of virtual machine-based intrusion detection and forensic memory analysis \cite{dolan2011virtuoso}. The inclusion of threat reports to create behavioral feature labels enriches the way executables are described to enhance malware modelling and detection \cite{smith2020mind}.
+In a similar fashion, several approaches to enhance the way information is collected and presented have been successful in improving understanding between data and detection systems in different areas of information security. Virtual machine introspection monitors and analyses the runtime state of a system-level VM, and the inclusion of threat reports to create behavioural feature labels enriches the way executables are described \cite{smith2020mind}. Recently, data provenance is being seen as a better representation of system  executions \cite{barre2019mining}. 
 
-However, such efforts have not been made in network intrusion detection yet, with the current \textcolor{red}{benchmark} datasets paying more attention to the inclusion of a wide variety of attacks rather than the close control and detailed documentation of the generated traffic structures. This has so far lead to researchers predominantly applying of a number of ML-models directly to \textcolor{red}{general} traffic datasets in the hope of edging out competitors without analysing what traffic causes the model to fail and how design choices could prevent that.
+However, such efforts have not been made in network intrusion detection yet, with the current \textcolor{red}{benchmark} datasets paying more attention to the inclusion of a wide variety of attacks rather than the close control and detailed documentation of the generated traffic structures. This has so far lead to researchers predominantly applying of a number of ML-models directly to \textcolor{red}{general} traffic datasets in the hope of edging out competitors without analysing what traffic causes the model to fail and how design choices could prevent that. This overall lack of connection between the nature of intrusion detection data and the applied data-driven detection systems has been identified as a `semantic gap' Paxson and Sommer \cite{sommer2010outside}.
+
+Part of the reason for this gap is the lack of precise datasets that address particular traffic characteristics and contain additional information to allow for an in-depth evaluation. Clausen et al. \textcolor{red}{insert citation, possibly blinded?} have recently proposed a tool called DetGen that relies on containerisation to simulate network activity in a very controllable and deterministic way. The aim of the tool is to provide researchers with more information about traffic micro-structures by simulating and labelling a different factors such as corresponding computational activities, failure modes, or data input that impact traffic on a packet and flow level. 
+
+In this work, we demonstrate how this \textcolor{red}{ground-truth} information on traffic micro-structures can boost model inspection and improve both corresponding results and the overall understanding of traffic models to ultimately lead to more efficient improvements in their development. We provide three use-cases where existing models are ...
+
+%that contain the necessary control and information over the contained traffic characteristics that would enable for an in-depth evaluation. Clausen et al. \textcolor{red}{insert citation, possibly blinded?} have recently proposed a tool called DetGen that relies on containerisation to simulate network activity in a very controllable and deterministic way in order to offer a variety of traffic trace generation with particular characteristics \textcolor{red}{insert example here}. 
 
 
-In contrast, the predominant praxis in the development of machine-learning-based network intrusion detection models so far has neglected careful model examination after training almost completely. Machine-learning methods are often evaluated on general \textcolor{red}{NID} datasets such as the KDD-99 or the CICIDS-17 dataset and compared solely on their overall true positive and false positive rates. 
+
+
+%In contrast, the predominant praxis in the development of machine-learning-based network intrusion detection models so far has neglected careful model examination after training almost completely. Machine-learning methods are often evaluated on general \textcolor{red}{NID} datasets such as the KDD-99 or the CICIDS-17 dataset and compared solely on their overall true positive and false positive rates. 
 
 %been to apply different machine learning algorithms that have been successful in other domains directly in 
 
 
-Part of the reason for this lack of thorough model inspection is the lack of precise datasets that contain the necessary control and information over the contained traffic characteristics that would enable for an in-depth evaluation. Clausen et al. \textcolor{red}{insert citation, possibly blinded?} have recently proposed a tool called DetGen that relies on containerisation to simulate network activity in a very controllable and deterministic way in order to offer a variety of traffic trace generation with particular characteristics \textcolor{red}{insert example here}. In this work, we examine the usage of such specific network traffic traces can help the understanding of traffic models and ultimately lead to more efficient improvements in their development. We provide three use-cases where existing models are ...
+%Part of the reason for this lack of thorough model inspection is the lack of precise datasets that contain the necessary control and information over the contained traffic characteristics that would enable for an in-depth evaluation. Clausen et al. \textcolor{red}{insert citation, possibly blinded?} have recently proposed a tool called DetGen that relies on containerisation to simulate network activity in a very controllable and deterministic way in order to offer a variety of traffic trace generation with particular characteristics \textcolor{red}{insert example here}. In this work, we examine the usage of such specific network traffic traces can help the understanding of traffic models and ultimately lead to more efficient improvements in their development. We provide three use-cases where existing models are ...
 
 
 \subsection*{Advantages for network experiments}% \textcolor{red}{(or Use-cases?)}}
@@ -297,7 +305,13 @@ Outline of the coming sections.
 
 %Table \ref{Tab:Contributions} compares how well existing methods are realising these goals compared to our framework.
 
+\subsection{DetGen}
 
+Detgen is a container-based network traffic generation framework that \textcolor{red}{we} developed to enable repeatable, controllable, and \textcolor{red}{informative} network experiments. In contrast to the pool of programs running in a VM-setup, DetGen separates program executions and traffic capture into distinct containerised environments in order to shield the generated traffic from external influences and enable the fine-grained control of \textcolor{red}{traffic shaping factors}.
+
+Traffic is generated from a set of scripted \textit{scenarios} (\textcolor{red}{give examples here}) that strictly control corresponding influence factors and offer the researcher to modify and label the conducted activity from a variety of \textcolor{red}{angles} and randomisations. Containers communicate in a virtual network created with Mininet along with virtual software switches, Ethernet links, routers, and firewalls.
+
+In the following experiments, we rely on DetGen to generate traffic data with corresponding micro-structure information labels.
 
 \section{Use-cases}
 
@@ -305,7 +319,7 @@ Outline of the coming sections.
 
 Extensive ground-truth labels on different traffic influences are arguably the most important contribution of the DetGen framework. We demonstrate the benefits of this additional information for model-understanding on two examples using a traffic classification model by Hwang et al. \cite{hwang2019lstm} and a \textcolor{red}{highly regarded} anomaly detection model by Casas et al. \cite{casas2012unsupervised}.
 
-\subsection{Improving traffic classification with congestion level information}
+\subsection{Improving traffic separation with congestion level information}
 %Possible title: \textbf{Exploring the effect of rare events to model performance}
 Our first use-case looks at how descriptive ground truth information on traffic characteristics can improve a traffic classification through the analysis of data separation in dependence of different traffic features. For this, we use a recent traffic classification model by Hwang et al. \cite{hwang2019lstm} as an example, which aims at distinguishing various types of malicious activity from benign traffic.
 The model classifies connections on a packet-level using an LSTM-network\footnote{Long-short-term-memory neural network}, and is claimed to achieve detection and false-positive (FP) rates of \textbf{99.7\%} and \textbf{0.03\%} respectively. 
@@ -331,32 +345,40 @@ The overall AUC-score for the model improves to \textbf{0.997} while tuned detec
 \caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold}\label{fig:LSTM_exp}
 \end{figure}
 
-\subsubsection{Refining the notion of benign traffic for anomaly detection}
+\subsection{Refining the notion of benign traffic for anomaly detection}
 
-Our second use-case looks at the effect of sudden connection terminations on an anomaly-detection model by Casas et al. \cite{casas2012unsupervised}. The model takes a number of flow summary statistics as input, which include such as packet size and interarrival statistics, number of idle and transfer periods, flag occurrencies etc. as input and projects it into different subspaces, where the connections are clustered. Anomalous outliers are detected by accumulating the Mahalanobis-distance from the cluster centers from each subspace.
+Our second use-case looks at how ground-truth traffic information can help produce more coherent clusters and thus refine the capture of more detailed benign traffic structures in anomaly-detection. In particular, we will examine an anomaly-detection model by Casas et al. \cite{casas2012unsupervised} that produces state-of-the-art detection results for access attacks according to a survey by Nisioti et al. \cite{nisioti2018intrusion}.
+The model takes a number of flow summary statistics as input, which include such as packet size and interarrival statistics, number of idle and transfer periods, flag occurrencies etc. as input and projects it into different subspaces, where the connections are clustered. Anomalous outliers are detected by accumulating the Mahalanobis-distance from the cluster centers from each subspace. The identified clusters therefore serve as structural enclosures of benign behaviour, with the cluster borders acting as separators to abnormal behaviours. Benign traffic should ideally be distributed evenly around the cluster centres to allow a tight borders and good separation from actual abnormal behaviour.
 
-We train the model on benign traffic from the CICIDS-17 intrusion detection dataset (80\%). Since intrusion detection datasets often lack sufficient events that necessarily occur, but with lesser frequency (such as communication failures), we also include traffic generated using DetGen (HTTP, FTP, SSH, and SMTP, 20\%) using a wide spectrum of settings. Attack data for the evaluation was again provided through the CICIDS-17 dataset.
+Unstructured datasets such as the CAIDA traffic traces \textcolor{red}{assumably} contain too much abnormal behaviour to train an anomaly-detection model, which is why we train the model on benign traffic from the CICIDS-17 intrusion detection dataset (80\%). Again, we also add traffic generated with the DetGen tool (HTTP, FTP, SSH, and SMTP, 20\%) using a wide spectrum of settings for examination purposes. Attack data for the evaluation was again provided through the CICIDS-17 dataset, and includes access attacks such as SQL-injections, Heartbleed, Brute-Force attacks etc. We  train the model with in total 15,000 connections.
 
+%at the effect of sudden connection terminations on an anomaly-detection model by Casas et al. \cite{casas2012unsupervised}. 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{images/Subspace_projection.png}
+\includegraphics[width=0.5\textwidth]{images/Subspace_projection_new2.png}
 \caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold}\label{fig:Subspace_projection}
 \end{figure}
 
-In the evaluation of the model, it became apparent that the model often assigns Brute-Force Web attacks and some HTTP-traffic from a particular cluster similar anomaly scores. When looking at this cluster, we notice that despite most connections being well centred well together, some 
-connections are scattered much more broadly across the cluster and mix with Brute-Force traffic.
-This is visible in Figure \ref{fig:Subspace_projection}. When looking at the activity labels from DetGen, we notice that most of this traffic corresponds to half-open connections which were dropped by the server due to network failure. One defining characteristic of such connections are that they are not closed with a termination handshake using FIN-flags. We therefore included an additional flow-summary describing whether the connection was terminated properly, which lead to half-open connections being projected very differently into a new cluster with well defined borders.
+When examining false-positive and corresponding anomaly scores, we noticed that in the CICIDS-17 dataset the model often classifies Brute-Force Web attacks as benign and some HTTP-traffic as anomalous. When examining the projected location of the corresponding connections, we see that most of this HTTP-traffic as well as the Brute-Force attack traffic lie near a particular cluster, depicted in Fig. \ref{fig:Subspace_projection}. A significant portion of traffic in that cluster seems to be spread significnatly more across the cluster axis than the rest of the traffic in that cluster, leading to an inflated radius that partially encompasses Brute-Force traffic. 
+
+When cross-examining the traffic in this cluster with the DetGen traffic, we see that HTTP-traffic with the label "Sudden termination" are distributed across the cluster axis in a similar fashion, also depicted in Fig. \ref{fig:Subspace_projection}, suggesting the conclusion that this type of traffic causes the inflated cluster radius. DetGen generates traffic with the label "Sudden termination" as half-open connections which were dropped by the server due to network failure. One defining characteristic of such connections are that they are not closed with a termination handshake using FIN-flags. To better capture this defining characteristics in the modelling process, we included an additional feature that indicates a proper termination with FIN-flags in the modelling process. 
+
+The newly trained model now projects "Sudden termination" connections into a different cluster, which leads to a far better cluster .
+
+%In the evaluation of the model, it became apparent that the model often assigns Brute-Force Web attacks and some HTTP-traffic from a particular cluster similar anomaly scores. When looking at this cluster, we notice that despite most connections being well centred well together, some 
+%connections are scattered much more broadly across the cluster and mix with Brute-Force traffic.
+%This is visible in Figure \ref{fig:Subspace_projection}. When looking at the activity labels from DetGen, we notice that most of this traffic corresponds to half-open connections which were dropped by the server due to network failure. One defining characteristic of such connections are that they are not closed with a termination handshake using FIN-flags. We therefore included an additional flow-summary describing whether the connection was terminated properly, which lead to half-open connections being projected very differently into a new cluster with well defined borders.
 
 
-\subsection{Verifying model performance against adversarial perturbations}
+%\subsection{Verifying model performance against adversarial perturbations}
 %Investigating adversarial perturbation attacks and model inversion}
 
-Recently, research to verify intrusion detection model output has gained interest in order to provide guarantees for the detection of specific attacks or against flagging certain benign events as malicious, and especially verifying robustness against traffic perturbations is seen as a pressing issue. 
-We look at a simple neural network classifier designed to detect HTTP Brute-Force attacks. Our aim is to verify the robustness of the model performance against artificial packet interarrival perturbations that an attacker could introduce to  alter the classification result. 
-To test the trained model, we generated traffic from a Brute-Force attack scenario to which we added jitter delays with varying amounts and drawn from varying distributions. 
-\cite{kokke2020neural}
-\textcolor{red}{insert results}
+%Recently, research to verify intrusion detection model output has gained interest in order to provide guarantees for the detection of specific attacks or against flagging certain benign events as malicious, and especially verifying robustness against traffic perturbations is seen as a pressing issue. 
+%We look at a simple neural network classifier designed to detect HTTP Brute-Force attacks. Our aim is to verify the robustness of the model performance against artificial packet interarrival perturbations that an attacker could introduce to  alter the classification result. 
+%To test the trained model, we generated traffic from a Brute-Force attack scenario to which we added jitter delays with varying amounts and drawn from varying distributions. 
+%\cite{kokke2020neural}
+%\textcolor{red}{insert results}
 
 
 
@@ -730,22 +752,22 @@ As visible, the scores yield less than $1\%$ of the dissimilarity observed on av
 %
 %
 
-
-
-\section{Current data situation}
-
-Currently, intrusion detection researchers predominantly rely on public, synthetically generated datasets, on which NID systems are evaluated subsequently.
-\textit{Real-world datasets} such as LANL-15 \cite{kent-2015-cyberdata1} or UGR-16 \cite{macia2018ugr} provide the highest amount of traffic realism, but often lack detailed information such as packet captures due to privacy reasons, and give close to no information on the content of the provided data. 
-
-\textit{Synthetic datasets} such as the CICIDS-17 \cite{sharafaldin2018towards} or the UNSW-16  \cite{moustafa2015unsw} datasets are typically captured in virtual environments that simulate \textcolor{red}{commercial} networks with virtual machines. Traffic is generated from scripted activity, and attack data either injected or generated from carefully inserted vulnerabilities. The arranged settings normally lack the flexibility to generate customized data and by design only provide very limited attack diversity.
-%limited insights into the given traffic realism or 
-
-\textit{Attack traffic generators} typically aim at providing traces from a diverse set of attacks, and injecting them into existing traffic captures in various ways. Moirai \textcolor{red}{citation} for example calculates several quantitative characteristics to better embed the attack traffic.  However, most of the issues surrounding real-world traffic captures remain, and there is concern about the realism of injected attack traffic \textcolor{red}{citation}.
-
-Recently, some effort have been made to to generate completely artificial traffic data with \textit{generative adversarial networks} (GANs) trained on real-world traffic. While examples such as DoppelGANger or Ring et al. \textcolor{red}{citation} are successful at generating realistic large-scale network features such as activity levels or \textcolor{red}{connection graphs}, they are not aimed at intrusion detection and do not provide the necessary granularity to model connection- or packet-level features.
-
- \textit{Testbeds} such as Mininet offer tremendous \textcolor{red}{flexibility}, but are so far not targeted for intrusion detection and lack suitable small-scale traffic generation tools, labelling capabilities, or attack scenarios. 
-
+%
+%
+%\section{Current data situation}
+%
+%Currently, intrusion detection researchers predominantly rely on public, synthetically generated datasets, on which NID systems are evaluated subsequently.
+%\textit{Real-world datasets} such as LANL-15 \cite{kent-2015-cyberdata1} or UGR-16 \cite{macia2018ugr} provide the highest amount of traffic realism, but often lack detailed information such as packet captures due to privacy reasons, and give close to no information on the content of the provided data. 
+%
+%\textit{Synthetic datasets} such as the CICIDS-17 \cite{sharafaldin2018towards} or the UNSW-16  \cite{moustafa2015unsw} datasets are typically captured in virtual environments that simulate \textcolor{red}{commercial} networks with virtual machines. Traffic is generated from scripted activity, and attack data either injected or generated from carefully inserted vulnerabilities. The arranged settings normally lack the flexibility to generate customized data and by design only provide very limited attack diversity.
+%%limited insights into the given traffic realism or 
+%
+%\textit{Attack traffic generators} typically aim at providing traces from a diverse set of attacks, and injecting them into existing traffic captures in various ways. Moirai \textcolor{red}{citation} for example calculates several quantitative characteristics to better embed the attack traffic.  However, most of the issues surrounding real-world traffic captures remain, and there is concern about the realism of injected attack traffic \textcolor{red}{citation}.
+%
+%Recently, some effort have been made to to generate completely artificial traffic data with \textit{generative adversarial networks} (GANs) trained on real-world traffic. While examples such as DoppelGANger or Ring et al. \textcolor{red}{citation} are successful at generating realistic large-scale network features such as activity levels or \textcolor{red}{connection graphs}, they are not aimed at intrusion detection and do not provide the necessary granularity to model connection- or packet-level features.
+%
+% \textit{Testbeds} such as Mininet offer tremendous \textcolor{red}{flexibility}, but are so far not targeted for intrusion detection and lack suitable small-scale traffic generation tools, labelling capabilities, or attack scenarios. 
+%
 
 \section{Conclusions}\label{Sec:Conclusion}
 

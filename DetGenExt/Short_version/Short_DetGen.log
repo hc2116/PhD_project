@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  3 JAN 2021 22:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  6 JAN 2021 10:39
 entering extended mode
 **./Short_DetGen.tex
 (Short_DetGen.tex
@@ -1494,154 +1494,152 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 9.0pt on input line 42.
 
-Overfull \hbox (5.31833pt too wide) in paragraph at lines 49--50
-[]\T1/LinuxLibertineT-TLF/m/n/9 (-20) In con-trast, the pre-dom-i-nant praxis i
-n the de-vel-op-ment of machine-
- []
+
+Package natbib Warning: Citation `barre2019mining' on page 1 undefined on input
+ line 44.
 
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 63.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [1.1{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+(Font)              scaled to size 9.0pt on input line 71.
+[1.1{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 ]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 311.
+(Font)              scaled to size 7.3pt on input line 325.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 311.
-<images/LSTM_exp.png, id=99, 600.2425pt x 409.53pt>
+(Font)              scaled to size 5.5pt on input line 325.
+<images/LSTM_exp.png, id=100, 600.2425pt x 409.53pt>
 File: images/LSTM_exp.png Graphic file (type png)
 <use images/LSTM_exp.png>
-Package pdftex.def Info: images/LSTM_exp.png  used on input line 330.
+Package pdftex.def Info: images/LSTM_exp.png  used on input line 344.
 (pdftex.def)             Requested size: 253.14749pt x 172.71379pt.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 330--331
+Overfull \hbox (12.0pt too wide) in paragraph at lines 344--345
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 332.
+Class acmart Warning: A possible image without description on input line 346.
+
+
+Package natbib Warning: Citation `nisioti2018intrusion' on page 2 undefined on 
+input line 350.
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 336.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 336.
-<images/Subspace_projection.png, id=102, 595.22375pt x 435.6275pt>
-File: images/Subspace_projection.png Graphic file (type png)
-<use images/Subspace_projection.png>
-Package pdftex.def Info: images/Subspace_projection.png  used on input line 343
-.
-(pdftex.def)             Requested size: 253.14749pt x 185.26884pt.
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 343--344
- [][] 
- []
-
-
-Class acmart Warning: A possible image without description on input line 345.
-
+(Font)              scaled to size 9.0pt on input line 352.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 350.
+(Font)              scaled to size 7.0pt on input line 352.
 [2.2 <./images/LSTM_exp.png>]
-<images/Exp1.png, id=120, 629.35126pt x 418.56375pt>
+<images/Subspace_projection_new2.png, id=115, 376.40625pt x 399.74344pt>
+File: images/Subspace_projection_new2.png Graphic file (type png)
+<use images/Subspace_projection_new2.png>
+Package pdftex.def Info: images/Subspace_projection_new2.png  used on input lin
+e 359.
+(pdftex.def)             Requested size: 253.14749pt x 268.85143pt.
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 359--360
+ [][] 
+ []
+
+
+Class acmart Warning: A possible image without description on input line 361.
+
+
+Overfull \hbox (5.06952pt too wide) in paragraph at lines 363--364
+[]\T1/LinuxLibertineT-TLF/m/n/9 (-20) When ex-am-in-ing false-positive and cor-
+re-spond-ing anom-aly scores,
+ []
+
+<images/Exp1.png, id=118, 629.35126pt x 418.56375pt>
 File: images/Exp1.png Graphic file (type png)
 <use images/Exp1.png>
-Package pdftex.def Info: images/Exp1.png  used on input line 381.
+Package pdftex.def Info: images/Exp1.png  used on input line 403.
 (pdftex.def)             Requested size: 253.14749pt x 168.36137pt.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 381--382
+Overfull \hbox (12.0pt too wide) in paragraph at lines 403--404
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 383.
+Class acmart Warning: A possible image without description on input line 405.
 
 
-Underfull \vbox (badness 1558) has occurred while \output is active []
+Underfull \vbox (badness 3907) has occurred while \output is active []
+
+ [3.3 <./images/Subspace_projection_new2.png>]
+
+LaTeX Warning: Reference `Sec:Realdiv' on page 4 undefined on input line 423.
 
 
-
-LaTeX Warning: Reference `Sec:Realdiv' on page 3 undefined on input line 401.
-
-[3.3 <./images/Subspace_projection.png> <./images/Exp1.png>]
-
-LaTeX Warning: Reference `determ-metric' on page 4 undefined on input line 445.
+LaTeX Warning: Reference `determ-metric' on page 4 undefined on input line 467.
 
 
-<images/HTTP_comp_crop.png, id=135, 485.56406pt x 563.10374pt>
+<images/HTTP_comp_crop.png, id=131, 485.56406pt x 563.10374pt>
 File: images/HTTP_comp_crop.png Graphic file (type png)
 <use images/HTTP_comp_crop.png>
-Package pdftex.def Info: images/HTTP_comp_crop.png  used on input line 455.
+Package pdftex.def Info: images/HTTP_comp_crop.png  used on input line 477.
 (pdftex.def)             Requested size: 227.83119pt x 264.21199pt.
 
-Class acmart Warning: A possible image without description on input line 457.
+Class acmart Warning: A possible image without description on input line 479.
 
 
-Underfull \vbox (badness 1418) has occurred while \output is active []
+Underfull \vbox (badness 3907) has occurred while \output is active []
 
- [4.4 <./images/HTTP_comp_crop.png>]
-Overfull \hbox (1.78807pt too wide) in paragraph at lines 745--746
-\T1/LinuxLibertineT-TLF/m/n/9 (-20) trained on real-world traf-fic. While ex-am
--ples such as Dop-pel-GANger
- []
-
-LaTeX Font Info:    Try loading font information for T1+zi4 on input line 770.
+ [4.4 <./images/Exp1.png> <./images/HTTP_comp_crop.png>]
+LaTeX Font Info:    Try loading font information for T1+zi4 on input line 792.
 
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\inconsolata\t1zi4.
 fd"
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 9.0pt on input line 770.
+(Font)              scaled to size 9.0pt on input line 792.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [5.5]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 828.
+surrounding objects on input line 850.
 
 (Short_DetGen.bbl
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 7486) has occurred while \output is active []
 
- [6.6])
+)
+
+Package natbib Warning: There were undefined citations.
+
 
 Class acmart Warning: Some images may lack descriptions.
 
 
-Overfull \vbox (9.5pt too high) has occurred while \output is active []
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
 
-
-Overfull \vbox (11.152pt too high) has occurred while \output is active []
-
-
-[7.7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 843.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 843.
+[6.6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 865.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 865.
  (Short_DetGen.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 843.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 843.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 865.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 865.
 Package rerunfilecheck Info: File `Short_DetGen.out' has not changed.
-(rerunfilecheck)             Checksum: F73E38E7D83290AEFB6E4810E1A08D77;3421.
+(rerunfilecheck)             Checksum: 8DFC4294093DDA2C6A89E0C338611BE4;3338.
 
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 20041 strings out of 492970
- 307505 string characters out of 3126595
- 429188 words of memory out of 3000000
- 22967 multiletter control sequences out of 15000+200000
- 164662 words of font info for 326 fonts, out of 3000000 for 9000
+ 19928 strings out of 492970
+ 304729 string characters out of 3126595
+ 429000 words of memory out of 3000000
+ 22929 multiletter control sequences out of 15000+200000
+ 153068 words of font info for 286 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,11n,94p,1635b,641s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,11n,94p,1635b,449s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/inconsolata
 /i4-t1-4.enc}{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/
 libertine/lbtn_oexx6f.enc}{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fon
@@ -1657,15 +1655,14 @@ l/Programs/MiKTeX 2.9/fonts/type1/public/newtx/LibertineMathMI7.pfb><C:/Users/h
 enry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinBiolinum
 T.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libe
 rtine/LinBiolinumTB.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/public/libertine/LinBiolinumTI.pfb><C:/Users/henry/AppData/Local/Program
-s/MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Users/henry/App
-Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineTB.pfb>
-<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/
-LinLibertineTI.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/newtx/txsys.pfb>
-Output written on Short_DetGen.pdf (7 pages, 742431 bytes).
+/type1/public/libertine/LinLibertineT.pfb><C:/Users/henry/AppData/Local/Program
+s/MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/henry/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineTI.pfb
+><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/newtx/txs
+ys.pfb>
+Output written on Short_DetGen.pdf (6 pages, 650388 bytes).
 PDF statistics:
- 257 PDF objects out of 1000 (max. 8388607)
- 63 named destinations out of 1000 (max. 500000)
- 50337 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 227 PDF objects out of 1000 (max. 8388607)
+ 49 named destinations out of 1000 (max. 500000)
+ 46241 words of extra memory for PDF output out of 51595 (max. 10000000)
 
