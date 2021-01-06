@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  6 JAN 2021 10:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  6 JAN 2021 17:58
 entering extended mode
 **./Short_DetGen.tex
 (Short_DetGen.tex
@@ -1220,14 +1220,18 @@ ty"
 Package: balance 1999/02/23 4.3 (PWD)
 \oldvsize=\dimen173
 ) Excluding comment 'screenonly' Include comment 'printonly'
-Include comment 'anonsuppress' (Short_DetGen.aux)
+Include comment 'anonsuppress' (Short_DetGen.aux
+
+LaTeX Warning: Label `Tab:Dataset' multiply defined.
+
+)
 \openout1 = `Short_DetGen.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 24.
 LaTeX Font Info:    Try loading font information for OML+nxlmi on input line 24
 .
-
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\newtx\omlnxlmi.fd"
+ ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\newtx\omlnxlmi.fd
+"
 File: omlnxlmi.fd 2013/11/19 Fontinst v1.933 font definitions for OML/nxlmi.
 )
 LaTeX Font Info:    ... okay on input line 24.
@@ -1242,7 +1246,8 @@ LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 24.
 LaTeX Font Info:    Try loading font information for U+ntxexa on input line 24.
 
- ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\newtx\untxexa.fd"
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\newtx\untxexa.fd"
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
 LaTeX Font Info:    ... okay on input line 24.
@@ -1252,15 +1257,15 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 24.
- ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 24.
 LaTeX Font Info:    Try loading font information for LMS+ntxsy on input line 24
 .
- ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\newtx\lmsntxsy.fd
-"
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\newtx\lmsntxsy.fd"
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
 LaTeX Font Info:    ... okay on input line 24.
@@ -1493,21 +1498,16 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 10.95pt on input line 40.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 9.0pt on input line 42.
-
-
-Package natbib Warning: Citation `barre2019mining' on page 1 undefined on input
- line 44.
-
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 71.
-[1.1{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+ [1.1{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 ]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 7.3pt on input line 325.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 5.5pt on input line 325.
-<images/LSTM_exp.png, id=100, 600.2425pt x 409.53pt>
+<images/LSTM_exp.png, id=106, 600.2425pt x 409.53pt>
 File: images/LSTM_exp.png Graphic file (type png)
 <use images/LSTM_exp.png>
 Package pdftex.def Info: images/LSTM_exp.png  used on input line 344.
@@ -1520,16 +1520,12 @@ Overfull \hbox (12.0pt too wide) in paragraph at lines 344--345
 
 Class acmart Warning: A possible image without description on input line 346.
 
-
-Package natbib Warning: Citation `nisioti2018intrusion' on page 2 undefined on 
-input line 350.
-
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 352.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 7.0pt on input line 352.
 [2.2 <./images/LSTM_exp.png>]
-<images/Subspace_projection_new2.png, id=115, 376.40625pt x 399.74344pt>
+<images/Subspace_projection_new2.png, id=123, 376.40625pt x 399.74344pt>
 File: images/Subspace_projection_new2.png Graphic file (type png)
 <use images/Subspace_projection_new2.png>
 Package pdftex.def Info: images/Subspace_projection_new2.png  used on input lin
@@ -1549,50 +1545,95 @@ Overfull \hbox (5.06952pt too wide) in paragraph at lines 363--364
 re-spond-ing anom-aly scores,
  []
 
-<images/Exp1.png, id=118, 629.35126pt x 418.56375pt>
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
+(Font)              scaled to size 9.0pt on input line 395.
+
+LaTeX Warning: Reference `Fig:HTTP_ex' on page 3 undefined on input line 397.
+
+<images/HTTP_ex.png, id=128, 485.56406pt x 282.30469pt>
+File: images/HTTP_ex.png Graphic file (type png)
+<use images/HTTP_ex.png>
+Package pdftex.def Info: images/HTTP_ex.png  used on input line 401.
+(pdftex.def)             Requested size: 227.83119pt x 132.45921pt.
+
+Class acmart Warning: A possible image without description on input line 403.
+
+
+Overfull \hbox (2.99051pt too wide) in paragraph at lines 410--410
+[]|\T1/LinuxLibertineT-TLF/m/n/9 (-20) Congest.| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) 0.12%[], []0.01%[],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 418--418
+[]|[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) 0.11%[], []0.1%[],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 423--423
+[]|[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) 0.39%[], []0.01%[],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 428--428
+[]|[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) 0.31%[], []0.15%[],
+ []
+
+
+Overfull \hbox (63.68178pt too wide) in paragraph at lines 409--432
+ [][] 
+ []
+
+<images/Exp1.png, id=129, 629.35126pt x 418.56375pt>
 File: images/Exp1.png Graphic file (type png)
 <use images/Exp1.png>
-Package pdftex.def Info: images/Exp1.png  used on input line 403.
+Package pdftex.def Info: images/Exp1.png  used on input line 458.
 (pdftex.def)             Requested size: 253.14749pt x 168.36137pt.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 403--404
+Overfull \hbox (12.0pt too wide) in paragraph at lines 458--459
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 405.
+Class acmart Warning: A possible image without description on input line 460.
+
+[3.3 <./images/Subspace_projection_new2.png>]
+
+LaTeX Warning: Reference `Sec:Realdiv' on page 4 undefined on input line 478.
 
 
-Underfull \vbox (badness 3907) has occurred while \output is active []
-
- [3.3 <./images/Subspace_projection_new2.png>]
-
-LaTeX Warning: Reference `Sec:Realdiv' on page 4 undefined on input line 423.
+LaTeX Warning: Reference `determ-metric' on page 4 undefined on input line 522.
 
 
-LaTeX Warning: Reference `determ-metric' on page 4 undefined on input line 467.
-
-
-<images/HTTP_comp_crop.png, id=131, 485.56406pt x 563.10374pt>
+[4.4 <./images/HTTP_ex.png> <./images/Exp1.png>]
+<images/HTTP_comp_crop.png, id=160, 485.56406pt x 563.10374pt>
 File: images/HTTP_comp_crop.png Graphic file (type png)
 <use images/HTTP_comp_crop.png>
-Package pdftex.def Info: images/HTTP_comp_crop.png  used on input line 477.
+Package pdftex.def Info: images/HTTP_comp_crop.png  used on input line 532.
 (pdftex.def)             Requested size: 227.83119pt x 264.21199pt.
 
-Class acmart Warning: A possible image without description on input line 479.
+
+Class acmart Warning: A possible image without description on input line 534.
 
 
-Underfull \vbox (badness 3907) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4.4 <./images/Exp1.png> <./images/HTTP_comp_crop.png>]
-LaTeX Font Info:    Try loading font information for T1+zi4 on input line 792.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5.5 <./images/HTTP_comp_crop.png>]
+LaTeX Font Info:    Try loading font information for T1+zi4 on input line 847.
 
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\inconsolata\t1zi4.
 fd"
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 9.0pt on input line 792.
+(Font)              scaled to size 9.0pt on input line 847.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1600,69 +1641,75 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [5.5]
+ [6.6]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 850.
+surrounding objects on input line 905.
 
-(Short_DetGen.bbl
-Underfull \vbox (badness 7486) has occurred while \output is active []
-
-)
-
-Package natbib Warning: There were undefined citations.
-
+(Short_DetGen.bbl)
 
 Class acmart Warning: Some images may lack descriptions.
 
-
-Package balance Warning: You have called \balance in second column
-(balance)                Columns might not be balanced.
-
-[6.6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 865.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 865.
+[7.7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 920.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 920.
  (Short_DetGen.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 865.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 865.
-Package rerunfilecheck Info: File `Short_DetGen.out' has not changed.
-(rerunfilecheck)             Checksum: 8DFC4294093DDA2C6A89E0C338611BE4;3338.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 920.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 920.
 
+
+Package rerunfilecheck Warning: File `Short_DetGen.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Short_DetGen.out':
+(rerunfilecheck)             Before: 2C0449251CBCA7BC605C1503BD73D8E8;3690
+(rerunfilecheck)             After:  D34E5514E3D467EB4DC5979BFB76827A;3690.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 19928 strings out of 492970
- 304729 string characters out of 3126595
- 429000 words of memory out of 3000000
- 22929 multiletter control sequences out of 15000+200000
- 153068 words of font info for 286 fonts, out of 3000000 for 9000
+ 19927 strings out of 492970
+ 304604 string characters out of 3126595
+ 433003 words of memory out of 3000000
+ 22931 multiletter control sequences out of 15000+200000
+ 157236 words of font info for 278 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,11n,94p,1635b,449s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/inconsolata
-/i4-t1-4.enc}{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/
-libertine/lbtn_oexx6f.enc}{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/enc/dvips/libertine/lbtn_25tcsq.enc}{C:/Users/henry/AppData/Local/Programs/M
-iKTeX 2.9/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Users/henry/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Users/henr
-y/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{
-C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn
-_nh77jq.enc}<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
-c/inconsolata/Inconsolata-zi4r.pfb><C:/Users/henry/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/newtx/LibertineMathMI.pfb><C:/Users/henry/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/newtx/LibertineMathMI7.pfb><C:/Users/h
-enry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinBiolinum
-T.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libe
-rtine/LinBiolinumTB.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/public/libertine/LinLibertineT.pfb><C:/Users/henry/AppData/Local/Program
-s/MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/henry/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineTI.pfb
-><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/newtx/txs
-ys.pfb>
-Output written on Short_DetGen.pdf (6 pages, 650388 bytes).
+ 60i,11n,94p,1635b,451s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{table.caption.6} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.5} has been referenced but does not 
+exist, replaced by a fixed one
+
+{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/inconsolata/i
+4-t1-4.enc}{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/li
+bertine/lbtn_oexx6f.enc}{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts
+/enc/dvips/libertine/lbtn_25tcsq.enc}{C:/Users/henry/AppData/Local/Programs/MiK
+TeX 2.9/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Users/henry/AppData/Local
+/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Users/henry/
+AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{C:
+/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_n
+h77jq.enc}<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
+inconsolata/Inconsolata-zi4r.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/newtx/LibertineMathMI.pfb><C:/Users/henry/AppData/Local/
+Programs/MiKTeX 2.9/fonts/type1/public/newtx/LibertineMathMI7.pfb><C:/Users/hen
+ry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinBiolinumT.
+pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libert
+ine/LinBiolinumTB.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/libertine/LinBiolinumTI.pfb><C:/Users/henry/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Users/henry/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineTB.pfb><C
+:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/Li
+nLibertineTI.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
+public/newtx/txsys.pfb>
+Output written on Short_DetGen.pdf (7 pages, 698856 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 49 named destinations out of 1000 (max. 500000)
- 46241 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 253 PDF objects out of 1000 (max. 8388607)
+ 55 named destinations out of 1000 (max. 500000)
+ 50350 words of extra memory for PDF output out of 51595 (max. 10000000)
 
