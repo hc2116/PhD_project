@@ -957,6 +957,106 @@ pA <- ggplot(df1,aes(x=x,y=y,color=Label))+
   xlim(-5,4.5)+ylim(-4.5,4)
 pA
 
+####################################################################################
+# Paket sequence plots
+# Plot Detgen
+####################################################################################
+
+Packets <- read.csv("../Desktop/SQL_traffic.txt")
+
+xx=unique(Packets$SPort)
+for(Sport in xx){
+  print(Sport)
+  print(dim(Packets[Packets$SPort==Sport,]))
+}
+
+
+Packets <- read.csv("../Desktop/firefox.txt")
+xx=unique(Packets$SPort)
+for(Sport in xx){
+  aa=dim(Packets[Packets$SPort==Sport,])
+  bb=dim(Packets[Packets$SPort==Sport&(Packets$Flag=="R"|Packets$Flag=="RA"),])
+  if(bb[1]>-1&aa[1]>300){
+    print(Sport)
+    print(aa)
+    print(bb)
+  }
+}
+
+
+require(ggplot2)
+Packets <- read.csv("../Desktop/firefox.txt")
+Packet=Packets[Packets$SPort=="58496",]
+Packets=Packets[1:800,]
+
+IAT=Packets$Time
+IAT=IAT-IAT[1]#+rep(cumsum(cumsum(rep(0.00002,len()))),3)
+#IAT=IAT-IAT[1]+rep(cumsum(cumsum(rep(0.00002,18))),3)
+
+df3 <- data.frame(Flag=Packets$Flag,
+                  Direction=Packets$Dir,
+                  xmax=IAT,
+                  xmin=IAT+0.00028,
+                  ymin=-0.4*sqrt(Packets$Size),
+                  ymax=+0.4*sqrt(Packets$Size))
+
+
+Exp_times <- c(0.2,0.202,0.25,0.202)
+Phases <- c("Retransmission 1", "Retransmission 1","Retransmission 2","Retransmission 2")
+df3$Transmis <- "Conn. estab."
+
+df4 <- data.frame(xmin=df3$xmin)
+LSTM_activation <- NULL
+df4$Direction="LSTM activation"
+
+Exp_times <- c(0,0.08,0.09,0.1,0.19,0.195,0.21,0.4)
+Phases <- c("Conn. estab.","Initial transfer negotiation","Data transfer", "SQL injection attempt",
+            "Data transfer","Retransmission 1", "Data transfer" )
+
+Means=c(0.1,0.1,0.1,-0.1,-0.3,0.2,0.2,-0.3)*4
+SDs=c(0.01,0.01,0.01,0.01,0.05,0.01,0.01,0.01)
+
+for(i in 1:length(Exp_times[-1])){
+  print(Exp_times[i])
+  df3[df3$xmin<Exp_times[i+1]&df3$xmin>=Exp_times[i],]$Transmis=Phases[i]
+  N <- length(df3[df3$xmin<Exp_times[i+1]&df3$xmin>=Exp_times[i],]$Transmis)
+  LSTM_activation <- c(LSTM_activation,
+                       rnorm(N,mean=0.000,sd=SDs[i])+rep(Means[i]/N,N))
+  
+}
+df4$LSTM_activation <- cumsum(LSTM_activation)
+df4$Transmis <- df3$Transmis
+
+Ticks=c(0,500,5000,10000,30000)
+plot_x <- ggplot(df3)+
+#  geom_ribbon(aes(x=xmin,ymin=50,ymax=-50,fill=Transmis),alpha=0.3)+
+  geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax,colour=Flag,fill=Flag), size=0.5)+
+  #geom_line(data=df4,aes(x=xmin,y=LSTM_activation))+
+  facet_grid(Direction ~ .,scales = "free",space='free') + 
+  theme_bw()+
+  scale_y_continuous(breaks = c(-0.4*sqrt(rev(Ticks)),0.4*sqrt(Ticks)),labels=c(-rev(Ticks),Ticks))+
+  labs(title="DetGen - HTTP connection comparison",
+       y ="Packet Size", x = "Time [s]")
+#  theme(legend.position = "none")
+plot_x
+
+plot_x2 <- ggplot(df4)+
+  geom_line(aes(x=xmin,y=LSTM_activation))+
+  geom_ribbon(aes(x=xmin,ymin=1.5,ymax=-1.5,fill=Transmis),alpha=0.3)+
+  facet_grid(Direction ~ .,scales = "free",space='free') + 
+  labs(title=element_blank(),
+       y ="LSTM activation", x = "Time [s]")+
+  theme_bw()+
+  theme(legend.position = "none")
+
+require(cowplot)
+plot_grid(plot_x, plot_x2,nrow = 2,rel_heights  = c(2.1,1),align = 'v')
+  
+    
+#plot_x
+plot_detgen= plot_x + theme(legend.position = "none")
+
+
 
 
 ####################################################################################

@@ -84,6 +84,50 @@ def Packetvector(filename):
             return IATs,Sizes,Flags,Dirs
 
 
+
+def Packetvector2(filename,outputfile,Port):
+    #pingpackets = rdpcap(filename)
+    pingpackets = PcapReader(filename)
+    #Compstats=open(outputfilename,"w")
+    Pktnumber=0
+#    N=40
+    IATs=[]
+    Sizes=[]
+    Flags=[]
+    Dirs=[]
+    f = open(outputfile, "w")
+    f.write("SPort,DPort,Time,Size,Flag,Dir\n")
+    
+    for line in pingpackets:
+        
+        if line.name=="Ethernet":
+            line=line.payload
+        
+        packettime=line.time
+        sport,dport=payloadchecker(line)
+        if sport==False:
+                continue
+        if dport==str(Port):
+            Dir="Forward"
+            Sport=sport
+            Dport=dport
+        elif sport==str(Port):
+            Dir="Backward"
+            Sport=dport
+            Dport=sport
+        else:
+            continue
+        Pktnumber+=1
+        
+        Byte=int(line.len)
+        Flag=str(line.payload.flags)
+        f.write(str(Sport)+","+str(Dport)+","+str(packettime)+","+str(Byte)+","+str(Flag)+","+str(Dir)+"\n")
+    f.close()
+    return IATs,Sizes,Flags,Dirs
+
+
+
+
 filename="Desktop/PhD_project/dump-050-vsftpd-server-2019-08-02_11-02-33-sc6-1.pcap"
 
 filename1="Desktop/Ubuntu_Files/dump-090-sshd-client-sc1-2020-10-05_19-05-41-1.pcap"
@@ -99,6 +143,21 @@ filenames=[filename4,filename5,filename6]
 
 filename1="Desktop/Ubuntu_Files/dump-050-vsftpd-client-2020-10-02_17-35-18-sc1-1.pcap"
 filename2="Desktop/Ubuntu_Files/dump-050-vsftpd-server-2020-10-02_17-35-18-sc1-1.pcap"
+
+filename1="Desktop/Ubuntu_Files/dump-150-attacker-2021-01-07_12-59-52-1.pcap"
+
+
+filename1="Desktop/Ubuntu_Files/dump-150-attacker-2021-01-07_12-59-52-1.pcap"
+IATs,Sizes,Flags,Dirs=Packetvector2(filename1,"Desktop/SQL_traffic.txt",80)
+
+filename1="Desktop/Ubuntu_Files/dump-150-sql-2021-01-07_15-54-03-1.pcap"
+IATs,Sizes,Flags,Dirs=Packetvector2(filename1,"Desktop/SQL_traffic3.txt",3306)
+
+filename1="Desktop/Ubuntu_Files/firefox.pcapng"
+IATs,Sizes,Flags,Dirs=Packetvector2(filename1,"Desktop/firefox.txt",443)
+
+
+
 filenames=[filename1,filename2]
 
 IATss=[]
