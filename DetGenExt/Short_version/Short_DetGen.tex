@@ -319,14 +319,30 @@ In the following experiments, we rely on DetGen to generate traffic data with co
 
 Extensive ground-truth labels on different traffic influences are arguably the most important contribution of the DetGen framework. We demonstrate the benefits of this additional information for model-understanding on two examples using a traffic classification model by Hwang et al. \cite{hwang2019lstm} and a \textcolor{red}{highly regarded} anomaly detection model by Casas et al. \cite{casas2012unsupervised}.
 
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{images/LSTM_exp.png}
+\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold}\label{fig:LSTM_exp}
+\end{figure}
+
 \subsection{Improving traffic separation with congestion level information}
 %Possible title: \textbf{Exploring the effect of rare events to model performance}
 Our first use-case looks at how descriptive ground truth information on traffic characteristics can improve a traffic classification through the analysis of data separation in dependence of different traffic features. For this, we use a recent traffic classification model by Hwang et al. \cite{hwang2019lstm} as an example, which aims at distinguishing various types of malicious activity from benign traffic.
 The model classifies connections on a packet-level using an LSTM-network\footnote{Long-short-term-memory neural network}, and is claimed to achieve detection and false-positive (FP) rates of \textbf{99.7\%} and \textbf{0.03\%} respectively. 
 
+
 In our use-case, we train the model on a set of different HTTP-activities in order to detect SQL-injections. Rather than providing an accurate and realistic detection setting, this use-case shows how traffic information can be linked to model failures and slumping performance. We use HTTP-traffic from the CAIDA data as background traffic (85\% of connections) and the provided SQL-injection attack traffic (7.5\%) as well as different HTTP-activities for analysis (7.5\%) using the DetGen-framework. In total, we use 50,000 connections for training the model, or slightly less than 2 million packets. 
 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{images/LSTM_activation.png}
+\caption{LSTM-output activation in dependence of connection phases.}\label{fig:LSTM_act}
+\end{figure}
+
 The initially trained model overall performs relatively well, with an AUC-score\footnote{a measure describing the overall class separation of the model} of \textbf{0.981}, or a detection and false positive rate\footnote{tuned for the geometric mean} of \textbf{0.96\%} and \textbf{2.7\%}. However, we would ideally like to improve these rates to both detect more SQL-injections and retain a lower false-positive rate. We therefore begin to explore which type of connections are misclassified most. \textcolor{red}{potentially expand here to include influence of other traffic characteristics...}. For this, we rely on the various ground-truth information provided by DetGen for both the included malicious traffic as well as part of the benign traffic, that allow us to relate classification scores to simulated traffic characteristics. Looking at the left panel of Figure \ref{fig:LSTM_exp}, which depicts classification scores in dependence of the simulated network congestion, we learn that while classification scores are well separated for lower congestion, increased latency in a connection leads to a narrowing of the classification scores, especially for SQL-injection traffic. Since there are no classification scores that reach far in the opposing area, we conclude that congestion simply makes the model lose predictive certainty. A plausible cause would be that the increased amount of retransmission sequences decreases the overall sequential coherence for the model, i.e. that the LSTM-model loses context too quickly when processing retransmission sequences. 
+
+To examine the exact effect of retransmission sequences on the model output, we generate two connections with the exact same characteristics except that one connection is subject to moderate packet loss and reordering while the other is not. We then compare how the LSTM-output activation is affected by retransmission sequences. Fig. \ref{fig:LSTM_act} depicts the evolution the LSTM-output layer activation in dependence of difference connection phases. As visible, initially the model begins to view the connection as benign when processing regular traffic, until the SQL-injection is performed. The model then quickly adjusts and provides a malicious classification after processing the injection phase and the subsequent data transfer. The negative output activation is however quickly depleted once the model processes a retransmission phase, and is afterwards not able to relate the still ongoing data transfer to the injection phase. When comparing this to the connection without retransmissions, we do not encounter this depletion effect, instead the negative activation persists after the injection phase.
 
 We try to correct the existing model with a simple fix by excluding retransmission sequences from the model input data, which leads to significantly better classification results during network latency, as visible in the right panel of Figure \ref{fig:LSTM_exp}. SQL-injection scores are now far-less affected by congestion while scores for benign traffic are also less affected, albeit to a smaller degree.
 The overall AUC-score for the model improves to \textbf{0.997} while tuned detection rates and false positives improved to \textbf{99.1\%} and \textbf{0.045\%}.
@@ -339,11 +355,6 @@ The overall AUC-score for the model improves to \textbf{0.997} while tuned detec
 %\paragraph{Plan}
 %Implement the LSTM-model in the paper "An LSTM-Based Deep Learning Approach forClassifying Malicious Traffic at the Packet Level", train it on our data (both benign and attack traffic). Extract labels of traffic responsible for false-positives, show how much they are clustered around particular activities (potentially rare activities) compared to the overall traffic. Give potential reason for this. Generate a new dataset with increased amounts of the activities responsible for false positivies. Demonstrate that false-positives decrease.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{images/LSTM_exp.png}
-\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold}\label{fig:LSTM_exp}
-\end{figure}
 
 \subsection{Refining the notion of benign traffic for anomaly detection}
 
@@ -351,6 +362,33 @@ Our second use-case looks at how ground-truth traffic information can help produ
 The model takes a number of flow summary statistics as input, which include such as packet size and interarrival statistics, number of idle and transfer periods, flag occurrencies etc. as input and projects it into different subspaces, where the connections are clustered. Anomalous outliers are detected by accumulating the Mahalanobis-distance from the cluster centers from each subspace. The identified clusters therefore serve as structural enclosures of benign behaviour, with the cluster borders acting as separators to abnormal behaviours. Benign traffic should ideally be distributed evenly around the cluster centres to allow a tight borders and good separation from actual abnormal behaviour.
 
 Unstructured datasets such as the CAIDA traffic traces \textcolor{red}{assumably} contain too much abnormal behaviour to train an anomaly-detection model, which is why we train the model on benign traffic from the CICIDS-17 intrusion detection dataset (80\%). Again, we also add traffic generated with the DetGen tool (HTTP, FTP, SSH, and SMTP, 20\%) using a wide spectrum of settings for examination purposes. Attack data for the evaluation was again provided through the CICIDS-17 dataset, and includes access attacks such as SQL-injections, Heartbleed, Brute-Force attacks etc. We  train the model with in total 15,000 connections.
+
+
+\begin{table}
+\centering
+\begin{tabular}{p{1cm}|p{2.2cm}|p{1.5cm}|p{1.6cm}}
+Congest.&HTTP&File-Sync & Mirai-C\&C\\ \hline
+Low& Get-req. NGINX&  Two hosts & Command 1 \\ \hline
+&\footnotesize \textcolor{myred}{0.20\%}, \textcolor{mygreen}{0.03\%}, \textcolor{myblue}{0.18\%}&
+ \footnotesize \textcolor{myred}{0.12\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.19\%}&
+ \footnotesize \textcolor{myred}{0.21\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.22\%}\\ \hline \hline
+Low&Multi-req. NGINX & Four hosts & Command 2\\ \hline
+&\footnotesize \textcolor{myred}{0.27\%}, \textcolor{mygreen}{0.30\%}, \textcolor{myblue}{0.17\%}&
+\footnotesize \textcolor{myred}{0.11\%}, \textcolor{mygreen}{0.1\%}, \textcolor{myblue}{0.24\%}&
+\footnotesize \textcolor{myred}{0.19\%}, \textcolor{mygreen}{0.02\%}, \textcolor{myblue}{0.17\%}\\ \hline \hline
+High& Post-req. Apache &Two hosts & Command 3\\ \hline
+&\footnotesize \textcolor{myred}{0.41\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.29\%}&
+ \footnotesize \textcolor{myred}{0.39\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.21\%}&
+ \footnotesize \textcolor{myred}{0.29\%}, \textcolor{mygreen}{0.02\%}, \textcolor{myblue}{0.23\%}\\ \hline \hline
+High& Multi-req. Apache & Four hosts & Command 4\\ \hline
+&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.39\%}, \textcolor{myblue}{0.20\%}&
+ \footnotesize \textcolor{myred}{0.31\%}, \textcolor{mygreen}{0.15\%}, \textcolor{myblue}{0.38\%}&
+ \footnotesize \textcolor{myred}{0.24\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.32\%}\\ \hline \hline
+\end{tabular}
+\caption{Outline of the traffic settings used for the determinism evaluation, along with the average dissimilarity percentages for each setting (red=overall connection similarity, green=connection sequence similarity, blue=packet sequence similarity)}\label{Tab:Dataset}
+\end{table}
+
+
 
 %at the effect of sudden connection terminations on an anomaly-detection model by Casas et al. \cite{casas2012unsupervised}. 
 
@@ -381,157 +419,157 @@ The newly trained model now projects "Sudden termination" connections into a dif
 %\textcolor{red}{insert results}
 
 
-
-\subsection{\textcolor{red}{Empirical} evaluation of traffic sequence embeddings}
-
-Recently, the embedding of sequences into a vectorised representation has gained traction in the \textcolor{red}{network science community} \cite{gonzalez2017net2vec,lin2019generating}. Embeddings are \textcolor{red}{(often low-dimensional)} vectors that aim to characterise a sequence through its position in a vector space. This numerical representation can then be used in various ways, such  as to classify or cluster traffic, profile hosts or users, or generate new artificial traffic traces. 
-
-Since the embedded position of a traffic relative to similar or dissimilar traffic  crucial \textcolor{red}{...}
-
-In this use-case, we are examining the Net2Vec-model by Gonzalez et al. \cite{gonzalez2017net2vec} and the corresponding embeddings it generates.
-
-\subsubsection{Position consistency evaluation}
-
-It is absolutely crucial for a represenation model that sequences with the same characteristics receive a similar embedding, i.e. traffic traces that correspond to the same activity and settings should be projected very close together. 
-
-To do so, we generate traffic from settings within which all controllable influence factors are held constant. Traffic samples from each setting should then be similar up to small deviations in IATs, additional ACK-packets etc., such as depicted in Fig. \ref{Fig:HTTP_ex}. \textcolor{red}{The different traffic sample groups are listed in Table \ref{Tab:Dataset}.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.45\textwidth]{images/HTTP_ex.png}
-\caption{Packet-sequence structure similarity comparison for HTTP-activity under constant settings generated by the DetGen framework (left) and in a regular setting (right). Colours indicate packet flags while the height of the packets indicates their size. Note that in addition to more differences in the timing, the packet sizes vary more in the regular setting. }\label{Fig:HTTP_ex}
-\end{figure}
-
-We now examine the positions that 
-
-\begin{table}
-\centering
-\begin{tabular}{p{1cm}|p{1cm}|p{2.7cm}|p{1.5cm}|p{2.7cm}}
-Label &Congest.&HTTP&File-Sync & Mirai-C\&C\\ \hline
-A&Low& Get-req. NGINX&  Two hosts & Command 1 \\ \hline
-DetGen &&\footnotesize \textcolor{myred}{0.20\%}, \textcolor{mygreen}{0.03\%}, \textcolor{myblue}{0.18\%}&
- \footnotesize \textcolor{myred}{0.12\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.19\%}&
- \footnotesize \textcolor{myred}{0.21\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.22\%}\\ \hline \hline
-%VM & &\footnotesize \textcolor{myred}{1.5\%}, \textcolor{mygreen}{3.8\%}, \textcolor{myblue}{1.3\%}& \footnotesize \textcolor{myred}{0.9\%}, \textcolor{mygreen}{1.6\%}, \textcolor{myblue}{0.38\%}& \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.8\%}, \textcolor{myblue}{0.7\%}\\ \hline \hline
-B& Low&Multi-req. NGINX & Four hosts & Command 2\\ \hline
-DetGen &&\footnotesize \textcolor{myred}{0.27\%}, \textcolor{mygreen}{0.30\%}, \textcolor{myblue}{0.17\%}&
-\footnotesize \textcolor{myred}{0.11\%}, \textcolor{mygreen}{0.1\%}, \textcolor{myblue}{0.24\%}&
-\footnotesize \textcolor{myred}{0.19\%}, \textcolor{mygreen}{0.02\%}, \textcolor{myblue}{0.17\%}\\ \hline \hline
-%VM & &\footnotesize \textcolor{myred}{1.3\%}, \textcolor{mygreen}{2.9\%}, \textcolor{myblue}{0.9\%}& \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{4.9\%}, \textcolor{myblue}{1.2\%}& \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.1\%}, \textcolor{myblue}{0.6\%}\\ \hline \hline
-C& High& Post-req. Apache &Two hosts & Command 3\\ \hline
-DetGen &&\footnotesize \textcolor{myred}{0.41\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.29\%}&
- \footnotesize \textcolor{myred}{0.39\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.21\%}&
- \footnotesize \textcolor{myred}{0.29\%}, \textcolor{mygreen}{0.02\%}, \textcolor{myblue}{0.23\%}\\ \hline \hline
-%VM & &\footnotesize \textcolor{myred}{1.9\%}, \textcolor{mygreen}{1.3\%}, \textcolor{myblue}{1.5\%}& \footnotesize \textcolor{myred}{1.3\%}, \textcolor{mygreen}{1.4\%}, \textcolor{myblue}{1.2\%}& \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.3\%}, \textcolor{myblue}{0.9\%}\\ \hline \hline
-D& High& Multi-req. Apache & Four hosts & Command 4\\ \hline
-DetGen &&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.39\%}, \textcolor{myblue}{0.20\%}&
- \footnotesize \textcolor{myred}{0.31\%}, \textcolor{mygreen}{0.15\%}, \textcolor{myblue}{0.38\%}&
- \footnotesize \textcolor{myred}{0.24\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.32\%}\\ \hline \hline
-%VM & &\footnotesize \textcolor{myred}{1.9\%}, \textcolor{mygreen}{4.2\%}, \textcolor{myblue}{1.4\%}& \footnotesize \textcolor{myred}{1.6\%}, \textcolor{mygreen}{4.8\%}, \textcolor{myblue}{1.4\%}& \footnotesize \textcolor{myred}{0.9\%}, \textcolor{mygreen}{1.2\%}, \textcolor{myblue}{0.9\%}\\ \hline \hline
-\end{tabular}
-\caption{Outline of the traffic settings used for the determinism evaluation, along with the average dissimilarity percentages for each setting (red=overall connection similarity, green=connection sequence similarity, blue=packet sequence similarity)}\label{Tab:Dataset}
-\end{table}
-
-
-
-\subsubsection{Similarity evaluation}
-
-
-
-
-\section{Fidelity confirmation experiments}\label{Sec:Experiments}
-
-%This section is important to demonstrate that our data is valid and overcomes the difficulties entailed with synthetic data generation. Cordero et al. have proposed some more simple test that we can refer to first
-
-%\textcolor{red}{Question to be answered}: What requirements are there for the additional data, program logs and system logs, that we collect? Should we put less emphasise on these data sources in general if we are not able to perform these tests, and refer to them in future work? I am not aware of any papers that discuss these requirements in a similar way. 
-
-
-%\subsection{Traffic similarity metrics for determinism and realism evaluation}
-\subsection{Traffic control and generation determinism}
-We now assess the claim of control over the outlined traffic influence factors, and how similar traffic generated with the same settings looks like. We also demonstrate that this level of control is not achievable on regular VM-based NIDS-traffic-generation setup.
-
-To do so, we generate traffic from settings within which all controllable influence factors are held constant, both with DetGen framework and with a regular VM-based setup. Traffic samples from each setting should then be as similar as possible to provide sufficient experimental determinism. To measure how similar two traffic samples are, we devise a set of similarity metrics that measure dissimilarity of overall connection characteristics, connection sequence characteristics, and packet sequence characteristics:
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{images/Exp1.png}
-\caption{Comparison of HTTP-group dissimilarity scores for the DetGen-framework and a regular VM-setup, on a logarithmic scale. Samples from the VM-setting are consistently more dissimilar, in particular for flow-based metrics, where the average dissimilarity is more than 30 times higher than for the DetGen setting.}\label{Fig:determ-metric}
-\end{figure}
-
-
-%To do so, we require a similarity metric that measures how similar or dissimilar two traffic traces are. We want to compare traffic similarity on three ...
-%we compare our framework against a setup on a virtual machine to show that we provide deterministic control that is not achievable on a common setup. 
-%For that, we measure traffic similarity using a set of similarity metrics on traffic both from our and the comparison setup. The traffic is subject to varying degrees of influence from the above described impact factors. We show that when all factors are held constant, our traffic is much more similar than on a regular setup.
-
-%We should also demonstrate how difficult it is to match all flow events to specific events (I am still unsure how), and how often you get system background events (very straightforward using flow counting and port entropy).
-
-%Common setup: Network of VMs with each VM representing one host in a regular network. Multiple services with scheduled scripted activities running on a VM. Traffic captured at router or network interface. 
-
-\begin{itemize}
-\item \textbf{Overall connection similarity} We collect 80 flow summary statistics (IAT and packet size, TCP window sizes, flag occurrences, burst and idle periods). We compress this information using PCA to 8 significant dimensions, and measure the cosine similarity between connections, which is also used in general traffic classification \cite{aun2017review}.
-\item \textbf{Connection sequence similarity} 
-To quantify the similarity of a sequence of connections in a retrieval window, we use the following features to describe the window, such as used by Yen et al. \cite{yen2009browser} for application classification: The number of connections, average and max/min flow duration and size, number of distinct IP and ports addresses contacted. We then again measure the cosine similarity based on these features between different windows. 
-\item \textbf{Packet sequence similarity} To quantify the similarity of packet sequences in traffic captures, we assign packets a discrete state according to their flags, direction, sizes, and interarrival times (\textcolor{red}{insert citation}). We then calculate the Markovian probability of each packet state conditional on the previous packet. We do this for sequences of 15 packets at the start, the middle, and the end of a connection, and use the average sequence likelihood of each group as a similarity measure. If connections are completely similar, the conditional probabilities and thus the likelihoods should converge to one.
-\end{itemize}
-
-We normalise all dissimilarity scores by dividing them by the maximum dissimilarity score measured for each traffic type in our experiment in Section \ref{Sec:Realdiv}, so that the reader can relate the measured scores to the traffic type.
-
-
-
-\begin{table*}
-\centering
-\begin{tabular}{p{1cm}|p{3.2cm}|p{2.7cm}|p{2.7cm}|p{2.7cm}}
-Label &Overall Setting&HTTP&File-Sync & Mirai-C\&C\\ \hline
-A&Low congest., high load& Get-req. NGINX&  Two computers & Command seq. 1 \\ \hline
-DetGen &&\footnotesize \textcolor{myred}{0.20\%}, \textcolor{mygreen}{0.03\%}, \textcolor{myblue}{0.18\%}&
- \footnotesize \textcolor{myred}{0.12\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.19\%}&
- \footnotesize \textcolor{myred}{0.21\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.22\%}\\ \hline \hline
-VM & &\footnotesize \textcolor{myred}{1.5\%}, \textcolor{mygreen}{3.8\%}, \textcolor{myblue}{1.3\%}&
- \footnotesize \textcolor{myred}{0.9\%}, \textcolor{mygreen}{1.6\%}, \textcolor{myblue}{0.38\%}&
- \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.8\%}, \textcolor{myblue}{0.7\%}\\ \hline \hline
-B& Low congest., no load &Multi-req. NGINX & Four computers & Command seq. 2\\ \hline
-DetGen &&\footnotesize \textcolor{myred}{0.27\%}, \textcolor{mygreen}{0.30\%}, \textcolor{myblue}{0.17\%}&
-\footnotesize \textcolor{myred}{0.11\%}, \textcolor{mygreen}{0.1\%}, \textcolor{myblue}{0.24\%}&
-\footnotesize \textcolor{myred}{0.19\%}, \textcolor{mygreen}{0.02\%}, \textcolor{myblue}{0.17\%}\\ \hline \hline
-VM & &\footnotesize \textcolor{myred}{1.3\%}, \textcolor{mygreen}{2.9\%}, \textcolor{myblue}{0.9\%}&
- \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{4.9\%}, \textcolor{myblue}{1.2\%}&
- \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.1\%}, \textcolor{myblue}{0.6\%}\\ \hline \hline
-C& High congest., no load & Post-req. Apache &Two computers & Command seq. 3\\ \hline
-DetGen &&\footnotesize \textcolor{myred}{0.41\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.29\%}&
- \footnotesize \textcolor{myred}{0.39\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.21\%}&
- \footnotesize \textcolor{myred}{0.29\%}, \textcolor{mygreen}{0.02\%}, \textcolor{myblue}{0.23\%}\\ \hline \hline
-VM & &\footnotesize \textcolor{myred}{1.9\%}, \textcolor{mygreen}{1.3\%}, \textcolor{myblue}{1.5\%}&
- \footnotesize \textcolor{myred}{1.3\%}, \textcolor{mygreen}{1.4\%}, \textcolor{myblue}{1.2\%}&
- \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.3\%}, \textcolor{myblue}{0.9\%}\\ \hline \hline
-D& High conges., high load & Multi-req. Apache & Four computers & Command seq. 4\\ \hline
-DetGen &&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.39\%}, \textcolor{myblue}{0.20\%}&
- \footnotesize \textcolor{myred}{0.31\%}, \textcolor{mygreen}{0.15\%}, \textcolor{myblue}{0.38\%}&
- \footnotesize \textcolor{myred}{0.24\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.32\%}\\ \hline \hline
-VM & &\footnotesize \textcolor{myred}{1.9\%}, \textcolor{mygreen}{4.2\%}, \textcolor{myblue}{1.4\%}&
- \footnotesize \textcolor{myred}{1.6\%}, \textcolor{mygreen}{4.8\%}, \textcolor{myblue}{1.4\%}&
- \footnotesize \textcolor{myred}{0.9\%}, \textcolor{mygreen}{1.2\%}, \textcolor{myblue}{0.9\%}\\ \hline \hline
-\end{tabular}
-\caption{Outline of the traffic settings used for the determinism evaluation, along with the average dissimilarity percentages for each setting (red=overall connection similarity, green=connection sequence similarity, blue=packet sequence similarity)}\label{Tab:Dataset}
-\end{table*}
-
-
-%\subsubsection{Determinism test}
-As a comparison, we use a regular VM-based setup, were applications are hosted directly on two VMs that communicate over a virtual network bridge that is subject to the same NetEm effects as DetGen. To compare the amount of traffic control and the corresponding generative determinism of DetGen and the VM-setup, we generate three different types of traffic (HTTP, file-syncing, and botnet) from four different settings, within which all generative parameters are kept constant. For each setting and traffic type, we generate 100 traffic samples and apply the described dissimilarity measures to 100 randomly drawn pairs sample pairs. Fig. \ref{Fig:determ-metric} depicts the calculated dissimilarity scores for DetGen and the VM-setup, while Table \ref{Tab:Dataset} describes the different settings and the corresponding average dissimilarity scores.
-
-As visible, the scores yield less than $1\%$ of the dissimilarity observed on average for each protocol. Scores are especially low when compared to traffic groups collected in the VM setting, which is also visible in Fig. \ref{determ-metric} for the HTTP-traffic. Dissimilarity scores for the VM-setting are most notably higher for the flow-metric, caused by additional background flows frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
-
-
-%We now apply the described similarity measures to different settings of traffic traces to evaluate the \textcolor{red}{determinism} of our data generation process. We vary the control settings of the described influence factors, described in Section \ref{Sec:Impactfactors}, for each group, but keep them constant within each group. We use three different traffic types (HTTP, file-syncing (port 8384), and botnet), for which we both perform different application-specific activities and create different overall settings. 
-
-%We furthermore perform the same HTTP-activities on two regular VMs without containerisation, but with the same settings.
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.45\textwidth]{images/HTTP_comp_crop.png}
-\caption{Packet-sequence structure similarity comparison for HTTP-activity under constant settings generated by the DetGen framework (left) and in a regular setting (right). Colours indicate packet flags while the height of the packets indicates their size. Note that in addition to more differences in the timing, the packet sizes vary more in the regular setting. }
-\end{figure}
+%
+%\subsection{\textcolor{red}{Empirical} evaluation of traffic sequence embeddings}
+%
+%Recently, the embedding of sequences into a vectorised representation has gained traction in the \textcolor{red}{network science community} \cite{gonzalez2017net2vec,lin2019generating}. Embeddings are \textcolor{red}{(often low-dimensional)} vectors that aim to characterise a sequence through its position in a vector space. This numerical representation can then be used in various ways, such  as to classify or cluster traffic, profile hosts or users, or generate new artificial traffic traces. 
+%
+%Since the embedded position of a traffic relative to similar or dissimilar traffic  crucial \textcolor{red}{...}
+%
+%In this use-case, we are examining the Net2Vec-model by Gonzalez et al. \cite{gonzalez2017net2vec} and the corresponding embeddings it generates.
+%
+%\subsubsection{Position consistency evaluation}
+%
+%It is absolutely crucial for a represenation model that sequences with the same characteristics receive a similar embedding, i.e. traffic traces that correspond to the same activity and settings should be projected very close together. 
+%
+%To do so, we generate traffic from settings within which all controllable influence factors are held constant. Traffic samples from each setting should then be similar up to small deviations in IATs, additional ACK-packets etc., such as depicted in Fig. \ref{Fig:HTTP_ex}. \textcolor{red}{The different traffic sample groups are listed in Table \ref{Tab:Dataset}.
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.45\textwidth]{images/HTTP_ex.png}
+%\caption{Packet-sequence structure similarity comparison for HTTP-activity under constant settings generated by the DetGen framework (left) and in a regular setting (right). Colours indicate packet flags while the height of the packets indicates their size. Note that in addition to more differences in the timing, the packet sizes vary more in the regular setting. }\label{Fig:HTTP_ex}
+%\end{figure}
+%
+%We now examine the positions that 
+%
+%\begin{table}
+%\centering
+%\begin{tabular}{p{1cm}|p{1cm}|p{2.7cm}|p{1.5cm}|p{2.7cm}}
+%Label &Congest.&HTTP&File-Sync & Mirai-C\&C\\ \hline
+%A&Low& Get-req. NGINX&  Two hosts & Command 1 \\ \hline
+%DetGen &&\footnotesize \textcolor{myred}{0.20\%}, \textcolor{mygreen}{0.03\%}, \textcolor{myblue}{0.18\%}&
+% \footnotesize \textcolor{myred}{0.12\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.19\%}&
+% \footnotesize \textcolor{myred}{0.21\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.22\%}\\ \hline \hline
+%%VM & &\footnotesize \textcolor{myred}{1.5\%}, \textcolor{mygreen}{3.8\%}, \textcolor{myblue}{1.3\%}& \footnotesize \textcolor{myred}{0.9\%}, \textcolor{mygreen}{1.6\%}, \textcolor{myblue}{0.38\%}& \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.8\%}, \textcolor{myblue}{0.7\%}\\ \hline \hline
+%B& Low&Multi-req. NGINX & Four hosts & Command 2\\ \hline
+%DetGen &&\footnotesize \textcolor{myred}{0.27\%}, \textcolor{mygreen}{0.30\%}, \textcolor{myblue}{0.17\%}&
+%\footnotesize \textcolor{myred}{0.11\%}, \textcolor{mygreen}{0.1\%}, \textcolor{myblue}{0.24\%}&
+%\footnotesize \textcolor{myred}{0.19\%}, \textcolor{mygreen}{0.02\%}, \textcolor{myblue}{0.17\%}\\ \hline \hline
+%%VM & &\footnotesize \textcolor{myred}{1.3\%}, \textcolor{mygreen}{2.9\%}, \textcolor{myblue}{0.9\%}& \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{4.9\%}, \textcolor{myblue}{1.2\%}& \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.1\%}, \textcolor{myblue}{0.6\%}\\ \hline \hline
+%C& High& Post-req. Apache &Two hosts & Command 3\\ \hline
+%DetGen &&\footnotesize \textcolor{myred}{0.41\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.29\%}&
+% \footnotesize \textcolor{myred}{0.39\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.21\%}&
+% \footnotesize \textcolor{myred}{0.29\%}, \textcolor{mygreen}{0.02\%}, \textcolor{myblue}{0.23\%}\\ \hline \hline
+%%VM & &\footnotesize \textcolor{myred}{1.9\%}, \textcolor{mygreen}{1.3\%}, \textcolor{myblue}{1.5\%}& \footnotesize \textcolor{myred}{1.3\%}, \textcolor{mygreen}{1.4\%}, \textcolor{myblue}{1.2\%}& \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.3\%}, \textcolor{myblue}{0.9\%}\\ \hline \hline
+%D& High& Multi-req. Apache & Four hosts & Command 4\\ \hline
+%DetGen &&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.39\%}, \textcolor{myblue}{0.20\%}&
+% \footnotesize \textcolor{myred}{0.31\%}, \textcolor{mygreen}{0.15\%}, \textcolor{myblue}{0.38\%}&
+% \footnotesize \textcolor{myred}{0.24\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.32\%}\\ \hline \hline
+%%VM & &\footnotesize \textcolor{myred}{1.9\%}, \textcolor{mygreen}{4.2\%}, \textcolor{myblue}{1.4\%}& \footnotesize \textcolor{myred}{1.6\%}, \textcolor{mygreen}{4.8\%}, \textcolor{myblue}{1.4\%}& \footnotesize \textcolor{myred}{0.9\%}, \textcolor{mygreen}{1.2\%}, \textcolor{myblue}{0.9\%}\\ \hline \hline
+%\end{tabular}
+%\caption{Outline of the traffic settings used for the determinism evaluation, along with the average dissimilarity percentages for each setting (red=overall connection similarity, green=connection sequence similarity, blue=packet sequence similarity)}\label{Tab:Dataset}
+%\end{table}
+%
+%
+%
+%\subsubsection{Similarity evaluation}
+%
+%
+%
+%
+%\section{Fidelity confirmation experiments}\label{Sec:Experiments}
+%
+%%This section is important to demonstrate that our data is valid and overcomes the difficulties entailed with synthetic data generation. Cordero et al. have proposed some more simple test that we can refer to first
+%
+%%\textcolor{red}{Question to be answered}: What requirements are there for the additional data, program logs and system logs, that we collect? Should we put less emphasise on these data sources in general if we are not able to perform these tests, and refer to them in future work? I am not aware of any papers that discuss these requirements in a similar way. 
+%
+%
+%%\subsection{Traffic similarity metrics for determinism and realism evaluation}
+%\subsection{Traffic control and generation determinism}
+%We now assess the claim of control over the outlined traffic influence factors, and how similar traffic generated with the same settings looks like. We also demonstrate that this level of control is not achievable on regular VM-based NIDS-traffic-generation setup.
+%
+%To do so, we generate traffic from settings within which all controllable influence factors are held constant, both with DetGen framework and with a regular VM-based setup. Traffic samples from each setting should then be as similar as possible to provide sufficient experimental determinism. To measure how similar two traffic samples are, we devise a set of similarity metrics that measure dissimilarity of overall connection characteristics, connection sequence characteristics, and packet sequence characteristics:
+%
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.5\textwidth]{images/Exp1.png}
+%\caption{Comparison of HTTP-group dissimilarity scores for the DetGen-framework and a regular VM-setup, on a logarithmic scale. Samples from the VM-setting are consistently more dissimilar, in particular for flow-based metrics, where the average dissimilarity is more than 30 times higher than for the DetGen setting.}\label{Fig:determ-metric}
+%\end{figure}
+%
+%
+%%To do so, we require a similarity metric that measures how similar or dissimilar two traffic traces are. We want to compare traffic similarity on three ...
+%%we compare our framework against a setup on a virtual machine to show that we provide deterministic control that is not achievable on a common setup. 
+%%For that, we measure traffic similarity using a set of similarity metrics on traffic both from our and the comparison setup. The traffic is subject to varying degrees of influence from the above described impact factors. We show that when all factors are held constant, our traffic is much more similar than on a regular setup.
+%
+%%We should also demonstrate how difficult it is to match all flow events to specific events (I am still unsure how), and how often you get system background events (very straightforward using flow counting and port entropy).
+%
+%%Common setup: Network of VMs with each VM representing one host in a regular network. Multiple services with scheduled scripted activities running on a VM. Traffic captured at router or network interface. 
+%
+%\begin{itemize}
+%\item \textbf{Overall connection similarity} We collect 80 flow summary statistics (IAT and packet size, TCP window sizes, flag occurrences, burst and idle periods). We compress this information using PCA to 8 significant dimensions, and measure the cosine similarity between connections, which is also used in general traffic classification \cite{aun2017review}.
+%\item \textbf{Connection sequence similarity} 
+%To quantify the similarity of a sequence of connections in a retrieval window, we use the following features to describe the window, such as used by Yen et al. \cite{yen2009browser} for application classification: The number of connections, average and max/min flow duration and size, number of distinct IP and ports addresses contacted. We then again measure the cosine similarity based on these features between different windows. 
+%\item \textbf{Packet sequence similarity} To quantify the similarity of packet sequences in traffic captures, we assign packets a discrete state according to their flags, direction, sizes, and interarrival times (\textcolor{red}{insert citation}). We then calculate the Markovian probability of each packet state conditional on the previous packet. We do this for sequences of 15 packets at the start, the middle, and the end of a connection, and use the average sequence likelihood of each group as a similarity measure. If connections are completely similar, the conditional probabilities and thus the likelihoods should converge to one.
+%\end{itemize}
+%
+%We normalise all dissimilarity scores by dividing them by the maximum dissimilarity score measured for each traffic type in our experiment in Section \ref{Sec:Realdiv}, so that the reader can relate the measured scores to the traffic type.
+%
+%
+%
+%\begin{table*}
+%\centering
+%\begin{tabular}{p{1cm}|p{3.2cm}|p{2.7cm}|p{2.7cm}|p{2.7cm}}
+%Label &Overall Setting&HTTP&File-Sync & Mirai-C\&C\\ \hline
+%A&Low congest., high load& Get-req. NGINX&  Two computers & Command seq. 1 \\ \hline
+%DetGen &&\footnotesize \textcolor{myred}{0.20\%}, \textcolor{mygreen}{0.03\%}, \textcolor{myblue}{0.18\%}&
+% \footnotesize \textcolor{myred}{0.12\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.19\%}&
+% \footnotesize \textcolor{myred}{0.21\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.22\%}\\ \hline \hline
+%VM & &\footnotesize \textcolor{myred}{1.5\%}, \textcolor{mygreen}{3.8\%}, \textcolor{myblue}{1.3\%}&
+% \footnotesize \textcolor{myred}{0.9\%}, \textcolor{mygreen}{1.6\%}, \textcolor{myblue}{0.38\%}&
+% \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.8\%}, \textcolor{myblue}{0.7\%}\\ \hline \hline
+%B& Low congest., no load &Multi-req. NGINX & Four computers & Command seq. 2\\ \hline
+%DetGen &&\footnotesize \textcolor{myred}{0.27\%}, \textcolor{mygreen}{0.30\%}, \textcolor{myblue}{0.17\%}&
+%\footnotesize \textcolor{myred}{0.11\%}, \textcolor{mygreen}{0.1\%}, \textcolor{myblue}{0.24\%}&
+%\footnotesize \textcolor{myred}{0.19\%}, \textcolor{mygreen}{0.02\%}, \textcolor{myblue}{0.17\%}\\ \hline \hline
+%VM & &\footnotesize \textcolor{myred}{1.3\%}, \textcolor{mygreen}{2.9\%}, \textcolor{myblue}{0.9\%}&
+% \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{4.9\%}, \textcolor{myblue}{1.2\%}&
+% \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.1\%}, \textcolor{myblue}{0.6\%}\\ \hline \hline
+%C& High congest., no load & Post-req. Apache &Two computers & Command seq. 3\\ \hline
+%DetGen &&\footnotesize \textcolor{myred}{0.41\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.29\%}&
+% \footnotesize \textcolor{myred}{0.39\%}, \textcolor{mygreen}{0.01\%}, \textcolor{myblue}{0.21\%}&
+% \footnotesize \textcolor{myred}{0.29\%}, \textcolor{mygreen}{0.02\%}, \textcolor{myblue}{0.23\%}\\ \hline \hline
+%VM & &\footnotesize \textcolor{myred}{1.9\%}, \textcolor{mygreen}{1.3\%}, \textcolor{myblue}{1.5\%}&
+% \footnotesize \textcolor{myred}{1.3\%}, \textcolor{mygreen}{1.4\%}, \textcolor{myblue}{1.2\%}&
+% \footnotesize \textcolor{myred}{1.1\%}, \textcolor{mygreen}{1.3\%}, \textcolor{myblue}{0.9\%}\\ \hline \hline
+%D& High conges., high load & Multi-req. Apache & Four computers & Command seq. 4\\ \hline
+%DetGen &&\footnotesize \textcolor{myred}{0.55\%}, \textcolor{mygreen}{0.39\%}, \textcolor{myblue}{0.20\%}&
+% \footnotesize \textcolor{myred}{0.31\%}, \textcolor{mygreen}{0.15\%}, \textcolor{myblue}{0.38\%}&
+% \footnotesize \textcolor{myred}{0.24\%}, \textcolor{mygreen}{0.0\%}, \textcolor{myblue}{0.32\%}\\ \hline \hline
+%VM & &\footnotesize \textcolor{myred}{1.9\%}, \textcolor{mygreen}{4.2\%}, \textcolor{myblue}{1.4\%}&
+% \footnotesize \textcolor{myred}{1.6\%}, \textcolor{mygreen}{4.8\%}, \textcolor{myblue}{1.4\%}&
+% \footnotesize \textcolor{myred}{0.9\%}, \textcolor{mygreen}{1.2\%}, \textcolor{myblue}{0.9\%}\\ \hline \hline
+%\end{tabular}
+%\caption{Outline of the traffic settings used for the determinism evaluation, along with the average dissimilarity percentages for each setting (red=overall connection similarity, green=connection sequence similarity, blue=packet sequence similarity)}\label{Tab:Dataset}
+%\end{table*}
+%
+%
+%%\subsubsection{Determinism test}
+%As a comparison, we use a regular VM-based setup, were applications are hosted directly on two VMs that communicate over a virtual network bridge that is subject to the same NetEm effects as DetGen. To compare the amount of traffic control and the corresponding generative determinism of DetGen and the VM-setup, we generate three different types of traffic (HTTP, file-syncing, and botnet) from four different settings, within which all generative parameters are kept constant. For each setting and traffic type, we generate 100 traffic samples and apply the described dissimilarity measures to 100 randomly drawn pairs sample pairs. Fig. \ref{Fig:determ-metric} depicts the calculated dissimilarity scores for DetGen and the VM-setup, while Table \ref{Tab:Dataset} describes the different settings and the corresponding average dissimilarity scores.
+%
+%As visible, the scores yield less than $1\%$ of the dissimilarity observed on average for each protocol. Scores are especially low when compared to traffic groups collected in the VM setting, which is also visible in Fig. \ref{determ-metric} for the HTTP-traffic. Dissimilarity scores for the VM-setting are most notably higher for the flow-metric, caused by additional background flows frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
+%
+%
+%%We now apply the described similarity measures to different settings of traffic traces to evaluate the \textcolor{red}{determinism} of our data generation process. We vary the control settings of the described influence factors, described in Section \ref{Sec:Impactfactors}, for each group, but keep them constant within each group. We use three different traffic types (HTTP, file-syncing (port 8384), and botnet), for which we both perform different application-specific activities and create different overall settings. 
+%
+%%We furthermore perform the same HTTP-activities on two regular VMs without containerisation, but with the same settings.
+%
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.45\textwidth]{images/HTTP_comp_crop.png}
+%\caption{Packet-sequence structure similarity comparison for HTTP-activity under constant settings generated by the DetGen framework (left) and in a regular setting (right). Colours indicate packet flags while the height of the packets indicates their size. Note that in addition to more differences in the timing, the packet sizes vary more in the regular setting. }
+%\end{figure}
 
 %Table \ref{Dataset} summarises the activity and settings for the different traffic groups, along with the corresponding dissimilarity scores for each group. 
 

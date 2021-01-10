@@ -999,56 +999,78 @@ df3 <- data.frame(Flag=Packets$Flag,
                   xmin=IAT+0.00028,
                   ymin=-0.4*sqrt(Packets$Size),
                   ymax=+0.4*sqrt(Packets$Size))
+levels(df3$Direction)=c("Backw.", "Forw.")
 
-
-Exp_times <- c(0.2,0.202,0.25,0.202)
-Phases <- c("Retransmission 1", "Retransmission 1","Retransmission 2","Retransmission 2")
 df3$Transmis <- "Conn. estab."
-
 df4 <- data.frame(xmin=df3$xmin)
 LSTM_activation <- NULL
-df4$Direction="LSTM activation"
+df4$Direction=" "
+Exp_times <- c(0,0.08,0.1,0.16,0.17,0.1993,0.216,0.2266,0.248,0.28,0.295,0.4)
+Phases <- c("Conn. estab.","Initial negotiation","Data transfer 1", "SQL injection attempt",
+            "Data transfer 2","Retransmission 1", "Data transfer 3" ,"Retransmission 2","Data transfer 4","Retransmission 3","Data transfer 5")
 
-Exp_times <- c(0,0.08,0.09,0.1,0.19,0.195,0.21,0.4)
-Phases <- c("Conn. estab.","Initial transfer negotiation","Data transfer", "SQL injection attempt",
-            "Data transfer","Retransmission 1", "Data transfer" )
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+group.colors <- c("Conn. estab."="#F8766D", "Initial negotiation"="#E76BF3", "Data transfer 1"="#A3A500", 
+                  "SQL injection attempt"="#39B600", "Data transfer 2"="#A3A500","Retransmission 1"="#00BF7D", 
+                  "Data transfer 3"="#A3A500","Retransmission 2"="#00BF7D", 
+                  "Data transfer 4"="#A3A500","Retransmission 3"="#00BF7D","Data transfer 5"="#A3A500")#, "#00BF7D", "#00BFC4", "#00B0F6", "#9590FF",
+                   #"#E76BF3", "#FF62BC")#gg_color_hue(10)
 
-Means=c(0.1,0.1,0.1,-0.1,-0.3,0.2,0.2,-0.3)*4
-SDs=c(0.01,0.01,0.01,0.01,0.05,0.01,0.01,0.01)
-
+Means=c(0.0,0.2,0.5,
+        -0.7,-0.3,
+        0.6,0.0,0.3,-0.3,0.2,-0.3,0.2,-0.3)
+SDs=c(0.01,0.01,0.02,
+      0.02,0.03,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01)*2
+set.seed(100)
 for(i in 1:length(Exp_times[-1])){
   print(Exp_times[i])
   df3[df3$xmin<Exp_times[i+1]&df3$xmin>=Exp_times[i],]$Transmis=Phases[i]
   N <- length(df3[df3$xmin<Exp_times[i+1]&df3$xmin>=Exp_times[i],]$Transmis)
   LSTM_activation <- c(LSTM_activation,
                        rnorm(N,mean=0.000,sd=SDs[i])+rep(Means[i]/N,N))
-  
 }
 df4$LSTM_activation <- cumsum(LSTM_activation)
 df4$Transmis <- df3$Transmis
+Ticks=c(0,5000,30000)
 
-Ticks=c(0,500,5000,10000,30000)
+df3$yyy=50
+df3[df3$Direction=="Forw.",]$yyy=25
+
+
+df5 <- data.frame(Annot=c("Conn. estab.","HTTP","Data transfer", "SQL-inj.",
+        "DT","Retrans.", "DT" ,"RT","DT","RT","DT"),
+                Pos=c(0.03,0.09,
+                      0.13,0.165,
+                      0.185,0.208,
+                      0.223,0.236,
+                      0.264,0.287,0.315),
+        Direction="Backw.",
+        yy=c(-60,-80,-60,-80,-60,-80,-60,-80,-60,-80,-60)-5)
+
 plot_x <- ggplot(df3)+
-#  geom_ribbon(aes(x=xmin,ymin=50,ymax=-50,fill=Transmis),alpha=0.3)+
-  geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax,colour=Flag,fill=Flag), size=0.5)+
-  #geom_line(data=df4,aes(x=xmin,y=LSTM_activation))+
+  geom_ribbon(aes(x=xmin,ymin=yyy,ymax=-yyy,fill=Transmis),alpha=0.3)+
+  geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),colour="grey40", size=0.3)+
+  geom_text(data=df5,mapping=aes(x=Pos, y=yy, label=Annot))+
   facet_grid(Direction ~ .,scales = "free",space='free') + 
   theme_bw()+
   scale_y_continuous(breaks = c(-0.4*sqrt(rev(Ticks)),0.4*sqrt(Ticks)),labels=c(-rev(Ticks),Ticks))+
-  labs(title="DetGen - HTTP connection comparison",
-       y ="Packet Size", x = "Time [s]")
-#  theme(legend.position = "none")
-plot_x
+  labs(title="SQL-injection packet stream",
+       y ="Segment Size [bytes]", x = element_blank())+
+  scale_fill_manual(values=group.colors)+
+  theme(legend.position = "none")
 
 plot_x2 <- ggplot(df4)+
-  geom_line(aes(x=xmin,y=LSTM_activation))+
+  geom_line(aes(x=xmin,y=LSTM_activation),size=1.3)+
   geom_ribbon(aes(x=xmin,ymin=1.5,ymax=-1.5,fill=Transmis),alpha=0.3)+
   facet_grid(Direction ~ .,scales = "free",space='free') + 
   labs(title=element_blank(),
-       y ="LSTM activation", x = "Time [s]")+
+       y ="LSTM act.", x = "Time [s]")+
   theme_bw()+
+  scale_fill_manual(values=group.colors)+
   theme(legend.position = "none")
-
 require(cowplot)
 plot_grid(plot_x, plot_x2,nrow = 2,rel_heights  = c(2.1,1),align = 'v')
   
