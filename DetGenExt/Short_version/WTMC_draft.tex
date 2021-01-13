@@ -69,13 +69,13 @@ Initial models in \textit{automatic speech recognition (ASR)} for example were r
 
 In a similar fashion, several approaches to enhance the way information is collected and presented have been successful in improving understanding between data and detection systems in different areas of information security. Virtual machine introspection monitors and analyses the runtime state of a system-level VM, and the inclusion of threat reports to create behavioural feature labels enriches the way executables are described \cite{smith2020mind}. Recently, data provenance tools aim to improve the representation of system executions \cite{barre2019mining} over traditional logs. 
 
-However, such efforts have not been made in network intrusion detection yet, with the current quasi-benchmark datasets paying more attention to the inclusion of a wide variety of attacks rather than the close control and detailed documentation of the generated traffic. Data containing ground-truth on the traffic generation process to link observable structures with corresponding computational activities is rare, which has so far lead researchers to predominantly apply a number of ML-models directly to traffic datasets in the hope of edging out competitors. In-depth analyses regarding which traffic characteristics lead to inaccurate predictions or cause a model to misbehave,
-and how the model design could be improved accordingly. This overall lack of connection between the nature of intrusion detection data and the applied data-driven detection systems has been identified as a `semantic gap' Paxson and Sommer \cite{sommer2010outside}, and is seen to be partly responsible for the lack of success machine-learning had in network intrusion detection.
+However, such efforts have not been made in network intrusion detection yet, with the current quasi-benchmark datasets paying more attention to the inclusion of a wide variety of attacks rather than the close control and detailed documentation of the generated traffic. Data containing ground-truth on the traffic generation process to link observable structures with corresponding computational activities is rare, which has so far lead researchers to predominantly apply a number of ML-models directly to traffic datasets in the hope of edging out competitors. %In-depth analyses regarding which traffic characteristics lead to inaccurate predictions or cause a model to misbehave,
+and how the model design could be improved accordingly. This overall lack of connection between the nature of intrusion detection data and the applied data-driven detection systems has been identified as a `semantic gap' Paxson and Sommer \cite{sommer2010outside}, and is seen to be partly responsible for the lack of success machine-learning had in network intrusion detection. This has been supported and partly extended by Harang \cite{harang2014bridging} in 2014 or by Liu et al. in 2019 \cite{liu2019machine}:
 
-A significant cause for this gap is the lack of precise datasets that address particular traffic characteristics and contain additional information to allow for an in-depth evaluation in the way that is common practice in other areas. With the exception of very specific applications, we are not aware of any testbeds or datasets that aim to accurately document the generation and traffic shaping process. For this reason, 
-Clausen et al. \textcolor{red}{insert citation, possibly blinded?} have recently proposed a tool called DetGen that relies on containerisation to simulate network activity in a very controllable and deterministic way. The aim of the tool is to provide researchers with more information about traffic micro-structures by simulating and documenting different traffic shaping factors such as the exact corresponding computational activities, failure modes, or data input that impact traffic on a packet and flow level. 
+%A significant cause for this gap is the lack of precise datasets that address particular traffic characteristics and contain additional information to allow for an in-depth evaluation in the way that is common practice in other areas. With the exception of very specific applications, we are not aware of any testbeds or datasets that aim to accurately document the generation and traffic shaping process. For this reason, 
+%Clausen et al. \textcolor{red}{insert citation, possibly blinded?} have recently proposed a tool called DetGen that relies on containerisation to simulate network activity in a very controllable and deterministic way. The aim of the tool is to provide researchers with more information about traffic micro-structures by simulating and documenting different traffic shaping factors such as the exact corresponding computational activities, failure modes, or data input that impact traffic on a packet and flow level. 
 
-In this work, we aim demonstrate the usefulness of the control and information on traffic micro-structures that such a tool can provide. We showcase the inspection of two state-of-the-art network intrusion detection models with specially generated traffic to identify model flaws and subsequently boost corresponding results as well as the overall understanding of traffic models. Our motivation is to inspire other researchers to adopt this practice when developing new data-driven detection models.
+In this work, we aim demonstrate the usefulness of the control and information on traffic micro-structures for model validation and development. We showcase the inspection of two state-of-the-art network intrusion detection models with specially generated traffic to identify model flaws and subsequently boost corresponding results as well as the overall understanding of traffic models. Our motivation is to inspire other researchers to adopt this practice when developing new data-driven detection models.
 
 %can boost model inspection and improve both corresponding results and the overall understanding of traffic models to ultimately lead to more efficient improvements in their development. We provide three use-cases where existing models are ...
 
@@ -92,34 +92,34 @@ In this work, we aim demonstrate the usefulness of the control and information o
 %Part of the reason for this lack of thorough model inspection is the lack of precise datasets that contain the necessary control and information over the contained traffic characteristics that would enable for an in-depth evaluation. Clausen et al. \textcolor{red}{insert citation, possibly blinded?} have recently proposed a tool called DetGen that relies on containerisation to simulate network activity in a very controllable and deterministic way in order to offer a variety of traffic trace generation with particular characteristics \textcolor{red}{insert example here}. In this work, we examine the usage of such specific network traffic traces can help the understanding of traffic models and ultimately lead to more efficient improvements in their development. We provide three use-cases where existing models are ...
 
 
-\subsection*{Advantages of controllable traffic micro-structure shaping}% \textcolor{red}{(or Use-cases?)}}
-
-%While there are many potential use-cases that can benefit from a system like DetGen, %we highlight two key types of interactions and three representative tasks in these cases: 
-
-\begin{itemize}
-
-\item \textit{In-depth model evaluation}:
-Drawing on the extensive labelling of granular activities and reproducible traffic generation, researchers have opportunities to examine the performance of an intrusion detection model in-depth. 
-Packet-level structures and resulting false-positives can be better associated with activities, which helps correct models better for identified weaknesses. Granular activities can be studied in a less noisy environment due to isolation and reproducibility. 
-
-
-%\item \textit{Boost performance of ML-based methods}: Similarly, the performance of machine-learning-based methods can be boosted by tuning the composition of training data. Datasets can include traffic from different setups (topology, host activities, etc.) to allow for a better model generalization.
-
-\item \textit{Identifying crucial reoccurring traffic structures}: By associating particular traffic structures with both their generation settings and the corresponding model behaviour, researchers can better understand which traffic characteristics play an important role, and develop methods that pay closer attention to them. It can also help to associate model failures that are caused by random effects that are not associated to proper traffic phenomena.
-
-
-%Instead of being restricted to a restricted set of attacks and traffic types, researchers using DetGen can easily embed novel attacks such as the eternal blue exploit or new traffic types such as QUIC in a given network setup without abandoning the overall \textcolor{red}{network coherence} of the data. 
-
-%\paragraph{\textcolor{red}{Collaborative} tasks}: 
-
+%\subsection*{Advantages of controllable traffic micro-structure shaping}% \textcolor{red}{(or Use-cases?)}}
+%
+%%While there are many potential use-cases that can benefit from a system like DetGen, %we highlight two key types of interactions and three representative tasks in these cases: 
+%
 %\begin{itemize}
-%\item \textit{Simulation of deployment}: Instead of evaluating an intrusion detection model subsequently on previously captured data, researchers can deploy their system directly in DetGen to assess issues such as computational speed or \textcolor{red}{...}.
-
-
-
-\item \textit{Reproducible, open research}: Scientific experiments should be reproduced to be considered valid, and the use of containers has recently been promoted to enable easy reproduction of computational work by reducing the need for plattform and library dependencies. Network researchers can use DetGen to allow for the easy reproduction of generated network settings, generated data, and deployed network intrusion solutions. 
-
-\end{itemize}
+%
+%\item \textit{In-depth model evaluation}:
+%Drawing on the extensive labelling of granular activities and reproducible traffic generation, researchers have opportunities to examine the performance of an intrusion detection model in-depth. 
+%Packet-level structures and resulting false-positives can be better associated with activities, which helps correct models better for identified weaknesses. Granular activities can be studied in a less noisy environment due to isolation and reproducibility. 
+%
+%
+%%\item \textit{Boost performance of ML-based methods}: Similarly, the performance of machine-learning-based methods can be boosted by tuning the composition of training data. Datasets can include traffic from different setups (topology, host activities, etc.) to allow for a better model generalization.
+%
+%\item \textit{Identifying crucial reoccurring traffic structures}: By associating particular traffic structures with both their generation settings and the corresponding model behaviour, researchers can better understand which traffic characteristics play an important role, and develop methods that pay closer attention to them. It can also help to associate model failures that are caused by random effects that are not associated to proper traffic phenomena.
+%
+%
+%%Instead of being restricted to a restricted set of attacks and traffic types, researchers using DetGen can easily embed novel attacks such as the eternal blue exploit or new traffic types such as QUIC in a given network setup without abandoning the overall \textcolor{red}{network coherence} of the data. 
+%
+%%\paragraph{\textcolor{red}{Collaborative} tasks}: 
+%
+%%\begin{itemize}
+%%\item \textit{Simulation of deployment}: Instead of evaluating an intrusion detection model subsequently on previously captured data, researchers can deploy their system directly in DetGen to assess issues such as computational speed or \textcolor{red}{...}.
+%
+%
+%
+%\item \textit{Reproducible, open research}: Scientific experiments should be reproduced to be considered valid, and the use of containers has recently been promoted to enable easy reproduction of computational work by reducing the need for plattform and library dependencies. Network researchers can use DetGen to allow for the easy reproduction of generated network settings, generated data, and deployed network intrusion solutions. 
+%
+%\end{itemize}
 
 %We 
 
@@ -337,16 +337,14 @@ Outline of the coming sections.
 %\vspace{0.3cm}
 
 %Table \ref{Tab:Contributions} compares how well existing methods are realising these goals compared to our framework.
-\subsection{Motivation and Methodology}
+\section{Motivation and Methodology}
+
+\subsection{Motivation}
 
 Scientific machine learning model development requires both \textbf{model evaluation}, in which the overall predictive quality of a model is assessed to identify the best model, as well as \textbf{model validation}, in which the behaviour and limitations of a model is assessed through targeted probing. Model validation is essential to understand how particular data structures are processed, and enables researchers to improve their models accordingly.
 
-The motivation 
+We want to demonstrate how model validation can be performed for machine-learning-based network intrusion detection models such as traffic classifiers or anomaly-detection systems with the use of specifically generated traffic traces. We focus in particular on \textbf{traffic-microstructures}, which we define as  short-term atomic, sequential or cumulative structures in the packet or flow metadata stream, compared to aggregate structures visible over longer periods. Differences in observable traffic micro-structures are driven through factors such as the particular communicational activity, the choice and implementation of a communication protocol as well as external effects such as network reliability or available computation resources.
 
-Model development
-Model validation
-
-Micro-structures
 
 
 
@@ -357,7 +355,6 @@ Probing
 \subsection{Generating controllable traffic micro-structures}
 
 We use a tool \textcolor{red}{(citation currently blinded)} that generates various types of traffic with a fine-grained control of traffic shaping factors. 
-
 The tool provides a set of currently 29 traffic settings to cover a variety of traffic types and offers control and if necessary randomisation of the following traffic shaping factors:
 
  
@@ -384,7 +381,16 @@ Low available bandwith, long RTTs, or packet loss can have a significant effect 
 
 \vspace{0.2cm}
 
-Traffic is generated in a virtual network along with virtual software switches, Ethernet links and routers. The communication is mostly performed in a client-server setting, however some settings such as multi-host file-synchronisation involve more hosts.
+
+Labels that describe the respective setting for each of the described factors are attached to each traffic sample after generation. Traffic is generated in a virtual network along with virtual software switches, Ethernet links and routers. The communication is mostly performed in a client-server setting, however some settings such as multi-host file-synchronisation involve more hosts. 
+
+%\textcolor{red}{labelling}
+
+\subsection{Methodology}
+
+Before the probing, we have to identify which types of characteristics the model should be probed on, and generate the corresponding data.We then train the model mainly on the datasets that is used for the general evaluation, but also attach a sufficient amount of the data dedicated for model probing to the training set. This is to ensure that the model is able to see and learn the structures in the probing data before the probed, even though the overall type of traffic in the probing data should be similar to the evaluation data to provide a consistent model.
+
+After training and general evaluation, the model probing is done by feeding the model data samples with the desired descriptive labels, monitoring the output or behaviours in dependence of these labels, and comparing them to the expected output or behaviour. Since each traffic sample contains multiple descriptive labels, it is possible to monitor the model response to multiple characteristics in parallel.
 
 %Containers communicate in a virtual network created with Mininet along with virtual software switches, Ethernet links, routers, and firewalls.
 
@@ -397,19 +403,16 @@ Traffic is generated in a virtual network along with virtual software switches, 
 
 %In the following experiments, we rely on DetGen to generate traffic data with corresponding micro-structure information labels.
 
-\section{Use-cases}
+%\section{Use-cases}
 
 %\subsection{Impacts of ground-truth information on model understanding}
 
-Extensive ground-truth labels on different traffic influences as well as the ability to generate traffic with specific characteristics are arguably the most important contribution of the DetGen framework. We demonstrate their benefits for model-understanding and evaluation on two examples using a recent traffic classification model by Hwang et al. \cite{hwang2019lstm} and a highly regarded anomaly detection model by Casas et al. \cite{casas2012unsupervised}.
+%Extensive ground-truth labels on different traffic influences as well as the ability to generate traffic with specific characteristics are arguably the most important contribution of the DetGen framework. We demonstrate their benefits for model-understanding and evaluation on two examples using a recent traffic classification model by Hwang et al. \cite{hwang2019lstm} and a highly regarded anomaly detection model by Casas et al. \cite{casas2012unsupervised}.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{images/LSTM_exp.png}
-\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold}\label{fig:LSTM_exp}
-\end{figure}
 
-\subsection{Improving traffic separation with congestion level information}
+\section{Improving traffic separation for a classifier with congestion level information}
+
+
 %Possible title: \textbf{Exploring the effect of rare events to model performance}
 Our first use-case looks at how descriptive ground truth information on traffic characteristics can improve a traffic classification through the analysis of data separation in dependence of different traffic features. For this, we use a recent traffic classification model by Hwang et al. \cite{hwang2019lstm} as an example, which aims at distinguishing various types of malicious activity from benign traffic.
 The model classifies connections on a packet-level using an LSTM-network\footnote{Long-short-term-memory neural network}, and is claimed to achieve detection and false-positive (FP) rates of \textbf{99.7\%} and \textbf{0.03\%} respectively. 
@@ -432,6 +435,12 @@ We try to correct the existing model with a simple fix by excluding retransmissi
 The overall AUC-score for the model improves to \textbf{0.997} while tuned detection rates and false positives improved to \textbf{99.1\%} and \textbf{0.045\%}.
 
 
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{images/LSTM_classi.png}
+\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold. }\label{fig:LSTM_exp}
+\end{figure}
+
 
 %, so we should highlight their benefit most. Since ground-truth labels on attack data are existing in other datasets, we should emphasise the benefit of having labels for different activities. In my eyes, the most striking benefit arises for false-positive analysis, which we could then combine with showcasing the benefit of being able to generate different amounts of traffic for different activities.
 
@@ -440,14 +449,14 @@ The overall AUC-score for the model improves to \textbf{0.997} while tuned detec
 %Implement the LSTM-model in the paper "An LSTM-Based Deep Learning Approach forClassifying Malicious Traffic at the Packet Level", train it on our data (both benign and attack traffic). Extract labels of traffic responsible for false-positives, show how much they are clustered around particular activities (potentially rare activities) compared to the overall traffic. Give potential reason for this. Generate a new dataset with increased amounts of the activities responsible for false positivies. Demonstrate that false-positives decrease.
 
 
-\subsection{Refining the notion of benign traffic for anomaly detection}
+\section{Refining the notion of benign traffic for anomaly detection}
 
 Our second use-case looks at how ground-truth traffic information can help produce more coherent clusters and thus refine the capture of more detailed benign traffic structures in anomaly-detection. In particular, we will examine an anomaly-detection model by Casas et al. \cite{casas2012unsupervised} that produces state-of-the-art detection results for access attacks according to a survey by Nisioti et al. \cite{nisioti2018intrusion}.
 The model takes a number of flow summary statistics as input, which include such as packet size and interarrival statistics, number of idle and transfer periods, flag occurrencies, number of flows in window, etc. as input and projects it into different subspaces, where the connections are clustered. Anomalous outliers are detected by accumulating the Mahalanobis-distance from the cluster centers from each subspace. The identified clusters therefore serve as structural enclosures of benign behaviour, with the cluster borders acting as separators to abnormal behaviours. Benign traffic should ideally be distributed evenly around the cluster centres to allow a tight borders and good separation from actual abnormal behaviour.
 
 Unstructured datasets such as the CAIDA traffic traces assumably contain too much abnormal behaviour to train an anomaly-detection model, which is why we train the model on benign traffic from the CICIDS-17 intrusion detection dataset (80\%). Again, we also add traffic generated with the DetGen tool (HTTP, FTP, SSH, and SMTP, 20\%) using a wide spectrum of settings for examination purposes. Attack data for the evaluation was again provided through the CICIDS-17 dataset, and includes access attacks such as SQL-injections, Heartbleed, Brute-Force attacks etc. We  train the model with in total 15,000 connections.
 
-\subsubsection{Projection coherency evaluation}
+\subsection{Projection coherency evaluation}
 
 \begin{table}
 \centering
@@ -492,7 +501,7 @@ We verify if traffic samples within each group are projected to similar areas by
 
 %at the effect of sudden connection terminations on an anomaly-detection model by Casas et al. \cite{casas2012unsupervised}. 
 
-\subsubsection{Investigating individual cluster incoherences}
+\subsection{Investigating individual cluster incoherences}
 
 \begin{figure}
 \centering
@@ -965,49 +974,49 @@ The newly trained model now projects "Sudden termination" connections into a dif
 %
 
 
-\section{Background and Motivation}
-
-%\subsection{Misuse and machine learning}
-
-
-%Network intrusion detection is the field of detecting intrusions in a network by analysing captured traffic traces exchanged between computers in the network. Most commonly used are misuse detection systems identify known signatures of bad behaviour in traffic such as malicious packet payloads or rule-based patterns concerning port usage and/or packet sequences. Although very efficient, these methods are reliant on precise details on known attacks in the form of signature databases. Significant efforts have been invested in developing machine-learning based methods that are trained on large amounts of traffic to develop a more generalisable distinction between benign and malicious behaviour to remove the need of attack signatures and enable the detection of zero-day attacks.
-
-
-%\subsection{Existing problems}
-
-Machine-learning based network intrusion detection has been subject to extensive criticism due to being unable to deliver sufficient detection rates at an acceptable false-positive rate in actual deployment. Two main causes for these failings have been identified particularly for network-based methods by Sommer and Paxson \cite{sommer2010outside} in 2010, which have been supported and partly extended by Harang \cite{harang2014bridging} in 2014 or by Liu et al. in 2019 \cite{liu2019machine}:
-
-
-\paragraph{Semantic gap between between results and their operational interpretation}
-
-Arguably the biggest concern expressed by Sommer and Paxson is that methods lack a deep semantic insight into a system's capabilities and limitations and are instead treated as black boxes. The authors here draw comparisons to other areas of machine learning such as character recognition where the precise understanding of the data structure and how existing systems process it have lead to breakthroughs such as the convolutional layers that process the data in a more adequate way. In network intrusion detection, different methods are thrown at existing data without thorough analysis where the system performs well and where it fails or breaks, and what the reasons for this are. The authors recommend to researchers to narrow the scope to more specific applications and closely examine what types of traffic trigger which responses by the system in order to develop a better understanding of where and how future systems can be designed to better suit this particular type of data and application. 
-
-
-%\begin{itemize}
-%%\item " To address them, we deem it crucial for any effective deployment to acquire deep, semanticinsightintoa system’s capabilities and limitations, rather than treatingthe system as a black box as unfortunately often seen."
+%\section{Background and Motivation}
 %
-%\item understanding the system’s semantic properties—the operationally relevantactivity that it can detect, as wellas theblind spotsevery system will necessarily have
+%%\subsection{Misuse and machine learning}
 %
-%\item If we could give onlyonerecommendation on how toimprove the state of anomaly detection research, it would be:Understand what the system is doing
 %
-%\item an area whereinsightmatters much more than just numericalresults
+%%Network intrusion detection is the field of detecting intrusions in a network by analysing captured traffic traces exchanged between computers in the network. Most commonly used are misuse detection systems identify known signatures of bad behaviour in traffic such as malicious packet payloads or rule-based patterns concerning port usage and/or packet sequences. Although very efficient, these methods are reliant on precise details on known attacks in the form of signature databases. Significant efforts have been invested in developing machine-learning based methods that are trained on large amounts of traffic to develop a more generalisable distinction between benign and malicious behaviour to remove the need of attack signatures and enable the detection of zero-day attacks.
 %
-%\item What can it detect, and why? What can itnot detect, and why not? How reliably does it operate?Where does it break?
 %
-%\end{itemize}
-
-
-\paragraph{Fundamental difficulties for conducting sound evaluation}
-
-The semantic gap stems in part from persistent difficulties for researchers to evaluate their system thoroughly and in a comparable and reproducible manner due to a lack of appropriate public datasets. Privacy and security concerns discourage network administrators to release rich and realistic datasets for the public,  leading to publicly available real-world datasets being the exception and missing informative features such as captured packets or consistent IP-addresses. This forces researchers to generate synthetic datasets using small virtual networks, and restricts the diversity and coverage of traffic researchers are able to examine.
-
-Furthermore, the labelling process is significantly more difficult in network intrusion detection than in other domains with easier interpretable data. Often, only traffic directly involved in an attack is labelled manually, with all other traffic receiving the same `Benign' label. This lack of informative labels impedes researchers abilities to analyse different types of traffic and thus understand the properties of their system.
-
-The lack of benchmark datasets often forces researchers to assemble their own data, which is mostly done in a non-reproducible way, leading to unverifiable detection rates and incomparable results.
-
-
-\vspace{0.2cm}
-Other problems identified by Sommer and Paxson include the diversity of network traffic, the high cost of errors, and lacking computational speed or detection systems.
+%%\subsection{Existing problems}
+%
+%Machine-learning based network intrusion detection has been subject to extensive criticism due to being unable to deliver sufficient detection rates at an acceptable false-positive rate in actual deployment. Two main causes for these failings have been identified particularly for network-based methods by Sommer and Paxson \cite{sommer2010outside} in 2010, which have been supported and partly extended by Harang \cite{harang2014bridging} in 2014 or by Liu et al. in 2019 \cite{liu2019machine}:
+%
+%
+%\paragraph{Semantic gap between between results and their operational interpretation}
+%
+%Arguably the biggest concern expressed by Sommer and Paxson is that methods lack a deep semantic insight into a system's capabilities and limitations and are instead treated as black boxes. The authors here draw comparisons to other areas of machine learning such as character recognition where the precise understanding of the data structure and how existing systems process it have lead to breakthroughs such as the convolutional layers that process the data in a more adequate way. In network intrusion detection, different methods are thrown at existing data without thorough analysis where the system performs well and where it fails or breaks, and what the reasons for this are. The authors recommend to researchers to narrow the scope to more specific applications and closely examine what types of traffic trigger which responses by the system in order to develop a better understanding of where and how future systems can be designed to better suit this particular type of data and application. 
+%
+%
+%%\begin{itemize}
+%%%\item " To address them, we deem it crucial for any effective deployment to acquire deep, semanticinsightintoa system’s capabilities and limitations, rather than treatingthe system as a black box as unfortunately often seen."
+%%
+%%\item understanding the system’s semantic properties—the operationally relevantactivity that it can detect, as wellas theblind spotsevery system will necessarily have
+%%
+%%\item If we could give onlyonerecommendation on how toimprove the state of anomaly detection research, it would be:Understand what the system is doing
+%%
+%%\item an area whereinsightmatters much more than just numericalresults
+%%
+%%\item What can it detect, and why? What can itnot detect, and why not? How reliably does it operate?Where does it break?
+%%
+%%\end{itemize}
+%
+%
+%\paragraph{Fundamental difficulties for conducting sound evaluation}
+%
+%The semantic gap stems in part from persistent difficulties for researchers to evaluate their system thoroughly and in a comparable and reproducible manner due to a lack of appropriate public datasets. Privacy and security concerns discourage network administrators to release rich and realistic datasets for the public,  leading to publicly available real-world datasets being the exception and missing informative features such as captured packets or consistent IP-addresses. This forces researchers to generate synthetic datasets using small virtual networks, and restricts the diversity and coverage of traffic researchers are able to examine.
+%
+%Furthermore, the labelling process is significantly more difficult in network intrusion detection than in other domains with easier interpretable data. Often, only traffic directly involved in an attack is labelled manually, with all other traffic receiving the same `Benign' label. This lack of informative labels impedes researchers abilities to analyse different types of traffic and thus understand the properties of their system.
+%
+%The lack of benchmark datasets often forces researchers to assemble their own data, which is mostly done in a non-reproducible way, leading to unverifiable detection rates and incomparable results.
+%
+%
+%\vspace{0.2cm}
+%Other problems identified by Sommer and Paxson include the diversity of network traffic, the high cost of errors, and lacking computational speed or detection systems.
 
 
 \section{Conclusions}\label{Sec:Conclusion}
