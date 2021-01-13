@@ -805,6 +805,203 @@ theme(legend.position = "bottom")
 pA+scale_x_continuous(trans='sqrt',limits = c(0, 0.21))+
   scale_y_continuous(limits = c(-1.5, 1.5))
 
+
+#######################################################################################################
+## Subspace projection consistency
+#######################################################################################################
+
+require(MASS)
+require(ggplot2)
+
+N=40
+
+
+df=data.frame()
+
+x1=mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.01,1.1)))*0.5
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(0,0.1),Sigma=diag(c(0.02,0.02))))*0.3
+df1=data.frame(x1=x1[,1],x2=x1[,2],label="HTTP 1")
+df=rbind(df,df1)
+
+x1=mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.1,0.02)))*0.5
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(0,0.1),Sigma=diag(c(0.01,0.05))))*0.3
+df1=data.frame(x1=x1[,1],x2=x1[,2],label="File-S. 1")
+df=rbind(df,df1)
+
+
+x1=mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.003,0.004)))*0.3
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(0,0.1),Sigma=diag(c(0.002,0.002))))*0.3
+df1=data.frame(x1=x1[,1],x2=x1[,2],label="Mirai 1")
+df=rbind(df,df1)
+
+x1=mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.03,0.03)))
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(0,0.1),Sigma=diag(c(0.13,0.02))))
+df1=data.frame(x1=x1[,1],x2=x1[,2],label="HTTP 2")
+df=rbind(df,df1)
+
+x1=mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.01,0.005)))
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(0,0.1),Sigma=diag(c(0.02,0.005))))
+df1=data.frame(x1=x1[,1],x2=x1[,2],label="File-S. 2")
+df=rbind(df,df1)
+
+x1=mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.003,0.004)))*0.3
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(0,0.1),Sigma=diag(c(0.002,0.002))))*0.3
+df1=data.frame(x1=x1[,1],x2=x1[,2],label="Mirai 2")
+df=rbind(df,df1)
+
+x1=mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.01,0.02)))*0.5
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(0,0.1),Sigma=diag(c(0.02,0.02))))*0.5
+df1=data.frame(x1=x1[,1],x2=x1[,2],label="HTTP 3")
+df=rbind(df,df1)
+
+x1=mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.01,0.02)))*0.5
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(0,0.1),Sigma=diag(c(0.02,0.02))))*0.5
+df1=data.frame(x1=x1[,1],x2=x1[,2],label="File-S. 3")
+df=rbind(df,df1)
+
+x1=mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.003,0.004)))*0.3
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(0,0.1),Sigma=diag(c(0.002,0.002))))*0.3
+df1=data.frame(x1=x1[,1],x2=x1[,2],label="Mirai 3")
+df=rbind(df,df1)
+
+x1=mvrnorm(N,mu=c(0,0.1),Sigma=diag(c(0.7,0.02)))
+x1=rbind(x1, mvrnorm(N,mu=c(0.2,0),Sigma=diag(c(0.3,0.02))))
+x1=rbind(x1, mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.01,0.03))))
+df1=data.frame(x1=x1[,1],x2=x1[,2],label="HTTP 4")
+df=rbind(df,df1)
+
+x1=mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.01,0.02)))
+x1=rbind(x1, mvrnorm(0.3*N,mu=c(0,0.1),Sigma=diag(c(0.2,0.02))))
+df1=data.frame(x1=x1[,1],x2=x1[,2],label="File-S. 4")
+df=rbind(df,df1)
+
+x1=mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.003,0.004)))*0.3
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(0,0.1),Sigma=diag(c(0.002,0.002))))*0.3
+df1=data.frame(x1=x1[,1],x2=x1[,2],label="Mirai 4")
+df=rbind(df,df1)
+
+pA <- ggplot(df,aes(x=x1,y=x2,color=label))+
+  geom_point(alpha=0.6,size=1)+
+  facet_wrap(label ~ ., ncol = 3) + 
+  theme_bw()+labs(y="dimension x5",x="dimension x3",title="Projected traffic dispersion along major axis")+
+  #theme(legend.position = "bottom",legend.title = element_blank())+
+  theme(legend.position = "None",axis.title.x=element_blank(),axis.title.y=element_blank())+
+  xlim(-1.5,1.5)+ylim(-1.5,1.5)
+pA
+
+
+Phases=c("HTTP 1","File-S. 1","Mirai 1","HTTP 2","File-S. 2","Mirai 2","HTTP 3","File-S. 3","Mirai 3","HTTP 4","File-S. 4","Mirai 4")
+
+for(ii in Phases){
+  data=df[df$label==ii,1:2]
+  MM=NULL
+  S=cov(x=data)
+  for(i in dim(data)[1]){
+    mu=data[i,]
+    #print(mu)
+    M=sweep(data,2,t(mu))
+    M=sqrt(M[,1]**2+M[,2]**2)
+    #M=sqrt(mahalanobis(data,center=t(mu),cov=S))
+    MM=c(MM,M)
+  }
+  print(paste(ii,round(mean(MM),2),round(max(MM),2)))
+  #print(S)
+}
+
+
+
+
+
+
+
+plot(x1)
+
+x1=mvrnorm(N,mu=c(0,0),Sigma=diag(c(0.4,0.4)))
+x1=rbind(x1, mvrnorm(N,mu=c(1,-1),Sigma=diag(c(0.2,0.2))))
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(0.4,-0.4),Sigma=diag(c(0.03,0.03))))
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(2,0.5),Sigma=diag(c(0.03,0.03))))
+x1=rbind(x1, mvrnorm(0.5*N,mu=c(0.5,0.8),Sigma=diag(c(0.02,0.03))))
+x1=rbind(x1, mvrnorm(0.2*N,mu=c(1.5,0.3),Sigma=matrix(c(0.2,0.1,0.1,0.2),nrow=2)))
+x2=mvrnorm(N,mu=c(2,0.3),Sigma=diag(c(0.4,0.2)))
+x3=mvrnorm(N,mu=c(-1.5,0.7),Sigma=diag(c(0.1,0.2)))
+x4=mvrnorm(2*N,mu=c(-0.6,-1.3),Sigma=diag(c(6,0.3)))
+
+
+df1=data.frame(x=c(x1[,1],x2[,1],x3[,1],x4[,1]),y=c(x1[,2],x2[,2],x3[,2],x4[,2]),
+               Label="Benign")
+df1$x=df1$x/sd(df1$x)
+df1$y=df1$y/sd(df1$y)
+
+df1_new=data.frame(x=c(x1[,1],x2[,1],x3[,1]),y=c(x1[,2],x2[,2],x3[,2]),
+                   Label="Benign")
+df1_new$x=(df1_new$x-mean(df1_new$x))/sd(df1_new$x)+mean(df1_new$x)
+df1_new$y=(df1_new$y-mean(df1_new$y))/sd(df1_new$y)+mean(df1_new$y)
+
+
+df1_newc=data.frame(x=c(x4[,1]+7),y=c(x4[,2]-0.5),
+                    Label="Benign")
+df1_newc$x=(df1_newc$x-mean(df1_newc$x))/(sd(df1_newc$x)*2)+mean(df1_newc$x)
+df1_newc$y=(df1_newc$y-mean(df1_newc$y))/(sd(df1_newc$y)*2)+mean(df1_newc$y)
+
+
+
+N=20
+x1=mvrnorm(N,mu=c(-2.8,3),Sigma=diag(c(0.1,0.1)))
+x1=rbind(x1, mvrnorm(N,mu=c(-5,-5),Sigma=diag(c(1,1))))
+x1=rbind(x1, mvrnorm(N,mu=c(5,4.5),Sigma=diag(c(1,1))))
+x1=rbind(x1, mvrnorm(N,mu=c(0,4.5),Sigma=diag(c(1,1))))
+#x1=rbind(x1, mvrnorm(N,mu=c(0,-5),Sigma=diag(c(1,1))))
+x1=rbind(x1, mvrnorm(N,mu=c(-5,0),Sigma=diag(c(1,1))))
+
+#x1=rbind(x1, mvrnorm(0.5*N,mu=c(0.4,-0.4),Sigma=diag(c(0.03,0.03))))
+
+df2=data.frame(x=c(x1[,1]),y=c(x1[,2]+1),
+               Label="Attack")
+#df=rbind(df1,df2)
+
+
+N=40
+x1=mvrnorm(N,mu=c(-0,-1.3),Sigma=diag(c(5,0.3)))
+df3=data.frame(x=c(x1[,1]),y=c(x1[,2]),
+               Label="Sudden termination")
+df3_newc=data.frame(x=c(x1[,1]+6.5),y=c(x1[,2]-0.5),
+                    Label="Sudden termination")
+df3_newc$x=(df3_newc$x-mean(df3_newc$x))/(sd(df3_newc$x)*2)+mean(df3_newc$x)
+df3_newc$y=(df3_newc$y-mean(df3_newc$y))/(sd(df3_newc$y)*2)+mean(df3_newc$y)
+
+
+pA <- ggplot(df1,aes(x=x+3,y=y+6,color=Label))+
+  geom_point(alpha=0.6,size=1)+
+  stat_ellipse(aes(x=x+3, y=y+6),level=0.999999)+#,type = "polygon", level=6)+
+  geom_point(df2,mapping=aes(x=x+3,y=y+6,color=Label),alpha=0.8,size=1)+
+  geom_point(df3,mapping=aes(x=x+3,y=y+6,color=Label),size=2.5)+
+  theme_bw()+labs(y="dimension x5",x="dimension x3",title="Projection before correction")+
+  #theme(legend.position = "bottom",legend.title = element_blank())+
+  theme(legend.position = "None",axis.title.x=element_blank(),)+
+  #xlim(-5+3,4.5+3)+ylim(-4.5+6,4+6)
+  #xlim(-6+3,6+3.2)+ylim(-5.5+6,6+6)
+  xlim(-1.2,11)+ylim(1,12)
+#pA
+
+pA2 <- ggplot(df1_new,aes(x=x+3,y=y+6,color=Label))+
+  geom_point(alpha=0.6,size=1)+
+  stat_ellipse(aes(x=x+3, y=y+6),level=0.995)+#,type = "polygon", level=6)+
+  geom_point(df2,mapping=aes(x=x+3,y=y+6,color=Label),alpha=0.8,size=1)+
+  geom_point(df3_newc,mapping=aes(x=x+2.4,y=y+6,color=Label),size=2.5)+
+  geom_point(df1_newc,mapping=aes(x=x+3,y=y+6,color=Label),alpha=0.6,size=1)+
+  stat_ellipse(df1_newc,mapping=aes(x=x+3, y=y+6),level=0.999)+#,type = "polygon", level=6)+
+  theme_bw()+labs(y="dimension x5",x="dimension x3",title="Projection after correction")+
+  #theme(legend.position = "bottom")#+
+  theme(legend.position = "None")+
+  theme(legend.position = "bottom",legend.title = element_blank())+
+  xlim(-1.2,11)+ylim(1.5,12)
+#pA2
+
+require(cowplot)
+#plot_grid(pA,pA2)
+plot_grid(pA,pA2,ncol=1, rel_heights = c(1, 1.4))
+
+
 #######################################################################################################
 ## Subspace projection
 #######################################################################################################

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  9 JAN 2021 20:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  11 JAN 2021 14:57
 entering extended mode
 **./Short_DetGen.tex
 (Short_DetGen.tex
@@ -1494,190 +1494,155 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 9.0pt on input line 42.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 71.
+(Font)              scaled to size 9.0pt on input line 75.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [1.1{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 ]
-<images/LSTM_exp.png, id=88, 600.2425pt x 409.53pt>
+<images/LSTM_exp.png, id=80, 600.2425pt x 409.53pt>
 File: images/LSTM_exp.png Graphic file (type png)
 <use images/LSTM_exp.png>
-Package pdftex.def Info: images/LSTM_exp.png  used on input line 324.
+Package pdftex.def Info: images/LSTM_exp.png  used on input line 330.
 (pdftex.def)             Requested size: 253.14749pt x 172.71379pt.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 324--325
+Overfull \hbox (12.0pt too wide) in paragraph at lines 330--331
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 326.
+Class acmart Warning: A possible image without description on input line 332.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 331.
+(Font)              scaled to size 7.3pt on input line 337.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 331.
-<images/LSTM_activation.png, id=92, 514.92375pt x 345.54094pt>
+(Font)              scaled to size 5.5pt on input line 337.
+<images/LSTM_activation.png, id=84, 514.92375pt x 345.54094pt>
 File: images/LSTM_activation.png Graphic file (type png)
 <use images/LSTM_activation.png>
-Package pdftex.def Info: images/LSTM_activation.png  used on input line 339.
+Package pdftex.def Info: images/LSTM_activation.png  used on input line 345.
 (pdftex.def)             Requested size: 253.14749pt x 169.87541pt.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 339--340
+Overfull \hbox (12.0pt too wide) in paragraph at lines 345--346
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 341.
+Class acmart Warning: A possible image without description on input line 347.
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 345.
+(Font)              scaled to size 9.0pt on input line 350.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 345.
+(Font)              scaled to size 7.0pt on input line 350.
 [2.2 <./images/LSTM_exp.png> <./images/LSTM_activation.png>]
-Overfull \hbox (2.99051pt too wide) in paragraph at lines 370--370
+Overfull \hbox (2.99051pt too wide) in paragraph at lines 377--377
 []|\T1/LinuxLibertineT-TLF/m/n/9 (-20) Congest.| 
  []
 
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
+(Font)              scaled to size 9.0pt on input line 398.
+[3.3]
+<images/traffic_dispersion.png, id=117, 367.3725pt x 342.5297pt>
+File: images/traffic_dispersion.png Graphic file (type png)
+<use images/traffic_dispersion.png>
+Package pdftex.def Info: images/traffic_dispersion.png  used on input line 410.
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--373
-[]|[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) 0.12%[], []0.01%[],
- []
+(pdftex.def)             Requested size: 253.14749pt x 236.03215pt.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 374--374
-[]|[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) 0.21%[], []0.0%[],
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 375--375
-[]|\T1/LinuxLibertineT-TLF/m/n/9 (+20) Multi-req. NG-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 377--377
-[]|[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) 0.11%[], []0.1%[],
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 378--378
-[]|[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) 0.19%[], []0.02%[],
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 381--381
-[]|[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) 0.39%[], []0.01%[],
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 382--382
-[]|[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) 0.29%[], []0.02%[],
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 383--383
-[]|\T1/LinuxLibertineT-TLF/m/n/9 (+20) Multi-req.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 385--385
-[]|[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) 0.31%[], []0.15%[],
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 386--386
-[]|[]\T1/LinuxLibertineT-TLF/m/n/7 (+20) 0.24%[], []0.0%[],
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-<images/Subspace_projection_new2.png, id=114, 376.40625pt x 399.74344pt>
-File: images/Subspace_projection_new2.png Graphic file (type png)
-<use images/Subspace_projection_new2.png>
-Package pdftex.def Info: images/Subspace_projection_new2.png  used on input lin
-e 397.
-(pdftex.def)             Requested size: 253.14749pt x 268.85143pt.
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 397--398
+Overfull \hbox (12.0pt too wide) in paragraph at lines 410--411
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 399.
+Class acmart Warning: A possible image without description on input line 412.
 
+<images/Subspace_projection_new2.png, id=118, 376.40625pt x 399.74344pt>
+File: images/Subspace_projection_new2.png Graphic file (type png)
+<use images/Subspace_projection_new2.png>
+Package pdftex.def Info: images/Subspace_projection_new2.png  used on input lin
+e 421.
+(pdftex.def)             Requested size: 253.14749pt x 268.85143pt.
 
-Overfull \hbox (5.06952pt too wide) in paragraph at lines 401--402
-[]\T1/LinuxLibertineT-TLF/m/n/9 (-20) When ex-am-in-ing false-positive and cor-
-re-spond-ing anom-aly scores,
+Overfull \hbox (12.0pt too wide) in paragraph at lines 421--422
+ [][] 
  []
 
-[3.3 <./images/Subspace_projection_new2.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Font Info:    Try loading font information for T1+zi4 on input line 885.
+Class acmart Warning: A possible image without description on input line 423.
+
+[4.4 <./images/traffic_dispersion.png> <./images/Subspace_projection_new2.png>]
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 931.
+
+
+Underfull \vbox (badness 1067) has occurred while \output is active []
+
+LaTeX Font Info:    Try loading font information for T1+zi4 on input line 955.
 
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\inconsolata\t1zi4.
 fd"
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 9.0pt on input line 885.
+(Font)              scaled to size 9.0pt on input line 955.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4.4]
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 943.
-
-(Short_DetGen.bbl)
+ [5.5] (Short_DetGen.bbl)
 
 Class acmart Warning: Some images may lack descriptions.
 
-
-Package balance Warning: You have called \balance in second column
-(balance)                Columns might not be balanced.
-
-[5.5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 958.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 958.
+[6.6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 984.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 984.
  (Short_DetGen.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 958.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 958.
-Package rerunfilecheck Info: File `Short_DetGen.out' has not changed.
-(rerunfilecheck)             Checksum: 95092B75E4D21A6B075F0518AF4631B6;2804.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 984.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 984.
+
+
+Package rerunfilecheck Warning: File `Short_DetGen.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Short_DetGen.out':
+(rerunfilecheck)             Before: FCB348B2E645C234ADE5D845550C3470;2189
+(rerunfilecheck)             After:  B33D1744879427B34F96DCD79A71EC30;2019.
  ) 
 Here is how much of TeX's memory you used:
- 19871 strings out of 492970
- 303485 string characters out of 3126595
- 426000 words of memory out of 3000000
- 22914 multiletter control sequences out of 15000+200000
- 148626 words of font info for 262 fonts, out of 3000000 for 9000
+ 19902 strings out of 492970
+ 304298 string characters out of 3126595
+ 428000 words of memory out of 3000000
+ 22919 multiletter control sequences out of 15000+200000
+ 156412 words of font info for 276 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,12n,94p,1635b,412s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/inconsolata
-/i4-t1-4.enc}{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/
-libertine/lbtn_25tcsq.enc}{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Users/henry/AppData/Local/Programs/M
-iKTeX 2.9/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Users/henry/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{C:/Users/henr
-y/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}<
-C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/inconsolata
-/Inconsolata-zi4r.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/newtx/LibertineMathMI7.pfb><C:/Users/henry/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/libertine/LinBiolinumT.pfb><C:/Users/henry/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinBiolinumTB.pfb><C:/U
-sers/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinLi
-bertineT.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
-ic/libertine/LinLibertineTB.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Users/henry/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/newtx/txsys.pfb>
-Output written on Short_DetGen.pdf (5 pages, 601939 bytes).
+ 60i,11n,94p,1635b,458s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{subsection.3.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/inconsolata/i
+4-t1-4.enc}{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/li
+bertine/lbtn_25tcsq.enc}{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts
+/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Users/henry/AppData/Local/Programs/MiK
+TeX 2.9/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Users/henry/AppData/Local
+/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{C:/Users/henry/
+AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}<C:
+/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/inconsolata/I
+nconsolata-zi4r.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/newtx/LibertineMathMI7.pfb><C:/Users/henry/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/public/libertine/LinBiolinumT.pfb><C:/Users/henry/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinBiolinumTB.pfb><C:/Use
+rs/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinBiol
+inumTI.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/libertine/LinLibertineT.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/henry/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Users/he
+nry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/newtx/txsys.pfb>
+Output written on Short_DetGen.pdf (6 pages, 648322 bytes).
 PDF statistics:
- 200 PDF objects out of 1000 (max. 8388607)
- 43 named destinations out of 1000 (max. 500000)
- 44172 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 209 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
+ 48257 words of extra memory for PDF output out of 51595 (max. 10000000)
 

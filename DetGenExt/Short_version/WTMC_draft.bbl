@@ -1,0 +1,81 @@
+\begin{thebibliography}{10}
+
+\bibitem{barre2019mining}
+M.~Barre, A.~Gehani, and V.~Yegneswaran.
+\newblock Mining data provenance to detect advanced persistent threats.
+\newblock In {\em 11th International Workshop on Theory and Practice of
+  Provenance (TaPP 2019)}, 2019.
+
+\bibitem{biernacki2017analysis}
+A.~Biernacki.
+\newblock Analysis and modelling of traffic produced by adaptive http-based
+  video.
+\newblock {\em Multimedia Tools and Applications}, 76(10):12347--12368, 2017.
+
+\bibitem{casas2012unsupervised}
+P.~Casas, J.~Mazel, and P.~Owezarski.
+\newblock Unsupervised network intrusion detection systems: Detecting the
+  unknown without knowledge.
+\newblock {\em Computer Communications}, 35(7):772--783, 2012.
+
+\bibitem{fricker2012impact}
+C.~Fricker, P.~Robert, J.~Roberts, and N.~Sbihi.
+\newblock Impact of traffic mix on caching performance in a content-centric
+  network.
+\newblock In {\em 2012 Proceedings IEEE INFOCOM Workshops}, pages 310--315.
+  IEEE, 2012.
+
+\bibitem{harang2014bridging}
+R.~Harang.
+\newblock Bridging the semantic gap: Human factors in anomaly-based intrusion
+  detection systems.
+\newblock In {\em Network Science and Cybersecurity}, pages 15--37. Springer,
+  2014.
+
+\bibitem{hwang2019lstm}
+R.-H. Hwang, M.-C. Peng, V.-L. Nguyen, and Y.-L. Chang.
+\newblock An lstm-based deep learning approach for classifying malicious
+  traffic at the packet level.
+\newblock {\em Applied Sciences}, 9(16):3414, 2019.
+
+\bibitem{liu2019machine}
+H.~Liu and B.~Lang.
+\newblock Machine learning and deep learning methods for intrusion detection
+  systems: A survey.
+\newblock {\em Applied Sciences}, 9(20):4396, 2019.
+
+\bibitem{marx2020same}
+R.~Marx, J.~Herbots, W.~Lamotte, and P.~Quax.
+\newblock Same standards, different decisions: A study of quic and http/3
+  implementation diversity.
+\newblock In {\em Proceedings of the Workshop on the Evolution, Performance,
+  and Interoperability of QUIC}, pages 14--20, 2020.
+
+\bibitem{nisioti2018intrusion}
+A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
+\newblock From intrusion detection to attacker attribution: A comprehensive
+  survey of unsupervised methods.
+\newblock {\em IEEE Communications Surveys \& Tutorials}, 2018.
+
+\bibitem{smith2020mind}
+M.~R. Smith, N.~T. Johnson, J.~B. Ingram, A.~J. Carbajal, R.~Ramyaa,
+  E.~Domschot, C.~C. Lamb, S.~J. Verzi, and W.~P. Kegelmeyer.
+\newblock Mind the gap: On bridging the semantic gap between machine learning
+  and information security.
+\newblock {\em arXiv preprint arXiv:2005.01800}, 2020.
+
+\bibitem{sommer2010outside}
+R.~Sommer and V.~Paxson.
+\newblock Outside the closed world: On using machine learning for network
+  intrusion detection.
+\newblock In {\em 2010 IEEE symposium on security and privacy}, pages 305--316.
+  IEEE, 2010.
+
+\bibitem{stober2013you}
+T.~St{\"o}ber, M.~Frank, J.~Schmitt, and I.~Martinovic.
+\newblock Who do you sync you are? smartphone fingerprinting via application
+  behaviour.
+\newblock In {\em Proceedings of the sixth ACM conference on Security and
+  privacy in wireless and mobile networks}, pages 7--12, 2013.
+
+\end{thebibliography}
