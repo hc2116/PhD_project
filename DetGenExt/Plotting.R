@@ -1027,6 +1027,11 @@ df1=data.frame(x=c(x1[,1],x2[,1],x3[,1],x4[,1]),y=c(x1[,2],x2[,2],x3[,2],x4[,2])
 df1$x=df1$x/sd(df1$x)
 df1$y=df1$y/sd(df1$y)
 
+df111=data.frame(x=c(x2[,1],x3[,1],x4[,1]),y=c(x2[,2],x3[,2],x4[,2]),
+                 Label="Benign")
+df1$x=df1$x/sd(df1$x)
+df1$y=df1$y/sd(df1$y)
+
 df1_new=data.frame(x=c(x1[,1],x2[,1],x3[,1]),y=c(x1[,2],x2[,2],x3[,2]),
                    Label="Benign")
 df1_new$x=(df1_new$x-mean(df1_new$x))/sd(df1_new$x)+mean(df1_new$x)
@@ -1067,7 +1072,7 @@ df3_newc$y=(df3_newc$y-mean(df3_newc$y))/(sd(df3_newc$y)*2)+mean(df3_newc$y)
 
 pA <- ggplot(df1,aes(x=x+3,y=y+6,color=Label))+
   geom_point(alpha=0.6,size=1)+
-  stat_ellipse(aes(x=x+3, y=y+6),level=0.999999)+#,type = "polygon", level=6)+
+  stat_ellipse(aes(x=x+3, y=y+6),type="t",level=0.9999)+#,level=0.999999)+#,type = "polygon", level=6)+
   geom_point(df2,mapping=aes(x=x+3,y=y+6,color=Label),alpha=0.8,size=1)+
   geom_point(df3,mapping=aes(x=x+3,y=y+6,color=Label),size=2.5)+
   theme_bw()+labs(y="dimension x5",x="dimension x3",title="Projection before correction")+
@@ -1076,7 +1081,7 @@ pA <- ggplot(df1,aes(x=x+3,y=y+6,color=Label))+
   #xlim(-5+3,4.5+3)+ylim(-4.5+6,4+6)
   #xlim(-6+3,6+3.2)+ylim(-5.5+6,6+6)
   xlim(-1.2,11)+ylim(1,12)
-#pA
+pA
 
 pA2 <- ggplot(df1_new,aes(x=x+3,y=y+6,color=Label))+
   geom_point(alpha=0.6,size=1)+

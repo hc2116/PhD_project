@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  13 JAN 2021 17:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  15 JAN 2021 22:19
 entering extended mode
 **./WTMC_draft.tex
 (WTMC_draft.tex
@@ -557,7 +557,11 @@ Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
 \mult@nat@firstbox=\box58
 \colbreak@box=\box59
 \mc@col@check@num=\count131
-) (WTMC_draft.aux)
+) (WTMC_draft.aux
+
+LaTeX Warning: Label `fig:Subspace_disp' multiply defined.
+
+)
 \openout1 = `WTMC_draft.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
@@ -574,12 +578,10 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
 LaTeX Font Info:    ... okay on input line 28.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 28.
-
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+ ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 28.
-
 -- Lines per column: 56 (exact).
 
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
@@ -674,70 +676,143 @@ LaTeX Warning: No \author given.
 
 LaTeX Warning: No \author given.
 
-[1{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
-
-
-]
-LaTeX Font Info:    Try loading font information for U+msa on input line 418.
-
+LaTeX Font Info:    Try loading font information for U+msa on input line 39.
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 418.
+LaTeX Font Info:    Try loading font information for U+msb on input line 39.
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-<images/LSTM_activation.png, id=9, 514.92375pt x 345.54094pt>
+) [1{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+
+]
+<images/Eva_Prob2.png, id=11, 515.67656pt x 679.78969pt>
+File: images/Eva_Prob2.png Graphic file (type png)
+<use images/Eva_Prob2.png>
+Package pdftex.def Info: images/Eva_Prob2.png  used on input line 83.
+(pdftex.def)             Requested size: 232.19843pt x 306.08923pt.
+ [2 <./images/Eva_Prob2.png>]
+<images/LSTM_activation.png, id=15, 514.92375pt x 345.54094pt>
 File: images/LSTM_activation.png Graphic file (type png)
 <use images/LSTM_activation.png>
-Package pdftex.def Info: images/LSTM_activation.png  used on input line 426.
+Package pdftex.def Info: images/LSTM_activation.png  used on input line 166.
 (pdftex.def)             Requested size: 258.0pt x 173.13383pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 426--427
+Overfull \hbox (6.0pt too wide) in paragraph at lines 166--167
  [][] 
  []
 
-[2]
-<images/LSTM_classi.png, id=13, 376.40625pt x 312.41719pt>
+<images/LSTM_classi.png, id=16, 376.40625pt x 312.41719pt>
 File: images/LSTM_classi.png Graphic file (type png)
 <use images/LSTM_classi.png>
-Package pdftex.def Info: images/LSTM_classi.png  used on input line 440.
+Package pdftex.def Info: images/LSTM_classi.png  used on input line 182.
 (pdftex.def)             Requested size: 258.0pt x 214.15701pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 440--441
+Overfull \hbox (6.0pt too wide) in paragraph at lines 182--183
  [][] 
  []
 
 [3 <./images/LSTM_activation.png> <./images/LSTM_classi.png (PNG copy)>]
-<images/traffic_dispersion.png, id=18, 367.3725pt x 342.5297pt>
+Underfull \hbox (badness 10000) in paragraph at lines 212--212
+[]|\OT1/ptm/m/n/8 Get-req. NG-INX,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--212
+[]|\OT1/ptm/m/n/8 Two hosts,
+ []
+
+
+Underfull \hbox (badness 2245) in paragraph at lines 212--212
+[]|\OT1/ptm/m/n/8 Command 1,
+ []
+
+
+Overfull \hbox (3.02122pt too wide) in paragraph at lines 213--213
+[]|\OT1/ptm/m/n/8 Results:| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--216
+[]|\OT1/ptm/m/n/8 Four hosts,
+ []
+
+
+Underfull \hbox (badness 2245) in paragraph at lines 216--216
+[]|\OT1/ptm/m/n/8 Command 2,
+ []
+
+
+Overfull \hbox (3.02122pt too wide) in paragraph at lines 217--217
+[]|\OT1/ptm/m/n/8 Results:| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--220
+[]|\OT1/ptm/m/n/8 Post-req. Apache,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--220
+[]|\OT1/ptm/m/n/8 Two hosts,
+ []
+
+
+Underfull \hbox (badness 2245) in paragraph at lines 220--220
+[]|\OT1/ptm/m/n/8 Command 3,
+ []
+
+
+Overfull \hbox (3.02122pt too wide) in paragraph at lines 221--221
+[]|\OT1/ptm/m/n/8 Results:| 
+ []
+
+
+Underfull \hbox (badness 2573) in paragraph at lines 224--224
+[]|\OT1/ptm/m/n/8 Multi-req. Apache,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[]|\OT1/ptm/m/n/8 Four hosts,
+ []
+
+
+Underfull \hbox (badness 2245) in paragraph at lines 224--224
+[]|\OT1/ptm/m/n/8 Command 4,
+ []
+
+
+Overfull \hbox (3.02122pt too wide) in paragraph at lines 225--225
+[]|\OT1/ptm/m/n/8 Results:| 
+ []
+
+[4]
+<images/traffic_dispersion.png, id=24, 367.3725pt x 342.5297pt>
 File: images/traffic_dispersion.png Graphic file (type png)
 <use images/traffic_dispersion.png>
-Package pdftex.def Info: images/traffic_dispersion.png  used on input line 497.
+Package pdftex.def Info: images/traffic_dispersion.png  used on input line 247.
 
 (pdftex.def)             Requested size: 258.0pt x 240.56882pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 497--498
+Overfull \hbox (6.0pt too wide) in paragraph at lines 247--248
  [][] 
  []
 
-<images/Subspace_projection_new2.png, id=19, 376.40625pt x 399.74344pt>
-File: images/Subspace_projection_new2.png Graphic file (type png)
-<use images/Subspace_projection_new2.png>
-Package pdftex.def Info: images/Subspace_projection_new2.png  used on input lin
-e 508.
+<images/Subspace_projection_new3.png, id=25, 376.40625pt x 399.74344pt>
+File: images/Subspace_projection_new3.png Graphic file (type png)
+<use images/Subspace_projection_new3.png>
+Package pdftex.def Info: images/Subspace_projection_new3.png  used on input lin
+e 264.
 (pdftex.def)             Requested size: 258.0pt x 274.01778pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 508--509
+Overfull \hbox (6.0pt too wide) in paragraph at lines 264--265
  [][] 
  []
 
-[4 <./images/traffic_dispersion.png>]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 1063
-.
-
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) (WTMC_draft.bbl [5 <./images/Subspace_projection_new2.png>])
+[5 <./images/traffic_dispersion.png> <./images/Subspace_projection_new3.png>]
+(WTMC_draft.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -749,28 +824,33 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6
+[6] (WTMC_draft.aux)
 
-] (WTMC_draft.aux) ) 
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 7282 strings out of 492970
- 111123 string characters out of 3126595
- 192335 words of memory out of 3000000
- 11040 multiletter control sequences out of 15000+200000
- 42149 words of font info for 88 fonts, out of 3000000 for 9000
+ 7270 strings out of 492970
+ 110901 string characters out of 3126595
+ 190430 words of memory out of 3000000
+ 11027 multiletter control sequences out of 15000+200000
+ 44286 words of font info for 93 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,12n,40p,1608b,270s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc
-/dvips/base/8r.enc}<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmr10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/henry/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/henry/AppData/Local/Programs
-/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/henry/AppData/Local/Pro
-grams/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/henry/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on WTMC_draft.pdf (6 pages, 193776 bytes).
+ 42i,12n,40p,1104b,270s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
+}<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmmi10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/henry/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/henry/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/henry/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/henry
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/
+henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Us
+ers/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on WTMC_draft.pdf (6 pages, 280109 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
+ 66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
