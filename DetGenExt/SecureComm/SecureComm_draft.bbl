@@ -6,18 +6,11 @@ M.~Barre, A.~Gehani, and V.~Yegneswaran.
 \newblock In {\em 11th International Workshop on Theory and Practice of
   Provenance (TaPP 2019)}, 2019.
 
-\bibitem{biernacki2017analysis}
-A.~Biernacki.
-\newblock Analysis and modelling of traffic produced by adaptive http-based
-  video.
-\newblock {\em Multimedia Tools and Applications}, 76(10):12347--12368, 2017.
-
-\bibitem{fricker2012impact}
-C.~Fricker, P.~Robert, J.~Roberts, and N.~Sbihi.
-\newblock Impact of traffic mix on caching performance in a content-centric
-  network.
-\newblock In {\em 2012 Proceedings IEEE INFOCOM Workshops}, pages 310--315.
-  IEEE, 2012.
+\bibitem{iperf}
+M.~Gates and A.~Warshavsky.
+\newblock {Iperf} {Man} {Page}.
+\newblock \url{https://linux.die.net/man/1/iperf}.
+\newblock Accessed: 2019-08-11.
 
 \bibitem{harang2014bridging}
 R.~Harang.
@@ -25,6 +18,11 @@ R.~Harang.
   detection systems.
 \newblock In {\em Network Science and Cybersecurity}, pages 15--37. Springer,
   2014.
+
+\bibitem{hemminger2005network}
+S.~Hemminger et~al.
+\newblock Network emulation with netem.
+\newblock In {\em Linux conf au}, pages 18--23, 2005.
 
 \bibitem{hou2017deep}
 X.~Hou, L.~Shen, K.~Sun, and G.~Qiu.
@@ -37,6 +35,17 @@ R.-H. Hwang, M.-C. Peng, V.-L. Nguyen, and Y.-L. Chang.
 \newblock An lstm-based deep learning approach for classifying malicious
   traffic at the packet level.
 \newblock {\em Applied Sciences}, 9(16):3414, 2019.
+
+\bibitem{jurgelionis2011empirical}
+A.~Jurgelionis, J.-P. Laulajainen, M.~Hirvonen, and A.~I. Wang.
+\newblock An empirical study of netem network emulation functionalities.
+\newblock In {\em 2011 Proceedings of 20th International Conference on Computer
+  Communications and Networks (ICCCN)}, pages 1--6. IEEE, 2011.
+
+\bibitem{kolyshkin2006virtualization}
+K.~Kolyshkin.
+\newblock Virtualization in linux.
+\newblock {\em White paper, OpenVZ}, 3:39, 2006.
 
 \bibitem{liu2019machine}
 H.~Liu and B.~Lang.
@@ -56,6 +65,12 @@ I.~Sharafaldin, A.~H. Lashkari, and A.~A. Ghorbani.
   traffic characterization.
 \newblock In {\em ICISSP}, pages 108--116, 2018.
 
+\bibitem{shiravi2012toward}
+A.~Shiravi, H.~Shiravi, M.~Tavallaee, and A.~A. Ghorbani.
+\newblock Toward developing a systematic approach to generate benchmark
+  datasets for intrusion detection.
+\newblock {\em computers \& security}, 31(3):357--374, 2012.
+
 \bibitem{smith2020mind}
 M.~R. Smith, N.~T. Johnson, J.~B. Ingram, A.~J. Carbajal, R.~Ramyaa,
   E.~Domschot, C.~C. Lamb, S.~J. Verzi, and W.~P. Kegelmeyer.
@@ -69,13 +84,6 @@ R.~Sommer and V.~Paxson.
   intrusion detection.
 \newblock In {\em 2010 IEEE symposium on security and privacy}, pages 305--316.
   IEEE, 2010.
-
-\bibitem{stober2013you}
-T.~St{\"o}ber, M.~Frank, J.~Schmitt, and I.~Martinovic.
-\newblock Who do you sync you are? smartphone fingerprinting via application
-  behaviour.
-\newblock In {\em Proceedings of the sixth ACM conference on Security and
-  privacy in wireless and mobile networks}, pages 7--12, 2013.
 
 \bibitem{tahaei2020rise}
 H.~Tahaei, F.~Afifi, A.~Asemi, F.~Zaki, and N.~B. Anuar.
