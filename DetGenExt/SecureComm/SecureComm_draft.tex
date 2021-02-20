@@ -134,7 +134,7 @@ This framework is openly accessible for researchers and allows for straightforwa
 
 \section{Motivation and Methodology}\label{Sec:Motivation}
 
-\subsection{Motivation}
+%\subsection{Motivation}
 
 Scientific machine learning model development requires both \textbf{model evaluation}, in which the overall predictive quality of a model is assessed to identify the best model, as well as \textbf{model validation}, in which the behaviour and limitations of a model is assessed through targeted \textbf{model probing}. Model validation is essential to understand how particular data structures are processed, and enables researchers to develop their models accordingly. Data generation tools for rapid model probing in other domains such as the \textit{What-If tool} \cite{wexler2019if} underline the importance of model validation.
 
@@ -145,12 +145,91 @@ Scientific machine learning model development requires both \textbf{model evalua
 \caption{Comparison between numerical model evaluation and model probing with specifically controlled data characteristics, indicated as colours.}
 \end{figure}
 
-We designed DetGen to provide traffic with exact control over various influence factors to allow \textcolor{red}{...}
+Assume the following problem: You are designing a traffic classifier for a specific setting, which is generating a significant amount of misclassifications, which have a non-obvious origin. Existing real-world or synthetic datasets do not contain the necessary information to describe the misclassified traffic events, which makes it very tedious to compare identify particular features responsible for the misclassification. 
 
-%We want to demonstrate how model validation can be performed for machine-learning-based network intrusion detection models such as traffic classifiers or anomaly-detection systems with the use of specifically generated traffic traces. We focus in particular on \textbf{traffic-micro-structures}, which we define as  short-term atomic, sequential or cumulative structures in the packet or flow metadata stream, compared to aggregate structures visible over longer periods. Differences in observable traffic micro-structures are driven through factors such as the particular communicational activity, the choice and implementation of the communication protocol as well as external effects such as network reliability or available computation resources. An analogue to this is speech, were influence factors such as accents or emotions can introduce structural characteristics to a conveyed message.
+DetGen is designed to provide traffic with the necessary ground-truth information to allow effective association of model processing behaviour with corresponding traffic characteristics. Traffic is generated with exact control and monitoring over the conducted communication activity as well as various traffic \textcolor{red}{micro-structures} such as network failures or specific implementations.
+
+Below, we provide a use-case to demonstrate how ground-truth information and traffic micro-structure-control enables effective model probing:
+
+%\section{Use-cases}
+\subsection{Improved traffic separation for a classifier with congestion level information}\label{Sec:Improvedtrafficsep}
+
+
+%Possible title: \textbf{Exploring the effect of rare events to model performance}
+%Our first example looks at how descriptive ground truth information on traffic characteristics can improve a
+In this example we improve the design of a traffic classification model through the analysis of data separation in dependence of different traffic features. For this, we use a recent traffic classification model by Hwang et al. \cite{hwang2019lstm} as an example, which aims at distinguishing various types of malicious activity from benign traffic. The model achieved some of the highest detection rates of packet-based classifiers in a recent survey \cite{tahaei2020rise}.
+The model classifies connections on a packet-level using a \textit{Long-short-term memory} (LSTM) network \footnote{a deep learning design for sequential data}, and is claimed to achieve detection and false-positive (FP) rates of \textbf{99.7\%} and \textbf{0.03\%} respectively. 
+
+
+We train a model on a set of different HTTP-activities in order to detect SQL-injections. Rather than providing an accurate and realistic detection setting, this example shows how traffic information can be linked to model failures and slumping performance. We use real-world HTTP-traffic from the \textit{CAIDA anonymized traffic traces} \cite{walsworth2015caida} as background traffic (85\% of connections) and add SQL-injection attack traffic (7.5\%) as well as different HTTP-activities for probing (7.5\%). In total, we use 50,000 connections for training the model, or slightly less than 2 million packets. 
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{images/LSTM_activation.png}
+\caption{LSTM-output activation in dependence of connection phases. Depicted are packet segment streams and their respective sizes in the forward and backward direction, with different phases in the connection coloured and labelled. Below is the LSTM-ouput activation while processing the packet streams.}\label{fig:LSTM_act}
+\end{figure}
+
+The initially trained model performs relatively well, with an \textit{Area under curve} (AUC)-score\footnote{a measure describing the overall class separation of the model} of \textbf{0.981}, or a detection and false positive rate\footnote{tuned for the geometric mean} of \textbf{0.96\%} and \textbf{2.7\%}. However, these rates are still far from enabling operational deployment. Now suppose we want to improve these rates to both detect more SQL-injections and retain a lower false-positive rate.
+
+We initially explore which type of connections are misclassified most often. For this, we perform a correlation analysis between the numeric or categoric labels available for the probing data, and the binary response whether the corresponding connection was misclassified. Unsurprisingly, the highest correlation to misclassification was measured for the conducted activity, with a particular attack scenario (19\% correlation) and connections with multiple GET-requests (11\% correlation) being confused most often. This was followed by the amount of simulated latency (12\% correlation), which we are now examining closer.
 
 
 
+Fig. \ref{fig:LSTM_exp} depicts classification scores of connections in the probing data in dependence of the emulated network latency. The left panel depicts the scores for the initially trained model, which shows that while classification scores are well separated for lower congestion, increased latency in a connection leads to a narrowing of the classification scores, especially for SQL-injection traffic. Since there are no classification scores that reach far in the opposing area, we conclude that congestion simply makes the model lose predictive certainty. 
+Increased latency can both increase variation in observed packet interarrival times (IATs), and lead to packet out-of-order arrivals and corresponding retransmission attempts. Both of these factors can decreases the overall sequential coherence for the model, i.e. that the LSTM-model loses context too quickly either due to increased IAT variation or during retransmission sequences. 
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{images/LSTM_classi.png}
+\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold. }\label{fig:LSTM_exp}
+\end{figure}
+
+To examine the exact effect of retransmission sequences on the model output, we generate two similar connections, where one connection is subject to moderate packet loss and reordering while the other is not. We then compare how the LSTM-output activation is affected by retransmission sequences. Fig. \ref{fig:LSTM_act} depicts the evolution the LSTM-output layer activation in dependence of difference connection phases. Initially the model begins to view the connection as benign when processing regular traffic, until the SQL-injection is performed. The model then quickly adjusts and provides a malicious classification after processing the injection phase and the subsequent data transfer. The negative output activation is however quickly depleted once the model processes a retransmission phase, and is afterwards not able to relate the still ongoing data transfer to the injection phase. When comparing this to the connection without retransmissions, we do not encounter this depletion effect, instead the negative activation persists after the injection phase.
+
+We try to correct the existing model with a simple fix by excluding retransmission sequences from the model input data, both during training and classification. This leads to significantly better classification results during network latency, as visible in the right panel of Fig. \ref{fig:LSTM_exp}. SQL-injection scores are now far-less affected by congestion while scores for benign traffic are also less affected, albeit to a smaller degree.
+The overall AUC-score for the model improves to \textbf{0.997} while tuned detection rates and false positives improved to \textbf{99.1\%} and \textbf{0.045\%}.
+
+
+\section{Refining the notion of benign traffic for anomaly detection}\label{Sec:Refining}
+
+Next, we show how ground-truth traffic information can help produce more coherent clusters and thus refine the benign traffic model in anomaly-detection. In particular, we will examine a 
+simplified version of \textit{Kitsune} \cite{mirsky2018kitsune}, a recent deep learning anomaly-detection model based on stacked autoencoders. \textit{Kitsune's} AUC-scores surpassed those of other state-of-the-art methods for a variety of attacks, including various types of Botnet traffic and \textit{man-in-the-middle} attacks.
+
+%for access attacks according to a survey by Nisioti et al. \cite{nisioti2018intrusion}.
+The model takes connection packet streams as input, which are pushed through an artificial information bottleneck before reconstruction, which forces the model to learn and compress reoccurring traffic structures. The compressed connection representation is essentially a positional projection into a lower-dimensional vector space, where spatial boundaries around benign traffic can be drawn. For demonstration purposes, we use a widely-used clustering approach for anomaly-detection rather than \textit{Kitsune's} more complex ensemble method. 
+%This allows us to project flows into a lower-dimensional vector space, where spatial boundaries around benign traffic can be drawn using clustering to identify anomalous traffic events. The model takes 102 flow summary statistics as input, which include features such as packet size and interarrival statistics, flag occurrencies, or number of flows in window. 
+Here, anomalous outliers are detected using the Mahalanobis-distance of a projected connection from identified cluster centers. %The identified clusters therefore serve as structural enclosures of benign behaviour, with the cluster borders acting as separators to abnormal behaviours. 
+Benign traffic should ideally be distributed evenly around the cluster centres to allow a tight borders and good separation from actual abnormal behaviour.
+
+Unstructured datasets such as the CAIDA traffic traces assumably contain too much abnormal behaviour to train an anomaly-detection model, which is why we train the model on benign traffic from the CICIDS-17 \cite{sharafaldin2018toward} intrusion detection dataset (80\%). Again, we add 20\% probing traffic consists of HTTP, FTP, SSH, and SMTP communication, using a wide spectrum of settings for examination purposes. Attack data for the evaluation was again provided through the CICIDS-17 dataset, and includes access attacks such as SQL-injections or Brute-Forcing, as well as Mirai botnet traffic. We  train the model with in total 150,000 connections.
+
+\subsection{Projection coherency evaluation}
+
+
+Like many approaches that generate representations of benign traffic for anomaly detection, \textit{Kitsune} projects traffic events into a vector-space where traffic clusters and similarities become more apparent. In order for the projection to accurately capture important traffic structures, this projection should be consistent, i.e. traffic events with similar origins and characteristics should be projected to similar positions rather than be dispersed throughout the vector space \cite{hou2017deep}.
+
+%Verifying the projection consistency of a model is not straightforward as usually no or not enough ground-truth information about different traffic characteristics is available to asses if the model is projecting similar traffic to dissimilar positions, or if the traffic just bears some dissimilar characteristics.
+
+To verify the models projection consistency, we generate traffic from near-identical conditions to provide certainty on the expected traffic similarities. We generate a small dataset that consists of HTTP-requests, file-synchronisation, and Botnet communication. For each of the three traffic types we fix four settings that vary in the performed activity and network latency, with the traffic shaping described in Section \ref{Control} being held constant within each setting except for small variations in the transmitted message or file. Table \ref{Tab:Dataset} summarises the traffic for each setting. 
+
+We verify if traffic samples within each group are projected to similar areas by measuring the average and maximum Mahalanobis-distance to quantify the overall dispersion of the samples. The results are displayed in Table \ref{Tab:Dataset} and depicted in Fig. \ref{fig:Subspace_disp}. The first thing to notice is that the model projects samples from each group within the same cluster, thus confirming the capture of a coarse traffic structure. When looking at the traffic dispersion and the corresponding Mahalanobis-distance measurements, we notice that the \textit{multi-request HTTP} traffic as well as the \textit{file-synchronisation} between mutliple computers is much further dispersed than in the other settings, especially when exposed to more latency. We also find that the corresponding dimension, $x_3$, with the most projected dispersion seems to be the same for each of the four settings. This suggests that the cause for the dispersion is the same for the different traffic types. 
+
+We now focus on the influence of input features on the projected positions exclusively in the $x_3$-direction. Here, we can again perform a simple correlation analysis between different the input feature values and the corresponding $x_3$-value. We observe that the arrival time of packet bears the most correlation (5.4\%) for the selected settings. We also see that this influence is concentrated primarily on connections that are opened shortly after a previous connection, with the temporal separation between these two connections apparently being the primary cause for the spread on the $x_3$-axis. The connection interarrival times are naturally an important feature for \textit{Kitsune} to detect attacks such as \textit{Man-in-the-Middle}, which could explain the weight this feature plays in the projection process.
+
+%look at the the influence of the individual flow features on projected position, we notice that even slight differences in the IAT of the preceding and the subsequent flow impacts the projected position quite strongly, which is why only the settings that generate multiple flows are affected.
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{images/traffic_dispersion.png}
+\caption{Dispersion of projected traffic samples from each setting, plotted along the two most dispersed axes.}\label{fig:Subspace_disp}
+\end{figure}
+
+\section{Probing dataset}
+
+We compiled and released a dataset suitable to quickly probe ML-model behaviour on a range of traffic characteristics. This dataset is designed to contain similar traffic as the CICIDS-17 and 18 datasets to allow probing of models trained on these \textcolor{red}{de-facto benchmark} datasets. 
 
 \section{DetGen Architecture}
 
@@ -160,8 +239,7 @@ We designed DetGen to provide traffic with exact control over various influence 
 
 \subsection{Design overview}
 
-
-Detgen is a container-based network traffic generation framework.% that we developed to enable repeatable, controllable, and \textcolor{red}{informative} network experiments. 
+Detgen is a container-based network traffic generation framework that \textcolor{red}{dis.} % that we developed to enable repeatable, controllable, and \textcolor{red}{informative} network experiments. 
 In contrast to the pool of programs running in a VM-setup, DetGen separates program executions and traffic capture into distinct containerised environments in order to shield the generated traffic from external influences and enable the fine-grained control of \textcolor{red}{traffic shaping factors}.
 
 Traffic is generated from a set of scripted \textit{scenarios} (\textcolor{red}{give examples here}) that strictly control corresponding influence factors and offer the researcher to modify and label the conducted activity from a variety of \textcolor{red}{angles} and randomisations. %Containers communicate in a virtual network created with Mininet along with virtual software switches, Ethernet links, routers, and firewalls. %The network is then populated with containers ,which perform a variety of activities for traffic generation. The conducted activities are composed of scripted \textit{scenarios} (\textcolor{red}{give examples here}), but subject to a high degree of randomisation. The captured traffic events are labelled individually after the specific generating action.
@@ -348,228 +426,6 @@ Scenarios such as stepping stone behavior or Cryptojacking previously had no ava
 We provide a complete list of implemented scenarios in Table \ref{tab:scen}.
 
 
-\section{Observable effects of \textcolor{red}{traffic-shaping-factors}}\label{Sec:Experiments}
-
-%This section is important to demonstrate that our data is valid and overcomes the difficulties entailed with synthetic data generation. Cordero et al. have proposed some more simple test that we can refer to first
-
-%\textcolor{red}{Question to be answered}: What requirements are there for the additional data, program logs and system logs, that we collect? Should we put less emphasise on these data sources in general if we are not able to perform these tests, and refer to them in future work? I am not aware of any papers that discuss these requirements in a similar way. 
-
-
-%\subsection{Traffic similarity metrics for determinism and realism evaluation}
-\subsection{Traffic control and generation determinism}
-We now assess the claim of control over the outlined traffic influence factors, and how similar traffic generated with the same settings looks like. We also demonstrate that this level of control is not achievable on regular VM-based NIDS-traffic-generation setup.
-
-To do so, we generate traffic from settings within which all controllable influence factors are held constant, both with DetGen framework and with a regular VM-based setup. Traffic samples from each setting should then be as similar as possible to provide sufficient experimental determinism. To measure how similar two traffic samples are, we devise a set of similarity metrics that measure dissimilarity of overall connection characteristics, connection sequence characteristics, and packet sequence characteristics:
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{images/Exp1.png}
-\caption{Comparison of HTTP-group dissimilarity scores for the DetGen-framework and a regular VM-setup, on a logarithmic scale. Samples from the VM-setting are consistently more dissimilar, in particular for flow-based metrics, where the average dissimilarity is more than 30 times higher than for the DetGen setting.}\label{Fig:determ-metric}
-\end{figure}
-
-
-%To do so, we require a similarity metric that measures how similar or dissimilar two traffic traces are. We want to compare traffic similarity on three ...
-%we compare our framework against a setup on a virtual machine to show that we provide deterministic control that is not achievable on a common setup. 
-%For that, we measure traffic similarity using a set of similarity metrics on traffic both from our and the comparison setup. The traffic is subject to varying degrees of influence from the above described impact factors. We show that when all factors are held constant, our traffic is much more similar than on a regular setup.
-
-%We should also demonstrate how difficult it is to match all flow events to specific events (I am still unsure how), and how often you get system background events (very straightforward using flow counting and port entropy).
-
-%Common setup: Network of VMs with each VM representing one host in a regular network. Multiple services with scheduled scripted activities running on a VM. Traffic captured at router or network interface. 
-
-\begin{itemize}
-\item \textbf{Overall connection similarity} We collect 80 flow summary statistics (IAT and packet size, TCP window sizes, flag occurrences, burst and idle periods). We compress this information using PCA to 8 significant dimensions, and measure the cosine similarity between connections, which is also used in general traffic classification \cite{aun2017review}.
-\item \textbf{Connection sequence similarity} 
-To quantify the similarity of a sequence of connections in a retrieval window, we use the following features to describe the window, such as used by Yen et al. \cite{yen2009browser} for application classification: The number of connections, average and max/min flow duration and size, number of distinct IP and ports addresses contacted. We then again measure the cosine similarity based on these features between different windows. 
-\item \textbf{Packet sequence similarity} To quantify the similarity of packet sequences in traffic captures, we assign packets a discrete state according to their flags, direction, sizes, and interarrival times (\textcolor{red}{insert citation}). We then calculate the Markovian probability of each packet state conditional on the previous packet. We do this for sequences of 15 packets at the start, the middle, and the end of a connection, and use the average sequence likelihood of each group as a similarity measure. If connections are completely similar, the conditional probabilities and thus the likelihoods should converge to one.
-\end{itemize}
-
-We normalise all dissimilarity scores by dividing them by the maximum dissimilarity score measured for each traffic type in our experiment in Section \ref{Sec:Realdiv}, so that the reader can relate the measured scores to the traffic type.
-
-
-
-
-
-%\subsubsection{Determinism test}
-As a comparison, we use a regular VM-based setup, were applications are hosted directly on two VMs that communicate over a virtual network bridge that is subject to the same NetEm effects as DetGen. To compare the amount of traffic control and the corresponding generative determinism of DetGen and the VM-setup, we generate three different types of traffic (HTTP, file-syncing, and botnet) from four different settings, within which all generative parameters are kept constant. For each setting and traffic type, we generate 100 traffic samples and apply the described dissimilarity measures to 100 randomly drawn pairs sample pairs. Fig. \ref{Fig:determ-metric} depicts the calculated dissimilarity scores for DetGen and the VM-setup, while Table \ref{Tab:Dataset} describes the different settings and the corresponding average dissimilarity scores.
-
-As visible, the scores yield less than $1\%$ of the dissimilarity observed on average for each protocol. Scores are especially low when compared to traffic groups collected in the VM setting, which is also visible in Fig. \ref{determ-metric} for the HTTP-traffic. Dissimilarity scores for the VM-setting are most notably higher for the flow-metric, caused by additional background flows frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
-
-
-%We now apply the described similarity measures to different settings of traffic traces to evaluate the \textcolor{red}{determinism} of our data generation process. We vary the control settings of the described influence factors, described in Section \ref{Sec:Impactfactors}, for each group, but keep them constant within each group. We use three different traffic types (HTTP, file-syncing (port 8384), and botnet), for which we both perform different application-specific activities and create different overall settings. 
-
-%We furthermore perform the same HTTP-activities on two regular VMs without containerisation, but with the same settings.
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.45\textwidth]{images/HTTP_comp_crop.png}
-\caption{Packet-sequence structure similarity comparison for HTTP-activity under constant settings generated by the DetGen framework (left) and in a regular setting (right). Colours indicate packet flags while the height of the packets indicates their size. Note that in addition to more differences in the timing, the packet sizes vary more in the regular setting. }
-\end{figure}
-
-%Table \ref{Dataset} summarises the activity and settings for the different traffic groups, along with the corresponding dissimilarity scores for each group. 
-
-
-%0.2043341 0.2099933 0.1892661 0.2779625 0.3052004 0.1835523 0.4104484 0.3933690 0.2935111 0.5524176 0.1028654 0.2028906 2.6549903 3.4444166 2.2215654
-
-%\subsection{Realistic diversity level evaluation}\label{Sec:Realdiv}
-
-%The above test demonstrated that while holding settings constant, DetGen generates traffic with high similarity. We now prove that this does not impede DetGen's capability to generate realistic amounts of traffic diversity observed in real-world traffic. This is an important issue since low diversity in training data can both lead to overfitting and to less generalizable models, which can inflate test results compared to real-world settings. However, a lack of traffic diversity and overly homogeneous traffic is inherent to all current intrusion detection datasets \cite{sommer2010outside}.
-
-%An illustrative example of this restricted protocol activity in synthetic datasets can be seen in the CICIDS 2017 dataset \textcolor{red}{insert citation}. Here, the vast majority of successful HTTP transfers consist of a client downloading a single text file containing the Wikipedia page for `Encryption' several hundred times in a day. In reality, HTTP is used for a large number of tasks, which can occur in random order with varying input sizes and parameters.
-
-
-%For our examination, we create a mixed dataset with varying settings for each protocol to explore the produced traffic diversity. Again, we use the proposed traffic similarity metrics to measure the overall traffic dissimilarity. 
-%We compare the observed dissimilarity for each protocol with that observed in real-world traffic from the CAIDA-2018 anonymized traffic traces \textcolor{red}{insert citation}, as well as the widely used synthetic CICIDS-17 intrusion detection dataset \textcolor{red}{insert citation}. Ideally, our generated traffic exhibits similar overall traffic diversity as the CAIDA real-world traffic.
-
-
-
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.5\textwidth]{images/HTTP_similarity.png}
-%\caption{HTTP-traffic dissimilarity scores for each metric and each of the datasets.}\label{fig:diversity_exp}
-%\end{figure}
-
-%We examine the achievable traffic diversity for HTTP-traffic, since large amounts of this protocol are present both in the CAIDA and the CICIDS-17 dataset.
-%We randomly draw settings for all impact factors simultaneously during the traffic generation using realistic parameter sampling distributions, as described in Section \ref{Sec:Scenarios}. After the traffic collection, we pair HTTP-connections at random to examine their dissimilarity. 
-
-%Figure \ref{fig:diversity_exp} shows the dissimilarity distribution for the three traffic metrics for each dataset. As visible, neither the data from DetGen nor the CICIDS-17 dataset fully achieves the diversity of the CAIDA-data. However, DetGen achieves significantly more diversity for overall connection features and for packet sequences, areas whereas the data in the CICIDS-17 data is clustered very narrowly. Normalised entropy measures to quantify the spread of the score distributions for the CAIDA dataset are (\textcolor{myred}{8.14}, \textcolor{mygreen}{8.24}, and  \textcolor{myblue}{8.16}), whereas the DetGen framework achieves entropy scores of (\textcolor{myred}{8.02}, \textcolor{mygreen}{6.6}, and  \textcolor{myblue}{7.91}) while the CICIDS-17 dataset only achieves (\textcolor{myred}{4.3}, \textcolor{mygreen}{6.7}, and  \textcolor{myblue}{2.5})\footnote{Colours correspond to the respective similarity measure.}. This shows that by varying traffic control parameters in a controlled manner, DetGen edges significantly closer to real-world traffic for both overall connection similarity and packet sequence similarity, and performs similarly to existing methods for connection sequence similarity. 
-
-
-
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.5\textwidth]{images/FTP_load.png}
-%\caption{Packet-sequence structure similarity comparison for FTP-activity under different load and otherwise constant settings. Colours indicate packet flags while the height of the packets indicates their size. Note that under load, the host sends significantly less packets.}\label{Fig:FTP_load}
-%\end{figure}
-
-
-%\begin{table}[h!]
-%\centering
-%\begin{tabular}{l|l|l|>{\bfseries}l}
-%Time&  Source-IP &Destination-IP& Dest. Port\\ \hline
-%13:45:56.8 & 192.168.10.9 &  192.168.10.50 &       21 \\ \hline
-%13:45:56.9 & 192.168.10.9 &  192.168.10.50 &    10602\\ \hline
-%13:45:57.5 & 192.168.10.9 &  69.168.97.166 &      443\\ \hline
-%13:45:59.1 & 192.168.10.9 &   192.168.10.3 &       53\\ \hline
-%13:46:00.1 & 192.168.10.9 & 205.174.165.73 &     8080\\ \hline
-%\end{tabular}
-%\caption{Exemplary activity interval for host 192.168.10.9 in the CICIDS-17 dataset, containing FTP-, HTTPS- and DNS-, as well as additional unknown activity.}\label{Tab:Sess}
-%\end{table}
-
-\section{Use-cases}
-\subsection{Improved traffic separation for a classifier with congestion level information}\label{Sec:Improvedtrafficsep}
-
-
-%Possible title: \textbf{Exploring the effect of rare events to model performance}
-Our first example looks at how descriptive ground truth information on traffic characteristics can improve a traffic classification model through the analysis of data separation in dependence of different traffic features. For this, we use a recent traffic classification model by Hwang et al. \cite{hwang2019lstm} as an example, which aims at distinguishing various types of malicious activity from benign traffic. The model achieved some of the highest detection rates of packet-based classifiers in a recent survey \cite{tahaei2020rise}.
-The model classifies connections on a packet-level using a \textit{Long-short-term memory} (LSTM) network \footnote{a deep learning design for sequential data}, and is claimed to achieve detection and false-positive (FP) rates of \textbf{99.7\%} and \textbf{0.03\%} respectively. 
-
-
-We train a model on a set of different HTTP-activities in order to detect SQL-injections. Rather than providing an accurate and realistic detection setting, this example shows how traffic information can be linked to model failures and slumping performance. We use real-world HTTP-traffic from the \textit{CAIDA anonymized traffic traces} \cite{walsworth2015caida} as background traffic (85\% of connections) and add SQL-injection attack traffic (7.5\%) as well as different HTTP-activities for probing (7.5\%). In total, we use 50,000 connections for training the model, or slightly less than 2 million packets. 
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{images/LSTM_activation.png}
-\caption{LSTM-output activation in dependence of connection phases. Depicted are packet segment streams and their respective sizes in the forward and backward direction, with different phases in the connection coloured and labelled. Below is the LSTM-ouput activation while processing the packet streams.}\label{fig:LSTM_act}
-\end{figure}
-
-The initially trained model performs relatively well, with an \textit{Area under curve} (AUC)-score\footnote{a measure describing the overall class separation of the model} of \textbf{0.981}, or a detection and false positive rate\footnote{tuned for the geometric mean} of \textbf{0.96\%} and \textbf{2.7\%}. However, these rates are still far from enabling operational deployment. Now suppose we want to improve these rates to both detect more SQL-injections and retain a lower false-positive rate.
-
-We initially explore which type of connections are misclassified most often. For this, we perform a correlation analysis between the numeric or categoric labels available for the probing data, and the binary response whether the corresponding connection was misclassified. Unsurprisingly, the highest correlation to misclassification was measured for the conducted activity, with a particular attack scenario (19\% correlation) and connections with multiple GET-requests (11\% correlation) being confused most often. This was followed by the amount of simulated latency (12\% correlation), which we are now examining closer.
-
-
-
-Fig. \ref{fig:LSTM_exp} depicts classification scores of connections in the probing data in dependence of the emulated network latency. The left panel depicts the scores for the initially trained model, which shows that while classification scores are well separated for lower congestion, increased latency in a connection leads to a narrowing of the classification scores, especially for SQL-injection traffic. Since there are no classification scores that reach far in the opposing area, we conclude that congestion simply makes the model lose predictive certainty. 
-Increased latency can both increase variation in observed packet interarrival times (IATs), and lead to packet out-of-order arrivals and corresponding retransmission attempts. Both of these factors can decreases the overall sequential coherence for the model, i.e. that the LSTM-model loses context too quickly either due to increased IAT variation or during retransmission sequences. 
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{images/LSTM_classi.png}
-\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold. }\label{fig:LSTM_exp}
-\end{figure}
-
-To examine the exact effect of retransmission sequences on the model output, we generate two similar connections, where one connection is subject to moderate packet loss and reordering while the other is not. We then compare how the LSTM-output activation is affected by retransmission sequences. Fig. \ref{fig:LSTM_act} depicts the evolution the LSTM-output layer activation in dependence of difference connection phases. Initially the model begins to view the connection as benign when processing regular traffic, until the SQL-injection is performed. The model then quickly adjusts and provides a malicious classification after processing the injection phase and the subsequent data transfer. The negative output activation is however quickly depleted once the model processes a retransmission phase, and is afterwards not able to relate the still ongoing data transfer to the injection phase. When comparing this to the connection without retransmissions, we do not encounter this depletion effect, instead the negative activation persists after the injection phase.
-
-We try to correct the existing model with a simple fix by excluding retransmission sequences from the model input data, both during training and classification. This leads to significantly better classification results during network latency, as visible in the right panel of Fig. \ref{fig:LSTM_exp}. SQL-injection scores are now far-less affected by congestion while scores for benign traffic are also less affected, albeit to a smaller degree.
-The overall AUC-score for the model improves to \textbf{0.997} while tuned detection rates and false positives improved to \textbf{99.1\%} and \textbf{0.045\%}.
-
-\section{Refining the notion of benign traffic for anomaly detection}\label{Sec:Refining}
-
-Next, we show how ground-truth traffic information can help produce more coherent clusters and thus refine the benign traffic model in anomaly-detection. In particular, we will examine a 
-simplified version of \textit{Kitsune} \cite{mirsky2018kitsune}, a recent deep learning anomaly-detection model based on stacked autoencoders. \textit{Kitsune's} AUC-scores surpassed those of other state-of-the-art methods for a variety of attacks, including various types of Botnet traffic and \textit{man-in-the-middle} attacks.
-
-%for access attacks according to a survey by Nisioti et al. \cite{nisioti2018intrusion}.
-The model takes connection packet streams as input, which are pushed through an artificial information bottleneck before reconstruction, which forces the model to learn and compress reoccurring traffic structures. The compressed connection representation is essentially a positional projection into a lower-dimensional vector space, where spatial boundaries around benign traffic can be drawn. For demonstration purposes, we use a widely-used clustering approach for anomaly-detection rather than \textit{Kitsune's} more complex ensemble method. 
-%This allows us to project flows into a lower-dimensional vector space, where spatial boundaries around benign traffic can be drawn using clustering to identify anomalous traffic events. The model takes 102 flow summary statistics as input, which include features such as packet size and interarrival statistics, flag occurrencies, or number of flows in window. 
-Here, anomalous outliers are detected using the Mahalanobis-distance of a projected connection from identified cluster centers. %The identified clusters therefore serve as structural enclosures of benign behaviour, with the cluster borders acting as separators to abnormal behaviours. 
-Benign traffic should ideally be distributed evenly around the cluster centres to allow a tight borders and good separation from actual abnormal behaviour.
-
-Unstructured datasets such as the CAIDA traffic traces assumably contain too much abnormal behaviour to train an anomaly-detection model, which is why we train the model on benign traffic from the CICIDS-17 \cite{sharafaldin2018toward} intrusion detection dataset (80\%). Again, we add 20\% probing traffic consists of HTTP, FTP, SSH, and SMTP communication, using a wide spectrum of settings for examination purposes. Attack data for the evaluation was again provided through the CICIDS-17 dataset, and includes access attacks such as SQL-injections or Brute-Forcing, as well as Mirai botnet traffic. We  train the model with in total 150,000 connections.
-
-\subsection{Projection coherency evaluation}
-
-\begin{table}
-\centering
-\begin{tabular}{p{0.8cm}|p{2.3cm}|p{1.5cm}|p{1.6cm}}
-Label&\textbf{HTTP}&\textbf{File-Sync} & \textbf{Mirai-C\&C}\\ \hline 
-\textbf{1}& Get-req. NGINX, low lat.&  Two hosts, low lat. & Command 1, low lat. \vspace{0.1cm} \\ \hline
-Results:& \textcolor{myblue}{0.14}\space ,\space\space\textcolor{myred}{0.45} 
-&\textcolor{myblue}{0.19}\space ,\space\space\textcolor{myred}{0.27} 
-&\textcolor{myblue}{0.03}\space ,\space\space\textcolor{myred}{0.06}\\ \hline \hline
-\textbf{2}&Multi-req. NGINX, low lat. & Four hosts, low lat. & Command 2, low lat.\\ \hline
-Results:&\textcolor{myblue}{0.32}\space ,\space\space\textcolor{myred}{0.45} 
-&\textcolor{myblue}{0.15}\space ,\space\space\textcolor{myred}{0.33} 
-&\textcolor{myblue}{0.03}\space ,\space\space\textcolor{myred}{0.04}\\ \hline \hline
-\textbf{3}& Post-req. Apache, high lat. &Two hosts, high lat. & Command 3, high lat.\\ \hline
-Results:&\textcolor{myblue}{0.17}\space ,\space\space\textcolor{myred}{0.28} 
-&\textcolor{myblue}{0.16}\space ,\space\space\textcolor{myred}{0.28} 
-&\textcolor{myblue}{0.02}\space ,\space\space\textcolor{myred}{0.04}\\ \hline \hline
-\textbf{4}& Multi-req. Apache, high lat. & Four hosts, high lat. & Command 4, high lat.\\ \hline
-Results:&\textcolor{myblue}{0.53}\space ,\space\space\textcolor{myred}{2.51} 
-&\textcolor{myblue}{0.71}\space ,\space\space\textcolor{myred}{1.31} 
-&\textcolor{myblue}{0.03}\space ,\space\space\textcolor{myred}{0.05}\\ \hline \hline
-\end{tabular}
-\caption{Outline of the traffic settings for examining projection consistency. The numbers below each setting describe the measured Mahalanobis-distances (blue:average, red:maximal) for the corresponding projections.}\label{Tab:Dataset}
-\end{table}
-
-Like many approaches that generate representations of benign traffic for anomaly detection, \textit{Kitsune} projects traffic events into a vector-space where traffic clusters and similarities become more apparent. In order for the projection to accurately capture important traffic structures, this projection should be consistent, i.e. traffic events with similar origins and characteristics should be projected to similar positions rather than be dispersed throughout the vector space \cite{hou2017deep}.
-
-%Verifying the projection consistency of a model is not straightforward as usually no or not enough ground-truth information about different traffic characteristics is available to asses if the model is projecting similar traffic to dissimilar positions, or if the traffic just bears some dissimilar characteristics.
-
-To verify the models projection consistency, we generate traffic from near-identical conditions to provide certainty on the expected traffic similarities. We generate a small dataset that consists of HTTP-requests, file-synchronisation, and Botnet communication. For each of the three traffic types we fix four settings that vary in the performed activity and network latency, with the traffic shaping described in Section \ref{Control} being held constant within each setting except for small variations in the transmitted message or file. Table \ref{Tab:Dataset} summarises the traffic for each setting. 
-
-We verify if traffic samples within each group are projected to similar areas by measuring the average and maximum Mahalanobis-distance to quantify the overall dispersion of the samples. The results are displayed in Table \ref{Tab:Dataset} and depicted in Fig. \ref{fig:Subspace_disp}. The first thing to notice is that the model projects samples from each group within the same cluster, thus confirming the capture of a coarse traffic structure. When looking at the traffic dispersion and the corresponding Mahalanobis-distance measurements, we notice that the \textit{multi-request HTTP} traffic as well as the \textit{file-synchronisation} between mutliple computers is much further dispersed than in the other settings, especially when exposed to more latency. We also find that the corresponding dimension, $x_3$, with the most projected dispersion seems to be the same for each of the four settings. This suggests that the cause for the dispersion is the same for the different traffic types. 
-
-We now focus on the influence of input features on the projected positions exclusively in the $x_3$-direction. Here, we can again perform a simple correlation analysis between different the input feature values and the corresponding $x_3$-value. We observe that the arrival time of packet bears the most correlation (5.4\%) for the selected settings. We also see that this influence is concentrated primarily on connections that are opened shortly after a previous connection, with the temporal separation between these two connections apparently being the primary cause for the spread on the $x_3$-axis. The connection interarrival times are naturally an important feature for \textit{Kitsune} to detect attacks such as \textit{Man-in-the-Middle}, which could explain the weight this feature plays in the projection process.
-
-%look at the the influence of the individual flow features on projected position, we notice that even slight differences in the IAT of the preceding and the subsequent flow impacts the projected position quite strongly, which is why only the settings that generate multiple flows are affected.
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{images/traffic_dispersion.png}
-\caption{Dispersion of projected traffic samples from each setting, plotted along the two most dispersed axes.}\label{fig:Subspace_disp}
-\end{figure}
-
-
-%at the effect of sudden connection terminations on an anomaly-detection model by Casas et al. \cite{casas2012unsupervised}. 
-
-\subsection{Investigating individual cluster incoherences}
-
-
-When examining false-positive and corresponding anomaly scores, we noticed that the model often classifies Brute-Force Web attacks as benign and some HTTP-traffic as anomalous. When examining the projected location of the corresponding connections, we see that most of this HTTP-traffic as well as the Brute-Force attack traffic lie near a particular cluster, depicted in Fig. \ref{fig:Subspace_projection}. A significant portion of traffic in that cluster seems to be spread significantly more across the cluster axis than the rest of the traffic in that cluster, leading to an inflated radius that partially encompasses Brute-Force traffic. 
-
-When cross-examining the traffic in this cluster with the probing data, we see that HTTP-traffic with the label "Sudden termination" are distributed across the cluster axis in a similar fashion, also depicted in Fig. \ref{fig:Subspace_projection}, suggesting the conclusion that this type of traffic causes the inflated cluster radius. DetGen generates traffic with the label "Sudden termination" as half-open connections which were dropped by the server due to network failure. One defining characteristic of such connections are that they are not closed with a termination handshake using FIN-flags. To better capture this defining characteristics in the modelling process, we included an additional feature attached to the end of a packet sequence that indicates a proper termination with FIN-flags in the modelling process.
-The newly trained model now projects "Sudden termination" connections into a different cluster, which leads to a far better cluster coherence. The detection rate on Brute-Force attack traffic could thus be improved from \textbf{89.7\%} to \textbf{94.1\%}.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{images/Subspace_projection_new3.png}
-\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold}\label{fig:Subspace_projection}
-\end{figure}
 
 
 \section{Conclusions}\label{Sec:Conclusion}
@@ -579,21 +435,6 @@ In this paper, demonstrated the impact of traffic generation with extensive micr
 By using HTTP-traffic with congestion settings, we were quickly able to identify the inability of an LSTM-based classifier to handle traffic with significant retransmission rates, which enabled us to improve the model accordingly and increase detection performance by more than $2\%$. Similarly, the examination of projection consistency of a subspace-clustering method using traffic with artificially similar characteristics revealed an overly high sensitivity to flow interarrival times, while cluster-coherence could be increased significantly by identifying half-open connections that were dropped because of network failure as the source of overly dispersed traffic projections. 
 
 These results have encouraged us to perform more deep-going probing of data-driven network intrusion detection models. We believe that in combination with strong NID-dataset, extensive model validation and corresponding development with targeted traffic samples might hold the key to reduce false positives of detection models to an acceptable rate, as well as help models replicate detection rates in practical settings.
-
-%It also shows that DetGen offers strong insights into traffic micro-structures and their effect on traffic models, and allows researchers to analyse the particular characteristics of events that lead to false-positives or model failure as well as their effect on model training.
-
-
-%we proposed DetGen, a framework aimed at improving researchers understanding of traffic micro-structures and their respective effect on traffic models in order to close the \emph{semantic gap} described by Sommer and Paxson \cite{sommer2010outside}. DetGen allows reproducible traffic generation experiments that allow the control and monitoring different traffic shaping aspects while delivering data that is truthful to real-world structures. Our framework achieves this through containerised applications and corresponding process and traffic separation, meticulous attention to the corresponding generating activities and their facets, and the careful emulation and control of external effects. Currently, DetGen produces traffic for 29 different activities.
-
-%We verified the improvements regarding reproducibility and traffic control of DetGen compared to traditional VM-setups in an experiment as well as the fidelity of the generated traffic to real-world characteristics in another experiment. Especially regarding the exclusion of background traffic and corresponding connection sequence structures, DetGen outperformed traditional setups significantly. In terms of traffic diversity, DetGen achieved significantly better results than current state-of-the-art NIDS-datasets.
-
-
-
-%The major design advantages of this framework are the isolation of traffic scenarios into separate container arrangements, which allows the extension of new scenarios and detailed implementation of subscenarios as well as the capture of ground truth of the computational origins of individual traffic events. Furthermore, containerization enables the generation of traffic data at scale due to containers being light-weight and easily clonable.
-
-%We verified the realism of the generated traffic and the corresponding ground truth information with two experiments, and demonstrated the usefulness of the framework in another experiment.
-%Presently, our framework consists of 29 scenarios capable of producing benign and malicious network traffic. Several of these scenarios, such as the \emph{BitTorrent} or the \emph{Stepping-Stone} scenario, provide novel traffic data of protocols or behaviours that has not been widely available to researchers previously.
-
 
 \subsection{Difficulties and limitations}
 

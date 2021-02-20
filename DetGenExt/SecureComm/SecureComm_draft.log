@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  16 FEB 2021 17:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  19 FEB 2021 13:31
 entering extended mode
 **./SecureComm_draft.tex
 (SecureComm_draft.tex
@@ -665,204 +665,60 @@ Package pdftex.def Info: images/Eva_Prob.png  used on input line 144.
 (pdftex.def)             Requested size: 347.12354pt x 142.12483pt.
 
 [3]
-<images/VM_setup_final.png, id=26, 281.57655pt x 322.64803pt>
+<images/LSTM_activation.png, id=26, 514.92375pt x 345.54094pt>
+File: images/LSTM_activation.png Graphic file (type png)
+<use images/LSTM_activation.png>
+Package pdftex.def Info: images/LSTM_activation.png  used on input line 168.
+(pdftex.def)             Requested size: 277.69987pt x 186.35205pt.
+ [4 <./images/Eva_Prob.png>]
+<images/LSTM_classi.png, id=30, 376.40625pt x 312.41719pt>
+File: images/LSTM_classi.png Graphic file (type png)
+<use images/LSTM_classi.png>
+Package pdftex.def Info: images/LSTM_classi.png  used on input line 184.
+(pdftex.def)             Requested size: 277.69987pt x 230.50816pt.
+ [5 <./images/LSTM_activation.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./images/LSTM_classi.png (PNG copy)>]
+
+LaTeX Warning: Reference `Control' on page 7 undefined on input line 214.
+
+
+LaTeX Warning: Reference `Tab:Dataset' on page 7 undefined on input line 214.
+
+[7]
+
+LaTeX Warning: Reference `Tab:Dataset' on page 8 undefined on input line 216.
+
+<images/traffic_dispersion.png, id=42, 367.3725pt x 342.5297pt>
+File: images/traffic_dispersion.png Graphic file (type png)
+<use images/traffic_dispersion.png>
+Package pdftex.def Info: images/traffic_dispersion.png  used on input line 225.
+
+(pdftex.def)             Requested size: 242.98541pt x 226.55637pt.
+<images/VM_setup_final.png, id=43, 281.57655pt x 322.64803pt>
 File: images/VM_setup_final.png Graphic file (type png)
 <use images/VM_setup_final.png>
-Package pdftex.def Info: images/VM_setup_final.png  used on input line 177.
+Package pdftex.def Info: images/VM_setup_final.png  used on input line 270.
 (pdftex.def)             Requested size: 166.61781pt x 190.92685pt.
-<images/Docker_setup_final.png, id=27, 312.77509pt x 375.96196pt>
+<images/Docker_setup_final.png, id=44, 312.77509pt x 375.96196pt>
 File: images/Docker_setup_final.png Graphic file (type png)
 <use images/Docker_setup_final.png>
-Package pdftex.def Info: images/Docker_setup_final.png  used on input line 182.
+Package pdftex.def Info: images/Docker_setup_final.png  used on input line 275.
 
 (pdftex.def)             Requested size: 166.61781pt x 200.28001pt.
- [4 <./images/Eva_Prob.png>] [5 <./images/VM_setup_final.png> <./images/Docker_
-setup_final.png>]
+[8] [9 <./images/traffic_dispersion.png> <./images/VM_setup_final.png> <./image
+s/Docker_setup_final.png>] [10]
 
-LaTeX Warning: Reference `Sec:problems' on page 6 undefined on input line 226.
+LaTeX Warning: Reference `Sec:problems' on page 11 undefined on input line 319.
 
-[6] [7]
-Overfull \hbox (58.3292pt too wide) in paragraph at lines 285--333
+
+[11]
+Overfull \hbox (58.3292pt too wide) in paragraph at lines 378--426
 [][] [] 
  []
 
-<images/Exp1.png, id=41, 629.35126pt x 418.56375pt>
-File: images/Exp1.png Graphic file (type png)
-<use images/Exp1.png>
-Package pdftex.def Info: images/Exp1.png  used on input line 366.
-(pdftex.def)             Requested size: 173.56177pt x 115.4279pt.
-
-Underfull \hbox (badness 1694) in paragraph at lines 367--367
-[]\OT1/cmr/m/n/10 Fig.3: |Com-par-i-son of HTTP-group dis-sim-i-lar-ity scores 
-for the DetGen-
- []
-
-[8] [9]
-
-LaTeX Warning: Citation `aun2017review' on page 10 undefined on input line 380.
-
-
-
-LaTeX Warning: Citation `yen2009browser' on page 10 undefined on input line 382
-.
-
-
-LaTeX Warning: Reference `Sec:Realdiv' on page 10 undefined on input line 386.
-
-[10 <./images/Exp1.png>]
-
-LaTeX Warning: Reference `determ-metric' on page 11 undefined on input line 395
-.
-
-<images/HTTP_comp_crop.png, id=54, 485.56406pt x 563.10374pt>
-File: images/HTTP_comp_crop.png Graphic file (type png)
-<use images/HTTP_comp_crop.png>
-Package pdftex.def Info: images/HTTP_comp_crop.png  used on input line 405.
-(pdftex.def)             Requested size: 156.20453pt x 181.14203pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11 <./images/HTTP_comp_crop.png>]
-<images/LSTM_activation.png, id=58, 514.92375pt x 345.54094pt>
-File: images/LSTM_activation.png Graphic file (type png)
-<use images/LSTM_activation.png>
-Package pdftex.def Info: images/LSTM_activation.png  used on input line 473.
-(pdftex.def)             Requested size: 173.56177pt x 116.46475pt.
- [12 <./images/LSTM_activation.png>]
-<images/LSTM_classi.png, id=63, 376.40625pt x 312.41719pt>
-File: images/LSTM_classi.png Graphic file (type png)
-<use images/LSTM_classi.png>
-Package pdftex.def Info: images/LSTM_classi.png  used on input line 489.
-(pdftex.def)             Requested size: 173.56177pt x 144.06163pt.
- [13 <./images/LSTM_classi.png (PNG copy)>] [14]
-Underfull \hbox (badness 10000) in paragraph at lines 516--516
-[]|\OT1/cmr/bx/n/9 File-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 516--516
-[]|\OT1/cmr/bx/n/9 Mirai-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 517--517
-[]|\OT1/cmr/m/n/9 Get-req. NG-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 517--517
-[]|\OT1/cmr/m/n/9 Two
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 517--517
-[]|\OT1/cmr/m/n/9 Command
- []
-
-
-Overfull \hbox (9.33263pt too wide) in paragraph at lines 518--518
-[]|\OT1/cmr/m/n/9 Results:| 
- []
-
-
-Underfull \hbox (badness 2418) in paragraph at lines 521--521
-[]|\OT1/cmr/m/n/9 Multi-req. NG-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 521--521
-[]|\OT1/cmr/m/n/9 Four
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 521--521
-[]|\OT1/cmr/m/n/9 Command
- []
-
-
-Overfull \hbox (9.33263pt too wide) in paragraph at lines 522--522
-[]|\OT1/cmr/m/n/9 Results:| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 525--525
-[]|\OT1/cmr/m/n/9 Post-req.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 525--525
-\OT1/cmr/m/n/9 Apache, high
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 525--525
-[]|\OT1/cmr/m/n/9 Two
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 525--525
-\OT1/cmr/m/n/9 hosts,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 525--525
-[]|\OT1/cmr/m/n/9 Command
- []
-
-
-Overfull \hbox (9.33263pt too wide) in paragraph at lines 526--526
-[]|\OT1/cmr/m/n/9 Results:| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 529--529
-[]|\OT1/cmr/m/n/9 Multi-req.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 529--529
-\OT1/cmr/m/n/9 Apache, high
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 529--529
-[]|\OT1/cmr/m/n/9 Four
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 529--529
-\OT1/cmr/m/n/9 hosts,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 529--529
-[]|\OT1/cmr/m/n/9 Command
- []
-
-
-Overfull \hbox (9.33263pt too wide) in paragraph at lines 530--530
-[]|\OT1/cmr/m/n/9 Results:| 
- []
-
-
-LaTeX Warning: Reference `Control' on page 15 undefined on input line 541.
-
-[15]
-<images/traffic_dispersion.png, id=74, 367.3725pt x 342.5297pt>
-File: images/traffic_dispersion.png Graphic file (type png)
-<use images/traffic_dispersion.png>
-Package pdftex.def Info: images/traffic_dispersion.png  used on input line 552.
-
-(pdftex.def)             Requested size: 173.56177pt x 161.82523pt.
- [16]
-<images/Subspace_projection_new3.png, id=78, 376.40625pt x 399.74344pt>
-File: images/Subspace_projection_new3.png Graphic file (type png)
-<use images/Subspace_projection_new3.png>
-Package pdftex.def Info: images/Subspace_projection_new3.png  used on input lin
-e 569.
-(pdftex.def)             Requested size: 173.56177pt x 184.32947pt.
- [17 <./images/traffic_dispersion.png>] [18 <./images/Subspace_projection_new3.
-png>] (SecureComm_draft.bbl [19]) [20] (SecureComm_draft.aux)
+[12] [13] [14] (SecureComm_draft.bbl [15]) [16] (SecureComm_draft.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -874,13 +730,13 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 6797 strings out of 492970
- 98429 string characters out of 3126595
- 177893 words of memory out of 3000000
- 10548 multiletter control sequences out of 15000+200000
+ 6775 strings out of 492970
+ 97898 string characters out of 3126595
+ 176858 words of memory out of 3000000
+ 10529 multiletter control sequences out of 15000+200000
  14819 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,12n,40p,1246b,473s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,10n,40p,1110b,473s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmbx12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/f
@@ -900,9 +756,9 @@ b><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmti10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmti9.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on SecureComm_draft.pdf (20 pages, 561032 bytes).
+Output written on SecureComm_draft.pdf (16 pages, 487024 bytes).
 PDF statistics:
- 145 PDF objects out of 1000 (max. 8388607)
+ 126 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
