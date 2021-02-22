@@ -145,9 +145,15 @@ Scientific machine learning model development requires both \textbf{model evalua
 \caption{Comparison between numerical model evaluation and model probing with specifically controlled data characteristics, indicated as colours.}
 \end{figure}
 
-Assume the following problem: You are designing a traffic classifier for a specific setting, which is generating a significant amount of misclassifications, which have a non-obvious origin. Existing real-world or synthetic datasets do not contain the necessary information to describe the misclassified traffic events, which makes it very tedious to compare identify particular features responsible for the misclassification. 
+\subsection{DetGen-scope}
 
-DetGen is designed to provide traffic with the necessary ground-truth information to allow effective association of model processing behaviour with corresponding traffic characteristics. Traffic is generated with exact control and monitoring over the conducted communication activity as well as various traffic \textcolor{red}{micro-structures} such as network failures or specific implementations.
+Assume the following problem: You are designing a packet-level traffic classifier for a specific setting, which is generating a significant amount of misclassification. These turn out to be caused by a particular characteristic such as an unsuccessful login or frequent connection restarts. However, existing real-world or synthetic datasets do not contain the necessary information to associate the misclassified traffic events with these characteristics, which prevents you from identifying the misclassification cause and the corresponding model design flaw purely by  numeric evaluation.
+
+DetGen is designed to provide traffic with the necessary ground-truth information to allow effective association of model processing behaviour with corresponding traffic characteristics. Traffic is generated with precise control and monitoring over the conducted communication activity as well as various traffic-shaping factors. The scope lies on microscopic traffic-structures that become apparent on a packet-individual-flow-level.
+
+DetGen separates program executions and traffic capture into distinct containerised environments in order to exclude any background traffic events and therefore provide precise ground-truth about the computational origin of the traffic, something that is lacking in all \textcolor{red}{network traffic datasets that we are aware of}. By using containerisation, we are furthermore  able to control and shield the traffic generation better than in conventional VM-setups, \textcolor{red}{as we demonstrate in Section ...}, and consequently provide better reproducible data. 
+
+In order to examine additional effects on traffic micro-structures, DetGen simulates influence factors such as network congestion, communication failures, data transfer size, content caching, or application implementation.
 
 Below, we provide a use-case to demonstrate how ground-truth information and traffic micro-structure-control enables effective model probing:
 
@@ -192,44 +198,45 @@ We try to correct the existing model with a simple fix by excluding retransmissi
 The overall AUC-score for the model improves to \textbf{0.997} while tuned detection rates and false positives improved to \textbf{99.1\%} and \textbf{0.045\%}.
 
 
-\section{Refining the notion of benign traffic for anomaly detection}\label{Sec:Refining}
-
-Next, we show how ground-truth traffic information can help produce more coherent clusters and thus refine the benign traffic model in anomaly-detection. In particular, we will examine a 
-simplified version of \textit{Kitsune} \cite{mirsky2018kitsune}, a recent deep learning anomaly-detection model based on stacked autoencoders. \textit{Kitsune's} AUC-scores surpassed those of other state-of-the-art methods for a variety of attacks, including various types of Botnet traffic and \textit{man-in-the-middle} attacks.
-
-%for access attacks according to a survey by Nisioti et al. \cite{nisioti2018intrusion}.
-The model takes connection packet streams as input, which are pushed through an artificial information bottleneck before reconstruction, which forces the model to learn and compress reoccurring traffic structures. The compressed connection representation is essentially a positional projection into a lower-dimensional vector space, where spatial boundaries around benign traffic can be drawn. For demonstration purposes, we use a widely-used clustering approach for anomaly-detection rather than \textit{Kitsune's} more complex ensemble method. 
-%This allows us to project flows into a lower-dimensional vector space, where spatial boundaries around benign traffic can be drawn using clustering to identify anomalous traffic events. The model takes 102 flow summary statistics as input, which include features such as packet size and interarrival statistics, flag occurrencies, or number of flows in window. 
-Here, anomalous outliers are detected using the Mahalanobis-distance of a projected connection from identified cluster centers. %The identified clusters therefore serve as structural enclosures of benign behaviour, with the cluster borders acting as separators to abnormal behaviours. 
-Benign traffic should ideally be distributed evenly around the cluster centres to allow a tight borders and good separation from actual abnormal behaviour.
-
-Unstructured datasets such as the CAIDA traffic traces assumably contain too much abnormal behaviour to train an anomaly-detection model, which is why we train the model on benign traffic from the CICIDS-17 \cite{sharafaldin2018toward} intrusion detection dataset (80\%). Again, we add 20\% probing traffic consists of HTTP, FTP, SSH, and SMTP communication, using a wide spectrum of settings for examination purposes. Attack data for the evaluation was again provided through the CICIDS-17 dataset, and includes access attacks such as SQL-injections or Brute-Forcing, as well as Mirai botnet traffic. We  train the model with in total 150,000 connections.
-
-\subsection{Projection coherency evaluation}
-
-
-Like many approaches that generate representations of benign traffic for anomaly detection, \textit{Kitsune} projects traffic events into a vector-space where traffic clusters and similarities become more apparent. In order for the projection to accurately capture important traffic structures, this projection should be consistent, i.e. traffic events with similar origins and characteristics should be projected to similar positions rather than be dispersed throughout the vector space \cite{hou2017deep}.
-
-%Verifying the projection consistency of a model is not straightforward as usually no or not enough ground-truth information about different traffic characteristics is available to asses if the model is projecting similar traffic to dissimilar positions, or if the traffic just bears some dissimilar characteristics.
-
-To verify the models projection consistency, we generate traffic from near-identical conditions to provide certainty on the expected traffic similarities. We generate a small dataset that consists of HTTP-requests, file-synchronisation, and Botnet communication. For each of the three traffic types we fix four settings that vary in the performed activity and network latency, with the traffic shaping described in Section \ref{Control} being held constant within each setting except for small variations in the transmitted message or file. Table \ref{Tab:Dataset} summarises the traffic for each setting. 
-
-We verify if traffic samples within each group are projected to similar areas by measuring the average and maximum Mahalanobis-distance to quantify the overall dispersion of the samples. The results are displayed in Table \ref{Tab:Dataset} and depicted in Fig. \ref{fig:Subspace_disp}. The first thing to notice is that the model projects samples from each group within the same cluster, thus confirming the capture of a coarse traffic structure. When looking at the traffic dispersion and the corresponding Mahalanobis-distance measurements, we notice that the \textit{multi-request HTTP} traffic as well as the \textit{file-synchronisation} between mutliple computers is much further dispersed than in the other settings, especially when exposed to more latency. We also find that the corresponding dimension, $x_3$, with the most projected dispersion seems to be the same for each of the four settings. This suggests that the cause for the dispersion is the same for the different traffic types. 
-
-We now focus on the influence of input features on the projected positions exclusively in the $x_3$-direction. Here, we can again perform a simple correlation analysis between different the input feature values and the corresponding $x_3$-value. We observe that the arrival time of packet bears the most correlation (5.4\%) for the selected settings. We also see that this influence is concentrated primarily on connections that are opened shortly after a previous connection, with the temporal separation between these two connections apparently being the primary cause for the spread on the $x_3$-axis. The connection interarrival times are naturally an important feature for \textit{Kitsune} to detect attacks such as \textit{Man-in-the-Middle}, which could explain the weight this feature plays in the projection process.
-
-%look at the the influence of the individual flow features on projected position, we notice that even slight differences in the IAT of the preceding and the subsequent flow impacts the projected position quite strongly, which is why only the settings that generate multiple flows are affected.
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{images/traffic_dispersion.png}
-\caption{Dispersion of projected traffic samples from each setting, plotted along the two most dispersed axes.}\label{fig:Subspace_disp}
-\end{figure}
-
 \section{Probing dataset}
+\textcolor{red}{Do we need a name for this dataset?}
 
 We compiled and released a dataset suitable to quickly probe ML-model behaviour on a range of traffic characteristics. This dataset is designed to contain similar traffic as the CICIDS-17 and 18 datasets to allow probing of models trained on these \textcolor{red}{de-facto benchmark} datasets. 
+
+\subsection{Mirroring CICDS-17 dataset}
+
+Our dataset is compiled to enable quick probing of models trained on the CICIDS-17 or 18 datasets. For this, we mirrored several high-level properties to provide the same traffic structures the models learned. In particular, we mirrored the following properties:
+
+\begin{itemize}
+
+\item \textbf{Application layer protocols}: We used the same range of protocols that occur in the CICIDS datasets, namely \textit{HTTP/SSL, SMTP, FTP, SSH,  and NTP}. 
+
+\item \textbf{Implementations}: For each of the protocols, we used similar application implementations, such as Apache  for HTTP-activities ...
+
+\item \textbf{Conducted attack types}: We aimed to cover as many attack types inlcuded in the CICIDS datasets as possible. These include \textit{SQL-injections, SSH-brute-force, XSS, Botnet, Heartbleed, GoldenEye, and SlowLoris}. We were not able to cover all attacks though as DetGen either did not provide the necessary network topology to conduct the attack, such as for port-scanning, or the attack types are not implemented in the catalogue of scenarios yet.
+
+\item \textbf{Network latency}:
+
+\end{itemize}
+
+In addition to that, we used the same tool, the \textit{CICFlowMeter} to generate the 83 flow-features.
+
+In Fig. \textcolor{red}{...} we compare the validation error of a recent neural network model on \textcolor{red}{the probing dataset}, when trained exclusively on the CICIDS data, and when also trained on the probing data. Even though the validation error is slightly higher when only trained on the CICIDS data, the difference is almost negligible compared to the error resulting from a model trained on a completely different dataset (UGR-16). This does not fully proof that every model is able to transfer observed structures between the two datasets, but it gives an indicator that they mirror characteristics.
+
+\subsection{Dataset statistics}
+
+\textcolor{red}{To be filled}
+
+\section{DetGen and Traffic-Microstructures}
+
+In order to enable sufficient and reproducible control over the generated traffic and provide the corresponding descriptive ground truth information, we first must understand what factors shape the traffic generation process. 
+Computer communication involves a myriad of different computational aspects, and no research so far has been conducted to quantify how much influence each of them has on traffic structures. We highlight and quantify the influence of the most important influence factors on the traffic micro-structures observed on individual devices:
+
+\subsection{Influence factors on traffic-microstructures}
+
+
+
+\subsection{Generative determinism of DetGen}
 
 \section{DetGen Architecture}
 
