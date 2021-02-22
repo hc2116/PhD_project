@@ -318,8 +318,9 @@ pA <- ggplot(df, aes(x=Metric, y=x)) +
   #             dotsize =0.3,binwidth=0.01,stackratio = .3)
   geom_point(aes(color=Metric),alpha=0.8)+
   geom_hline(yintercept=1.0,linetype="dashed",size=1.3,alpha=0.7)+
-  #facet_grid(. ~ Set, rows=vars(Group))+
-  facet_grid(cols=vars(Set), rows=vars(Group))+
+  #facet_grid(Set, rows=vars(Group))+
+  #facet_grid(cols=vars(Set), rows=vars(Group))+
+  facet_grid(.~Set+Group)+
   geom_errorbar(df2,mapping=aes(y=y,x=Metric,ymin=ymin, ymax=ymax), 
                 width=.2,size=1,)+
   theme_bw()+labs(y="% of max-dissimilarity",x="")+theme(legend.position = "none")+
@@ -327,7 +328,44 @@ pA <- ggplot(df, aes(x=Metric, y=x)) +
   geom_point(df2,mapping=aes(y=y,x=Metric),color="black",size=4,show.legend=FALSE)
 pA+scale_y_continuous(trans='log2',limits = c(0.03, 8.0))
 
-plot_grid(pA, pA,pA,pA, labels = c('A', 'B', 'C','D'), ncol = 4)
+
+###################################################################################################
+
+pA <- ggplot(df[df$Group=="DetGen",], aes(x=Metric, y=x)) + 
+  #geom_dotplot(binaxis='y', stackdir='center', aes(colour=Metric,fill=Metric),
+  #             dotsize =0.3,binwidth=0.01,stackratio = .3)
+  geom_point(aes(color=Metric),alpha=0.8)+
+  geom_hline(yintercept=1.0,linetype="dashed",size=1.3,alpha=0.7)+
+  #facet_grid(Set, rows=vars(Group))+
+  #facet_grid(cols=vars(Set), rows=vars(Group))+
+  facet_grid(.~Set)+
+  geom_errorbar(df2[df2$Group=="DetGen",],mapping=aes(y=y,x=Metric,ymin=ymin, ymax=ymax), 
+                width=.2,size=1,)+
+  theme_bw()+labs(y="% of max-dissimilarity",x="")+theme(legend.position = "none")+
+  labs(title="DetGen")+theme(plot.title = element_text(hjust = 0.5))+
+  #geom_point(df2,mapping=aes(y=y,x=Metric,color=Metric),fill="white",shape = 21,size=4,show.legend=FALSE)
+  geom_point(df2[df2$Group=="DetGen",],mapping=aes(y=y,x=Metric),color="black",size=4,show.legend=FALSE)
+pA <- pA+scale_y_continuous(trans='log2',limits = c(0.03, 8.0))
+
+
+pB <- ggplot(df[df$Group=="VM",], aes(x=Metric, y=x)) + 
+  #geom_dotplot(binaxis='y', stackdir='center', aes(colour=Metric,fill=Metric),
+  #             dotsize =0.3,binwidth=0.01,stackratio = .3)
+  geom_point(aes(color=Metric),alpha=0.8)+
+  geom_hline(yintercept=1.0,linetype="dashed",size=1.3,alpha=0.7)+
+  #facet_grid(Set, rows=vars(Group))+
+  #facet_grid(cols=vars(Set), rows=vars(Group))+
+  facet_grid(.~Set)+
+  geom_errorbar(df2[df2$Group=="VM",],mapping=aes(y=y,x=Metric,ymin=ymin, ymax=ymax), 
+                width=.2,size=1,)+
+  theme_bw()+labs(y=element_blank(),x="")+theme(legend.position = "none")+
+  labs(title="VM")+theme(plot.title = element_text(hjust = 0.5))+
+  #geom_point(df2,mapping=aes(y=y,x=Metric,color=Metric),fill="white",shape = 21,size=4,show.legend=FALSE)
+  geom_point(df2[df2$Group=="VM",],mapping=aes(y=y,x=Metric),color="black",size=4,show.legend=FALSE)
+pB <- pB+scale_y_continuous(trans='log2',limits = c(0.03, 8.0))
+
+plot_grid(pA,pB)
+#plot_grid(pA, pA,pA,pA, labels = c('A', 'B', 'C','D'), ncol = 4)
 
 ####################################################################################################
 require(ggplot2)
@@ -1560,25 +1598,29 @@ df3=rbind(df3,df32,df33)
 #                   ymin=-0.5*sqrt(lens),
 #                   ymax=+0.5*sqrt(lens))
 
-
-plot_x <- ggplot(df3, 
-                 aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax,fill=Flag))+
+Texti=data.frame(x = c(-0.001,-0.001,-0.001), y = c(0,-30,-60), label = c("Sample 1","Sample 2", "Sample 3"),Direction="Backward")
+#geom_text(data=Texti,mapping=aes(x=x,y=y,label=label))+
+#facet_grid(cols =vars(Direction)) + 
+  
+plot_x <- ggplot(df3)+
   geom_hline(yintercept=-15,linetype="dashed",size=1.3,alpha=0.5)+
   geom_hline(yintercept=-45,linetype="dashed",size=1.3,alpha=0.5)+
-  geom_rect(colour="grey40", size=0.5)+
-  facet_grid(Direction ~ .) + 
+  geom_rect(mapping=aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax,fill=Flag),colour="grey40", size=0.5)+
+  #facet_grid(Direction ~ .) + 
+  geom_text(data=Texti,mapping=aes(x=x,y=y,label=label))+
+  facet_grid(cols =vars(Direction)) + 
   theme_bw()+
-  annotate("text", x = -0.0013, y = 0, label = "Sample 1")+
-  annotate("text", x = -0.0013, y = -30, label = "Sample 2")+
-  annotate("text", x = -0.0013, y = -60, label = "Sample 3")+
+  #annotate("text", x = -0.0013, y = 0, label = "Sample 1",Direction="Backward")+
+#  annotate("text", x = -0.0013, y = -30, label = "Sample 2",Direction="Backward")+
+#  annotate("text", x = -0.0013, y = -60, label = "Sample 3",Direction="Backward")+
   theme(axis.ticks.y = element_blank(),
         axis.text.y = element_blank())+
   scale_x_continuous(limits = c(-0.0018, 0.0155))+
   labs(title="DetGen - HTTP connection comparison",
        y ="", x = "Time [ms]")
 
-#plot_x
 plot_detgen= plot_x + theme(legend.position = "none")
+plot_detgen
 
 #######################################################
 #Plot Regu
@@ -1935,27 +1977,34 @@ df32 <- data.frame(Flag=flag[41:80],
 
 df3=rbind(df3,df32)
 
-# df3 <- data.frame(Flag=flag,
-#                   Direction=Direction,
-#                   xmax=IAT,
-#                   xmin=IAT+0.0001,
-#                   #xmax=cumsum(sqrt(lens))+IAT,
-#                   #xmin=cumsum(c(0,head(sqrt(lens),n=-1)))+IAT,
-#                   #ymin=Dir*6-0.5*sqrt(lens),
-#                   #ymax=Dir*6+0.5*sqrt(lens))
-#                   ymin=-0.5*sqrt(lens),
-#                   ymax=+0.5*sqrt(lens))
+# df32 <- data.frame(Flag=flag[81:120],
+#                    Direction=Direction[81:120],
+#                    xmax=IAT[81:120],
+#                    xmin=IAT[81:120]+0.0001,
+#                    #xmax=cumsum(sqrt(lens))+IAT,
+#                    #xmin=cumsum(c(0,head(sqrt(lens),n=-1)))+IAT,
+#                    #ymin=Dir*6-0.5*sqrt(lens),
+#                    #ymax=Dir*6+0.5*sqrt(lens))
+#                    ymin=-0.5*sqrt(lens[81:120])-60,
+#                    ymax=+0.5*sqrt(lens[81:120])-60)
 
+# df3=rbind(df3,df32)
 
-plot_x <- ggplot(df3, 
-                 aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax,fill=Flag))+
+Texti=data.frame(x = c(-0.001,-0.001,-0.001), y = c(0,-30,-60), label = c("Sample 1","Sample 2", "Sample 3"),Direction="Backward")
+#geom_text(data=Texti,mapping=aes(x=x,y=y,label=label))+
+#facet_grid(cols =vars(Direction)) + 
+  
+
+plot_x <- ggplot(df3)+
   geom_hline(yintercept=-15,linetype="dashed",size=1.3,alpha=0.5)+
-#  geom_hline(yintercept=-45,linetype="dashed",size=1.3,alpha=0.5)+
-  geom_rect(colour="grey40", size=0.5)+
-  facet_grid(Direction ~ .) + 
-  theme_bw()+
-  annotate("text", x = -0.002, y = 0, label = "Sample 1")+
-  annotate("text", x = -0.002, y = -30, label = "Sample 2")+
+  geom_hline(yintercept=-45,linetype="dashed",size=1.3,alpha=0.5)+
+  geom_text(data=Texti,mapping=aes(x=x,y=y,label=label))+
+  geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax,fill=Flag),colour="grey40", size=0.5)+
+#  facet_grid(Direction ~ .) + 
+  facet_grid(cols =vars(Direction)) + 
+    theme_bw()+
+#  annotate("text", x = -0.002, y = 0, label = "Sample 1")+
+#  annotate("text", x = -0.002, y = -30, label = "Sample 2")+
 #  annotate("text", x = -0.002, y = -60, label = "Sample 3")+
   theme(axis.ticks.y = element_blank(),
         axis.text.y = element_blank())+
