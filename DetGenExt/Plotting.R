@@ -839,7 +839,7 @@ pA <- ggplot(df_model, aes(x=x,y=y)) +
   theme_bw()+
   labs(title="LSTM-model activity classification",
        y ="Classification score", x = "Simulated congestion RTT-delay [s]")+
-theme(legend.position = "bottom")
+#theme(legend.position = "bottom")
 pA+scale_x_continuous(trans='sqrt',limits = c(0, 0.21))+
   scale_y_continuous(limits = c(-1.5, 1.5))
 
@@ -2406,3 +2406,32 @@ plot_x <- ggplot(df3,
 #plot_x
 plot_regu=plot_x+ theme(legend.position = "bottom")
 plot_regu
+
+
+
+############################################################################################
+# Validation error
+############################################################################################
+
+Error1 <- read.csv(file = "small_lr_0.005wd_0.02batch_90dropout_0.2_val_losses.csv")
+Error2 <- read.csv(file = "large_lr_0.005wd_0.02batch_90dropout_0.2_val_losses.csv")
+Error3 <- read.csv(file = "../JADE_old/final_big_good_fits_lr???0.001wd???0.001batch???90dropout???0.05_val_losses.csv")
+Error3 <- read.csv(file = "../JADE_old/large_lr_0.02wd_0.02batch_90dropout_0.2_val_losses.csv")
+Error3 <- read.csv(file = "../JADE_old/small_lr_0.005wd_0.02batch_90dropout_0.2_val_losses.csv")
+
+df1=data.frame(x=as.numeric(rownames(Error1)),y=Error1$X0,type="Val1")
+df2=data.frame(x=as.numeric(rownames(Error2)),y=Error2$X0*2,type="Val2")
+df3=data.frame(x=as.numeric(rownames(Error3)),y=Error3$X0*6,type="Val3")
+
+df=rbind(df1,df2,df3)
+
+plot_x <- ggplot(df)+
+  geom_line(aes(x=x,y=y,color=type,group=type))+
+  theme_bw()+
+  #theme(axis.ticks.y = element_blank(),
+  #      axis.text.y = element_blank())+
+  labs(title="FTP-connection comparison under load",
+       y ="", x = "Time [s]")
+
+plot_x
+
