@@ -1,16 +1,18 @@
 \begin{thebibliography}{10}
 
-\bibitem{barre2019mining}
-M.~Barre, A.~Gehani, and V.~Yegneswaran.
-\newblock Mining data provenance to detect advanced persistent threats.
-\newblock In {\em 11th International Workshop on Theory and Practice of
-  Provenance (TaPP 2019)}, 2019.
+\bibitem{aun2017review}
+Y.~Aun, S.~Manickam, and S.~Karuppayah.
+\newblock A review on features' robustness in high diversity mobile traffic
+  classifications.
+\newblock {\em International journal of communication networks and information
+  security}, 9(2):294, 2017.
 
-\bibitem{biernacki2017analysis}
-A.~Biernacki.
-\newblock Analysis and modelling of traffic produced by adaptive http-based
-  video.
-\newblock {\em Multimedia Tools and Applications}, 76(10):12347--12368, 2017.
+\bibitem{henryLSTM}
+H.~Clausen, G.~Grov, M.~Sabaté, and D.~Aspinall.
+\newblock Better anomaly detection for access attacksusing deep bidirectional
+  lstms.
+\newblock In {\em International Conference on Machine Learning for Networking},
+  pages 1--14. Springer, 2020.
 
 \bibitem{fricker2012impact}
 C.~Fricker, P.~Robert, J.~Roberts, and N.~Sbihi.
@@ -24,13 +26,6 @@ M.~Gates and A.~Warshavsky.
 \newblock {Iperf} {Man} {Page}.
 \newblock \url{https://linux.die.net/man/1/iperf}.
 \newblock Accessed: 2019-08-11.
-
-\bibitem{harang2014bridging}
-R.~Harang.
-\newblock Bridging the semantic gap: Human factors in anomaly-based intrusion
-  detection systems.
-\newblock In {\em Network Science and Cybersecurity}, pages 15--37. Springer,
-  2014.
 
 \bibitem{hemminger2005network}
 S.~Hemminger et~al.
@@ -49,16 +44,10 @@ A.~Jurgelionis, J.-P. Laulajainen, M.~Hirvonen, and A.~I. Wang.
 \newblock In {\em 2011 Proceedings of 20th International Conference on Computer
   Communications and Networks (ICCCN)}, pages 1--6. IEEE, 2011.
 
-\bibitem{kolyshkin2006virtualization}
-K.~Kolyshkin.
-\newblock Virtualization in linux.
-\newblock {\em White paper, OpenVZ}, 3:39, 2006.
-
-\bibitem{liu2019machine}
-H.~Liu and B.~Lang.
-\newblock Machine learning and deep learning methods for intrusion detection
-  systems: A survey.
-\newblock {\em Applied Sciences}, 9(20):4396, 2019.
+\bibitem{lashkari2017characterization}
+A.~H. Lashkari, G.~Draper-Gil, M.~S.~I. Mamun, and A.~A. Ghorbani.
+\newblock Characterization of tor traffic using time based features.
+\newblock In {\em ICISSp}, pages 253--262, 2017.
 
 \bibitem{marx2020same}
 R.~Marx, J.~Herbots, W.~Lamotte, and P.~Quax.
@@ -75,6 +64,12 @@ L.~Sequeira, J.~Fern{\'a}ndez-Navajas, L.~Casadesus, J.~Saldana, I.~Quintana,
 \newblock In {\em 2013 International Symposium on Performance Evaluation of
   Computer and Telecommunication Systems (SPECTS)}, pages 134--141. IEEE, 2013.
 
+\bibitem{sharafaldin2018toward}
+I.~Sharafaldin, A.~H. Lashkari, and A.~A. Ghorbani.
+\newblock Toward generating a new intrusion detection dataset and intrusion
+  traffic characterization.
+\newblock In {\em ICISSP}, pages 108--116, 2018.
+
 \bibitem{shiravi2012toward}
 A.~Shiravi, H.~Shiravi, M.~Tavallaee, and A.~A. Ghorbani.
 \newblock Toward developing a systematic approach to generate benchmark
@@ -87,13 +82,6 @@ M.~R. Smith, N.~T. Johnson, J.~B. Ingram, A.~J. Carbajal, R.~Ramyaa,
 \newblock Mind the gap: On bridging the semantic gap between machine learning
   and information security.
 \newblock {\em arXiv preprint arXiv:2005.01800}, 2020.
-
-\bibitem{sommer2010outside}
-R.~Sommer and V.~Paxson.
-\newblock Outside the closed world: On using machine learning for network
-  intrusion detection.
-\newblock In {\em 2010 IEEE symposium on security and privacy}, pages 305--316.
-  IEEE, 2010.
 
 \bibitem{stober2013you}
 T.~St{\"o}ber, M.~Frank, J.~Schmitt, and I.~Martinovic.

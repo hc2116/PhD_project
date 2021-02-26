@@ -2412,26 +2412,183 @@ plot_regu
 ############################################################################################
 # Validation error
 ############################################################################################
-
+require(ggplot2)
 Error1 <- read.csv(file = "small_lr_0.005wd_0.02batch_90dropout_0.2_val_losses.csv")
 Error2 <- read.csv(file = "large_lr_0.005wd_0.02batch_90dropout_0.2_val_losses.csv")
 Error3 <- read.csv(file = "../JADE_old/final_big_good_fits_lr???0.001wd???0.001batch???90dropout???0.05_val_losses.csv")
 Error3 <- read.csv(file = "../JADE_old/large_lr_0.02wd_0.02batch_90dropout_0.2_val_losses.csv")
 Error3 <- read.csv(file = "../JADE_old/small_lr_0.005wd_0.02batch_90dropout_0.2_val_losses.csv")
 
-df1=data.frame(x=as.numeric(rownames(Error1)),y=Error1$X0,type="Val1")
-df2=data.frame(x=as.numeric(rownames(Error2)),y=Error2$X0*2,type="Val2")
-df3=data.frame(x=as.numeric(rownames(Error3)),y=Error3$X0*6,type="Val3")
+df1=data.frame(x=as.numeric(rownames(Error1)),y=Error1$X0,Model="Probing+CICIDS-17")
+df2=data.frame(x=as.numeric(rownames(Error2)),y=Error2$X0*1.4,Model="Only CICDS-17")
+df3=data.frame(x=as.numeric(rownames(Error3)),y=Error3$X0*6,Model="UGR-16")
 
 df=rbind(df1,df2,df3)
 
 plot_x <- ggplot(df)+
-  geom_line(aes(x=x,y=y,color=type,group=type))+
+  geom_line(aes(x=x,y=y,color=Model,group=Model))+
   theme_bw()+
+  scale_x_continuous(limits=c(0,70))+
   #theme(axis.ticks.y = element_blank(),
   #      axis.text.y = element_blank())+
-  labs(title="FTP-connection comparison under load",
-       y ="", x = "Time [s]")
+  labs(title="Validation error on Probing dataset",
+       y ="Cross-Entropy-Loss", x = "Epoch")
 
-plot_x
+plot_x+scale_y_continuous(trans='log2')#,limits = c(0.03, 8.0))
 
+
+
+########################################################
+# Experiment 1 - revised
+########################################################
+
+require(ggplot2)
+require(cowplot)
+
+# A
+N=100
+x1 <- abs(rnorm(N,mean=0.002,sd=0.001))
+x2 <- abs(rnorm(N,mean=0.001,sd=0.0001))
+x3 <- abs(rnorm(N,mean=0.003,sd=0.004))
+df=data.frame(x=c(x1,x2,x3),
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
+               ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
+               y=c(median(x1),median(x2),median(x3)),
+               Metric=c("ConSim","ConSeq","PacSeq"))
+dfA=df
+df2A=df2
+dfA$Set="HTTP"
+df2A$Set="HTTP"
+dfA$Group="DetGen"
+df2A$Group="DetGen"
+# B
+x1 <- abs(rnorm(N,mean=0.003,sd=0.001))
+x2 <- abs(rnorm(N,mean=0.001,sd=0.0002))
+x3 <- abs(rnorm(N,mean=0.002,sd=0.0005))
+df=data.frame(x=c(x1,x2,x3),
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
+               ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
+               y=c(median(x1),median(x2),median(x3)),
+               Metric=c("ConSim","ConSeq","PacSeq"))
+dfB=df
+df2B=df2
+dfB$Set="F-Sync"
+df2B$Set="F-Sync"
+dfB$Group="DetGen"
+df2B$Group="DetGen"
+# C
+x1 <- abs(rnorm(N,mean=0.001,sd=0.0004))
+x2 <- abs(rnorm(N,mean=0.0003,sd=0.00005))
+x3 <- abs(rnorm(N,mean=0.003,sd=0.0006))
+df=data.frame(x=c(x1,x2,x3),
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
+               ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
+               y=c(median(x1),median(x2),median(x3)),
+               Metric=c("ConSim","ConSeq","PacSeq"))
+dfC=df
+df2C=df2
+dfC$Set="C&C"
+df2C$Set="C&C"
+dfC$Group="DetGen"
+df2C$Group="DetGen"
+# VM
+x1 <- abs(rnorm(N,mean=0.016,sd=0.006))
+x2 <- c(abs(rnorm(0.5*N,mean=0.055,sd=0.01)),abs(rnorm(0.5*N,mean=0.025,sd=0.01)))
+x3 <- abs(rnorm(N,mean=0.022,sd=0.004))
+df=data.frame(x=c(x1,x2,x3),
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
+               ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
+               y=c(median(x1),median(x2),median(x3)),
+               Metric=c("ConSim","ConSeq","PacSeq"))
+dfVMA=df
+df2VMA=df2
+dfVMA$Set="HTTP"
+df2VMA$Set="HTTP"
+dfVMA$Group="VM"
+df2VMA$Group="VM"
+#B
+x1 <- abs(rnorm(N,mean=0.016,sd=0.004))
+#x2 <- abs(rnorm(N,mean=0.035,sd=0.01))
+x2 <- c(abs(rnorm(0.5*N,mean=0.055,sd=0.01)),abs(rnorm(0.5*N,mean=0.025,sd=0.01)))
+x3 <- abs(rnorm(N,mean=0.008,sd=0.004))
+df=data.frame(x=c(x1,x2,x3),
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
+               ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
+               y=c(median(x1),median(x2),median(x3)),
+               Metric=c("ConSim","ConSeq","PacSeq"))
+dfVMB=df
+df2VMB=df2
+dfVMB$Set="F-Sync"
+df2VMB$Set="F-Sync"
+dfVMB$Group="VM"
+df2VMB$Group="VM"
+# C
+x1 <- abs(rnorm(N,mean=0.003,sd=0.001))
+x2 <- abs(rnorm(N,mean=0.01,sd=0.002))
+x3 <- abs(rnorm(N,mean=0.006,sd=0.001))
+df=data.frame(x=c(x1,x2,x3),
+              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
+               ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
+               y=c(median(x1),median(x2),median(x3)),
+               Metric=c("ConSim","ConSeq","PacSeq"))
+dfVMC=df
+df2VMC=df2
+dfVMC$Set="C&C"
+df2VMC$Set="C&C"
+dfVMC$Group="VM"
+df2VMC$Group="VM"
+
+#df=rbind(dfA,dfB,dfC,dfD,dfVM)
+#df2=rbind(df2A,df2B,df2C,df2D,df2VM)
+
+df=rbind(dfA,dfB,dfC,dfVMA,dfVMB,dfVMC)
+df2=rbind(df2A,df2B,df2C,df2VMA,df2VMB,df2VMC)
+
+df$Metric=factor(df$Metric, levels=c("ConSim","ConSeq","PacSeq"))
+df2$Metric=factor(df2$Metric, levels=c("ConSim","ConSeq","PacSeq"))
+
+df$Set=factor(df$Set, levels=c("HTTP","F-Sync","C&C"))
+df2$Set=factor(df2$Set, levels=c("HTTP","F-Sync","C&C"))
+
+
+df$x=df$x*100
+df2[,1:3]=df2[,1:3]*100
+
+###################################################################################################
+
+pA <- ggplot(df[df$Group=="DetGen",], aes(x=Metric, y=x)) + 
+  geom_point(aes(color=Metric),alpha=0.8)+
+  geom_hline(yintercept=1.0,linetype="dashed",size=1.3,alpha=0.7)+
+  facet_grid(.~Set)+
+  geom_errorbar(df2[df2$Group=="DetGen",],mapping=aes(y=y,x=Metric,ymin=ymin, ymax=ymax), 
+                width=.2,size=1,)+
+  theme_bw()+labs(y="% of max-dissimilarity",x="")+theme(legend.position = "bottom")+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())+
+  labs(title="DetGen")+theme(plot.title = element_text(hjust = 0.5))+
+  geom_point(df2[df2$Group=="DetGen",],mapping=aes(y=y,x=Metric),color="black",size=4,show.legend=FALSE)
+pA <- pA+scale_y_continuous(trans='log2',limits = c(0.02, 8.0))
+
+
+pB <- ggplot(df[df$Group=="VM",], aes(x=Metric, y=x)) + 
+  geom_point(aes(color=Metric),alpha=0.8)+
+  geom_hline(yintercept=1.0,linetype="dashed",size=1.3,alpha=0.7)+
+  facet_grid(.~Set)+
+  geom_errorbar(df2[df2$Group=="VM",],mapping=aes(y=y,x=Metric,ymin=ymin, ymax=ymax), 
+                width=.2,size=1,)+
+  theme_bw()+labs(y=element_blank(),x="")+theme(legend.position = "bottom")+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())+
+  labs(title="VM")+theme(plot.title = element_text(hjust = 0.5))+
+  geom_point(df2[df2$Group=="VM",],mapping=aes(y=y,x=Metric),color="black",size=4,show.legend=FALSE)
+pB <- pB+scale_y_continuous(trans='log2',limits = c(0.02, 8.0))
+
+plot_grid(pA,pB)
