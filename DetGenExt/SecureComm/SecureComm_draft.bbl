@@ -49,6 +49,19 @@ A.~H. Lashkari, G.~Draper-Gil, M.~S.~I. Mamun, and A.~A. Ghorbani.
 \newblock Characterization of tor traffic using time based features.
 \newblock In {\em ICISSp}, pages 253--262, 2017.
 
+\bibitem{lin2019generating}
+Z.~Lin, A.~Jain, C.~Wang, G.~Fanti, and V.~Sekar.
+\newblock Generating high-fidelity, synthetic time series datasets with
+  doppelganger.
+\newblock {\em arXiv preprint arXiv:1909.13403}, 2019.
+
+\bibitem{macia2018ugr}
+G.~Maci{\'a}-Fern{\'a}ndez, J.~Camacho, R.~Mag{\'a}n-Carri{\'o}n,
+  P.~Garc{\'\i}a-Teodoro, and R.~Ther{\'o}n.
+\newblock Ugr ‘16: A new dataset for the evaluation of
+  cyclostationarity-based network idss.
+\newblock {\em Computers \& Security}, 73:411--424, 2018.
+
 \bibitem{marx2020same}
 R.~Marx, J.~Herbots, W.~Lamotte, and P.~Quax.
 \newblock Same standards, different decisions: A study of quic and http/3
