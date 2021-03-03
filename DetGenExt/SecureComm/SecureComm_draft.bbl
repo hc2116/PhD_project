@@ -27,6 +27,12 @@ M.~Gates and A.~Warshavsky.
 \newblock \url{https://linux.die.net/man/1/iperf}.
 \newblock Accessed: 2019-08-11.
 
+\bibitem{haque2019audio}
+A.~Haque, M.~Guo, P.~Verma, and L.~Fei-Fei.
+\newblock Audio-linguistic embeddings for spoken sentences.
+\newblock In {\em ICASSP 2019-2019 IEEE International Conference on Acoustics,
+  Speech and Signal Processing (ICASSP)}, pages 7355--7359. IEEE, 2019.
+
 \bibitem{hemminger2005network}
 S.~Hemminger et~al.
 \newblock Network emulation with netem.
@@ -44,6 +50,13 @@ A.~Jurgelionis, J.-P. Laulajainen, M.~Hirvonen, and A.~I. Wang.
 \newblock In {\em 2011 Proceedings of 20th International Conference on Computer
   Communications and Networks (ICCCN)}, pages 1--6. IEEE, 2011.
 
+\bibitem{kamper2020multilingual}
+H.~Kamper, Y.~Matusevych, and S.~Goldwater.
+\newblock Multilingual acoustic word embedding models for processing
+  zero-resource languages.
+\newblock In {\em ICASSP 2020-2020 IEEE International Conference on Acoustics,
+  Speech and Signal Processing (ICASSP)}, pages 6414--6418. IEEE, 2020.
+
 \bibitem{lashkari2017characterization}
 A.~H. Lashkari, G.~Draper-Gil, M.~S.~I. Mamun, and A.~A. Ghorbani.
 \newblock Characterization of tor traffic using time based features.
@@ -54,6 +67,13 @@ Z.~Lin, A.~Jain, C.~Wang, G.~Fanti, and V.~Sekar.
 \newblock Generating high-fidelity, synthetic time series datasets with
   doppelganger.
 \newblock {\em arXiv preprint arXiv:1909.13403}, 2019.
+
+\bibitem{livingstone2018ryerson}
+S.~R. Livingstone and F.~A. Russo.
+\newblock The ryerson audio-visual database of emotional speech and song
+  (ravdess): A dynamic, multimodal set of facial and vocal expressions in north
+  american english.
+\newblock {\em PloS one}, 13(5):e0196391, 2018.
 
 \bibitem{macia2018ugr}
 G.~Maci{\'a}-Fern{\'a}ndez, J.~Camacho, R.~Mag{\'a}n-Carri{\'o}n,
