@@ -7,12 +7,25 @@ Y.~Aun, S.~Manickam, and S.~Karuppayah.
 \newblock {\em International journal of communication networks and information
   security}, 9(2):294, 2017.
 
+\bibitem{barre2019mining}
+M.~Barre, A.~Gehani, and V.~Yegneswaran.
+\newblock Mining data provenance to detect advanced persistent threats.
+\newblock In {\em 11th International Workshop on Theory and Practice of
+  Provenance (TaPP 2019)}, 2019.
+
 \bibitem{henryLSTM}
 H.~Clausen, G.~Grov, M.~Sabaté, and D.~Aspinall.
 \newblock Better anomaly detection for access attacksusing deep bidirectional
   lstms.
 \newblock In {\em International Conference on Machine Learning for Networking},
   pages 1--14. Springer, 2020.
+
+\bibitem{dolan2011virtuoso}
+B.~Dolan-Gavitt, T.~Leek, M.~Zhivich, J.~Giffin, and W.~Lee.
+\newblock Virtuoso: Narrowing the semantic gap in virtual machine
+  introspection.
+\newblock In {\em 2011 IEEE symposium on security and privacy}, pages 297--312.
+  IEEE, 2011.
 
 \bibitem{fricker2012impact}
 C.~Fricker, P.~Robert, J.~Roberts, and N.~Sbihi.
