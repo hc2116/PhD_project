@@ -70,6 +70,11 @@ H.~Kamper, Y.~Matusevych, and S.~Goldwater.
 \newblock In {\em ICASSP 2020-2020 IEEE International Conference on Acoustics,
   Speech and Signal Processing (ICASSP)}, pages 6414--6418. IEEE, 2020.
 
+\bibitem{kent-2015-cyberdata1}
+A.~D. Kent.
+\newblock {Comprehensive, Multi-Source Cyber-Security Events}.
+\newblock Los Alamos National Laboratory, 2015.
+
 \bibitem{lashkari2017characterization}
 A.~H. Lashkari, G.~Draper-Gil, M.~S.~I. Mamun, and A.~A. Ghorbani.
 \newblock Characterization of tor traffic using time based features.
@@ -101,6 +106,18 @@ R.~Marx, J.~Herbots, W.~Lamotte, and P.~Quax.
   implementation diversity.
 \newblock In {\em Proceedings of the Workshop on the Evolution, Performance,
   and Interoperability of QUIC}, pages 14--20, 2020.
+
+\bibitem{moustafa2015unsw}
+N.~Moustafa and J.~Slay.
+\newblock Unsw-nb15: a comprehensive data set for network intrusion detection
+  systems (unsw-nb15 network data set).
+\newblock In {\em 2015 military communications and information systems
+  conference (MilCIS)}, pages 1--6. IEEE, 2015.
+
+\bibitem{ring2019survey}
+M.~Ring, S.~Wunderlich, D.~Scheuring, D.~Landes, and A.~Hotho.
+\newblock A survey of network-based intrusion detection data sets.
+\newblock {\em Computers \& Security}, 86:147--167, 2019.
 
 \bibitem{sequeira2013influence}
 L.~Sequeira, J.~Fern{\'a}ndez-Navajas, L.~Casadesus, J.~Saldana, I.~Quintana,
