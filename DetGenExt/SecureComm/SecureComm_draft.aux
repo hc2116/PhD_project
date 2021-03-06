@@ -21,6 +21,7 @@
 \citation{hwang2019lstm}
 \citation{tahaei2020rise}
 \citation{sharafaldin2018toward}
+\citation{mell2003overview}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Motivation and Methodology}{4}}
 \newlabel{Sec:Motivation}{{2}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Scope of DetGen}{4}}
@@ -63,15 +64,15 @@
 \@writefile{toc}{\contentsline {paragraph}{4. Host level load}{9}}
 \@writefile{toc}{\contentsline {paragraph}{5. Caching/Repetition effects}{9}}
 \@writefile{toc}{\contentsline {paragraph}{1. User and scheduled activities}{9}}
+\@writefile{toc}{\contentsline {paragraph}{2. Networking stack load}{9}}
 \citation{walsworth2015caida}
+\citation{lashkari2017characterization}
+\citation{aun2017review}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Packet-sequence structure similarity comparison for FTP-activity under different load and otherwise constant settings. Colours indicate packet flags while the height of the packets indicates their size. Note that under load, the host sends significantly less packets.\relax }}{10}}
 \newlabel{Fig:FTP_load}{{6}{10}}
-\@writefile{toc}{\contentsline {paragraph}{2. Networking stack load}{10}}
 \@writefile{toc}{\contentsline {paragraph}{3. Network configurations}{10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Traffic control and generation determinism}{10}}
 \newlabel{Sec:Determinism}{{4.2}{10}}
-\citation{lashkari2017characterization}
-\citation{aun2017review}
 \citation{yen2009browser}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Comparison of HTTP-group dissimilarity scores for the DetGen-framework and a regular VM-setup, on a logarithmic scale. Samples from the VM-setting are consistently more dissimilar, in particular for flow-based metrics, where the average dissimilarity is more than 30 times higher than for the DetGen setting.\relax }}{11}}
 \newlabel{Fig:determ-metric}{{7}{11}}
@@ -80,10 +81,10 @@
 \@writefile{toc}{\contentsline {section}{\numberline {5}DetGen Architecture}{12}}
 \newlabel{Sec:Archi}{{5}{12}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Design overview}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Containerization and activity isolation}{12}}
 \citation{shiravi2012toward}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Design comparison of traditional NIDS traffic-generation-setups (a), and our DetGen framework (b).\relax }}{13}}
 \newlabel{Fig:Setup_comp}{{9}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Containerization and activity isolation}{13}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Activity generation}{13}}
 \newlabel{Sec:Scenarios}{{5.3}{13}}
 \citation{iperf}
@@ -93,19 +94,19 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Simulation of external influence}{14}}
 \newlabel{Sec:ExtInfls}{{5.4}{14}}
 \@writefile{toc}{\contentsline {subsubsection}{Host load}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Activity execution}{14}}
 \citation{macia2018ugr}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Activity execution}{15}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{15}}
 \newlabel{Sec:Conclusion}{{6}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Difficulties and limitations}{15}}
 \citation{lin2019generating}
 \bibstyle{abbrv}
 \bibdata{../DetGen_ext}
 \bibcite{aun2017review}{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Difficulties and limitations}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Future work}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Acknowledgement}{16}}
 \bibcite{barre2019mining}{2}
 \bibcite{henryLSTM}{3}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Future work}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Acknowledgement}{16}}
 \bibcite{dolan2011virtuoso}{4}
 \bibcite{fricker2012impact}{5}
 \bibcite{iperf}{6}
@@ -120,17 +121,18 @@
 \bibcite{livingstone2018ryerson}{15}
 \bibcite{macia2018ugr}{16}
 \bibcite{marx2020same}{17}
-\bibcite{moustafa2015unsw}{18}
-\bibcite{ring2019survey}{19}
-\bibcite{sequeira2013influence}{20}
-\bibcite{sharafaldin2018toward}{21}
-\bibcite{shiravi2012toward}{22}
-\bibcite{smith2020mind}{23}
-\bibcite{stober2013you}{24}
-\bibcite{tahaei2020rise}{25}
-\bibcite{walsworth2015caida}{26}
-\bibcite{wexler2019if}{27}
-\bibcite{yen2009browser}{28}
+\bibcite{mell2003overview}{18}
+\bibcite{moustafa2015unsw}{19}
+\bibcite{ring2019survey}{20}
+\bibcite{sequeira2013influence}{21}
+\bibcite{sharafaldin2018toward}{22}
+\bibcite{shiravi2012toward}{23}
+\bibcite{smith2020mind}{24}
+\bibcite{stober2013you}{25}
+\bibcite{tahaei2020rise}{26}
+\bibcite{walsworth2015caida}{27}
+\bibcite{wexler2019if}{28}
+\bibcite{yen2009browser}{29}
 \@writefile{toc}{\contentsline {section}{\numberline {A}Existing Scenarios}{18}}
 \newlabel{Sec:ExistScen}{{A}{18}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Currently implemented traffic scenarios along with the number of implemented subscenarios\relax }}{19}}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  5 MAR 2021 17:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  6 MAR 2021 13:57
 entering extended mode
 **./SecureComm_draft.tex
 (SecureComm_draft.tex
@@ -661,46 +661,46 @@ s/Eva_Prob.png>] [3]
 <images/LSTM_activation.png, id=19, 514.92375pt x 322.95656pt>
 File: images/LSTM_activation.png Graphic file (type png)
 <use images/LSTM_activation.png>
-Package pdftex.def Info: images/LSTM_activation.png  used on input line 187.
+Package pdftex.def Info: images/LSTM_activation.png  used on input line 190.
 (pdftex.def)             Requested size: 343.6542pt x 215.54202pt.
  [4]
 <images/LSTM_classi.png, id=26, 569.12625pt x 232.61906pt>
 File: images/LSTM_classi.png Graphic file (type png)
 <use images/LSTM_classi.png>
-Package pdftex.def Info: images/LSTM_classi.png  used on input line 203.
+Package pdftex.def Info: images/LSTM_classi.png  used on input line 205.
 (pdftex.def)             Requested size: 343.6542pt x 140.46696pt.
  [5 <./images/LSTM_activation.png>] [6 <./images/LSTM_classi.png (PNG copy)>]
 <images/ValLoss.png, id=34, 566.115pt x 161.10187pt>
 File: images/ValLoss.png Graphic file (type png)
 <use images/ValLoss.png>
-Package pdftex.def Info: images/ValLoss.png  used on input line 260.
+Package pdftex.def Info: images/ValLoss.png  used on input line 262.
 (pdftex.def)             Requested size: 343.6542pt x 97.79755pt.
  [7]
 <images/Browser.png, id=39, 695.59875pt x 575.14874pt>
 File: images/Browser.png Graphic file (type png)
 <use images/Browser.png>
-Package pdftex.def Info: images/Browser.png  used on input line 304.
+Package pdftex.def Info: images/Browser.png  used on input line 306.
 (pdftex.def)             Requested size: 131.90863pt x 109.05998pt.
 <images/Protocol_differences.png, id=40, 620.3175pt x 337.26pt>
 File: images/Protocol_differences.png Graphic file (type png)
 <use images/Protocol_differences.png>
 Package pdftex.def Info: images/Protocol_differences.png  used on input line 31
-1.
+3.
 (pdftex.def)             Requested size: 201.33228pt x 109.45895pt.
  [8 <./images/ValLoss.png>]
 <images/FTP_load.png, id=45, 487.06969pt x 277.035pt>
 File: images/FTP_load.png Graphic file (type png)
 <use images/FTP_load.png>
-Package pdftex.def Info: images/FTP_load.png  used on input line 332.
+Package pdftex.def Info: images/FTP_load.png  used on input line 334.
 (pdftex.def)             Requested size: 312.40906pt x 177.69069pt.
  [9 <./images/Browser.png> <./images/Protocol_differences.png>]
 <images/Exp111.png, id=50, 606.76688pt x 221.32687pt>
 File: images/Exp111.png Graphic file (type png)
 <use images/Exp111.png>
-Package pdftex.def Info: images/Exp111.png  used on input line 404.
+Package pdftex.def Info: images/Exp111.png  used on input line 406.
 (pdftex.def)             Requested size: 343.6542pt x 125.35384pt.
 
-Underfull \hbox (badness 1694) in paragraph at lines 405--405
+Underfull \hbox (badness 1694) in paragraph at lines 407--407
 []\OT1/cmr/m/n/10 Fig.7: |Com-par-i-son of HTTP-group dis-sim-i-lar-ity scores 
 for the DetGen-
  []
@@ -710,32 +710,32 @@ for the DetGen-
 File: images/Detgen_Reg_HTTP_comp_crop.png Graphic file (type png)
 <use images/Detgen_Reg_HTTP_comp_crop.png>
 Package pdftex.def Info: images/Detgen_Reg_HTTP_comp_crop.png  used on input li
-ne 424.
+ne 426.
 (pdftex.def)             Requested size: 343.6542pt x 120.63533pt.
 <images/VM_setup_final.png, id=60, 281.57655pt x 322.64803pt>
 File: images/VM_setup_final.png Graphic file (type png)
 <use images/VM_setup_final.png>
-Package pdftex.def Info: images/VM_setup_final.png  used on input line 445.
+Package pdftex.def Info: images/VM_setup_final.png  used on input line 447.
 (pdftex.def)             Requested size: 166.61781pt x 190.92685pt.
 <images/Docker_setup_final.png, id=61, 312.77509pt x 375.96196pt>
 File: images/Docker_setup_final.png Graphic file (type png)
 <use images/Docker_setup_final.png>
-Package pdftex.def Info: images/Docker_setup_final.png  used on input line 452.
+Package pdftex.def Info: images/Docker_setup_final.png  used on input line 454.
 
 (pdftex.def)             Requested size: 166.61781pt x 200.28001pt.
  [12 <./images/Detgen_Reg_HTTP_comp_crop.png>] [13 <./images/VM_setup_final.png
 > <./images/Docker_setup_final.png>] [14] [15] (SecureComm_draft.bbl [16] [17])
 
-Overfull \hbox (8.66278pt too wide) in paragraph at lines 623--672
+Overfull \hbox (8.66278pt too wide) in paragraph at lines 625--674
 [][]   []
  []
 
 [18] [19] (SecureComm_draft.aux) ) 
 Here is how much of TeX's memory you used:
- 6797 strings out of 492970
- 98552 string characters out of 3126595
- 178998 words of memory out of 3000000
- 10555 multiletter control sequences out of 15000+200000
+ 6798 strings out of 492970
+ 98570 string characters out of 3126595
+ 179002 words of memory out of 3000000
+ 10556 multiletter control sequences out of 15000+200000
  11293 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,9n,40p,1113b,495s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -754,7 +754,7 @@ l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/henry
 /Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 mtt10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on SecureComm_draft.pdf (19 pages, 941244 bytes).
+Output written on SecureComm_draft.pdf (19 pages, 940728 bytes).
 PDF statistics:
  129 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

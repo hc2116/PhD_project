@@ -107,6 +107,10 @@ R.~Marx, J.~Herbots, W.~Lamotte, and P.~Quax.
 \newblock In {\em Proceedings of the Workshop on the Evolution, Performance,
   and Interoperability of QUIC}, pages 14--20, 2020.
 
+\bibitem{mell2003overview}
+P.~Mell, V.~Hu, R.~Lippmann, J.~Haines, and M.~Zissman.
+\newblock An overview of issues in testing intrusion detection systems, 2003.
+
 \bibitem{moustafa2015unsw}
 N.~Moustafa and J.~Slay.
 \newblock Unsw-nb15: a comprehensive data set for network intrusion detection
