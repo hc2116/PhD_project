@@ -118,6 +118,12 @@ N.~Moustafa and J.~Slay.
 \newblock In {\em 2015 military communications and information systems
   conference (MilCIS)}, pages 1--6. IEEE, 2015.
 
+\bibitem{nisioti2018intrusion}
+A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
+\newblock From intrusion detection to attacker attribution: A comprehensive
+  survey of unsupervised methods.
+\newblock {\em IEEE Communications Surveys \& Tutorials}, 2018.
+
 \bibitem{ring2019survey}
 M.~Ring, S.~Wunderlich, D.~Scheuring, D.~Landes, and A.~Hotho.
 \newblock A survey of network-based intrusion detection data sets.

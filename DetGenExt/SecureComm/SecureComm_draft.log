@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  6 MAR 2021 13:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  7 MAR 2021 19:45
 entering extended mode
 **./SecureComm_draft.tex
 (SecureComm_draft.tex
@@ -658,105 +658,114 @@ Package pdftex.def Info: images/Eva_Prob.png  used on input line 76.
 
 {C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2 <./image
 s/Eva_Prob.png>] [3]
-<images/LSTM_activation.png, id=19, 514.92375pt x 322.95656pt>
-File: images/LSTM_activation.png Graphic file (type png)
-<use images/LSTM_activation.png>
-Package pdftex.def Info: images/LSTM_activation.png  used on input line 190.
-(pdftex.def)             Requested size: 343.6542pt x 215.54202pt.
- [4]
-<images/LSTM_classi.png, id=26, 569.12625pt x 232.61906pt>
+Overfull \hbox (2.90477pt too wide) in paragraph at lines 160--161
+\OT1/cmr/m/n/10 gen-er-ated traf-fic mi-crostruc-ture la-bels, which is stronge
+st for sim-u-lated packet
+ []
+
+<images/LSTM_classi.png, id=19, 569.12625pt x 232.61906pt>
 File: images/LSTM_classi.png Graphic file (type png)
 <use images/LSTM_classi.png>
-Package pdftex.def Info: images/LSTM_classi.png  used on input line 205.
+Package pdftex.def Info: images/LSTM_classi.png  used on input line 191.
 (pdftex.def)             Requested size: 343.6542pt x 140.46696pt.
- [5 <./images/LSTM_activation.png>] [6 <./images/LSTM_classi.png (PNG copy)>]
+[4]
+<images/LSTM_activation_new.png, id=25, 514.92375pt x 348.55219pt>
+File: images/LSTM_activation_new.png Graphic file (type png)
+<use images/LSTM_activation_new.png>
+Package pdftex.def Info: images/LSTM_activation_new.png  used on input line 207
+.
+(pdftex.def)             Requested size: 343.6542pt x 232.62459pt.
+ [5 <./images/LSTM_classi.png (PNG copy)>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./images/LSTM_activation_new.png>]
 <images/ValLoss.png, id=34, 566.115pt x 161.10187pt>
 File: images/ValLoss.png Graphic file (type png)
 <use images/ValLoss.png>
-Package pdftex.def Info: images/ValLoss.png  used on input line 262.
+Package pdftex.def Info: images/ValLoss.png  used on input line 267.
 (pdftex.def)             Requested size: 343.6542pt x 97.79755pt.
- [7]
-<images/Browser.png, id=39, 695.59875pt x 575.14874pt>
-File: images/Browser.png Graphic file (type png)
-<use images/Browser.png>
-Package pdftex.def Info: images/Browser.png  used on input line 306.
-(pdftex.def)             Requested size: 131.90863pt x 109.05998pt.
-<images/Protocol_differences.png, id=40, 620.3175pt x 337.26pt>
-File: images/Protocol_differences.png Graphic file (type png)
-<use images/Protocol_differences.png>
-Package pdftex.def Info: images/Protocol_differences.png  used on input line 31
-3.
-(pdftex.def)             Requested size: 201.33228pt x 109.45895pt.
- [8 <./images/ValLoss.png>]
-<images/FTP_load.png, id=45, 487.06969pt x 277.035pt>
+ [7] [8 <./images/ValLoss.png>]
+<images/FTP_load.png, id=43, 487.06969pt x 277.035pt>
 File: images/FTP_load.png Graphic file (type png)
 <use images/FTP_load.png>
-Package pdftex.def Info: images/FTP_load.png  used on input line 334.
+Package pdftex.def Info: images/FTP_load.png  used on input line 333.
 (pdftex.def)             Requested size: 312.40906pt x 177.69069pt.
- [9 <./images/Browser.png> <./images/Protocol_differences.png>]
-<images/Exp111.png, id=50, 606.76688pt x 221.32687pt>
+ [9 <./images/FTP_load.png>]
+
+LaTeX Warning: Citation `radford2018network' on page 10 undefined on input line
+ 381.
+
+[10]
+<images/VM_setup_final.png, id=52, 281.57655pt x 322.64803pt>
+File: images/VM_setup_final.png Graphic file (type png)
+<use images/VM_setup_final.png>
+Package pdftex.def Info: images/VM_setup_final.png  used on input line 436.
+(pdftex.def)             Requested size: 166.61781pt x 190.92685pt.
+<images/Docker_setup_final.png, id=53, 312.77509pt x 375.96196pt>
+File: images/Docker_setup_final.png Graphic file (type png)
+<use images/Docker_setup_final.png>
+Package pdftex.def Info: images/Docker_setup_final.png  used on input line 443.
+
+(pdftex.def)             Requested size: 166.61781pt x 200.28001pt.
+ [11] [12 <./images/VM_setup_final.png> <./images/Docker_setup_final.png>]
+[13]
+<images/Exp111.png, id=64, 606.76688pt x 221.32687pt>
 File: images/Exp111.png Graphic file (type png)
 <use images/Exp111.png>
-Package pdftex.def Info: images/Exp111.png  used on input line 406.
+Package pdftex.def Info: images/Exp111.png  used on input line 556.
 (pdftex.def)             Requested size: 343.6542pt x 125.35384pt.
 
-Underfull \hbox (badness 1694) in paragraph at lines 407--407
+Underfull \hbox (badness 1694) in paragraph at lines 557--557
 []\OT1/cmr/m/n/10 Fig.7: |Com-par-i-son of HTTP-group dis-sim-i-lar-ity scores 
 for the DetGen-
  []
 
-[10 <./images/FTP_load.png>] [11 <./images/Exp111.png>]
-<images/Detgen_Reg_HTTP_comp_crop.png, id=59, 836.3747pt x 293.59688pt>
+[14 <./images/Exp111.png>]
+<images/Detgen_Reg_HTTP_comp_crop.png, id=69, 836.3747pt x 293.59688pt>
 File: images/Detgen_Reg_HTTP_comp_crop.png Graphic file (type png)
 <use images/Detgen_Reg_HTTP_comp_crop.png>
 Package pdftex.def Info: images/Detgen_Reg_HTTP_comp_crop.png  used on input li
-ne 426.
+ne 576.
 (pdftex.def)             Requested size: 343.6542pt x 120.63533pt.
-<images/VM_setup_final.png, id=60, 281.57655pt x 322.64803pt>
-File: images/VM_setup_final.png Graphic file (type png)
-<use images/VM_setup_final.png>
-Package pdftex.def Info: images/VM_setup_final.png  used on input line 447.
-(pdftex.def)             Requested size: 166.61781pt x 190.92685pt.
-<images/Docker_setup_final.png, id=61, 312.77509pt x 375.96196pt>
-File: images/Docker_setup_final.png Graphic file (type png)
-<use images/Docker_setup_final.png>
-Package pdftex.def Info: images/Docker_setup_final.png  used on input line 454.
-
-(pdftex.def)             Requested size: 166.61781pt x 200.28001pt.
- [12 <./images/Detgen_Reg_HTTP_comp_crop.png>] [13 <./images/VM_setup_final.png
-> <./images/Docker_setup_final.png>] [14] [15] (SecureComm_draft.bbl [16] [17])
-
-Overfull \hbox (8.66278pt too wide) in paragraph at lines 625--674
+ [15 <./images/Detgen_Reg_HTTP_comp_crop.png>]
+[16] (SecureComm_draft.bbl [17] [18])
+Overfull \hbox (8.66278pt too wide) in paragraph at lines 648--697
 [][]   []
  []
 
-[18] [19] (SecureComm_draft.aux) ) 
+[19] [20] (SecureComm_draft.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6798 strings out of 492970
- 98570 string characters out of 3126595
- 179002 words of memory out of 3000000
- 10556 multiletter control sequences out of 15000+200000
+ 6788 strings out of 492970
+ 98331 string characters out of 3126595
+ 176990 words of memory out of 3000000
+ 10548 multiletter control sequences out of 15000+200000
  11293 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,9n,40p,1113b,495s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/henry/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/henry/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/henry/App
-Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Use
-rs/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi1
-0.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmr10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr6.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/henry/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/henry/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/henry
-/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:
+ 42i,9n,40p,1031b,477s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmbx10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmbx12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/henry/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/henry/AppData/Lo
+cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/henr
+y/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:
 /Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-mtt10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmtt9.pfb>
-Output written on SecureComm_draft.pdf (19 pages, 940728 bytes).
+mr7.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmr9.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmti10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Users/henry/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/henry/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on SecureComm_draft.pdf (20 pages, 530322 bytes).
 PDF statistics:
  129 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

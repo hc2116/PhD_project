@@ -89,7 +89,7 @@ For network traffic generation and monitoring, the current quasi-benchmark datas
 %By moving from virtual machines to containers, we enable the scalable, modular, and dynamic creation of network traffic datasets. Since containers can be arranged in complex settings with a few commands, it is a lot easier with containers to script a variety of network activities thus increase the heterogeneity and realism of the generated data.
 
  
-%We propose a novel design paradigm that makes generation of network traffic and corresponding attacks significantly more flexible and offers a \textcolor{red}{new level} of insight and reproducibility for traffic micro-structures through the use of containerisation. 
+%We propose a novel design paradigm that makes generation of network traffic and corresponding attacks significantly more flexible and offers a \textcolor{red}{new level} of insight and reproducibility for traffic microstructures through the use of containerisation. 
 This work provides the following contributions:
 
 \begin{enumerate}
@@ -132,7 +132,7 @@ The remainder of the paper is organized as follows. Section \ref{Sec:Motivation}
 Section \ref{Sec:Archi} provides details over the design paradigm of DetGen and the resulting advantages over traditional setups, before Section \ref{Sec:Conclusion} concludes our work.
 %and \ref{Sec:Refining} we demonstrate how to perform model probing and implement corresponding design improvements on two network intrusion detection models. Section \ref{Sec:Conclusion} concludes the results and discusses limitations of our work and directions for future work.
 
-\subsection{Existing datasets and corresponding ground-truth information}
+\subsection{Existing datasets and corresponding ground-truth information}\label{Sec:ExData}
 
 Real-world NID-datasets such as those from the Los Alamos National Laboratory \cite{kent-2015-cyberdata1} (LANL) or the University of Grenada \cite{macia2018ugr} provide large amounts of data from a particular network in the form of flow records. Due to the lack of monitoring and traffic anonymisation, it is impossible for researchers to extract detailed information about the specific computational activity associated with a particular traffic sample.
 Synthetic NID-datasets such as the CICIDS-17 and 18 \cite{sharafaldin2018toward} or the UNSW-NB-15 \cite{moustafa2015unsw} aim to provide traffic from a wide range of attacks as well as an enterprise-like topology in the form of \texttt{pcap}-files and flow-statistics. The CICIDS-17 data for example contains 5 days of network traffic from 12 host that include different Windows, Ubuntu, and Web-Server versions, and covers attacks from probing and DoS to smaller SQL-injections and infiltrations.
@@ -146,18 +146,18 @@ While some effort is put in the generation of benign activities using activity s
 
 
 
-\subsection{Scope of DetGen}
-%\subsection{Improved traffic separation for a classifier with congestion level information}
+%\subsection{Scope of DetGen}
+\subsection{Improving a classifier with traffic control and microstructure labels}
 \label{Sec:Improvedtrafficsep}
 
 
-Assume the following problem: You are designing a packet-level traffic classifier which is generating a significant amount of misclassification. These turn out to be caused by a particular characteristic such as unsuccessful logins or frequent connection restarts. However, existing real-world or synthetic datasets do not contain the necessary information to associate the misclassified traffic events with these characteristics, which prevents you from identifying the misclassification cause by numeric evaluation. We designed DetGen to generate traffic with sufficient ground-truth information to allow effective association of such model failures with traffic characteristics.
+Assume the following problem: You are designing a packet-level traffic classifier which is generating a significant amount of false-positives, which is still a common problem for the state-of-the-art \cite{nisioti2018intrusion}. The false-positives turn out to be caused by a particular characteristic such as unsuccessful logins or frequent connection restarts. However, existing real-world or synthetic datasets do not contain the necessary information to associate traffic events with these characteristics, which prevents you from identifying the misclassification cause effectively. We designed DetGen to generate traffic with sufficient ground-truth information to allow effective association of such model failures with traffic characteristics.
 
-In particular, we look at a \textit{Long-Short-Term Memory} (LSTM) network, a deep learning design for sequential data, by Hwang et al. \cite{hwang2019lstm}, which is designed to classify attacks in web traffic and achieved some of the highest detection rates of packet-based classifiers in a recent survey \cite{tahaei2020rise}. Through probing we will see, retransmission sequences in a packet sequence deplete the models classification accuracy:
+To demonstrate this, we look at a \textit{Long-Short-Term Memory} (LSTM) network, a deep learning design for sequential data, by Hwang et al. \cite{hwang2019lstm}, which is designed to classify attacks in web traffic and achieved some of the highest detection rates of packet-based classifiers in a recent survey \cite{tahaei2020rise}. Through probing we will see, retransmission sequences in a packet sequence deplete the models classification accuracy:
 
 \begin{itemize}
-\item We generate suitable probing traffic and input it to the trained model
-\item We perform examine the correlation between traffic misclassification scores and the generated traffic microstructure labels, which is strongest for simulated packet loss.
+\item We generate suitable probing traffic and input it to the trained model.
+\item We examine the correlation between traffic misclassification scores and the generated traffic microstructure labels, which is strongest for simulated packet reordering.
 \item We generate two similar connections, with one exposed to strong packet loss, to examine how it affects the processing.
 \item We then show that by removing retransmission sequences in the preprocessing, misclassification is significantly reduced.
 \end{itemize}
@@ -185,39 +185,44 @@ In total, we use 50,000 connections for training the model, or slightly less tha
 The initially trained model performs relatively well, with an \textit{Area under curve} (AUC)-score%\footnote{a measure describing the overall class separation of the model}
  of \textbf{0.981}, or a detection/false-positive rate\footnote{tuned for the geometric mean} of \textbf{96\%} and \textbf{2.7\%}. However, to enable operational deployment the false-positive rate would need to be several magnitudes lower \cite{mell2003overview}. 
 
+
 \begin{figure}
 \centering
-\includegraphics[width=0.99\textwidth]{images/LSTM_activation.png}
-\caption{LSTM-output activation in dependence of connection phases. Depicted are packet segment streams and their respective sizes in the forward and backward direction, with different phases in the connection coloured and labelled. Below is the LSTM-ouput activation while processing the packet streams.}\label{fig:LSTM_act}
+\includegraphics[width=0.99\textwidth]{images/LSTM_classi.png}
+\caption{Scores for the LSTM-traffic model before and after the model correction.}\label{fig:LSTM_exp}
 \end{figure}
 
 
-Now suppose we want to improve these rates to both detect more SQL-injections and retain a lower false-positive rate. To start, we explore which type of connections are misclassified most often. We perform a correlation analysis between the additional micro-structure labels available for the probing data, and the classification score. The highest misclassification ratio was measured for one of the three SQL injection scenarios  (19\% correlation) and connections with multiple GET-requests (11\% correlation). When not considering particular activities, we measured a high misclassification correlation with simulated packet loss (12\%), which we now examine closer.
+Now suppose we want to improve these rates to both detect more SQL-injections and retain a lower false-positive rate. To start, we explore which type of connections are misclassified most often. We perform a correlation analysis between the additional microstructure labels available for the probing data, and the classification score. The highest misclassification ratio was measured for one of the three SQL injection scenarios  (19\% correlation) and connections with multiple GET-requests (11\% correlation). When not considering particular activities, we measured a high misclassification correlation with simulated packet latency (12\%), which we now examine.
 
 
 
-Fig. \ref{fig:LSTM_exp} depicts classification scores of connections in the probing data in dependence of the emulated network latency. The left panel depicts the scores for the initially trained model, which shows that while classification scores are well separated for lower congestion, increased latency in a connection leads to a narrowing of the classification scores, especially for SQL-injection traffic. Since there are no classification scores that reach far in the opposing area, we conclude that congestion simply makes the model lose predictive certainty. 
+Fig. \ref{fig:LSTM_exp} depicts classification scores of connections in the probing data in dependence of the emulated network latency. The left panel depicts the scores for the initially trained model, while the right panel depicts scores after the model correction that we introduce further down. 
+The left panel shows that classification scores are well separated for lower congestion, but increased latency in a connection leads to a narrowing of the classification scores, especially for SQL-injection traffic. Since there are no classification scores that reach far in the opposing area, we conclude that congestion simply makes the model lose predictive certainty. 
 Increased latency can both increase variation in observed packet interarrival times (IATs), and lead to packet out-of-order arrivals and corresponding retransmission attempts. Both of these factors can decreases the overall sequential coherence for the model, i.e. that the LSTM-model loses context too quickly either due to increased IAT variation or during retransmission sequences. 
 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.99\textwidth]{images/LSTM_classi.png}
-\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold. }\label{fig:LSTM_exp}
+\includegraphics[width=0.99\textwidth]{images/LSTM_activation_new.png}
+\caption{LSTM-output activation in dependence of connection phases.}\label{fig:LSTM_act}
 \end{figure}
 
-To examine the exact effect of retransmission sequences on the model output, we generate two similar connections, where one connection is subject to moderate packet loss and reordering while the other is not. We then compare how the LSTM-output activation is affected by retransmission sequences. Fig. \ref{fig:LSTM_act} depicts the evolution of the LSTM-output layer activation in dependence of difference connection phases. Initially the model begins to view the connection as benign when processing regular traffic, until the SQL-injection is performed. The model then quickly adjusts and provides a malicious classification after processing the injection phase and the subsequent data transfer. The negative output activation is however quickly depleted once the model processes a retransmission phase, and is afterwards not able to relate the still ongoing data transfer to the injection phase. When comparing this to the connection without retransmissions, we do not encounter this depletion effect, instead the negative activation persists after the injection phase.
+We use DetGen to generate two similar connections, where one connection is subject to moderate packet latency and corresponding reordering while the other is not. DetGen's ability to shape traffic in a controlled manner  allows us to examine the effect of retransmission sequences on the model output and isolate it from other potential influence factors.
+Fig. \ref{fig:LSTM_act} depicts the evolution of the LSTM-output layer activation in dependence of difference connection phases for the connection subject to retransmissions. Depicted are packet segment streams and their respective sizes in the forward and backward direction, with different phases in the connection coloured and labelled. Below is the LSTM-output activation while processing the packet streams. The red line shows the output for the connection without retransmissions\footnote{scaled temporally to the same connection phases} as a comparison.
+Initially the model begins to view the connection as benign when processing regular traffic, until the SQL-injection is performed. The model then quickly adjusts and provides a malicious classification after processing the injection phase and the subsequent data transfer, just as it is supposed to. 
 
-We try to correct the existing model with a simple fix by excluding retransmission sequences from the model input data, both during training and classification. This leads to significantly better classification results during network latency, as visible in the right panel of Fig. \ref{fig:LSTM_exp}. SQL-injection scores are now far-less affected by congestion while scores for benign traffic are also less affected, albeit to a smaller degree.
-The overall AUC-score for the model improves to \textbf{0.997} while tuned detection rates and false positives improved to \textbf{99.1\%} and \textbf{0.045\%}.
+The correct output activation is however quickly depleted once the model processes a retransmission phase, and is afterwards not able to relate the still ongoing data transfer to the injection phase and return to the correct output activation. When we compare this to the connection without retransmissions, depicted as the red line in Fig. \ref{fig:LSTM_act}, we do not encounter this depletion effect. Instead the negative activation persists after the injection phase.
+
+Based on this analysis, we try to correct the existing model with a simple fix by excluding retransmission sequences at the pre-processing stage. This leads to significantly better classification results during network latency, as visible in the right panel of Fig. \ref{fig:LSTM_exp}. SQL-injection scores are now far-less affected by congestion while scores for benign traffic are also less affected, albeit to a smaller degree.
+The overall AUC-score for the model improves to \textbf{0.997} while tuned detection rates and false-positives improved to \textbf{99.1\%} and \textbf{0.045\%}. Discussions about the implications of this correction is above the scope of this paper, and there likely exist more more complex and suitable solutions.
 
 
 \subsection{Scope of DetGen}
 
+DetGen generates traffic with precise control and monitoring over the conducted communication activity as well as various traffic-shaping factors. The scope lies on microscopic traffic-structures that become apparent on a packet- or individual flow-level.
 
-Traffic is generated with precise control and monitoring over the conducted communication activity as well as various traffic-shaping factors. The scope lies on microscopic traffic-structures that become apparent on a packet- or individual flow-level.
-
-DetGen separates program executions and traffic capture into distinct containerised environments in order to exclude any background traffic events, and therefore provides precise ground-truth about the computational origin of the traffic, something that is lacking in all \textcolor{red}{network traffic datasets that we are aware of}. By using containerisation, we are furthermore able to control and shield the traffic generation better than in conventional VM-setups, as we demonstrate in Section \ref{Sec:Determinism}, and consequently provide better reproducible data. 
+DetGen separates program executions and traffic capture into distinct containerised environments in order to exclude any background traffic events, and therefore provides precise ground-truth about the computational origin of the traffic, something that is lacking in all network traffic datasets that we are aware of. By using containerisation, we are furthermore able to control and shield the traffic generation better than in conventional VM-setups, as we demonstrate in Section \ref{Sec:Determinism}, and consequently provide better reproducible data. 
 In order to examine additional effects on traffic microstructures, DetGen simulates influence factors such as network congestion, communication failures, data transfer size, content caching, or application implementation.
 
 \section{Probing dataset}\label{Sec:ProbData}
@@ -269,20 +274,20 @@ In Fig. \ref{Fig:ValLoss} we compare the validation error of a recent neural net
 
 \textcolor{red}{To be added}
 
-\section{DetGen and traffic microstructures}\label{Sec:DetGenMicro}
+%\section{Examining traffic microstructures}
 
 
 
-\subsection{Traffic microstructures and their influence factors}
+\section{Traffic microstructures and their influence factors}\label{Sec:DetGenMicro}
 
-Without doubt the biggest and most obvious impact on the captured traffic microstructures is the choice of the application layer protocols. For this reason, the range of protocols is often used as a measure for the diversity of a dataset. However, computer communication involves a myriad of different computational aspects, which are mostly overlooked in the data generation process of existing NIDS-datasets. We highlight and quantify the most dominant ones here, which will act as a justification for the design choices we outline in Section \ref{Sec:ExtInfls}.
+Without doubt the biggest and most obvious impact on the captured traffic microstructures is the choice of the application layer protocols. For this reason, the range of protocols is often used as a measure for the diversity of a dataset. However, computer communication involves a myriad of different computational aspects, which are mostly overlooked in the data generation process of existing NIDS-datasets. Here, we highlight and quantify the most dominant ones, which will act as a justification for the design choices we outline in Section \ref{Sec:ExtInfls}. We look at both findings from previous work as well as our own experimental results.
 %Protocols such as HTTP/TLS perform vastly different tasks than protocols such as Peer-2-Peer or SMB, and thus perform different handshakes, experience different waiting times, transfer data in different intervals, or trigger different additional connections. However, 
 
 %In order to enable sufficient and reproducible control over the generated traffic and provide the corresponding descriptive ground truth information, we first must understand what factors shape the traffic generation process. 
-%Computer communication involves a myriad of different computational aspects, and no research so far has been conducted to quantify how much influence each of them has on traffic structures. We highlight and quantify the influence of the most important influence factors on the traffic micro-structures observed on individual devices. These will act as a justification for the design choices we outline in Section \textcolor{red}{...}.
+%Computer communication involves a myriad of different computational aspects, and no research so far has been conducted to quantify how much influence each of them has on traffic structures. We highlight and quantify the influence of the most important influence factors on the traffic microstructures observed on individual devices. These will act as a justification for the design choices we outline in Section \textcolor{red}{...}.
 
 %\paragraph{1. Application layer protocols} 
-%Without doubt the biggest impact on the captured traffic micro-structures is the choice or combination of the application layer protocols. Protocols such as HTTP/TLS perform vastly different tasks than protocols such as Peer-2-Peer or SMB, and thus perform different handshakes, experience different waiting times, transfer data in different intervals, or trigger different additional connections. 
+%Without doubt the biggest impact on the captured traffic microstructures is the choice or combination of the application layer protocols. Protocols such as HTTP/TLS perform vastly different tasks than protocols such as Peer-2-Peer or SMB, and thus perform different handshakes, experience different waiting times, transfer data in different intervals, or trigger different additional connections. 
 
 %\begin{figure}
 %\centering
@@ -298,42 +303,42 @@ Without doubt the biggest and most obvious impact on the captured traffic micros
 %\end{figure}
  
 \paragraph{1. Performed task and application}
-The conducted computational task as well as the corresponding application ultimately drives the communication between computers, and thus hugely influences characteristics such as the direction of data transfer, the duration and packet rate, as well as the number of connections established. These features are correspondingly used extensively in application fingerprinting, such as by Yen et al. \cite{yen2009browser,stober2013you}. Fig. \ref{Fig:Browser} provides as an example the packet-per-connection differences between different browser choices.
+The conducted computational task as well as the corresponding application ultimately drives the communication between computers, and thus hugely influences characteristics such as the direction of data transfer, the duration and packet rate, as well as the number of connections established. These features are correspondingly used extensively in application fingerprinting, such as by Yen et al. \cite{yen2009browser} or Stober et al. \cite{stober2013you}. %Fig. \ref{Fig:Browser} provides as an example the packet-per-connection differences between different browser choices.
 
-\begin{figure}
-\centering
-\begin{subfigure}[t]{0.38\textwidth}
-\includegraphics[width=\textwidth]{images/Browser.png}
-%\vspace{0.0cm}
-%\vspace{-0.34cm}
-\caption{Number of packets sent from a browser, accumulated over all flows that comprise the retrieval. Taken from \cite{yen2009browser}.}\label{Fig:Browser}
-\end{subfigure}
-%~
-\begin{subfigure}[t]{0.58\textwidth}
-\includegraphics[width=\textwidth]{images/Protocol_differences.png}
-%\vspace{0.0cm}
-%\vspace{-0.4cm}
-\caption{Comparison of QUIC connection request multiplexing for selected implementations, taken from \cite{marx2020same}.}\label{Fig:QUIC}
-\end{subfigure}
-\end{figure}
+%\begin{figure}
+%\centering
+%\begin{subfigure}[t]{0.38\textwidth}
+%\includegraphics[width=\textwidth]{images/Browser.png}
+%\caption{Number of packets sent from a browser, accumulated over all flows that comprise the retrieval. Taken from \cite{yen2009browser}.}\label{Fig:Browser}
+%\end{subfigure}
+%%~
+%\begin{subfigure}[t]{0.58\textwidth}
+%\includegraphics[width=\textwidth]{images/Protocol_differences.png}
+%\caption{Comparison of QUIC connection request multiplexing for selected implementations, taken from \cite{marx2020same}.}\label{Fig:QUIC}
+%\end{subfigure}
+%\end{figure}
 
 
 \paragraph{2. Application layer implementations}
-Different implementations for TLS, HTTP, etc. can yield different computational performance and can perform handshakes different and differ in multiplexing channel prioritisation, which can significantly impact IAT times and the overall duration of the transfer, as shown in a study by Marx et al. \cite{marx2020same} for the QUIC/HTTP3 protocol. Fig. \ref{Fig:QUIC} depicts differences in channel prioritisation for different QUIC-implementations.
+Different implementations for TLS, HTTP, etc. can yield different computational performance and can perform handshakes different and differ in multiplexing channel prioritisation, which can significantly impact IAT times and the overall duration of the transfer, as shown in a study by Marx et al. \cite{marx2020same} for the QUIC/HTTP3 protocol\footnote{Fig. 2 in \cite{marx2020same} illustrates these differences in a nice way}. 
+%Fig. \ref{Fig:QUIC} depicts differences in channel prioritisation for different QUIC-implementations.
 
 
 \paragraph{3. LAN and WAN congestion}
 Low available bandwidth, long RTTs, or packet loss can have a significant effect on TCP congestion control mechanisms that influence frame-sizes, IATs, window sizes, and the overall temporal characteristic of the sequence, which in turn can influence detection performance significantly as shown in Section \ref{Sec:Improvedtrafficsep}.
 
 
-\paragraph{4. Host level load}
-In a similar manner, other applications exhibiting significant computational load (CPU, memory, I/O) on the host machine can affect the processing speed of incoming and outgoing traffic, which can again alter IATs and the overall duration of a connection. An example of this is visible in Fig. \ref{Fig:FTP_load}, where the host sends significantly less \texttt{ack}-packets when under heavy computational load. 
-
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{images/FTP_load.png}
-\caption{Packet-sequence structure similarity comparison for FTP-activity under different load and otherwise constant settings. Colours indicate packet flags while the height of the packets indicates their size. Note that under load, the host sends significantly less packets.}\label{Fig:FTP_load}
+\caption{Packet-sequence structure similarity comparison for FTP-activity under different load and otherwise constant settings.} % Note that under load, the host sends significantly less packets.}
+\label{Fig:FTP_load}
 \end{figure}
+
+\paragraph{4. Host level load}
+In a similar manner, other applications exhibiting significant computational load (CPU, memory, I/O) on the host machine can affect the processing speed of incoming and outgoing traffic, which can again alter IATs and the overall duration of a connection. An example of this is visible in Fig. \ref{Fig:FTP_load}, where a FTP-client sends significantly fewer \texttt{PUSH}-packets when under heavy computational load. Colours indicate packet flags while the height of the packets indicates their size. This effect is dependent on the application layer protocol, where at a load number of $3.5$ we see about $60\%$ less upstream data-packets while the downstream is only reduced by $10\%$, compared to HTTP where both downstream and upstream packet rates are throttled by about $40\%$.
+
+%\textcolor{red}{expand this}
 
 
 
@@ -372,15 +377,27 @@ Tools like cookies, website caching, DNS caching, known hosts in SSH, etc. remov
 %\paragraph{6. Transferred data} 
 %The amount of transferred data influences the overall packet numbers. Furthermore, the content of the data can potentially impact packet rates and sizes, such as shown by Biernacki \cite{biernacki2017analysis} for streaming services.
 
+\paragraph{6. User and background activities}
+The choice and usage frequency of an application and task by a user governs the larger-scale temporal characteristic of a traffic capture, but also influences the rate and type of connections observed in a particular time-window. The mixing of different activities in a particular time-window can severely impact detection results of recent sequential connection-models, such as by Radford et al. \cite{radford2018network} or by Clausen et al. \cite{henryLSTM}. To quantify this effect, we look at FTP-traffic in the CICIDS-17 dataset. As explained in Section \ref{Sec:ExData}, the FTP-traffic overwhelmingly corresponds to the exact same isolated task, and should therefore spawn the same number of connections in a particular time window. However, we observe additional connections from other activities within a 5-second window for $68\%$ of all FTP-connections, such as depicted in Table \ref{Tab:Sess}, which contains FTP-, HTTPS- and DNS-, as well as additional unknown activity.
+%Since we are focusing on traffic microstructures, we currently omit this impact factor from our analysis. 
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{l|l|l|>{\bfseries}l}
+Time& Source-IP &Destination-IP& Dest. Port\\ \hline
+13:45:56.8 & 192.168.10.9 & 192.168.10.50 &    21 \\ \hline
+13:45:56.9 & 192.168.10.9 & 192.168.10.50 &  10602\\ \hline
+13:45:57.5 & 192.168.10.9 & 69.168.97.166 &   443\\ \hline
+13:45:59.1 & 192.168.10.9 &  192.168.10.3 &    53\\ \hline
+13:46:00.1 & 192.168.10.9 & 205.174.165.73 &   8080\\ \hline
+\end{tabular}
+\caption{5-second window for host 192.168.10.9 in the CICIDS-17 dataset.}\label{Tab:Sess}
+\end{table}
 
 
-\vspace{0.3cm}
-We designed DetGen to control and monitor these factors in order to let researchers explore their impact on their traffic models. We omitted some factors that can influence traffic structures, since these act either on a larger scale or correspond to \textcolor{red}{exotic} settings that are outside of our traffic generation scope. Among them are the following:
+Other prominent factors that we found had less effect on traffic microstructures include:
 
-\paragraph{1. User and scheduled activities}
-The choice and usage frequency of an application and task by a user governs the larger-scale temporal characteristic of a traffic capture. Since we are focusing on traffic microstructures, we currently omit this impact factor from our analysis. 
-
-\paragraph{2. Networking stack load}
+\paragraph{7. Networking stack load}
 TCP or IP queue filling of the kernel networking stack can increase packet waiting times and therefore IATs of the traffic trace, as shown by \cite{sequeira2013influence}. In practice, this effect seems to be constrained to large WAN-servers and routers, and we did not find any effect on packet-sequences for various amounts of load generated with iPerf for a regular UNIX host.
 
 
@@ -389,43 +406,15 @@ TCP or IP queue filling of the kernel networking stack can increase packet waiti
 %Existing implementations on a machine stay mostly constant, which is why we also omit this variable at the moment.
 % Implementations within a machine should stay constant.
 
-\paragraph{3. Network configurations}
+\paragraph{8. Network configurations}
 Network settings such as the MTU or the enabling of TCP Segment Reassembly Offloading have effects on the captured packet sizes, but are standardised for most networks, as documented in the CAIDA traffic traces \cite{walsworth2015caida}.
 
 %\subsection{Generative determinism of DetGen}
 
-\subsection{Traffic control and generation determinism}\label{Sec:Determinism}
-We now assess the claim that DetGen controls the outlined traffic influence factors sufficiently, and how similar traffic generated with the same settings looks like. We also demonstrate that this level of control is not achievable on regular VM-based NIDS-traffic-generation setup.
-
-To do so, we generate traffic from three traffic types, namely HTTP, file-synchronisation, and botnet-C\&C, each in four configurations. Within each configuration all controllable influence factors are held constant to test the experimental determinism and reproducibility of DetGen's generative abilities. 
-As a comparison, we use a regular VM-based setup, were applications are hosted directly on two VMs that communicate over a virtual network bridge that is subject to the same NetEm effects as DetGen, such as depicted in Fig. \ref{Fig:Setup_comp}. To measure how similar two traffic samples are, we devise a set of similarity metrics that measure dissimilarity of overall connection characteristics, connection sequence characteristics, and packet sequence characteristics:
 
 
-\begin{figure}
-\centering
-\includegraphics[width=0.99\textwidth]{images/Exp111.png}
-\caption{Comparison of HTTP-group dissimilarity scores for the DetGen-framework and a regular VM-setup, on a logarithmic scale. Samples from the VM-setting are consistently more dissimilar, in particular for flow-based metrics, where the average dissimilarity is more than 30 times higher than for the DetGen setting.}\label{Fig:determ-metric}
-\end{figure}
-
-\begin{itemize}
-\item \textbf{Overall connection similarity} We use the 82 flow summary statistics (IAT and packet size, TCP window sizes, flag occurrences, burst and idle periods) provided by CICFlowMeter \cite{lashkari2017characterization}, and measure the cosine similarity between connections, which is also used in general traffic classification \cite{aun2017review}.
-\item \textbf{Connection sequence similarity} 
-To quantify the similarity of a sequence of connections in a retrieval window, we use the following features to describe the window, such as used by Yen et al. \cite{yen2009browser} for application classification: The number of connections, average and max/min flow duration and size, number of distinct IP and ports addresses contacted. We then again measure the cosine similarity based on these features between different windows. 
-\item \textbf{Packet sequence similarity} To quantify the similarity of packet sequences in handshakes etc., we use a Markovian probability matrix for packet flags, IATs, sizes, and direction conditional on the previous packet. We do this for sequences of 15 packets and use the average sequence likelihood of each group as a similarity measure. %If connections are completely similar, the conditional probabilities and thus the likelihoods should converge to one.
-\end{itemize}
-
-We normalise all dissimilarity scores by dividing them by the maximum dissimilarity score measured for each traffic type so that the reader can put the scores into context.
-For each of the configurations, we generate 100 traffic samples and apply the described dissimilarity measures to 100 randomly drawn pairs sample pairs. Fig. \ref{Fig:determ-metric} depicts the calculated dissimilarity scores for DetGen and the VM-setup.%, while Table \ref{Tab:Dataset} describes the different settings and the corresponding average dissimilarity scores.
-
-The scores yield less than $1\%$ of the dissimilarity observed on average for each protocol. Scores are especially low when compared to traffic groups collected in the VM setting: Dissimilarity scores for the VM-setting are most notably higher for the connection-metric, caused by additional background traffic frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
-
-Fig. \ref{Fig:HTTP-seq} depicts an exemplary comparison between HTTP-samples generated using DetGen versus generation using the VM-setup. Even though samples from DetGen are not perfectly similar, packets from the VM-setup are subject to more timing perturbations and reordering as well as containing additional packets.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.99\textwidth]{images/Detgen_Reg_HTTP_comp_crop.png}
-\caption{Packet-sequence structure similarity comparison for HTTP-activity under constant settings generated by the DetGen framework (left) and in a regular setting (right). Colours indicate packet flags while the height of the packets indicates their size. Note that in addition to more differences in the timing, the packet sizes vary more in the regular setting.}\label{Fig:HTTP-seq}
-\end{figure}
+\vspace{0.3cm}
+We designed DetGen to control and monitor factors 1-6 to let researchers explore their impact on their traffic models, while omitting factors 7 and 8 for the stated reasons.
 
 \section{DetGen Architecture}\label{Sec:Archi}
 
@@ -555,6 +544,40 @@ Each container network interface is hooked to a \emph{tcpdump}-container that re
 %\textcolor{red}{maybe something about subnets}. 
 
 
+\subsection{Traffic control and generation determinism of DetGen}\label{Sec:Determinism}
+We now assess the claim that DetGen controls the outlined traffic influence factors sufficiently, and how similar traffic generated with the same settings looks like. We also demonstrate that this level of control is not achievable on regular VM-based NIDS-traffic-generation setup.
+
+To do so, we generate traffic from three traffic types, namely HTTP, file-synchronisation, and botnet-C\&C, each in four configurations. Within each configuration all controllable influence factors are held constant to test the experimental determinism and reproducibility of DetGen's generative abilities. 
+As a comparison, we use a regular VM-based setup, were applications are hosted directly on two VMs that communicate over a virtual network bridge that is subject to the same NetEm effects as DetGen, such as depicted in Fig. \ref{Fig:Setup_comp}. To measure how similar two traffic samples are, we devise a set of similarity metrics that measure dissimilarity of overall connection characteristics, connection sequence characteristics, and packet sequence characteristics:
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{images/Exp111.png}
+\caption{Comparison of HTTP-group dissimilarity scores for the DetGen-framework and a regular VM-setup, on a logarithmic scale. Samples from the VM-setting are consistently more dissimilar, in particular for flow-based metrics, where the average dissimilarity is more than 30 times higher than for the DetGen setting.}\label{Fig:determ-metric}
+\end{figure}
+
+\begin{itemize}
+\item \textbf{Overall connection similarity} We use the 82 flow summary statistics (IAT and packet size, TCP window sizes, flag occurrences, burst and idle periods) provided by CICFlowMeter \cite{lashkari2017characterization}, and measure the cosine similarity between connections, which is also used in general traffic classification \cite{aun2017review}.
+\item \textbf{Connection sequence similarity} 
+To quantify the similarity of a sequence of connections in a retrieval window, we use the following features to describe the window, such as used by Yen et al. \cite{yen2009browser} for application classification: The number of connections, average and max/min flow duration and size, number of distinct IP and ports addresses contacted. We then again measure the cosine similarity based on these features between different windows. 
+\item \textbf{Packet sequence similarity} To quantify the similarity of packet sequences in handshakes etc., we use a Markovian probability matrix for packet flags, IATs, sizes, and direction conditional on the previous packet. We do this for sequences of 15 packets and use the average sequence likelihood of each group as a similarity measure. %If connections are completely similar, the conditional probabilities and thus the likelihoods should converge to one.
+\end{itemize}
+
+We normalise all dissimilarity scores by dividing them by the maximum dissimilarity score measured for each traffic type so that the reader can put the scores into context.
+For each of the configurations, we generate 100 traffic samples and apply the described dissimilarity measures to 100 randomly drawn pairs sample pairs. Fig. \ref{Fig:determ-metric} depicts the calculated dissimilarity scores for DetGen and the VM-setup.%, while Table \ref{Tab:Dataset} describes the different settings and the corresponding average dissimilarity scores.
+
+The scores yield less than $1\%$ of the dissimilarity observed on average for each protocol. Scores are especially low when compared to traffic groups collected in the VM setting: Dissimilarity scores for the VM-setting are most notably higher for the connection-metric, caused by additional background traffic frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
+
+Fig. \ref{Fig:HTTP-seq} depicts an exemplary comparison between HTTP-samples generated using DetGen versus generation using the VM-setup. Even though samples from DetGen are not perfectly similar, packets from the VM-setup are subject to more timing perturbations and reordering as well as containing additional packets.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{images/Detgen_Reg_HTTP_comp_crop.png}
+\caption{Packet-sequence structure similarity comparison for HTTP-activity under constant settings generated by the DetGen framework (left) and in a regular setting (right). Colours indicate packet flags while the height of the packets indicates their size. Note that in addition to more differences in the timing, the packet sizes vary more in the regular setting.}\label{Fig:HTTP-seq}
+\end{figure}
+
+
 
 \section{Conclusions}\label{Sec:Conclusion}
 
@@ -569,7 +592,7 @@ DetGen and the corresponding dataset are openly accessible for researchers.
 
 %By using HTTP-traffic with congestion settings, we were quickly able to identify the inability of an LSTM-based classifier to handle traffic with significant retransmission rates, which enabled us to improve the model accordingly and increase detection performance by more than $2\%$. Similarly, the examination of projection consistency of a subspace-clustering method using traffic with artificially similar characteristics revealed an overly high sensitivity to flow interarrival times, while cluster-coherence could be increased significantly by identifying half-open connections that were dropped because of network failure as the source of overly dispersed traffic projections. 
 
-%These results have encouraged us to perform more deep-going probing of data-driven network intrusion detection models. We believe that in combination with strong NID-dataset, extensive model validation and corresponding development with targeted traffic samples might hold the key to reduce false positives of detection models to an acceptable rate, as well as help models replicate detection rates in practical settings.
+%These results have encouraged us to perform more deep-going probing of data-driven network intrusion detection models. We believe that in combination with strong NID-dataset, extensive model validation and corresponding development with targeted traffic samples might hold the key to reduce false-positives of detection models to an acceptable rate, as well as help models replicate detection rates in practical settings.
 
 \subsection{Difficulties and limitations}
 

@@ -16,97 +16,95 @@
 \citation{sharafaldin2018toward}
 \citation{moustafa2015unsw}
 \citation{ring2019survey}
+\citation{nisioti2018intrusion}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Outline}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Existing datasets and corresponding ground-truth information}{3}}
+\newlabel{Sec:ExData}{{1.2}{3}}
 \citation{hwang2019lstm}
 \citation{tahaei2020rise}
 \citation{sharafaldin2018toward}
 \citation{mell2003overview}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Motivation and Methodology}{4}}
 \newlabel{Sec:Motivation}{{2}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Scope of DetGen}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Improving a classifier with traffic control and microstructure labels}{4}}
 \newlabel{Sec:Improvedtrafficsep}{{2.1}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces LSTM-output activation in dependence of connection phases. Depicted are packet segment streams and their respective sizes in the forward and backward direction, with different phases in the connection coloured and labelled. Below is the LSTM-ouput activation while processing the packet streams.\relax }}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Scores for the LSTM-traffic model before and after the model correction.\relax }}{5}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:LSTM_act}{{2}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold. \relax }}{6}}
-\newlabel{fig:LSTM_exp}{{3}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Scope of DetGen}{6}}
+\newlabel{fig:LSTM_exp}{{2}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces LSTM-output activation in dependence of connection phases.\relax }}{6}}
+\newlabel{fig:LSTM_act}{{3}{6}}
 \citation{sharafaldin2018toward}
 \citation{henryLSTM}
 \citation{henryLSTM}
 \citation{henryLSTM}
 \citation{macia2018ugr}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Scope of DetGen}{7}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Probing dataset}{7}}
 \newlabel{Sec:ProbData}{{3}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Mirroring CICDS-17 dataset}{7}}
-\citation{yen2009browser,stober2013you}
 \citation{yen2009browser}
-\citation{yen2009browser}
-\citation{marx2020same}
-\citation{marx2020same}
-\citation{marx2020same}
+\citation{stober2013you}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Validation errors of LSTM-model \cite  {henryLSTM} on \leavevmode {\color  {red}Probing dataset} when trained exclusively on the CICIDS-17 dataset (green) and when also trained on the Probing dataset (red), as well as when trained on a third unrelated dataset for comparison (blue).\relax }}{8}}
 \newlabel{Fig:ValLoss}{{4}{8}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Dataset statistics}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}DetGen and traffic microstructures}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Traffic microstructures and their influence factors}{8}}
 \newlabel{Sec:DetGenMicro}{{4}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Traffic microstructures and their influence factors}{8}}
 \@writefile{toc}{\contentsline {paragraph}{1. Performed task and application}{8}}
-\@writefile{toc}{\contentsline {paragraph}{2. Application layer implementations}{8}}
-\citation{fricker2012impact}
-\citation{sequeira2013influence}
-\newlabel{Fig:Browser}{{5a}{9}}
-\newlabel{sub@Fig:Browser}{{a}{9}}
-\newlabel{Fig:QUIC}{{5b}{9}}
-\newlabel{sub@Fig:QUIC}{{b}{9}}
+\citation{marx2020same}
+\citation{marx2020same}
+\@writefile{toc}{\contentsline {paragraph}{2. Application layer implementations}{9}}
 \@writefile{toc}{\contentsline {paragraph}{3. LAN and WAN congestion}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Packet-sequence structure similarity comparison for FTP-activity under different load and otherwise constant settings.\relax }}{9}}
+\newlabel{Fig:FTP_load}{{5}{9}}
 \@writefile{toc}{\contentsline {paragraph}{4. Host level load}{9}}
-\@writefile{toc}{\contentsline {paragraph}{5. Caching/Repetition effects}{9}}
-\@writefile{toc}{\contentsline {paragraph}{1. User and scheduled activities}{9}}
-\@writefile{toc}{\contentsline {paragraph}{2. Networking stack load}{9}}
+\citation{fricker2012impact}
+\citation{radford2018network}
+\citation{henryLSTM}
+\citation{sequeira2013influence}
 \citation{walsworth2015caida}
-\citation{lashkari2017characterization}
-\citation{aun2017review}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Packet-sequence structure similarity comparison for FTP-activity under different load and otherwise constant settings. Colours indicate packet flags while the height of the packets indicates their size. Note that under load, the host sends significantly less packets.\relax }}{10}}
-\newlabel{Fig:FTP_load}{{6}{10}}
-\@writefile{toc}{\contentsline {paragraph}{3. Network configurations}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Traffic control and generation determinism}{10}}
-\newlabel{Sec:Determinism}{{4.2}{10}}
-\citation{yen2009browser}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Comparison of HTTP-group dissimilarity scores for the DetGen-framework and a regular VM-setup, on a logarithmic scale. Samples from the VM-setting are consistently more dissimilar, in particular for flow-based metrics, where the average dissimilarity is more than 30 times higher than for the DetGen setting.\relax }}{11}}
-\newlabel{Fig:determ-metric}{{7}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Packet-sequence structure similarity comparison for HTTP-activity under constant settings generated by the DetGen framework (left) and in a regular setting (right). Colours indicate packet flags while the height of the packets indicates their size. Note that in addition to more differences in the timing, the packet sizes vary more in the regular setting.\relax }}{12}}
-\newlabel{Fig:HTTP-seq}{{8}{12}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}DetGen Architecture}{12}}
-\newlabel{Sec:Archi}{{5}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Design overview}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Containerization and activity isolation}{12}}
+\@writefile{toc}{\contentsline {paragraph}{5. Caching/Repetition effects}{10}}
+\@writefile{toc}{\contentsline {paragraph}{6. User and background activities}{10}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces 5-second window for host 192.168.10.9 in the CICIDS-17 dataset.\relax }}{10}}
+\newlabel{Tab:Sess}{{1}{10}}
+\@writefile{toc}{\contentsline {paragraph}{7. Networking stack load}{10}}
 \citation{shiravi2012toward}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Design comparison of traditional NIDS traffic-generation-setups (a), and our DetGen framework (b).\relax }}{13}}
-\newlabel{Fig:Setup_comp}{{9}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Activity generation}{13}}
-\newlabel{Sec:Scenarios}{{5.3}{13}}
+\@writefile{toc}{\contentsline {paragraph}{8. Network configurations}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}DetGen Architecture}{11}}
+\newlabel{Sec:Archi}{{5}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Design overview}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Containerization and activity isolation}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Activity generation}{11}}
+\newlabel{Sec:Scenarios}{{5.3}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Design comparison of traditional NIDS traffic-generation-setups (a), and our DetGen framework (b).\relax }}{12}}
+\newlabel{Fig:Setup_comp}{{6}{12}}
+\newlabel{Sec:Subscenarios}{{5.3}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Simulation of external influence}{12}}
+\newlabel{Sec:ExtInfls}{{5.4}{12}}
 \citation{iperf}
 \citation{hemminger2005network}
 \citation{jurgelionis2011empirical}
-\newlabel{Sec:Subscenarios}{{5.3}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Simulation of external influence}{14}}
-\newlabel{Sec:ExtInfls}{{5.4}{14}}
-\@writefile{toc}{\contentsline {subsubsection}{Host load}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Activity execution}{14}}
-\citation{macia2018ugr}
+\@writefile{toc}{\contentsline {subsubsection}{Host load}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Activity execution}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Traffic control and generation determinism of DetGen}{13}}
+\newlabel{Sec:Determinism}{{5.6}{13}}
+\citation{lashkari2017characterization}
+\citation{aun2017review}
+\citation{yen2009browser}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Comparison of HTTP-group dissimilarity scores for the DetGen-framework and a regular VM-setup, on a logarithmic scale. Samples from the VM-setting are consistently more dissimilar, in particular for flow-based metrics, where the average dissimilarity is more than 30 times higher than for the DetGen setting.\relax }}{14}}
+\newlabel{Fig:determ-metric}{{7}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Packet-sequence structure similarity comparison for HTTP-activity under constant settings generated by the DetGen framework (left) and in a regular setting (right). Colours indicate packet flags while the height of the packets indicates their size. Note that in addition to more differences in the timing, the packet sizes vary more in the regular setting.\relax }}{15}}
+\newlabel{Fig:HTTP-seq}{{8}{15}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{15}}
 \newlabel{Sec:Conclusion}{{6}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Difficulties and limitations}{15}}
+\citation{macia2018ugr}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Difficulties and limitations}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Future work}{16}}
 \citation{lin2019generating}
 \bibstyle{abbrv}
 \bibdata{../DetGen_ext}
 \bibcite{aun2017review}{1}
 \bibcite{barre2019mining}{2}
 \bibcite{henryLSTM}{3}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Future work}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Acknowledgement}{16}}
 \bibcite{dolan2011virtuoso}{4}
 \bibcite{fricker2012impact}{5}
 \bibcite{iperf}{6}
@@ -115,6 +113,7 @@
 \bibcite{hwang2019lstm}{9}
 \bibcite{jurgelionis2011empirical}{10}
 \bibcite{kamper2020multilingual}{11}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Acknowledgement}{17}}
 \bibcite{kent-2015-cyberdata1}{12}
 \bibcite{lashkari2017characterization}{13}
 \bibcite{lin2019generating}{14}
@@ -123,18 +122,19 @@
 \bibcite{marx2020same}{17}
 \bibcite{mell2003overview}{18}
 \bibcite{moustafa2015unsw}{19}
-\bibcite{ring2019survey}{20}
-\bibcite{sequeira2013influence}{21}
-\bibcite{sharafaldin2018toward}{22}
-\bibcite{shiravi2012toward}{23}
-\bibcite{smith2020mind}{24}
-\bibcite{stober2013you}{25}
-\bibcite{tahaei2020rise}{26}
-\bibcite{walsworth2015caida}{27}
-\bibcite{wexler2019if}{28}
-\bibcite{yen2009browser}{29}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Existing Scenarios}{18}}
-\newlabel{Sec:ExistScen}{{A}{18}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Currently implemented traffic scenarios along with the number of implemented subscenarios\relax }}{19}}
-\newlabel{tab:scen}{{1}{19}}
+\bibcite{nisioti2018intrusion}{20}
+\bibcite{ring2019survey}{21}
+\bibcite{sequeira2013influence}{22}
+\bibcite{sharafaldin2018toward}{23}
+\bibcite{shiravi2012toward}{24}
+\bibcite{smith2020mind}{25}
+\bibcite{stober2013you}{26}
+\bibcite{tahaei2020rise}{27}
+\bibcite{walsworth2015caida}{28}
+\bibcite{wexler2019if}{29}
+\bibcite{yen2009browser}{30}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Existing Scenarios}{19}}
+\newlabel{Sec:ExistScen}{{A}{19}}
 \@writefile{toc}{\contentsline {section}{\numberline {B}CICIDS-17 statistics}{19}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Currently implemented traffic scenarios along with the number of implemented subscenarios\relax }}{20}}
+\newlabel{tab:scen}{{2}{20}}

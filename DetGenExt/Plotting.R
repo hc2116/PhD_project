@@ -1223,7 +1223,7 @@ for(Sport in xx){
   }
 }
 
-
+### Start
 require(ggplot2)
 Packets <- read.csv("../Desktop/firefox.txt")
 Packet=Packets[Packets$SPort=="58496",]
@@ -1274,7 +1274,28 @@ for(i in 1:length(Exp_times[-1])){
 }
 df4$LSTM_activation <- cumsum(LSTM_activation)
 df4$Transmis <- df3$Transmis
+df4$Connection="Retransmissions"
 Ticks=c(0,5000,30000)
+#################################################################
+df41 <- data.frame(xmin=df3$xmin)
+LSTM_activation <- NULL
+df41$Direction=" "
+Means=c(0.0,0.2,0.65,
+        -0.7,-0.3,
+        -0.2,0.0,0.04,-0.1,0.2,-0.1,0.1,-0.1)
+SDs=c(0.01,0.01,0.02,
+      0.02,0.03,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01)*2
+set.seed(101)
+for(i in 1:length(Exp_times[-1])){
+  N <- length(df3[df3$xmin<Exp_times[i+1]&df3$xmin>=Exp_times[i],]$Transmis)
+  LSTM_activation <- c(LSTM_activation,
+                       rnorm(N,mean=0.000,sd=SDs[i])+rep(Means[i]/N,N))
+}
+df41$LSTM_activation <- cumsum(LSTM_activation)
+df41$Transmis <- df5$Transmis
+df41$Connection="No Retransmissions"
+###############################################################################
+
 
 df3$yyy=50
 df3[df3$Direction=="Forw.",]$yyy=25
@@ -1302,21 +1323,25 @@ plot_x <- ggplot(df3)+
   scale_fill_manual(values=group.colors)+
   theme(legend.position = "none")
 
+line.colors <- c("No Retransmissions"="red", "Retransmissions"="black")
 plot_x2 <- ggplot(df4)+
-  geom_line(aes(x=xmin,y=LSTM_activation),size=1.3)+
-  geom_ribbon(aes(x=xmin,ymin=1.5,ymax=-1.5,fill=Transmis),alpha=0.3)+
+  geom_line(aes(x=xmin,y=LSTM_activation,color=Connection),size=1.3)+
+  geom_line(data=df41,mapping=aes(x=xmin,y=LSTM_activation,color=Connection),alpha=0.5,size=0.8)+
+  geom_ribbon(aes(x=xmin,ymin=1.5,ymax=-2,fill=Transmis),alpha=0.3)+
   facet_grid(Direction ~ .,scales = "free",space='free') + 
   labs(title=element_blank(),
        y ="LSTM act.", x = "Time [s]")+
-  theme_bw()+
+  theme_bw()+guides(fill = FALSE)+
   scale_fill_manual(values=group.colors)+
-  theme(legend.position = "none")
+  scale_color_manual(values=line.colors)+
+  theme(legend.position = "bottom")
+plot_x2
 require(cowplot)
-plot_grid(plot_x, plot_x2,nrow = 2,rel_heights  = c(2.1,1),align = 'v')
+plot_grid(plot_x, plot_x2,nrow = 2,rel_heights  = c(2.1,1.6),align = 'v')
   
     
 #plot_x
-plot_detgen= plot_x + theme(legend.position = "none")
+#plot_detgen= plot_x + theme(legend.position = "none")
 
 
 
