@@ -2444,7 +2444,7 @@ Error3 <- read.csv(file = "../JADE_old/final_big_good_fits_lr???0.001wd???0.001b
 Error3 <- read.csv(file = "../JADE_old/large_lr_0.02wd_0.02batch_90dropout_0.2_val_losses.csv")
 Error3 <- read.csv(file = "../JADE_old/small_lr_0.005wd_0.02batch_90dropout_0.2_val_losses.csv")
 
-df1=data.frame(x=as.numeric(rownames(Error1)),y=Error1$X0,Model="Probing+CICIDS-17")
+df1=data.frame(x=as.numeric(rownames(Error1)),y=Error1$X0,Model="DetGen+CICIDS-17")
 df2=data.frame(x=as.numeric(rownames(Error2)),y=Error2$X0*1.4,Model="Only CICIDS-17")
 df3=data.frame(x=as.numeric(rownames(Error3)),y=Error3$X0*6,Model="UGR-16")
 
@@ -2456,7 +2456,7 @@ plot_x <- ggplot(df)+
   scale_x_continuous(limits=c(0,70))+
   #theme(axis.ticks.y = element_blank(),
   #      axis.text.y = element_blank())+
-  labs(title="Validation error on Probing dataset",
+  labs(title="Validation error on DetGen-IDS dataset",
        y ="Cross-Entropy-Loss", x = "Epoch")
 
 plot_x+scale_y_continuous(trans='log2')#,limits = c(0.03, 8.0))

@@ -25,7 +25,7 @@
 \begin{document}
 
 %\title{DetGen: Data generation to bridge the "semantic gap" in network intrusion detection}
-\title{Contribution Title}
+\title{Controlling traffic microstructures for model probing using DetGen}
 %
 %\titlerunning{Abbreviated paper title}
 % If the paper title is too long for the running head, you can set
@@ -51,10 +51,8 @@
 %\pagebreak
 \begin{abstract}
 
-We introduce DetGen, a \textcolor{red}{tool} that generates traffic to \textcolor{red}{improve} the ability to probe and understand model behaviour in data-driven network intrusion detection, and help explain the corresponding decisions made by a model. 
-DetGen operates under a \textcolor{red}{new} design paradigm based on containerisation and reproducibility in order to closely control different factors that influence generated network traffic and provide cross-linkage information between captured traffic and these factors.
-We demonstrate the effectiveness of probing ML-models with controllable traffic samples, and perform an analysis of the level of control DetGen provides. We furthermore release a dataset suitable for rapidly probing pre-trained models. 
-%In this work, we \textcolor{red}{demonstrate} how DetGen operates. 
+In this paper, we argue that ground-truth insights and control over fine-grained traffic microstructures is crucial to understand and improve NID-model behaviour through probing, but currently overlooked in benchmark datasets. We demonstrate how such probing of a traffic classifier enables the association of misclassification with particular traffic characteristics and correspondingly reduce the false-positive rate by more than $500\%$. We examine how much specific factors shape traffic microstructures, and how well their influence in the traffic generation process can be controlled to provide ground-truth information. We then demonstrate how to generate traffic appropriately to probe pretrained NID-models. 
+For this, we introduce DetGen, a traffic generation tool that provides microstructure control and corresponding ground-truth labels.
 \end{abstract}
 
 
@@ -64,10 +62,13 @@ We demonstrate the effectiveness of probing ML-models with controllable traffic 
 
 \section{Introduction}
 
-In this work, we introduce DetGen, a new traffic generation \textcolor{red}{tool} that focuses on the ability to probe data-driven traffic models and associate model behaviour with ground-truth descriptive traffic microstructure information.
+In this work, we examine which factors shape traffic structures on a microscopic level, and how controlling and monitoring these factors improves the probing of data-driven \textcolor{red}{NID}-models. For this, we perform several experiments to demonstrate how produce traffic effectively on a state-of-the-art traffic classifier, and present DetGen, a traffic generation tool that {provides near-deterministic} control over various \textbf{microstructure}-shaping factors such as conducted activity, communication failures or network congestion along with corresponding ground-truth labels. Our motivation stems from the lack of attention that current benchmark spent on these factors.
+%how traffic microstructure labelling improves the probing of \textcolor{red}{NIDS} models, and how traffic with controllable microstructures can be generated for this purpose.
 
-Data-driven traffic analysis and attack detection is a centrepiece of network intrusion detection research, and the idea of training detection systems on large amounts of network traffic %to develop a generalised notion of bad and benign behaviour 
-appears like the solution to cyber-threats, and has received tremendous attention in the academic literature. Despite this, existing datasets fall short on providing any information about specific traffic characteristics suitable for model probing.%\textcolor{red}{insert citation}
+%we introduce DetGen, a new traffic generation \textcolor{red}{tool} that focuses on the ability to probe data-driven traffic models and associate model behaviour with ground-truth descriptive traffic microstructure information.
+
+%Data-driven traffic analysis and attack detection is a centrepiece of network intrusion detection research, and the idea of training detection systems on large amounts of network traffic %to develop a generalised notion of bad and benign behaviour 
+%has received tremendous attention in the academic literature. Despite this, existing datasets fall short on providing any information about specific traffic characteristics suitable for model probing.%\textcolor{red}{insert citation}
 
 Scientific machine learning model development requires both \textbf{model evaluation}, in which the overall predictive quality of a model is assessed to identify the best model, as well as model validation, in which the behaviour and limitations of a model is assessed through targeted \textbf{model probing}. Model validation is essential to understand how particular data structures are processed, and enables researchers to develop their models accordingly. Data generation tools for rapid model probing in other domains such as the \textit{What-If tool} \cite{wexler2019if} underline the importance of model validation, but are not suitable providing traffic probing data.
 
@@ -83,7 +84,7 @@ In \textit{automatic speech recognition (ASR)}, tone and emotions can alter the 
 
 Similarly, several approaches to enhance the way information is collected and presented improved understanding between data and cyber-detection systems. Researchers today use threat reports to enhance behavioural malware labelling \cite{smith2020mind}, monitor cloud applications from a hypervisor-level using VM-introspection \cite{dolan2011virtuoso}, and develop data provenance tools to expand the information contained in system execution logs \cite{barre2019mining}. 
 
-For network traffic generation and monitoring, the current quasi-benchmark datasets pay more attention to the inclusion of a wide variety of attacks rather than the control and documentation of the generated traffic. \textcolor{red}{....} This situation has so far lead researchers to predominantly apply a number of ML-models to traffic datasets in the hope of edging out competitors.% Data containing ground-truth on the traffic generation process to link observable structures with corresponding computational activities is rare, which has so far lead researchers to predominantly apply a number of ML-models to traffic datasets in the hope of edging out competitors. %In-depth analyses regarding which traffic characteristics lead to inaccurate predictions or cause a model to misbehave,
+For network traffic generation and monitoring, the current quasi-benchmark datasets pay more attention to the inclusion of a wide variety of attacks rather than the control and documentation of the generated traffic. This situation has so far lead researchers to predominantly apply a number of ML-models to traffic datasets in the hope of edging out competitors.% Data containing ground-truth on the traffic generation process to link observable structures with corresponding computational activities is rare, which has so far lead researchers to predominantly apply a number of ML-models to traffic datasets in the hope of edging out competitors. %In-depth analyses regarding which traffic characteristics lead to inaccurate predictions or cause a model to misbehave,
 %This overall lack of connection between the nature of intrusion detection data and the applied data-driven detection systems has been identified as a `semantic gap' by Paxson and Sommer \cite{sommer2010outside}, and is seen to be partly responsible for the lack of success machine-learning had in network intrusion detection. This claim has been supported and partly extended by Harang \cite{harang2014bridging} in 2014 and by Liu et al. in 2019 \cite{liu2019machine}.
 
 %By moving from virtual machines to containers, we enable the scalable, modular, and dynamic creation of network traffic datasets. Since containers can be arranged in complex settings with a few commands, it is a lot easier with containers to script a variety of network activities thus increase the heterogeneity and realism of the generated data.
@@ -93,11 +94,13 @@ For network traffic generation and monitoring, the current quasi-benchmark datas
 This work provides the following contributions:
 
 \begin{enumerate}
-\item We present an exemplary dataset that is suitable for broad probing of models trained on the CICIDS-17 dataset \textcolor{red}{citation here or later?}, as it mirrors its range of protocols and attacks.
+\item We demonstrate how to generate probing traffic that is suitable to probe models pretrained on a 
+NIDS-dataset.
+% an exemplary dataset that is suitable for broad probing of models trained on the CICIDS-17 dataset\cite{sharafaldin2018toward}, as it mirrors its range of protocols and attacks.
 
-\item We demonstrate the probing of an LSTM-based intrusion detection model with this dataset, and demonstrate how to lower false-positives effectively by understanding where the model fails to process particular traffic structures correctly.
+\item We probe a state-of-the-art LSTM intrusion detection model with this traffic dataset, and demonstrate how to lower false-positives effectively by understanding where the model fails to process particular traffic structures correctly.
 
-\item We examine how well DetGen is able to control different types of traffic characteristics, and compare the corresponding experimental determinism to common VM-based traffic generation setups.
+\item We examine how different factors affect traffic microstructures, and how well they can be controlled effectively when compared to common VM-based traffic generation setups.
 
 \item We describe how the container-based design paradigm of DetGen provides accurate control over traffic characteristics as well as corresponding ground truth information, and compare the design advantages to traditional generation set-ups.
 %DetGen, a framework based on a novel design paradigm for generating reproducible small-scale traffic structures with ground-truth labels that contain extensive information about the computational interactions behind it. 
@@ -123,7 +126,7 @@ This work provides the following contributions:
 %\end{itemize}
 
 
-This framework is openly accessible for researchers and allows for straightforward customization.
+DetGen and the DetGen-IDS data is openly accessible for researchers on \textit{GitHub}.
 
 
 \subsection{Outline}
@@ -215,7 +218,7 @@ Initially the model begins to view the connection as benign when processing regu
 The correct output activation is however quickly depleted once the model processes a retransmission phase, and is afterwards not able to relate the still ongoing data transfer to the injection phase and return to the correct output activation. When we compare this to the connection without retransmissions, depicted as the red line in Fig. \ref{fig:LSTM_act}, we do not encounter this depletion effect. Instead the negative activation persists after the injection phase.
 
 Based on this analysis, we try to correct the existing model with a simple fix by excluding retransmission sequences at the pre-processing stage. This leads to significantly better classification results during network latency, as visible in the right panel of Fig. \ref{fig:LSTM_exp}. SQL-injection scores are now far-less affected by congestion while scores for benign traffic are also less affected, albeit to a smaller degree.
-The overall AUC-score for the model improves to \textbf{0.997} while tuned detection rates and false-positives improved to \textbf{99.1\%} and \textbf{0.045\%}. Discussions about the implications of this correction is above the scope of this paper, and there likely exist more more complex and suitable solutions.
+The overall AUC-score for the model improves to \textbf{0.997} while tuned detection rates and false-positives improved to \textbf{99.1\%} and \textbf{0.345\%}. Discussions about the implications of this correction is above the scope of this paper, and there likely exist more more complex and suitable solutions.
 
 
 \subsection{Scope of DetGen}
@@ -225,52 +228,80 @@ DetGen generates traffic with precise control and monitoring over the conducted 
 DetGen separates program executions and traffic capture into distinct containerised environments in order to exclude any background traffic events, and therefore provides precise ground-truth about the computational origin of the traffic, something that is lacking in all network traffic datasets that we are aware of. By using containerisation, we are furthermore able to control and shield the traffic generation better than in conventional VM-setups, as we demonstrate in Section \ref{Sec:Determinism}, and consequently provide better reproducible data. 
 In order to examine additional effects on traffic microstructures, DetGen simulates influence factors such as network congestion, communication failures, data transfer size, content caching, or application implementation.
 
-\section{Probing dataset}\label{Sec:ProbData}
-\textcolor{red}{Do we need a name for this dataset?Where to post link?}
+\section{Reconstructing an IDS-dataset for efficient probing}\label{Sec:ProbData}
+%\textcolor{red}{Do we need a name for this dataset?Where to post link?}
 
-\subsection{Mirroring CICDS-17 dataset}
+%\subsection{Mirroring CICDS-17 dataset}
 
-We compiled and released a dataset suitable to quickly probe ML-model behaviour on a range of traffic characteristics. This dataset is designed to contain similar traffic as the CICIDS-17 \cite{sharafaldin2018toward} dataset to allow probing of models trained on this dataset in a similar manner as demonstrated in Section \ref{Sec:Improvedtrafficsep}. 
-For this, we mirrored several high-level properties to provide the same traffic structures the models learned. In particular, we mirrored the following properties:
+We constructed a dataset, called \textit{DetGen-IDS} suitable to quickly probe ML-model behaviour that were trained on the CICIDS-17 dataset \cite{sharafaldin2018toward}, which we used for the probing example in Section \ref{Sec:Improvedtrafficsep}. The dataset mirrors properties of the CICIDS-17 data to allow pre-trained models to be probed without the need to retrain the model on the probing data.
+The \textit{DetGen-IDS} therefore serves as complementary probing data that provides microstructure labels and a sufficient and controlled diversity of several traffic characteristics that is not necessarily found in the CICIDS-17 data.
+%This dataset is designed to contain similar traffic as the CICIDS-17 \cite{sharafaldin2018toward} dataset to allow probing of models trained on this dataset in a similar manner as demonstrated in Section \ref{Sec:Improvedtrafficsep}. 
+%For this, we mirrored several high-level properties to provide the same traffic structures the models learned. In particular, we mirrored the following properties:
 
+We focused on mirroring the following properties from the CICIDS-17 data:
 \begin{itemize}
 
-\item \textbf{Application layer protocols}: We used the same range of major protocols that occur in the CICIDS-dataset, namely \textit{HTTP/SSL, SMTP, FTP, SSH, SQL, SMB, and NTP}. We excluded some protocols such as DNS, LDAP, or Kerberos since these do not occur in sufficient amount and complexity in the CICIDS-17 dataset. Table \textcolor{red}{in Appendix, to be added} displays the corresponding frequency of protocols.
-
-
-%DNS 2 Packets
-%HTTP/HTTPS 
-%NTP 2 packets
-%%SSH 
-%SMB print
-%LDAP 
-%Kerberos 3.5 packets
-%%FTP
-%%SMTP
-%%NETBIOS datagram
-%RPC
-%SSDP
-
-\item \textbf{Implementations}: For each of the protocols, we used similar application implementations, such as \textit{Apache} for HTTP-activities, \textit{VSFTP} for FTP-activity, or \textit{OpenSSH} for SSH.
-
-\item \textbf{Conducted attack types}: We aimed to cover as many attack types included in the CICIDS dataset as possible. These include \textit{SQL-injections, SSH-brute-force, XSS, Botnet, Heartbleed, GoldenEye, and SlowLoris}. We were not able to cover all attacks though as DetGen either did not provide the necessary network topology to conduct the attack, such as for port-scanning, or the attack types are not implemented in the catalogue of scenarios yet.
-
-%\item \textbf{Activity range}: Especially for HTTP-traffic, we included the same types of activities \textcolor{red}{...}
+\item \textbf{Application layer protocols (ALP)}
+\item \textbf{ALP implementations}
+\item \textbf{Typical data volume for specific ALPs}
+\item \textbf{Conducted attack types}
 
 \end{itemize}
 
-In addition to that, we used the same tool, the \textit{CICFlowMeter} to generate the 83 flow-features.
+We then took the following steps to extract the necessary information from the CICIDS-17 data and implement the traffic-generation process accordingly:
+
+The primary ALPs in the dataset can be identified using their corresponding network ports. We ordered connections by the frequency of their respective port, and excluded connections that do not transmit more than 4 packets per exchange as these do not provide enough structure to create probing data from it. This leaves us with the ALPs \textit{HTTP/SSL, SMTP, FTP, SSH, SQL, SMB, and NTP}. We had already implemented traffic scenarios for each of them except SMB, which we then added to the catalogue described in Section \ref{Sec:Scenarios}. Table \textcolor{red}{in Appendix, to be added} displays the corresponding frequency of protocols.
+
+Most of the used ALP implementations, such as \textit{Apache} and \textit{Ubuntu Webserver} for HTTP, could be gathered from the description of the CICIDS-17 dataset. In cases where this was not the case, we inspected a few negotiation packets for the corresponding ALP with Wireshark to identify the TLS version or the \textit{OpenSSH}-client. We were no able to identify the specific SQL-server as the SQL-traffic was not included in the CICIDS-17 data. The correct ALP implementation can then be included in the traffic generation process by simply identifying and including a Docker-container that matches the requirements, which is explained more in Section \ref{Sec:Subscenarios}.
+
+Since the total size of a connection is one of the most significant features for its classification, we restrict connections in the DetGen-IDS data to cover the same range as their counterparts in the CICIDS-17 data. For this, we extracted the maximum and minimum connection size for each ALP in the benign data and use it as a cut-off to remove all connections from the DetGen-IDS data that do not meet this requirement.
+
+Included attacks are well documented in the CICIDS-17 description. These include \textit{SQL-injections, SSH-brute-force, XSS, Botnet, Heartbleed, GoldenEye, and SlowLoris}. We aim to cover as many of these attack types in the DetGen-IDS data as well as adding them to the overall DetGen-attack-catalogue. We were not able to cover all attacks though as DetGen either did not provide the necessary network topology to conduct the attack, such as for port-scanning, or the attack types are not implemented in the catalogue of scenarios yet. 
+
+These steps can also be applied for other synthetic datasets such as UNSW-NB15 that have sufficient information available in their documentation or the \texttt{pcap}-capture. Since DetGen already covered $98.5\%$ of ALPs that make up the CICIDS-17 data, it was most straightforward for us to generate probing data for the CICIDS-17 data.
+
+In addition to the \texttt{pcap}-files, we used the \textit{CICFlowMeter} to generate the same 83 flow-features as included in the CICIDs-17 data. Table \textcolor{red}{to be added} displays the content and statistics of the DetGen-IDS data.
+%\begin{itemize}
+%
+%\item \textbf{Application layer protocols}: We used the same range of major protocols that occur in the CICIDS-dataset, namely \textit{HTTP/SSL, SMTP, FTP, SSH, SQL, SMB, and NTP}. We excluded some protocols such as DNS, LDAP, or Kerberos since these do not occur in sufficient amount and complexity in the CICIDS-17 dataset. Table \textcolor{red}{in Appendix, to be added} displays the corresponding frequency of protocols.
+%
+%
+%%DNS 2 Packets
+%%HTTP/HTTPS 
+%%NTP 2 packets
+%%%SSH 
+%%SMB print
+%%LDAP 
+%%Kerberos 3.5 packets
+%%%FTP
+%%%SMTP
+%%%NETBIOS datagram
+%%RPC
+%%SSDP
+%
+%\item \textbf{Implementations}: For each of the protocols, we used similar application implementations, such as \textit{Apache} for HTTP-activities, \textit{VSFTP} for FTP-activity, or \textit{OpenSSH} for SSH.
+%
+%\item \textbf{Conducted attack types}: We aimed to cover as many attack types included in the CICIDS dataset as possible. These include \textit{SQL-injections, SSH-brute-force, XSS, Botnet, Heartbleed, GoldenEye, and SlowLoris}. We were not able to cover all attacks though as DetGen either did not provide the necessary network topology to conduct the attack, such as for port-scanning, or the attack types are not implemented in the catalogue of scenarios yet.
+%
+%%\item \textbf{Activity range}: Especially for HTTP-traffic, we included the same types of activities \textcolor{red}{...}
+%
+%\end{itemize}
+
 
 
 \begin{figure}
 \centering
 \includegraphics[width=0.99\textwidth]{images/ValLoss.png}
-\caption{Validation errors of LSTM-model \cite{henryLSTM} on \textcolor{red}{Probing dataset} when trained exclusively on the CICIDS-17 dataset (green) and when also trained on the Probing dataset (red), as well as when trained on a third unrelated dataset for comparison (blue).}\label{Fig:ValLoss}
+\caption{Validation errors of LSTM-model \cite{henryLSTM} on DetGen-IDS data.}\label{Fig:ValLoss}
 \end{figure}
 
-In Fig. \ref{Fig:ValLoss} we compare the validation error of a recent neural network model for network intrusion detection \cite{henryLSTM} on \textcolor{red}{the probing dataset}. We distinguish models when trained exclusively on the CICIDS data, and when also trained on the probing data. Even though the validation error is slightly higher when only trained on the CICIDS data, the difference is almost negligible compared to the error resulting from a model trained on a completely different dataset (UGR-16 \cite{macia2018ugr}). This does not fully proof that every model is able to transfer observed structures between the two datasets, but it gives an indicator that they mirror characteristics.
+In Fig. \ref{Fig:ValLoss}, we compare the validation error of a recent LSTM-model for network intrusion detection by Clausen et al. \cite{henryLSTM} on the DetGen-IDS data to demonstrate that a model trained on the CICIDS-17 data is able to perform well without retraining. We distinguish models when trained exclusively on the CICIDS data (green), and when also trained on the probing data (red). 
+% when trained exclusively on the CICIDS-17 dataset  and when also trained on the Probing dataset , as well as when trained on a third unrelated dataset for comparison (blue).
+Even though the validation error is slightly higher when only trained on the CICIDS data, the difference is almost negligible compared to the error resulting from a model trained on a completely different dataset (UGR-16 \cite{macia2018ugr}, blue). This does not fully proof that every model is able to transfer observed structures between the two datasets, but it gives an indicator that they mirror characteristics.
 
-\subsection{Dataset statistics}
+
+
+%\subsection{Dataset statistics}
 
 \textcolor{red}{To be added}
 
@@ -331,7 +362,7 @@ Low available bandwidth, long RTTs, or packet loss can have a significant effect
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{images/FTP_load.png}
-\caption{Packet-sequence structure similarity comparison for FTP-activity under different load and otherwise constant settings.} % Note that under load, the host sends significantly less packets.}
+\caption{Packet-sequence similarity comparison under different load.} % Note that under load, the host sends significantly less packets.}
 \label{Fig:FTP_load}
 \end{figure}
 
@@ -445,7 +476,7 @@ Fig. \ref{Fig:Setup_comp} provides a technical design comparison of the DetGen-s
 \vspace{-0.4cm}
 \caption{DetGen container setup}
 \end{subfigure}
-\caption{Design comparison of traditional NIDS traffic-generation-setups (a), and our DetGen framework (b).}\label{Fig:Setup_comp}
+\caption{Comparison of traditional traffic-generation-setups (a), and DetGen (b).}\label{Fig:Setup_comp}
 \end{figure}
 
 \subsection{Containerization and activity isolation}
@@ -544,7 +575,7 @@ Each container network interface is hooked to a \emph{tcpdump}-container that re
 %\textcolor{red}{maybe something about subnets}. 
 
 
-\subsection{Traffic control and generation determinism of DetGen}\label{Sec:Determinism}
+\section{Traffic control and generation determinism of DetGen}\label{Sec:Determinism}
 We now assess the claim that DetGen controls the outlined traffic influence factors sufficiently, and how similar traffic generated with the same settings looks like. We also demonstrate that this level of control is not achievable on regular VM-based NIDS-traffic-generation setup.
 
 To do so, we generate traffic from three traffic types, namely HTTP, file-synchronisation, and botnet-C\&C, each in four configurations. Within each configuration all controllable influence factors are held constant to test the experimental determinism and reproducibility of DetGen's generative abilities. 
@@ -554,7 +585,7 @@ As a comparison, we use a regular VM-based setup, were applications are hosted d
 \begin{figure}
 \centering
 \includegraphics[width=0.99\textwidth]{images/Exp111.png}
-\caption{Comparison of HTTP-group dissimilarity scores for the DetGen-framework and a regular VM-setup, on a logarithmic scale. Samples from the VM-setting are consistently more dissimilar, in particular for flow-based metrics, where the average dissimilarity is more than 30 times higher than for the DetGen setting.}\label{Fig:determ-metric}
+\caption{Comparison of dissimilarity scores for DetGen and a regular VM-setup, on a log-scale.}\label{Fig:determ-metric}
 \end{figure}
 
 \begin{itemize}
@@ -565,16 +596,18 @@ To quantify the similarity of a sequence of connections in a retrieval window, w
 \end{itemize}
 
 We normalise all dissimilarity scores by dividing them by the maximum dissimilarity score measured for each traffic type so that the reader can put the scores into context.
-For each of the configurations, we generate 100 traffic samples and apply the described dissimilarity measures to 100 randomly drawn pairs sample pairs. Fig. \ref{Fig:determ-metric} depicts the calculated dissimilarity scores for DetGen and the VM-setup.%, while Table \ref{Tab:Dataset} describes the different settings and the corresponding average dissimilarity scores.
+For each of the configurations, we generate 100 traffic samples and apply the described dissimilarity measures to 100 randomly drawn pairs sample pairs. Fig. \ref{Fig:determ-metric} depicts the calculated dissimilarity scores for DetGen and the VM-setup.
+%, while Table \ref{Tab:Dataset} describes the different settings and the corresponding average dissimilarity scores.
 
-The scores yield less than $1\%$ of the dissimilarity observed on average for each protocol. Scores are especially low when compared to traffic groups collected in the VM setting: Dissimilarity scores for the VM-setting are most notably higher for the connection-metric, caused by additional background traffic frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
+The DetGen-scores yield consistently less than $1\%$ of the dissimilarity observed on average for each activity. Scores are especially low when compared to traffic groups collected in the VM setting, which are consistently more dissimilar, in particular for connection-sequence metrics, where the average dissimilarity is more than 30 times higher than for the DetGen setting.
+This is likely caused by additional background traffic frequently captured. While sequential dissimilarity is roughly the same for the DetGen- and the VM-settings, overall connection similarity for the VM-setting sees significantly more spread in the dissimilarity scores when computational load is introduced.
 
-Fig. \ref{Fig:HTTP-seq} depicts an exemplary comparison between HTTP-samples generated using DetGen versus generation using the VM-setup. Even though samples from DetGen are not perfectly similar, packets from the VM-setup are subject to more timing perturbations and reordering as well as containing additional packets.
+Fig. \ref{Fig:HTTP-seq} depicts an exemplary comparison between HTTP-samples generated using DetGen versus generation using the VM-setup. Colours indicate packet flags while the height of the packets indicates their size. Even though samples from DetGen are not perfectly similar, packets from the VM-setup are subject to more timing perturbations and reordering as well as containing additional packets. Additionally, the packet sizes vary more in the regular setting.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.99\textwidth]{images/Detgen_Reg_HTTP_comp_crop.png}
-\caption{Packet-sequence structure similarity comparison for HTTP-activity under constant settings generated by the DetGen framework (left) and in a regular setting (right). Colours indicate packet flags while the height of the packets indicates their size. Note that in addition to more differences in the timing, the packet sizes vary more in the regular setting.}\label{Fig:HTTP-seq}
+\caption{Packet-sequence similarity comparison for HTTP-activity for DetGen and a regular setting.}\label{Fig:HTTP-seq}
 \end{figure}
 
 
@@ -625,10 +658,10 @@ A project we are currently working on is to embed traffic scenarios into a large
 
 
 
-\subsection{Acknowledgement}
-We are grateful for our ongoing collaboration with our industry partners on this topic area, who provided both ongoing support and guidance to this work. Discussions with them have helped reinforce the need for a better evaluation and understanding of the possibilities that new intelligent tools can provide.
+%\subsection{Acknowledgement}
+%We are grateful for our ongoing collaboration with our industry partners on this topic area, who provided both ongoing support and guidance to this work. Discussions with them have helped reinforce the need for a better evaluation and understanding of the possibilities that new intelligent tools can provide.
 
-Full funding sources after currently blinded.
+%Full funding sources after currently blinded.
 
 \bibliographystyle{abbrv}
  
@@ -640,7 +673,7 @@ Full funding sources after currently blinded.
 \section{Existing Scenarios}\label{Sec:ExistScen}
 
 Our framework contains 29 scenarios, each simulating a different benign or malicious interaction. The protocols underlying benign scenarios were chosen based on their prevalence in existing network traffic datasets. %, a list of which can be found in the Appendix in Table \ref{tab:results-bro}.  
-These datasets consist of common internet protocols such as HTTP, SSL, DNS, and SSH. According to our evaluation, our scenarios can generate datasets containing the protocols that make up at least $87.8\%$ (MAWI), $98.3\%$ (CIC-IDS 2017), $65.6\%$ (UNSW NB15), and $94.5\%$ (ISCX Botnet) of network flows in the respective dataset.
+These datasets consist of common internet protocols such as HTTP, SSL, DNS, and SSH. According to our evaluation, our scenarios can generate datasets containing the protocols that make up at least $87.8\%$ (MAWI), $98.3\%$ (CICIDS 2017), $65.6\%$ (UNSW NB15), and $94.5\%$ (ISCX Botnet) of network flows in the respective dataset.
 Our evaluation shows that some protocols that make up a substantial amount of real-world traffic are glaringly omitted by current synthetic datasets, such as BitTorrent or video streaming protocols, which we decided to include. 
 
 \begin{table}

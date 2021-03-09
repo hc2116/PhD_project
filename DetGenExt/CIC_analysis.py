@@ -16,9 +16,9 @@ Mondayflows.columns
 FreqPort=Mondayflows.loc[:," Destination Port"].value_counts()/len(Mondayflows.loc[:," Destination Port"])
 FreqPort.name="Frequency"
 
-NPackets=Mondayflows.loc[:,[" Destination Port"," Total Fwd Packets"]].groupby([" Destination Port"]).sum()
+NPackets=Mondayflows.loc[:,[" Destination Port"," Total Fwd Packets"]].groupby([" Destination Port"]).mean()
 
-TotalL=Mondayflows.loc[:,[" Destination Port","Total Length of Fwd Packets"]].groupby([" Destination Port"]).sum()
+TotalL=Mondayflows.loc[:,[" Destination Port","Total Length of Fwd Packets"]].groupby([" Destination Port"]).mean()
 
 TotalLL=TotalL.join(NPackets)
 
@@ -27,6 +27,8 @@ TotalLL=TotalL.join(NPackets)
 TotalLLL=TotalLL.join(FreqPort).sort_values(by="Total Length of Fwd Packets",ascending=False)
 
 TotalLLL=TotalLL.join(FreqPort).sort_values(by=" Total Fwd Packets",ascending=False)
+
+TotalLLL=TotalLL.join(FreqPort).sort_values(by="Frequency",ascending=False)
 
 TotalLLL
  
