@@ -124,6 +124,11 @@ A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
   survey of unsupervised methods.
 \newblock {\em IEEE Communications Surveys \& Tutorials}, 2018.
 
+\bibitem{radford2018network}
+B.~J. Radford, L.~M. Apolonio, A.~J. Trias, and J.~A. Simpson.
+\newblock Network traffic anomaly detection using recurrent neural networks.
+\newblock {\em arXiv preprint arXiv:1803.10769}, 2018.
+
 \bibitem{ring2019survey}
 M.~Ring, S.~Wunderlich, D.~Scheuring, D.~Landes, and A.~Hotho.
 \newblock A survey of network-based intrusion detection data sets.
