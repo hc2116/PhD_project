@@ -50,8 +50,8 @@
 
 %\pagebreak
 \begin{abstract}
-
-In this paper, we argue that ground-truth insights and control over fine-grained traffic microstructures are crucial to understand and improve NID-model behaviour, but currently overlooked in benchmark datasets. We demonstrate how  probing of a traffic classifier with appropriately generated and labelled microstructures enables the association of misclassification with particular traffic characteristics and correspondingly reduce the false-positive rate by more than $500\%$. We examine how large the impact of specific factors is on traffic microstructures, and how well their influence in the traffic generation process can be controlled to provide ground-truth information. We then demonstrate how to generate traffic appropriately to probe pre-trained NID-models. 
+Network traffic contains microscopic ...
+We argue that ground-truth insights and control over fine-grained traffic microstructures are crucial to understand and improve NID-model behaviour, but currently overlooked in benchmark datasets. We demonstrate how  probing of a traffic classifier with appropriately generated and labelled microstructures enables the association of misclassification with particular traffic characteristics and correspondingly reduce the false-positive rate by more than $500\%$. We examine how large the impact of specific factors is on traffic microstructures, and how well their influence in the traffic generation process can be controlled to provide ground-truth information. We then demonstrate how to generate traffic appropriately to probe pre-trained NID-models. 
 For this, we introduce DetGen, a traffic generation tool that provides microstructure control and corresponding ground-truth labels.
 \end{abstract}
 
@@ -62,7 +62,7 @@ For this, we introduce DetGen, a traffic generation tool that provides microstru
 
 \section{Introduction}
 
-In this work, we examine which factors shape traffic structures on a microscopic level, and how controlling and monitoring these factors improves the probing of data-driven network intrusion detection (NID) models. For this, we perform several experiments to demonstrate how to produce traffic effectively on a state-of-the-art traffic classifier, and present DetGen, a traffic generation tool that {provides near-deterministic} control over various \textbf{microstructure}-shaping factors such as conducted activity, communication failures or network congestion along with corresponding ground-truth labels. Our motivation stems from the lack of attention that current benchmark datasets spent on these factors.
+We examine which factors shape traffic structures on a microscopic level, and how controlling and monitoring these factors improves the probing of data-driven network intrusion detection (NID) models. For this, we perform several experiments to demonstrate how to produce traffic effectively on a state-of-the-art traffic classifier, and present DetGen, a traffic generation tool that {provides near-deterministic} control over various \textbf{microstructure}-shaping factors such as conducted activity, communication failures or network congestion along with corresponding ground-truth labels. Our motivation stems from the lack of attention that current benchmark datasets spent on these factors.
 %how traffic microstructure labelling improves the probing of \textcolor{red}{NIDS} models, and how traffic with controllable microstructures can be generated for this purpose.
 
 %we introduce DetGen, a new traffic generation \textcolor{red}{tool} that focuses on the ability to probe data-driven traffic models and associate model behaviour with ground-truth descriptive traffic microstructure information.
@@ -96,11 +96,11 @@ For network traffic generation and monitoring, the current quasi-benchmark datas
 This work provides the following contributions:
 
 \begin{enumerate}
-\item We demonstrate how to generate probing traffic that is suitable to probe models pre-trained on a 
+\item We demonstrate how to generate probing traffic that is suitable to probe models pre-trained on a given
 NIDS-dataset.
 % an exemplary dataset that is suitable for broad probing of models trained on the CICIDS-17 dataset\cite{sharafaldin2018toward}, as it mirrors its range of protocols and attacks.
 
-\item We probe a state-of-the-art LSTM traffic classifier with this traffic dataset, and demonstrate how to lower false-positives effectively by understanding where the model fails to process particular traffic structures correctly.
+\item We probe a state-of-the-art LSTM traffic classifier with this traffic dataset, and demonstrate how to lower false-positives five-fold by understanding where the model fails to process particular traffic structures correctly.
 
 \item We examine experimentally how different factors affect traffic microstructures, and how well they can be controlled effectively when compared to common VM-based traffic generation setups.
 
