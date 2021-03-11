@@ -31,4 +31,13 @@ TotalLLL=TotalLL.join(FreqPort).sort_values(by=" Total Fwd Packets",ascending=Fa
 TotalLLL=TotalLL.join(FreqPort).sort_values(by="Frequency",ascending=False)
 
 TotalLLL
- 
+
+
+########################################################################
+
+import pandas as pd 
+
+HTTP_labels=pd.read_csv("Desktop/Ubuntu_Files/capture-021-nginxWget-2021-03-02_17-48-27-labels.csv")
+SSH_labels=pd.read_csv("Desktop/Ubuntu_Files/capture-090-openssh-2021-02-18_21-53-46-labels.csv")
+
+SSH_labels=pd.read_csv("Desktop/Ubuntu_Files/capture-090-openssh-2021-03-10_19-13-15-labels.csv",delimiter=";")
