@@ -25,7 +25,7 @@
 \begin{document}
 
 %\title{DetGen: Data generation to bridge the "semantic gap" in network intrusion detection}
-\title{Controlling traffic microstructures for model probing using DetGen}
+\title{Controlling network traffic microstructures for machine-learning model probing}
 %
 %\titlerunning{Abbreviated paper title}
 % If the paper title is too long for the running head, you can set
@@ -304,29 +304,6 @@ In Fig. \ref{Fig:ValLoss}, we compare the validation error of a recent LSTM-mode
 % when trained exclusively on the CICIDS-17 dataset  and when also trained on the Probing dataset , as well as when trained on a third unrelated dataset for comparison (blue).
 Even though the validation error is slightly higher when only trained on the CICIDS data, the difference is almost negligible compared to the error resulting from a model trained on a completely different dataset (UGR-16 \cite{macia2018ugr}, blue). This does not fully proof that every model is able to transfer observed structures between the two datasets, but it gives an indicator that they mirror characteristics.
 
-
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{l|l|l|l|l|l|l}
-ID& Activity & kn.-host &\dots &File-l. [b]& load&lat. [s]\\ \hline
-ABC & F.-transfer with passw. &Yes&\dots &256236& 1.01 & 14 \\
-DEF & Keyscanning &No&\dots &1162& 2.39 & 248 \\
-\vdots
-\end{tabular}
-\caption{Exemplary SSH-labels}\label{Tab:Labels}
-\end{table}
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{l|l|l|l|l|l|l}
-ID& Activity & kn.-host &\dots &File-l. [b]& load&lat. [s]\\ \hline
-ABC & F.-transfer with passw. &Yes&\dots &256236& 1.01 & 14 \\
-DEF & Keyscanning &No&\dots &1162& 2.39 & 248 \\
-\vdots
-\end{tabular}
-\caption{Exemplary SSH-labels}\label{Tab:Labels}
-\end{table}
 
 
 
@@ -769,6 +746,46 @@ Scenarios such as stepping stone behavior or Cryptojacking previously had no ava
 %In particular the \emph{Cryptojacking} and the \emph{Stepstone} scenarios provide novel data of malicious behaviors that is currently unavaible to researchers. %\textcolor{red}{Should I mention that BT is very keen on the stepping stone scenario data, as there is none publicly available whatsoever?}
 
 We provide a complete list of implemented scenarios in Table \ref{tab:scen}.
+
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{l|l|l|l|l|l|l}
+ID& Activity & kn.-host &\dots &File-l. [b]& load&lat. [s]\\ \hline
+ABC & F.-transfer with passw. &Yes&\dots &256236& 1.01 & 14 \\
+DEF & Keyscanning &No&\dots &1162& 2.39 & 248 \\
+\vdots
+\end{tabular}
+\caption{Exemplary SSH-labels}\label{Tab:Labels}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{p{1.5cm}|p{1cm}|p{1.7cm}|p{2cm}|p{1.7cm}||p{1.7cm}|p{2cm}}
+\multicolumn{2}{c|}{}&\multicolumn{3}{c||}{CICIDS-17}&\multicolumn{2}{c}{DetGen-IDS}\\
+ALP & Port&\begin{tabular}{@{}c@{}}Av. Size\\/Conn.\end{tabular} &\begin{tabular}{@{}c@{}}Av. Packets\\/Conn.\end{tabular} & \verb|#| Packets&\verb|#| Packets&\verb|#| Activities\\ \hline
+HTTP&80&                 141911.1&       120.4   &     6119886&&\\
+HTTPS&443&                 17295.8&        29.2 &       4118433&&\\
+DNS&53    &                286.2   &      3.6         &787949& -&\\
+SSH&22     &              4699.6    &    40.9        &  87399& &\\
+LDAP&389    &              5429.2    &    22.3      &    27141& &\\
+NetBIOS&137  &                 773.6  &      14.3  &        21897&&\\
+FTP&21        &            311.3      &  22.7     &     21830&&\\
+msft-gc&3268   &              8081.4 &       38.1&          19040&&\\
+NTP&123         &          157.0  &   3.2  &        16943&&\\
+SMB&445          &       12941.5       & 61.9 &         15793&&\\
+SMTP&465   &               2663.5  &      21.5         & 15698&&\\
+%NetBIOS&139 &                 1355.127&        20.1     &      9058\\
+Kerberos&88  &                 2687.7&         6.9   &        8424& -&\\
+mDNS&5353     &            3685.5    &    43.5      &     6790 & -&\\
+SSDP&1900      &           9006.4    &    52.4     &      6037&&\\
+%NetBIOS&138     &             3577.067  &      15.956  &         5026\\
+\end{tabular}
+\caption{Most common ALPs in the CICIDS-17 data}\label{Tab:ALPs}
+\end{table}
+
+
 
 \section{CICIDS-17 statistics}
 
