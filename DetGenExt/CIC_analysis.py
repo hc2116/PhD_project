@@ -11,26 +11,33 @@ Mondayflows=pd.read_csv("Desktop/PhD_project/Data/CIC/Monday-WorkingHours.pcap_I
 
 
 Mondayflows.columns
-
+Mondayflows["Total Packets"]=Mondayflows.loc[:," Total Fwd Packets"]+Mondayflows.loc[:," Total Backward Packets"]
+Mondayflows["Total Size"]=Mondayflows.loc[:,"Total Length of Fwd Packets"]+Mondayflows.loc[:,' Total Length of Bwd Packets']
 
 FreqPort=Mondayflows.loc[:," Destination Port"].value_counts()/len(Mondayflows.loc[:," Destination Port"])
 FreqPort.name="Frequency"
 
-NPackets=Mondayflows.loc[:,[" Destination Port"," Total Fwd Packets"]].groupby([" Destination Port"]).mean()
 
-TotalL=Mondayflows.loc[:,[" Destination Port","Total Length of Fwd Packets"]].groupby([" Destination Port"]).mean()
-
+NPackets=Mondayflows.loc[:,[" Destination Port","Total Packets"]].groupby([" Destination Port"]).mean()
+TotalL=Mondayflows.loc[:,[" Destination Port","Total Size"]].groupby([" Destination Port"]).mean()
+NPackets.columns=["Mean Packets"]
+TotalL.columns=["Mean size"]
 TotalLL=TotalL.join(NPackets)
 
-#TotalLL=TotalL.merge(NPackets,how='inner', on=' Destination Port')
+NPackets=Mondayflows.loc[:,[" Destination Port","Total Packets"]].groupby([" Destination Port"]).sum()
+NPackets.columns=["Total Packets"]
+TotalLL=TotalLL.join(NPackets)
 
-TotalLLL=TotalLL.join(FreqPort).sort_values(by="Total Length of Fwd Packets",ascending=False)
 
-TotalLLL=TotalLL.join(FreqPort).sort_values(by=" Total Fwd Packets",ascending=False)
-
+TotalLLL=TotalLL.join(FreqPort).sort_values(by="Total Packets",ascending=False)
 TotalLLL=TotalLL.join(FreqPort).sort_values(by="Frequency",ascending=False)
 
-TotalLLL
+
+TotalLLL=TotalLL.sort_values(by="Total Packets",ascending=False)
+TotalLLL["Total Packets Ratio"]=TotalLLL["Total Packets"]/TotalLLL["Total Packets"].sum()
+TotalLLL.iloc[0:30,:].round(3)
+
+TotalLLL.iloc[0:18,:].round(3)
 
 
 ########################################################################

@@ -1,5 +1,13 @@
 \begin{thebibliography}{10}
 
+\bibitem{aparicio2017using}
+F.~J. Aparicio-Navarro, J.~A. Chambers, K.~Kyriakopoulos, Y.~Gong, and
+  D.~Parish.
+\newblock Using the pattern-of-life in networks to improve the effectiveness of
+  intrusion detection systems.
+\newblock In {\em 2017 IEEE International Conference on Communications (ICC)},
+  pages 1--7. IEEE, 2017.
+
 \bibitem{aun2017review}
 Y.~Aun, S.~Manickam, and S.~Karuppayah.
 \newblock A review on features' robustness in high diversity mobile traffic
@@ -172,6 +180,11 @@ T.~St{\"o}ber, M.~Frank, J.~Schmitt, and I.~Martinovic.
 H.~Tahaei, F.~Afifi, A.~Asemi, F.~Zaki, and N.~B. Anuar.
 \newblock The rise of traffic classification in iot networks: A survey.
 \newblock {\em Journal of Network and Computer Applications}, 154:102538, 2020.
+
+\bibitem{turcotte17}
+M.~J.~M. {Turcotte}, A.~D. {Kent}, and C.~{Hash}.
+\newblock {Unified Host and Network Data Set}.
+\newblock {\em ArXiv e-prints}, Aug. 2017.
 
 \bibitem{walsworth2015caida}
 C.~Walsworth, E.~Aben, K.~Claffy, and D.~Andersen.

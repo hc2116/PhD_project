@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  11 MAR 2021 17:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  13 MAR 2021 14:47
 entering extended mode
 **./SecureComm_draft.tex
 (SecureComm_draft.tex
@@ -646,6 +646,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Title too long for running head. Please supply
 a shorter form with \titlerunning prior to \maketitle
+
+Overfull \hbox (3.56111pt too wide) in paragraph at lines 53--56
+[]\OT1/cmr/m/n/9 Network traf-fic con-tains mi-cro-scopic ... We ar-gue that gr
+ound-
+ []
+
 <images/Eva_Prob.png, id=1, 606.76688pt x 248.42813pt>
 File: images/Eva_Prob.png Graphic file (type png)
 <use images/Eva_Prob.png>
@@ -655,75 +661,74 @@ Package pdftex.def Info: images/Eva_Prob.png  used on input line 77.
 
 {C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2 <./image
 s/Eva_Prob.png>] [3]
-Overfull \hbox (2.90477pt too wide) in paragraph at lines 168--169
-\OT1/cmr/m/n/10 gen-er-ated traf-fic mi-crostruc-ture la-bels, which is stronge
-st for sim-u-lated packet
- []
-
 <images/LSTM_classi.png, id=19, 569.12625pt x 232.61906pt>
 File: images/LSTM_classi.png Graphic file (type png)
 <use images/LSTM_classi.png>
-Package pdftex.def Info: images/LSTM_classi.png  used on input line 199.
+Package pdftex.def Info: images/LSTM_classi.png  used on input line 202.
 (pdftex.def)             Requested size: 343.6542pt x 140.46696pt.
-[4]
+ [4]
 <images/LSTM_activation_new.png, id=25, 514.92375pt x 348.55219pt>
 File: images/LSTM_activation_new.png Graphic file (type png)
 <use images/LSTM_activation_new.png>
-Package pdftex.def Info: images/LSTM_activation_new.png  used on input line 215
+Package pdftex.def Info: images/LSTM_activation_new.png  used on input line 218
 .
 (pdftex.def)             Requested size: 343.6542pt x 232.62459pt.
  [5 <./images/LSTM_classi.png (PNG copy)>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (2.12709pt too wide) in paragraph at lines 238--243
+\OT1/cmr/m/n/10 Moving to-wards a more gen-eral dataset con-structed to ap-plz 
+this prob-ing method-
+ []
 
- [6 <./images/LSTM_activation_new.png>] [7]
-<images/ValLoss.png, id=38, 566.115pt x 161.10187pt>
+[6 <./images/LSTM_activation_new.png>]
+<images/ValLoss.png, id=35, 566.115pt x 161.10187pt>
 File: images/ValLoss.png Graphic file (type png)
 <use images/ValLoss.png>
-Package pdftex.def Info: images/ValLoss.png  used on input line 299.
+Package pdftex.def Info: images/ValLoss.png  used on input line 297.
 (pdftex.def)             Requested size: 343.6542pt x 97.79755pt.
- [8 <./images/ValLoss.png>]
-<images/FTP_load.png, id=43, 487.06969pt x 277.035pt>
+ [7] [8 <./images/ValLoss.png>]
+Overfull \hbox (1.86461pt too wide) in paragraph at lines 357--359
+ \OT1/cmr/m/it/10 2. Ap-pli-ca-tion layer im-ple-men-ta-tions.[] \OT1/cmr/m/n/1
+0 Dif-fer-ent im-ple-men-ta-tions for TLS, HTTP,
+ []
+
+<images/FTP_load.png, id=44, 487.06969pt x 277.035pt>
 File: images/FTP_load.png Graphic file (type png)
 <use images/FTP_load.png>
-Package pdftex.def Info: images/FTP_load.png  used on input line 368.
+Package pdftex.def Info: images/FTP_load.png  used on input line 367.
 (pdftex.def)             Requested size: 312.40906pt x 177.69069pt.
- [9]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[10 <./images/FTP_load.png>]
+[9 <./images/FTP_load.png>] [10]
 <images/VM_setup_final.png, id=52, 281.57655pt x 322.64803pt>
 File: images/VM_setup_final.png Graphic file (type png)
 <use images/VM_setup_final.png>
-Package pdftex.def Info: images/VM_setup_final.png  used on input line 471.
+Package pdftex.def Info: images/VM_setup_final.png  used on input line 481.
 (pdftex.def)             Requested size: 166.61781pt x 190.92685pt.
 <images/Docker_setup_final.png, id=53, 312.77509pt x 375.96196pt>
 File: images/Docker_setup_final.png Graphic file (type png)
 <use images/Docker_setup_final.png>
-Package pdftex.def Info: images/Docker_setup_final.png  used on input line 478.
+Package pdftex.def Info: images/Docker_setup_final.png  used on input line 488.
 
 (pdftex.def)             Requested size: 166.61781pt x 200.28001pt.
  [11] [12 <./images/VM_setup_final.png> <./images/Docker_setup_final.png>] [13]
 <images/Exp111.png, id=64, 606.76688pt x 221.32687pt>
 File: images/Exp111.png Graphic file (type png)
 <use images/Exp111.png>
-Package pdftex.def Info: images/Exp111.png  used on input line 591.
+Package pdftex.def Info: images/Exp111.png  used on input line 604.
 (pdftex.def)             Requested size: 343.6542pt x 125.35384pt.
  [14 <./images/Exp111.png>]
 <images/Detgen_Reg_HTTP_comp_crop.png, id=69, 836.3747pt x 293.59688pt>
 File: images/Detgen_Reg_HTTP_comp_crop.png Graphic file (type png)
 <use images/Detgen_Reg_HTTP_comp_crop.png>
 Package pdftex.def Info: images/Detgen_Reg_HTTP_comp_crop.png  used on input li
-ne 613.
+ne 621.
 (pdftex.def)             Requested size: 343.6542pt x 120.63533pt.
- [15] [16 <./images/Detgen_Reg_HTTP_comp_crop.png>] (SecureComm_draft.bbl [17]
-Underfull \hbox (badness 1043) in paragraph at lines 128--131
+ [15 <./images/Detgen_Reg_HTTP_comp_crop.png>] [16] (SecureComm_draft.bbl [17]
+Underfull \hbox (badness 1043) in paragraph at lines 136--139
 \OT1/cmr/m/n/9 traf-fic anomaly de-tec-tion us-ing re-cur-rent neu-ral net-work
 s.  \OT1/cmr/m/it/9 arXiv preprint
  []
 
 [18])
-Overfull \hbox (8.66278pt too wide) in paragraph at lines 685--734
+Overfull \hbox (8.66278pt too wide) in paragraph at lines 703--752
 [][]   []
  []
 
@@ -731,7 +736,7 @@ Overfull \hbox (8.66278pt too wide) in paragraph at lines 685--734
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (7.32796pt too wide) in paragraph at lines 765--785
+Overfull \hbox (7.32796pt too wide) in paragraph at lines 783--803
  [][] 
  []
 
@@ -741,12 +746,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [19] [20] [21] (SecureComm_draft.aux) ) 
 Here is how much of TeX's memory you used:
  6792 strings out of 492970
- 98379 string characters out of 3126595
- 192019 words of memory out of 3000000
+ 98372 string characters out of 3126595
+ 192016 words of memory out of 3000000
  10552 multiletter control sequences out of 15000+200000
  11293 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,18n,40p,1031b,477s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,18n,40p,1100b,393s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/henry/AppData/Local/Programs/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/henry/AppData/Loc
 al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/henr
@@ -762,7 +767,7 @@ henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pf
 b><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmtt10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmtt9.pfb>
-Output written on SecureComm_draft.pdf (21 pages, 535213 bytes).
+Output written on SecureComm_draft.pdf (21 pages, 535362 bytes).
 PDF statistics:
  132 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
