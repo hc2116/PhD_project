@@ -119,12 +119,24 @@ R.~Marx, J.~Herbots, W.~Lamotte, and P.~Quax.
 P.~Mell, V.~Hu, R.~Lippmann, J.~Haines, and M.~Zissman.
 \newblock An overview of issues in testing intrusion detection systems, 2003.
 
+\bibitem{mirsky2018kitsune}
+Y.~Mirsky, T.~Doitshman, Y.~Elovici, and A.~Shabtai.
+\newblock Kitsune: an ensemble of autoencoders for online network intrusion
+  detection.
+\newblock {\em arXiv preprint arXiv:1802.09089}, 2018.
+
 \bibitem{moustafa2015unsw}
 N.~Moustafa and J.~Slay.
 \newblock Unsw-nb15: a comprehensive data set for network intrusion detection
   systems (unsw-nb15 network data set).
 \newblock In {\em 2015 military communications and information systems
   conference (MilCIS)}, pages 1--6. IEEE, 2015.
+
+\bibitem{nasr2018deepcorr}
+M.~Nasr, A.~Bahramali, and A.~Houmansadr.
+\newblock Deepcorr: Strong flow correlation attacks on tor using deep learning.
+\newblock In {\em Proceedings of the 2018 ACM SIGSAC Conference on Computer and
+  Communications Security}, pages 1962--1976, 2018.
 
 \bibitem{nisioti2018intrusion}
 A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
