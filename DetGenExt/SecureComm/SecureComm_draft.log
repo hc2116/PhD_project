@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  13 MAR 2021 19:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  13 MAR 2021 22:56
 entering extended mode
 **./SecureComm_draft.tex
 (SecureComm_draft.tex
@@ -687,6 +687,9 @@ File: images/ValLoss.png Graphic file (type png)
 <use images/ValLoss.png>
 Package pdftex.def Info: images/ValLoss.png  used on input line 303.
 (pdftex.def)             Requested size: 343.6542pt x 97.79755pt.
+
+Underfull \vbox (badness 3354) has occurred while \output is active []
+
  [8 <./images/ValLoss.png>]
 Overfull \hbox (1.86461pt too wide) in paragraph at lines 363--365
  \OT1/cmr/m/it/10 2. Ap-pli-ca-tion layer im-ple-men-ta-tions.[] \OT1/cmr/m/n/1
@@ -698,7 +701,11 @@ File: images/FTP_load.png Graphic file (type png)
 <use images/FTP_load.png>
 Package pdftex.def Info: images/FTP_load.png  used on input line 373.
 (pdftex.def)             Requested size: 312.40906pt x 177.69069pt.
-[9] [10 <./images/FTP_load.png>] [11]
+[9]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[10 <./images/FTP_load.png>] [11]
 <images/VM_setup_final.png, id=55, 281.57655pt x 322.64803pt>
 File: images/VM_setup_final.png Graphic file (type png)
 <use images/VM_setup_final.png>
@@ -723,7 +730,7 @@ File: images/Detgen_Reg_HTTP_comp_crop.png Graphic file (type png)
 Package pdftex.def Info: images/Detgen_Reg_HTTP_comp_crop.png  used on input li
 ne 627.
 (pdftex.def)             Requested size: 343.6542pt x 120.63533pt.
- [15 <./images/Exp111.png> <./images/Detgen_Reg_HTTP_comp_crop.png>] [16] (Secu
+ [15 <./images/Exp111.png>] [16 <./images/Detgen_Reg_HTTP_comp_crop.png>] (Secu
 reComm_draft.bbl [17]
 Underfull \hbox (badness 1043) in paragraph at lines 148--151
 \OT1/cmr/m/n/9 traf-fic anomaly de-tec-tion us-ing re-cur-rent neu-ral net-work
@@ -736,6 +743,10 @@ Overfull \hbox (8.66278pt too wide) in paragraph at lines 709--758
  []
 
 [19]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
 Overfull \hbox (7.32796pt too wide) in paragraph at lines 789--809
  [][] 
  []
@@ -767,7 +778,7 @@ l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/henry
 /Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 mtt10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on SecureComm_draft.pdf (21 pages, 537067 bytes).
+Output written on SecureComm_draft.pdf (21 pages, 537454 bytes).
 PDF statistics:
  132 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
