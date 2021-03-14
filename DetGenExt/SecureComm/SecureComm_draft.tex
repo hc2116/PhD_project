@@ -19,6 +19,7 @@
 \definecolor{myred}{RGB}{248, 118, 109}
 \definecolor{mygreen}{RGB}{0, 186, 56}
 \definecolor{myblue}{RGB}{97, 156, 255}
+\definecolor{Gray}{gray}{0.9}
 
 \renewcommand{\arraystretch}{1.4}
 
@@ -80,7 +81,7 @@ Machine-learning breakthroughs in many fields have been reliant on a precise und
 In \textit{automatic speech recognition (ASR)}, tone and emotions can alter the meaning of a sentence significantly. The huge automatically gathered speech datasets however only contain speech snippets and if possible their plain transcripts. While modern speech models are in principle able to learn implicit structures such as emotions without explicit labels, it is impossible to determine the cause for systematic error when they are not. Datasets that contain labelled specialised speech characteristics such as the Ryerson Database of Emotional Speech and Song (RAVDESS) \cite{livingstone2018ryerson} not only allow researchers to identify if their model is susceptible to structural misclassification through targeted probing, but also inspire new methods to capture and understand these implicit structures \cite{haque2019audio}, which in turn leads to design improvements of general speech recognition models \cite{kamper2020multilingual}.
 
 
-%Similarly, several approaches to enhance the way information is collected and presented to improve understanding between data and cyber-detection systems. Researchers today use threat reports to enhance behavioural malware labelling \cite{smith2020mind}, monitor cloud applications from a hypervisor-level using VM-introspection \cite{dolan2011virtuoso}, and develop data provenance tools to expand the information contained in system execution logs \cite{barre2019mining}. 
+%Similarly, several approaches have been made to enhance the way information is collected and presented to improve understanding between data and cyber-detection systems. Researchers today use threat reports to enhance behavioural malware labelling \cite{smith2020mind}, monitor cloud applications from a hypervisor-level using VM-introspection \cite{dolan2011virtuoso}, and develop data provenance tools to expand the information contained in system execution logs \cite{barre2019mining}. 
 
 Prominent network intrusion detection methods as Kitsune \cite{mirsky2018kitsune} or DeepCorr \cite{nasr2018deepcorr} learn structures in the sizes, flags, or interarrival times of packets for decision-making. These \textbf{traffic microstructures} that can be observed when looking sequences of packets or connections reveal information about attack behaviour, but are also influenced by a number of other factors such as network congestion or the transmitted data. However, no effort has been made so far to monitor or control these factors to probe these models for specific microstructures, with the current quasi-benchmark NID-datasets pay more attention to the inclusion of specific attacks and topologies rather than the documentation of the generated traffic. 
 This situation has so far lead researchers to often simply evaluate a variety of ML-models on these datasets in the hope of edging out competitors, without understanding model flaws and corresponding data structures through targeted probing.
@@ -181,7 +182,7 @@ Assume the following problem: You are designing a packet-level traffic classifie
 To provide an example, we look at a \textit{Long-Short-Term Memory} (LSTM) network, a deep learning design for sequential data, by Hwang et al. \cite{hwang2019lstm}, which is designed to classify attacks in web traffic and has achieved some of the highest detection rates of packet-based classifiers in a recent survey \cite{tahaei2020rise}. Through probing we will learn that retransmissions in a packet sequence dramatically deplete the models classification accuracy. We take the following steps:
 
 \begin{enumerate}
-\item [] \textbf{Step 1:} Determine model performance and input suitable probing traffic.
+\item [] \textbf{Step 1:} Determine model performance and feed it suitable probing traffic.
 \item [] \textbf{Step 2:} Examine the correlation between traffic misclassification scores and the generated traffic microstructure labels to find a likely cause.%, which is strongest for simulated packet reordering.
 \item [] \textbf{Step 3:} Examine at which latency levels specific connections are misclassified.
 
@@ -271,7 +272,7 @@ Extracting more information on characteristics such as conducted activities of c
 
 We then took the following steps to extract the necessary information from the CICIDS-17 data and implement the traffic-generation process accordingly:
 
-\textbf{1.} The primary ALPs in the dataset can be identified using their corresponding network ports. We ordered connections by the frequency of their respective port, and excluded connections that do not transmit more than 4 packets per exchange as these do not provide enough structure to create probing data from it. This leaves us with the ALPs \textit{HTTP/SSL, SMTP, FTP, SSH, SQL, SMB, and NTP}. We had already implemented traffic scenarios for each of them except SMB, which we then added to the catalogue described in Section \ref{Sec:Scenarios}. Table \textcolor{red}{in Appendix, to be added} displays the corresponding frequency of protocols.
+\textbf{1.} The primary ALPs in the dataset can be identified using their corresponding network ports. We ordered connections by the frequency of their respective port, and excluded connections that do not transmit more than 15 packets per connection as these do not provide enough structure to create probing data from it. This leaves us with the ALPs \textit{HTTP/SSL, SMTP, FTP, SSH, SQL, SMB, and NTP}. We had already implemented traffic scenarios for each of them except SMB and LDAP, which we then added to the catalogue described in Section \ref{Sec:Scenarios}. Table \ref{Tab:ALPs} displays the frequency of the most common ALPs in the CICIDS-17 along with their average size and packet number per connection and how we adopted them in the DetGen-IDS data.
 
 \textbf{2.} Most of the used ALP implementations, such as \textit{Apache} and \textit{Ubuntu Webserver} for HTTP, could be gathered from the description of the CICIDS-17 dataset. When this was not the case, it is mostly possible to gather this informaiton by inspecting a few negotiation packets for the corresponding ALP with Wireshark to identify the TLS version or the \textit{OpenSSH}-client. The correct ALP implementation can then be included in the traffic generation process by simply identifying and including a Docker-container that matches the requirements, which is explained more in Section \ref{Sec:Subscenarios}.
 
@@ -279,27 +280,28 @@ We then took the following steps to extract the necessary information from the C
 \begin{table}[h!]
 \scriptsize
 \centering
-\begin{tabular}{p{1.5cm}|p{1cm}|p{1.7cm}|p{2cm}|p{1.7cm}||p{1.7cm}|p{2cm}}
+\begin{tabular}{p{1.5cm}|p{1cm}|p{1.5cm}|p{1.7cm}|p{1.5cm}||p{1.4cm}|p{1.5cm}}
 \multicolumn{2}{c|}{}&\multicolumn{3}{c||}{CICIDS-17}&\multicolumn{2}{c}{DetGen-IDS}\\
-ALP & Port&\begin{tabular}{@{}c@{}}Av. Size\\/Conn.\end{tabular} &\begin{tabular}{@{}c@{}}Av. Packets\\/Conn.\end{tabular} & \verb|#| Packets&\verb|#| Packets&\verb|#| Activities\\ \hline
-HTTP&80&                 141911.1&       120.4   &     6119886&&\\
-HTTPS&443&                 17295.8&        29.2 &       4118433&&\\
-DNS&53    &                286.2   &      3.6         &787949& -&\\
-SSH&22     &              4699.6    &    40.9        &  87399& &\\
-LDAP&389    &              5429.2    &    22.3      &    27141& &\\
-NetBIOS&137  &                 773.6  &      14.3  &        21897&&\\
-FTP&21        &            311.3      &  22.7     &     21830&&\\
-msft-gc&3268   &              8081.4 &       38.1&          19040&&\\
-NTP&123         &          157.0  &   3.2  &        16943&&\\
-SMB&445          &       12941.5       & 61.9 &         15793&&\\
-SMTP&465   &               2663.5  &      21.5         & 15698&&\\
-%NetBIOS&139 &                 1355.127&        20.1     &      9058\\
-Kerberos&88  &                 2687.7&         6.9   &        8424& -&\\
-mDNS&5353     &            3685.5    &    43.5      &     6790 & -&\\
-SSDP&1900      &           9006.4    &    52.4     &      6037&&\\
-%NetBIOS&138     &             3577.067  &      15.956  &         5026\\
+ALP & Port&\begin{tabular}{@{}c@{}}Av. Conn.\\Size\end{tabular} &\begin{tabular}{@{}c@{}}Av. Packets\\/Conn.\end{tabular} & \verb|#| Packets&\verb|#| Packets&\verb|#| Activities\\ \hline
+HTTP&80&  131626.4&  120.4   &26631853&724032&7\\
+HTTPS&443&  24637.5&   36.7 &  18531661&432104&7\\
+\rowcolor{Gray}DNS&53    & 286.2   & 3.6    &3515510& -&-\\
+SSH&22&    4699.6    &    40.9   &  430380& 379421&13\\
+%\rowcolor{Gray} 
+LDAP&389    &    5429.2    &    22.3 &    133471& 94587&3\\
+FTP&21   &  311.3 &  41.7&121472&183587&9\\
+\rowcolor{Gray}NetBIOS&137  &  773.6  & 14.3  &   111341&-&-\\
+%msft-gc&3268   &    8081.4 &  38.1&93897&&\\
+SMB&445&  12941.5  & 61.9 &    88175&47945&3\\
+NTP&123    &157.0  &   3.2  &   73057&1243&1\\
+SMTP&465   &2663.5  & 21.5    & 77650&104967&3\\
+%NetBIOS&139 &  1355.127&   20.1& 9058\\
+\rowcolor{Gray}Kerberos&88  &  2687.7&    6.9   &   38262& -&-\\
+\rowcolor{Gray}mDNS&5353&  3685.5    &    35.5 &24592 & -&-\\
+%\rowcolor{Gray}SSDP&1900 & 9006.4    &    52.4& 14966&&\\
+%NetBIOS&138&   3577.067  & 15.956  &    5026\\
 \end{tabular}
-\caption{Most common ALPs in the CICIDS-17 data}\label{Tab:ALPs}
+\caption{Common ALPs in CICIDS-17 data}\label{Tab:ALPs}
 \end{table}
 
 
@@ -344,12 +346,12 @@ In addition to the \texttt{pcap}-files, we used the \textit{CICFlowMeter} to gen
 
 In Fig. \ref{Fig:ValLoss}, we compare the validation error of a recent LSTM-model for network intrusion detection by Clausen et al. \cite{henryLSTM} on the DetGen-IDS data to demonstrate that a model trained on the CICIDS-17 data is able to perform well without retraining. We distinguish models when trained exclusively on the CICIDS data (green), and when also trained on the probing data (red). 
 % when trained exclusively on the CICIDS-17 dataset  and when also trained on the Probing dataset , as well as when trained on a third unrelated dataset for comparison (blue).
-Even though the validation error is slightly higher when only trained on the CICIDS data, the difference is almost negligible compared to the error resulting from a model trained on a completely different dataset (UGR-16 \cite{macia2018ugr}, blue). This does not fully proof that every model is able to transfer observed structures between the two datasets, but it gives an indicator that they mirror characteristics.
+Even though the validation error is slightly higher when only trained on the CICIDS data, the difference is almost negligible compared to the error resulting from a model trained on a completely different dataset (UGR-16 \cite{macia2018ugr}, blue). This does not fully prove that every model is able to transfer observed structures between the two datasets, but it gives an indicator that they mirror characteristics.
 
 
 
 
-\textcolor{red}{To be added}
+%\textcolor{red}{To be added}
 
 %\section{Examining traffic microstructures}
 
@@ -398,7 +400,7 @@ The conducted computational task as well as the corresponding application ultima
 
 
 \paragraph{2. Application layer implementations.}
-Different implementations for TLS, HTTP, etc. can yield different computational performance and can perform handshakes different and differ in multiplexing channel prioritisation, which can significantly impact IAT times and the overall duration of the transfer, as shown in a study by Marx et al. \cite{marx2020same} for the QUIC/HTTP3 protocol\footnote{Fig. 2 in \cite{marx2020same} illustrates these differences in a nice way}. 
+Different implementations for TLS, HTTP, etc. can yield different computational performance and can perform handshakes differently and differ in multiplexing channel prioritisation, which can significantly impact IAT times and the overall duration of the transfer, as shown in a study by Marx et al. \cite{marx2020same} for the QUIC/HTTP3 protocol\footnote{Fig. 2 in \cite{marx2020same} illustrates these differences in a nice way}. 
 %Fig. \ref{Fig:QUIC} depicts differences in channel prioritisation for different QUIC-implementations.
 
 
@@ -710,7 +712,7 @@ DetGen is currently only offering insufficient control over underlying \textbf{a
 
 We are currently investigating how to better simulate causality in connection spawning and other \textbf{medium-term temporal dependencies}, such as by importing externally generated activity timelines from tools such as Doppelganger \cite{lin2019generating}. 
 
-A project we are currently working on is to embed traffic scenarios into a larger and more complex \textbf{network topology} using MiniNet.
+A project we are currently working on is to embed traffic scenarios into a larger and more complex \textbf{network topology} using MiniNet \cite{lantz2010network}.
 
 
 %Working with Docker containers can sometimes complicate the implementation of individual scenarios compared to working with VMs. Although several applications are officially maintained Docker containers that are free from major errors, many do not. For instance, in the \textit{BitTorrent} scenario, most common command line tools, such as \texttt{mktorrent}, \texttt{ctorrent} and \texttt{buildtorrent}, failed to actually produce functioning torrent files from within a container due to Docker's union filesystem. Furthermore, due to the unique way in which we are using these software packages, unusual configuration settings are sometimes needed. %As such, many 

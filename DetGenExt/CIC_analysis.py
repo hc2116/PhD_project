@@ -8,7 +8,26 @@ Created on Tue Feb 23 11:48:41 2021
 import pandas as pd
 
 Mondayflows=pd.read_csv("Desktop/PhD_project/Data/CIC/Monday-WorkingHours.pcap_ISCX.csv")
+Tuesdayflows=pd.read_csv("Desktop/PhD_project/Data/CIC/Tuesday-WorkingHours.pcap_ISCX.csv")
+Wednesdayflows=pd.read_csv("Desktop/PhD_project/Data/CIC/Wednesday-WorkingHours.pcap_ISCX.csv")
+Thursdayflows1=pd.read_csv("Desktop/PhD_project/Data/CIC/Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv")
+#Thursdayflows2=pd.read_csv("Desktop/PhD_project/Data/CIC/Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv")
+Thursdayflows3=pd.read_csv("Desktop/PhD_project/Data/CIC/Thursday-WorkingHours-Morning-WebAttacks_new.pcap_ISCX.csv")
+#Thursdayflows4=pd.read_csv("Desktop/PhD_project/Data/CIC/Thursday-WorkingHours-Morning-WebAttacks2.pcap_ISCX.csv")
+Fridayflows1=pd.read_csv("Desktop/PhD_project/Data/CIC/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv")
+Fridayflows2=pd.read_csv("Desktop/PhD_project/Data/CIC/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv")
+Fridayflows3=pd.read_csv("Desktop/PhD_project/Data/CIC/Friday-WorkingHours-Morning.pcap_ISCX.csv")
 
+Mondayflows=Mondayflows.append(Tuesdayflows)
+Mondayflows=Mondayflows.append(Wednesdayflows)
+Mondayflows=Mondayflows.append(Thursdayflows1)
+Mondayflows=Mondayflows.append(Thursdayflows3)
+Mondayflows=Mondayflows.append(Fridayflows1)
+Mondayflows=Mondayflows.append(Fridayflows2)
+Mondayflows=Mondayflows.append(Fridayflows3)
+
+Mondayflows_old=Mondayflows
+Mondayflows=Mondayflows.loc[Mondayflows.loc[:," Label"]=="BENIGN",:]
 
 Mondayflows.columns
 Mondayflows["Total Packets"]=Mondayflows.loc[:," Total Fwd Packets"]+Mondayflows.loc[:," Total Backward Packets"]
