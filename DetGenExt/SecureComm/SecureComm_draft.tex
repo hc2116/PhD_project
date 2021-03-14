@@ -80,13 +80,13 @@ Machine-learning breakthroughs in many fields have been reliant on a precise und
 In \textit{automatic speech recognition (ASR)}, tone and emotions can alter the meaning of a sentence significantly. The huge automatically gathered speech datasets however only contain speech snippets and if possible their plain transcripts. While modern speech models are in principle able to learn implicit structures such as emotions without explicit labels, it is impossible to determine the cause for systematic error when they are not. Datasets that contain labelled specialised speech characteristics such as the Ryerson Database of Emotional Speech and Song (RAVDESS) \cite{livingstone2018ryerson} not only allow researchers to identify if their model is susceptible to structural misclassification through targeted probing, but also inspire new methods to capture and understand these implicit structures \cite{haque2019audio}, which in turn leads to design improvements of general speech recognition models \cite{kamper2020multilingual}.
 
 
-Similarly, several approaches to enhance the way information is collected and presented to improve understanding between data and cyber-detection systems. Researchers today use threat reports to enhance behavioural malware labelling \cite{smith2020mind}, monitor cloud applications from a hypervisor-level using VM-introspection \cite{dolan2011virtuoso}, and develop data provenance tools to expand the information contained in system execution logs \cite{barre2019mining}. 
+%Similarly, several approaches to enhance the way information is collected and presented to improve understanding between data and cyber-detection systems. Researchers today use threat reports to enhance behavioural malware labelling \cite{smith2020mind}, monitor cloud applications from a hypervisor-level using VM-introspection \cite{dolan2011virtuoso}, and develop data provenance tools to expand the information contained in system execution logs \cite{barre2019mining}. 
 
 Prominent network intrusion detection methods as Kitsune \cite{mirsky2018kitsune} or DeepCorr \cite{nasr2018deepcorr} learn structures in the sizes, flags, or interarrival times of packets for decision-making. These \textbf{traffic microstructures} that can be observed when looking sequences of packets or connections reveal information about attack behaviour, but are also influenced by a number of other factors such as network congestion or the transmitted data. However, no effort has been made so far to monitor or control these factors to probe these models for specific microstructures, with the current quasi-benchmark NID-datasets pay more attention to the inclusion of specific attacks and topologies rather than the documentation of the generated traffic. 
 This situation has so far lead researchers to often simply evaluate a variety of ML-models on these datasets in the hope of edging out competitors, without understanding model flaws and corresponding data structures through targeted probing.
 
 %We examine which factors shape traffic microstructures, and how controlling and monitoring these factors improves the probing of data-driven network intrusion detection models. 
-We demonstrate how to produce traffic effectively to probe a state-of-the-art traffic classifier, and why a certain degree of generative determinism is required for this to isolate the influence of particular traffic microstructures. The model insights and corresponding performance improvements achieved through probing motivate our experimental examination of various influence factors over microstructures and how to control them during traffic generation. Finally, we present \emph{DetGen}, a traffic generation tool that provides near-deterministic control over microstructure-shaping factors such as conducted activity, communication failures or network congestion to generate reproducible traffic samples along with corresponding ground-truth labels. %Our motivation stems from the lack of attention that current benchmark datasets spent on these factors.
+We demonstrate how to produce traffic effectively to probe a state-of-the-art traffic classifier, and why a certain degree of generative \textbf{determinism} is required for this to isolate the influence of particular traffic microstructures. The model insights and corresponding performance improvements achieved through probing motivate our experimental examination of various influence factors over microstructures and how to control them during traffic generation. Finally, we present \emph{DetGen}, a traffic generation tool that provides near-deterministic control over microstructure-shaping factors such as conducted activity, communication failures or network congestion to generate reproducible traffic samples along with corresponding ground-truth labels. %Our motivation stems from the lack of attention that current benchmark datasets spent on these factors.
 %how traffic microstructure labelling improves the probing of \textcolor{red}{NIDS} models, and how traffic with controllable microstructures can be generated for this purpose.
 
 
@@ -153,6 +153,16 @@ Synthetic NID-datasets such as the CICIDS-17 and 18 \cite{sharafaldin2018toward}
 While some effort is put in the generation of benign activities using activity scripting or traffic generators, we have seen no attention being spent at monitoring these activities accordingly, which leaves researchers with the limited information available through packet inspection. Furthermore, synthetic datasets can be criticised for their limited activity range, such as the CICIDS-17 dataset where more than $95\%$ of FTP-transfers consist downloading the Wikipedia page for ‘Encryption’ \cite{ring2019survey}, which leads to insufficient structural nuances to for effective probing.
 
 %pronounced in commonly used network intrusion datasets such as the CICIDS-17 dataset, where the vast majority of successful FTP-transfers consist of a client downloading a single text file that contains the Wikipedia page for ‘Encryption’.
+
+\subsection{Scope of DetGen}
+
+The scope of DetGen is to generate traffic with near-deterministic control over factors that influence microscopic packet- and flow-level structures. DetGen separates program executions and traffic capture into distinct containerised environments to exclude any background traffic events, simulates influence factors such as network congestion, communication failures, data transfer size, content caching, or application implementation. %By using containerisation, we are furthermore able to control and shield the traffic generation better than in conventional VM-setups, as we demonstrate in Section \ref{Sec:Determinism}, and consequently provide better reproducible data. 
+
+%DetGen generates traffic with precise control and monitoring over the conducted communication activity as well as various traffic-shaping factors. The scope lies on microscopic traffic-structures that become apparent on a packet- or individual flow-level.
+
+%DetGen separates program executions and traffic capture into distinct containerised environments in order to exclude any background traffic events, and therefore provides precise ground-truth about the computational origin of the traffic, something that is lacking in all network traffic datasets that we are aware of. %By using containerisation, we are furthermore able to control and shield the traffic generation better than in conventional VM-setups, as we demonstrate in Section \ref{Sec:Determinism}, and consequently provide better reproducible data. 
+%In order to examine additional effects on traffic microstructures, DetGen simulates influence factors such as network congestion, communication failures, data transfer size, content caching, or application implementation.
+
 
 \section{Methodology and example}\label{Sec:Motivation}
 
@@ -241,7 +251,7 @@ The overall AUC-score for the model improves to \textbf{0.997} while tuned detec
 
 %\subsection{Mirroring CICDS-17 dataset}
 
-Moving towards a more general dataset constructed to applz this probing methodology, 
+Moving towards a more general dataset constructed to apply this probing methodology, 
 we constructed \textit{DetGen-IDS}. This dataset is suitable to quickly probe ML-model behaviour that were trained on the CICIDS-17 dataset \cite{sharafaldin2018toward}. The dataset mirrors properties of the CICIDS-17 data to allow pre-trained models to be probed without retraining.
 The \textit{DetGen-IDS} data therefore serves as complementary probing data that provides microstructure labels and a sufficient and controlled diversity of several traffic characteristics that is not found in the CICIDS-17 data.
 %This dataset is designed to contain similar traffic as the CICIDS-17 \cite{sharafaldin2018toward} dataset to allow probing of models trained on this dataset in a similar manner as demonstrated in Section \ref{Sec:Improvedtrafficsep}. 
@@ -264,6 +274,34 @@ We then took the following steps to extract the necessary information from the C
 \textbf{1.} The primary ALPs in the dataset can be identified using their corresponding network ports. We ordered connections by the frequency of their respective port, and excluded connections that do not transmit more than 4 packets per exchange as these do not provide enough structure to create probing data from it. This leaves us with the ALPs \textit{HTTP/SSL, SMTP, FTP, SSH, SQL, SMB, and NTP}. We had already implemented traffic scenarios for each of them except SMB, which we then added to the catalogue described in Section \ref{Sec:Scenarios}. Table \textcolor{red}{in Appendix, to be added} displays the corresponding frequency of protocols.
 
 \textbf{2.} Most of the used ALP implementations, such as \textit{Apache} and \textit{Ubuntu Webserver} for HTTP, could be gathered from the description of the CICIDS-17 dataset. When this was not the case, it is mostly possible to gather this informaiton by inspecting a few negotiation packets for the corresponding ALP with Wireshark to identify the TLS version or the \textit{OpenSSH}-client. The correct ALP implementation can then be included in the traffic generation process by simply identifying and including a Docker-container that matches the requirements, which is explained more in Section \ref{Sec:Subscenarios}.
+
+
+\begin{table}[h!]
+\scriptsize
+\centering
+\begin{tabular}{p{1.5cm}|p{1cm}|p{1.7cm}|p{2cm}|p{1.7cm}||p{1.7cm}|p{2cm}}
+\multicolumn{2}{c|}{}&\multicolumn{3}{c||}{CICIDS-17}&\multicolumn{2}{c}{DetGen-IDS}\\
+ALP & Port&\begin{tabular}{@{}c@{}}Av. Size\\/Conn.\end{tabular} &\begin{tabular}{@{}c@{}}Av. Packets\\/Conn.\end{tabular} & \verb|#| Packets&\verb|#| Packets&\verb|#| Activities\\ \hline
+HTTP&80&                 141911.1&       120.4   &     6119886&&\\
+HTTPS&443&                 17295.8&        29.2 &       4118433&&\\
+DNS&53    &                286.2   &      3.6         &787949& -&\\
+SSH&22     &              4699.6    &    40.9        &  87399& &\\
+LDAP&389    &              5429.2    &    22.3      &    27141& &\\
+NetBIOS&137  &                 773.6  &      14.3  &        21897&&\\
+FTP&21        &            311.3      &  22.7     &     21830&&\\
+msft-gc&3268   &              8081.4 &       38.1&          19040&&\\
+NTP&123         &          157.0  &   3.2  &        16943&&\\
+SMB&445          &       12941.5       & 61.9 &         15793&&\\
+SMTP&465   &               2663.5  &      21.5         & 15698&&\\
+%NetBIOS&139 &                 1355.127&        20.1     &      9058\\
+Kerberos&88  &                 2687.7&         6.9   &        8424& -&\\
+mDNS&5353     &            3685.5    &    43.5      &     6790 & -&\\
+SSDP&1900      &           9006.4    &    52.4     &      6037&&\\
+%NetBIOS&138     &             3577.067  &      15.956  &         5026\\
+\end{tabular}
+\caption{Most common ALPs in the CICIDS-17 data}\label{Tab:ALPs}
+\end{table}
+
 
 \textbf{3.} Since the total size of a connection is one of the most significant features for its classification, we restrict connections in the DetGen-IDS data to cover the same range as their counterparts in the CICIDS-17 data. For this, we extracted the maximum and minimum connection size for each ALP in the benign data and use it as a cut-off to remove all connections from the DetGen-IDS data that do not meet this requirement.
 
@@ -319,8 +357,8 @@ Even though the validation error is slightly higher when only trained on the CIC
 
 \section{Traffic microstructures and their influence factors}\label{Sec:DetGenMicro}
 
-\textcolor{red}{...ALP microstructure}
-Without doubt the biggest and most obvious impact on the captured traffic microstructures is the choice of the application layer protocols. For this reason, the range of protocols is often used as a measure for the diversity of a dataset. However, computer communication involves a myriad of different computational aspects, which are mostly overlooked in the data generation process of existing NIDS-datasets. Here, we highlight and quantify the most dominant ones, which will act as a justification for the design choices we outline in Section \ref{Sec:ExtInfls}. We look at both findings from previous work as well as our own experimental results.
+%\textcolor{red}{...ALP microstructure}
+The biggest and most obvious influence on traffic microstructures is the choice of the application layer protocols. For this reason, the range of protocols is often used as a measure for the diversity of a dataset. However, while the attention to microstructures in current NID-datasets stops here, computer communication involves a myriad of other different computational aspects that shape observable traffic microstructures. Here, we highlight and quantify the most dominant ones, which will act as a justification for the design choices we outline in Section \ref{Sec:ExtInfls}. We look at both findings from previous work as well as our own experimental results.
 %Protocols such as HTTP/TLS perform vastly different tasks than protocols such as Peer-2-Peer or SMB, and thus perform different handshakes, experience different waiting times, transfer data in different intervals, or trigger different additional connections. However, 
 
 %In order to enable sufficient and reproducible control over the generated traffic and provide the corresponding descriptive ground truth information, we first must understand what factors shape the traffic generation process. 
@@ -466,12 +504,7 @@ We designed DetGen to control and monitor factors 1-6 to let researchers explore
 
 %\section{Background}\label{Sec:b8ackground}
 
-\subsection{Scope of DetGen}
 
-DetGen generates traffic with precise control and monitoring over the conducted communication activity as well as various traffic-shaping factors. The scope lies on microscopic traffic-structures that become apparent on a packet- or individual flow-level.
-
-DetGen separates program executions and traffic capture into distinct containerised environments in order to exclude any background traffic events, and therefore provides precise ground-truth about the computational origin of the traffic, something that is lacking in all network traffic datasets that we are aware of. By using containerisation, we are furthermore able to control and shield the traffic generation better than in conventional VM-setups, as we demonstrate in Section \ref{Sec:Determinism}, and consequently provide better reproducible data. 
-In order to examine additional effects on traffic microstructures, DetGen simulates influence factors such as network congestion, communication failures, data transfer size, content caching, or application implementation.
 
 \subsection{Design overview}
 
@@ -784,34 +817,9 @@ DEF & Keyscanning &No&\dots &1162& 2.39 & 248 \\
 \caption{Exemplary SSH-labels}\label{Tab:Labels}
 \end{table}
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{p{1.5cm}|p{1cm}|p{1.7cm}|p{2cm}|p{1.7cm}||p{1.7cm}|p{2cm}}
-\multicolumn{2}{c|}{}&\multicolumn{3}{c||}{CICIDS-17}&\multicolumn{2}{c}{DetGen-IDS}\\
-ALP & Port&\begin{tabular}{@{}c@{}}Av. Size\\/Conn.\end{tabular} &\begin{tabular}{@{}c@{}}Av. Packets\\/Conn.\end{tabular} & \verb|#| Packets&\verb|#| Packets&\verb|#| Activities\\ \hline
-HTTP&80&                 141911.1&       120.4   &     6119886&&\\
-HTTPS&443&                 17295.8&        29.2 &       4118433&&\\
-DNS&53    &                286.2   &      3.6         &787949& -&\\
-SSH&22     &              4699.6    &    40.9        &  87399& &\\
-LDAP&389    &              5429.2    &    22.3      &    27141& &\\
-NetBIOS&137  &                 773.6  &      14.3  &        21897&&\\
-FTP&21        &            311.3      &  22.7     &     21830&&\\
-msft-gc&3268   &              8081.4 &       38.1&          19040&&\\
-NTP&123         &          157.0  &   3.2  &        16943&&\\
-SMB&445          &       12941.5       & 61.9 &         15793&&\\
-SMTP&465   &               2663.5  &      21.5         & 15698&&\\
-%NetBIOS&139 &                 1355.127&        20.1     &      9058\\
-Kerberos&88  &                 2687.7&         6.9   &        8424& -&\\
-mDNS&5353     &            3685.5    &    43.5      &     6790 & -&\\
-SSDP&1900      &           9006.4    &    52.4     &      6037&&\\
-%NetBIOS&138     &             3577.067  &      15.956  &         5026\\
-\end{tabular}
-\caption{Most common ALPs in the CICIDS-17 data}\label{Tab:ALPs}
-\end{table}
 
 
-
-\section{CICIDS-17 statistics}
+%\section{CICIDS-17 statistics}
 
 
 \end{document}
