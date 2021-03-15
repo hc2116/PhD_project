@@ -15,25 +15,12 @@ Y.~Aun, S.~Manickam, and S.~Karuppayah.
 \newblock {\em International journal of communication networks and information
   security}, 9(2):294, 2017.
 
-\bibitem{barre2019mining}
-M.~Barre, A.~Gehani, and V.~Yegneswaran.
-\newblock Mining data provenance to detect advanced persistent threats.
-\newblock In {\em 11th International Workshop on Theory and Practice of
-  Provenance (TaPP 2019)}, 2019.
-
 \bibitem{henryLSTM}
 H.~Clausen, G.~Grov, M.~Sabaté, and D.~Aspinall.
-\newblock Better anomaly detection for access attacksusing deep bidirectional
-  lstms.
+\newblock Better anomaly detection for access attacks using deep bidirectional
+  {LSTM}s.
 \newblock In {\em International Conference on Machine Learning for Networking},
   pages 1--14. Springer, 2020.
-
-\bibitem{dolan2011virtuoso}
-B.~Dolan-Gavitt, T.~Leek, M.~Zhivich, J.~Giffin, and W.~Lee.
-\newblock Virtuoso: Narrowing the semantic gap in virtual machine
-  introspection.
-\newblock In {\em 2011 IEEE symposium on security and privacy}, pages 297--312.
-  IEEE, 2011.
 
 \bibitem{fricker2012impact}
 C.~Fricker, P.~Robert, J.~Roberts, and N.~Sbihi.
@@ -56,7 +43,7 @@ A.~Haque, M.~Guo, P.~Verma, and L.~Fei-Fei.
 
 \bibitem{hemminger2005network}
 S.~Hemminger et~al.
-\newblock Network emulation with netem.
+\newblock Network emulation with {N}et{E}m.
 \newblock In {\em Linux conf au}, pages 18--23, 2005.
 
 \bibitem{hwang2019lstm}
@@ -67,7 +54,7 @@ R.-H. Hwang, M.-C. Peng, V.-L. Nguyen, and Y.-L. Chang.
 
 \bibitem{jurgelionis2011empirical}
 A.~Jurgelionis, J.-P. Laulajainen, M.~Hirvonen, and A.~I. Wang.
-\newblock An empirical study of netem network emulation functionalities.
+\newblock An empirical study of {N}et{E}m network emulation functionalities.
 \newblock In {\em 2011 Proceedings of 20th International Conference on Computer
   Communications and Networks (ICCCN)}, pages 1--6. IEEE, 2011.
 
@@ -83,6 +70,13 @@ A.~D. Kent.
 \newblock {Comprehensive, Multi-Source Cyber-Security Events}.
 \newblock Los Alamos National Laboratory, 2015.
 
+\bibitem{lantz2010network}
+B.~Lantz, B.~Heller, and N.~McKeown.
+\newblock A network in a laptop: rapid prototyping for software-defined
+  networks.
+\newblock In {\em Proceedings of the 9th ACM SIGCOMM Workshop on Hot Topics in
+  Networks}, pages 1--6, 2010.
+
 \bibitem{lashkari2017characterization}
 A.~H. Lashkari, G.~Draper-Gil, M.~S.~I. Mamun, and A.~A. Ghorbani.
 \newblock Characterization of tor traffic using time based features.
@@ -97,20 +91,20 @@ Z.~Lin, A.~Jain, C.~Wang, G.~Fanti, and V.~Sekar.
 \bibitem{livingstone2018ryerson}
 S.~R. Livingstone and F.~A. Russo.
 \newblock The ryerson audio-visual database of emotional speech and song
-  (ravdess): A dynamic, multimodal set of facial and vocal expressions in north
-  american english.
+  ({RAVDESS}): A dynamic, multimodal set of facial and vocal expressions in
+  north american english.
 \newblock {\em PloS one}, 13(5):e0196391, 2018.
 
 \bibitem{macia2018ugr}
 G.~Maci{\'a}-Fern{\'a}ndez, J.~Camacho, R.~Mag{\'a}n-Carri{\'o}n,
   P.~Garc{\'\i}a-Teodoro, and R.~Ther{\'o}n.
-\newblock Ugr ‘16: A new dataset for the evaluation of
-  cyclostationarity-based network idss.
+\newblock {UGR} ‘16: A new dataset for the evaluation of
+  cyclostationarity-based network {IDS}s.
 \newblock {\em Computers \& Security}, 73:411--424, 2018.
 
 \bibitem{marx2020same}
 R.~Marx, J.~Herbots, W.~Lamotte, and P.~Quax.
-\newblock Same standards, different decisions: A study of quic and http/3
+\newblock Same standards, different decisions: A study of {QUIC} and {HTTP}/3
   implementation diversity.
 \newblock In {\em Proceedings of the Workshop on the Evolution, Performance,
   and Interoperability of QUIC}, pages 14--20, 2020.
@@ -127,8 +121,8 @@ Y.~Mirsky, T.~Doitshman, Y.~Elovici, and A.~Shabtai.
 
 \bibitem{moustafa2015unsw}
 N.~Moustafa and J.~Slay.
-\newblock Unsw-nb15: a comprehensive data set for network intrusion detection
-  systems (unsw-nb15 network data set).
+\newblock {UNSW-NB}15: a comprehensive data set for network intrusion detection
+  systems.
 \newblock In {\em 2015 military communications and information systems
   conference (MilCIS)}, pages 1--6. IEEE, 2015.
 
@@ -174,13 +168,6 @@ A.~Shiravi, H.~Shiravi, M.~Tavallaee, and A.~A. Ghorbani.
   datasets for intrusion detection.
 \newblock {\em computers \& security}, 31(3):357--374, 2012.
 
-\bibitem{smith2020mind}
-M.~R. Smith, N.~T. Johnson, J.~B. Ingram, A.~J. Carbajal, R.~Ramyaa,
-  E.~Domschot, C.~C. Lamb, S.~J. Verzi, and W.~P. Kegelmeyer.
-\newblock Mind the gap: On bridging the semantic gap between machine learning
-  and information security.
-\newblock {\em arXiv preprint arXiv:2005.01800}, 2020.
-
 \bibitem{stober2013you}
 T.~St{\"o}ber, M.~Frank, J.~Schmitt, and I.~Martinovic.
 \newblock Who do you sync you are? smartphone fingerprinting via application
@@ -190,7 +177,7 @@ T.~St{\"o}ber, M.~Frank, J.~Schmitt, and I.~Martinovic.
 
 \bibitem{tahaei2020rise}
 H.~Tahaei, F.~Afifi, A.~Asemi, F.~Zaki, and N.~B. Anuar.
-\newblock The rise of traffic classification in iot networks: A survey.
+\newblock The rise of traffic classification in {I}o{T} networks: A survey.
 \newblock {\em Journal of Network and Computer Applications}, 154:102538, 2020.
 
 \bibitem{turcotte17}
@@ -200,7 +187,7 @@ M.~J.~M. {Turcotte}, A.~D. {Kent}, and C.~{Hash}.
 
 \bibitem{walsworth2015caida}
 C.~Walsworth, E.~Aben, K.~Claffy, and D.~Andersen.
-\newblock The caida ucsd anonymized internet traces 2018,”, 2018.
+\newblock The {CAIDA} {UCSD} anonymized internet traces 2018,”, 2018.
 
 \bibitem{wexler2019if}
 J.~Wexler, M.~Pushkarna, T.~Bolukbasi, M.~Wattenberg, F.~Vi{\'e}gas, and
