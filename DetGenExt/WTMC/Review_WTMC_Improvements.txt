@@ -1,0 +1,15 @@
+WTMC Improvements
+
+
+1. Section discussing which methods can be probed, and which cannot. how common are models, which
+make use of aggregated, behavioral, or long-term features?
+
+2. Sentence about release of DetGen
+
+3. sentence referencing ethical considerations of traffic profiling with ML
+
+4. Explain methodology and terms better for non-ML persona
+
+5. Explain better or reference why focus on specific traffic factors
+
+6. II.B what is sufficient amount of data

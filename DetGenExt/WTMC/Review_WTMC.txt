@@ -1,0 +1,77 @@
+REVIEW 1
+
+----------- Overall evaluation -----------
+SCORE: 2 (accept)
+
+- As a reader not that familiar in the field of machine-learning-based network
+intrusion detection models it is not clear how many models can be evaluated
+and improved with the discussed approach. Also, how common are models, which
+make use of aggregated, behavioral, or long-term features, on which the
+described approach cannot be applied?
+
+- The contribution of the paper could be greatly improved if the tool, developed
+to shape traffic, would be made public. Researchers, developing
+machine-learning-based network intrusion detection models, could then use the
+tool to test and improve their models.
+
+- Automated traffic classification could lead to  undeliberate discrimination
+of some traffic types or even users. The authors should at least briefly
+discuss the ethical aspects of their research. Also, could attackers benefit
+from their research as well?
+
+- Considering that WTMC is not a machine learning conference and the authors
+have some space left, the authors should take more time to explain their
+approach and the terminology.
+
+
+# Other remarks
+
+- In II.B the authors should explain why they focus mainly on influence from the
+factors a), c), b), f) but not the others.
+
+- In II.B the authors write that they attach "a sufficient amount of the data
+dedicated for model probing". How much is a "sufficient amount"?
+
+
+
+----------------------- REVIEW 2 ---------------------
+
+SCORE: 1 (weak accept)
+
+To identify why models are misclassifying traffic, the authors do a correlation analysis with the input samples to see which fields have the biggest influence (i.e. basically feature importance), and then they generate corresponding traffic micro-structures. While the set of traffic shaping factors listed in section II.B seems reasonable, it is not clear to me how one can decide whether this list is sufficiently complete (in fact, the authors did not consider host load and caching effects) to cover all corner cases of misclassifications. Is this a matter of having sufficient domain expertise to define the micro-structures?
+
+As the goal is to better understand why ML models make decisions, and more specifically, make certain mistakes, I would have rather started with well-established eXplainable AI (XAI) frameworks like LIME, DeepLift, SHAP, What-If, Skater, ... to get a better understanding of the misclassifications. The authors themselves are referring to Google's What-If tool (which is available at https://github.com/pair-code/what-if-tool). So, I would have appreciated a (qualitative or quantitative) comparison with the authors proposal and the What-If tool to improve a ML model, to analyze the importance of different features, or to test a model's performance in different situations. What do you consider as the added value of your approach (which in my opinion heavily relies on domain expertise to construct the micro-structures)?
+
+Another concern beyond improving the accuracy of ML/DL models is their robustness when deployed in different environments (i.e. transfer learning). For example, the authors use the CICIDS 2017 dataset. The organization that made this dataset available, also offers a similar but larger dataset called CSE-CIC-IDS 2018. Do you see opportunities for your work where the goal is not so much to improve the accuracy, but rather maintain the accuracy in different settings (and not like usually experience a significant drop because the model was too dependent on the training dataset)?
+
+As the proposed approach inherently generates new input samples, it would be interesting if the authors can draw parallels with generative adversarial networks, where a "generator" keeps on creating better examples that are harder to distinguish by the "discriminator", and both reinforcing one another in a competitive game in a fully automated manner. Where do you see the benefits and drawbacks of your traffic micro-structures vs. GANs (or any other generative model like variational autoencoders) for domain specific data augmentation?
+
+
+
+----------------------- REVIEW 3 ---------------------
+SUBMISSION: 10
+TITLE: Examining traffic micro-structures to improve model development
+AUTHORS: Henry Clausen and David Aspinall
+
+----------- Overall evaluation -----------
+SCORE: 1 (weak accept)
+----- TEXT:
+The paper deals with the improvement of models used to solve several security/detection issues in the field of network security. The idea is of interest, especially since data availability and training are crucial aspects for the performance of such a class of methods.
+
+In general, the paper is well-written. However, the main drawback of the work is the lack of a precise contribution and technical advancement. It seems that authors used pre-existent techniques and only applied some minor corrections to the Kitsune approach. Also the obtained improvement (i.e., from 89.7 to 94.1) does not seem to justify the needed additional efforts. Thus, I would suggest authors to better organize their work as to clearly highlights the novelties and their contributions. The paper has a structure too fragmented and also lacks of precise statement of how the idea could advance the state of the art.
+
+There are also some typos and the quotes """ are not always correct (i.e., closing quotes also at the beginning of a word). An introductory part on machine learning could or better clarifying some technical details could improve the readability for non expert readers.
+
+
+
+----------------------- REVIEW 4 ---------------------
+SUBMISSION: 10
+TITLE: Examining traffic micro-structures to improve model development
+AUTHORS: Henry Clausen and David Aspinall
+
+----------- Overall evaluation -----------
+SCORE: 0 (borderline paper)
+----- TEXT:
+This paper presents a process  where using specially generated traffic is first used to identify machine learning based intrusion detection model flaws, and then to understand model behaviour better in order to improve the performance of of the model. This is an interesting and timely study. However, it is not clear to the reviewer what is the effect of the a priori information employed for specially generated traffic. More details in the justification nation and selection of micro structure and their usage on data generation would improve the paper. Moreover, different machine learning algorithms have different properties such as representation, credit assignment and evaluation. Thus, a discussion on the effects of the machine learning algorithm used in correlation to the micro structures will also improve the paper.
+
+
