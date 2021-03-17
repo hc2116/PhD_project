@@ -10,6 +10,18 @@ make use of aggregated, behavioral, or long-term features?
 
 4. Explain methodology and terms better for non-ML persona
 
-5. Explain better or reference why focus on specific traffic factors
+5. Explain better or reference why focus on specific traffic factors. Is it sufficient domain expertise?
 
-6. II.B what is sufficient amount of data
+6. II.B what is sufficient amount of data	
+
+7. Say why well-established eXplainable AI (XAI) frameworks like LIME, DeepLift, SHAP, What-If, Skater are not suitable in this case. (qualitative or quantitative) comparison with the authors proposal and the What-If tool
+
+8. say something about transfer learning, can we explore where a model would fail when applied to another dataset?
+
+9. GANs (or any other generative model like variational autoencoders) for domain specific data augmentation
+
+10. highlight novelty better. The paper has a structure too fragmented and also lacks of precise statement of how the idea could advance the state of the art.
+
+11. quotes """ are not always correct (i.e., closing quotes also at the beginning of a word).
+
+12. An introductory part on machine learning could or better clarifying some technical details could improve the readability for non expert readers.
