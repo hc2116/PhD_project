@@ -1,0 +1,110 @@
+\begin{thebibliography}{10}
+
+\bibitem{barre2019mining}
+M.~Barre, A.~Gehani, and V.~Yegneswaran.
+\newblock Mining data provenance to detect advanced persistent threats.
+\newblock In {\em 11th International Workshop on Theory and Practice of
+  Provenance (TaPP 2019)}, 2019.
+
+\bibitem{biernacki2017analysis}
+A.~Biernacki.
+\newblock Analysis and modelling of traffic produced by adaptive http-based
+  video.
+\newblock {\em Multimedia Tools and Applications}, 76(10):12347--12368, 2017.
+
+\bibitem{fricker2012impact}
+C.~Fricker, P.~Robert, J.~Roberts, and N.~Sbihi.
+\newblock Impact of traffic mix on caching performance in a content-centric
+  network.
+\newblock In {\em 2012 Proceedings IEEE INFOCOM Workshops}, pages 310--315.
+  IEEE, 2012.
+
+\bibitem{harang2014bridging}
+R.~Harang.
+\newblock Bridging the semantic gap: Human factors in anomaly-based intrusion
+  detection systems.
+\newblock In {\em Network Science and Cybersecurity}, pages 15--37. Springer,
+  2014.
+
+\bibitem{hou2017deep}
+X.~Hou, L.~Shen, K.~Sun, and G.~Qiu.
+\newblock Deep feature consistent variational autoencoder.
+\newblock In {\em 2017 IEEE Winter Conference on Applications of Computer
+  Vision (WACV)}, pages 1133--1141. IEEE, 2017.
+
+\bibitem{hwang2019lstm}
+R.-H. Hwang, M.-C. Peng, V.-L. Nguyen, and Y.-L. Chang.
+\newblock An lstm-based deep learning approach for classifying malicious
+  traffic at the packet level.
+\newblock {\em Applied Sciences}, 9(16):3414, 2019.
+
+\bibitem{liu2019machine}
+H.~Liu and B.~Lang.
+\newblock Machine learning and deep learning methods for intrusion detection
+  systems: A survey.
+\newblock {\em Applied Sciences}, 9(20):4396, 2019.
+
+\bibitem{mirsky2018kitsune}
+Y.~Mirsky, T.~Doitshman, Y.~Elovici, and A.~Shabtai.
+\newblock Kitsune: an ensemble of autoencoders for online network intrusion
+  detection.
+\newblock {\em arXiv preprint arXiv:1802.09089}, 2018.
+
+\bibitem{sharafaldin2018toward}
+I.~Sharafaldin, A.~H. Lashkari, and A.~A. Ghorbani.
+\newblock Toward generating a new intrusion detection dataset and intrusion
+  traffic characterization.
+\newblock In {\em ICISSP}, pages 108--116, 2018.
+
+\bibitem{shrikumar2017learning}
+A.~Shrikumar, P.~Greenside, and A.~Kundaje.
+\newblock Learning important features through propagating activation
+  differences.
+\newblock In {\em International Conference on Machine Learning}, pages
+  3145--3153. PMLR, 2017.
+
+\bibitem{smith2020mind}
+M.~R. Smith, N.~T. Johnson, J.~B. Ingram, A.~J. Carbajal, R.~Ramyaa,
+  E.~Domschot, C.~C. Lamb, S.~J. Verzi, and W.~P. Kegelmeyer.
+\newblock Mind the gap: On bridging the semantic gap between machine learning
+  and information security.
+\newblock {\em arXiv preprint arXiv:2005.01800}, 2020.
+
+\bibitem{sommer2010outside}
+R.~Sommer and V.~Paxson.
+\newblock Outside the closed world: On using machine learning for network
+  intrusion detection.
+\newblock In {\em 2010 IEEE symposium on security and privacy}, pages 305--316.
+  IEEE, 2010.
+
+\bibitem{stober2013you}
+T.~St{\"o}ber, M.~Frank, J.~Schmitt, and I.~Martinovic.
+\newblock Who do you sync you are? smartphone fingerprinting via application
+  behaviour.
+\newblock In {\em Proceedings of the sixth ACM conference on Security and
+  privacy in wireless and mobile networks}, pages 7--12, 2013.
+
+\bibitem{tahaei2020rise}
+H.~Tahaei, F.~Afifi, A.~Asemi, F.~Zaki, and N.~B. Anuar.
+\newblock The rise of traffic classification in {I}o{T} networks: A survey.
+\newblock {\em Journal of Network and Computer Applications}, 154:102538, 2020.
+
+\bibitem{walsworth2015caida}
+C.~Walsworth, E.~Aben, K.~Claffy, and D.~Andersen.
+\newblock The {CAIDA} {UCSD} anonymized internet traces 2018,”, 2018.
+
+\bibitem{wang2017walkie}
+T.~Wang and I.~Goldberg.
+\newblock Walkie-talkie: An efficient defense against passive website
+  fingerprinting attacks.
+\newblock In {\em 26th $\{$USENIX$\}$ Security Symposium ($\{$USENIX$\}$
+  Security 17)}, pages 1375--1390, 2017.
+
+\bibitem{wexler2019if}
+J.~Wexler, M.~Pushkarna, T.~Bolukbasi, M.~Wattenberg, F.~Vi{\'e}gas, and
+  J.~Wilson.
+\newblock The what-if tool: Interactive probing of machine learning models.
+\newblock {\em IEEE transactions on visualization and computer graphics},
+  26(1):56--65, 2019.
+
+\end{thebibliography}
