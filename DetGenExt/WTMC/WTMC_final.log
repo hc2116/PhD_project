@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.2)  20 MAR 2021 20:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.2)  21 MAR 2021 17:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -475,22 +475,12 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count295
+LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
 
-
-LaTeX Warning: No \author given.
-
-
-LaTeX Warning: No \author given.
-
-
-LaTeX Warning: No \author given.
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
-
-(/usr/local/texlive/2020basic/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2020basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 51.
 
 
 (/usr/local/texlive/2020basic/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -502,124 +492,124 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <images/Eva_Prob2.png, id=12, 515.67656pt x 679.78969pt>
 File: images/Eva_Prob2.png Graphic file (type png)
 <use images/Eva_Prob2.png>
-Package pdftex.def Info: images/Eva_Prob2.png  used on input line 87.
+Package pdftex.def Info: images/Eva_Prob2.png  used on input line 98.
 (pdftex.def)             Requested size: 206.39685pt x 272.07701pt.
  [2 <./images/Eva_Prob2.png>]
 <images/LSTM_activation.png, id=16, 514.92375pt x 345.54094pt>
 File: images/LSTM_activation.png Graphic file (type png)
 <use images/LSTM_activation.png>
-Package pdftex.def Info: images/LSTM_activation.png  used on input line 156.
+Package pdftex.def Info: images/LSTM_activation.png  used on input line 165.
 (pdftex.def)             Requested size: 258.0pt x 173.13383pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 156--157
+Overfull \hbox (6.0pt too wide) in paragraph at lines 165--166
  [][] 
  []
 
 <images/LSTM_classi.png, id=17, 376.40625pt x 312.41719pt>
 File: images/LSTM_classi.png Graphic file (type png)
 <use images/LSTM_classi.png>
-Package pdftex.def Info: images/LSTM_classi.png  used on input line 172.
+Package pdftex.def Info: images/LSTM_classi.png  used on input line 181.
 (pdftex.def)             Requested size: 258.0pt x 214.15701pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 172--173
+Overfull \hbox (6.0pt too wide) in paragraph at lines 181--182
  [][] 
  []
 
 [3 <./images/LSTM_activation.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 202--202
+Underfull \hbox (badness 10000) in paragraph at lines 211--211
 []|\OT1/ptm/m/n/8 Get-req. NG-INX,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--202
+Underfull \hbox (badness 10000) in paragraph at lines 211--211
 []|\OT1/ptm/m/n/8 Two hosts,
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 202--202
+Underfull \hbox (badness 2245) in paragraph at lines 211--211
 []|\OT1/ptm/m/n/8 Command 1,
  []
 
 
-Overfull \hbox (3.02122pt too wide) in paragraph at lines 203--203
+Overfull \hbox (3.02122pt too wide) in paragraph at lines 212--212
 []|\OT1/ptm/m/n/8 Results:| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--206
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
 []|\OT1/ptm/m/n/8 Four hosts,
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 206--206
+Underfull \hbox (badness 2245) in paragraph at lines 215--215
 []|\OT1/ptm/m/n/8 Command 2,
  []
 
 
-Overfull \hbox (3.02122pt too wide) in paragraph at lines 207--207
+Overfull \hbox (3.02122pt too wide) in paragraph at lines 216--216
 []|\OT1/ptm/m/n/8 Results:| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 210--210
+Underfull \hbox (badness 10000) in paragraph at lines 219--219
 []|\OT1/ptm/m/n/8 Post-req. Apache,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 210--210
+Underfull \hbox (badness 10000) in paragraph at lines 219--219
 []|\OT1/ptm/m/n/8 Two hosts,
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 210--210
+Underfull \hbox (badness 2245) in paragraph at lines 219--219
 []|\OT1/ptm/m/n/8 Command 3,
  []
 
 
-Overfull \hbox (3.02122pt too wide) in paragraph at lines 211--211
+Overfull \hbox (3.02122pt too wide) in paragraph at lines 220--220
 []|\OT1/ptm/m/n/8 Results:| 
  []
 
 
-Underfull \hbox (badness 2573) in paragraph at lines 214--214
+Underfull \hbox (badness 2573) in paragraph at lines 223--223
 []|\OT1/ptm/m/n/8 Multi-req. Apache,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--214
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
 []|\OT1/ptm/m/n/8 Four hosts,
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 214--214
+Underfull \hbox (badness 2245) in paragraph at lines 223--223
 []|\OT1/ptm/m/n/8 Command 4,
  []
 
 
-Overfull \hbox (3.02122pt too wide) in paragraph at lines 215--215
+Overfull \hbox (3.02122pt too wide) in paragraph at lines 224--224
 []|\OT1/ptm/m/n/8 Results:| 
  []
 
 [4 <./images/LSTM_classi.png (PNG copy)>]
-<images/traffic_dispersion.png, id=25, 367.3725pt x 342.5297pt>
+<images/traffic_dispersion.png, id=26, 367.3725pt x 342.5297pt>
 File: images/traffic_dispersion.png Graphic file (type png)
 <use images/traffic_dispersion.png>
-Package pdftex.def Info: images/traffic_dispersion.png  used on input line 237.
+Package pdftex.def Info: images/traffic_dispersion.png  used on input line 246.
 
 (pdftex.def)             Requested size: 258.0pt x 240.56882pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 237--238
+Overfull \hbox (6.0pt too wide) in paragraph at lines 246--247
  [][] 
  []
 
-<images/Subspace_projection_new3.png, id=26, 376.40625pt x 399.74344pt>
+<images/Subspace_projection_new3.png, id=27, 376.40625pt x 399.74344pt>
 File: images/Subspace_projection_new3.png Graphic file (type png)
 <use images/Subspace_projection_new3.png>
 Package pdftex.def Info: images/Subspace_projection_new3.png  used on input lin
-e 254.
+e 263.
 (pdftex.def)             Requested size: 258.0pt x 274.01778pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 254--255
+Overfull \hbox (6.0pt too wide) in paragraph at lines 263--264
  [][] 
  []
 
@@ -641,11 +631,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7152 strings out of 482354
- 108943 string characters out of 5942339
- 361349 words of memory out of 5000000
- 22442 multiletter control sequences out of 15000+600000
- 575734 words of font info for 108 fonts, out of 8000000 for 9000
+ 7154 strings out of 482354
+ 108969 string characters out of 5942339
+ 361353 words of memory out of 5000000
+ 22443 multiletter control sequences out of 15000+600000
+ 576812 words of font info for 109 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  45i,12n,47p,1200b,273s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020basic/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/lo
@@ -659,7 +649,7 @@ msy9.pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/urw/times/utmb8a.
 pfb></usr/local/texlive/2020basic/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb>
 </usr/local/texlive/2020basic/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr
 /local/texlive/2020basic/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on WTMC_final.pdf (6 pages, 282071 bytes).
+Output written on WTMC_final.pdf (6 pages, 282736 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  45 compressed objects within 1 object stream

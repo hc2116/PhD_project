@@ -12,6 +12,12 @@ A.~Biernacki.
   video.
 \newblock {\em Multimedia Tools and Applications}, 76(10):12347--12368, 2017.
 
+\bibitem{clausen2020traffic}
+H.~Clausen, R.~Flood, and D.~Aspinall.
+\newblock Traffic generation using containerization for machine learning.
+\newblock In {\em {DY}namic and {N}ovel {A}dvances in {M}achine {L}earning and
+  {I}ntelligent {C}yber {S}ecurity ({DYNAMICS}) Workshop}, 2019.
+
 \bibitem{fricker2012impact}
 C.~Fricker, P.~Robert, J.~Roberts, and N.~Sbihi.
 \newblock Impact of traffic mix on caching performance in a content-centric

@@ -28,9 +28,20 @@
 
 \begin{document} 
 
-%\title{DetGen: Data generation to bridge the \say{semantic gap} in network intrusion detection}
 \title{Examining traffic micro-structures to improve model development}
-%Dynamic Traffic Generation with Containerization for Machine Learning}
+
+\author{\IEEEauthorblockN{Henry Clausen}
+\IEEEauthorblockA{%\textit{School of Informatics} \\
+\textit{University of Edinburgh}\\
+Edinburgh, UK \\
+henry.clausen@ed.ac.uk}
+\and
+\IEEEauthorblockN{David Aspinall}
+\IEEEauthorblockA{\textit{University of Edinburgh} \\
+\textit{Alan Turing Institute}\\
+Edinburgh, UK \\
+david.aspinall@ed.ac.uk}
+}
 
 \maketitle
 
@@ -94,7 +105,7 @@ We want to demonstrate how model validation can be performed for machine-learnin
 
 \subsection{Generating controllable traffic micro-structures}\label{Control}
 
-We use a tool that generates various types of traffic with a fine-grained control over traffic shaping factors. In this work, we look traffic generated from scenarios that include regular HTTP communication, requests to an SQL-server, multi-host file-synchronisation, SQL-injection attacks, botnet traffic, as well as FTP-, SSH-, and SMTP-communication. The tool offers control over the following traffic shaping factors:
+We use DetGen \cite{clausen2020traffic}, a tool we developed that generates various types of traffic with a fine-grained control over traffic shaping factors. In this work, we look traffic generated from scenarios that include regular HTTP communication, requests to an SQL-server, multi-host file-synchronisation, SQL-injection attacks, botnet traffic, as well as FTP-, SSH-, and SMTP-communication. The tool offers control over the following traffic shaping factors:
 
 
 %The tool provides a set of 29 traffic scenarios to cover a variety of traffic types and offers control and if necessary randomisation of the following traffic shaping factors:
@@ -132,13 +143,11 @@ Labels that describe the respective setting for each factor are attached to each
 
 \subsection{Methodology}
 
-Before the probing, we have to identify which types of characteristics the model should be probed on, and generate the corresponding data. We then train the model mainly on the datasets that is used for the general evaluation, but also attach a sufficient amount of the data dedicated for model probing to the training set. This is to ensure that the model is able to see and learn the structures in the probing data, even though the overall type of traffic in the probing data should be similar to the evaluation data to provide a consistent model.
+Before the probing, we have to identify which types of characteristics the model should be probed on, and generate the corresponding data. We then train the model mainly on the datasets that is used for the general evaluation, but also attach probing data to make up at least $10\%$ of the particular traffic type in the training set. This is to ensure that the model is able to see and learn the structures in the probing data, even though the overall type of traffic in the probing data should be similar to the evaluation data to provide a consistent model.
 
 After training and general evaluation, the model probing is done by feeding the model data samples with the desired descriptive labels, monitoring the output or behaviours in dependence of these labels, and comparing them to the expected output or behaviour. Since each traffic sample contains multiple descriptive labels, it is possible to monitor the model response to multiple characteristics in parallel.
 
-\subsection{Models suitable for probing}
 
-Refining the ability of classifiers to identify traffic characteristics related to particular activities is crucial to improve intrusion detection systems, but can also lead to privacy infringements or even discrimination against users or traffic types.  It is therefore important to also investigate how servers and clients can implement privacy-enhancing measures that conceal traffic characteristics related to particular content or sensitive applications without affecting those that describe attack behaviours, such as proposed by Wang et al. \cite{wang2017walkie}.
 
 \section{Improved traffic separation for a classifier with congestion level information}\label{Sec:Improvedtrafficsep}
 
@@ -262,8 +271,9 @@ In this paper, demonstrated the impact of traffic generation with extensive micr
 
 By using HTTP-traffic with congestion settings, we were quickly able to identify the inability of an LSTM-based classifier to handle traffic with significant retransmission rates, which enabled us to improve the model accordingly and increase detection performance by more than $2\%$. Similarly, the examination of projection consistency of a subspace-clustering method using traffic with artificially similar characteristics revealed an overly high sensitivity to flow interarrival times, while cluster-coherence could be increased significantly by identifying half-open connections that were dropped because of network failure as the source of overly dispersed traffic projections. 
 
-These results have encouraged us to perform more deep-going probing of data-driven network intrusion detection models. We believe that in combination with strong NID-dataset, extensive model validation and corresponding development with targeted traffic samples might hold the key to reduce false positives of detection models to an acceptable rate, as well as help models replicate detection rates in practical settings.
+These results have encouraged us to perform more deep-going probing of data-driven network intrusion detection models. We believe that in combination with strong NID-dataset, extensive model validation and corresponding development with targeted traffic samples might hold the key to reduce false positives of detection models to an acceptable rate, as well as help models replicate detection rates in practical settings. This might furthermore help improve the transfer of learned models from one to another dataset by identifying where the model is failing on the new data, and to compile a suitable dataset for fine-tuning training.
 
+DetGen is openly accessible on GitHub. 
 %It also shows that DetGen offers strong insights into traffic micro-structures and their effect on traffic models, and allows researchers to analyse the particular characteristics of events that lead to false-positives or model failure as well as their effect on model training.
 
 
@@ -278,13 +288,19 @@ These results have encouraged us to perform more deep-going probing of data-driv
 %We verified the realism of the generated traffic and the corresponding ground truth information with two experiments, and demonstrated the usefulness of the framework in another experiment.
 %Presently, our framework consists of 29 scenarios capable of producing benign and malicious network traffic. Several of these scenarios, such as the \emph{BitTorrent} or the \emph{Stepping-Stone} scenario, provide novel traffic data of protocols or behaviours that has not been widely available to researchers previously.
 
+\subsection{Models suitable for probing}
+
+
+
+Refining the ability of classifiers to identify traffic characteristics related to particular activities can lead to privacy infringements or even discrimination against users or traffic types. It is therefore important to also investigate how applications can implement privacy-enhancing measures that conceal traffic characteristics related to particular content or sensitive applications, such as proposed by Wang et al. \cite{wang2017walkie}.
+
 
 \subsection{Difficulties and limitations}
 
 %DetGen is building network traffic datasets from a small-scale level up by coalescing traffic from different fine-grained activities together. 
-While the control of traffic micro-structures helps to understand models that perform on a packet- or connection-level, it does not replicate realistic network-wide temporal structures, such as port usage distributions or long-term temporal activity. The probing of models operating on aggregated, behavioural, or long-term features is therefore not effective, and variation in these quantities would have to be statistically estimated from other real-world traffic beforehand to allow our framework to emulate such behaviour reliably. Other datasets such as UGR-16 use this approach to fuse real-world and synthetic traffic and are currently better suited to build models of large-scale traffic structures.
+%While the control of traffic micro-structures helps to understand models that perform on a packet- or connection-level, it does not replicate realistic network-wide temporal structures, such as port usage distributions or long-term temporal activity. The probing of models operating on aggregated, behavioural, or long-term features is therefore not effective, and variation in these quantities would have to be statistically estimated from other real-world traffic beforehand to allow our framework to emulate such behaviour reliably. Other datasets such as UGR-16 use this approach to fuse real-world and synthetic traffic and are currently better suited to build models of large-scale traffic structures.
 
-Furthermore, while controlling traffic shaping factors artificially helps at identifying the limits and weak points of a model, it can exaggerate some characteristics in unrealistic ways and thus both affect the training phase of a model as well as tilt the actual detection performance of a model in either direction. Additionally, the artificial randomisation of traffic shaping factors can currently not generate the traffic diversity encountered in real-life traffic and thus only aid at exploring model limits extensively. The lack of realistic traffic heterogeneity however is at the moment significantly more pronounced in commonly used network intrusion datasets such as the CICIDS-17 dataset, where the vast majority of successful FTP-transfers consist of a client downloading a single text file that contains the Wikipedia page for ‘Encryption’.
+Controlling traffic shaping factors artificially can exaggerate some traffic characteristics in unrealistic ways and thus both affect the training phase of a model as well as tilt the actual detection performance of a model in either direction. Additionally, the artificial randomisation of traffic shaping factors can currently not generate the traffic diversity encountered in real-life traffic and thus only aid at exploring model limits extensively. The lack of realistic traffic heterogeneity however is at the moment significantly more pronounced in commonly used network intrusion datasets such as the CICIDS-17 dataset, where the vast majority of successful FTP-transfers consist of a client downloading a single text file that contains the Wikipedia page for ‘Encryption’.
 
 %We paid meticulous attention to enable control over as many traffic impact factors as possible. However, DetGen is currently only offering insufficient control over underlying application-layer implementations such as TLS 1.3 vs 1.2. In theory, it should be unproblematic to provide containers with different implementations for each scenario to provide this control. However we faced difficulties to compile containers in a suitable manner and are currently investigating, how to improve DetGen on this shortcoming.
 
