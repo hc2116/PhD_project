@@ -1,11 +1,6 @@
 WTMC Improvements
 
 
-1. Section discussing which methods can be probed, and which cannot. how common are models, which
-make use of aggregated, behavioral, or long-term features?
-2. Explain methodology and terms better for non-ML persona
-3. An introductory part on machine learning could or better clarifying some technical details could improve the readability for non expert readers.
-
 
 5. Explain better or reference why focus on specific traffic factors. Is it sufficient domain expertise?
 
@@ -30,3 +25,9 @@ make use of aggregated, behavioral, or long-term features?
 8. say something about transfer learning, can we explore where a model would fail when applied to another dataset?
 
 9. GANs (or any other generative model like variational autoencoders) for domain specific data augmentation
+
+
+1. Section discussing which methods can be probed, and which cannot. how common are models, which
+make use of aggregated, behavioral, or long-term features?
+2. Explain methodology and terms better for non-ML persona
+3. An introductory part on machine learning could or better clarifying some technical details could improve the readability for non expert readers.

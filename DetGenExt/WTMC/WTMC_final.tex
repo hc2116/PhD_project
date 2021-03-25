@@ -14,7 +14,7 @@
 \usepackage{url}
 \usepackage{epsfig}
 \usepackage{multicol}
-\usepackage{dirtytalk}
+\usepackage{csquotes}
 
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
@@ -28,7 +28,7 @@
 
 \begin{document} 
 
-\title{Examining traffic micro-structures to improve model development}
+\title{Examining traffic microstructures to improve model development}
 
 \author{\IEEEauthorblockN{Henry Clausen}
 \IEEEauthorblockA{%\textit{School of Informatics} \\
@@ -48,7 +48,7 @@ david.aspinall@ed.ac.uk}
 %\pagebreak
 \begin{abstract}
 
-We demonstrate how machine-learning-based network intrusion detection models can be validated and developed by probing models using traffic with specifically controlled micro-structures. We show our methodology by probing two published state-of-the-art models to find classification flaws and and understand misbehaviour. These models fail for input traffic with particular characteristics such as retransmissions or overly dispersed flow interarrival times. After we make simple corresponding model corrections, detection rates already improve between $2-4\%$.
+We demonstrate how machine-learning-based network intrusion detection models can be validated and developed by probing models using traffic with specifically controlled microstructures. We show our methodology by probing two published state-of-the-art models to find classification flaws and and understand misbehaviour. These models fail for input traffic with particular characteristics such as retransmissions or overly dispersed flow interarrival times. After we make simple corresponding model corrections, detection rates already improve between $2-4\%$.
 % in response to these findings lead to immediate detection rate improvements between \textcolor{red}{...} percent.
 We believe this shows promise for using tailored data with controllable and labelled characteristics to effectively improve model development in NID, a practice that helped model development significantly in several other areas of machine-learning.
 
@@ -56,7 +56,7 @@ We believe this shows promise for using tailored data with controllable and labe
 
 
 \begin{IEEEkeywords}
-Machine learning, traffic micro-structures, network intrusion detection
+Machine learning, traffic microstructures, network intrusion detection
 \end{IEEEkeywords} 	
 
 %\pagebreak
@@ -64,23 +64,26 @@ Machine learning, traffic micro-structures, network intrusion detection
 
 \section{Introduction}
 
-The model development process of machine-learning (ML) based network intrusion detection (NID) models usually ignores specific traffic characteristics and lacks the ability to extensively explore model failings. The main reason for this is likely the lack of precise datasets with specifically curated characteristics and corresponding information. In this paper, we demonstrate how the generation of traffic with controllable and labelled micro-structures enables researchers to probe a model and its reaction to various traffic phenomena to much greater detail in order to understand and develop the model's capabilities.
+The model development process of machine-learning (ML) based network intrusion detection (NID) models usually ignores specific traffic characteristics and lacks the ability to extensively explore model failings. The main reason for this is likely the lack of precise datasets with specifically curated characteristics and corresponding information. In this paper, we demonstrate how the generation of traffic with controllable and labelled microstructures enables researchers to probe a model and its reaction to various traffic phenomena to much greater detail in order to understand and develop the model's capabilities.
 
 Machine-learning breakthroughs in other fields have often been reliant on a precise understanding of data structure and corresponding descriptive labelling to develop more suitable models.
 %As an example, results in \textit{automatic speech recognition (ARS)} were not achieved by immediately training then state-of-the-art models on large annotated datasets. 
-Initial models in \textit{automatic speech recognition (ASR)} for example were reliant on highly sanitised and structured speech snippets in order to isolate low-level structures such as phonemes or time-warping, before the understanding of these structures lead to the success of more layered models of feed-forward and recurrent neural networks and more recently fully end-to-end trained models. Lately, datasets that contain labelled specialised speech characteristics enable researchers to better understand ASR weak points such as emotional speech (RAVDESS), accents (Speech Accent Archive), or background noise (Urban Sound Dataset).
+In \textit{automatic speech recognition (ASR)}, tone and emotions can alter the meaning of a sentence significantly. The huge automatically gathered speech datasets however only contain speech snippets and if possible their plain transcripts. While modern speech models are in principle able to learn implicit structures such as emotions without explicit labels, it is impossible to determine the cause for systematic error when they are not. Datasets that contain labelled specialised speech characteristics such as the Ryerson Database of Emotional Speech and Song (RAVDESS) \cite{livingstone2018ryerson} not only allow researchers to identify if their model is susceptible to structural misclassification through targeted probing, but also inspire new methods to capture and understand these implicit structures \cite{haque2019audio}, which in turn leads to design improvements of general speech recognition models \cite{kamper2020multilingual}.
 
-In a similar fashion, several approaches to enhance the way information is collected and presented have been successful in improving understanding between data and detection systems in different areas of information security. Virtual machine introspection monitors and analyses the runtime state of a system-level VM, and the inclusion of threat reports to create behavioural feature labels enriches the way executables are described \cite{smith2020mind}. Recently, data provenance tools aim to improve the representation of system executions \cite{barre2019mining} over traditional logs. 
 
-However, such efforts have not been made in network intrusion detection yet, with the current quasi-benchmark datasets paying more attention to the inclusion of a wide variety of attacks rather than the close control and detailed documentation of the generated traffic. Data containing ground-truth on the traffic generation process to link observable structures with corresponding computational activities is rare, which has so far lead researchers to predominantly apply a number of ML-models to traffic datasets in the hope of edging out competitors. %In-depth analyses regarding which traffic characteristics lead to inaccurate predictions or cause a model to misbehave,
-This overall lack of connection between the nature of intrusion detection data and the applied data-driven detection systems has been identified as a `semantic gap' by Paxson and Sommer \cite{sommer2010outside}, and is seen to be partly responsible for the lack of success machine-learning had in network intrusion detection. This claim has been supported and partly extended by Harang \cite{harang2014bridging} in 2014 and by Liu et al. in 2019 \cite{liu2019machine}.
+%In a similar fashion, several approaches to enhance the way information is collected and presented have been successful in improving understanding between data and detection systems in different areas of information security. Virtual machine introspection monitors and analyses the runtime state of a system-level VM, and the inclusion of threat reports to create behavioural feature labels enriches the way executables are described \cite{smith2020mind}. Recently, data provenance tools aim to improve the representation of system executions \cite{barre2019mining} over traditional logs. 
 
-In this work, we aim demonstrate the usefulness of the control and information on traffic micro-structures for model validation and development. We show the inspection of two state-of-the-art network intrusion detection models with specially generated traffic to identify model flaws, understand model behaviour better, and subsequently boost corresponding results. We hope to find new ways to improve model development in NID and increase the efficiency with which models can learn traffic micro-structures.
+%However, such efforts have not been made in network intrusion detection yet, with the current quasi-benchmark datasets paying more attention to the inclusion of a wide variety of attacks rather than the close control and detailed documentation of the generated traffic. Data containing ground-truth on the traffic generation process to link observable structures with corresponding computational activities is rare, which has so far lead researchers to predominantly apply a number of ML-models to traffic datasets in the hope of edging out competitors. %In-depth analyses regarding which traffic characteristics lead to inaccurate predictions or cause a model to misbehave,
+
+Prominent network intrusion detection methods as Kitsune \cite{mirsky2018kitsune} or DeepCorr \cite{nasr2018deepcorr} learn structures in the sizes, flags, or interarrival times of packets for decision-making. These \textbf{traffic microstructures} that can be observed when looking sequences of packets or connections reveal information about attack behaviour, but are also influenced by a number of other factors such as network congestion or the transmitted data. However, no effort has been made so far to monitor or control these factors to probe these models for specific microstructures, and researchers often just evaluate a variety of ML-models on sparsely labelled datasets in the hope of edging out competitors, without understanding model flaws and corresponding data structures through targeted probing.
+%This overall lack of connection between the nature of intrusion detection data and the applied data-driven detection systems has been identified as a \enquote{semantic gap} by Paxson and Sommer \cite{sommer2010outside}, and is seen to be partly responsible for the lack of success machine-learning had in network intrusion detection. This claim has been supported and partly extended by Harang \cite{harang2014bridging} in 2014 and by Liu et al. in 2019 \cite{liu2019machine}.
+
+In this work, we aim to demonstrate the usefulness of the control and information on traffic microstructures for model validation and development. We show the inspection of two state-of-the-art network intrusion detection models with specially generated traffic to identify model flaws, understand model behaviour better, and subsequently boost corresponding results. We hope to find new ways to improve model development in NID and increase the efficiency with which models can learn traffic microstructures.
 
 
 \subsection{Outline}
 
-The remainder of the paper is organized as follows. Section \ref{Sec:Motivation} discusses the necessity for probing to validate and understand ML-models, and our methodology of using traffic micro-structure control for model probing. In Sections \ref{Sec:Improvedtrafficsep} and \ref{Sec:Refining} we demonstrate how to perform model probing and implement corresponding design improvements on two network intrusion detection models. Section \ref{Sec:Conclusion} 
+The remainder of the paper is organized as follows. Section \ref{Sec:Motivation} discusses the necessity for probing to validate and understand ML-models, and our methodology of using traffic microstructure control for model probing. In Sections \ref{Sec:Improvedtrafficsep} and \ref{Sec:Refining} we demonstrate how to perform model probing and implement corresponding design improvements on two network intrusion detection models. Section \ref{Sec:Conclusion} 
 concludes the results and discusses limitations of our work and directions for future work.
 
 \section{Motivation and Methodology}\label{Sec:Motivation}
@@ -99,20 +102,19 @@ Scientific machine learning model development requires both \textbf{model evalua
 \caption{Comparison between numerical model evaluation and model probing with specifically controlled data characteristics, indicated as colours.}\label{fig:Subspace_disp}
 \end{figure}
 
+Recently, machine-learning methods have been trained on large datasets to classify raw traffic, often using simple malicious/benign labels. These models usually classify traffic traces as a sequence of packets within a connection (DeepCorr \cite{nasr2018deepcorr}, Kitsune \cite{mirsky2018kitsune}), or as a short sequence of connections (Radford et al. \cite{radford2018network}). Designs vary from models that make binary decisions by recognising characteristic patterns to models that identify anomalous traffic by learning generalised structures for all encountered benign sequences.
+We want to demonstrate how model validation can be performed for such models with the use of specifically generated traffic traces. We focus in particular on \textbf{traffic microstructures}, which we define as sequential structures in the packet or flow metadata stream.
+For this, we are generating traffic from different activities and settings in short time-intervals that are suitable for models that classify \textbf{individual connections} or \textbf{short sequences} of connections, such as done by many traffic classifiers and low-volume intrusion detection systems. Models that depend on long-term or network wide structures, such as for the detection of botnet, DoS-attacks or fast-spreading worms do not fall within this scope.
 
-We want to demonstrate how model validation can be performed for machine-learning-based network intrusion detection models such as traffic classifiers or anomaly-detection systems with the use of specifically generated traffic traces. We focus in particular on \textbf{traffic-micro-structures}, which we define as  short-term atomic, sequential or cumulative structures in the packet or flow metadata stream, compared to aggregate structures visible over longer periods. Differences in observable traffic micro-structures are driven through factors such as the particular communicational activity, the choice and implementation of the communication protocol as well as external effects such as network reliability or available computation resources. An analogue to this is speech, were influence factors such as accents or emotions can introduce structural characteristics to a conveyed message.
-
-
-\subsection{Generating controllable traffic micro-structures}\label{Control}
-
-We use DetGen \cite{clausen2020traffic}, a tool we developed that generates various types of traffic with a fine-grained control over traffic shaping factors. In this work, we look traffic generated from scenarios that include regular HTTP communication, requests to an SQL-server, multi-host file-synchronisation, SQL-injection attacks, botnet traffic, as well as FTP-, SSH-, and SMTP-communication. The tool offers control over the following traffic shaping factors:
+%, compared to aggregate structures visible over longer periods. Differences in observable traffic microstructures are driven through factors such as the particular communicational activity, the choice and implementation of the communication protocol as well as external effects such as network reliability or available computation resources. An analogue to this is speech, were influence factors such as accents or emotions can introduce structural characteristics to a conveyed message.
 
 
-%The tool provides a set of 29 traffic scenarios to cover a variety of traffic types and offers control and if necessary randomisation of the following traffic shaping factors:
+\subsection{Generating controllable traffic microstructures}\label{Control}
 
+We use DetGen \cite{clausen2020traffic}, a tool that generates traffic with a fine-grained control over traffic shaping factors. In this work, we look traffic generated from scenarios that include regular HTTP communication, requests to an SQL-server, multi-host file-synchronisation, SQL-injection attacks, botnet traffic, as well as FTP-, SSH-, and SMTP-communication. DetGen offers control over the following traffic shaping factors:
  
-\paragraph{Performed task and application}
-The conducted computational task and application ultimately drives the communication between computers, and thus hugely influences characteristics such as the direction of data transfer, packet rate, or the number of connections \cite{stober2013you}.
+\paragraph{Performed task/application}
+The task and application drive the communication and influences characteristics such as direction and rate of transfer or the number of connections.% \cite{stober2013you}.
 
 
 \paragraph{Application layer implementations}
@@ -123,18 +125,18 @@ The amount and content of transferred data influences the overall packet number,
 
 
 \paragraph{Caching/Repetition effects}
-Tools like cookies, website caching, DNS caching, known hosts in SSH, etc. remove one or more information retrieval requests from the communication, which can lead to altered packet sequences and less connections being established \cite{fricker2012impact}.
+Tools like cookies, website caching, DNS caching, known hosts in SSH, etc. remove one or more information retrieval requests, which leads to altered packet sequences and less established connections \cite{fricker2012impact}.
 
 
 \paragraph{Host level load}
 Computational load (CPU, memory, I/O) on the host machine can affect the processing speed of incoming and outgoing traffic.
 
 \paragraph{LAN and WAN congestion}
-Low available bandwith, long RTTs, or packet loss can have a significant effect on TCP congestion control mechanisms, which in turn influence frame-sizes, IATs, window sizes, and the overall temporal characteristic of the sequence.
+Low available bandwith, long RTTs, or packet loss can have affect on TCP congestion control mechanisms and influence frame-sizes, IATs, and the overall temporal characteristic of the sequence.
 
 \vspace{0.2cm}
 
-In this work, we focus mainly on influence from the factors \textit{a), b), f)} and partly \textit{c)}.
+In this work, we focus mainly on influence from the factors \textit{a), b), f)} and partly \textit{c)}, as they have most influence on the behaviour of the models discussed in Section \ref{Sec:Improvedtrafficsep} and \ref{Sec:Refining}. The completeness of this list as well as the impact of the listed factors on overall model behaviour goes beyond the scope of this work and is better discussed by Clausen et al. \cite{clausen2021Controlling}.
 
 
 Labels that describe the respective setting for each factor are attached to each traffic sample after generation, thus enabling us to provide ground-truth information about the precise generation setting of individual samples. Traffic is generated in a virtual network along with virtual software switches, Ethernet links and routers. The communication is mostly performed in a client-server setting, however some settings such as multi-host file-synchronisation involve more hosts. 
@@ -153,41 +155,107 @@ After training and general evaluation, the model probing is done by feeding the 
 
 
 %Possible title: \textbf{Exploring the effect of rare events to model performance}
-Our first example looks at how descriptive ground truth information on traffic characteristics can improve a traffic classification model through the analysis of data separation in dependence of different traffic features. For this, we use a recent traffic classification model by Hwang et al. \cite{hwang2019lstm} as an example, which aims at distinguishing various types of malicious activity from benign traffic. The model achieved some of the highest detection rates of packet-based classifiers in a recent survey \cite{tahaei2020rise}.
-The model classifies connections on a packet-level using a \textit{Long-short-term memory} (LSTM) network \footnote{a deep learning design for sequential data}, and is claimed to achieve detection and false-positive (FP) rates of \textbf{99.7\%} and \textbf{0.03\%} respectively. 
+Our first example looks at how descriptive ground truth information on traffic characteristics can improve a traffic classification model through the analysis of data separation in dependence of different traffic features. For this, we use a \textit{Long-Short-Term Memory} (LSTM) network, a deep learning design for sequential data, by Hwang et al. \cite{hwang2019lstm}, which is designed to classify attacks in web traffic and has achieved some of the highest detection rates of packet-based classifiers in a recent survey \cite{tahaei2020rise}. Through probing we will learn that retransmissions in a packet sequence dramatically deplete the model's classification accuracy. We take the following steps:
+%a recent traffic classification model by Hwang et al. \cite{hwang2019lstm} as an example, which aims at distinguishing various types of malicious activity from benign traffic. The model achieved some of the highest detection rates of packet-based classifiers in a recent survey \cite{tahaei2020rise}. The model classifies connections on a packet-level using a \textit{Long-short-term memory} (LSTM) network \footnote{a deep learning design for sequential data}, and is claimed to achieve detection and false-positive (FP) rates of \textbf{99.7\%} and \textbf{0.03\%} respectively. 
 
 
-We train a model on a set of different HTTP-activities in order to detect SQL-injections. Rather than providing an accurate and realistic detection setting, this example shows how traffic information can be linked to model failures and slumping performance. We use real-world HTTP-traffic from the \textit{CAIDA anonymized traffic traces} \cite{walsworth2015caida} as background traffic (85\% of connections) and add SQL-injection attack traffic (7.5\%) as well as different HTTP-activities for probing (7.5\%). In total, we use 50,000 connections for training the model, or slightly less than 2 million packets. 
+%To provide an example, we look at a \textit{Long-Short-Term Memory} (LSTM) network, a deep learning design for sequential data, by Hwang et al. \cite{hwang2019lstm}, which is designed to classify attacks in web traffic and has achieved some of the highest detection rates of packet-based classifiers in a recent survey \cite{tahaei2020rise}. Through probing we will learn that retransmissions in a packet sequence dramatically deplete the model's classification accuracy. We take the following steps:
+
+%We train a model on a set of different HTTP-activities in order to detect SQL-injections. Rather than providing an accurate and realistic detection setting, this example shows how traffic information can be linked to model failures and slumping performance. We use real-world HTTP-traffic from the \textit{CAIDA anonymized traffic traces} \cite{walsworth2015caida} as background traffic (85\% of connections) and add SQL-injection attack traffic (7.5\%) as well as different HTTP-activities for probing (7.5\%). In total, we use 50,000 connections for training the model, or slightly less than 2 million packets. 
+%
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.5\textwidth]{images/LSTM_activation_new.png}
+%\caption{LSTM-output activation in dependence of connection phases. Depicted are packet segment streams and their respective sizes in the forward and backward direction, with different phases in the connection coloured and labelled. Below is the LSTM-ouput activation while processing the packet streams.}\label{fig:LSTM_act}
+%\end{figure}
+%
+%The initially trained model performs relatively well, with an \textit{Area under curve} (AUC)-score\footnote{a measure describing the overall class separation of the model} of \textbf{0.981}, or a detection and false positive rate\footnote{tuned for the geometric mean} of \textbf{0.96\%} and \textbf{2.7\%}. However, these rates are still far from enabling operational deployment. Now suppose we want to improve these rates to both detect more SQL-injections and retain a lower false-positive rate.
+%
+%We initially explore which type of connections are misclassified most often. For this, we perform a correlation analysis between the numeric or categoric labels available for the probing data, and the binary response whether the corresponding connection was misclassified. Unsurprisingly, the highest correlation to misclassification was measured for the conducted activity, with a particular attack scenario (19\% correlation) and connections with multiple GET-requests (11\% correlation) being confused most often. This was followed by the amount of simulated latency (12\% correlation), which we are now examining closer.
+%
+%
+%
+%Fig. \ref{fig:LSTM_exp} depicts classification scores of connections in the probing data in dependence of the emulated network latency. The left panel depicts the scores for the initially trained model, which shows that while classification scores are well separated for lower congestion, increased latency in a connection leads to a narrowing of the classification scores, especially for SQL-injection traffic. Since there are no classification scores that reach far in the opposing area, we conclude that congestion simply makes the model lose predictive certainty. 
+%Increased latency can both increase variation in observed packet interarrival times (IATs), and lead to packet out-of-order arrivals and corresponding retransmission attempts. Both of these factors can decreases the overall sequential coherence for the model, i.e. that the LSTM-model loses context too quickly either due to increased IAT variation or during retransmission sequences. 
+%
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.5\textwidth]{images/LSTM_classi.png}
+%\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold. }\label{fig:LSTM_exp}
+%\end{figure}
+%
+%To examine the exact effect of retransmission sequences on the model output, we generate two similar connections, where one connection is subject to moderate packet loss and reordering while the other is not. We then compare how the LSTM-output activation is affected by retransmission sequences. Fig. \ref{fig:LSTM_act} depicts the evolution the LSTM-output layer activation in dependence of difference connection phases. Initially the model begins to view the connection as benign when processing regular traffic, until the SQL-injection is performed. The model then quickly adjusts and provides a malicious classification after processing the injection phase and the subsequent data transfer. The negative output activation is however quickly depleted once the model processes a retransmission phase, and is afterwards not able to relate the still ongoing data transfer to the injection phase. When comparing this to the connection without retransmissions, we do not encounter this depletion effect, instead the negative activation persists after the injection phase.
+%
+%We try to correct the existing model with a simple fix by excluding retransmission sequences from the model input data, both during training and classification. This leads to significantly better classification results during network latency, as visible in the right panel of Fig. \ref{fig:LSTM_exp}. SQL-injection scores are now far-less affected by congestion while scores for benign traffic are also less affected, albeit to a smaller degree.
+%The overall AUC-score for the model improves to \textbf{0.997} while tuned detection rates and false positives improved to \textbf{99.1\%} and \textbf{0.045\%}.
+%
+
+
+\begin{enumerate}
+\item [] \textbf{Step 1:} Determine model performance and feed it suitable probing traffic.
+\item [] \textbf{Step 2:} Examine the correlation between traffic misclassification scores and the generated traffic microstructure labels to find a likely cause.%, which is strongest for simulated packet reordering.
+\item [] \textbf{Step 3:} Examine at which latency levels specific connections are misclassified.
+
+\item [] \textbf{Step 4:} Generate two similar connections, with one exposed to strong packet latency.% to examine how it affects the processing.
+\item [] \textbf{Step 5:} Show that by removing retransmission sequences in the pre-processing, misclassification is significantly reduced.
+\end{enumerate}
+
+%After training the model on the CICIDS-17 dataset \cite{sharafaldin2018toward}, the biggest source for misclassifications turn out to be packet retransmission sequences. 
+
+
+
+%Below, we provide a \textcolor{red}{use-case} to demonstrate how ground-truth information and traffic microstructure control enables effective model probing:
+
+%\section{Use-cases}
+
+
+%Possible title: \textbf{Exploring the effect of rare events to model performance}
+%Our first example looks at how descriptive ground truth information on traffic characteristics can improve a
+%In this \textcolor{red}{use-case}, we improve the design of a traffic classification model through the analysis of data separation in dependence of different traffic features. We use a recent traffic classification model by Hwang et al. \cite{hwang2019lstm} as an example, which aims at distinguishing various types of malicious activity from benign traffic. The model achieved some of the highest detection rates of packet-based classifiers in a recent survey \cite{tahaei2020rise} and is claimed to achieve detection and false positive (FP) rates of \textbf{99.7\%} and \textbf{0.03\%} respectively. It classifies connections on a packet-level using a \textit{Long-short-term memory} (LSTM) network \footnote{a deep learning design for sequential data}. 
+
+
+%This dataset, released by the Canadian Institute for Cyber-security (CIC), contains 5 days of network traffic collected from 12 computers with attacks that were conducted in a laboratory setting. The attack data of this dataset is one of the most diverse among NID datasets and contains SQL-injections, Heartbleed attacks, brute-forcing, various download infiltrations, and cross-site scripting (XSS) attacks.
+
+\textbf{Step 1:} To detect SQL injections, we train the model on the CICIDS-17 dataset \cite{sharafaldin2018toward} (85\% of connections).
+%This dataset is the most recent and covers the most attacks of the several existing de-facto benchmark datasets. 
+For the evaluation, we also include a set of HTTP-activities generated by DetGen (7.5\%) that mirror the characteristics in the training data, as explained in Section \ref{Sec:ProbData}. %Rather than providing an accurate and realistic detection setting, this example shows how traffic information can be linked to model failures and slumping performance. 
+In total, we use 30,000 connections for training and for evaluating the model, or slightly under 2 million packets.
+The initially trained model performs relatively well, with an \textit{Area under curve} (AUC)-score %\footnote{a measure describing the overall class separation of the model}
+ of \textbf{0.981}, or a detection/false positive rate\footnote{tuned for the geometric mean} of \textbf{96\%} and \textbf{2.7\%}. However, to enable operational deployment the false positive rate would need to be several magnitudes lower \cite{mell2003overview}. 
 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{images/LSTM_activation.png}
-\caption{LSTM-output activation in dependence of connection phases. Depicted are packet segment streams and their respective sizes in the forward and backward direction, with different phases in the connection coloured and labelled. Below is the LSTM-ouput activation while processing the packet streams.}\label{fig:LSTM_act}
+\includegraphics[width=0.45\textwidth]{images/LSTM_classi.png}
+\caption{Scores for the LSTM-traffic model before and after the model correction.}\label{fig:LSTM_exp}
 \end{figure}
 
-The initially trained model performs relatively well, with an \textit{Area under curve} (AUC)-score\footnote{a measure describing the overall class separation of the model} of \textbf{0.981}, or a detection and false positive rate\footnote{tuned for the geometric mean} of \textbf{0.96\%} and \textbf{2.7\%}. However, these rates are still far from enabling operational deployment. Now suppose we want to improve these rates to both detect more SQL-injections and retain a lower false-positive rate.
 
-We initially explore which type of connections are misclassified most often. For this, we perform a correlation analysis between the numeric or categoric labels available for the probing data, and the binary response whether the corresponding connection was misclassified. Unsurprisingly, the highest correlation to misclassification was measured for the conducted activity, with a particular attack scenario (19\% correlation) and connections with multiple GET-requests (11\% correlation) being confused most often. This was followed by the amount of simulated latency (12\% correlation), which we are now examining closer.
-
+\textbf{Step 2:} Now suppose we want to improve these rates to both detect more SQL-injections and retain a lower false positive rate. To start, we explore which type of connections are misclassified most often. We retrieve the classification scores for all connections and measure their linear correlation to the microstructure labels available for the probing data. The highest misclassification ratio was measured for one of the three SQL injection scenarios (19\% correlation) and connections with multiple GET-requests (11\% correlation). When not distinguishing activities, we measured a high misclassification correlation with simulated packet latency (12\%), which we now examine. More details on this exact procedure can be found in (citation currently blinded).
 
 
-Fig. \ref{fig:LSTM_exp} depicts classification scores of connections in the probing data in dependence of the emulated network latency. The left panel depicts the scores for the initially trained model, which shows that while classification scores are well separated for lower congestion, increased latency in a connection leads to a narrowing of the classification scores, especially for SQL-injection traffic. Since there are no classification scores that reach far in the opposing area, we conclude that congestion simply makes the model lose predictive certainty. 
-Increased latency can both increase variation in observed packet interarrival times (IATs), and lead to packet out-of-order arrivals and corresponding retransmission attempts. Both of these factors can decreases the overall sequential coherence for the model, i.e. that the LSTM-model loses context too quickly either due to increased IAT variation or during retransmission sequences. 
+
+\textbf{Step 3:} Fig. \ref{fig:LSTM_exp} depicts classification scores of connections in the probing data in dependence of the emulated network latency. The left panel depicts the scores for the initially trained model, while the right panel depicts scores after the model correction that we introduce further down. 
+The left panel shows that classification scores are well separated for lower congestion, but increased latency in a connection leads to a narrowing of the classification scores, especially for SQL-injection traffic. Since there are no classification scores that reach far in the opposing area, we conclude that congestion simply makes the model lose predictive certainty. 
+Increased latency can both increase variation in observed packet interarrival times (IATs), and lead to packet out-of-order arrivals and corresponding retransmission attempts. Both of these factors can decrease the overall sequential coherence for the model, i.e. that the LSTM-model loses context too quickly either due to increased IAT variation or during retransmission sequences. 
 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{images/LSTM_classi.png}
-\caption{Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold. }\label{fig:LSTM_exp}
+\includegraphics[width=0.45\textwidth]{images/LSTM_activation_new.png}
+\caption{LSTM-output activation in dependence of connection phases.}\label{fig:LSTM_act}
 \end{figure}
 
-To examine the exact effect of retransmission sequences on the model output, we generate two similar connections, where one connection is subject to moderate packet loss and reordering while the other is not. We then compare how the LSTM-output activation is affected by retransmission sequences. Fig. \ref{fig:LSTM_act} depicts the evolution the LSTM-output layer activation in dependence of difference connection phases. Initially the model begins to view the connection as benign when processing regular traffic, until the SQL-injection is performed. The model then quickly adjusts and provides a malicious classification after processing the injection phase and the subsequent data transfer. The negative output activation is however quickly depleted once the model processes a retransmission phase, and is afterwards not able to relate the still ongoing data transfer to the injection phase. When comparing this to the connection without retransmissions, we do not encounter this depletion effect, instead the negative activation persists after the injection phase.
+\textbf{Step 4:} We use DetGen to generate two similar connections, where one connection is subject to moderate packet latency and corresponding reordering while the other is not. DetGen's ability to shape traffic in a controlled and deterministic manner allows us to examine the effect of retransmission sequences on the model output and isolate it from other potential influence factors. 
+Fig. \ref{fig:LSTM_act} depicts the evolution of the LSTM-output layer activation in dependence of difference connection phases for the connection subject to retransmissions. Depicted are packet segment streams and their respective sizes in the forward and backward direction, with different phases in the connection coloured and labelled. Below is the LSTM-output activation while processing the packet streams. The red line shows the output for the connection without retransmissions\footnote{scaled temporally to the same connection phases} as a comparison.
+Initially the model begins to view the connection as benign when processing regular traffic, until the SQL-injection is performed. The model then quickly adjusts and provides a malicious classification after processing the injection phase and the subsequent data transfer, just as it is supposed to. 
 
-We try to correct the existing model with a simple fix by excluding retransmission sequences from the model input data, both during training and classification. This leads to significantly better classification results during network latency, as visible in the right panel of Fig. \ref{fig:LSTM_exp}. SQL-injection scores are now far-less affected by congestion while scores for benign traffic are also less affected, albeit to a smaller degree.
-The overall AUC-score for the model improves to \textbf{0.997} while tuned detection rates and false positives improved to \textbf{99.1\%} and \textbf{0.045\%}.
+The correct output activation is however quickly depleted once the model processes a retransmission phase and is afterwards not able to relate the still ongoing data transfer to the injection phase and return to the correct output activation. When we compare this to the connection without retransmissions, depicted as the red line in Fig. \ref{fig:LSTM_act}, we do not encounter this depletion effect. Instead, the negative activation persists after the injection phase.
 
-
+\textbf{Step 5:} Based on this analysis, we try to correct the existing model with a simple fix by excluding retransmission sequences at the pre-processing stage. This leads to significantly better classification results during network latency, as visible in the right panel of Fig. \ref{fig:LSTM_exp}. SQL-injection scores are now far-less affected by congestion while scores for benign traffic are also less affected, albeit to a smaller degree.
+The overall AUC-score for the model improves to \textbf{0.997} while tuned detection rates improved to \textbf{99.1\%} and false positives to \textbf{0.345\%}, a five-fold improvement from the previous false positive rate of $2.7\%$. 
 
 \section{Refining the notion of benign traffic for anomaly detection}\label{Sec:Refining}
 
@@ -255,8 +323,8 @@ We now focus on the influence of input features on the projected positions exclu
 
 When examining false-positive and corresponding anomaly scores, we noticed that the model often classifies Brute-Force Web attacks as benign and some HTTP-traffic as anomalous. When examining the projected location of the corresponding connections, we see that most of this HTTP-traffic as well as the Brute-Force attack traffic lie near a particular cluster, depicted in Fig. \ref{fig:Subspace_projection}. A significant portion of traffic in that cluster seems to be spread significantly more across the cluster axis than the rest of the traffic in that cluster, leading to an inflated radius that partially encompasses Brute-Force traffic. 
 
-When cross-examining the traffic in this cluster with the probing data, we see that HTTP-traffic with the label \say{Sudden termination} are distributed across the cluster axis in a similar fashion, also depicted in Fig. \ref{fig:Subspace_projection}, suggesting the conclusion that this type of traffic causes the inflated cluster radius. DetGen generates traffic with the label \say{Sudden termination} as half-open connections which were dropped by the server due to network failure. One defining characteristic of such connections are that they are not closed with a termination handshake using FIN-flags. To better capture this defining characteristics in the modelling process, we included an additional feature attached to the end of a packet sequence that indicates a proper termination with FIN-flags in the modelling process.
-The newly trained model now projects \say{Sudden termination} connections into a different cluster, which leads to a far better cluster coherence. The detection rate on Brute-Force attack traffic could thus be improved from \textbf{89.7\%} to \textbf{94.1\%}.
+When cross-examining the traffic in this cluster with the probing data, we see that HTTP-traffic with the label \enquote{Sudden termination} are distributed across the cluster axis in a similar fashion, also depicted in Fig. \ref{fig:Subspace_projection}, suggesting the conclusion that this type of traffic causes the inflated cluster radius. DetGen generates traffic with the label \enquote{Sudden termination} as half-open connections which were dropped by the server due to network failure. One defining characteristic of such connections are that they are not closed with a termination handshake using FIN-flags. To better capture this defining characteristics in the modelling process, we included an additional feature attached to the end of a packet sequence that indicates a proper termination with FIN-flags in the modelling process.
+The newly trained model now projects \enquote{Sudden termination} connections into a different cluster, which leads to a far better cluster coherence. The detection rate on Brute-Force attack traffic could thus be improved from \textbf{89.7\%} to \textbf{94.1\%}.
 
 \begin{figure}
 \centering
@@ -267,17 +335,17 @@ The newly trained model now projects \say{Sudden termination} connections into a
 
 \section{Conclusions}\label{Sec:Conclusion}
 
-In this paper, demonstrated the impact of traffic generation with extensive micro-structure control as well as detailed corresponding documentation on researchers ability to evaluate and understand network intrusion detection models. We implemented and trained two state-of-the art detection models before extensively probing their behaviour and limitations when encountering different traffic types. 
+In this paper, demonstrated the impact of traffic generation with extensive microstructure control as well as detailed corresponding documentation on researchers ability to evaluate and understand network intrusion detection models. We implemented and trained two state-of-the art detection models before extensively probing their behaviour and limitations when encountering different traffic types. 
 
-By using HTTP-traffic with congestion settings, we were quickly able to identify the inability of an LSTM-based classifier to handle traffic with significant retransmission rates, which enabled us to improve the model accordingly and increase detection performance by more than $2\%$. Similarly, the examination of projection consistency of a subspace-clustering method using traffic with artificially similar characteristics revealed an overly high sensitivity to flow interarrival times, while cluster-coherence could be increased significantly by identifying half-open connections that were dropped because of network failure as the source of overly dispersed traffic projections. 
+By using HTTP-traffic with congestion settings, we were quickly able to identify the inability of an LSTM-based classifier to handle traffic with significant retransmission rates, which enabled us to improve the model accordingly and increase detection performance by more than $2\%$. Similarly, the examination of projection consistency of a subspace-clustering method using traffic with artificially similar characteristics revealed a high sensitivity to interarrival times, while cluster-coherence could be increased significantly by identifying half-open connections as the source of overly dispersed traffic projections. 
 
-These results have encouraged us to perform more deep-going probing of data-driven network intrusion detection models. We believe that in combination with strong NID-dataset, extensive model validation and corresponding development with targeted traffic samples might hold the key to reduce false positives of detection models to an acceptable rate, as well as help models replicate detection rates in practical settings. This might furthermore help improve the transfer of learned models from one to another dataset by identifying where the model is failing on the new data, and to compile a suitable dataset for fine-tuning training.
+%These results have encouraged us to perform more deep-going probing of data-driven network intrusion detection models. 
+We believe that in combination with strong NID-datasets, model probing with targeted traffic samples might hold the key to reduce false positives of detection models to an acceptable rate and help replicate detection rates in practical settings. This might furthermore help improve the transfer of learned structures from one to another dataset by identifying where the model is failing on the new data, and to compile a suitable dataset for fine-tuning training.
 
-DetGen is openly accessible on GitHub. 
-%It also shows that DetGen offers strong insights into traffic micro-structures and their effect on traffic models, and allows researchers to analyse the particular characteristics of events that lead to false-positives or model failure as well as their effect on model training.
+DetGen, the tool we used to control traffic microstructures with, is openly accessible on GitHub and is discussed in \cite{clausen2020traffic}. 
+%It also shows that DetGen offers strong insights into traffic microstructures and their effect on traffic models, and allows researchers to analyse the particular characteristics of events that lead to false-positives or model failure as well as their effect on model training.
 
-
-%we proposed DetGen, a framework aimed at improving researchers understanding of traffic micro-structures and their respective effect on traffic models in order to close the \emph{semantic gap} described by Sommer and Paxson \cite{sommer2010outside}. DetGen allows reproducible traffic generation experiments that allow the control and monitoring different traffic shaping aspects while delivering data that is truthful to real-world structures. Our framework achieves this through containerised applications and corresponding process and traffic separation, meticulous attention to the corresponding generating activities and their facets, and the careful emulation and control of external effects. Currently, DetGen produces traffic for 29 different activities.
+%we proposed DetGen, a framework aimed at improving researchers understanding of traffic microstructures and their respective effect on traffic models in order to close the \emph{semantic gap} described by Sommer and Paxson \cite{sommer2010outside}. DetGen allows reproducible traffic generation experiments that allow the control and monitoring different traffic shaping aspects while delivering data that is truthful to real-world structures. Our framework achieves this through containerised applications and corresponding process and traffic separation, meticulous attention to the corresponding generating activities and their facets, and the careful emulation and control of external effects. Currently, DetGen produces traffic for 29 different activities.
 
 %We verified the improvements regarding reproducibility and traffic control of DetGen compared to traditional VM-setups in an experiment as well as the fidelity of the generated traffic to real-world characteristics in another experiment. Especially regarding the exclusion of background traffic and corresponding connection sequence structures, DetGen outperformed traditional setups significantly. In terms of traffic diversity, DetGen achieved significantly better results than current state-of-the-art NIDS-datasets.
 
@@ -288,19 +356,19 @@ DetGen is openly accessible on GitHub.
 %We verified the realism of the generated traffic and the corresponding ground truth information with two experiments, and demonstrated the usefulness of the framework in another experiment.
 %Presently, our framework consists of 29 scenarios capable of producing benign and malicious network traffic. Several of these scenarios, such as the \emph{BitTorrent} or the \emph{Stepping-Stone} scenario, provide novel traffic data of protocols or behaviours that has not been widely available to researchers previously.
 
-\subsection{Models suitable for probing}
 
 
 
-Refining the ability of classifiers to identify traffic characteristics related to particular activities can lead to privacy infringements or even discrimination against users or traffic types. It is therefore important to also investigate how applications can implement privacy-enhancing measures that conceal traffic characteristics related to particular content or sensitive applications, such as proposed by Wang et al. \cite{wang2017walkie}.
 
 
 \subsection{Difficulties and limitations}
 
 %DetGen is building network traffic datasets from a small-scale level up by coalescing traffic from different fine-grained activities together. 
-%While the control of traffic micro-structures helps to understand models that perform on a packet- or connection-level, it does not replicate realistic network-wide temporal structures, such as port usage distributions or long-term temporal activity. The probing of models operating on aggregated, behavioural, or long-term features is therefore not effective, and variation in these quantities would have to be statistically estimated from other real-world traffic beforehand to allow our framework to emulate such behaviour reliably. Other datasets such as UGR-16 use this approach to fuse real-world and synthetic traffic and are currently better suited to build models of large-scale traffic structures.
+%While the control of traffic microstructures helps to understand models that perform on a packet- or connection-level, it does not replicate realistic network-wide temporal structures, such as port usage distributions or long-term temporal activity. The probing of models operating on aggregated, behavioural, or long-term features is therefore not effective, and variation in these quantities would have to be statistically estimated from other real-world traffic beforehand to allow our framework to emulate such behaviour reliably. Other datasets such as UGR-16 use this approach to fuse real-world and synthetic traffic and are currently better suited to build models of large-scale traffic structures.
 
-Controlling traffic shaping factors artificially can exaggerate some traffic characteristics in unrealistic ways and thus both affect the training phase of a model as well as tilt the actual detection performance of a model in either direction. Additionally, the artificial randomisation of traffic shaping factors can currently not generate the traffic diversity encountered in real-life traffic and thus only aid at exploring model limits extensively. The lack of realistic traffic heterogeneity however is at the moment significantly more pronounced in commonly used network intrusion datasets such as the CICIDS-17 dataset, where the vast majority of successful FTP-transfers consist of a client downloading a single text file that contains the Wikipedia page for ‘Encryption’.
+Controlling traffic shaping factors artificially can exaggerate some traffic characteristics in unrealistic ways and thus both affect the training phase of a model as well as tilt the actual detection performance of a model in either direction. Additionally, the artificial randomisation of traffic shaping factors can currently not generate the traffic diversity encountered in real-life traffic, something that is however significantly more pronounced in commonly used network intrusion datasets such as the CICIDS-17 dataset, where the majority of successful FTP-transfers download the Wikipedia page for ‘Encryption’.
+
+Refining the ability of classifiers to identify traffic characteristics related to particular activities can lead to privacy infringements or even discrimination against users or traffic types. It is therefore important to also investigate how applications can implement privacy-enhancing measures that conceal traffic characteristics, such as proposed by Wang et al. \cite{wang2017walkie}.
 
 %We paid meticulous attention to enable control over as many traffic impact factors as possible. However, DetGen is currently only offering insufficient control over underlying application-layer implementations such as TLS 1.3 vs 1.2. In theory, it should be unproblematic to provide containers with different implementations for each scenario to provide this control. However we faced difficulties to compile containers in a suitable manner and are currently investigating, how to improve DetGen on this shortcoming.
 

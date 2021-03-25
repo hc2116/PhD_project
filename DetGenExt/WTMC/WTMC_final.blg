@@ -1,46 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2020)
-Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
-The top-level auxiliary file: WTMC_final.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: WTMC_final.aux
 The style file: abbrv.bst
 Database file #1: ../DetGen_ext.bib
-You've used 18 entries,
-            2118 wiz_defined-function locations,
-            600 strings with 7492 characters,
-and the built_in function-call counts, 7409 in all, are:
-= -- 726
-> -- 372
-< -- 8
-+ -- 150
-- -- 128
-* -- 504
-:= -- 1169
-add.period$ -- 58
-call.type$ -- 18
-change.case$ -- 118
-chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 295
-empty$ -- 571
-format.name$ -- 128
-if$ -- 1599
-int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 17
-newline$ -- 92
-num.names$ -- 36
-pop$ -- 145
-preamble$ -- 1
-purify$ -- 100
-quote$ -- 0
-skip$ -- 223
-stack$ -- 0
-substring$ -- 451
-swap$ -- 99
-text.length$ -- 8
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 72
-warning$ -- 0
-while$ -- 67
-width$ -- 20
-write$ -- 198
+Warning--empty booktitle in clausen2021Controlling
+(There was 1 warning)

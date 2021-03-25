@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {subsection}{\numberline {1.1}Central Research questions}{1}
+\contentsline {subsection}{\numberline {1.2}Motivation}{2}
+\contentsline {subsubsection}{\numberline {1.2.1}Relevance}{2}
+\contentsline {subsection}{\numberline {1.3}Thesis overview}{2}
+\contentsline {subsection}{\numberline {1.4}Background}{2}
+\contentsline {subsection}{\numberline {1.5}Network traffic}{2}
+\contentsline {subsection}{\numberline {1.6}Intrusion detection}{3}
+\contentsline {subsection}{\numberline {1.7}Intrusion Detection Systems}{4}
+\contentsline {subsection}{\numberline {1.8}Anomaly detection}{6}
+\contentsline {subsubsection}{\numberline {1.8.1}Anomaly detection and NIDS}{7}
+\contentsline {section}{\numberline {2}Controlling traffic and corresponding microstructures}{8}
+\contentsline {section}{\numberline {3}How traffic models are susceptible to microstructures}{8}
+\contentsline {subsection}{\numberline {3.1}Models that rely explicitely on microstructure modelling}{8}
+\contentsline {section}{\numberline {4}Capturing traffic microstructures on a flow-level with a bidirectional LSTM}{8}
+\contentsline {section}{\numberline {5}Capturing traffic microstructures on a packet-level with a LSTM-encoder}{8}
+\contentsline {section}{\numberline {6}Thesis plan}{8}
