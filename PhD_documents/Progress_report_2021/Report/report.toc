@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Research progress in the last year}{1}
+\contentsline {subsection}{\numberline {1.1}DetGen framework}{1}
+\contentsline {subsection}{\numberline {1.2}Short-term contextual model of network flows using LSTM networks}{2}
+\contentsline {subsection}{\numberline {1.3}Stepping stone detection}{3}
+\contentsline {section}{\numberline {2}Future plans}{4}
+\contentsline {subsection}{\numberline {2.1}Challenges with publishing in Network Anomaly Detection and ACSAC conference}{4}
+\contentsline {subsection}{\numberline {2.2}BT project}{5}
+\contentsline {subsection}{\numberline {2.3}Submission of Stepping stone project and negotiation phase model}{5}
+\contentsline {subsection}{\numberline {2.4}QUIC anomaly detection}{5}
+\contentsline {subsection}{\numberline {2.5}Service relay detection}{6}
+\contentsline {subsection}{\numberline {2.6}Extension of Docker framework}{7}
+\contentsline {section}{\numberline {3}Thesis plan}{8}
+\contentsline {subsection}{\numberline {3.1}Thesis completion plan}{10}
