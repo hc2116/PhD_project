@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  27 MAR 2021 17:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  5 APR 2021 23:21
 entering extended mode
 **./report.tex
 (report.tex
@@ -275,15 +275,14 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
- [1
-
-{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<images/Eva_Prob.png, id=8, 606.76688pt x 248.42813pt>
+<images/Eva_Prob.png, id=1, 606.76688pt x 248.42813pt>
 File: images/Eva_Prob.png Graphic file (type png)
 <use images/Eva_Prob.png>
 Package pdftex.def Info: images/Eva_Prob.png  used on input line 63.
 (pdftex.def)             Requested size: 426.79135pt x 174.74382pt.
+ [1
 
+{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 Overfull \hbox (17.14647pt too wide) in paragraph at lines 70--70
 []\OT1/cmr/bx/n/14.4 Short-term con-tex-tual model of net-work flows us-ing LST
 M
@@ -300,45 +299,70 @@ File: images/LSTM_design_bi2.jpg Graphic file (type jpg)
 <use images/LSTM_design_bi2.jpg>
 Package pdftex.def Info: images/LSTM_design_bi2.jpg  used on input line 88.
 (pdftex.def)             Requested size: 209.1301pt x 157.00954pt.
- [3 <./images/traffic_sequence.png> <./images/LSTM_design_bi2.jpg>]
-<images/Noevasion_4nodes-1.pdf, id=18, 578.16pt x 180.675pt>
+<images/Noevasion_4nodes-1.pdf, id=15, 578.16pt x 180.675pt>
 File: images/Noevasion_4nodes-1.pdf Graphic file (type pdf)
 <use images/Noevasion_4nodes-1.pdf>
 Package pdftex.def Info: images/Noevasion_4nodes-1.pdf  used on input line 108.
 
 (pdftex.def)             Requested size: 384.1096pt x 120.03432pt.
- [4 <./images/Noevasion_4nodes-1.pdf>] [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 158.
+ [3 <./images/traffic_sequence.png> <./images/LSTM_design_bi2.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 131.
 
 
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 158.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 131.
+<images/Proxy1.png, id=19, 516.42938pt x 545.03625pt>
+File: images/Proxy1.png Graphic file (type png)
+<use images/Proxy1.png>
+Package pdftex.def Info: images/Proxy1.png  used on input line 149.
+(pdftex.def)             Requested size: 256.07741pt x 270.27199pt.
+<images/Proxy2.png, id=20, 319.1925pt x 523.9575pt>
+File: images/Proxy2.png Graphic file (type png)
+<use images/Proxy2.png>
+Package pdftex.def Info: images/Proxy2.png  used on input line 150.
+(pdftex.def)             Requested size: 162.18279pt x 266.22342pt.
 
-[6] [7] [8] [9] [10] (report.bbl [11] [12]) [13] (report.aux)
+[4 <./images/Noevasion_4nodes-1.pdf>] [5 <./images/Proxy1.png> <./images/Proxy2
+.png>]
+Overfull \hbox (0.51773pt too wide) in paragraph at lines 196--197
+[]\OT1/cmr/m/it/12 Better Anomaly De-tec-tion for Ac-cess At-tacks Us-ing Deep 
+Bidi-rec-tional LSTMs\OT1/cmr/m/n/12 ,
+ []
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+[6]
+Overfull \hbox (7.36057pt too wide) in paragraph at lines 203--204
+[]\OT1/cmr/m/it/12 Examining traf-fic mi-crostruc-tures to im-prove model de-ve
+l-op-ment\OT1/cmr/m/n/12 , Henry Clausen
+ []
 
- ) 
+[7]
+Overfull \hbox (10.00276pt too wide) in paragraph at lines 265--267
+[]\OT1/cmr/bx/n/12 Flow-level se-man-tic anomaly-model and struc-tures it can l
+earn/detect\OT1/cmr/m/n/12 .
+ []
+
+[8] [9] [10] (report.aux) ) 
 Here is how much of TeX's memory you used:
- 3739 strings out of 492970
- 58304 string characters out of 3126595
- 134320 words of memory out of 3000000
- 7575 multiletter control sequences out of 15000+200000
+ 3724 strings out of 492970
+ 58044 string characters out of 3126595
+ 134144 words of memory out of 3000000
+ 7561 multiletter control sequences out of 15000+200000
  10077 words of font info for 35 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,6n,40p,829b,279s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmr12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/henry/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/henry/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (13 pages, 256379 bytes).
+ 42i,6n,40p,818b,279s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/henry/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/henry/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/henry
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C
+:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmti12.pfb>
+Output written on report.pdf (10 pages, 341016 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
+ 66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
