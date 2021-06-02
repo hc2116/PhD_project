@@ -1,5 +1,5 @@
-\documentclass[conference]{IEEEtran}
-\IEEEoverridecommandlockouts
+\documentclass[10pt,conference]{IEEEtran}
+%\IEEEoverridecommandlockouts
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
@@ -16,6 +16,7 @@
 \usepackage{multicol}
 \usepackage{csquotes}
 
+\hyphenation{op-tical net-works semi-conduc-tor}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -99,7 +100,7 @@ Scientific machine learning model development requires both \textbf{model evalua
 \begin{figure}
 \centering
 \includegraphics[width=0.4\textwidth]{images/Eva_Prob2.png}
-\caption{Comparison between numerical model evaluation and model probing with specifically controlled data characteristics, indicated as colours.}\label{fig:Subspace_disp}
+\caption{Comparison between numerical model evaluation and model probing with specifically controlled data characteristics, indicated as colours.}\label{fig:Motiv}
 \end{figure}
 
 Recently, machine-learning methods have been trained on large datasets to classify raw traffic, often using simple malicious/benign labels. These models usually classify traffic traces as a sequence of packets within a connection (DeepCorr \cite{nasr2018deepcorr}, Kitsune \cite{mirsky2018kitsune}), or as a short sequence of connections (Radford et al. \cite{radford2018network}). Designs vary from models that make binary decisions by recognising characteristic patterns to models that identify anomalous traffic by learning generalised structures for all encountered benign sequences.

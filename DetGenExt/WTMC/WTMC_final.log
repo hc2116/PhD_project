@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  27 MAR 2021 15:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  19 APR 2021 16:50
 entering extended mode
 **./WTMC_final.tex
 (WTMC_final.tex
@@ -110,9 +110,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \IEEEPARstartletwidth=\dimen125
 \c@IEEEbiography=\count94
 \@IEEEtranrubishbin=\box27
-)
-** ATTENTION: Overriding command lockouts (line 2).
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cite\cite.sty"
+) ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cite\cite.sty"
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
@@ -588,31 +586,29 @@ File: csquotes.cfg
 ))
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
- (WTMC_final.aux
-
-LaTeX Warning: Label `fig:Subspace_disp' multiply defined.
-
-)
+ (WTMC_final.aux)
 \openout1 = `WTMC_final.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 29.
- ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 30.
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    ... okay on input line 30.
+
 -- Lines per column: 56 (exact).
 
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
@@ -697,12 +693,12 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count145
-LaTeX Font Info:    Try loading font information for U+msa on input line 51.
+LaTeX Font Info:    Try loading font information for U+msa on input line 52.
 
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 51.
+LaTeX Font Info:    Try loading font information for U+msb on input line 52.
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
@@ -712,92 +708,92 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <images/Eva_Prob2.png, id=11, 515.67656pt x 679.78969pt>
 File: images/Eva_Prob2.png Graphic file (type png)
 <use images/Eva_Prob2.png>
-Package pdftex.def Info: images/Eva_Prob2.png  used on input line 101.
+Package pdftex.def Info: images/Eva_Prob2.png  used on input line 102.
 (pdftex.def)             Requested size: 206.39685pt x 272.07701pt.
  [2 <./images/Eva_Prob2.png>]
 <images/LSTM_classi.png, id=15, 376.40625pt x 312.41719pt>
 File: images/LSTM_classi.png Graphic file (type png)
 <use images/LSTM_classi.png>
-Package pdftex.def Info: images/LSTM_classi.png  used on input line 231.
+Package pdftex.def Info: images/LSTM_classi.png  used on input line 232.
 (pdftex.def)             Requested size: 232.19843pt x 192.72893pt.
 <images/LSTM_activation_new.png, id=16, 514.92375pt x 348.55219pt>
 File: images/LSTM_activation_new.png Graphic file (type png)
 <use images/LSTM_activation_new.png>
-Package pdftex.def Info: images/LSTM_activation_new.png  used on input line 247
+Package pdftex.def Info: images/LSTM_activation_new.png  used on input line 248
 .
 (pdftex.def)             Requested size: 232.19843pt x 157.17145pt.
  [3 <./images/LSTM_classi.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 279--279
+Underfull \hbox (badness 10000) in paragraph at lines 280--280
 []|\OT1/ptm/m/n/8 Get-req. NG-INX,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--279
+Underfull \hbox (badness 10000) in paragraph at lines 280--280
 []|\OT1/ptm/m/n/8 Two hosts,
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 279--279
+Underfull \hbox (badness 2245) in paragraph at lines 280--280
 []|\OT1/ptm/m/n/8 Command 1,
  []
 
 
-Overfull \hbox (3.02122pt too wide) in paragraph at lines 280--280
+Overfull \hbox (3.02122pt too wide) in paragraph at lines 281--281
 []|\OT1/ptm/m/n/8 Results:| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 283--283
+Underfull \hbox (badness 10000) in paragraph at lines 284--284
 []|\OT1/ptm/m/n/8 Four hosts,
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 283--283
+Underfull \hbox (badness 2245) in paragraph at lines 284--284
 []|\OT1/ptm/m/n/8 Command 2,
  []
 
 
-Overfull \hbox (3.02122pt too wide) in paragraph at lines 284--284
+Overfull \hbox (3.02122pt too wide) in paragraph at lines 285--285
 []|\OT1/ptm/m/n/8 Results:| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--287
+Underfull \hbox (badness 10000) in paragraph at lines 288--288
 []|\OT1/ptm/m/n/8 Post-req. Apache,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--287
+Underfull \hbox (badness 10000) in paragraph at lines 288--288
 []|\OT1/ptm/m/n/8 Two hosts,
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 287--287
+Underfull \hbox (badness 2245) in paragraph at lines 288--288
 []|\OT1/ptm/m/n/8 Command 3,
  []
 
 
-Overfull \hbox (3.02122pt too wide) in paragraph at lines 288--288
+Overfull \hbox (3.02122pt too wide) in paragraph at lines 289--289
 []|\OT1/ptm/m/n/8 Results:| 
  []
 
 
-Underfull \hbox (badness 2573) in paragraph at lines 291--291
+Underfull \hbox (badness 2573) in paragraph at lines 292--292
 []|\OT1/ptm/m/n/8 Multi-req. Apache,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 291--291
+Underfull \hbox (badness 10000) in paragraph at lines 292--292
 []|\OT1/ptm/m/n/8 Four hosts,
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 291--291
+Underfull \hbox (badness 2245) in paragraph at lines 292--292
 []|\OT1/ptm/m/n/8 Command 4,
  []
 
 
-Overfull \hbox (3.02122pt too wide) in paragraph at lines 292--292
+Overfull \hbox (3.02122pt too wide) in paragraph at lines 293--293
 []|\OT1/ptm/m/n/8 Results:| 
  []
 
@@ -805,11 +801,11 @@ Overfull \hbox (3.02122pt too wide) in paragraph at lines 292--292
 <images/traffic_dispersion.png, id=27, 367.3725pt x 342.5297pt>
 File: images/traffic_dispersion.png Graphic file (type png)
 <use images/traffic_dispersion.png>
-Package pdftex.def Info: images/traffic_dispersion.png  used on input line 314.
+Package pdftex.def Info: images/traffic_dispersion.png  used on input line 315.
 
 (pdftex.def)             Requested size: 258.0pt x 240.56882pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 314--315
+Overfull \hbox (6.0pt too wide) in paragraph at lines 315--316
  [][] 
  []
 
@@ -817,10 +813,10 @@ Overfull \hbox (6.0pt too wide) in paragraph at lines 314--315
 File: images/Subspace_projection_new3.png Graphic file (type png)
 <use images/Subspace_projection_new3.png>
 Package pdftex.def Info: images/Subspace_projection_new3.png  used on input lin
-e 331.
+e 332.
 (pdftex.def)             Requested size: 258.0pt x 274.01778pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 331--332
+Overfull \hbox (6.0pt too wide) in paragraph at lines 332--333
  [][] 
  []
 
@@ -836,32 +832,28 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6 <./images/Subspace_projection_new3.png>] (WTMC_final.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+[6 <./images/Subspace_projection_new3.png>] (WTMC_final.aux) ) 
 Here is how much of TeX's memory you used:
- 8154 strings out of 492970
- 124141 string characters out of 3126595
- 213598 words of memory out of 3000000
- 11898 multiletter control sequences out of 15000+200000
+ 8158 strings out of 492970
+ 124159 string characters out of 3126595
+ 214095 words of memory out of 3000000
+ 11899 multiletter control sequences out of 15000+200000
  45364 words of font info for 94 fonts, out of 3000000 for 9000
- 1141 hyphenation exceptions out of 8191
+ 1144 hyphenation exceptions out of 8191
  42i,12n,40p,1202b,273s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
-}<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmmi10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/henry/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/henry/AppData/Local/P
-rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/henry/App
-Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Use
-rs/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:
-/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pf
-b><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8
-a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/u
-tmri8a.pfb>
+{C:/Users/henry/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/henry/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/U
+sers/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmr7.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr9.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/henry/AppData/Local/Programs
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/henry/AppData/Lo
+cal/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/henry/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/henry/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/hen
+ry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
 Output written on WTMC_final.pdf (6 pages, 297936 bytes).
 PDF statistics:
  71 PDF objects out of 1000 (max. 8388607)
