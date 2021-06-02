@@ -1,0 +1,48 @@
+
+are there new vectors to stepping-stone problem?
+chase up michael collins
+
+more people working from home, more opportunity to 
+
+paint in a more positive light
+
+
+netcat not terminal emulation program
+can web-applications be used? big attack vector
+how do they get set up?
+
+be more expansive in introduction
+evading being caught in the act
+chaff perturbations win
+
+always talk about containers before docker
+talk about cauchy distributions very briefly
+has cauchy distribution been used before on human modelling
+
+talk about flow splitting a bit
+
+Crescenzo add date in table
+introduction contribution more punchy in another subsection
+
+collapse introduction and merge it with the background, start paper with what I did
+related work at the end of the paper?
+
+produce bullet points for this contribution
+say more directly that surveys did not provide evaluation
+"we set out to review the "
+"this is a problem that has been studied for over 15 years, yet the body of literature does not provide an overview of the capabilites ... In this paper, we set out to do this ...."
+
+round-trip-times spelling mistake
+
+put beahaviour-based stuff at the end of the paper
+
+evaluation data not subsection
+
+30,000 table not necessary (2 and 3)
+
+a bit difficult to see high-level idea of the data assembly
+give overview at the beginning, design criteria
+
+caption and title of figures
+
+say why the result about chaff contradicts other papers
