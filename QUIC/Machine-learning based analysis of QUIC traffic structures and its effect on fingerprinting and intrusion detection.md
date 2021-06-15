@@ -3,7 +3,7 @@
 
 
 #### Background:
-QUIC traffic emulates TCP-like behaviour via UDP, which contains less information in the visible metadata. It furthermore significantly extends parallel multiplexing of transfers in one connections, which decreases the amount of opened connections by a browser to retrieve a webpage. Additionally, compression is used both on the HTTP3 layer as well as directly in QUIC (called QPACK). These three characteristics suggest that QUIC reveals less information about the transferred content and make traffic appear more uniformly across the breadth of QUIC traffic.
+QUIC traffic emulates TCP-like behaviour via UDP, which contains less information in the visible metadata. It furthermore significantly extends parallel multiplexing of transfers in one connection, which decreases the amount of opened connections by a browser to retrieve a webpage. Additionally, compression is used both on the HTTP3 layer as well as directly in QUIC (called QPACK). These three characteristics suggest that QUIC reveals less information about the transferred content and make traffic appear more uniformly across the breadth of QUIC traffic.
 
 On the other side, QUIC implementations are done in user space, allowing for differences across a broad spectrum of applications (Chrome vs Firefox, openssl vs boringssl, different versions of the same application) that could potentially be visible in the traffic structures and allow for device fingerprinting etc. 
 

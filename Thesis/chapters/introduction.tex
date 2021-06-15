@@ -61,12 +61,24 @@ This section motivates the research on traffic microstructures and corresponding
 
 Intrusion detection can be seen as a never ending arms-race between malicious actors on the one side that aim to access, manipulate, or damage computation infrastructure in a network, and the network operators, detection system providers and research community, on  the other. Traditionally the most common approach to network intrusion detection is based on detecting closely defined notions of attacks, known as \emph{attack signatures}. Since the late 1980's, signature based systems such as Snort or Bro \textcolor{red}{citation} have dominated the field of network intrusion detection due to high effectiveness, low false positive, and good computational efficiency. Due to their design, signature-based methods can only alert on known issues that had been categorised as threats on a signature list; zero-day attacks remain a \textcolor{red}{large vulnerability} of traditional IDSs.
 
-In the 1990's, anomaly-detection emerged as a complementary detection tool by training machine learning or statistical analysis on large traffic datasets in order to detect variants on existing attacks or entirely new classes of attacks. However, inconsistent detection results and high false positive rates lead many administrators to believe machine-learning based intrusion detection to be unreliable and headed for a slow death.
+In the 1990's, anomaly-detection emerged as a complementary detection tool by training machine learning or statistical analysis on large traffic datasets in order to detect variants on existing attacks or entirely new classes of attacks. However, inconsistent detection results and high false positive rates lead many administrators to believe machine-learning based intrusion detection to be unreliable, computationally too expensive, and headed for a slow death.
 In 2010, Sommer and Paxson discuss a number of reasons why machine-learning based detection methods failed to provide similar levels of success as their signature-based counterpart.
 
+However, ...
+
+Machine-learning and anomaly-based intrusion detection solutions are finding more widespread industrial application in products from companies such as Crowdstrike, Darktrace, \textcolor{red}{citation}. Furthermore, the rise of cloud computing has shifted the computational burden of complex intrusion detection systems from the monitored hosts to the cloud.
 
 
-\subsubsection{Traffic encryption and microstructures}
+\subsubsection{SPI and microstructures}
+
+Many ISP solutions rely on \emph{deep packet inspection} (DPI), where payloads of packets are scanned for attack signatures or anomalies. While this offers a direct view at the content of communications, it raises several problems: The computational overhead of DPI is large and scales directly with the amount of transferred data. Furthermore, DPI infringes user privacy when scanning the content of messages, potentially allowing the operator to access the vast amount of personal information sent over the internet. Finally, DPI is incapable of processing encrypted traffic, an issue that malicious actors increasingly exploit. \textcolor{red}{Some IDS-providers have started to decrypt any transferred traffic in a man-in-the-middle manner, but the ethical legitimacy of such approaches are at the very least controversial.}
+
+\emph{Shallow packet inspection} (SPI) in contrast only inspects packet headers and is therefore computationally less expensive as well as robust against encryption and to some degree application evolution \textcolor{red}{citation}. SPI is used both by rule- and signature-based systems such as Snort, as well as by an ever increasing number of machine-learning based methods that attempt to make broad generalities about traffic solely from evaluating packet headers. \textcolor{red}{insert some statistic how many}.
+
+For this, many traffic classification and anomaly-detection approaches leverage small-scale structures visible in the sizes, interarrival times, flags, port, etc. of packet sequences, which we call \emph{traffic microstructures}. \textcolor{red}{insert image and example here}. 
+
+However, there exists no systematic description of these structures, and their usage is mostly only justified from high-level argumentation without any examination about the influences on them or their prevalence in the respective datasets used for evaluation. \textcolor{red}{some additional arguments about model development?}
+
 
 
 
