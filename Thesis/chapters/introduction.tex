@@ -1,0 +1,89 @@
+
+A significant threat to today's computer networks are attacks that aim to gain unauthorised access to sensitive infrastructure and information, especially as the increasing rate of zero-day attacks \cite{zeroday} threatens the traditional model of signature-based network intrusion detection. Such attacks are used to gain control or access information on remote devices by exploiting vulnerabilities in network services, and are involved in many of today's data breaches \cite{mandiant2015trends}.
+Anomaly-based intrusion detection methods are aimed to decrease the threat of zero-day attacks by not relying \textcolor{red}{...} on libraries of known attack signatures, but their success is currently restricted to the detection of high-volume attacks using aggregated traffic features. Recent evaluations show that the current anomaly-based network intrusion detection methods fail to detect remote access attacks reliably \cite{nisioti2018intrusion}. 
+
+Network intrusion detection models such as DeepCorr or Kitsune \textcolor{red}{citation} increasingly rely on learning \textcolor{red}{traffic microstructures} that consist of pattern sequences in features such as interarrival time, size, or packet flags. However, there exist \textcolor{red}{little to no} research that examines common variations of benign traffic microstructures, and how attacks commonly perturb them. \textcolor{red}{Something about datasets incsufficient}. 
+Sommer and Paxson \textcolor{red}{citation} have already \textcolor{red}{should this be in?}
+
+The aim of this thesis is to improve the understanding of traffic microstrucutres and their shaping, and to define and propose methodologies to develop machine-learning based anomaly detection methods that leverage traffic microstructures effectively.
+
+
+
+\section{Central Research questions}\label{Sec:Reseach_questions}
+
+\begin{rquestion}\ \\ 
+How well-structured is the space of microstructures observed in the traffic of a machine or a network? To what degree are these microstructures a result of specific computational activities that are of interest for traffic classification and intrusion detection, and how much are they affected by other external variables?
+%does noise or input variation blur the observable contextual differences between clearly distinct actions?
+
+%\begin{enumerate}
+%\item How can we scientifically quantify closeness between individual actions, and does it translate into the similarity of corresponding traffic structures? 
+%\end{enumerate}
+\end{rquestion}
+
+
+
+\begin{rquestion}\ \\
+To what degree can relevant microstructures in network traffic be captured in a model from a training dataset, and how can we achieve this? How can a model adapt to changes of structures in benign traffic?
+%\begin{enumerate}
+%\item Which parts of network traffic both contain important information and can be represented by a model?
+%\item Can be combine models that act at different traffic levels to enhance the amount of context given by the data? 
+%\item Can we efficiently disentangle overlaying network flows to isolate otherwise distorted flow groups corresponding to similar actions? 
+%\item What is an efficient and realistic way to incorporate other data sources into the modelling procedure? How can this input enhance the learning process and the representation detail of a traffic model? 
+%\item How can a model adapt to changes of normal contextual structures?
+%\end{enumerate}
+\end{rquestion}
+
+\begin{rquestion}\ \\
+What is a meaningful representation of traffic microstructures? What requirements must a labelled traffic generation framework fulfill to provide realistic data?
+%\begin{enumerate}
+%\item What requirements must a labelled traffic generation framework fulfill to provide realistic data?
+%\item Can we evaluate the traffic representation of a model through its ability to identify contextual closeness between traffic instances correctly?
+%\item How can we quantify the capability of a given traffic model to identify new computational actions on a machine?
+%\end{enumerate}
+\end{rquestion}
+
+
+\begin{rquestion}\ \\
+What will a contextual model be able to prevent? 
+%\begin{enumerate}
+%\item What kind of attacks will necessarily show contextual anomalies, and which will not?
+%\item Can an adversary adapt his attacks to avoid detection? How can we prevent this?
+%\end{enumerate}
+\end{rquestion}
+
+
+
+\section{Motivation}
+
+This section motivates the research on traffic microstructures and corresponding models and generation processes.
+
+\subsection{The case for machine learning and anomaly-based intrusion detection}
+
+Intrusion detection can be seen as a never ending arms-race between malicious actors on the one side that aim to access, manipulate, or damage computation infrastructure in a network, and the network operators, detection system providers and research community, on  the other. Traditionally the most common approach to network intrusion detection is based on detecting closely defined notions of attacks, known as \emph{attack signatures}. Since the late 1980's, signature based systems such as Snort or Bro \textcolor{red}{citation} have dominated the field of network intrusion detection due to high effectiveness, low false positive, and good computational efficiency. Due to their design, signature-based methods can only alert on known issues that had been categorised as threats on a signature list; zero-day attacks remain a \textcolor{red}{large vulnerability} of traditional IDSs.
+
+In the 1990's, anomaly-detection emerged as a complementary detection tool by training machine learning or statistical analysis on large traffic datasets in order to detect variants on existing attacks or entirely new classes of attacks. However, inconsistent detection results and high false positive rates lead many administrators to believe machine-learning based intrusion detection to be unreliable and headed for a slow death.
+In 2010, Sommer and Paxson discuss a number of reasons why machine-learning based detection methods failed to provide similar levels of success as their signature-based counterpart.
+
+
+
+\subsubsection{Traffic encryption and microstructures}
+
+
+
+\subsection{Dataset problems}
+
+\subsection{Lack of model development}
+
+
+
+Newer models clearly leverage microstructures
+
+However, traffic opaque 
+
+...
+
+\subsubsection{Relevance}
+
+\subsection{Thesis overview}
+
+

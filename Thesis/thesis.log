@@ -1,21 +1,22 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  24 MAR 2021 17:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2019.1.2)  14 JUN 2021 19:44
 entering extended mode
 **./thesis.tex
 (thesis.tex
 LaTeX2e <2018-04-01> patch level 5
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls"
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size12.clo"
 File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
@@ -42,9 +43,9 @@ Package ifvtex Info: VTeX not detected.
 sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count88
-\Gm@cntv=\count89
-\c@Gm@tempcnt=\count90
+\Gm@cnth=\count89
+\Gm@cntv=\count90
+\c@Gm@tempcnt=\count91
 \Gm@bindingoffset=\dimen103
 \Gm@wd@mp=\dimen104
 \Gm@odd@mp=\dimen105
@@ -56,8 +57,12 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@dimlist=\toks15
 
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
-cfg")) ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty
-"
+cfg"))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2018/04/06 v1.3b Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+) ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -104,6 +109,179 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 \Gin@req@height=\dimen111
 \Gin@req@width=\dimen112
 )
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\textcomp.sty"
+Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encoding TS1
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1enc.dfu"
+File: ts1enc.dfu 2018/04/05 v1.2c UTF-8 support for inputenc
+   defining Unicode char U+00A2 (decimal 162)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A5 (decimal 165)
+   defining Unicode char U+00A6 (decimal 166)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AC (decimal 172)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B0 (decimal 176)
+   defining Unicode char U+00B1 (decimal 177)
+   defining Unicode char U+00B2 (decimal 178)
+   defining Unicode char U+00B3 (decimal 179)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B5 (decimal 181)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00B9 (decimal 185)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+00BC (decimal 188)
+   defining Unicode char U+00BD (decimal 189)
+   defining Unicode char U+00BE (decimal 190)
+   defining Unicode char U+00D7 (decimal 215)
+   defining Unicode char U+00F7 (decimal 247)
+   defining Unicode char U+0192 (decimal 402)
+   defining Unicode char U+02C7 (decimal 711)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+02DD (decimal 733)
+   defining Unicode char U+0E3F (decimal 3647)
+   defining Unicode char U+2016 (decimal 8214)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+203B (decimal 8251)
+   defining Unicode char U+203D (decimal 8253)
+   defining Unicode char U+2044 (decimal 8260)
+   defining Unicode char U+204E (decimal 8270)
+   defining Unicode char U+2052 (decimal 8274)
+   defining Unicode char U+20A1 (decimal 8353)
+   defining Unicode char U+20A4 (decimal 8356)
+   defining Unicode char U+20A6 (decimal 8358)
+   defining Unicode char U+20A9 (decimal 8361)
+   defining Unicode char U+20AB (decimal 8363)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+20B1 (decimal 8369)
+   defining Unicode char U+2103 (decimal 8451)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2117 (decimal 8471)
+   defining Unicode char U+211E (decimal 8478)
+   defining Unicode char U+2120 (decimal 8480)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+2127 (decimal 8487)
+   defining Unicode char U+212E (decimal 8494)
+   defining Unicode char U+2190 (decimal 8592)
+   defining Unicode char U+2191 (decimal 8593)
+   defining Unicode char U+2192 (decimal 8594)
+   defining Unicode char U+2193 (decimal 8595)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2422 (decimal 9250)
+   defining Unicode char U+25E6 (decimal 9702)
+   defining Unicode char U+25EF (decimal 9711)
+   defining Unicode char U+266A (decimal 9834)
+   defining Unicode char U+FEFF (decimal 65279)
+))
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\colortbl\colortbl.
+sty"
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
+\col@sep=\dimen113
+\ar@mcellbox=\box26
+\extrarowheight=\dimen114
+\NC@list=\toks18
+\extratabsurround=\skip43
+\backup@length=\skip44
+\ar@cellbox=\box27
+)
+\everycr=\toks19
+\minrowclearance=\skip45
+)
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\subcaption
 .sty"
 Package: subcaption 2019/09/01 v1.3a Sub-captions (AR)
@@ -116,42 +294,591 @@ Package: caption 2019/09/01 v3.3d Customizing captions (AR)
 ty"
 Package: caption3 2019/09/01 v1.8d caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 64.
-\captionmargin=\dimen113
-\captionmargin@=\dimen114
-\captionwidth=\dimen115
-\caption@tempdima=\dimen116
-\caption@indent=\dimen117
-\caption@parindent=\dimen118
-\caption@hangindent=\dimen119
+\captionmargin=\dimen115
+\captionmargin@=\dimen116
+\captionwidth=\dimen117
+\caption@tempdima=\dimen118
+\caption@indent=\dimen119
+\caption@parindent=\dimen120
+\caption@hangindent=\dimen121
 )
-\c@caption@flags=\count91
-\c@ContinuedFloat=\count92
+\c@caption@flags=\count92
+\c@ContinuedFloat=\count93
 )
-\c@subfigure=\count93
-\c@subtable=\count94
+\c@subfigure=\count94
+\c@subtable=\count95
 )
-\c@hypothesis=\count95
-\c@rquestion=\count96
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\multicol.sty
+"
+Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
+\c@tracingmulticols=\count96
+\mult@box=\box28
+\multicol@leftmargin=\dimen122
+\c@unbalance=\count97
+\c@collectmore=\count98
+\doublecol@number=\count99
+\multicoltolerance=\count100
+\multicolpretolerance=\count101
+\full@width=\dimen123
+\page@free=\dimen124
+\premulticols=\dimen125
+\postmulticols=\dimen126
+\multicolsep=\skip46
+\multicolbaselineskip=\skip47
+\partial@page=\box29
+\last@line=\box30
+\maxbalancingoverflow=\dimen127
+\mult@rightbox=\box31
+\mult@grightbox=\box32
+\mult@gfirstbox=\box33
+\mult@firstbox=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\c@columnbadness=\count102
+\c@finalcolumnbadness=\count103
+\last@try=\dimen128
+\multicolovershoot=\dimen129
+\multicolundershoot=\dimen130
+\mult@nat@firstbox=\box52
+\colbreak@box=\box53
+\mc@col@check@num=\count104
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\multirow\multirow.
+sty"
+Package: multirow 2018/08/03 v2.3 Span multiple rows of a table
+\multirow@colwidth=\skip48
+\multirow@cntb=\count105
+\multirow@dima=\skip49
+\bigstrutjot=\dimen131
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.st
+y"
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip50
+
+For additional information on amsmath, use the `?' option.
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.st
+y"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
+"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks20
+\ex@=\dimen132
+))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
+"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen133
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
+"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count106
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count107
+\leftroot@=\count108
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count109
+\DOTSCASE@=\count110
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box54
+\strutbox@=\box55
+\big@size=\dimen134
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count111
+\c@MaxMatrixCols=\count112
+\dotsspace@=\muskip11
+\c@parentequation=\count113
+\dspbrk@lvl=\count114
+\tag@help=\toks21
+\row@=\count115
+\column@=\count116
+\maxfields@=\count117
+\andhelp@=\toks22
+\eqnshift@=\dimen135
+\alignsep@=\dimen136
+\tagshift@=\dimen137
+\tagwidth@=\dimen138
+\totwidth@=\dimen139
+\lineht@=\dimen140
+\@envbody=\toks23
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks24
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb.s
+ty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.
+sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.
+sty"
+\lst@mode=\count118
+\lst@gtempboxa=\box56
+\lst@token=\toks25
+\lst@length=\count119
+\lst@currlwidth=\dimen141
+\lst@column=\count120
+\lst@pos=\count121
+\lst@lostspace=\dimen142
+\lst@width=\dimen143
+\lst@newlines=\count122
+\lst@lineno=\count123
+\lst@maxwidth=\dimen144
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.s
+ty"
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count124
+\lst@skipnumbers=\count125
+\lst@framebox=\box57
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.
+cfg"
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.
+sty"
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip53
+\f@nch@O@elh=\skip54
+\f@nch@O@erh=\skip55
+\f@nch@O@olh=\skip56
+\f@nch@O@orh=\skip57
+\f@nch@O@elf=\skip58
+\f@nch@O@erf=\skip59
+\f@nch@O@olf=\skip60
+\f@nch@O@orf=\skip61
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\background\backgro
+und.sty"
+Package: background 2014/03/04 v2.1 background material
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.st
+y"
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.
+tex"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xkeyval\xkvutils
+.tex"
+\XKV@toks=\toks26
+\XKV@tempa@toks=\toks27
+)
+\XKV@depth=\count126
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\frontendlayer\
+tikz.sty"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf
+.sty"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pgfr
+cs.sty"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pg
+futil-common.tex"
+\pgfutil@everybye=\toks28
+\pgfutil@tempdima=\dimen145
+\pgfutil@tempdimb=\dimen146
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pg
+futil-common-lists.tex"))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pg
+futil-latex.def"
+\pgfutil@abb=\box58
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty"
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pg
+frcs.code.tex"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\pgf.revision
+.tex")
+Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
+))
+Package: pgf 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf
+core.sty"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\systemlayer\pg
+fsys.sty"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\
+pgfsys.code.tex"
+Package: pgfsys 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pg
+fkeys.code.tex"
+\pgfkeys@pathtoks=\toks29
+\pgfkeys@temptoks=\toks30
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pg
+fkeysfiltered.code.tex"
+\pgfkeys@tmptoks=\toks31
+))
+\pgf@x=\dimen147
+\pgf@y=\dimen148
+\pgf@xa=\dimen149
+\pgf@ya=\dimen150
+\pgf@xb=\dimen151
+\pgf@yb=\dimen152
+\pgf@xc=\dimen153
+\pgf@yc=\dimen154
+\pgf@xd=\dimen155
+\pgf@yd=\dimen156
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count127
+\c@pgf@countb=\count128
+\c@pgf@countc=\count129
+\c@pgf@countd=\count130
+\t@pgf@toka=\toks32
+\t@pgf@tokb=\toks33
+\t@pgf@tokc=\toks34
+\pgf@sys@id@count=\count131
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\
+pgf.cfg"
+File: pgf.cfg 2020/01/08 v3.1.5b (3.1.5b)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\
+pgfsys-pdftex.def"
+File: pgfsys-pdftex.def 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\
+pgfsys-common-pdf.def"
+File: pgfsys-common-pdf.def 2020/01/08 v3.1.5b (3.1.5b)
+)))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\
+pgfsyssoftpath.code.tex"
+File: pgfsyssoftpath.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfsyssoftpath@smallbuffer@items=\count132
+\pgfsyssoftpath@bigbuffer@items=\count133
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\
+pgfsysprotocol.code.tex"
+File: pgfsysprotocol.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcore.code.tex"
+Package: pgfcore 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+.code.tex"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+calc.code.tex"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+util.code.tex")
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+parser.code.tex"
+\pgfmath@dimen=\dimen157
+\pgfmath@count=\count134
+\pgfmath@box=\box59
+\pgfmath@toks=\toks35
+\pgfmath@stack@operand=\toks36
+\pgfmath@stack@operation=\toks37
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+functions.code.tex"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+functions.basic.code.tex")
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+functions.trigonometric.code.tex")
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+functions.random.code.tex")
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+functions.comparison.code.tex")
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+functions.base.code.tex")
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+functions.round.code.tex")
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+functions.misc.code.tex")
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+functions.integerarithmetics.code.tex")))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+float.code.tex"
+\c@pgfmathroundto@lastzeros=\count135
+))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfint.
+code.tex")
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcorepoints.code.tex"
+File: pgfcorepoints.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@picminx=\dimen158
+\pgf@picmaxx=\dimen159
+\pgf@picminy=\dimen160
+\pgf@picmaxy=\dimen161
+\pgf@pathminx=\dimen162
+\pgf@pathmaxx=\dimen163
+\pgf@pathminy=\dimen164
+\pgf@pathmaxy=\dimen165
+\pgf@xx=\dimen166
+\pgf@xy=\dimen167
+\pgf@yx=\dimen168
+\pgf@yy=\dimen169
+\pgf@zx=\dimen170
+\pgf@zy=\dimen171
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcorepathconstruct.code.tex"
+File: pgfcorepathconstruct.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@path@lastx=\dimen172
+\pgf@path@lasty=\dimen173
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcorepathusage.code.tex"
+File: pgfcorepathusage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@shorten@end@additional=\dimen174
+\pgf@shorten@start@additional=\dimen175
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcorescopes.code.tex"
+File: pgfcorescopes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfpic=\box60
+\pgf@hbox=\box61
+\pgf@layerbox@main=\box62
+\pgf@picture@serial@count=\count136
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcoregraphicstate.code.tex"
+File: pgfcoregraphicstate.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgflinewidth=\dimen176
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcoretransformations.code.tex"
+File: pgfcoretransformations.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@pt@x=\dimen177
+\pgf@pt@y=\dimen178
+\pgf@pt@temp=\dimen179
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcorequick.code.tex"
+File: pgfcorequick.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcoreobjects.code.tex"
+File: pgfcoreobjects.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcorepathprocessing.code.tex"
+File: pgfcorepathprocessing.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcorearrows.code.tex"
+File: pgfcorearrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfarrowsep=\dimen180
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcoreshade.code.tex"
+File: pgfcoreshade.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@max=\dimen181
+\pgf@sys@shading@range@num=\count137
+\pgf@shadingcount=\count138
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcoreimage.code.tex"
+File: pgfcoreimage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcoreexternal.code.tex"
+File: pgfcoreexternal.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfexternal@startupbox=\box63
+))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcorelayers.code.tex"
+File: pgfcorelayers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcoretransparency.code.tex"
+File: pgfcoretransparency.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcorepatterns.code.tex"
+File: pgfcorepatterns.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\p
+gfcorerdf.code.tex"
+File: pgfcorerdf.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pgfm
+oduleshapes.code.tex"
+File: pgfmoduleshapes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfnodeparttextbox=\box64
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pgfm
+oduleplot.code.tex"
+File: pgfmoduleplot.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibility\
+pgfcomp-version-0-65.sty"
+Package: pgfcomp-version-0-65 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@nodesepstart=\dimen182
+\pgf@nodesepend=\dimen183
+)
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibility\
+pgfcomp-version-1-18.sty"
+Package: pgfcomp-version-1-18 2020/01/08 v3.1.5b (3.1.5b)
+))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pgff
+or.sty"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pgfk
+eys.sty"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pg
+fkeys.code.tex"))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\math\pgfmath.s
+ty"
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+.code.tex"))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pg
+ffor.code.tex"
+Package: pgffor 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath
+.code.tex")
+\pgffor@iter=\dimen184
+\pgffor@skip=\dimen185
+\pgffor@stack=\toks38
+\pgffor@toks=\toks39
+))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlaye
+r\tikz\tikz.code.tex"
+Package: tikz 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\pg
+flibraryplothandlers.code.tex"
+File: pgflibraryplothandlers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@plot@mark@count=\count139
+\pgfplotmarksize=\dimen186
+)
+\tikz@lastx=\dimen187
+\tikz@lasty=\dimen188
+\tikz@lastxsaved=\dimen189
+\tikz@lastysaved=\dimen190
+\tikz@lastmovetox=\dimen191
+\tikz@lastmovetoy=\dimen192
+\tikzleveldistance=\dimen193
+\tikzsiblingdistance=\dimen194
+\tikz@figbox=\box65
+\tikz@figbox@bg=\box66
+\tikz@tempbox=\box67
+\tikz@tempbox@bg=\box68
+\tikztreelevel=\count140
+\tikznumberofchildren=\count141
+\tikznumberofcurrentchild=\count142
+\tikz@fig@count=\count143
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pgfm
+odulematrix.code.tex"
+File: pgfmodulematrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfmatrixcurrentrow=\count144
+\pgfmatrixcurrentcolumn=\count145
+\pgf@matrix@numberofcolumns=\count146
+)
+\tikz@expandcount=\count147
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlaye
+r\tikz\libraries\tikzlibrarytopaths.code.tex"
+File: tikzlibrarytopaths.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\everypage\everypag
+e.sty"
+Package: everypage 2020/10/17 R2.0b Hooks to run on every page
+
+
+Package everypage Warning: Functionality similar to this package has recently
+(everypage)                been implemented in LaTeX. This package is now in
+(everypage)                legacy status.
+(everypage)                Please, don't use it in new documents and packages.
+
+
+Package everypage Warning: You appear to be running a version of LaTeX
+(everypage)                too old to provide the new functionality.
+(everypage)                Forcing fallback to `everypage-1x` that
+(everypage)                uses an older code base.
+
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\everypage\everypag
+e-1x.sty"
+Package: everypage-1x 2020/10/10 1.2 Hooks to run on every page
+))
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\afterpage.st
+y"
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks40
+\AP@partial=\box69
+\AP@footins=\box70
+))
+\c@hypothesis=\count148
+\c@rquestion=\count149
  (thesis.aux
 
-LaTeX Warning: Label `graph' multiply defined.
+LaTeX Warning: Label `Sec:Design' multiply defined.
+
+
+LaTeX Warning: Label `Sec:Scenarios' multiply defined.
+
+
+LaTeX Warning: Label `Sec:Subscenarios' multiply defined.
+
+
+LaTeX Warning: Label `Sec:Conclusion' multiply defined.
 
 )
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 55.
+ ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 55.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -159,16 +886,17 @@ LaTeX Font Info:    ... okay on input line 29.
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
+* bindingoffset: 17.07164pt
 * modes: twoside 
-* h-part:(L,W,R)=(85.35826pt, 426.79135pt, 85.35826pt)
-* v-part:(T,H,B)=(56.9055pt, 702.78308pt, 85.35826pt)
+* h-part:(L,W,R)=(67.1485pt, 412.56496pt, 100.72278pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=426.79135pt
+* \textwidth=412.56496pt
 * \textheight=702.78308pt
-* \oddsidemargin=13.08827pt
-* \evensidemargin=13.08827pt
-* \topmargin=-52.36449pt
+* \oddsidemargin=11.95015pt
+* \evensidemargin=28.45279pt
+* \topmargin=-38.1381pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=12.0pt
@@ -190,17 +918,17 @@ LaTeX Font Info:    ... okay on input line 29.
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
 ii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count97
-\scratchdimen=\dimen120
-\scratchbox=\box26
-\nofMPsegments=\count98
-\nofMParguments=\count99
-\everyMPshowfont=\toks16
-\MPscratchCnt=\count100
-\MPscratchDim=\dimen121
-\MPnumerator=\count101
-\makeMPintoPDFobject=\count102
-\everyMPtoPDFconversion=\toks17
+\scratchcounter=\count150
+\scratchdimen=\dimen195
+\scratchbox=\box71
+\nofMPsegments=\count151
+\nofMParguments=\count152
+\everyMPshowfont=\toks41
+\MPscratchCnt=\count153
+\MPscratchDim=\dimen196
+\MPnumerator=\count154
+\makeMPintoPDFobject=\count155
+\everyMPtoPDFconversion=\toks42
 )
 ("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-
 base.sty"
@@ -261,137 +989,1806 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <20.74> on input line 38.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 38.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 38.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 38.
- (thesis.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 2.
+\c@lstlisting=\count156
+ ABD: EveryShipout initializing macros (chapters/titlepage.tex
+<images/roundel_informatics.jpg, id=4, 372.1905pt x 99.9735pt>
+File: images/roundel_informatics.jpg Graphic file (type jpg)
+<use images/roundel_informatics.jpg>
+Package pdftex.def Info: images/roundel_informatics.jpg  used on input line 26.
+
+(pdftex.def)             Requested size: 148.87355pt x 39.98868pt.
+<images/roundel.jpg, id=5, 86.0013pt x 87.6876pt>
+File: images/roundel.jpg Graphic file (type jpg)
+<use images/roundel.jpg>
+Package pdftex.def Info: images/roundel.jpg  used on input line 34.
+(pdftex.def)             Requested size: 275.20314pt x 280.59933pt.
+LaTeX Font Info:    Try loading font information for U+msa on input line 34.
+
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-\tf@toc=\write3
-\openout3 = `thesis.toc'.
+LaTeX Font Info:    Try loading font information for U+msb on input line 34.
+("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
 
- [1
+{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./images/ro
+undel.jpg> <./images/roundel_informatics.jpg>]) (chapters/abstract.tex
+File: images/roundel_informatics.jpg Graphic file (type jpg)
+<use images/roundel_informatics.jpg>
+Package pdftex.def Info: images/roundel_informatics.jpg  used on input line 19.
 
-{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 109.
-<images/tcp_header.png, id=9, 770.88pt x 432.61626pt>
+(pdftex.def)             Requested size: 148.87355pt x 39.98868pt.
+)
+[2] [3
+
+] [4
+
+] [5
+
+] (thesis.toc [6
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+Make it at least 14.49998pt.
+We now make it that large for the rest of the document.
+This may cause the page layout to be inconsistent, however.
+
+[7] [8])
+\tf@toc=\write4
+\openout4 = `thesis.toc'.
+
+ [9]
+Chapter 1.
+(chapters/introduction.tex
+
+LaTeX Warning: Citation `zeroday' on page 10 undefined on input line 2.
+
+
+LaTeX Warning: Citation `mandiant2015trends' on page 10 undefined on input line
+ 2.
+
+
+LaTeX Warning: Citation `nisioti2018intrusion' on page 10 undefined on input li
+ne 3.
+
+
+Overfull \hbox (0.76964pt too wide) in paragraph at lines 8--9
+[]\OT1/cmr/m/n/12 The aim of this the-sis is to im-prove the un-der-stand-ing o
+f traf-fic mi-crostrucutres
+ []
+
+[10
+
+]) [11]
+Chapter 2.
+(chapters/background.tex
+<images/tcp_header.png, id=46, 770.88pt x 432.61626pt>
 File: images/tcp_header.png Graphic file (type png)
 <use images/tcp_header.png>
-Package pdftex.def Info: images/tcp_header.png  used on input line 114.
+Package pdftex.def Info: images/tcp_header.png  used on input line 12.
 (pdftex.def)             Requested size: 308.34654pt x 173.04343pt.
+ [12
+
+ <./images/tcp_header.png>]
+
+LaTeX Warning: Citation `brownlee1999traffic' on page 13 undefined on input lin
+e 23.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: Citation `brownlee1999traffic' on page 2 undefined on input line
- 125.
-
-[2]
-Overfull \hbox (2.46481pt too wide) in paragraph at lines 135--135
+Overfull \hbox (16.69121pt too wide) in paragraph at lines 33--33
 [] \OT1/cmtt/m/n/8 Date flow start        Duration Proto  Src IP Addr:Port     
  Dst IP Addr:Port   Packets  Bytes Flows[] 
  []
 
 
-LaTeX Warning: Citation `denning1987intrusion' on page 3 undefined on input lin
-e 151.
-
-[3 <./images/tcp_header.png>]
-
-LaTeX Warning: Citation `denning1987intrusion' on page 4 undefined on input lin
-e 157.
+Overfull \hbox (8.19109pt too wide) in paragraph at lines 33--33
+[] \OT1/cmtt/m/n/8 2010-09-01 00:00:00.459   0.000 UDP    127.0.0.1:24920   -> 
+ 192.168.0.1:22126      1     46     1[] 
+ []
 
 
-LaTeX Warning: Citation `denning1987intrusion' on page 4 undefined on input lin
-e 167.
+Overfull \hbox (8.19109pt too wide) in paragraph at lines 33--33
+[] \OT1/cmtt/m/n/8 2010-09-01 00:00:00.363   0.000 UDP    192.168.0.1:22126 -> 
+ 127.0.0.1:24920        1     80     1[] 
+ []
 
 
-LaTeX Warning: Citation `peng_user_2016' on page 4 undefined on input line 168.
+LaTeX Warning: Citation `anderson1980computer' on page 13 undefined on input li
+ne 58.
 
 
-[4]
-<images/Graphic2.pdf, id=24, 1862.96pt x 1818.795pt>
+LaTeX Warning: Citation `nisioti2018intrusion' on page 13 undefined on input li
+ne 64.
+
+[13] [14]
+
+LaTeX Warning: Citation `skywiperskywiper' on page 15 undefined on input line 8
+5.
+
+
+LaTeX Warning: Citation `lamprakis2017unsupervised' on page 15 undefined on inp
+ut line 93.
+
+[15]
+Overfull \hbox (6.84041pt too wide) in paragraph at lines 113--114
+\OT1/cmr/m/n/12 Sophisticated data breaches af-fect hun-dreds of mil-lion cus-t
+omers and in-flict tremen-
+ []
+
+
+LaTeX Warning: Citation `denning1987intrusion' on page 16 undefined on input li
+ne 119.
+
+[16]
+
+LaTeX Warning: Citation `denning1987intrusion' on page 17 undefined on input li
+ne 125.
+
+
+Package caption Warning: \label without proper reference on input line 140.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `graph' on page 17 undefined on input line 131.
+
+
+LaTeX Warning: Citation `denning1987intrusion' on page 17 undefined on input li
+ne 135.
+
+
+LaTeX Warning: Citation `peng_user_2016' on page 17 undefined on input line 136
+.
+
+<images/Graphic2.pdf, id=69, 1862.96pt x 1818.795pt>
 File: images/Graphic2.pdf Graphic file (type pdf)
 <use images/Graphic2.pdf>
-Package pdftex.def Info: images/Graphic2.pdf  used on input line 174.
+Package pdftex.def Info: images/Graphic2.pdf  used on input line 142.
 (pdftex.def)             Requested size: 465.73886pt x 454.69765pt.
 
-Overfull \hbox (38.94751pt too wide) in paragraph at lines 174--175
+Overfull \hbox (53.1739pt too wide) in paragraph at lines 142--143
  [][] 
  []
 
 
-LaTeX Warning: Citation `lazarevic2005intrusion' on page 5 undefined on input l
-ine 178.
+LaTeX Warning: Citation `lazarevic2005intrusion' on page 17 undefined on input 
+line 146.
+
+[17] [18 <./images/Graphic2.pdf>]
+
+LaTeX Warning: Citation `nisioti2018intrusion' on page 19 undefined on input li
+ne 159.
+
+<images/outlier_mine.png, id=91, 710.655pt x 577.15625pt>
+File: images/outlier_mine.png Graphic file (type png)
+<use images/outlier_mine.png>
+Package pdftex.def Info: images/outlier_mine.png  used on input line 167.
+(pdftex.def)             Requested size: 185.65297pt x 150.77922pt.
+<images/Atrial_Premature_Contraction.png, id=92, 1324.95pt x 1029.8475pt>
+File: images/Atrial_Premature_Contraction.png Graphic file (type png)
+<use images/Atrial_Premature_Contraction.png>
+Package pdftex.def Info: images/Atrial_Premature_Contraction.png  used on input
+ line 171.
+(pdftex.def)             Requested size: 185.65297pt x 144.30338pt.
+
+LaTeX Warning: Citation `chandola_anomaly_2009' on page 19 undefined on input l
+ine 174.
+
+
+LaTeX Warning: Citation `chandola_anomaly_2009' on page 19 undefined on input l
+ine 174.
+
+[19] [20 <./images/outlier_mine.png> <./images/Atrial_Premature_Contraction.png
+>]
+
+LaTeX Warning: Citation `ye2000markov' on page 21 undefined on input line 236.
+
+
+LaTeX Warning: Citation `krishnamurthy2003sketch' on page 21 undefined on input
+ line 241.
+
+[21]
+
+LaTeX Warning: Citation `schweller2004reversible' on page 22 undefined on input
+ line 245.
+
+
+LaTeX Warning: Citation `pellegrino2017learning' on page 22 undefined on input 
+line 247.
+
+
+LaTeX Warning: Citation `noble_real-time_2018' on page 22 undefined on input li
+ne 252.
+
+
+LaTeX Warning: Citation `noble_correlation-based_2016' on page 22 undefined on 
+input line 252.
+
+
+LaTeX Warning: Citation `whitehouse_activity-based_2016' on page 22 undefined o
+n input line 257.
+
+[22]
+
+LaTeX Warning: Citation `zhang2000detecting' on page 23 undefined on input line
+ 267.
+
+
+LaTeX Warning: Citation `neil2013scan' on page 23 undefined on input line 270.
+
+
+LaTeX Warning: Citation `he2007detecting' on page 23 undefined on input line 27
+0.
+
+
+LaTeX Warning: Citation `neil2013scan' on page 23 undefined on input line 273.
+
+
+Overfull \hbox (20.63457pt too wide) in paragraph at lines 276--276
+[]\OT1/cmr/bx/n/14.4 Semantic-based ap-proaches us-ing dif-fer-ent data sources
+ 
+ []
+
+
+LaTeX Warning: Citation `warrender1999detecting' on page 23 undefined on input 
+line 278.
+
+
+LaTeX Warning: Citation `ye2000markov' on page 23 undefined on input line 278.
+
+
+LaTeX Warning: Citation `yeung2003host' on page 23 undefined on input line 278.
+
+
+
+LaTeX Warning: Citation `hu2009simple' on page 23 undefined on input line 278.
+
+
+LaTeX Warning: Citation `du2017deeplog' on page 23 undefined on input line 278.
+
+
+[23]
+
+LaTeX Warning: Citation `nisioti2018intrusion' on page 24 undefined on input li
+ne 285.
+
+
+LaTeX Warning: Citation `ahmed2016survey' on page 24 undefined on input line 28
+7.
+
+
+LaTeX Warning: Citation `ahmed2016survey' on page 24 undefined on input line 30
+1.
+
+
+LaTeX Warning: Citation `akent-2015-enterprise-data' on page 24 undefined on in
+put line 305.
+
+
+LaTeX Warning: Citation `kent-2015-cyberdata1' on page 24 undefined on input li
+ne 305.
+
+
+Overfull \hbox (0.24326pt too wide) in paragraph at lines 309--310
+[]\OT1/cmr/m/n/12 Additionally, the dataset also con-tains other event sources 
+which were recorded
+ []
+
+[24]
+
+LaTeX Warning: Citation `turcotte17' on page 25 undefined on input line 314.
+
+
+LaTeX Warning: Citation `noauthor_ctu-13_nodate' on page 25 undefined on input 
+line 316.
+
+
+LaTeX Warning: Citation `garcia2014empirical' on page 25 undefined on input lin
+e 316.
+
+
+LaTeX Warning: Citation `macia2018ugr' on page 25 undefined on input line 324.
+
+[25]
+
+LaTeX Warning: Citation `moustafa_unsw-nb15:_2015' on page 26 undefined on inpu
+t line 339.
+
+
+LaTeX Warning: Citation `gharib2016evaluation' on page 26 undefined on input li
+ne 349.
+
+
+LaTeX Warning: Citation `sharafaldin2018towards' on page 26 undefined on input 
+line 349.
+
+[26]
+
+LaTeX Warning: Citation `lippmann2000evaluating' on page 27 undefined on input 
+line 362.
+
+
+LaTeX Warning: Citation `cup1999data' on page 27 undefined on input line 370.
+
+
+LaTeX Warning: Citation `cup1999dataset' on page 27 undefined on input line 370
+.
+
+
+LaTeX Warning: Citation `tavallaee2012nsl' on page 27 undefined on input line 3
+70.
+
+[27]
+
+LaTeX Warning: Citation `pang2005first' on page 28 undefined on input line 376.
+
+
+
+LaTeX Warning: Citation `saad2011detecting' on page 28 undefined on input line 
+382.
+
+
+LaTeX Warning: Citation `UNIBS2009data' on page 28 undefined on input line 384.
+
+
+
+LaTeX Warning: Citation `walsworth2015caida' on page 28 undefined on input line
+ 390.
+
+
+LaTeX Warning: Citation `sony2000traffic' on page 28 undefined on input line 39
+7.
+
+[28]
+
+LaTeX Warning: Citation `creech2014developing' on page 29 undefined on input li
+ne 401.
+
+
+LaTeX Warning: Citation `creech2013generation' on page 29 undefined on input li
+ne 401.
+
+
+LaTeX Warning: Citation `USC2010ICT' on page 29 undefined on input line 407.
+
+
+LaTeX Warning: Citation `damasevicius2020litnet' on page 29 undefined on input 
+line 413.
+
+
+LaTeX Warning: Citation `erhan2020bougazicci' on page 29 undefined on input lin
+e 417.
+
+) [29]
+Chapter 3.
+(chapters/relwork.tex) [30
+
+]
+Chapter 4.
+(chapters/modelling.tex
+Overfull \hbox (3.50711pt too wide) in paragraph at lines 9--14
+\OT1/cmr/m/n/12 Network in-tru-sion de-tec-tion mod-els in-creas-ingly rely on 
+learn-ing traf-fic mi-crostruc-
+ []
+
+
+LaTeX Warning: Citation `wexler2019if' on page 31 undefined on input line 21.
+
+<images/images_SecureComm/Eva_Prob.png, id=135, 606.76688pt x 248.42813pt>
+File: images/images_SecureComm/Eva_Prob.png Graphic file (type png)
+<use images/images_SecureComm/Eva_Prob.png>
+Package pdftex.def Info: images/images_SecureComm/Eva_Prob.png  used on input l
+ine 25.
+(pdftex.def)             Requested size: 412.56496pt x 168.91751pt.
+
+LaTeX Warning: Citation `livingstone2018ryerson' on page 31 undefined on input 
+line 30.
+
+
+LaTeX Warning: Citation `haque2019audio' on page 31 undefined on input line 30.
+
+
+
+LaTeX Warning: Citation `kamper2020multilingual' on page 31 undefined on input 
+line 30.
+
+[31
+
+]
+
+LaTeX Warning: Citation `mirsky2018kitsune' on page 32 undefined on input line 
+34.
+
+
+LaTeX Warning: Citation `nasr2018deepcorr' on page 32 undefined on input line 3
+4.
+
+
+Underfull \vbox (badness 1902) has occurred while \output is active []
+
+ [32 <./images/images_SecureComm/Eva_Prob.png>]
+
+LaTeX Warning: Citation `kent-2015-cyberdata1' on page 33 undefined on input li
+ne 100.
+
+
+LaTeX Warning: Citation `macia2018ugr' on page 33 undefined on input line 100.
+
+
+LaTeX Warning: Citation `sharafaldin2018toward' on page 33 undefined on input l
+ine 101.
+
+
+LaTeX Warning: Citation `moustafa2015unsw' on page 33 undefined on input line 1
+01.
+
+
+LaTeX Warning: Citation `ring2019survey' on page 33 undefined on input line 102
+.
+
+[33]
+
+LaTeX Warning: Citation `nisioti2018intrusion' on page 34 undefined on input li
+ne 127.
+
+
+LaTeX Warning: Citation `hwang2019lstm' on page 34 undefined on input line 130.
+
+
+
+LaTeX Warning: Citation `tahaei2020rise' on page 34 undefined on input line 130
+.
+
+
+LaTeX Warning: Citation `sharafaldin2018toward' on page 34 undefined on input l
+ine 157.
+
+
+LaTeX Warning: Citation `mell2003overview' on page 34 undefined on input line 1
+62.
+
+[34]
+<images/images_SecureComm/LSTM_classi.png, id=150, 569.12625pt x 232.61906pt>
+File: images/images_SecureComm/LSTM_classi.png Graphic file (type png)
+<use images/images_SecureComm/LSTM_classi.png>
+Package pdftex.def Info: images/images_SecureComm/LSTM_classi.png  used on inpu
+t line 167.
+(pdftex.def)             Requested size: 408.44156pt x 166.94962pt.
+<images/images_SecureComm/LSTM_activation_new.png, id=151, 514.92375pt x 348.55
+219pt>
+File: images/images_SecureComm/LSTM_activation_new.png Graphic file (type png)
+<use images/images_SecureComm/LSTM_activation_new.png>
+Package pdftex.def Info: images/images_SecureComm/LSTM_activation_new.png  used
+ on input line 183.
+(pdftex.def)             Requested size: 408.44156pt x 276.48071pt.
+ [35 <./images/images_SecureComm/LSTM_classi.png (PNG copy)>] [36 <./images/ima
+ges_SecureComm/LSTM_activation_new.png>]
+Overfull \hbox (31.33475pt too wide) in paragraph at lines 197--197
+[]\OT1/cmr/bx/n/17.28 Refining the no-tion of be-nign traf-fic for anomaly
+ []
+
+
+LaTeX Warning: Citation `mirsky2018kitsune' on page 37 undefined on input line 
+200.
+
+
+Overfull \hbox (1.55296pt too wide) in paragraph at lines 203--207
+[]\OT1/cmr/m/n/12 The model takes con-nec-tion packet streams as in-put, which 
+are pushed through
+ []
+
+
+LaTeX Warning: Citation `sharafaldin2018toward' on page 37 undefined on input l
+ine 208.
+
+
+Overfull \hbox (5.79437pt too wide) in paragraph at lines 215--215
+[]|\OT1/cmr/m/n/12 Label| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
+[]|\OT1/cmr/bx/n/12 File-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
+[]|\OT1/cmr/bx/n/12 Mirai-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--216
+[]|\OT1/cmr/m/n/12 Get-req.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--216
+[]|\OT1/cmr/m/n/12 Two
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--216
+\OT1/cmr/m/n/12 hosts,
+ []
+
+
+Overfull \hbox (7.34987pt too wide) in paragraph at lines 216--216
+[]|\OT1/cmr/m/n/12 Command
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--216
+\OT1/cmr/m/n/12 1, low
+ []
+
+
+Overfull \hbox (18.00119pt too wide) in paragraph at lines 217--217
+[]|\OT1/cmr/m/n/12 Results:| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--219
+[]|[]\OT1/cmr/m/n/12 0.19[] ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--219
+[]|[]\OT1/cmr/m/n/12 0.03[] ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--220
+[]|\OT1/cmr/m/n/12 Multi-req.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--220
+[]|\OT1/cmr/m/n/12 Four
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--220
+\OT1/cmr/m/n/12 hosts,
+ []
+
+
+Overfull \hbox (7.34987pt too wide) in paragraph at lines 220--220
+[]|\OT1/cmr/m/n/12 Command
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--220
+\OT1/cmr/m/n/12 2, low
+ []
+
+
+Overfull \hbox (18.00119pt too wide) in paragraph at lines 221--221
+[]|\OT1/cmr/m/n/12 Results:| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
+[]|[]\OT1/cmr/m/n/12 0.15[] ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
+[]|[]\OT1/cmr/m/n/12 0.03[] ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[]|\OT1/cmr/m/n/12 Post-req.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+\OT1/cmr/m/n/12 Apache,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[]|\OT1/cmr/m/n/12 Two
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+\OT1/cmr/m/n/12 hosts,
+ []
+
+
+Overfull \hbox (7.34987pt too wide) in paragraph at lines 224--224
+[]|\OT1/cmr/m/n/12 Command
+ []
+
+
+Underfull \hbox (badness 7379) in paragraph at lines 224--224
+\OT1/cmr/m/n/12 3, high
+ []
+
+
+Overfull \hbox (18.00119pt too wide) in paragraph at lines 225--225
+[]|\OT1/cmr/m/n/12 Results:| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
+[]|[]\OT1/cmr/m/n/12 0.16[] ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--227
+[]|[]\OT1/cmr/m/n/12 0.02[] ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--228
+[]|\OT1/cmr/m/n/12 Multi-req.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--228
+\OT1/cmr/m/n/12 Apache,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--228
+[]|\OT1/cmr/m/n/12 Four
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--228
+\OT1/cmr/m/n/12 hosts,
+ []
+
+
+Overfull \hbox (7.34987pt too wide) in paragraph at lines 228--228
+[]|\OT1/cmr/m/n/12 Command
+ []
+
+
+Underfull \hbox (badness 7379) in paragraph at lines 228--228
+\OT1/cmr/m/n/12 4, high
+ []
+
+
+Overfull \hbox (18.00119pt too wide) in paragraph at lines 229--229
+[]|\OT1/cmr/m/n/12 Results:| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--231
+[]|[]\OT1/cmr/m/n/12 0.71[] ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--231
+[]|[]\OT1/cmr/m/n/12 0.03[] ,
+ []
+
+
+LaTeX Warning: Citation `hou2017deep' on page 37 undefined on input line 236.
+
+
+LaTeX Warning: Reference `Control' on page 37 undefined on input line 240.
+
+[37] [38]
+<images/images_SecureComm/traffic_dispersion.png, id=166, 367.3725pt x 342.5297
+pt>
+File: images/images_SecureComm/traffic_dispersion.png Graphic file (type png)
+<use images/images_SecureComm/traffic_dispersion.png>
+Package pdftex.def Info: images/images_SecureComm/traffic_dispersion.png  used 
+on input line 251.
+(pdftex.def)             Requested size: 206.28247pt x 192.33797pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [39 <./images/images_SecureComm/traffic_dispersion.png>]
+<images/images_SecureComm/Subspace_projection_new3.png, id=171, 376.40625pt x 3
+99.74344pt>
+File: images/images_SecureComm/Subspace_projection_new3.png Graphic file (type 
+png)
+<use images/images_SecureComm/Subspace_projection_new3.png>
+Package pdftex.def Info: images/images_SecureComm/Subspace_projection_new3.png 
+ used on input line 268.
+(pdftex.def)             Requested size: 206.28247pt x 219.07881pt.
+
+
+LaTeX Warning: Citation `sharafaldin2018toward' on page 40 undefined on input l
+ine 279.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [5 <./images/Graphic2.pdf>]
+ [40 <./images/images_SecureComm/Subspace_projection_new3.png>]
 
-LaTeX Warning: Citation `nisioti2018intrusion' on page 6 undefined on input lin
-e 191.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/outlier_mine.png, id=43, 710.655pt x 577.15625pt>
-File: images/outlier_mine.png Graphic file (type png)
-<use images/outlier_mine.png>
-Package pdftex.def Info: images/outlier_mine.png  used on input line 199.
-(pdftex.def)             Requested size: 192.0548pt x 155.97517pt.
-<images/Atrial_Premature_Contraction.png, id=44, 1324.95pt x 1029.8475pt>
-File: images/Atrial_Premature_Contraction.png Graphic file (type png)
-<use images/Atrial_Premature_Contraction.png>
-Package pdftex.def Info: images/Atrial_Premature_Contraction.png  used on input
- line 203.
-(pdftex.def)             Requested size: 192.0548pt x 149.26906pt.
-
-LaTeX Warning: Citation `chandola_anomaly_2009' on page 6 undefined on input li
-ne 206.
+[41]
+<images/images_SecureComm/ValLoss.png, id=179, 566.115pt x 161.10187pt>
+File: images/images_SecureComm/ValLoss.png Graphic file (type png)
+<use images/images_SecureComm/ValLoss.png>
+Package pdftex.def Info: images/images_SecureComm/ValLoss.png  used on input li
+ne 368.
+(pdftex.def)             Requested size: 408.44156pt x 116.23415pt.
 
 
-LaTeX Warning: Citation `chandola_anomaly_2009' on page 6 undefined on input li
-ne 206.
+LaTeX Warning: Citation `henryLSTM' on page 42 undefined on input line 369.
 
-[6]
-Overfull \hbox (12.7944pt too wide) in paragraph at lines 218--218
-[]\OT1/cmr/bx/n/17.28 Controlling traf-fic and cor-re-spond-ing mi-crostruc-
+
+LaTeX Warning: Citation `henryLSTM' on page 42 undefined on input line 369.
+
+
+LaTeX Warning: Citation `henryLSTM' on page 42 undefined on input line 372.
+
+
+LaTeX Warning: Citation `macia2018ugr' on page 42 undefined on input line 374.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [42 <./images/images_SecureComm/ValLoss.png>]
+
+LaTeX Warning: Citation `yen2009browser' on page 43 undefined on input line 411
+.
+
+
+LaTeX Warning: Citation `stober2013you' on page 43 undefined on input line 411.
+
+
+
+LaTeX Warning: Citation `marx2020same' on page 43 undefined on input line 428.
+
+
+LaTeX Warning: Citation `marx2020same' on page 43 undefined on input line 428.
+
+<images/images_SecureComm/FTP_load.png, id=184, 487.06969pt x 277.035pt>
+File: images/images_SecureComm/FTP_load.png Graphic file (type png)
+<use images/images_SecureComm/FTP_load.png>
+Package pdftex.def Info: images/images_SecureComm/FTP_load.png  used on input l
+ine 438.
+(pdftex.def)             Requested size: 371.30594pt x 211.19131pt.
+
+LaTeX Warning: Citation `fricker2012impact' on page 43 undefined on input line 
+452.
+
+[43]
+
+LaTeX Warning: Citation `aparicio2017using' on page 44 undefined on input line 
+486.
+
+
+LaTeX Warning: Citation `radford2018network' on page 44 undefined on input line
+ 486.
+
+
+LaTeX Warning: Citation `henryLSTM' on page 44 undefined on input line 486.
+
+
+LaTeX Warning: Citation `sequeira2013influence' on page 44 undefined on input l
+ine 508.
+
+[44 <./images/images_SecureComm/FTP_load.png>]
+
+LaTeX Warning: Citation `walsworth2015caida' on page 45 undefined on input line
+ 519.
+
+
+LaTeX Warning: Citation `sharafaldin2018toward' on page 45 undefined on input l
+ine 539.
+
+
+LaTeX Warning: Citation `macia2018ugr' on page 45 undefined on input line 539.
+
+<images/images_SecureComm/VM_setup_final.png, id=194, 281.57655pt x 322.64803pt
+>
+File: images/images_SecureComm/VM_setup_final.png Graphic file (type png)
+<use images/images_SecureComm/VM_setup_final.png>
+Package pdftex.def Info: images/images_SecureComm/VM_setup_final.png  used on i
+nput line 547.
+(pdftex.def)             Requested size: 198.0294pt x 226.92041pt.
+<images/images_SecureComm/Docker_setup_final.png, id=195, 312.77509pt x 375.961
+96pt>
+File: images/images_SecureComm/Docker_setup_final.png Graphic file (type png)
+<use images/images_SecureComm/Docker_setup_final.png>
+Package pdftex.def Info: images/images_SecureComm/Docker_setup_final.png  used 
+on input line 554.
+(pdftex.def)             Requested size: 198.0294pt x 238.03903pt.
+
+LaTeX Warning: Citation `shiravi2012toward' on page 45 undefined on input line 
+577.
+
+[45]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [46 <./images/images_SecureComm/VM_setup_final.png> <./images/images_SecureCom
+m/Docker_setup_final.png>]
+
+LaTeX Warning: Citation `iperf' on page 47 undefined on input line 624.
+
+
+LaTeX Warning: Citation `hemminger2005network' on page 47 undefined on input li
+ne 624.
+
+
+LaTeX Warning: Citation `jurgelionis2011empirical' on page 47 undefined on inpu
+t line 628.
+
+[47]
+
+LaTeX Warning: Citation `macia2018ugr' on page 48 undefined on input line 662.
+
+<images/images_SecureComm/Exp111.png, id=205, 606.76688pt x 221.32687pt>
+File: images/images_SecureComm/Exp111.png Graphic file (type png)
+<use images/images_SecureComm/Exp111.png>
+Package pdftex.def Info: images/images_SecureComm/Exp111.png  used on input lin
+e 670.
+(pdftex.def)             Requested size: 408.44156pt x 148.98729pt.
+
+LaTeX Warning: Citation `lashkari2017characterization' on page 48 undefined on 
+input line 675.
+
+
+LaTeX Warning: Citation `aun2017review' on page 48 undefined on input line 675.
+
+
+
+LaTeX Warning: Citation `yen2009browser' on page 48 undefined on input line 677
+.
+
+[48 <./images/images_SecureComm/Exp111.png>]
+Overfull \hbox (0.39624pt too wide) in paragraph at lines 678--679
+[]\OT1/cmr/bx/n/12 Packet se-quence sim-i-lar-ity \OT1/cmr/m/n/12 To quan-tify 
+the sim-i-lar-ity of packet se-quences
+ []
+
+<images/images_SecureComm/Detgen_Reg_HTTP_comp_crop.png, id=210, 836.3747pt x 2
+93.59688pt>
+File: images/images_SecureComm/Detgen_Reg_HTTP_comp_crop.png Graphic file (type
+ png)
+<use images/images_SecureComm/Detgen_Reg_HTTP_comp_crop.png>
+Package pdftex.def Info: images/images_SecureComm/Detgen_Reg_HTTP_comp_crop.png
+  used on input line 687.
+(pdftex.def)             Requested size: 408.44156pt x 143.37988pt.
+[49 <./images/images_SecureComm/Detgen_Reg_HTTP_comp_crop.png>]
+
+LaTeX Warning: Citation `macia2018ugr' on page 50 undefined on input line 716.
+
+
+LaTeX Warning: Citation `turcotte17' on page 50 undefined on input line 716.
+
+
+Overfull \hbox (17.86807pt too wide) in paragraph at lines 716--717
+\OT1/cmr/m/n/12 While the con-trol of traf-fic mi-crostruc-tures helps to un-de
+r-stand packet- or connection-
  []
 
 
-Overfull \hbox (8.70053pt too wide) in paragraph at lines 222--222
-[]\OT1/cmr/bx/n/17.28 How traf-fic mod-els are sus-cep-ti-ble to mi-crostruc-
- []
-
-[7 <./images/outlier_mine.png> <./images/Atrial_Premature_Contraction.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 227.
-
-
-("C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 227.
-
-Overfull \hbox (2.34445pt too wide) in paragraph at lines 238--238
-[]\OT1/cmr/bx/n/17.28 Capturing traf-fic mi-crostruc-tures on a flow-level
+Overfull \hbox (1.0294pt too wide) in paragraph at lines 736--737
+\OT1/cmr/m/n/12 DetGen is cur-rently only of-fer-ing in-suf-fi-cient con-trol o
+ver un-der-ly-ing \OT1/cmr/bx/n/12 application-
  []
 
 
-LaTeX Warning: Reference `Sec:Problems' on page 8 undefined on input line 246.
+LaTeX Warning: Citation `lin2019generating' on page 50 undefined on input line 
+738.
 
-[8]
+
+LaTeX Warning: Citation `lantz2010network' on page 50 undefined on input line 7
+40.
+
+) [50] [51]
+Chapter 5.
+(chapters/flow_model.tex
+Overfull \hbox (41.73267pt too wide) in paragraph at lines 1--1
+[]\OT1/cmr/bx/n/17.28 CBAM: A con-tex-tual model for net-work anomaly
+ []
+
+
+LaTeX Warning: Citation `zeroday' on page 52 undefined on input line 4.
+
+
+LaTeX Warning: Citation `nisioti2018intrusion' on page 52 undefined on input li
+ne 4.
+
+
+LaTeX Warning: Citation `mandiant2015trends' on page 52 undefined on input line
+ 15.
+
+
+LaTeX Warning: Citation `nisioti2018intrusion' on page 52 undefined on input li
+ne 16.
+
+
+LaTeX Warning: Citation `clausen2021better' on page 52 undefined on input line 
+17.
+
+[52
+
+]
+
+LaTeX Warning: Citation `Bontemps2016' on page 53 undefined on input line 24.
+
+
+LaTeX Warning: Citation `kim2016long' on page 53 undefined on input line 24.
+
+
+LaTeX Warning: Citation `radford2018network' on page 53 undefined on input line
+ 24.
+
+
+LaTeX Warning: Citation `clausen2021Controlling' on page 53 undefined on input 
+line 24.
+
+
+LaTeX Warning: Citation `clausen2021better' on page 53 undefined on input line 
+28.
+
+
+Overfull \hbox (7.99875pt too wide) in paragraph at lines 34--35
+[]\OT1/cmr/m/n/12 We pro-vide ad-di-tional per-for-mance re-sults on the LANL-1
+5 real-world dataset
+ []
+
+[53]
+Overfull \hbox (66.2573pt too wide) in paragraph at lines 56--68
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+[]\OT1/cmr/m/n/10.95 (a) |XSS-attack,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--68
+\OT1/cmr/m/n/10.95 A=192.168.10.50, B=
+ []
+
+
+Overfull \hbox (61.25728pt too wide) in paragraph at lines 72--79
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]\OT1/cmr/m/n/10.95 (b) |Be-nign SMB,
+ []
+
+
+Overfull \hbox (81.25734pt too wide) in paragraph at lines 81--86
+[][] 
+ []
+
+[54]
+<images/images_MLN/XSSdist3.png, id=230, 585.68813pt x 211.54031pt>
+File: images/images_MLN/XSSdist3.png Graphic file (type png)
+<use images/images_MLN/XSSdist3.png>
+Package pdftex.def Info: images/images_MLN/XSSdist3.png  used on input line 119
+.
+(pdftex.def)             Requested size: 247.54149pt x 89.40796pt.
+ [55 <./images/images_MLN/XSSdist3.png>]
+
+LaTeX Warning: Citation `rubin2014three' on page 56 undefined on input line 136
+.
+
+
+LaTeX Warning: Citation `rubin2014three' on page 56 undefined on input line 136
+.
+
+
+LaTeX Warning: Citation `rubin2014three' on page 56 undefined on input line 142
+.
+
+<images/images_MLN/Interarrivals-1.pdf, id=236, 397.485pt x 180.675pt>
+File: images/images_MLN/Interarrivals-1.pdf Graphic file (type pdf)
+<use images/images_MLN/Interarrivals-1.pdf>
+Package pdftex.def Info: images/images_MLN/Interarrivals-1.pdf  used on input l
+ine 151.
+(pdftex.def)             Requested size: 268.1647pt x 121.89522pt.
+[56 <./images/images_MLN/Interarrivals-1.pdf>]
+
+LaTeX Warning: Citation `chen2015strategies' on page 57 undefined on input line
+ 195.
+
+
+LaTeX Warning: Citation `yin2017comparative' on page 57 undefined on input line
+ 208.
+
+[57]
+<images/images_MLN/LSTM_design_bi2.jpg, id=251, 962.59625pt x 722.7pt>
+File: images/images_MLN/LSTM_design_bi2.jpg Graphic file (type jpg)
+<use images/images_MLN/LSTM_design_bi2.jpg>
+Package pdftex.def Info: images/images_MLN/LSTM_design_bi2.jpg  used on input l
+ine 222.
+(pdftex.def)             Requested size: 272.29437pt x 204.42778pt.
+
+
+LaTeX Warning: Citation `chen2015strategies' on page 58 undefined on input line
+ 231.
+
+[58 <./images/images_MLN/LSTM_design_bi2.jpg>]
+<images/images_MLN/Example_new.png, id=255, 640.64343pt x 504.38437pt>
+File: images/images_MLN/Example_new.png Graphic file (type png)
+<use images/images_MLN/Example_new.png>
+Package pdftex.def Info: images/images_MLN/Example_new.png  used on input line 
+269.
+(pdftex.def)             Requested size: 288.7942pt x 227.37106pt.
+ [59]
+
+LaTeX Warning: Citation `srivastava2014dropout' on page 60 undefined on input l
+ine 289.
+
+[60 <./images/images_MLN/Example_new.png>]
+
+LaTeX Font Warning: Command \Large invalid in math mode on input line 318.
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 318.
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 318.
+
+
+LaTeX Font Warning: Command \Large invalid in math mode on input line 318.
+
+
+LaTeX Font Warning: Command \Large invalid in math mode on input line 318.
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 318.
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 318.
+
+
+LaTeX Font Warning: Command \Large invalid in math mode on input line 318.
+
+
+LaTeX Warning: Citation `ahmed2016survey' on page 61 undefined on input line 32
+9.
+
+
+LaTeX Warning: Citation `sharafaldin2018toward' on page 61 undefined on input l
+ine 330.
+
+
+LaTeX Warning: Citation `akent-2015-enterprise-data' on page 61 undefined on in
+put line 330.
+
+
+LaTeX Warning: Citation `kent-2015-cyberdata1' on page 61 undefined on input li
+ne 330.
+
+
+LaTeX Warning: Citation `macia2018ugr' on page 61 undefined on input line 330.
+
+[61]
+
+LaTeX Warning: Citation `sharafaldin2018toward' on page 62 undefined on input l
+ine 338.
+
+
+LaTeX Warning: Citation `akent-2015-enterprise-data' on page 62 undefined on in
+put line 347.
+
+
+LaTeX Warning: Citation `kent-2015-cyberdata1' on page 62 undefined on input li
+ne 347.
+
+<images/images_MLN/UGR_longterm_proto.pdf, id=269, 275.2063pt x 254.23787pt>
+File: images/images_MLN/UGR_longterm_proto.pdf Graphic file (type pdf)
+<use images/images_MLN/UGR_longterm_proto.pdf>
+Package pdftex.def Info: images/images_MLN/UGR_longterm_proto.pdf  used on inpu
+t line 359.
+(pdftex.def)             Requested size: 123.77074pt x 114.34003pt.
+<images/images_MLN/UGR_longterm_port2.pdf, id=270, 263.98625pt x 207.77625pt>
+File: images/images_MLN/UGR_longterm_port2.pdf Graphic file (type pdf)
+<use images/images_MLN/UGR_longterm_port2.pdf>
+Package pdftex.def Info: images/images_MLN/UGR_longterm_port2.pdf  used on inpu
+t line 365.
+(pdftex.def)             Requested size: 123.77074pt x 97.41388pt.
+
+LaTeX Warning: Citation `macia2018ugr' on page 62 undefined on input line 375.
+
+[62] [63 <./images/images_MLN/UGR_longterm_proto.pdf> <./images/images_MLN/UGR_
+longterm_port2.pdf
+
+pdfTeX warning: pdflatex (file ./images/images_MLN/UGR_longterm_port2.pdf): PDF
+ inclusion: multiple pdfs with page group included in a single page
+>]
+
+LaTeX Warning: Citation `ulvila2003evaluation' on page 64 undefined on input li
+ne 453.
+
+
+LaTeX Warning: Citation `milenkoski2015evaluating' on page 64 undefined on inpu
+t line 453.
+
+
+LaTeX Warning: Citation `ulvila2003evaluation' on page 64 undefined on input li
+ne 455.
+
+
+LaTeX Warning: Citation `milenkoski2015evaluating' on page 64 undefined on inpu
+t line 455.
+
+
+LaTeX Warning: Citation `liu2020intrusion' on page 64 undefined on input line 4
+57.
+
+[64]
+Overfull \hbox (22.61215pt too wide) in paragraph at lines 468--475
+ [][] 
+ []
+
+<images/images_MLN/CICplots1-1.pdf, id=346, 469.755pt x 216.81pt>
+File: images/images_MLN/CICplots1-1.pdf Graphic file (type pdf)
+<use images/images_MLN/CICplots1-1.pdf>
+Package pdftex.def Info: images/images_MLN/CICplots1-1.pdf  used on input line 
+488.
+(pdftex.def)             Requested size: 280.54114pt x 129.47827pt.
+
+LaTeX Warning: Citation `nisioti2018intrusion' on page 65 undefined on input li
+ne 494.
+
+[65 <./images/images_MLN/CICplots1-1.pdf>]
+<images/images_MLN/CICplots2-1.pdf, id=355, 361.35pt x 216.81pt>
+File: images/images_MLN/CICplots2-1.pdf Graphic file (type pdf)
+<use images/images_MLN/CICplots2-1.pdf>
+Package pdftex.def Info: images/images_MLN/CICplots2-1.pdf  used on input line 
+529.
+(pdftex.def)             Requested size: 268.1647pt x 160.90004pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [66 <./images/images_MLN/CICplots2-1.pdf>]
+<images/images_MLN/LANLdet.png, id=364, 1218.80344pt x 313.17pt>
+File: images/images_MLN/LANLdet.png Graphic file (type png)
+<use images/images_MLN/LANLdet.png>
+Package pdftex.def Info: images/images_MLN/LANLdet.png  used on input line 542.
+
+(pdftex.def)             Requested size: 305.30032pt x 78.4452pt.
+ [67 <./images/images_MLN/LANLdet.png>]
+<images/images_MLN/SQL_I_new.png, id=369, 537.50812pt x 263.48438pt>
+File: images/images_MLN/SQL_I_new.png Graphic file (type png)
+<use images/images_MLN/SQL_I_new.png>
+Package pdftex.def Info: images/images_MLN/SQL_I_new.png  used on input line 58
+1.
+(pdftex.def)             Requested size: 288.7942pt x 141.5638pt.
+
+Underfull \hbox (badness 2343) in paragraph at lines 583--583
+\OT1/cmr/m/n/12 like-li-hood (log-scale). Ar-rows in-di-cate flow di-rec-tions 
+(down=incoming,
+ []
+
+[68 <./images/images_MLN/SQL_I_new.png>]
+<images/images_MLN/Infiltration_new.png, id=374, 537.50812pt x 263.48438pt>
+File: images/images_MLN/Infiltration_new.png Graphic file (type png)
+<use images/images_MLN/Infiltration_new.png>
+Package pdftex.def Info: images/images_MLN/Infiltration_new.png  used on input 
+line 604.
+(pdftex.def)             Requested size: 288.7942pt x 141.5638pt.
+<images/images_MLN/UGR_Longterm.png, id=375, 400.49625pt x 255.95625pt>
+File: images/images_MLN/UGR_Longterm.png Graphic file (type png)
+<use images/images_MLN/UGR_Longterm.png>
+Package pdftex.def Info: images/images_MLN/UGR_Longterm.png  used on input line
+ 636.
+(pdftex.def)             Requested size: 247.54149pt x 158.20692pt.
+ [69 <./images/images_MLN/Infiltration_new.png>]
+<images/images_MLN/Color_sess_new.png, id=380, 584.93532pt x 451.6875pt>
+File: images/images_MLN/Color_sess_new.png Graphic file (type png)
+<use images/images_MLN/Color_sess_new.png>
+Package pdftex.def Info: images/images_MLN/Color_sess_new.png  used on input li
+ne 679.
+(pdftex.def)             Requested size: 297.04727pt x 229.38577pt.
+ [70 <./images/images_MLN/UGR_Longterm.png>] [71 <./images/images_MLN/Color_ses
+s_new.png (PNG copy)>]
+<images/images_MLN/CIC_LANL.png, id=388, 584.93532pt x 248.42813pt>
+File: images/images_MLN/CIC_LANL.png Graphic file (type png)
+<use images/images_MLN/CIC_LANL.png>
+Package pdftex.def Info: images/images_MLN/CIC_LANL.png  used on input line 702
+.
+(pdftex.def)             Requested size: 305.30032pt x 129.66858pt.
+ [72 <./images/images_MLN/CIC_LANL.png>]
+<images/images_MLN/Trainingsize.png, id=393, 511.15968pt x 174.6525pt>
+File: images/images_MLN/Trainingsize.png Graphic file (type png)
+<use images/images_MLN/Trainingsize.png>
+Package pdftex.def Info: images/images_MLN/Trainingsize.png  used on input line
+ 777.
+(pdftex.def)             Requested size: 288.7942pt x 98.67351pt.
+<images/images_MLN/short_sess_new2.png, id=394, 339.51843pt x 249.18094pt>
+File: images/images_MLN/short_sess_new2.png Graphic file (type png)
+<use images/images_MLN/short_sess_new2.png>
+Package pdftex.def Info: images/images_MLN/short_sess_new2.png  used on input l
+ine 803.
+(pdftex.def)             Requested size: 206.28247pt x 151.39558pt.
+
+[73 <./images/images_MLN/Trainingsize.png>] [74 <./images/images_MLN/short_sess
+_new2.png>]
+<images/images_MLN/complex_sess_new2.png, id=404, 516.42938pt x 494.59781pt>
+File: images/images_MLN/complex_sess_new2.png Graphic file (type png)
+<use images/images_MLN/complex_sess_new2.png>
+Package pdftex.def Info: images/images_MLN/complex_sess_new2.png  used on input
+ line 846.
+(pdftex.def)             Requested size: 305.30032pt x 292.40637pt.
+
+
+LaTeX Warning: Citation `ye2000markov' on page 75 undefined on input line 859.
+
+
+LaTeX Warning: Citation `Pellegrino2017' on page 75 undefined on input line 859
+.
+
+[75]
+<images/images_MLN/LSTM_design_shallow.png, id=408, 462.97969pt x 414.04688pt>
+File: images/images_MLN/LSTM_design_shallow.png Graphic file (type png)
+<use images/images_MLN/LSTM_design_shallow.png>
+Package pdftex.def Info: images/images_MLN/LSTM_design_shallow.png  used on inp
+ut line 867.
+(pdftex.def)             Requested size: 165.02345pt x 147.5847pt.
+
+
+LaTeX Warning: Citation `grov2019towards' on page 76 undefined on input line 87
+6.
+
+
+LaTeX Warning: Citation `yu2018attention' on page 76 undefined on input line 89
+9.
+
+
+LaTeX Warning: Citation `song2009spectrogram' on page 76 undefined on input lin
+e 899.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [76 <./images/images_MLN/complex_sess_new2.png>]
+
+LaTeX Warning: Citation `kim2016long' on page 77 undefined on input line 902.
+
+
+LaTeX Warning: Citation `wakui2019gampal' on page 77 undefined on input line 90
+3.
+
+
+LaTeX Warning: Citation `radford2018network' on page 77 undefined on input line
+ 904.
+
+
+LaTeX Warning: Citation `khan2021hcrnnids' on page 77 undefined on input line 9
+04.
+
+[77 <./images/images_MLN/LSTM_design_shallow.png>]
+
+LaTeX Warning: Citation `zhong2020helad' on page 78 undefined on input line 906
+.
+
+
+LaTeX Warning: Citation `zhou2020variational' on page 78 undefined on input lin
+e 906.
+
+
+LaTeX Warning: Citation `liu2020intrusion' on page 78 undefined on input line 9
+06.
+
+
+LaTeX Warning: Citation `berman2019survey' on page 78 undefined on input line 9
+08.
+
+
+LaTeX Warning: Citation `shen2018tiresias' on page 78 undefined on input line 9
+10.
+
+
+LaTeX Warning: Citation `du2017deeplog' on page 78 undefined on input line 911.
+
+
+
+LaTeX Warning: Citation `han2020unicorn' on page 78 undefined on input line 913
+.
+
+
+LaTeX Warning: Citation `sommer_outside_2010' on page 78 undefined on input lin
+e 922.
+
+[78]
+Underfull \vbox (badness 1077) has occurred while \output is active []
+
+ [79])
+[80]
+Chapter 6.
+(chapters/NSS.tex
+Overfull \hbox (16.55074pt too wide) in paragraph at lines 2--2
+[]\OT1/cmr/bx/n/17.28 Evading stepping-stone de-tec-tion with enough
+ []
+
+
+LaTeX Warning: Citation `tankard2011advanced' on page 81 undefined on input lin
+e 20.
+
+
+LaTeX Warning: Citation `mcafee2015report' on page 81 undefined on input line 2
+0.
+
+
+LaTeX Warning: Citation `eisac2017report' on page 81 undefined on input line 20
+.
+
+
+LaTeX Warning: Citation `ayala2016active' on page 81 undefined on input line 20
+.
+
+
+LaTeX Warning: Citation `enisa2017baseline' on page 81 undefined on input line 
+20.
+
+[81
+
+]
+
+LaTeX Warning: Citation `staniford1995holding' on page 82 undefined on input li
+ne 76.
+
+
+LaTeX Warning: Citation `pivoting2015' on page 82 undefined on input line 77.
+
+<images/images_NSS/Stepstone_final_2.png, id=429, 423.83344pt x 168.63pt>
+File: images/images_NSS/Stepstone_final_2.png Graphic file (type png)
+<use images/images_NSS/Stepstone_final_2.png>
+Package pdftex.def Info: images/images_NSS/Stepstone_final_2.png  used on input
+ line 84.
+(pdftex.def)             Requested size: 247.54149pt x 98.4899pt.
+[82]
+
+LaTeX Warning: Citation `donoho2002multiscale' on page 83 undefined on input li
+ne 121.
+
+
+LaTeX Warning: Citation `clausen2019traffic' on page 83 undefined on input line
+ 138.
+
+
+LaTeX Warning: Citation `pivoting2015' on page 83 undefined on input line 144.
+
+[83 <./images/images_NSS/Stepstone_final_2.png>]
+<images/images_NSS/Packetway_2.png, id=436, 843.15pt x 182.18062pt>
+File: images/images_NSS/Packetway_2.png Graphic file (type png)
+<use images/images_NSS/Packetway_2.png>
+Package pdftex.def Info: images/images_NSS/Packetway_2.png  used on input line 
+150.
+(pdftex.def)             Requested size: 371.30594pt x 80.2292pt.
+
+
+LaTeX Warning: Citation `xin2006testbed' on page 84 undefined on input line 161
+.
+
+
+LaTeX Warning: Citation `paxson1995wide' on page 84 undefined on input line 168
+.
+
+
+LaTeX Warning: Citation `hemminger2005network' on page 84 undefined on input li
+ne 176.
+
+
+LaTeX Warning: Citation `padhye2010evading' on page 84 undefined on input line 
+183.
+
+
+Underfull \vbox (badness 1694) has occurred while \output is active []
+
+ [84 <./images/images_NSS/Packetway_2.png>]
+
+LaTeX Warning: Citation `padhye2010evading' on page 85 undefined on input line 
+191.
+
+<images/images_NSS/Docker_framework.png, id=440, 1291.07344pt x 445.665pt>
+File: images/images_NSS/Docker_framework.png Graphic file (type png)
+<use images/images_NSS/Docker_framework.png>
+Package pdftex.def Info: images/images_NSS/Docker_framework.png  used on input 
+line 202.
+(pdftex.def)             Requested size: 309.4237pt x 106.80537pt.
+[85 <./images/images_NSS/Docker_framework.png>]
+
+LaTeX Warning: Citation `CAIDA2018' on page 86 undefined on input line 223.
+
+
+Overfull \hbox (115.36479pt too wide) in paragraph at lines 236--246
+ [][] 
+ []
+
+
+LaTeX Warning: Citation `velan2016network' on page 86 undefined on input line 2
+53.
+
+[86]
+
+LaTeX Warning: Citation `shullich2011survey' on page 87 undefined on input line
+ 267.
+
+
+LaTeX Warning: Citation `wang2018research' on page 87 undefined on input line 2
+67.
+
+
+LaTeX Warning: Citation `yang2011correlating' on page 87 undefined on input lin
+e 286.
+
+
+LaTeX Warning: Citation `nasr2018deepcorr' on page 87 undefined on input line 2
+88.
+
+
+LaTeX Warning: Citation `wu2010neural' on page 87 undefined on input line 290.
+
+
+LaTeX Warning: Citation `yang2015rtt' on page 87 undefined on input line 292.
+
+
+LaTeX Warning: Citation `huang2016detecting' on page 87 undefined on input line
+ 294.
+
+
+LaTeX Warning: Citation `di2011detecting' on page 87 undefined on input line 29
+6.
+
+
+LaTeX Warning: Citation `huang2011detecting' on page 87 undefined on input line
+ 298.
+
+
+LaTeX Warning: Citation `ding2013detecting' on page 87 undefined on input line 
+298.
+
+
+LaTeX Warning: Citation `wang2010robust' on page 87 undefined on input line 300
+.
+
+
+Overfull \hbox (96.51942pt too wide) in paragraph at lines 283--302
+ [][] 
+ []
+
+
+LaTeX Warning: Citation `yang2011correlating' on page 87 undefined on input lin
+e 319.
+
+
+LaTeX Warning: Citation `wu2010neural' on page 87 undefined on input line 330.
+
+[87]
+
+LaTeX Warning: Citation `nasr2018deepcorr' on page 88 undefined on input line 3
+36.
+
+
+LaTeX Warning: Citation `yang2015rtt' on page 88 undefined on input line 343.
+
+
+LaTeX Warning: Citation `yang2007mining' on page 88 undefined on input line 343
+.
+
+
+LaTeX Warning: Citation `huang2016detecting' on page 88 undefined on input line
+ 348.
+
+
+LaTeX Warning: Citation `di2011detecting' on page 88 undefined on input line 35
+4.
+
+
+LaTeX Warning: Citation `huang2011detecting' on page 88 undefined on input line
+ 360.
+
+
+LaTeX Warning: Citation `ding2013detecting' on page 88 undefined on input line 
+360.
+
+[88]
+
+LaTeX Warning: Citation `wang2010robust' on page 89 undefined on input line 366
+.
+
+<images/images_NSS/Noevasion_4nodes-1.pdf, id=454, 578.16pt x 180.675pt>
+File: images/images_NSS/Noevasion_4nodes-1.pdf Graphic file (type pdf)
+<use images/images_NSS/Noevasion_4nodes-1.pdf>
+Package pdftex.def Info: images/images_NSS/Noevasion_4nodes-1.pdf  used on inpu
+t line 375.
+(pdftex.def)             Requested size: 412.56496pt x 128.92525pt.
+[89 <./images/images_NSS/Noevasion_4nodes-1.pdf>]
+<images/images_NSS/Delaydetection-1.pdf, id=463, 578.16pt x 180.675pt>
+File: images/images_NSS/Delaydetection-1.pdf Graphic file (type pdf)
+<use images/images_NSS/Delaydetection-1.pdf>
+Package pdftex.def Info: images/images_NSS/Delaydetection-1.pdf  used on input 
+line 417.
+(pdftex.def)             Requested size: 412.56496pt x 128.92525pt.
+
+Overfull \hbox (17.64143pt too wide) in paragraph at lines 430--437
+ [][] 
+ []
+
+<images/images_NSS/Chaffdetection-1.pdf, id=464, 578.16pt x 180.675pt>
+File: images/images_NSS/Chaffdetection-1.pdf Graphic file (type pdf)
+<use images/images_NSS/Chaffdetection-1.pdf>
+Package pdftex.def Info: images/images_NSS/Chaffdetection-1.pdf  used on input 
+line 451.
+(pdftex.def)             Requested size: 412.56496pt x 128.92525pt.
+[90 <./images/images_NSS/Delaydetection-1.pdf>]
+Overfull \hbox (17.64143pt too wide) in paragraph at lines 463--470
+ [][] 
+ []
+
+
+LaTeX Warning: Citation `xin2006testbed' on page 91 undefined on input line 486
+.
+
+[91 <./images/images_NSS/Chaffdetection-1.pdf>]
+
+LaTeX Warning: Citation `nasr2018deepcorr' on page 92 undefined on input line 4
+89.
+
+
+LaTeX Warning: Citation `CAIDA2018' on page 92 undefined on input line 489.
+
+
+LaTeX Warning: Citation `di2011detecting' on page 92 undefined on input line 49
+2.
+
+
+LaTeX Warning: Citation `yang2015rtt' on page 92 undefined on input line 492.
+
+
+Overfull \hbox (45.71059pt too wide) in paragraph at lines 506--515
+ [][] 
+ []
+
+<images/images_NSS/Influencechainl-1.pdf, id=482, 578.16pt x 172.645pt>
+File: images/images_NSS/Influencechainl-1.pdf Graphic file (type pdf)
+<use images/images_NSS/Influencechainl-1.pdf>
+Package pdftex.def Info: images/images_NSS/Influencechainl-1.pdf  used on input
+ line 526.
+(pdftex.def)             Requested size: 412.56496pt x 123.19522pt.
+[92] [93 <./images/images_NSS/Influencechainl-1.pdf>]) [94]
+Chapter 7.
+(chapters/DYNAMICS.tex
+Overfull \hbox (6.81274pt too wide) in paragraph at lines 1--1
+[]\OT1/cmr/bx/n/17.28 Traffic Gen-er-a-tion us-ing Con-tainer-iza-tion for
+ []
+
+
+LaTeX Warning: Citation `tavallaee2009detailed' on page 95 undefined on input l
+ine 12.
+
+
+LaTeX Warning: Citation `kayacik2005selecting' on page 95 undefined on input li
+ne 12.
+
+
+LaTeX Warning: Citation `mirsky2016sherlock' on page 95 undefined on input line
+ 15.
+
+
+LaTeX Warning: Citation `crussell2019lessons' on page 95 undefined on input lin
+e 15.
+
+
+LaTeX Warning: Citation `crussell2019virtually' on page 95 undefined on input l
+ine 15.
+
+[95
+
+]
+
+LaTeX Warning: Citation `docker' on page 96 undefined on input line 20.
+
+[96]
+
+LaTeX Warning: Citation `brownlee1999traffic' on page 97 undefined on input lin
+e 53.
+
+
+LaTeX Warning: Citation `sperotto2009labeled' on page 97 undefined on input lin
+e 63.
+
+
+LaTeX Warning: Citation `akent-2015-enterprise-data' on page 97 undefined on in
+put line 63.
+
+
+LaTeX Warning: Citation `turcotte17' on page 97 undefined on input line 63.
+
+
+LaTeX Warning: Citation `macia2018ugr' on page 97 undefined on input line 63.
+
+
+LaTeX Warning: Citation `walsworth2015caida' on page 97 undefined on input line
+ 63.
+
+
+LaTeX Warning: Citation `sony2000traffic' on page 97 undefined on input line 63
+.
+
+[97]
+
+LaTeX Warning: Citation `sharafaldin2018towards' on page 98 undefined on input 
+line 65.
+
+
+LaTeX Warning: Citation `moustafa_unsw-nb15:_2015' on page 98 undefined on inpu
+t line 66.
+
+
+LaTeX Warning: Citation `tavallaee2009detailed' on page 98 undefined on input l
+ine 69.
+
+
+LaTeX Warning: Citation `mchugh2000testing' on page 98 undefined on input line 
+69.
+
+
+LaTeX Warning: Citation `fujdiak2018ip' on page 98 undefined on input line 71.
+
+
+LaTeX Warning: Citation `crussell2015minimega' on page 98 undefined on input li
+ne 71.
+
+
+LaTeX Warning: Citation `badiger2018violet' on page 98 undefined on input line 
+71.
+
+
+LaTeX Warning: Citation `sommer2010outside' on page 98 undefined on input line 
+78.
+
+
+LaTeX Warning: Citation `sperotto2009labeled' on page 98 undefined on input lin
+e 78.
+
+[98]
+
+LaTeX Warning: Citation `sommer2010outside' on page 99 undefined on input line 
+83.
+
+[99]
+
+LaTeX Warning: Citation `allix2014machine' on page 100 undefined on input line 
+104.
+
+
+LaTeX Warning: Citation `kolyshkin2006virtualization' on page 100 undefined on 
+input line 114.
+
+[100]
+
+LaTeX Warning: Citation `dockerhub' on page 101 undefined on input line 149.
+
+
+LaTeX Warning: Citation `docker_docs' on page 101 undefined on input line 158.
+
+
+LaTeX Warning: Citation `hemminger2005network' on page 101 undefined on input l
+ine 161.
+
+[101] [102]
+<images/images_DYNAMICS/scenario_branching.PNG, id=524, 1036.87375pt x 399.4925
+pt>
+File: images/images_DYNAMICS/scenario_branching.PNG Graphic file (type png)
+<use images/images_DYNAMICS/scenario_branching.PNG>
+Package pdftex.def Info: images/images_DYNAMICS/scenario_branching.PNG  used on
+ input line 229.
+(pdftex.def)             Requested size: 198.0294pt x 76.29448pt.
+
+
+LaTeX Warning: Citation `shiravi2012toward' on page 103 undefined on input line
+ 238.
+
+[103 <./images/images_DYNAMICS/scenario_branching.PNG>] [104]
+
+LaTeX Warning: Citation `iperf' on page 105 undefined on input line 263.
+
+
+LaTeX Warning: Citation `jacobson1989tcpdump' on page 105 undefined on input li
+ne 273.
+
+[105]
+
+LaTeX Warning: Citation `bestpractise' on page 106 undefined on input line 309.
+
+
+<images/images_DYNAMICS/ftp_new1.png, id=535, 901.3675pt x 415.5525pt>
+File: images/images_DYNAMICS/ftp_new1.png Graphic file (type png)
+<use images/images_DYNAMICS/ftp_new1.png>
+Package pdftex.def Info: images/images_DYNAMICS/ftp_new1.png  used on input lin
+e 320.
+(pdftex.def)             Requested size: 202.15909pt x 93.19725pt.
+[106 <./images/images_DYNAMICS/ftp_new1.png>]
+
+LaTeX Warning: Citation `shiravi2012toward' on page 107 undefined on input line
+ 342.
+
+
+LaTeX Warning: Citation `mergecap' on page 107 undefined on input line 345.
+
+
+LaTeX Warning: Citation `editcap' on page 107 undefined on input line 345.
+
+[107] [108] [109]
+<images/images_DYNAMICS/combined3.png, id=550, 425.33907pt x 558.58687pt>
+File: images/images_DYNAMICS/combined3.png Graphic file (type png)
+<use images/images_DYNAMICS/combined3.png>
+Package pdftex.def Info: images/images_DYNAMICS/combined3.png  used on input li
+ne 431.
+(pdftex.def)             Requested size: 185.65297pt x 243.81862pt.
+
+
+LaTeX Warning: Citation `massey1951kolmogorov' on page 110 undefined on input l
+ine 440.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [110 <./images/images_DYNAMICS/combined3.png>]
+
+LaTeX Warning: Citation `arfeen2013role' on page 111 undefined on input line 47
+9.
+
+
+LaTeX Warning: Citation `paxson1995wide' on page 111 undefined on input line 47
+9.
+
+[111]
+<images/images_DYNAMICS/1-plot_exp1.png, id=558, 390.45876pt x 292.09125pt>
+File: images/images_DYNAMICS/1-plot_exp1.png Graphic file (type png)
+<use images/images_DYNAMICS/1-plot_exp1.png>
+Package pdftex.def Info: images/images_DYNAMICS/1-plot_exp1.png  used on input 
+line 494.
+(pdftex.def)             Requested size: 185.65297pt x 138.88293pt.
+ [112 <./images/images_DYNAMICS/1-plot_exp1.png>]
+
+LaTeX Warning: Citation `zander2005automated' on page 113 undefined on input li
+ne 535.
+
+
+LaTeX Warning: Citation `nguyen2008survey' on page 113 undefined on input line 
+535.
+
+
+LaTeX Warning: Citation `jaber2011can' on page 113 undefined on input line 535.
+
+
+
+LaTeX Warning: Citation `bernaille2006traffic' on page 113 undefined on input l
+ine 535.
+
+
+LaTeX Warning: Citation `jaber2011can' on page 113 undefined on input line 537.
+
+
+[113]
+
+LaTeX Warning: Citation `jaber2011can' on page 114 undefined on input line 552.
+
+
+<images/images_DYNAMICS/bw_100_exp_3.png, id=567, 390.45876pt x 279.0425pt>
+File: images/images_DYNAMICS/bw_100_exp_3.png Graphic file (type png)
+<use images/images_DYNAMICS/bw_100_exp_3.png>
+Package pdftex.def Info: images/images_DYNAMICS/bw_100_exp_3.png  used on input
+ line 581.
+(pdftex.def)             Requested size: 165.02345pt x 117.93365pt.
+<images/images_DYNAMICS/bw_500_exp_3.png, id=568, 390.45876pt x 279.0425pt>
+File: images/images_DYNAMICS/bw_500_exp_3.png Graphic file (type png)
+<use images/images_DYNAMICS/bw_500_exp_3.png>
+Package pdftex.def Info: images/images_DYNAMICS/bw_500_exp_3.png  used on input
+ line 585.
+(pdftex.def)             Requested size: 165.02345pt x 117.93365pt.
+[114] [115 <./images/images_DYNAMICS/bw_100_exp_3.png> <./images/images_DYNAMIC
+S/bw_500_exp_3.png>])
 No file thesis.bbl.
-[9] (thesis.aux)
+[116] (thesis.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -400,28 +2797,42 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3720 strings out of 492970
- 57805 string characters out of 3126595
- 135139 words of memory out of 3000000
- 7558 multiletter control sequences out of 15000+200000
- 10545 words of font info for 37 fonts, out of 3000000 for 9000
+ 17681 strings out of 492970
+ 336991 string characters out of 3126595
+ 380878 words of memory out of 3000000
+ 21117 multiletter control sequences out of 15000+200000
+ 17620 words of font info for 66 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,9n,41p,1115b,464s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmmi12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/henry/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/henry/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/henry
-/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/
+ 62i,18n,77p,2192b,1236s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\henry\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
+tcrm1000.pk> <C:\Users\henry\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\
+ec\dpi600\tcrm1200.pk><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmbx10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/henry/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/henry/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
 Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-r8.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmti12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on thesis.pdf (9 pages, 317351 bytes).
+mi10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmmi12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmi6.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/henry/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/henry/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users
+/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.p
+fb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmr7.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/henry/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/henry/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/henry/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:
+/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mti8.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmtt12.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmtt8.pfb>
+Output written on thesis.pdf (116 pages, 2110655 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
+ 655 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 253 words of extra memory for PDF output out of 10000 (max. 10000000)
 
