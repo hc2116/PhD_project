@@ -1,0 +1,141 @@
+\relax 
+\citation{wexler2019if}
+\citation{livingstone2018ryerson}
+\citation{haque2019audio}
+\citation{kamper2020multilingual}
+\@writefile{toc}{\contentsline {title}{Controlling network traffic microstructures for machine-learning model probing}{1}}
+\@writefile{toc}{\authcount {3}}
+\@writefile{toc}{\contentsline {author}{Henry Clausen \and Robert Flood \and David Aspinall}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
+\citation{mirsky2018kitsune}
+\citation{nasr2018deepcorr}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Model evaluation and model probing with controlled data characteristics.\relax }}{2}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{Fig:Prob}{{1}{2}}
+\citation{kent-2015-cyberdata1}
+\citation{macia2018ugr}
+\citation{sharafaldin2018toward}
+\citation{moustafa2015unsw}
+\citation{ring2019survey}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Outline}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Existing datasets and corresponding ground-truth information}{3}}
+\newlabel{Sec:ExData}{{1.2}{3}}
+\citation{nisioti2018intrusion}
+\citation{hwang2019lstm}
+\citation{tahaei2020rise}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Scope of DetGen}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Methodology and example}{4}}
+\newlabel{Sec:Motivation}{{2}{4}}
+\citation{sharafaldin2018toward}
+\citation{mell2003overview}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Scores for the LSTM-traffic model before and after the model correction.\relax }}{5}}
+\newlabel{fig:LSTM_exp}{{2}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces LSTM-classification output in dependence of connection phases.\relax }}{6}}
+\newlabel{fig:LSTM_act}{{3}{6}}
+\citation{yen2009browser}
+\citation{stober2013you}
+\citation{marx2020same}
+\citation{marx2020same}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Traffic microstructures and their influence factors}{7}}
+\newlabel{Sec:DetGenMicro}{{3}{7}}
+\@writefile{toc}{\contentsline {paragraph}{1. Performed task and application.}{7}}
+\@writefile{toc}{\contentsline {paragraph}{2. Application layer implementations.}{7}}
+\citation{fricker2012impact}
+\citation{aparicio2017using}
+\citation{radford2018network}
+\citation{henryLSTM}
+\@writefile{toc}{\contentsline {paragraph}{3. LAN and WAN congestion.}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Packet-sequence similarity comparison under different load.\relax }}{8}}
+\newlabel{Fig:FTP_load}{{4}{8}}
+\@writefile{toc}{\contentsline {paragraph}{4. Host level load.}{8}}
+\@writefile{toc}{\contentsline {paragraph}{5. Caching/Repetition effects.}{8}}
+\@writefile{toc}{\contentsline {paragraph}{6. User and background activities.}{8}}
+\citation{sequeira2013influence}
+\citation{walsworth2015caida}
+\citation{sharafaldin2018toward}
+\citation{macia2018ugr}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces 5-second window for host 192.168.10.9 in the CICIDS-17 dataset.\relax }}{9}}
+\newlabel{Tab:Sess}{{1}{9}}
+\@writefile{toc}{\contentsline {paragraph}{7. Networking stack load.}{9}}
+\@writefile{toc}{\contentsline {paragraph}{8. Network configurations.}{9}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}DetGen: precisely controlled data generation}{10}}
+\newlabel{Sec:Archi}{{4}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Design overview}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Traditional traffic-generation-setups (left), and DetGen (right).\relax }}{10}}
+\newlabel{Fig:Setup_comp}{{5}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Containerization and activity isolation}{10}}
+\citation{shiravi2012toward}
+\citation{iperf}
+\citation{hemminger2005network}
+\citation{jurgelionis2011empirical}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Activity generation}{11}}
+\newlabel{Sec:Scenarios}{{4.3}{11}}
+\newlabel{Sec:Subscenarios}{{4.3}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Simulation of external influence}{11}}
+\newlabel{Sec:ExtInfls}{{4.4}{11}}
+\citation{macia2018ugr}
+\@writefile{toc}{\contentsline {subsubsection}{Host load.}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Data generation}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Traffic control and generative determinism of DetGen}{12}}
+\newlabel{Sec:Determinism}{{5}{12}}
+\citation{lashkari2017characterization}
+\citation{aun2017review}
+\citation{yen2009browser}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Dissimilarity scores for DetGen and a regular VM-setup, on a log-scale.\relax }}{13}}
+\newlabel{Fig:determ-metric}{{6}{13}}
+\citation{sharafaldin2018toward}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Packet-sequence similarity comparison for HTTP-activity for DetGen and a regular setting.\relax }}{14}}
+\newlabel{Fig:HTTP-seq}{{7}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Reconstructing an IDS-dataset for efficient probing}{14}}
+\newlabel{Sec:ProbData}{{6}{14}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces ALPs in CICIDS-17 data and their adoption in DetGen-IDS.\relax }}{15}}
+\newlabel{Tab:ALPs}{{2}{15}}
+\citation{henryLSTM}
+\citation{henryLSTM}
+\citation{henryLSTM}
+\citation{macia2018ugr}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Validation errors of LSTM-model \cite  {henryLSTM} on DetGen-IDS data.\relax }}{16}}
+\newlabel{Fig:ValLoss}{{8}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusions}{16}}
+\newlabel{Sec:Conclusion}{{7}{16}}
+\citation{macia2018ugr}
+\citation{turcotte17}
+\citation{lin2019generating}
+\bibstyle{abbrv}
+\bibdata{../DetGen_ext}
+\bibcite{aparicio2017using}{1}
+\bibcite{aun2017review}{2}
+\bibcite{henryLSTM}{3}
+\bibcite{fricker2012impact}{4}
+\bibcite{iperf}{5}
+\bibcite{haque2019audio}{6}
+\bibcite{hemminger2005network}{7}
+\bibcite{hwang2019lstm}{8}
+\bibcite{jurgelionis2011empirical}{9}
+\bibcite{kamper2020multilingual}{10}
+\bibcite{kent-2015-cyberdata1}{11}
+\bibcite{lashkari2017characterization}{12}
+\bibcite{lin2019generating}{13}
+\bibcite{livingstone2018ryerson}{14}
+\bibcite{macia2018ugr}{15}
+\bibcite{marx2020same}{16}
+\bibcite{mell2003overview}{17}
+\bibcite{mirsky2018kitsune}{18}
+\bibcite{moustafa2015unsw}{19}
+\bibcite{nasr2018deepcorr}{20}
+\bibcite{nisioti2018intrusion}{21}
+\bibcite{radford2018network}{22}
+\bibcite{ring2019survey}{23}
+\bibcite{sequeira2013influence}{24}
+\bibcite{sharafaldin2018toward}{25}
+\bibcite{shiravi2012toward}{26}
+\bibcite{stober2013you}{27}
+\bibcite{tahaei2020rise}{28}
+\bibcite{turcotte17}{29}
+\bibcite{walsworth2015caida}{30}
+\bibcite{wexler2019if}{31}
+\bibcite{yen2009browser}{32}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Existing Scenarios}{20}}
+\newlabel{Sec:ExistScen}{{A}{20}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Currently implemented traffic scenarios along with the number of implemented subscenarios\relax }}{20}}
+\newlabel{tab:scen}{{3}{20}}

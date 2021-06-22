@@ -1,169 +1,169 @@
 \contentsline {chapter}{\numberline {1}Introduction}{10}
-\contentsline {section}{\numberline {1.1}Central Research questions}{10}
+\contentsline {section}{\numberline {1.1}Central Research questions}{11}
 \contentsline {section}{\numberline {1.2}Motivation}{11}
 \contentsline {subsection}{\numberline {1.2.1}The case for machine learning and anomaly-based intrusion detection}{11}
-\contentsline {subsubsection}{Traffic encryption and microstructures}{11}
-\contentsline {subsection}{\numberline {1.2.2}Dataset problems}{11}
-\contentsline {subsection}{\numberline {1.2.3}Lack of model development}{11}
-\contentsline {subsubsection}{Relevance}{11}
-\contentsline {subsection}{\numberline {1.2.4}Thesis overview}{11}
-\contentsline {chapter}{\numberline {2}Background}{12}
-\contentsline {section}{\numberline {2.1}Network traffic}{12}
-\contentsline {subsection}{\numberline {2.1.1}Network attacks}{13}
-\contentsline {section}{\numberline {2.2}Machine learning and anomaly detection}{16}
-\contentsline {subsection}{\numberline {2.2.1}Sequence modelling}{16}
-\contentsline {subsection}{\numberline {2.2.2}Classification vs anomaly-detection}{16}
-\contentsline {subsection}{\numberline {2.2.3}Self-supervised language models}{16}
-\contentsline {section}{\numberline {2.3}Intrusion detection}{16}
-\contentsline {subsection}{\numberline {2.3.1}Intrusion Detection Systems}{17}
-\contentsline {subsection}{\numberline {2.3.2}Anomaly detection}{19}
-\contentsline {subsubsection}{Anomaly detection and NIDS}{20}
-\contentsline {section}{\numberline {2.4}Temporal correlation/Semantics-based}{21}
-\contentsline {subsection}{\numberline {2.4.1}Application to stepping stone detection}{23}
-\contentsline {subsection}{\numberline {2.4.2}Semantic-based approaches using different data sources}{23}
-\contentsline {section}{\numberline {2.5}Existing datasets}{24}
-\contentsline {subsubsection}{LITNET-2020 \cite {damasevicius2020litnet}}{29}
-\contentsline {subsubsection}{Bo{\u {g}}azi{\c {c}}i University distributed denial of service dataset}{29}
-\contentsline {chapter}{\numberline {3}Related work}{30}
-\contentsline {section}{\numberline {3.1}Traffic examinations}{30}
-\contentsline {section}{\numberline {3.2}Traffic generation frameworks}{30}
-\contentsline {section}{\numberline {3.3}Small-scale anomaly detection approaches}{30}
-\contentsline {chapter}{\numberline {4}Modelling}{31}
-\contentsline {section}{\numberline {4.1}Controlling network traffic microstructures for machine-learning model probing}{31}
-\contentsline {section}{\numberline {4.2}Introduction}{31}
-\contentsline {subsection}{\numberline {4.2.1}Outline}{33}
-\contentsline {subsection}{\numberline {4.2.2}Existing datasets and corresponding ground-truth information}{33}
-\contentsline {subsection}{\numberline {4.2.3}Scope of DetGen}{34}
-\contentsline {section}{\numberline {4.3}Methodology and example}{34}
-\contentsline {section}{\numberline {4.4}Refining the notion of benign traffic for anomaly detection}{37}
-\contentsline {subsection}{\numberline {4.4.1}Projection coherency evaluation}{37}
-\contentsline {subsection}{\numberline {4.4.2}Investigating individual cluster incoherences}{40}
-\contentsline {section}{\numberline {4.5}Reconstructing an IDS-dataset for efficient probing}{41}
-\contentsline {section}{\numberline {4.6}Traffic microstructures and their influence factors}{43}
-\contentsline {paragraph}{1. Performed task and application.}{43}
-\contentsline {paragraph}{2. Application layer implementations.}{43}
-\contentsline {paragraph}{3. LAN and WAN congestion.}{43}
-\contentsline {paragraph}{4. Host level load.}{43}
-\contentsline {paragraph}{5. Caching/Repetition effects.}{43}
-\contentsline {paragraph}{6. User and background activities.}{44}
-\contentsline {paragraph}{7. Networking stack load.}{44}
-\contentsline {paragraph}{8. Network configurations.}{45}
-\contentsline {section}{\numberline {4.7}DetGen: precisely controlled data generation}{45}
-\contentsline {subsection}{\numberline {4.7.1}Design overview}{45}
-\contentsline {subsection}{\numberline {4.7.2}Containerization and activity isolation}{45}
-\contentsline {subsection}{\numberline {4.7.3}Activity generation}{46}
-\contentsline {subsection}{\numberline {4.7.4}Simulation of external influence}{47}
-\contentsline {subsubsection}{Host load.}{47}
-\contentsline {subsection}{\numberline {4.7.5}Data generation}{47}
-\contentsline {section}{\numberline {4.8}Traffic control and generative determinism of DetGen}{48}
-\contentsline {section}{\numberline {4.9}Conclusions}{50}
-\contentsline {chapter}{\numberline {5}Flow model}{52}
-\contentsline {section}{\numberline {5.1}CBAM: A contextual model for network anomaly detection}{52}
-\contentsline {section}{\numberline {5.2}Introduction}{52}
-\contentsline {subsection}{\numberline {5.2.1}Contribution}{53}
-\contentsline {subsection}{\numberline {5.2.2}Outline}{54}
-\contentsline {section}{\numberline {5.3}Overview}{54}
-\contentsline {section}{\numberline {5.4}Design}{55}
-\contentsline {subsection}{\numberline {5.4.1}Session construction}{55}
-\contentsline {subsection}{\numberline {5.4.2}Contextual modelling}{56}
-\contentsline {subsection}{\numberline {5.4.3}Architecture selection}{57}
-\contentsline {subsection}{\numberline {5.4.4}Trained architecture}{58}
-\contentsline {subsubsection}{Embedding}{58}
-\contentsline {subsubsection}{LSTM-layer}{59}
-\contentsline {subsubsection}{Output layer}{59}
-\contentsline {subsection}{\numberline {5.4.5}Parameter selection and training}{60}
-\contentsline {subsection}{\numberline {5.4.6}Detection method}{61}
-\contentsline {section}{\numberline {5.5}Datasets}{61}
-\contentsline {subsection}{\numberline {5.5.1}Dataset assembly}{61}
-\contentsline {subsection}{\numberline {5.5.2}Dataset split}{63}
-\contentsline {subsection}{\numberline {5.5.3}Sample imbalance and evaluation methodology}{64}
-\contentsline {section}{\numberline {5.6}Detection performance}{65}
-\contentsline {subsection}{\numberline {5.6.1}CICIDS-17 results}{65}
-\contentsline {subsection}{\numberline {5.6.2}LANL results}{67}
-\contentsline {subsection}{\numberline {5.6.3}How attacks affect flow structures}{67}
-\contentsline {subsection}{\numberline {5.6.4}Runtime performance}{69}
-\contentsline {section}{\numberline {5.7}Benign traffic and longterm stability}{69}
-\contentsline {subsection}{\numberline {5.7.1}UGR-16 data}{69}
-\contentsline {subsection}{\numberline {5.7.2}CICIDS-17 and LANL-15 results}{71}
-\contentsline {subsection}{\numberline {5.7.3}Importance of training data size}{72}
-\contentsline {section}{\numberline {5.8}Benefit of increased model complexity}{73}
-\contentsline {subsection}{\numberline {5.8.1}Bidirectionality for better session context}{73}
-\contentsline {subsection}{\numberline {5.8.2}Additional layers for complex session modelling}{75}
-\contentsline {subsection}{\numberline {5.8.3}Comparison with simpler models}{75}
-\contentsline {section}{\numberline {5.9}Related work}{77}
-\contentsline {section}{\numberline {5.10}Limitations and evasion}{78}
-\contentsline {subsection}{\numberline {5.10.1}Limitations}{78}
-\contentsline {subsection}{\numberline {5.10.2}Evasion and resilience}{79}
-\contentsline {section}{\numberline {5.11}Conclusion}{80}
-\contentsline {chapter}{\numberline {6}Application to stepping-stone detection}{81}
-\contentsline {section}{\numberline {6.1}Evading stepping-stone detection with enough chaff}{81}
-\contentsline {section}{\numberline {6.2}Introduction}{81}
-\contentsline {subsection}{\numberline {6.2.1}Background}{82}
-\contentsline {section}{\numberline {6.3}Data generation setting}{83}
-\contentsline {subsection}{\numberline {6.3.1}Containerisation}{83}
-\contentsline {subsection}{\numberline {6.3.2}Simulating stepping stones with SSH-tunnels and Docker}{83}
-\contentsline {subsubsection}{Simulating interactive SSH-traffic}{84}
-\contentsline {subsubsection}{Simulating different network settings}{84}
-\contentsline {subsection}{\numberline {6.3.3}Evasive tactics}{85}
-\contentsline {subsubsection}{Adding transfer delays}{85}
-\contentsline {subsubsection}{Adding chaff perturbation}{85}
-\contentsline {subsubsection}{Repacketisation}{85}
-\contentsline {section}{\numberline {6.4}Evaluation data}{85}
-\contentsline {subsection}{\numberline {6.4.1}Stepping-stone data}{86}
-\contentsline {subsection}{\numberline {6.4.2}Benign data}{86}
-\contentsline {subsection}{\numberline {6.4.3}Evaluation methodology}{87}
-\contentsline {section}{\numberline {6.5}Selected SSD methods and Implementation}{87}
-\contentsline {subsubsection}{PContext, 2011}{87}
-\contentsline {subsubsection}{WuNeur, 2010}{88}
-\contentsline {subsubsection}{DeepCorr, 2018}{88}
-\contentsline {subsubsection}{RWalk, 2015}{88}
-\contentsline {subsubsection}{C-Over, 2016}{88}
-\contentsline {subsubsection}{Ano1, 2011}{88}
-\contentsline {subsubsection}{Ano2, 2011/2013}{88}
-\contentsline {subsubsection}{WM, 2010}{89}
-\contentsline {section}{\numberline {6.6}Results}{89}
-\contentsline {subsection}{\numberline {6.6.1}Data without evasion tactics}{89}
-\contentsline {subsection}{\numberline {6.6.2}Delays}{90}
-\contentsline {subsection}{\numberline {6.6.3}Chaff}{90}
-\contentsline {subsection}{\numberline {6.6.4}Summary}{91}
-\contentsline {section}{\numberline {6.7}Related work}{91}
-\contentsline {subsection}{\numberline {6.7.1}Testbeds and data}{91}
-\contentsline {section}{\numberline {6.8}False positives}{92}
-\contentsline {section}{\numberline {6.9}Influence of chain length}{92}
-\contentsline {section}{\numberline {6.10}Influence of network settings}{93}
-\contentsline {section}{\numberline {6.11}Conclusion}{93}
-\contentsline {chapter}{\numberline {7}Requirements for Machine Learning}{95}
-\contentsline {section}{\numberline {7.1}Traffic Generation using Containerization for Machine Learning}{95}
-\contentsline {section}{\numberline {7.2}Introduction}{95}
-\contentsline {subsection}{\numberline {7.2.1}Outline}{97}
-\contentsline {section}{\numberline {7.3}Background}{97}
-\contentsline {subsection}{\numberline {7.3.1}Data formats}{97}
-\contentsline {subsection}{\numberline {7.3.2}Related work and existing datasets}{97}
-\contentsline {subsection}{\numberline {7.3.3}Problems in modern datasets}{98}
-\contentsline {paragraph}{Lack of variation}{99}
-\contentsline {paragraph}{Lack of ground truth}{99}
-\contentsline {paragraph}{Static design}{100}
-\contentsline {paragraph}{Limited size}{100}
-\contentsline {subsection}{\numberline {7.3.4}Containerization with Docker}{100}
-\contentsline {subsection}{\numberline {7.3.5}Dataset Requirements}{102}
-\contentsline {paragraph}{Variation}{103}
-\contentsline {paragraph}{Ground truth}{103}
-\contentsline {paragraph}{Modularity}{103}
-\contentsline {paragraph}{Scalability}{103}
-\contentsline {section}{\numberline {7.4}Design}{103}
-\contentsline {subsection}{\numberline {7.4.1}Scenarios}{104}
-\contentsline {subsection}{\numberline {7.4.2}Subscenarios}{104}
-\contentsline {subsection}{\numberline {7.4.3}Randomization within Subscenarios}{104}
-\contentsline {subsection}{\numberline {7.4.4}Network transmission}{105}
-\contentsline {subsection}{\numberline {7.4.5}Capture}{105}
-\contentsline {subsection}{\numberline {7.4.6}Implementation Process}{105}
-\contentsline {subsection}{\numberline {7.4.7}Simple Example Scenario - FTP server}{106}
-\contentsline {subsection}{\numberline {7.4.8}Dataset creation}{107}
-\contentsline {subsection}{\numberline {7.4.9}Scenarios}{108}
-\contentsline {section}{\numberline {7.5}Validation experiments}{108}
-\contentsline {subsection}{\numberline {7.5.1}Reproducible scenarios}{108}
-\contentsline {subsection}{\numberline {7.5.2}Explorating Artificial Delays}{111}
-\contentsline {subsection}{\numberline {7.5.3}Advantages of Dynamic Dataset Generation}{113}
-\contentsline {section}{\numberline {7.6}Conclusions}{115}
-\contentsline {subsection}{\numberline {7.6.1}Difficulties and limitations}{115}
-\contentsline {subsection}{\numberline {7.6.2}Future work}{116}
+\contentsline {subsubsection}{SPI and microstructures}{12}
+\contentsline {subsection}{\numberline {1.2.2}Lack of model development in NID}{12}
+\contentsline {subsection}{\numberline {1.2.3}Dataset problems and lack of labels}{12}
+\contentsline {subsubsection}{Relevance}{12}
+\contentsline {section}{\numberline {1.3}Thesis overview}{12}
+\contentsline {chapter}{\numberline {2}Background}{13}
+\contentsline {section}{\numberline {2.1}Network traffic}{13}
+\contentsline {subsection}{\numberline {2.1.1}Network attacks}{14}
+\contentsline {section}{\numberline {2.2}Machine learning and anomaly detection}{17}
+\contentsline {subsection}{\numberline {2.2.1}Sequence modelling}{17}
+\contentsline {subsection}{\numberline {2.2.2}Classification vs anomaly-detection}{17}
+\contentsline {subsection}{\numberline {2.2.3}Self-supervised language models}{17}
+\contentsline {section}{\numberline {2.3}Intrusion detection}{17}
+\contentsline {subsection}{\numberline {2.3.1}Intrusion Detection Systems}{18}
+\contentsline {subsection}{\numberline {2.3.2}Anomaly detection}{20}
+\contentsline {subsubsection}{Anomaly detection and NIDS}{21}
+\contentsline {section}{\numberline {2.4}Temporal correlation/Semantics-based}{22}
+\contentsline {subsection}{\numberline {2.4.1}Application to stepping stone detection}{24}
+\contentsline {subsection}{\numberline {2.4.2}Semantic-based approaches using different data sources}{24}
+\contentsline {section}{\numberline {2.5}Existing datasets}{25}
+\contentsline {subsubsection}{LITNET-2020 \cite {damasevicius2020litnet}}{30}
+\contentsline {subsubsection}{Bo{\u {g}}azi{\c {c}}i University distributed denial of service dataset}{30}
+\contentsline {chapter}{\numberline {3}Related work}{31}
+\contentsline {section}{\numberline {3.1}Traffic examinations}{31}
+\contentsline {section}{\numberline {3.2}Traffic generation frameworks}{31}
+\contentsline {section}{\numberline {3.3}Small-scale anomaly detection approaches}{31}
+\contentsline {chapter}{\numberline {4}Modelling}{32}
+\contentsline {section}{\numberline {4.1}Controlling network traffic microstructures for machine-learning model probing}{32}
+\contentsline {section}{\numberline {4.2}Introduction}{32}
+\contentsline {subsection}{\numberline {4.2.1}Outline}{34}
+\contentsline {subsection}{\numberline {4.2.2}Existing datasets and corresponding ground-truth information}{34}
+\contentsline {subsection}{\numberline {4.2.3}Scope of DetGen}{35}
+\contentsline {section}{\numberline {4.3}Methodology and example}{35}
+\contentsline {section}{\numberline {4.4}Refining the notion of benign traffic for anomaly detection}{38}
+\contentsline {subsection}{\numberline {4.4.1}Projection coherency evaluation}{38}
+\contentsline {subsection}{\numberline {4.4.2}Investigating individual cluster incoherences}{41}
+\contentsline {section}{\numberline {4.5}Reconstructing an IDS-dataset for efficient probing}{42}
+\contentsline {section}{\numberline {4.6}Traffic microstructures and their influence factors}{44}
+\contentsline {paragraph}{1. Performed task and application.}{44}
+\contentsline {paragraph}{2. Application layer implementations.}{44}
+\contentsline {paragraph}{3. LAN and WAN congestion.}{44}
+\contentsline {paragraph}{4. Host level load.}{44}
+\contentsline {paragraph}{5. Caching/Repetition effects.}{44}
+\contentsline {paragraph}{6. User and background activities.}{45}
+\contentsline {paragraph}{7. Networking stack load.}{45}
+\contentsline {paragraph}{8. Network configurations.}{46}
+\contentsline {section}{\numberline {4.7}DetGen: precisely controlled data generation}{46}
+\contentsline {subsection}{\numberline {4.7.1}Design overview}{46}
+\contentsline {subsection}{\numberline {4.7.2}Containerization and activity isolation}{46}
+\contentsline {subsection}{\numberline {4.7.3}Activity generation}{47}
+\contentsline {subsection}{\numberline {4.7.4}Simulation of external influence}{48}
+\contentsline {subsubsection}{Host load.}{48}
+\contentsline {subsection}{\numberline {4.7.5}Data generation}{48}
+\contentsline {section}{\numberline {4.8}Traffic control and generative determinism of DetGen}{49}
+\contentsline {section}{\numberline {4.9}Conclusions}{51}
+\contentsline {chapter}{\numberline {5}Flow model}{53}
+\contentsline {section}{\numberline {5.1}CBAM: A contextual model for network anomaly detection}{53}
+\contentsline {section}{\numberline {5.2}Introduction}{53}
+\contentsline {subsection}{\numberline {5.2.1}Contribution}{54}
+\contentsline {subsection}{\numberline {5.2.2}Outline}{55}
+\contentsline {section}{\numberline {5.3}Overview}{55}
+\contentsline {section}{\numberline {5.4}Design}{56}
+\contentsline {subsection}{\numberline {5.4.1}Session construction}{56}
+\contentsline {subsection}{\numberline {5.4.2}Contextual modelling}{57}
+\contentsline {subsection}{\numberline {5.4.3}Architecture selection}{58}
+\contentsline {subsection}{\numberline {5.4.4}Trained architecture}{59}
+\contentsline {subsubsection}{Embedding}{59}
+\contentsline {subsubsection}{LSTM-layer}{60}
+\contentsline {subsubsection}{Output layer}{60}
+\contentsline {subsection}{\numberline {5.4.5}Parameter selection and training}{61}
+\contentsline {subsection}{\numberline {5.4.6}Detection method}{62}
+\contentsline {section}{\numberline {5.5}Datasets}{62}
+\contentsline {subsection}{\numberline {5.5.1}Dataset assembly}{62}
+\contentsline {subsection}{\numberline {5.5.2}Dataset split}{64}
+\contentsline {subsection}{\numberline {5.5.3}Sample imbalance and evaluation methodology}{65}
+\contentsline {section}{\numberline {5.6}Detection performance}{66}
+\contentsline {subsection}{\numberline {5.6.1}CICIDS-17 results}{66}
+\contentsline {subsection}{\numberline {5.6.2}LANL results}{68}
+\contentsline {subsection}{\numberline {5.6.3}How attacks affect flow structures}{68}
+\contentsline {subsection}{\numberline {5.6.4}Runtime performance}{70}
+\contentsline {section}{\numberline {5.7}Benign traffic and longterm stability}{70}
+\contentsline {subsection}{\numberline {5.7.1}UGR-16 data}{70}
+\contentsline {subsection}{\numberline {5.7.2}CICIDS-17 and LANL-15 results}{72}
+\contentsline {subsection}{\numberline {5.7.3}Importance of training data size}{73}
+\contentsline {section}{\numberline {5.8}Benefit of increased model complexity}{74}
+\contentsline {subsection}{\numberline {5.8.1}Bidirectionality for better session context}{74}
+\contentsline {subsection}{\numberline {5.8.2}Additional layers for complex session modelling}{76}
+\contentsline {subsection}{\numberline {5.8.3}Comparison with simpler models}{76}
+\contentsline {section}{\numberline {5.9}Related work}{78}
+\contentsline {section}{\numberline {5.10}Limitations and evasion}{79}
+\contentsline {subsection}{\numberline {5.10.1}Limitations}{79}
+\contentsline {subsection}{\numberline {5.10.2}Evasion and resilience}{80}
+\contentsline {section}{\numberline {5.11}Conclusion}{81}
+\contentsline {chapter}{\numberline {6}Application to stepping-stone detection}{82}
+\contentsline {section}{\numberline {6.1}Evading stepping-stone detection with enough chaff}{82}
+\contentsline {section}{\numberline {6.2}Introduction}{82}
+\contentsline {subsection}{\numberline {6.2.1}Background}{83}
+\contentsline {section}{\numberline {6.3}Data generation setting}{84}
+\contentsline {subsection}{\numberline {6.3.1}Containerisation}{84}
+\contentsline {subsection}{\numberline {6.3.2}Simulating stepping stones with SSH-tunnels and Docker}{84}
+\contentsline {subsubsection}{Simulating interactive SSH-traffic}{85}
+\contentsline {subsubsection}{Simulating different network settings}{85}
+\contentsline {subsection}{\numberline {6.3.3}Evasive tactics}{86}
+\contentsline {subsubsection}{Adding transfer delays}{86}
+\contentsline {subsubsection}{Adding chaff perturbation}{86}
+\contentsline {subsubsection}{Repacketisation}{86}
+\contentsline {section}{\numberline {6.4}Evaluation data}{86}
+\contentsline {subsection}{\numberline {6.4.1}Stepping-stone data}{87}
+\contentsline {subsection}{\numberline {6.4.2}Benign data}{87}
+\contentsline {subsection}{\numberline {6.4.3}Evaluation methodology}{88}
+\contentsline {section}{\numberline {6.5}Selected SSD methods and Implementation}{88}
+\contentsline {subsubsection}{PContext, 2011}{88}
+\contentsline {subsubsection}{WuNeur, 2010}{89}
+\contentsline {subsubsection}{DeepCorr, 2018}{89}
+\contentsline {subsubsection}{RWalk, 2015}{89}
+\contentsline {subsubsection}{C-Over, 2016}{89}
+\contentsline {subsubsection}{Ano1, 2011}{89}
+\contentsline {subsubsection}{Ano2, 2011/2013}{89}
+\contentsline {subsubsection}{WM, 2010}{90}
+\contentsline {section}{\numberline {6.6}Results}{90}
+\contentsline {subsection}{\numberline {6.6.1}Data without evasion tactics}{90}
+\contentsline {subsection}{\numberline {6.6.2}Delays}{91}
+\contentsline {subsection}{\numberline {6.6.3}Chaff}{91}
+\contentsline {subsection}{\numberline {6.6.4}Summary}{92}
+\contentsline {section}{\numberline {6.7}Related work}{92}
+\contentsline {subsection}{\numberline {6.7.1}Testbeds and data}{92}
+\contentsline {section}{\numberline {6.8}False positives}{93}
+\contentsline {section}{\numberline {6.9}Influence of chain length}{93}
+\contentsline {section}{\numberline {6.10}Influence of network settings}{94}
+\contentsline {section}{\numberline {6.11}Conclusion}{94}
+\contentsline {chapter}{\numberline {7}Requirements for Machine Learning}{96}
+\contentsline {section}{\numberline {7.1}Traffic Generation using Containerization for Machine Learning}{96}
+\contentsline {section}{\numberline {7.2}Introduction}{96}
+\contentsline {subsection}{\numberline {7.2.1}Outline}{98}
+\contentsline {section}{\numberline {7.3}Background}{98}
+\contentsline {subsection}{\numberline {7.3.1}Data formats}{98}
+\contentsline {subsection}{\numberline {7.3.2}Related work and existing datasets}{98}
+\contentsline {subsection}{\numberline {7.3.3}Problems in modern datasets}{99}
+\contentsline {paragraph}{Lack of variation}{100}
+\contentsline {paragraph}{Lack of ground truth}{100}
+\contentsline {paragraph}{Static design}{101}
+\contentsline {paragraph}{Limited size}{101}
+\contentsline {subsection}{\numberline {7.3.4}Containerization with Docker}{101}
+\contentsline {subsection}{\numberline {7.3.5}Dataset Requirements}{103}
+\contentsline {paragraph}{Variation}{104}
+\contentsline {paragraph}{Ground truth}{104}
+\contentsline {paragraph}{Modularity}{104}
+\contentsline {paragraph}{Scalability}{104}
+\contentsline {section}{\numberline {7.4}Design}{104}
+\contentsline {subsection}{\numberline {7.4.1}Scenarios}{105}
+\contentsline {subsection}{\numberline {7.4.2}Subscenarios}{105}
+\contentsline {subsection}{\numberline {7.4.3}Randomization within Subscenarios}{105}
+\contentsline {subsection}{\numberline {7.4.4}Network transmission}{106}
+\contentsline {subsection}{\numberline {7.4.5}Capture}{106}
+\contentsline {subsection}{\numberline {7.4.6}Implementation Process}{106}
+\contentsline {subsection}{\numberline {7.4.7}Simple Example Scenario - FTP server}{107}
+\contentsline {subsection}{\numberline {7.4.8}Dataset creation}{108}
+\contentsline {subsection}{\numberline {7.4.9}Scenarios}{109}
+\contentsline {section}{\numberline {7.5}Validation experiments}{109}
+\contentsline {subsection}{\numberline {7.5.1}Reproducible scenarios}{109}
+\contentsline {subsection}{\numberline {7.5.2}Explorating Artificial Delays}{112}
+\contentsline {subsection}{\numberline {7.5.3}Advantages of Dynamic Dataset Generation}{114}
+\contentsline {section}{\numberline {7.6}Conclusions}{116}
+\contentsline {subsection}{\numberline {7.6.1}Difficulties and limitations}{116}
+\contentsline {subsection}{\numberline {7.6.2}Future work}{117}

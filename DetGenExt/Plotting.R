@@ -208,11 +208,11 @@ x1 <- abs(rnorm(N,mean=0.002,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.001,sd=0.0001))
 x3 <- abs(rnorm(N,mean=0.003,sd=0.004))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("ConSim","ConSeq","PacSeq"))
+               Metric=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 dfA=df
 df2A=df2
 dfA$Set="A"
@@ -224,11 +224,11 @@ x1 <- abs(rnorm(N,mean=0.003,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.001,sd=0.0002))
 x3 <- abs(rnorm(N,mean=0.002,sd=0.0005))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("ConSim","ConSeq","PacSeq"))
+               Metric=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 dfB=df
 df2B=df2
 dfB$Set="B"
@@ -240,11 +240,11 @@ x1 <- abs(rnorm(N,mean=0.004,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.004,sd=0.001))
 x3 <- abs(rnorm(N,mean=0.003,sd=0.001))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("ConSim","ConSeq","PacSeq"))
+               Metric=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 dfC=df
 df2C=df2
 dfC$Set="C"
@@ -256,11 +256,11 @@ x1 <- abs(rnorm(N,mean=0.0055,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.001,sd=0.001))
 x3 <- abs(rnorm(N,mean=0.002,sd=0.001))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("ConSim","ConSeq","PacSeq"))
+               Metric=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 dfD=df
 df2D=df2
 dfD$Set="D"
@@ -272,11 +272,11 @@ x1 <- abs(rnorm(N,mean=0.016,sd=0.006))
 x2 <- c(abs(rnorm(0.5*N,mean=0.055,sd=0.01)),abs(rnorm(0.5*N,mean=0.025,sd=0.01)))
 x3 <- abs(rnorm(N,mean=0.022,sd=0.004))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("ConSim","ConSeq","PacSeq"))
+               Metric=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 dfVMA=df
 df2VMA=df2
 dfVMA$Set="A"
@@ -289,11 +289,11 @@ x1 <- abs(rnorm(N,mean=0.016,sd=0.004))
 x2 <- c(abs(rnorm(0.5*N,mean=0.055,sd=0.01)),abs(rnorm(0.5*N,mean=0.025,sd=0.01)))
 x3 <- abs(rnorm(N,mean=0.008,sd=0.004))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("ConSim","ConSeq","PacSeq"))
+               Metric=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 dfVMB=df
 df2VMB=df2
 dfVMB$Set="B"
@@ -307,8 +307,8 @@ df2VMB$Group="VM"
 df=rbind(dfA,dfB,dfVMA,dfVMB)
 df2=rbind(df2A,df2B,df2VMA,df2VMB)
 
-df$Metric=factor(df$Metric, levels=c("ConSim","ConSeq","PacSeq"))
-df2$Metric=factor(df2$Metric, levels=c("ConSim","ConSeq","PacSeq"))
+df$Metric=factor(df$Metric, levels=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
+df2$Metric=factor(df2$Metric, levels=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 
 df$x=df$x*100
 df2[,1:3]=df2[,1:3]*100
@@ -379,7 +379,7 @@ x2 <- c(rtrunc(n=0.9*N,spec="norm",a=0,b=1,mean=0.1,sd=0.05),
 x3 <- c(rtrunc(n=0.7*N,spec="norm",a=0,b=1,mean=0.1,sd=0.1),
         rtrunc(n=0.3*N,spec="norm",a=0,b=1,mean=0.3,sd=0.3))
 df1=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)),Data="DetGen")
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)),Data="DetGen")
 entropy(x1,unit="log2")
 entropy(x2,unit="log2")
 entropy(x3,unit="log2")
@@ -392,7 +392,7 @@ x2 <- c(rtrunc(n=0.6*N,spec="norm",a=0,b=1,mean=0.1,sd=0.1),
 x3 <- c(rtrunc(n=0.6*N,spec="norm",a=0,b=1,mean=0.1,sd=0.1),
         rtrunc(n=0.4*N,spec="norm",a=0,b=1,mean=0.4,sd=0.3))
 df2=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)),Data="CAIDA")
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)),Data="CAIDA")
 entropy(x1,unit="log2")
 entropy(x2,unit="log2")
 entropy(x3,unit="log2")
@@ -405,14 +405,14 @@ x2 <- c(rtrunc(n=0.7*N,spec="norm",a=0,b=1,mean=0.1,sd=0.06),
 x3 <- c(rtrunc(n=0.95*N,spec="norm",a=0,b=1,mean=0.03,sd=0.01),
         rtrunc(n=0.05*N,spec="norm",a=0,b=1,mean=0.2,sd=0.2))
 df3=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)),Data="CICIDS")
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)),Data="CICIDS")
 entropy(x1,unit="log2")
 entropy(x2,unit="log2")
 entropy(x3,unit="log2")
 
 df=rbind(df1,df2,df3)
 
-df$Metric=factor(df$Metric, levels=c("ConSim","ConSeq","PacSeq"))
+df$Metric=factor(df$Metric, levels=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 df$Data=factor(df$Data, levels=c("CAIDA","DetGen","CICIDS"))
 
 pA <- ggplot(df, aes(x=x)) + 
@@ -1202,7 +1202,7 @@ pA
 # Plot Detgen
 ####################################################################################
 
-Packets <- read.csv("../Desktop/SQL_traffic.txt")
+Packets <- read.csv("../../SQL_traffic.txt")
 
 xx=unique(Packets$SPort)
 for(Sport in xx){
@@ -1211,7 +1211,7 @@ for(Sport in xx){
 }
 
 
-Packets <- read.csv("../Desktop/firefox.txt")
+Packets <- read.csv("../../firefox.txt")
 xx=unique(Packets$SPort)
 for(Sport in xx){
   aa=dim(Packets[Packets$SPort==Sport,])
@@ -1309,15 +1309,28 @@ df5 <- data.frame(Annot=c("Conn. estab.","HTTP","Data transfer", "SQL-inj.",
                       0.223,0.236,
                       0.264,0.287,0.315),
         Direction="Backw.",
-        yy=c(-60,-80,-60,-80,-60,-80,-60,-80,-60,-80,-60)-5)
+        yy=c(-60,-80,-60,-80,-60,-80,-60,-80,-60,-80,-60)+50)
+
+# plot_x <- ggplot(df3)+
+#   geom_ribbon(aes(x=xmin,ymin=yyy,ymax=-yyy,fill=Transmis),alpha=0.3)+
+#   geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),colour="grey40", size=0.3)+
+#   geom_text(data=df5,mapping=aes(x=Pos, y=yy, label=Annot))+
+#   facet_grid(Direction ~ .,scales = "free",space='free') + 
+#   theme_bw()+
+#   scale_y_continuous(breaks = c(-0.4*sqrt(rev(Ticks)),0.4*sqrt(Ticks)),labels=c(-rev(Ticks),Ticks))+
+#   labs(title="SQL-injection packet stream",
+#        y ="Segment Size [bytes]", x = element_blank())+
+#   scale_fill_manual(values=group.colors)+
+#   theme(legend.position = "none")
+
 
 plot_x <- ggplot(df3)+
-  geom_ribbon(aes(x=xmin,ymin=yyy,ymax=-yyy,fill=Transmis),alpha=0.3)+
-  geom_rect(aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),colour="grey40", size=0.3)+
+  geom_ribbon(aes(x=xmin,ymin=yyy,ymax=0,fill=Transmis),alpha=0.3)+
+  geom_rect(aes(xmin=xmin, xmax=xmax, ymin=0, ymax=ymax),colour="grey40", size=0.3)+
   geom_text(data=df5,mapping=aes(x=Pos, y=yy, label=Annot))+
   facet_grid(Direction ~ .,scales = "free",space='free') + 
   theme_bw()+
-  scale_y_continuous(breaks = c(-0.4*sqrt(rev(Ticks)),0.4*sqrt(Ticks)),labels=c(-rev(Ticks),Ticks))+
+  scale_y_continuous(breaks = c(0.4*sqrt(Ticks)),labels=c(Ticks))+
   labs(title="SQL-injection packet stream",
        y ="Segment Size [bytes]", x = element_blank())+
   scale_fill_manual(values=group.colors)+
@@ -2375,6 +2388,11 @@ flag=c('S',
        'PA')
 
 
+flag[flag=="S"]="Syn"
+flag[flag=="SA"]="Syn/Ackn."
+flag[flag=="A"]="Ackn."
+flag[flag=="PA"]="Push/Ackn."
+
 df3 <- data.frame(Flag=flag[1:40],
                   Direction=Direction[1:40],
                   xmax=IAT[1:40],
@@ -2476,11 +2494,11 @@ x1 <- abs(rnorm(N,mean=0.002,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.001,sd=0.0001))
 x3 <- abs(rnorm(N,mean=0.003,sd=0.004))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("ConSim","ConSeq","PacSeq"))
+               Metric=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 dfA=df
 df2A=df2
 dfA$Set="HTTP"
@@ -2492,11 +2510,11 @@ x1 <- abs(rnorm(N,mean=0.003,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.001,sd=0.0002))
 x3 <- abs(rnorm(N,mean=0.002,sd=0.0005))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("ConSim","ConSeq","PacSeq"))
+               Metric=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 dfB=df
 df2B=df2
 dfB$Set="F-Sync"
@@ -2508,11 +2526,11 @@ x1 <- abs(rnorm(N,mean=0.001,sd=0.0004))
 x2 <- abs(rnorm(N,mean=0.0003,sd=0.00005))
 x3 <- abs(rnorm(N,mean=0.003,sd=0.0006))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("ConSim","ConSeq","PacSeq"))
+               Metric=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 dfC=df
 df2C=df2
 dfC$Set="C&C"
@@ -2524,11 +2542,11 @@ x1 <- abs(rnorm(N,mean=0.016,sd=0.006))
 x2 <- c(abs(rnorm(0.5*N,mean=0.055,sd=0.01)),abs(rnorm(0.5*N,mean=0.025,sd=0.01)))
 x3 <- abs(rnorm(N,mean=0.022,sd=0.004))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("ConSim","ConSeq","PacSeq"))
+               Metric=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 dfVMA=df
 df2VMA=df2
 dfVMA$Set="HTTP"
@@ -2541,11 +2559,11 @@ x1 <- abs(rnorm(N,mean=0.016,sd=0.004))
 x2 <- c(abs(rnorm(0.5*N,mean=0.055,sd=0.01)),abs(rnorm(0.5*N,mean=0.025,sd=0.01)))
 x3 <- abs(rnorm(N,mean=0.008,sd=0.004))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("ConSim","ConSeq","PacSeq"))
+               Metric=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 dfVMB=df
 df2VMB=df2
 dfVMB$Set="F-Sync"
@@ -2557,11 +2575,11 @@ x1 <- abs(rnorm(N,mean=0.003,sd=0.001))
 x2 <- abs(rnorm(N,mean=0.01,sd=0.002))
 x3 <- abs(rnorm(N,mean=0.006,sd=0.001))
 df=data.frame(x=c(x1,x2,x3),
-              Metric=c(rep("ConSim",N),rep("ConSeq",N),rep("PacSeq",N)))
+              Metric=c(rep("Conn. similarity",N),rep("Conn. sequence similarity",N),rep("Packet sequence similarity",N)))
 df2=data.frame(ymin=c(quantile(x1,0.1),quantile(x2,0.1),quantile(x3,0.1)),
                ymax=c(quantile(x1,0.9),quantile(x2,0.9),quantile(x3,0.9)),
                y=c(median(x1),median(x2),median(x3)),
-               Metric=c("ConSim","ConSeq","PacSeq"))
+               Metric=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 dfVMC=df
 df2VMC=df2
 dfVMC$Set="C&C"
@@ -2575,8 +2593,8 @@ df2VMC$Group="VM"
 df=rbind(dfA,dfB,dfC,dfVMA,dfVMB,dfVMC)
 df2=rbind(df2A,df2B,df2C,df2VMA,df2VMB,df2VMC)
 
-df$Metric=factor(df$Metric, levels=c("ConSim","ConSeq","PacSeq"))
-df2$Metric=factor(df2$Metric, levels=c("ConSim","ConSeq","PacSeq"))
+df$Metric=factor(df$Metric, levels=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
+df2$Metric=factor(df2$Metric, levels=c("Conn. similarity","Conn. sequence similarity","Packet sequence similarity"))
 
 df$Set=factor(df$Set, levels=c("HTTP","F-Sync","C&C"))
 df2$Set=factor(df2$Set, levels=c("HTTP","F-Sync","C&C"))
