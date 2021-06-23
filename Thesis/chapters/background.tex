@@ -1,8 +1,8 @@
 %\subsection{Background}
 
-\section{Network traffic}\label{traffic}
+\section{Network traffic and attacks}\label{traffic}
 
-
+\subsection{Traffic metadata}
 
 Computers in a network mostly communicate by sending \textit{network packets} to each other, in which the transmitted information is encapsulated. Each network packet is split into the control information, also called packet header, and the user information, called payload. The packet header contains the necessary information for the correct transmission of the packet, including the transmission protocol layer (such as TCP, UDP, or ICMP), and the source and destination IP addresses and network ports\footnote{A network port is a number that identifies which service or application is responsible for the processing of incoming packets.}. It furthermore contains error-checking fields suchs as the size of the packet and a checksum over the payload, and protocol-specific fields. 
 
@@ -101,16 +101,16 @@ An additional class of networking threats is the \textit{unauthorized surveillan
 
 \section{Machine learning and anomaly detection}
 
-\subsection{Sequence modelling}
+%\subsection{Sequence modelling}
 
 \subsection{Classification vs anomaly-detection}
 Supervised vs self-supervised
 
 \subsection{Self-supervised language models}
 
-\section{Intrusion detection}
+\section{Network intrusion detection}
 
-Sophisticated data breaches affect hundreds of million customers and inflict tremendous financial, reputational, and logistic damage. One reason for the recent rise of cyber crime is the increased use of advanced techniques for the attack of specific targets. Attackers use customised social engineering and custom-built malware that penetrate defensive barriers and potentially stay undetected in an infected system for an extended period of time. 
+%Sophisticated data breaches affect hundreds of million customers and inflict tremendous financial, reputational, and logistic damage. One reason for the recent rise of cyber crime is the increased use of advanced techniques for the attack of specific targets. Attackers use customised social engineering and custom-built malware that penetrate defensive barriers and potentially stay undetected in an infected system for an extended period of time. 
 
 Cyber-security relies on a range of defensive techniques, including sophisticated intrusion detection systems and firewalls that try to detect and prevent attacks against software subsystems. Malicious software still remains the biggest threat to computer users, and its detection is of utmost importance. 
 
@@ -124,18 +124,17 @@ Current detection methods are predominantly based on the analysis of previously 
 
 Another approach that has recently gained traction in commercial deployment is based on detecting malware and other undesired activity as anomalous behaviour when compared to benign computer activity. In this approach, known as \textbf{network anomaly detection} after Denning \cite{denning1987intrusion}, models must quantify the behaviour of normal network behaviour to be independent of a narrowly defined notion of malicious activity.
 
-\subsection{Intrusion Detection Systems}
+%\subsection{Network Intrusion Detection Systems}
 
-The field of intrusion detection is concerned with the development of methods and tools that identify and locate possible intrusions in a computer network. An \textit{intrusion detection system} (IDS) is typically a device or software application that detects malicious activity or policy violations in an automated way by scanning incoming data collected from one or more sources for patterns that a model or a set of rules classifies as malicious.
+%The field of intrusion detection is concerned with the development of methods and tools that identify and locate possible intrusions in a computer network. An \textit{intrusion detection system} (IDS) is typically a device or software application that detects malicious activity or policy violations in an automated way by scanning incoming data collected from one or more sources for patterns that a model or a set of rules classifies as malicious.
 
-Intrusion detection is a well researched area, with the first IDSs emerging in the late 1980's. Intrusion detection today comprises a variety of research areas in terms of different types of data sources, system architectures, detection sope, and so forth. Figure \ref{graph} provides a broad yet uncomplete overview of these different areas. 
+%Intrusion detection is a well researched area, with the first IDSs emerging in the late 1980's. Intrusion detection today comprises a variety of research areas in terms of different types of data sources, system architectures, detection sope, and so forth. Figure \ref{graph} provides a broad yet uncomplete overview of these different areas. 
 
-\subsubsection*{Implementation}
+%\subsubsection*{Design}
 
-Denning \cite{denning1987intrusion} in 1987 established the notion of two different types IDS implementations: a) host-based and b) network-based. 
-\textit{Host-based intrusion detection systems} (HIDS) monitor each host in a network individually, and rely on local data streams such as application logs or raw operating system calls as  data source. A relatively new form of host-based data sources are biometrik user data such as keystrokes or eye movement, please see \cite{peng_user_2016} for more information.
-
-\textit{Network-based intrusion detection} refers to the detection of malicious traffic in a network of computers. A network intrusion detection system (NIDS) monitors network traffic within in a network and/or between the network and external hosts for malicious activity or policy violations. Network traffic data can take different forms, a more detailled explanation will be provided in Section \ref{traffic}.
+%Denning \cite{denning1987intrusion} in 1987 established the notion of two different types IDS implementations: a) host-based and b) network-based. 
+%\textit{Host-based intrusion detection systems} (HIDS) monitor each host in a network individually, and rely on local data streams such as application logs or raw operating system calls as  data source. 
+%\textit{Network-based intrusion detection} refers to the detection of malicious traffic in a network of computers. A network intrusion detection system (NIDS) monitors network traffic within in a network and/or between the network and external hosts for malicious activity or policy violations. Network traffic data can take different forms, a more detailed explanation is provided in Section \ref{traffic}.
 
 \begin{figure}\label{graph}
 \centering
@@ -143,10 +142,12 @@ Denning \cite{denning1987intrusion} in 1987 established the notion of two differ
 \caption{A broad overview over different aspects in an IDS}
 \end{figure}
 
-Host-based systems have the advantage of working with high quality data that   are   typically   very   informative \cite{lazarevic2005intrusion}. NIDS have the advantage of being plattform independent and more resiliant to attacks as detection of an infection is not done on the infected system. In this review, I will focus on work done in the area of network intrusion detection.
+%Host-based systems have the advantage of working with high quality data that   are   typically   very   informative \cite{lazarevic2005intrusion}. 
+NIDS have the advantage of being plattform independent and more resiliant to attacks as detection of an infection is not done on the infected system. %In this review, I will focus on work done in the area of network intrusion detection.
 
+\textcolor{red}{centralised etc...}
 
-\subsubsection*{Detection methods}
+\subsection{Detection methods}
 
 Detection methods are the core of an IDS, and are therefore the most important design choice. Traditionally, two broad types of detection approaches are identified: a) Misuse detection and b) anomaly detection. 
 
@@ -158,7 +159,7 @@ In reality, anomaly and misuse detection are not necessarily mutually exclusive,
 
 As misuse detection detection methods are aimed at detecting very specific behaviour, they usually only detect one type of malicious traffic. Areas that have been researched particularly well include botnet C\&C channel detection, DoS attack detection, and port scan detection. Areas that lack a comprehensive body of research are different types of R2L and U2R attacks. These are also currently the least   detected   attack   classes \cite{nisioti2018intrusion}.
 
-\subsection{Anomaly detection}
+\subsection{Anomaly detection and SPI}
 
 Anomaly detection refers to the problem of identifying data instances that have significantly different properties than previously observed ``normal data instances. Anomaly detection has its origins in statistical research where normal data instances are assumed to be generated as random variables by a probability distribution $P_\textit{N}(X)$. New data is then identified as anomalous if its properties correspond to regions with vanishing likelihood, i.e. this particular data instance is highly unlikely to be generated by $P_\textit{N}(X)$. Usually, the hard part in anomaly detection is to use observed data efficiently to build an estimated distribution $\hat{P}_\textit{N}(X)$ that resembles $P_\textit{N}(X)$ closely to identify anomalous events while asigning normal instances a non-vanishing likelihood. A variety of techniques exist to achieve this assuming comparably simple generating distributions. However, distributions for many interesting types of normal data can be complex and changing over time, and individual data points can have intricate interdependencies. 
 \begin{figure}
@@ -176,11 +177,10 @@ Anomaly detection refers to the problem of identifying data instances that have 
 
 Anomaly detection has found wide application in areas where stability of  critical systems or detection of their abuse is crucial. Examples of these include engine-fault detection in wind-turbines and fraud detection for credit cards. The assumption here is that the modelled system, such as the sensor-data stream of an engine or the buying behaviour of a customer, remains stable and generates consistent data. Detected anomalies in new observations then indicate a potential fault or abuse in this system. Obviously, it is not inherently clear that every abuse or fault generates data that differs from normal data. Therefore, it is important to choose data sources that are able to reflect the unique nature of a particular system.
 
-\subsubsection{Anomaly detection and NIDS}
 
-Anomaly detection has been applied to network security since the late 90's to assist IDSs. The behaviours of network computers are usually captured in the form of events logs such as network packets or flows, system calls, etc. The basic approach is to use collected training logs to infer a model of trustworthy activity, and then compare newly observed behaviour against this model.  To prevent any anomaly model from learning malicious behaviour as normal, the used training data has to be free of any attacks\footnote{Again, the assumption is that unauthorized and malicious activity will correspond to behaviour that differs from trustworthy one.}. 
+\subsection{Evaluation methodology and common flaws}
 
-As an example, an anomally large network flow involving an unusual pair of network computers could indicate that a hacked computer is extracting or sending out sensitive data to an unauthorized destination. An anomaly detection model does not make any assumptions about attack behaviour, but instead marks all deviations from the learned normal behaviour as potentially malicious. It is therefore better suited to find novel and unseen attacks. However, features mined from the data have to be able to reflect normal behaviour in a way that malicious traffic will look different in order to be detectable, which is not trivial. Furthermore, normal instances that only occur rarely or are diffuse will potentially also be flagged as potentially malicious, making an anomaly-based IDS prone to high false alert rates.
+\subsection{Related methods leveraging traffic microstructures}
 
 
 %\section{Controlling traffic and corresponding microstructures}
@@ -230,52 +230,52 @@ As an example, an anomally large network flow involving an unusual pair of netwo
 %\item Conclusions
 %\end{enumerate}
 
-
-\section{Temporal correlation/Semantics-based}
-
-Despite network traffic being a stream of events, most anomaly-based intrusion detection approaches neglect any temporal features. Nevertheless, malicious behaviour most often is composed of  a series  of related computer and network  events and have a distinct temporal and semantic profile \cite{ye2000markov}. As an example, an intruder using a session relay to exfiltrate information or pass malicious code generates a strong dependency between incoming packets in one connection and outgoing packets in the other connection (and vice versa) albeit the individual packets or connections resemble perfectly benign behaviour\footnote{as they are essentially two normal connections that are relayed by the intruder}. Building a model that can that can understand relations and dependencies between individual events could potentially lead to great improvements in the detection of otherwise non-anomalous attacks. 
-
-Since a machine's network traffic is the collective stream of multiple processes accessing the internet, individual traffic sequences are mixed with others, which makes the modelling of temporal dependencies a non-trivial task. In comparison to the other identified categories, research in the area of anomaly detection using temporal correlation or semantic models is sparse. 
-
-
-In 2003, \textbf{Krishnamurthy et al.} \cite{krishnamurthy2003sketch} propose a rather simple, yet efficient method for network-wide monitoring of individual key occurrences in an online fashion. For that, a sliding window approach is used to asign all keys (which here stand for individual IP addresses or network ports) a value containing the number of its occurrency. For each key, the collected values are then used to train either an \textit{ARIMA} or a \textit{Holt-Winters} method, both popular and powerful time-series forecasting models which can be trained in an online fashion. Anomalies are then identified as values with a forecasting error exceeding a certain treshold and thus indicating a sudden change in occurrency-behaviour of that particular key. This is an improvement to summarisation measures such as entropy or histograms in two ways: It provides a better resolution of individual traffic channels, enabling the detection of attacks with far less volume, and enabling the modelling of more complex temporal patterns which become apparent on a lower level. And it makes attack attribution far simpler by indicating directly the key which is subject to an anomaly. 
-
-Since traffic is usually arriving at a fast rate, it is a computationally hard and memory-consuming task to count the occurrencies of all keys simultaneously. Schweller et al.  overcome this problem using a \textit{sketch-based counting approach} which uses hash-function to direct the values of a key directly to a position in a hash table without the need to store actual key in the memory. As this process is not exact, the count value is subject to statistical variations and the authors propose an unbiased estimator. The inaccuracy of the count estimator is also preventing the authors from using a probabilistic approach to anomaly detection instead of simple tresholding. However, this approach is also only counting occurrencies and does not detect any correlated key behaviour.
-
-A great problem of the proposed framework is the fact that the key translation works only in one direction, making it impossible to associate a detected change with the corresponding key. This problem is overcome by \textbf{Schweller et al.} \cite{schweller2004reversible} who propose a reversible sketch method.
-
-\textbf{Pellegrino et al.} \cite{pellegrino2017learning} last year proposed \textit{BASTA}, a framework to mine behavioural fingerprints from network flows using \textit{timed automata learning}. An automata encodes patterns of short-term interactions of a system and is a representation of symbolic sequences, often corresponding to state transitions, which it encodes in a state transition function. Applied to network flows, an automata represents sets of events\footnote{distinguished by port,  protocol, etc.} that can follow each other in the network trace of a system. To be more specific, they used a type of probabilistic automata that works with transition probabilities and thus works in a similar way to a \textit{hidden Markov model}. Events are asigned a state corresponding to the protocol and the direction of the flow, and the quantile\footnote{of the overall distribution of the individual parameters} its duration, size, and number of packets are lying in. The authors then use this framework to create malicious fingerprints by training it on malicious traffic intermixed with normal traffic. These fingerprints are then detected on an infected host if the difference between the expected and the observed state counts drops below a treshold. 
-
-This paper is itself not developing any anomaly detection techniques, and I will not discuss the flaws of its application for malware fingerprinting. It is interesting for us as the developed automata mining techniques can also find direct application in mining normal behaviour automata and thus be used in an anomaly detection model. 
-
-
-\textbf{Noble and Adams} \cite{noble_real-time_2018, noble_correlation-based_2016} have recently proposed \textit{ReTiNa}, a tool that measures temporal changes in the correlation between individual events in order to find intrusions on individual hosts. In their approach, they estimate the correlation between the time passed between two events, also called \textit{interarrival time}, of an OD pair and the associated size or number of packets of the involved events. For this, interarrival time and the size/packet number are modelled as a bivariate gaussian distribution, and the covariance matrix is estimated using maximum-likelihood-estimation. The authors use a sophisticated online-estimation method to adapt the estimates to changes in the correlation structure, which can then be identified by comparison to an offline estimate. Anomalies are then identified as a collection of changes happening across multiple OD pairs on one host or in the entire network by simple hypothesis testing, which decreases the false-positive rate. The assumption here is that different OD pairs are independent of each other.
-
-
-A big advantage of this approach is that it is adaptive and does not need a training phase, i.e. it is not reliant on attack-free training data. The method was tested both on the LANL network flow data as well as internal data from the \textit{Imperial College Academic network}. The method found several anomalies that coincide malicious activity in the network, but a definitive conclusion whether they are related is difficult to make.
-
-\textbf{Whitehouse, Evangelou and Adams} \cite{whitehouse_activity-based_2016} modeling the number of 
-network flow and \textit{user authentication} events on individual hosts as a polynomial function of the time and day and its rarity. Anomalies are then identified using Fisher's product test statistic and the reconstruction error. The method was tested on the LANL data using the auth and the flow sources and wa able to identify persistent structures in the data. 
-
-
-\subsection{Application to stepping stone detection}
-
-Especially in larger computer networks, attackers often try use relay-like command chains, also called \textit{stepping stones}, to obfuscate their origin or access machines without external connection. In such a chain, no direct connection exists between the first and the last machine, commands are sent through one or multiple intermediate machines. Stepping stone connections are usually encrypted and are notoriously difficult to identify. Upon detection, pairs of stepping stones are a clear indication of anomalous activity. 
-
-As stepping stone detection falls much more in the field of misuse detection, I will only give a very brief overview over emplyed techniques.
-
-\textbf{Zhang and Paxson} \cite{zhang2000detecting} proposed one of the first methods for detecting stepping stones in 2000. They model relayed key-stroke packet streams as a two-dimensional ON/OFF switching process, where state changes have to occur within a certain window between the two channels. Correlation is then simply detected if the number of switches lying in this window exceeds a treshold. 
-
-
-A common assumption made when trying to find stepping stones is that packet or flow streams between different hosts in a network are almost always independent of each other, which is shown by \cite{neil2013scan}. \textbf{He and Tong}\cite{he2007detecting} model normal packet arrivals in a connection as a Poisson Process, and use the assumption of independence to derive a probabilistic distribution for the similarity of packet numbers in two channels in a time interval. P-values are then used to identify when the number of similar intervals becomes unlikely. They also show that if the ratio of chaff-packets exceeds to necessary packets in a stepping stone becomes too large, correlation is impossible to detect under the asumption of normal traffic following a Poisson distribution.
-
-
-\textbf{Neil et al.}  \cite{neil2013scan} also model normal event arrivals along an edge as a \textit{negative Binomial process} with two different rates, evolving as a hidden Markov model, and correlation in different time intervals in then used  using a likelihood ratio test to obtain p-values. In their approach, instead of testing network wide correlation, which is computationally unfeasible, testing is done on two different forms of local subgraphs, a star shape and a path-shape on selected edges. 
-
-
-\subsection{Semantic-based approaches using different data sources}
-
-Approachs that model semantic or temporal behaviour characteristics have been also been applied on host-based data streams such as \textit{system call logs} or \textit{process logs} as well. As these are mostly symbolic event streams, anomaly detection in principal works similarly as for network traffic. As these data sources have usually a more hierarchical structure of events following each other in a parent-child fashion and therefore do not suffer from overlapping signals, and it is generally easier to identify semantic structures. Notable examples include the use of deterministic automata \cite{warrender1999detecting}, Markov chains \cite{ye2000markov}, hidden Markov models \cite{yeung2003host,hu2009simple}, or \textit{recurrent neural networks}\cite{du2017deeplog}.
+%
+%\section{Temporal correlation/Semantics-based}
+%
+%Despite network traffic being a stream of events, most anomaly-based intrusion detection approaches neglect any temporal features. Nevertheless, malicious behaviour most often is composed of  a series  of related computer and network  events and have a distinct temporal and semantic profile \cite{ye2000markov}. As an example, an intruder using a session relay to exfiltrate information or pass malicious code generates a strong dependency between incoming packets in one connection and outgoing packets in the other connection (and vice versa) albeit the individual packets or connections resemble perfectly benign behaviour\footnote{as they are essentially two normal connections that are relayed by the intruder}. Building a model that can that can understand relations and dependencies between individual events could potentially lead to great improvements in the detection of otherwise non-anomalous attacks. 
+%
+%Since a machine's network traffic is the collective stream of multiple processes accessing the internet, individual traffic sequences are mixed with others, which makes the modelling of temporal dependencies a non-trivial task. In comparison to the other identified categories, research in the area of anomaly detection using temporal correlation or semantic models is sparse. 
+%
+%
+%In 2003, \textbf{Krishnamurthy et al.} \cite{krishnamurthy2003sketch} propose a rather simple, yet efficient method for network-wide monitoring of individual key occurrences in an online fashion. For that, a sliding window approach is used to asign all keys (which here stand for individual IP addresses or network ports) a value containing the number of its occurrency. For each key, the collected values are then used to train either an \textit{ARIMA} or a \textit{Holt-Winters} method, both popular and powerful time-series forecasting models which can be trained in an online fashion. Anomalies are then identified as values with a forecasting error exceeding a certain treshold and thus indicating a sudden change in occurrency-behaviour of that particular key. This is an improvement to summarisation measures such as entropy or histograms in two ways: It provides a better resolution of individual traffic channels, enabling the detection of attacks with far less volume, and enabling the modelling of more complex temporal patterns which become apparent on a lower level. And it makes attack attribution far simpler by indicating directly the key which is subject to an anomaly. 
+%
+%Since traffic is usually arriving at a fast rate, it is a computationally hard and memory-consuming task to count the occurrencies of all keys simultaneously. Schweller et al.  overcome this problem using a \textit{sketch-based counting approach} which uses hash-function to direct the values of a key directly to a position in a hash table without the need to store actual key in the memory. As this process is not exact, the count value is subject to statistical variations and the authors propose an unbiased estimator. The inaccuracy of the count estimator is also preventing the authors from using a probabilistic approach to anomaly detection instead of simple tresholding. However, this approach is also only counting occurrencies and does not detect any correlated key behaviour.
+%
+%A great problem of the proposed framework is the fact that the key translation works only in one direction, making it impossible to associate a detected change with the corresponding key. This problem is overcome by \textbf{Schweller et al.} \cite{schweller2004reversible} who propose a reversible sketch method.
+%
+%\textbf{Pellegrino et al.} \cite{pellegrino2017learning} last year proposed \textit{BASTA}, a framework to mine behavioural fingerprints from network flows using \textit{timed automata learning}. An automata encodes patterns of short-term interactions of a system and is a representation of symbolic sequences, often corresponding to state transitions, which it encodes in a state transition function. Applied to network flows, an automata represents sets of events\footnote{distinguished by port,  protocol, etc.} that can follow each other in the network trace of a system. To be more specific, they used a type of probabilistic automata that works with transition probabilities and thus works in a similar way to a \textit{hidden Markov model}. Events are asigned a state corresponding to the protocol and the direction of the flow, and the quantile\footnote{of the overall distribution of the individual parameters} its duration, size, and number of packets are lying in. The authors then use this framework to create malicious fingerprints by training it on malicious traffic intermixed with normal traffic. These fingerprints are then detected on an infected host if the difference between the expected and the observed state counts drops below a treshold. 
+%
+%This paper is itself not developing any anomaly detection techniques, and I will not discuss the flaws of its application for malware fingerprinting. It is interesting for us as the developed automata mining techniques can also find direct application in mining normal behaviour automata and thus be used in an anomaly detection model. 
+%
+%
+%\textbf{Noble and Adams} \cite{noble_real-time_2018, noble_correlation-based_2016} have recently proposed \textit{ReTiNa}, a tool that measures temporal changes in the correlation between individual events in order to find intrusions on individual hosts. In their approach, they estimate the correlation between the time passed between two events, also called \textit{interarrival time}, of an OD pair and the associated size or number of packets of the involved events. For this, interarrival time and the size/packet number are modelled as a bivariate gaussian distribution, and the covariance matrix is estimated using maximum-likelihood-estimation. The authors use a sophisticated online-estimation method to adapt the estimates to changes in the correlation structure, which can then be identified by comparison to an offline estimate. Anomalies are then identified as a collection of changes happening across multiple OD pairs on one host or in the entire network by simple hypothesis testing, which decreases the false-positive rate. The assumption here is that different OD pairs are independent of each other.
+%
+%
+%A big advantage of this approach is that it is adaptive and does not need a training phase, i.e. it is not reliant on attack-free training data. The method was tested both on the LANL network flow data as well as internal data from the \textit{Imperial College Academic network}. The method found several anomalies that coincide malicious activity in the network, but a definitive conclusion whether they are related is difficult to make.
+%
+%\textbf{Whitehouse, Evangelou and Adams} \cite{whitehouse_activity-based_2016} modeling the number of 
+%network flow and \textit{user authentication} events on individual hosts as a polynomial function of the time and day and its rarity. Anomalies are then identified using Fisher's product test statistic and the reconstruction error. The method was tested on the LANL data using the auth and the flow sources and wa able to identify persistent structures in the data. 
+%
+%
+%\subsection{Application to stepping stone detection}
+%
+%Especially in larger computer networks, attackers often try use relay-like command chains, also called \textit{stepping stones}, to obfuscate their origin or access machines without external connection. In such a chain, no direct connection exists between the first and the last machine, commands are sent through one or multiple intermediate machines. Stepping stone connections are usually encrypted and are notoriously difficult to identify. Upon detection, pairs of stepping stones are a clear indication of anomalous activity. 
+%
+%As stepping stone detection falls much more in the field of misuse detection, I will only give a very brief overview over emplyed techniques.
+%
+%\textbf{Zhang and Paxson} \cite{zhang2000detecting} proposed one of the first methods for detecting stepping stones in 2000. They model relayed key-stroke packet streams as a two-dimensional ON/OFF switching process, where state changes have to occur within a certain window between the two channels. Correlation is then simply detected if the number of switches lying in this window exceeds a treshold. 
+%
+%
+%A common assumption made when trying to find stepping stones is that packet or flow streams between different hosts in a network are almost always independent of each other, which is shown by \cite{neil2013scan}. \textbf{He and Tong}\cite{he2007detecting} model normal packet arrivals in a connection as a Poisson Process, and use the assumption of independence to derive a probabilistic distribution for the similarity of packet numbers in two channels in a time interval. P-values are then used to identify when the number of similar intervals becomes unlikely. They also show that if the ratio of chaff-packets exceeds to necessary packets in a stepping stone becomes too large, correlation is impossible to detect under the asumption of normal traffic following a Poisson distribution.
+%
+%
+%\textbf{Neil et al.}  \cite{neil2013scan} also model normal event arrivals along an edge as a \textit{negative Binomial process} with two different rates, evolving as a hidden Markov model, and correlation in different time intervals in then used  using a likelihood ratio test to obtain p-values. In their approach, instead of testing network wide correlation, which is computationally unfeasible, testing is done on two different forms of local subgraphs, a star shape and a path-shape on selected edges. 
+%
+%
+%\subsection{Semantic-based approaches using different data sources}
+%
+%Approachs that model semantic or temporal behaviour characteristics have been also been applied on host-based data streams such as \textit{system call logs} or \textit{process logs} as well. As these are mostly symbolic event streams, anomaly detection in principal works similarly as for network traffic. As these data sources have usually a more hierarchical structure of events following each other in a parent-child fashion and therefore do not suffer from overlapping signals, and it is generally easier to identify semantic structures. Notable examples include the use of deterministic automata \cite{warrender1999detecting}, Markov chains \cite{ye2000markov}, hidden Markov models \cite{yeung2003host,hu2009simple}, or \textit{recurrent neural networks}\cite{du2017deeplog}.
 
 
 \section{Existing datasets}
@@ -300,7 +300,7 @@ As described in a recent survey by \textbf{Ahmed et al.} \cite{ahmed2016survey},
 
 I will now describe the properties of existing datasets suitable for network intrusion detection. As this review is primarily concerned with anomaly detection models that require benign network traffic, I did not include datasets such as honeypots that mostly contain malicious traffic. A description that includes such datasets can be found in the below described survey by Ahmed et al. \cite{ahmed2016survey}.
 
-
+\subsection{Real-world datasets}
 
 \subsubsection*{Los Alamos National Laboratory, 2015 - Comprehensive, Multi-Source Cyber-Security Events \cite{akent-2015-enterprise-data}\cite{kent-2015-cyberdata1}}
 
@@ -313,13 +313,23 @@ The dataset furthermore contains a labeled set of redteam events which should re
 
 LANL released another dataset containing network flow traffic from their network in 2017 \cite{turcotte17}. This dataset is similar to the one from 2015, but spans over a longer period of time, 90 days. Furthermore, it contains no labeled malicious activity,  however that does not mean that the data is completely free of malicious activity.
 
-\subsubsection*{CTU 2013 \cite{noauthor_ctu-13_nodate, garcia2014empirical}}
+\subsubsection*{UNIBS 2009\cite{UNIBS2009data}}
 
-The \textit{Stratosphere Laboratory} in Prague released this dataset in 2013 to study botnet detection. It consists of more than 10 million labeled \textbf{network flows} captured on lab machines for 13 different botnet attack scenarios. Additionally, the raw packets for the botnet activity is also available for attack analysis. 
+This dataset was collected on the campus network of the \textit{University of Brescia} on three consecutive days in 2009. The dataset contains in total 79000 anonymised TCP and UDP \textit{network flows}. 
 
-The labelling in this dataset is different from other datasets as each  flow  in  the  list  is  labeled  based  on  the  source  IP  address.  In  the experiments,  certain  hosts  are  infected  with  a  botnet  and  any  traffic  arising from such a host is labeled as Botnet traffic. Traffic from uninfected hosts is labeled as Normal. All other traffic is Background, as one cannot classify it. 
+This dataset is not directed towards intrusion detection research, but was made as \textit{ground truth data} for traffic classification. It therefore contains labels which indicate which of in total six applications generated the corresponding traffic flow. It might however still be of interest for model assessment in intrusion detection that is relying on traffic classification.
 
-A criticism of this dataset is the unrealistically high amount of malicious traffic contained in the dataset, which makes it easier to spot it while reducing false positives. Furthermore, the way normal or background traffic is generated is described only poorly and leaves the question how representative it is of actual network traffic.
+\subsubsection*{CAIDA 2016 \cite{walsworth2015caida}}
+
+The \textit{Center for Applied Internet Data Analysis} started collecting network traces from a high-speed backbone link in 2008 with the collection still ongoing. The data is available in anonymised yearly datasets containing one hour of \textbf{packet headers} for each month. 
+
+Since the traffic is collected from a backbone link, it is very unstructured and heterogenuous. It is furthermore not necessarily free from attack traffic. Although this dataset has been used for intrusion detection before, it is more suitable for general internet traffic analysis.
+
+
+\subsubsection*{MAWI 2000 \cite{sony2000traffic}}
+
+Similarly to the CAIDA dataset, this dataset contains \textbf{packet headers} from the WIDE backbone. It is therefore similarly unstructured, anonymised, and not free from attack traffic. Since this dataset was already collected and released in 2000, it can also be remarked that the contained traffic is too old to represent modern traffic. 
+
 
 \subsubsection*{UGR 2016 \cite{macia2018ugr}}
 
@@ -335,6 +345,16 @@ The data is split into a training set and a test set, with the latter containing
 \end{itemize}
 
 The authors also acknowledge that the background traffic is not necessarily free from further attacks. In fact, three real attacks have been observed and labeled, corresponding to IP-scanning and a spam mail campaign.
+
+\subsection{Synthetic datasets}
+
+\subsubsection*{CTU 2013 \cite{noauthor_ctu-13_nodate, garcia2014empirical}}
+
+The \textit{Stratosphere Laboratory} in Prague released this dataset in 2013 to study botnet detection. It consists of more than 10 million labeled \textbf{network flows} captured on lab machines for 13 different botnet attack scenarios. Additionally, the raw packets for the botnet activity is also available for attack analysis. 
+
+The labelling in this dataset is different from other datasets as each  flow  in  the  list  is  labeled  based  on  the  source  IP  address.  In  the experiments,  certain  hosts  are  infected  with  a  botnet  and  any  traffic  arising from such a host is labeled as Botnet traffic. Traffic from uninfected hosts is labeled as Normal. All other traffic is Background, as one cannot classify it. 
+
+A criticism of this dataset is the unrealistically high amount of malicious traffic contained in the dataset, which makes it easier to spot it while reducing false positives. Furthermore, the way normal or background traffic is generated is described only poorly and leaves the question how representative it is of actual network traffic.
 
 \subsubsection*{UNSW-NB 2015 \cite{moustafa_unsw-nb15:_2015}}
 
@@ -373,30 +393,6 @@ The \textit{MIT Lincoln Laboratory} created this dataset in 1999 by processing p
 
 The \textit{Canadian Institute for Cybersecurity} postprocessed the KDD'99 data in order to address some of its shortcomings. This includes removing redundant records, balancing the size of the training and test data, and adjusting the proportion of attack traffic in the data. However, the biggest criticism from the KDD'99 and the DARPA data, the unrealistic generation of background data, still prevails.
 
-\subsubsection*{LBNL 2013 \cite{pang2005first}}
-
-This dataset released by the \textit{Lawrence Berkeley National Laboratory} in 2005 is the first one to examine internal network traffic inside a modern enterprise. It contains more than 100 hours of \textit{packet headers} from several thousand internal hosts. 
-
-This dataset contains no known attack traffic, and is therefore only suitable for traffic analysis and model fitting analysis. Furthermore, as being the first dataset containing enterprise traffic, privacy concerns caused the authors to remove any possibilities to identify individual IP addresses.
-
-In 2011, Saad et al. \cite{saad2011detecting} combined this dataset with existing botnet traffic to create a dataset containing both benign and attack traffic. 
-
-\subsubsection*{UNIBS 2009\cite{UNIBS2009data}}
-
-This dataset was collected on the campus network of the \textit{University of Brescia} on three consecutive days in 2009. The dataset contains in total 79000 anonymised TCP and UDP \textit{network flows}. 
-
-This dataset is not directed towards intrusion detection research, but was made as \textit{ground truth data} for traffic classification. It therefore contains labels which indicate which of in total six applications generated the corresponding traffic flow. It might however still be of interest for model assessment in intrusion detection that is relying on traffic classification.
-
-\subsubsection*{CAIDA 2016 \cite{walsworth2015caida}}
-
-The \textit{Center for Applied Internet Data Analysis} started collecting network traces from a high-speed backbone link in 2008 with the collection still ongoing. The data is available in anonymised yearly datasets containing one hour of \textbf{packet headers} for each month. 
-
-Since the traffic is collected from a backbone link, it is very unstructured and heterogenuous. It is furthermore not necessarily free from attack traffic. Although this dataset has been used for intrusion detection before, it is more suitable for general internet traffic analysis.
-
-
-\subsubsection*{MAWI 2000 \cite{sony2000traffic}}
-
-Similarly to the CAIDA dataset, this dataset contains \textbf{packet headers} from the WIDE backbone. It is therefore similarly unstructured, anonymised, and not free from attack traffic. Since this dataset was already collected and released in 2000, it can also be remarked that the contained traffic is too old to represent modern traffic. 
 
 \subsubsection*{ADFA 2013/2014 \cite{creech2014developing,creech2013generation}}
 
@@ -418,5 +414,7 @@ The LITNET-2020 from the Kaunas University of Technology Lithuania from 2020 was
 
 The Bo{\u{g}}azi{\c{c}}i University distributed denial of service dataset contains both benign traffic from more than 400 users from an academic network as well as artificially created DoS-attack traffic. The dataset spans only 8 minutes and contains no access attacks.
 
+\subsection{Traffic generation techniques}
 
+\section{Related studies on traffic structures}
 

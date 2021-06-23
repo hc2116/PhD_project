@@ -1,9 +1,9 @@
-\section{CBAM: A contextual model for network anomaly detection}
-
-
-Anomaly-based intrusion detection methods are aimed to combat the increasing rate of zero-day  attacks \cite{zeroday}, but their success is currently restricted to the detection of high-volume attacks using aggregated traffic features. Recent evaluations show that the current anomaly-based network intrusion detection methods fail to detect remote access attacks reliably \cite{nisioti2018intrusion}. These are smaller in volume and often only stand out when compared to their surroundings. Currently, anomaly methods try to detect access attack events mainly as point anomalies and neglect the context they appear in.
-We present and examine CBAM, a contextual bidirectional anomaly model based on deep LSTM-networks that is designed specifically to detect such attacks as contextual network anomalies. The model efficiently learns short-term sequential patterns in network flows as conditional event probabilities. Access attacks frequently break these patterns when exploiting vulnerabilities, and can thus be detected as contextual anomalies. 
-We evaluated our CBAM on an assembly of three datasets that provide both representative network access attacks, real-life traffic over a long timespan, and traffic from a real-world red-team attack. We contend that this assembly is closer to a potential deployment environment than current NIDS benchmark datasets. We show that by building a deep model, we are able to reduce the false positive rate to $0.16\%$ while detecting effectively, which is significantly lower than the operational range of other methods. We furthermore demonstrate that short-term flow structures remain stable over long periods of time, making CBAM robust against concept drift.
+%\section{CBAM: A contextual model for network anomaly detection}
+%
+%
+%Anomaly-based intrusion detection methods are aimed to combat the increasing rate of zero-day  attacks \cite{zeroday}, but their success is currently restricted to the detection of high-volume attacks using aggregated traffic features. Recent evaluations show that the current anomaly-based network intrusion detection methods fail to detect remote access attacks reliably \cite{nisioti2018intrusion}. These are smaller in volume and often only stand out when compared to their surroundings. Currently, anomaly methods try to detect access attack events mainly as point anomalies and neglect the context they appear in.
+%We present and examine CBAM, a contextual bidirectional anomaly model based on deep LSTM-networks that is designed specifically to detect such attacks as contextual network anomalies. The model efficiently learns short-term sequential patterns in network flows as conditional event probabilities. Access attacks frequently break these patterns when exploiting vulnerabilities, and can thus be detected as contextual anomalies. 
+%We evaluated our CBAM on an assembly of three datasets that provide both representative network access attacks, real-life traffic over a long timespan, and traffic from a real-world red-team attack. We contend that this assembly is closer to a potential deployment environment than current NIDS benchmark datasets. We show that by building a deep model, we are able to reduce the false positive rate to $0.16\%$ while detecting effectively, which is significantly lower than the operational range of other methods. We furthermore demonstrate that short-term flow structures remain stable over long periods of time, making CBAM robust against concept drift.
 
 
 \section{Introduction}
@@ -219,7 +219,7 @@ The architecture of the network we trained is depicted in Fig. \ref{fig:rnn_FSA}
  %\textcolor{red}{Stronger statement what we do more }In contrast to Shen et al. \cite{shen2018tiresias}, our LSTM network uses to multivariate inputs and outputs.
 \begin{figure}
     \begin{center}
-      \includegraphics[width=0.66\textwidth]{images_MLN/LSTM_design_bi2.jpg}
+      \includegraphics[width=0.88\textwidth]{images_MLN/LSTM_design_bi2.jpg}
     \end{center}
     \vspace{-15pt}
     \caption{Architecture of the trained bidirectional LSTM network. }\label{fig:rnn_FSA}
@@ -266,7 +266,7 @@ with the size group loss being calculated in the same way. We calculate the tota
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{images_MLN/Example_new.png} 
+\includegraphics[width=0.9\textwidth]{images_MLN/Example_new.png} 
 \caption{Visualisation of model prediction process.}\label{fig:Modelpred}
 \end{figure}
 
@@ -355,13 +355,13 @@ The provided red team events are not part of the network flow data and only cont
 \centering
 %\textbf{Temporal change in protocol and port usage}\par\medskip
 \vspace{-0.2cm}
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{images_MLN/UGR_longterm_proto.pdf}
         \vspace{-0.15cm}
 %        \caption{Protocols}
 %        \label{fig:gull}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{images_MLN/UGR_longterm_port2.pdf}
 %        \caption{Ports}
 %        \label{fig:gull}
@@ -485,7 +485,7 @@ depict anomaly score distributions and detection rates for traffic from seven di
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.68\textwidth]{images_MLN/CICplots1-1} 
+\includegraphics[width=0.9\textwidth]{images_MLN/CICplots1-1} 
 \vspace{-0.5cm}
 \caption[Score distribution for various access attacks contained in the CICIDS-17 dataset, along with our detection threshold]{Score distribution for access attacks contained in the CICIDS-17 dataset.}\label{fig:CICplots1}
 \end{center}
@@ -526,7 +526,7 @@ Fig. \ref{fig:CICplots2} provides \emph{ROC} (Receiver operating characteristic)
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.65\textwidth]{images_MLN/CICplots2-1} 
+\includegraphics[width=0.9\textwidth]{images_MLN/CICplots2-1} 
 \vspace{-0.5cm}
 \caption[ROC-curves for different attack types.]{ROC-curves for different attack types in the CICIDS-17 dataset.}\label{fig:CICplots2}
 \end{figure}
@@ -539,7 +539,7 @@ As described in Section \ref{Sec:data}, we do not have labels for malicious flow
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.74\textwidth]{images_MLN/LANLdet.png} \caption{Computed scores for the third attack interval in the LANL data, along with our detection threshold.}\label{fig:LANLdetection}
+\includegraphics[width=0.99\textwidth]{images_MLN/LANLdet.png} \caption{Computed scores for the third attack interval in the LANL data, along with our detection threshold.}\label{fig:LANLdetection}
 \end{figure}
 
 Sessions in \textbf{A1} and \textbf{A2} have similar scores as other benign traffic, with no sessions receiving remarkably high scores. It is both possible that CBAM did not identify the malicious traffic, or that the activity in these intervals was purely host-based and did not generate any traffic. 
@@ -578,7 +578,7 @@ We now examine in more detail why modelling sequences of flows is effective to d
 
 \begin{figure}[ht]
     \begin{center}
-      \includegraphics[width=0.7\textwidth]{images_MLN/SQL_I_new.png}
+      \includegraphics[width=0.99\textwidth]{images_MLN/SQL_I_new.png}
     \end{center}
     \caption{Flow-sequence in an SQL-injection attack with predicted size likelihood (log-scale). Arrows indicate flow directions (down=incoming, up=outgoing).}\label{fig:SQL_I}
 \end{figure}
@@ -601,7 +601,7 @@ It is not completely clear how the infiltration attack triggers this abnormal be
 
 \begin{figure}[ht]
     \begin{center}
-      \includegraphics[width=0.7\textwidth]{images_MLN/Infiltration_new.png}
+      \includegraphics[width=\textwidth]{images_MLN/Infiltration_new.png}
     \end{center}
 
     \caption{Flow-sequence in an infiltration attack with port-direction likelihood (log-scale).}\label{fig:Infiltration}
@@ -633,7 +633,7 @@ Fig. \ref{fig:UGRrealresults} depicts the score distribution of benign sessions 
 \begin{figure}
     \begin{center}
 %\includegraphics[width=0.6\textwidth]{images_MLN/UGRrealresults-1} 
-\includegraphics[width=0.6\textwidth]{images_MLN/UGR_Longterm.png} 
+\includegraphics[width=\textwidth]{images_MLN/UGR_Longterm.png} 
 
 
 \begin{tabular}{l|ccc|ccc}
@@ -676,7 +676,7 @@ Fig. \ref{fig:UGRrealresults} shows that these banding structures remain virtual
 
 \begin{figure}
 \centering
-\includegraphics[width=0.72\textwidth]{images_MLN/Color_sess_new.png} 
+\includegraphics[width=\textwidth]{images_MLN/Color_sess_new.png} 
 %\vspace{-15pt}
 \caption{Sessions corresponding to score banding structures in Fig. \ref{fig:UGRrealresults}, with predicted likelihoods (log-scale).}\label{fig:colsess}
 \end{figure}
@@ -699,7 +699,7 @@ For the LANL-15 data, we observe the same banding structure as in the UGR-15 dat
 
 \begin{figure}%[!htb]
     \begin{center}
-\includegraphics[width=0.74\textwidth]{images_MLN/CIC_LANL} 
+\includegraphics[width=\textwidth]{images_MLN/CIC_LANL} 
 %\includegraphics[width=0.7\textwidth]{images_MLN/CICrealresults-1} 
 %\includegraphics[width=0.34\textwidth]{images_MLN/LANLrealresults-1} 
 %\scriptsize
@@ -774,7 +774,7 @@ Fig. \ref{fig:Trainingsize} depicts the corresponding false-positive rates for e
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{images_MLN/Trainingsize} 
+\includegraphics[width=\textwidth]{images_MLN/Trainingsize} 
 \caption{Influence of number of sessions in training data for benign traffic modelling accuracy.}\label{fig:Trainingsize}
 \end{figure}
 For the host in the LANL-data, this effect is far less pronounced, and false-positives at $3\,000$ sessions are similar to the ones at $10\,000$ and $20\,000$. CBAM apparently is able to learn flow predictions sufficiently from similar hosts in the dataset without depending on sessions specifically from the selected host. When we train CBAM exclusively on sessions from host C2519 without data from other hosts, the same deterioration of model prediction can be observed.
@@ -800,7 +800,7 @@ The usage of bidirectional LSTM layers compared to unidirectional ones significa
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.5\textwidth]{images_MLN/short_sess_new2.png} \caption{Common short session and the flow likelihoods predicted by each dirctional model.}\label{fig:short_sess}
+\includegraphics[width=0.85\textwidth]{images_MLN/short_sess_new2.png} \caption{Common short session and the flow likelihoods predicted by each dirctional model.}\label{fig:short_sess}
 \end{figure}
 
 Fig. \ref{fig:short_sess} demonstrates this in a detailed manner: Displayed is a short session of 4 flows containing FTP and HTTP activity on host ``42.219.153.32''. On the right side are the predicted likelihoods of FTP and HTTP states for each flow in the session, with the the blue bars corresponding to predictions by the forward layer, while the red bars display the backwards direction and the green bars display the likelihoods after aggregating both predictions. 
@@ -843,7 +843,7 @@ To examine the benefit of the described model depth, we compare it to a more sha
 Fig. \ref{fig:complex_sess} displays two different types of activities, A and B, which are common in the CICIDS-17 data. The structure in these sessions can be observed frequently with only minor variations. Consequently, the sessions are predicted well by both the original and the more shallow model.
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.74\textwidth]{images_MLN/complex_sess_new2.png} \caption{Predictions for two activities in isolated sessions and in a mixed session.}\label{fig:complex_sess}
+\includegraphics[width=\textwidth]{images_MLN/complex_sess_new2.png} \caption{Predictions for two activities in isolated sessions and in a mixed session.}\label{fig:complex_sess}
 \end{figure}
 
 However, traffic from two or more activities can sometimes occur simultaneously and thus get grouped into the same session. Fig. \ref{fig:complex_sess} shows how the traffic from activity A and B are overlapping in a session, which makes the structure in the session more complex to predict.
@@ -864,7 +864,7 @@ Models and detection rates were determined on the CICIDS-17 dataset.
 \begin{figure}
 \centering
 \begin{subfigure}[b]{0.4\textwidth}
-\includegraphics[width=1\textwidth]{images_MLN/LSTM_design_shallow.png}
+\includegraphics[width=0.8\textwidth]{images_MLN/LSTM_design_shallow.png}
 %\caption{Shallow LSTM-model}
 \end{subfigure}
 \quad

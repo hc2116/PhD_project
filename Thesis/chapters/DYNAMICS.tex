@@ -1,8 +1,21 @@
-\section{Traffic Generation using Containerization for Machine Learning}
 
-The design and evaluation of data-driven network intrusion detection methods are currently held back by a lack of adequate data, both in terms of benign and attack traffic. Existing datasets are mostly gathered in isolated lab environments containing virtual machines, to both offer more control over the computer interactions and prevent any malicious code from escaping. This procedure however leads to datasets that lack four core properties: heterogeneity, ground truth traffic labels, large data size, and contemporary content.
-Here, we present a novel data generation framework based on Docker containers that addresses these problems systematically. For this, we arrange suitable containers into relevant traffic communication scenarios and subscenarios, which are subject to appropriate input randomization as well as WAN emulation. By relying on process isolation through containerization, we can match traffic events with individual processes, and achieve scalability and modularity of individual traffic scenarios.
-We perform two experiments to assess the reproducability and traffic properties of our framework, and demonstrate the usefulness of our framework on a traffic classification example.
+This chapter introduces DetGen, a framework that provides small-scale traffic generation specifically aimed for machine-learning based intrusion detection. The chapter starts with the identification of four major shortcomings of existing NID-datasets regarding the training of machine-learning models that leverage traffic microstructures. The chapter then defines four requirements that a machine-learning-focused traffic generation framework must fulfil. DetGen is designed to address these requirements through the use of standalone containerised communication scenarios. The majority of work in this chapter was published in \textcolor{red}{citation}.
+
+%In the overall context of the thesis, this chapter 
+
+Specifically important for the narrative of this thesis are:
+Sect. \ref{Sec:problems} discusses problems in existing datasets, in particular regarding the lack of sufficient microstructure variation, before Sect. \ref{Sec:require} then defines requirements on the variability and monitoring of microstructures. Sect. \ref{Sec:Scenarios}, \ref{Sec:Subscenarios}, and\ref{Sec:randomsubscen} discuss in detail how these requirements can be achieved during the data generation process.
+
+Sect. \ref{Sec:ArtiDel} performs an experimental analysis of how well the influence of real-world WAN-effects on observed interarrival times can be replicated in DetGen. Sect. \ref{Sec:DynDataGen}. Sect \ref{Sec:DynDataGen} then builds up on these results and measures the effect that differing WAN-configurations between training and evaluation data can have on a traffic classifier. 
+
+
+
+
+%\section{Traffic Generation using Containerization for Machine Learning}
+%
+%The design and evaluation of data-driven network intrusion detection methods are currently held back by a lack of adequate data, both in terms of benign and attack traffic. Existing datasets are mostly gathered in isolated lab environments containing virtual machines, to both offer more control over the computer interactions and prevent any malicious code from escaping. This procedure however leads to datasets that lack four core properties: heterogeneity, ground truth traffic labels, large data size, and contemporary content.
+%Here, we present a novel data generation framework based on Docker containers that addresses these problems systematically. For this, we arrange suitable containers into relevant traffic communication scenarios and subscenarios, which are subject to appropriate input randomization as well as WAN emulation. By relying on process isolation through containerization, we can match traffic events with individual processes, and achieve scalability and modularity of individual traffic scenarios.
+%We perform two experiments to assess the reproducability and traffic properties of our framework, and demonstrate the usefulness of our framework on a traffic classification example.
 
 
 \section{Introduction}
@@ -45,12 +58,12 @@ Section \ref{Sec:Conclusion} concludes the results and discusses limitations of 
 
 \section{Background}\label{Sec:background}
 
-\subsection{Data formats}
-
-Computers in a network communicate by sending \emph{network packets} to each other, which are split into the control information, also called packet header, and the user information, called payload. The payload of a packet in general carries the information on behalf of an application and can be encrypted, while the header contains the necessary information for the correct transmission of the packet, including the transmission protocol layer, IP addresses, etc. Methods using packet-level input can be divided into payload inspection, header-based, or hybrid. Packets are usually stored in the widespread \emph{pcap} format.
-
-
-The majority of packets are exchanged between two hosts within bidirectional \emph{connections}. Another common format of network traffic information is based on connection summaries, also called \emph{network flows}. RFC 3697 \cite{brownlee1999traffic} defines a network flow as a sequence of packets that share the same source and destination IP address, IP protocol, and for TCP and UDP connections the same source and destination port. A network flow is usually represented by this information along with additional information such as the start and duration of the connection as well as the total number of packets and bytes transferred. 
+%\subsection{Data formats}
+%
+%Computers in a network communicate by sending \emph{network packets} to each other, which are split into the control information, also called packet header, and the user information, called payload. The payload of a packet in general carries the information on behalf of an application and can be encrypted, while the header contains the necessary information for the correct transmission of the packet, including the transmission protocol layer, IP addresses, etc. Methods using packet-level input can be divided into payload inspection, header-based, or hybrid. Packets are usually stored in the widespread \emph{pcap} format.
+%
+%
+%The majority of packets are exchanged between two hosts within bidirectional \emph{connections}. Another common format of network traffic information is based on connection summaries, also called \emph{network flows}. RFC 3697 \cite{brownlee1999traffic} defines a network flow as a sequence of packets that share the same source and destination IP address, IP protocol, and for TCP and UDP connections the same source and destination port. A network flow is usually represented by this information along with additional information such as the start and duration of the connection as well as the total number of packets and bytes transferred. 
 
 %\subsection{Machine-learning based network intrusion detection methods}
 %\subsection{Small-scale structures and machine-learning}
@@ -446,7 +459,7 @@ As all tested files passed this similarity test, we conclude that these scenario
 
 % Need to edit these sections to provide a single context for both the artificial delays & classification
 
-\subsection{Explorating Artificial Delays}
+\subsection{Explorating Artificial Delays}\label{Sec:ArtiDel}
 
 
 %In order for results drawn from datasets generated using our Docker framework to generalize, it is necessary to ensure that the qualities of our generated traffic are sufficiently similar to those of real-world traffic. However, it is not immediately clear if the traffic generated by our suite of Docker containers satisfies this condition. 
@@ -526,7 +539,7 @@ Weibull & 60ms & 10ms & 0.5540 \\
 To establish a baseline, we compare the traffic generated from our Docker scenario to that of the \textit{Google Compute} data with no added delays. In this case, the Random Forest was able to distinguish between the two datasets, achieving an accuracy of over 90\%. The classification accuracy is worsened considerably by introducing network delays, with the best results being achieved using a Weibull distribution with a mean of 60 ms and a jitter of 10 ms, leading to an accuracy of just $55\%$. Results for Pareto and Weibull distributions seem to yield consistent results for differing jitter values.
 Although not completely indistinguishable, this proves that using NetEm we can emulate WAN properties very closely.
 
-\subsection{Advantages of Dynamic Dataset Generation}
+\subsection{Advantages of Dynamic Dataset Generation}\label{Sec:DynDataGen}
 %The name needs to be changed, be clear what this verifies about our framework
 % I suppose that this experiment verifies that being able to continually generate traffic with a variety of network traffic conditions is an important quality for a traffic generation framework. Moreover, the cited papers both used k-means classifiers as they did not have access to labeled datasets, whilst we were able to use a random forest because our dataset was labeled. So, the title could be something like 'Advantages of dynamic dataset generation with accurate ground truth in traffic classification'? A bit long winded.
 

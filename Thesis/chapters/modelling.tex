@@ -1,13 +1,16 @@
+
+
+
 \definecolor{myred}{RGB}{248, 118, 109}
 \definecolor{mygreen}{RGB}{0, 186, 56}
 \definecolor{myblue}{RGB}{97, 156, 255}
 \definecolor{Gray}{gray}{0.9}
  
-\section{Controlling network traffic microstructures for machine-learning model probing}
+%\section{Controlling network traffic microstructures for machine-learning model probing}
 
 %\begin{abstract}
-Network intrusion detection models increasingly rely on learning traffic microstructures that consist of pattern sequences in features such as interarrival time, size, or packet flags. We argue that precise and reproducible control over traffic microstructures is crucial to understand and improve NID-model behaviour.
-We demonstrate that probing a traffic classifier with appropriately generated microstructures reveals links between misclassifications and traffic characteristics, and correspondingly lets us improve the false positive rate by more than $500\%$. We examine how specific factors such as network congestion, load, conducted activity, or protocol implementation impact traffic microstructures, and how well their influence can be isolated in a controlled and near-deterministic traffic generation process. We then introduce DetGen, a traffic generation tool that provides precise microstructure control, and demonstrate how to generate traffic suitable to probe pre-trained NID-models.
+%Network intrusion detection models increasingly rely on learning traffic microstructures that consist of pattern sequences in features such as interarrival time, size, or packet flags. We argue that precise and reproducible control over traffic microstructures is crucial to understand and improve NID-model behaviour.
+%We demonstrate that probing a traffic classifier with appropriately generated microstructures reveals links between misclassifications and traffic characteristics, and correspondingly lets us improve the false positive rate by more than $500\%$. We examine how specific factors such as network congestion, load, conducted activity, or protocol implementation impact traffic microstructures, and how well their influence can be isolated in a controlled and near-deterministic traffic generation process. We then introduce DetGen, a traffic generation tool that provides precise microstructure control, and demonstrate how to generate traffic suitable to probe pre-trained NID-models.
 %We then demonstrate how to generate traffic appropriately to probe pre-trained NID-models. 
 %For this, we introduce DetGen, a traffic generation tool that provides microstructure control and corresponding ground-truth labels.
 %\end{abstract}
@@ -31,11 +34,12 @@ In \textit{automatic speech recognition (ASR)}, tone and emotions can alter the 
 
 
 
-Prominent network intrusion detection methods as Kitsune \cite{mirsky2018kitsune} or DeepCorr \cite{nasr2018deepcorr} learn structures in the sizes, flags, or interarrival times of packets for decision-making. These \textbf{traffic microstructures} that can be observed when looking sequences of packets or connections reveal information about attack behaviour, but are also influenced by a number of other factors such as network congestion or the transmitted data. However, no effort has been made so far to monitor or control these factors to probe these models for specific microstructures, with the current quasi-benchmark NID-datasets pay more attention to the inclusion of specific attacks and topologies rather than the documentation of the generated traffic. 
-This situation has so far led researchers to often simply evaluate a variety of ML-models on these datasets in the hope of edging out competitors, without understanding model flaws and corresponding data structures through targeted probing.
+%Prominent network intrusion detection methods as Kitsune \cite{mirsky2018kitsune} or DeepCorr \cite{nasr2018deepcorr} learn structures in the sizes, flags, or interarrival times of packets for decision-making. These \textbf{traffic microstructures} that can be observed when looking sequences of packets or connections reveal information about attack behaviour, but are also influenced by a number of other factors such as network congestion or the transmitted data. However,
 
 
-We demonstrate how to produce traffic effectively to probe a state-of-the-art traffic classifier, and why a certain degree of generative \textbf{determinism} is required for this to isolate the influence of traffic microstructures. The model insights and corresponding performance improvements achieved through probing motivate our experimental examination of various influence factors over microstructures and how to control them during traffic generation. Finally, we present \emph{DetGen}, a traffic generation tool that provides near-deterministic control over microstructure-shaping factors such as conducted activity, communication failures or network congestion to generate reproducible traffic samples along with corresponding ground-truth labels. %Our motivation stems from the lack of attention that current benchmark datasets spent on these factors.
+In contrast to ASR, no effort has been made so far to monitor or control the effect of similar factors on network traffic to probe these models for specific microstructures, with the current quasi-benchmark NID-datasets pay more attention to the inclusion of specific attacks and topologies rather than the documentation of the generated traffic. This situation has so far led researchers to often simply evaluate a variety of ML-models on these datasets in the hope of edging out competitors, without understanding model flaws and corresponding data structures through targeted probing.
+
+In this chapter, we demonstrate how to produce traffic effectively to probe a state-of-the-art traffic classifier, and why a certain degree of generative \textbf{determinism} is required for this to isolate the influence of traffic microstructures. The model insights and corresponding performance improvements achieved through probing motivate our experimental examination of various influence factors over microstructures and how to control them during traffic generation. This chapter builds up on chapter \textcolor{red}{reference} by extending the examination of DetGen. Here, we examine DetGen's near-deterministic control over microstructure-shaping factors such as conducted activity, communication failures or network congestion to generate reproducible traffic samples along with corresponding ground-truth labels. %Our motivation stems from the lack of attention that current benchmark datasets spent on these factors.
 %how traffic microstructure labelling improves the probing of \textcolor{red}{NIDS} models, and how traffic with controllable microstructures can be generated for this purpose.
 
 
@@ -46,7 +50,7 @@ We demonstrate how to produce traffic effectively to probe a state-of-the-art tr
 
  
 %We propose a novel design paradigm that makes generation of network traffic and corresponding attacks significantly more flexible and offers a \textcolor{red}{new level} of insight and reproducibility for traffic microstructures through the use of containerisation. 
-This work provides the following contributions:
+This chapter provides the following contributions:
 
 \begin{enumerate}
 % an exemplary dataset that is suitable for broad probing of models trained on the CICIDS-17 dataset\cite{sharafaldin2018toward}, as it mirrors its range of protocols and attacks.
@@ -59,7 +63,7 @@ This work provides the following contributions:
 
 \item We examine experimentally how different factors affect traffic microstructures, and how well they can be controlled in a more effective manner when compared to common VM-based traffic generation setups.
 
-\item We propose DetGen, a container-based traffic generation paradigm that provides accurate control and labels over traffic microstructures, and experimentally demonstrate the level of provided generative determinism to traditional generation set-ups.
+\item We examine how DetGen provides accurate control and labels over traffic microstructures, and experimentally demonstrate the level of provided generative determinism to traditional generation set-ups.
 %DetGen, a framework based on a novel design paradigm for generating reproducible small-scale traffic structures with ground-truth labels that contain extensive information about the computational interactions behind it. 
 
 %\item We explain how DetGen enables accurate and \textcolor{red}{quasi-deterministic} control over traffic characteristics as well as corresponding ground truth information, and compare the design advantages to traditional generation set-ups.
@@ -83,12 +87,12 @@ This work provides the following contributions:
 %\end{itemize}
 
 
-DetGen and the DetGen-IDS data are openly accessible for researchers on \textit{GitHub}.
+%DetGen and the DetGen-IDS data are openly accessible for researchers on \textit{GitHub}.
 
 
 \subsection{Outline}
 
-The remainder of the paper is organized as follows. Section \ref{Sec:Motivation} discusses the need for generating probing data with sufficient microstructure control before presenting the probing and corresponding improvement of a state-of-the-art intrusion detection model as a motivating example. Section \ref{Sec:ProbData} discusses how to generate probing data appropriately for pretained models, and provides an overview over the DetGen-IDS data.
+The remainder of the chapter is organized as follows. Section \ref{Sec:Motivation} discusses the need for generating probing data with sufficient microstructure control before presenting the probing and corresponding improvement of a state-of-the-art intrusion detection model as a motivating example. Section \ref{Sec:ProbData} discusses how to generate probing data appropriately for pretained models, and provides an overview over the DetGen-IDS data.
 %provides an overview over the probing dataset that we are releasing and explains why and in what way it mirrors the CICIDS-17 dataset. 
 Section \ref{Sec:DetGenMicro} proceeds to examine over which traffic characteristics DetGen exerts control and the corresponding control level.
 Section \ref{Sec:Archi} provides details over the design paradigm of DetGen and the resulting advantages over traditional setups, while Section \ref{Sec:Determinism} discusses the level of control DetGen provides when compared to traditional setups.
