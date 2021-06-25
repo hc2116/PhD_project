@@ -101,11 +101,28 @@ However, traffic opaque
 
 \section{Contributions}
 
-This thesis provides extensive examination of traffic microstructures.
+This thesis provides extensive examinations of the necessary requirements on traffic generation and traffic microstructures to enable the effective training and improvement of anomaly detection models. The here presented findings provide \textcolor{red}{...}
 
-In this thesis, a new paradigm to generate traffic is proposed
+More specifically, we examine how current machine-learning based SPI-detection methods are designed and their requirements on comprehensive and realistic datasets to generate models that generalise well on persistent traffic microstructures. We establish our findings with several experiments and empirical evidence of shortcomings from existing datasets\textcolor{red}{...}.
 
-Furthermore, 
+This thesis then proposes DetGen, a traffic generation paradigm to provide control over various influence factors that shape traffic microstructures. The goal of DetGen is to provide researchers with extensive ground truth information and enable the generation of customisable, scalable, and controllable datasets with realistic levels of microstructure diversity. We examine with the level of control DetGen provides with a number of experiments to compare with existing traffic generation techniques. 
 
+We demonstrate the benefit of precise traffic control and corresponding ground truth labels by probing two state-of-the-art (SOTA) NID models to understand where they fail and how they can be improved. We identify design flaws with regards to specific microstructures, and can correspondingly improve the detection performance by several percentage points. These examinations also serve as examples how the model development process in NID can be \textcolor{red}{extended} to improve existing models and build up on previous results.
+
+Building up from these results, we propose CBAM, an anomaly detection model that detects low-volume access attacks as deviations from \textcolor{red}{persistent} flow microstructures. CBAM is trained as a self-supervised traffic language model and outperforms current state-of-the-art methods by \textcolor{red}{xxx points}. We examine persistent microstructures that are perturbed by specific attacks, and how CBAM detects these perturbations. The output of CBAM also provides valuable insights into the frequency, clustering, and evolution of microstructures in real-world traffic.
+
+Lastly, we examine how attackers can perturb traffic in a stepping-stone attack in an adversarial way to prevent models from identifying the corresponding microstructures. We use DetGen to generate controllable stepping-stone attack data to identify which level of perturbations are required to prevent detection. We then evaluate several models with different detection methodologies on this data and conclude that realistic adversarial perturbations can evade all current methods.
 
 \subsection{Thesis overview}
+
+\paragraph{Chapter 2} provides the reader with background information on network traffic and attacks, machine-learning based network intrusion detection and explains the necessary concepts of machine-learning based anomaly detection for sequential data streams. The chapter highlights important NID models that leverage traffic microstructures, and discusses existing datasets and synthetic traffic generation as well as their current shortcomings, as well as related studies on traffic structures.
+
+\paragraph{Chapter 3} introduces DetGen, a framework that provides small-scale traffic generation specifically aimed for machine-learning based intrusion detection. The chapter starts with the identification of four major shortcomings of existing NID-datasets regarding the training of machine-learning models that leverage traffic microstructures. The chapter then defines four requirements that a machine-learning-focused traffic generation framework must fulfil. The chapter then provides results from several experiments to demonstrate the lack of model \textcolor{red}{generalisability} when trained on data not meeting these requirements. 
+
+\paragraph{Chapter 4} builds up on the results in Chapter 2 by experimentally examining the influence of several factors on traffic microstructures and the level of control that DetGen provides. The chapter then provides two case-studies on how to produce traffic effectively to probe a state-of-the-art traffic classifier, and why a certain degree of generative determinism is required for this to isolate the influence of traffic microstructures. 
+
+\paragraph{Chapter 5} introduces CBAM, an anomaly detection model that detects low-volume access attacks as deviations from \textcolor{red}{persistent} flow microstructures. The chapter explains the reasoning for CBAM's design in order to learn specific microstructures in a self-supervised manner, and how attacks perturb these microstructures. The chapter then provides detection results and a comparison to three benchmark (SOTA) models, before examining long-term stability of the learned structures and current shortcomings on real-world datasets.
+
+\paragraph{Chapter 6} explains the procedure of a stepping-stone attack, common techniques based on SPI to detect them, and how attackers introduce perturbations to evade detection. The chapter then provides  results from data with varying degrees of introduced perturbations and the corresponding performance results of seven stepping-stone detection methods.
+
+\paragraph{Chapter 7} concludes this thesis, provides a crictical perspective on the presented results, and gives an outlook to future work in this area.
