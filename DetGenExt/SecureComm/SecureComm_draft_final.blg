@@ -1,3 +1,46 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: SecureComm_draft_final.aux
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: SecureComm_draft_final.aux
 The style file: abbrv.bst
 Database file #1: ../DetGen_ext.bib
+You've used 33 entries,
+            2118 wiz_defined-function locations,
+            679 strings with 10988 characters,
+and the built_in function-call counts, 13362 in all, are:
+= -- 1307
+> -- 718
+< -- 15
++ -- 291
+- -- 248
+* -- 914
+:= -- 2135
+add.period$ -- 108
+call.type$ -- 33
+change.case$ -- 222
+chr.to.int$ -- 0
+cite$ -- 33
+duplicate$ -- 507
+empty$ -- 996
+format.name$ -- 248
+if$ -- 2864
+int.to.chr$ -- 0
+int.to.str$ -- 33
+missing$ -- 29
+newline$ -- 167
+num.names$ -- 66
+pop$ -- 275
+preamble$ -- 1
+purify$ -- 189
+quote$ -- 0
+skip$ -- 384
+stack$ -- 0
+substring$ -- 746
+swap$ -- 166
+text.length$ -- 15
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 132
+warning$ -- 0
+while$ -- 123
+width$ -- 35
+write$ -- 362

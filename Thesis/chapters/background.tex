@@ -4,43 +4,28 @@
 
 \subsection{Traffic metadata}
 
-Computers in a network mostly communicate by sending \textit{network packets} to each other, in which the transmitted information is encapsulated. Each network packet is split into the control information, also called packet header, and the user information, called payload. The packet header contains the necessary information for the correct transmission of the packet, including the transmission protocol layer (such as TCP, UDP, or ICMP), and the source and destination IP addresses and network ports\footnote{A network port is a number that identifies which service or application is responsible for the processing of incoming packets.}. It furthermore contains error-checking fields suchs as the size of the packet and a checksum over the payload, and protocol-specific fields. 
-
+Computers in a network mostly communicate by sending \textit{network packets} to each other, which contain the control information necessary for transmission, called the packet header, and the user information, called payload. Information contained in the header depends on the respective transport layer protocol (TCP, UDP, ICMP, etc.). Fig. \ref{Fig:TCPheader} displays the content of a TCP as an example.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.4]{images/tcp_header.png}
-\caption{Typical format of a TCP packet. Source:\scriptsize{ https://www.lifewire.com/tcp-headers-and-udp-headers-explained-817970}\normalsize}
+\caption{Typical format of a TCP packet. Source:\scriptsize{ https://www.lifewire.com/tcp-headers-and-udp-headers-explained-817970}\normalsize}\label{Fig:TCPheader}
 \end{figure}
 
+In a monitoring setting, packets are usually captured by network routers and stored in the widespread \textit{pcap} format. In case of space shortage or privacy concerns, packet streams are often summarised into \textbf{network flows}. RFC 3697 \cite{brownlee1999traffic} defines a network flow as a sequence of packets that share the same source and destination IP address, IP protocol, and for TCP and UDP connections the same source and destination port. A network flow is usually saved containing these informations along with the start and duration of the connection and the number of packets and bytes transferred in the connection. Both data formats are used widely by NIDSs.
 
-The payload of a packet is in general the data that is carried on behalf of an application. It can be of variable length, however, it cannot exceed the maximum packet length set by the network protocol. In contrast to the packet header, the payload can be encrypted, a technique that makes it unreadable to any third parties and that is becoming increasingly common in modern computer networks. 
+%Modern firewalls typically filter packets either based on the content of the payload (such as known-malicious byte-sequences), called \emph{Deep Packet Inspection} (DPI), or on the content of the headers (such as specific source ports or IP-addresses), called \emph{Shallow Packet Inspection} (SPI). In contrast to the packet header, the payload can be encrypted, a technique that makes it unreadable to any third parties and that is becoming increasingly common in modern computer networks through protocols such as TLS or SSH.
 
+Modern firewalls and NID solutions rely extensively on \emph{deep packet inspection} (DPI), where the payloads of packets are scanned for attack signatures or anomalies such as known-malicious byte-sequences or anomalous HTTP-requests. While this offers a direct view at the content of communications, it raises several problems: The computational overhead of DPI is large and scales directly with the amount of transferred data. Furthermore, DPI infringes user privacy when scanning the content of messages, potentially allowing the operator to access the vast amount of personal information sent over the internet. Finally, DPI is incapable of processing encrypted traffic, an issue that malicious actors increasingly exploit. \textcolor{red}{Some firwall-providers have started to decrypt any transferred traffic in a man-in-the-middle manner, but the ethical legitimacy of such approaches is at the very least controversial.}
 
-While traversing between to parties, a network packet can pass multiple connecting devices which direct the packet in the right direction. Any device in the immediate circuit traversed by a packet can capture and store it. In a monitoring setting, packets are usually captured by network routers and stored in the widespread \textit{pcap} format. In case of space shortage or privacy concerns, the payload of a packet can be dropped in the saving process.
+\emph{Shallow packet inspection} (SPI) in contrast only inspects packet headers and is therefore computationally less expensive as well as robust against encryption and to some degree application evolution \textcolor{red}{citation}. SPI is used both by rule- and signature-based systems such as Snort, as well as by an ever increasing number of machine-learning based methods that attempt to make broad generalities about traffic solely from evaluating packet headers. \textcolor{red}{insert some statistic how many}.
 
+%For this, many traffic classification and anomaly-detection approaches leverage small-scale structures visible in the sizes, interarrival times, flags, port, etc. of packet sequences, which we call \emph{traffic microstructures}. \textcolor{red}{insert image and example here}.
 
-Another more structured way of capturing network traffic is based on connection summaries, or \textbf{network flows}. RFC 3697 \cite{brownlee1999traffic} defines a network flow as a sequence of packets that share the same source and destination IP address, IP protocol, and for TCP and UDP connections the same source and destination port. A network flow is usually saved containing these informations along with the start and duration of the connection and the number of packets and bytes transferred in the connection.
-
-
-\begin{figure}[h!]
-\scriptsize
-\centering
-\begin{verbatim}
- Date flow start        Duration Proto  Src IP Addr:Port      Dst IP Addr:Port   Packets  Bytes Flows
- 2010-09-01 00:00:00.459   0.000 UDP    127.0.0.1:24920   ->  192.168.0.1:22126      1     46     1
- 2010-09-01 00:00:00.363   0.000 UDP    192.168.0.1:22126 ->  127.0.0.1:24920        1     80     1
-\end{verbatim}
-\normalsize
-\caption{A typical network flow output}
-\end{figure}
-
-
-Raw packets grant full information about the connection, but take a lot of space when stored, whereas network flows give a more structured and lightweight overview over the traffic in a network. Both data formats are used widely by NIDSs.
 
 \subsection{Network attacks}
 
-Sophisticated data breaches affect hundreds of million customers and inflicts tremendous financial, reputational, and logistic damage. %Cyber-security incidents increased by 38\% in 2017, and the global cost of cyber crime is estimated to reach \$2 trillion by 2019 %\citep{conteh2016rise}. The prevention of cyber crime is therefore a globally demanded necessity.
+%Sophisticated data breaches affect hundreds of million customers and inflicts tremendous financial, reputational, and logistic damage. %Cyber-security incidents increased by 38\% in 2017, and the global cost of cyber crime is estimated to reach \$2 trillion by 2019 %\citep{conteh2016rise}. The prevention of cyber crime is therefore a globally demanded necessity.
 One reason for the recent rise of cyber crime is the increased use of sophisticated techniques for the attack of specific targets. Attackers use customised social engineering and custom-build malware that penetrate defensive barriers and potentially stay undetected in an infected system for an extended period of time. 
 
 
@@ -61,68 +46,101 @@ In 1980, James P. Anderson, a member of the \textit{Defense Science Board Task F
 \textit{"\dots an unauthorized and deliberate attempt to access or manipulate information, or to render a system unreliable or unusable."}
 \end{quote}
 
-Such attacks can be very diverse in their nature: They can be used to achieve different goals, and correspondingly exploit different types of tools and vulnerabilities. Very often, intrusive attacks involve some sort network communication between the victim machine(s) and a malicious agent. As this work is focusing primaly on network intrusion and corresponding defense systems, we will take a closer look at this type of communication. A recent survey covering intrusive attacks and defense systems distinguishes five classes of malicious network traffic \cite{nisioti2018intrusion}:
+%Such attacks can be very diverse in their nature: They can be used to achieve different goals, and correspondingly exploit different types of tools and vulnerabilities. 
+Very often, intrusive attacks involve some sort network communication between the victim machine(s) and a malicious agent. As this thesis focuses primaly on network intrusion and corresponding defense systems, we will take a closer look at this type of communication. A recent survey covering intrusive attacks and defense systems distinguishes five classes of malicious network traffic \cite{nisioti2018intrusion}:
 
 \begin{enumerate}
-\item \textit{DoS-attacks}: A denial-of-service attack is an attempt to remove ability of a particular computer to communicate with other machines over an extended period of time. Such attacks are usually targeted at network servers in order to disrupt the service it is providing. All major types of DoS-attacks achieve this by overwhelming the target server with service requests, which are usually corrupted in a way that causes the server to bind resources unnessecarily long for each request, and thus losing its capability to process other requests. The most prominent type of DoS attacks are SYN-floods. They exploit the TCP-handshake protocol by sending many SYN-requests to a server while ignoring the SYN-ACK response packets sent in return by the server. This causes the server to keep waiting for a response for each of the attacker's requests, and thus binds the resources of the server while being computationally very cheap for the attacker. After a certain treshold, the server will not be able to process any more requests, rendering it unusable for actual client requests.
+\item \textit{DoS-attacks}: A denial-of-service attack is an attempt to remove ability of a particular computer to communicate with other machines over an extended period of time. %Such attacks are usually targeted at network servers in order to disrupt the service it is providing. 
+All major types of DoS-attacks achieve this by overwhelming the target server with service requests, which are usually corrupted in a way that causes the server to bind resources unnessecarily long for each request, and thus losing its capability to process other requests. %The most prominent type of DoS attacks are SYN-floods. They exploit the TCP-handshake protocol by sending many SYN-requests to a server while ignoring the SYN-ACK response packets sent in return by the server. This causes the server to keep waiting for a response for each of the attacker's requests, and thus binds the resources of the server while being computationally very cheap for the attacker. After a certain treshold, the server will not be able to process any more requests, rendering it unusable for actual client requests.
 
 \item \textit{Network probing/Reconnaissance attack}: The purpose of network probing attacks is to gather information about computers in a network and possibly find vulnerabilities which can be exploited in further attacks. This typically involves sending specific service requests to other computers in the network in order to gather information about this system, such as open ports or the operating system running on a machine, contained in the corresponding response packets.
-
-A common type of network probing attacks is \textit{port scanning}. Its aim is to gather knowledge of computers in the network than run vulnerable services, such as HTTP servers, mail servers, and so on. A port scan achieves this by sending queries to one or more network ports on one or more computers in the network. A computer on which the contacted network port is open will respond to the query and thus reveils himself. A port scan can either be vertical, during many ports on one computer are scanned, or horizontal, where the attacker scans a small number of ports on many computers in the network. 
-
-Network probing is often an integral part in the spreading mechanism of\textit{computer worms}.
+%A common type of network probing attacks is \textit{port scanning}. Its aim is to gather knowledge of computers in the network than run vulnerable services, such as HTTP servers, mail servers, and so on. A port scan achieves this by sending queries to one or more network ports on one or more computers in the network. A computer on which the contacted network port is open will respond to the query and thus reveils himself. A port scan can either be vertical, during many ports on one computer are scanned, or horizontal, where the attacker scans a small number of ports on many computers in the network. 
+Network probing is often an integral part in the spreading mechanism of \textit{computer worms}.
 
 \item \textit{Access Attacks}: These are attacks that attempt to gain unauthorized access to a machine. This could both be an individual from outside gaining access to the network, or a user from inside the network accessing services or privileges outside of their authority. Access attacks are often divided into \textit{Remote-to-Local} (R2L) where a remote attacker gains access on a system over the network, and \textit{User-to-Root} (U2R), where a user illegally gains administrator access to a machine. However, many attacks fall into both categories. 
 
-Access attacks can be very diverse in their nature. A simple example are brute-force attacks where an attacker guesses the passwort of a user over a network service such as SSH. Other prominent and more sophisticated cases include \textit{SQL injections}, where nefarious SQL statements are passed to an entry field for execution, or \textit{buffer overflow}, in which more data is put into a buffer of a service than it can hold in order manipulate data in the memory past the buffer.
+%Access attacks can be very diverse in their nature. A simple example are brute-force attacks where an attacker guesses the passwort of a user over a network service such as SSH. Other prominent and more sophisticated cases include \textit{SQL injections}, where nefarious SQL statements are passed to an entry field for execution, or \textit{buffer overflow}, in which more data is put into a buffer of a service than it can hold in order manipulate data in the memory past the buffer.
 
 
-\item \textit{Data Manipulation Attack}: Also known as "man-in-the-middle", these attacks typically involve an attacker reading and manipulating information in a data stream that is not addressed to him by exploiting vulnerable or missing authentication mechanisms in the IP protocol and related applications. A common form of such an exploit is \textit{IP spoofing} where an attacker pretends to be a trusted computer by sending packets with a spoofed trusted source IP address. Similarly, vulnerabilities in digital certificates that serve as a unique identifier of a trusted computer can be used to create fake certificate and thus trick a victim into trusting the intruder carrying the faked certificate.
+\item \textit{Data Manipulation Attack}: Also known as "man-in-the-middle", these attacks typically involve an attacker reading and manipulating information in a data stream that is not addressed to them by exploiting vulnerable or missing authentication mechanisms in the IP protocol and related applications. A common form of such an exploit is \textit{IP spoofing} where an attacker pretends to be a trusted computer by sending packets with a spoofed trusted source IP address. Similarly, vulnerabilities in digital certificates that serve as a unique identifier of a trusted computer can be used to create fake certificate and thus trick a victim into trusting the intruder carrying the faked certificate.
 
-Two examples of data manipulation attacks are \textit{session replay} and \textit{website impersonation}. In a session replay, the intruder captures packet sequences exchanged between two parties and modifies part of the data before forwarding it to the receiver. Here, both parties are unaware of the data manipulation and trust the authenticity of the connection. In website impersionation, a user is unknowingly redirected to a perfect copy of the website he requested. The user is then tricked to enter confidential information into a web form, which is then sent to the attacker instead of the trusted party operating the original page. 
-
-
-Data manipulation attacks are often used pass malicious code to a victim in order to gain access on its machine. An impressive example of such behaviour was demonstrated by the malware \textit{Flame}\footnote{also known as \textit{Skywiper}}: An infected host in a network sends messages to other machines running Windows advertising itself as a Windows update provider, using spoofed IP addresses and a fake Microsoft certificate and thus defeating Microsoft's authentication mechanism. Other computers were consequently tricked into receiving malicious updates from the infected host, which would then infect their machine \cite{skywiperskywiper}.
+%Two examples of data manipulation attacks are \textit{session replay} and \textit{website impersonation}. In a session replay, the intruder captures packet sequences exchanged between two parties and modifies part of the data before forwarding it to the receiver. Here, both parties are unaware of the data manipulation and trust the authenticity of the connection. In website impersionation, a user is unknowingly redirected to a perfect copy of the website he requested. The user is then tricked to enter confidential information into a web form, which is then sent to the attacker instead of the trusted party operating the original page. 
 
 
+%Data manipulation attacks are often used pass malicious code to a victim in order to gain access on its machine. An impressive example of such behaviour was demonstrated by the malware \textit{Flame}\footnote{also known as \textit{Skywiper}}: An infected host in a network sends messages to other machines running Windows advertising itself as a Windows update provider, using spoofed IP addresses and a fake Microsoft certificate and thus defeating Microsoft's authentication mechanism. Other computers were consequently tricked into receiving malicious updates from the infected host, which would then infect their machine \cite{skywiperskywiper}.
 
-\item \textit{C}\&\textit{C traffic}: 
 
-C\& stands for \textit{"Command and Control"} and denotes the communication between an infected host and a rogue agent, called the C\&C server. The data transmitted in a C\&C channel is usually exfiltrated information about the environment of the infected host, or commands from the C\&C server for the victim for further operations. Typically, C\&C communication is used for the control of one or more so called \textit{bots}, computers that can perform tasks such as network scanning, establishing connections to other machines, or participating in DoS attacks. The communication between a bot and the C\&C server is therefore extended and continuous over time. However, C\&C communication can also be used for the request and transmission of an encryption key needed in a ransomware attack, in which it is limited in time and size. 
 
+\item \textit{C}\&\textit{C traffic}: \textit{"Command and Control"} traffic denotes the communication between an infected host and a rogue agent, called the C\&C server. The data transmitted in a C\&C channel is often exfiltrated information about the environment of the infected host, or commands from the C\&C server for the victim for further operations. %Typically, C\&C communication is used for the control of one or more so called \textit{bots}, computers that can perform tasks such as network scanning, establishing connections to other machines, or participating in DoS attacks. The communication between a bot and the C\&C server is therefore extended and continuous over time. However, C\&C communication can also be used for the request and transmission of an encryption key needed in a ransomware attack, in which it is limited in time and size. 
 C\&C communication is usually sent over the HTTP or HTTPS protocol as it is widely available and allows the attacker to hide their communication in the large volume of diverse traffic sent over this channel \cite{lamprakis2017unsupervised}.
 
 \end{enumerate}
 
-An additional class of networking threats is the \textit{unauthorized surveillance} of network traffic. A local network of computers is usually separated from the outside, with a router establishing the connection between computers in the network and ones outside the network. The traffic exchanged between machines inside the network therefore does not leave the network and is not visible for outsiders. Unauthorised access captures of internal network traffic can give an intruder significant information about the network topology, and even access to sensitive information if a connection is not encrypted. As network surveillance usually does not leave any visible traces in the network, I did not include it in the above listed types of malicious traffic. 
+%An additional class of networking threats is the \textit{unauthorized surveillance} of network traffic. A local network of computers is usually separated from the outside, with a router establishing the connection between computers in the network and ones outside the network. The traffic exchanged between machines inside the network therefore does not leave the network and is not visible for outsiders. Unauthorised access captures of internal network traffic can give an intruder significant information about the network topology, and even access to sensitive information if a connection is not encrypted. As network surveillance usually does not leave any visible traces in the network, I did not include it in the above listed types of malicious traffic. 
 
 
 
 
-\section{Machine learning and anomaly detection}
+\section{Anomaly detection}
 
-%\subsection{Sequence modelling}
+Anomaly detection refers to the problem of identifying data instances that have significantly different properties than previously observed ``normal data instances. Anomaly detection has its origins in statistical research where normal data instances are assumed to be generated as random variables by a probability distribution $P_\textit{N}(X)$. New data is then identified as anomalous if its properties correspond to regions with vanishing likelihood, i.e. this particular data instance is highly unlikely to be generated by $P_\textit{N}(X)$. Usually, the hard part in anomaly detection is to use observed data efficiently to build an estimated distribution $\hat{P}_\textit{N}(X)$ that resembles $P_\textit{N}(X)$, and often rlies on training machine-learning models. 
 
-\subsection{Classification vs anomaly-detection}
-Supervised vs self-supervised
+Machine learning methods are often grouped into supervised methods trained on labelled data, and unsupervised/self-supervised methods that are trained on unlabelled data\footnote{Semi-supervised methods are sometimes identified as a separate group, but their functionality is often closely related to supervised methods.}. Besides the input data samples, supervised methods receive separate response data that the model is then trained to predict in a general settings without any available response data. Typically, the response data is a class label for the corresponding data sample, or numerical values in a regression-type problem. 
+Unsupervised or self-supervised methods are trained entirely on the input samples in the absence of a separate response. For this, an artificial response is often generated from the input data by masking some variables or data samples and predicting it from the remaining variables or surrounding data samples. Since this information is usually available, the purpose is often not the prediction itself, but to extract information such as numerical thresholds, sample likelihoods, or groupings that describe the data. Examples of this are clustering methods or time-series and sequence prediction. 
+
+Machine-learning-based anomaly-detection typically deal with a two-class classification problem, where one class, benign data samples, are abundant and coherent in their structure while the other, anomalous data samples, are rare, incoherent, and thus more difficutl to describe. Anomaly-detection methods are therefore trained in an unsupervised or self-supervised manner entirely on benign data samples to extract information on their underlying structures and provide boundaries of typical behaviour to distinguish them from anomalous samples that \textcolor{red}{exceed} these boundaries.
+
+\begin{figure}
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{images/outlier_mine.png}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{images/Atrial_Premature_Contraction.png}
+\caption{}
+\end{subfigure}
+\caption{The left plot (a) depicts simple anomalies that deviate in distance from regular data. The right plot (b) shows a contextual anomaly where a group of data instances do not follow a repeating timely behaviour with respect to all other data points (corresponding to an \textit{Atrial Premature Contraction}, taken from \cite{chandola_anomaly_2009})}\label{graph2}
+\end{figure}
+
+
+Real-world benign data is typically exhibits structures in a myriad of ways, and it is often impossible to build a model that reflects all of these structures in an accurate way. Even though anomaly-detection methods are often claimed to be independent of a notion of anomalous or attack behaviour, the design of the method and the choice of which structures the learned benign-boundary is generated from mean that some knowledge of how anomalous behaviour will differ from benign is needed.
+
+Anomaly detection has found wide application in areas where stability of  critical systems or detection of their abuse is crucial. Examples of these include engine-fault detection in wind-turbines and fraud detection for credit cards. The assumption here is that the modelled system, such as the sensor-data stream of an engine or the buying behaviour of a customer, remains stable and generates consistent data.
+
+
+%\subsection{Classification vs anomaly-detection}
+%Supervised vs self-supervised
 
 \subsection{Self-supervised language models}
+
+In natural language processing, language models are used for text-completion, -generation, and -correction. A statistical language model is a probability distribution that describes the overall likelihood of a sequences of words. 
+
+
+To assi
+
+Language are typically trained in a self-supervised way 
+
+
+
+
+In the context of this thesis, language models are of relevance due to the similarity of 
 
 \section{Network intrusion detection}
 
 %Sophisticated data breaches affect hundreds of million customers and inflict tremendous financial, reputational, and logistic damage. One reason for the recent rise of cyber crime is the increased use of advanced techniques for the attack of specific targets. Attackers use customised social engineering and custom-built malware that penetrate defensive barriers and potentially stay undetected in an infected system for an extended period of time. 
 
-Cyber-security relies on a range of defensive techniques, including sophisticated intrusion detection systems and firewalls that try to detect and prevent attacks against software subsystems. Malicious software still remains the biggest threat to computer users, and its detection is of utmost importance. 
+%Cyber-security relies on a range of defensive techniques, including sophisticated intrusion detection systems and firewalls that try to detect and prevent attacks against software subsystems. Malicious software still remains the biggest threat to computer users, and its detection is of utmost importance. 
 
-The field of intrusion detection is concerned with the development of methods and tools that identify and locate possible intrusions in a computer network. An \textit{intrusion detection system} (IDS) is typically a device or software application that detects malicious activity or policy violations in an automated way by scanning incoming data collected from one or more sources for patterns that a model or a set of rules classifies as potentially malicious.
-
+The field of intrusion detection is concerned with the development of methods and tools that identify and locate possible intrusions in a computer network. %An \textit{intrusion detection system} (IDS) is typically a device or software application that detects malicious activity or policy violations in an automated way by scanning incoming data collected from one or more sources for patterns that a model or a set of rules classifies as potentially malicious.
 Intrusion detection is a well researched area, with the first IDSs emerging in the late 1980's. Intrusion detection today comprises a variety of research areas in terms of different types of data sources, system architectures, detection sope, and so forth. Denning \cite{denning1987intrusion} in 1987 established the notion of two different types IDS implementations: a) host-based and b) network-based. 
-\textit{Host-based intrusion detection systems} (HIDS) monitor each host in a network individually, and rely on local data streams such as application logs or raw operating system calls as  data source. \textit{Network-based intrusion detection} refers to the detection of malicious traffic in a network of computers and uses network traffic captures as a data source. In this PhD project, I will mainly focus on network traffic as a data source due its universal nature, its resilience against modification, and my previous experience in the field. However, I will also investigate the possibility of relating both types of traffic. For more details on IDS implementations, I refer the reader to my more detailed literature review. 
+\textit{Host-based intrusion detection systems} (HIDS) monitor each host in a network individually, and rely on local data streams such as application logs or raw operating system calls as  data source. \textit{Network-based intrusion detection} refers to the detection of malicious traffic in a network of computers and uses network traffic captures as a data source. %In this thesis, I will focus on network traffic as a data source due its universal nature, its resilience against modification, and my previous experience in the field. However, I will also investigate the possibility of relating both types of traffic. For more details on IDS implementations, I refer the reader to my more detailed literature review. 
 
+%Current detection methods are predominantly based on the analysis of previously identified attack signatures, which provides great reliability and low false alert rates. However, these methods are dependent on an updated attack signature database and provide no protection against previously unseen attacks. With attackers having access to more resources than ever, custom-built malware is becoming more common to circumvent signature-based detection. 
 
-Current detection methods are predominantly based on the analysis of previously identified attack signatures, which provides great reliability and low false alert rates. However, these methods are dependent on an updated attack signature database and provide no protection against previously unseen attacks. With attackers having access to more resources than ever, custom built malware is becoming more common to circumvent signature-based detection. 
+%Another approach that has recently gained traction in commercial deployment is based on detecting malware and other undesired activity as anomalous behaviour when compared to benign computer activity. In this approach, known as \textbf{network anomaly detection} after Denning \cite{denning1987intrusion}, models must quantify the behaviour of normal network behaviour to be independent of a narrowly defined notion of malicious activity.
 
-Another approach that has recently gained traction in commercial deployment is based on detecting malware and other undesired activity as anomalous behaviour when compared to benign computer activity. In this approach, known as \textbf{network anomaly detection} after Denning \cite{denning1987intrusion}, models must quantify the behaviour of normal network behaviour to be independent of a narrowly defined notion of malicious activity.
+\textcolor{red}{more on how signature based methods work in comparison to ML-based}.
 
 %\subsection{Network Intrusion Detection Systems}
 
@@ -143,40 +161,21 @@ Another approach that has recently gained traction in commercial deployment is b
 \end{figure}
 
 %Host-based systems have the advantage of working with high quality data that   are   typically   very   informative \cite{lazarevic2005intrusion}. 
-NIDS have the advantage of being plattform independent and more resiliant to attacks as detection of an infection is not done on the infected system. %In this review, I will focus on work done in the area of network intrusion detection.
+%NIDS have the advantage of being plattform independent and more resiliant to attacks as detection of an infection is not done on the infected system. %In this review, I will focus on work done in the area of network intrusion detection.
 
-\textcolor{red}{centralised etc...}
+%\textcolor{red}{centralised etc...}
 
-\subsection{Detection methods}
+\subsection{Misuse vs  anomaly detection}
 
 Detection methods are the core of an IDS, and are therefore the most important design choice. Traditionally, two broad types of detection approaches are identified: a) Misuse detection and b) anomaly detection. 
 
 Misuse detection aims at detecting a particular and well known reoccurring characteristic or pattern of a malicious behaviour. Two simple examples of such a characteristic are the large number of SYN packets sent by a host in a DoS attack, and the synchronised connection of many hosts to one server in a botnet. In misuse detection, abnormal or malicious behaviour is therefore defined first before developing a model to distinguish the defined behaviour from other traffic.
 
-In contrast, anomaly detection aims at building a model of normal system behaviour that is accurate enough to spot any malicious behaviour as traffic that deviates from the estimated model. Anomaly detection is principally more difficult than misuse detection since the traffic model has to incorporate potentially very heterogenuous traffic behaviours. However, it is generally acknowledged that anomaly detectionhas is more suitable to detect new and previously unseen malicious behaviour as it makes no definite assumptions on the anomalous behaviour. Misuse detection is robust against evolution of malware as long as defined malicious behaviours do not change.
+%In contrast, anomaly detection aims at building a model of normal system behaviour that is accurate enough to spot any malicious behaviour as traffic that deviates from the estimated model. Anomaly detection is principally more difficult than misuse detection since the traffic model has to incorporate potentially very heterogenuous traffic behaviours. However, it is generally acknowledged that anomaly detection is more suitable to detect new and previously unseen malicious behaviour as it makes no definite assumptions on the anomalous behaviour. Misuse detection is robust against evolution of malware as long as defined malicious behaviours do not change.
 
 In reality, anomaly and misuse detection are not necessarily mutually exclusive, and there is a fluent passage between the two. This is because many anomaly detection approaches choose a particular set of features to be modelled with a particular threat in mind. For instance, models for the number of connections of a machine are naturally suitable for detecting DoS attacks, port scans, or Worm attacks. 
 
-As misuse detection detection methods are aimed at detecting very specific behaviour, they usually only detect one type of malicious traffic. Areas that have been researched particularly well include botnet C\&C channel detection, DoS attack detection, and port scan detection. Areas that lack a comprehensive body of research are different types of R2L and U2R attacks. These are also currently the least   detected   attack   classes \cite{nisioti2018intrusion}.
-
-\subsection{Anomaly detection and SPI}
-
-Anomaly detection refers to the problem of identifying data instances that have significantly different properties than previously observed ``normal data instances. Anomaly detection has its origins in statistical research where normal data instances are assumed to be generated as random variables by a probability distribution $P_\textit{N}(X)$. New data is then identified as anomalous if its properties correspond to regions with vanishing likelihood, i.e. this particular data instance is highly unlikely to be generated by $P_\textit{N}(X)$. Usually, the hard part in anomaly detection is to use observed data efficiently to build an estimated distribution $\hat{P}_\textit{N}(X)$ that resembles $P_\textit{N}(X)$ closely to identify anomalous events while asigning normal instances a non-vanishing likelihood. A variety of techniques exist to achieve this assuming comparably simple generating distributions. However, distributions for many interesting types of normal data can be complex and changing over time, and individual data points can have intricate interdependencies. 
-\begin{figure}
-\centering
-\begin{subfigure}[b]{0.45\textwidth}
-\includegraphics[width=\textwidth]{images/outlier_mine.png}
-\caption{}
-\end{subfigure}
-\begin{subfigure}[b]{0.45\textwidth}
-\includegraphics[width=\textwidth]{images/Atrial_Premature_Contraction.png}
-\caption{}
-\end{subfigure}
-\caption{The left plot (a) depicts simple anomalies that deviate in distance from regular data. The right plot (b) shows a contextual anomaly where a group of data instances do not follow a repeating timely behaviour with respect to all other data points (corresponding to an \textit{Atrial Premature Contraction}, taken from \cite{chandola_anomaly_2009})}\label{graph2}
-\end{figure}
-
-Anomaly detection has found wide application in areas where stability of  critical systems or detection of their abuse is crucial. Examples of these include engine-fault detection in wind-turbines and fraud detection for credit cards. The assumption here is that the modelled system, such as the sensor-data stream of an engine or the buying behaviour of a customer, remains stable and generates consistent data. Detected anomalies in new observations then indicate a potential fault or abuse in this system. Obviously, it is not inherently clear that every abuse or fault generates data that differs from normal data. Therefore, it is important to choose data sources that are able to reflect the unique nature of a particular system.
-
+As misuse detection detection methods are aimed at detecting very specific behaviour, they usually only detect one type of malicious traffic. Areas that have been researched particularly well include botnet C\&C channel detection, DoS attack detection, and port scan detection. Areas that lack a comprehensive body of research are different types of access attacks and data manipulation attacks. These are also currently the least detected attack classes \cite{nisioti2018intrusion}.
 
 \subsection{Evaluation methodology and common flaws}
 
@@ -280,8 +279,7 @@ Anomaly detection has found wide application in areas where stability of  critic
 
 \section{Existing datasets}
 
-In order to evaluate their ability to model the behaviour of a network and to identify malicious activity and network intrusions, new methodologies have to be tested using existing datasets of network traffic. This network should ideally contain realistic and representative benign network traffic as well as a variety of different network intrusions. However, as  network traffic contains a vast amount of information about a network and its users, it is notoriously difficult to release a comprehensive dataset without infringing the privacy rights of the network users. 
-Furthermore, the identification of malicious traffic in network traces is not straightforward and often requires a significant amount of manual labelling work.
+In order to evaluate their ability to model the behaviour of a network and to identify malicious activity and network intrusions, new methodologies have to be tested using existing datasets of network traffic. This network should ideally contain realistic and representative benign network traffic as well as a variety of different network intrusions. However, as  network traffic contains a vast amount of information about a network and its users, it is notoriously difficult to release a comprehensive dataset without infringing the privacy rights of the network users. Furthermore, the identification of malicious traffic in network traces is not straightforward and often requires a significant amount of manual labelling work.
 For that reason, only a handfull of datasets for network intrusion datasets containing real world traffic exist. There have also been some efforts to artificially creating such datasets and thus bypassing any privacy concerns. However, up to today, no artificial dataset truly resembles real network traffic in every aspect \cite{nisioti2018intrusion}.
 
 As described in a recent survey by \textbf{Ahmed et al.} \cite{ahmed2016survey}, we can generally distinguish four different types of datassets containing network traffic:
@@ -298,7 +296,7 @@ As described in a recent survey by \textbf{Ahmed et al.} \cite{ahmed2016survey},
 
 \end{enumerate}
 
-I will now describe the properties of existing datasets suitable for network intrusion detection. As this review is primarily concerned with anomaly detection models that require benign network traffic, I did not include datasets such as honeypots that mostly contain malicious traffic. A description that includes such datasets can be found in the below described survey by Ahmed et al. \cite{ahmed2016survey}.
+%I will now describe the properties of existing datasets suitable for network intrusion detection. As this review is primarily concerned with anomaly detection models that require benign network traffic, I did not include datasets such as honeypots that mostly contain malicious traffic. A description that includes such datasets can be found in the below described survey by Ahmed et al. \cite{ahmed2016survey}.
 
 \subsection{Real-world datasets}
 

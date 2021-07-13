@@ -15,6 +15,12 @@ Y.~Aun, S.~Manickam, and S.~Karuppayah.
 \newblock {\em International journal of communication networks and information
   security}, 9(2):294, 2017.
 
+\bibitem{Clausen2021WTMC}
+H.~Clausen and D.~Aspinall.
+\newblock Examining traffic micro-structures to improve model development.
+\newblock In {\em 2021 WTMC at IEEE Security and Privacy Workshops (SPW)}.
+  IEEE, 2021.
+
 \bibitem{henryLSTM}
 H.~Clausen, G.~Grov, M.~Sabaté, and D.~Aspinall.
 \newblock Better anomaly detection for access attacks using deep bidirectional

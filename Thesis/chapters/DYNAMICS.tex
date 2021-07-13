@@ -55,6 +55,10 @@ This work provides the following contributions:
 The remainder of the paper is organized as follows. Section \ref{Sec:background} discusses existing NIDS datasets and the problems that arise during their usage as well as background information about network traffic data formats and virtualization methods. The section concludes with a set of requirements we propose to improve the training and evaluation of machine-learning-based methods. Section \ref{Sec:Design} describes the general design of our framework, and how it improves on the discussed problems in existing datasets. We also discuss a specific example in detail. Section \ref{Sec:Experiments} discusses several experiments to validate the improvements and utility our framework provides. 
 Section \ref{Sec:Conclusion} concludes the results and discusses limitations of our work and directions for future work.
 
+\subsection{Scope of DetGen}
+
+The scope of DetGen is to generate traffic with near-deterministic control over factors that influence microscopic packet- and flow-level structures. DetGen separates program executions and traffic capture into distinct containerised environments to exclude any background traffic events, simulates influence factors such as network congestion, communication failures, data transfer size, content caching, or application implementation. %By using containerisation, we are furthermore able to control and shield the traffic generation better than in conventional VM-setups, as we demonstrate in Section \ref{Sec:Determinism}, and consequently provide better reproducible data. 
+
 
 \section{Background}\label{Sec:background}
 
@@ -239,7 +243,7 @@ We outline different stages within the creation of a dataset at which traffic va
 
 \begin{figure}
  \centering 
- \includegraphics[width=0.480\textwidth]{images_DYNAMICS/scenario_branching.PNG}
+ \includegraphics[width=1\textwidth]{images_DYNAMICS/scenario_branching.PNG}
  \caption{Visualization of the different levels at which traffic variation is introduced in DetGen.}
  \label{Fig:branching}
 \end{figure}
@@ -330,7 +334,7 @@ Moreover, we ensure that there are minimal inter-dependencies between the contai
 \subsection{Simple Example Scenario - FTP server}
 \begin{figure}%[h!]
 \centering
-\includegraphics[width=0.49\textwidth]{images_DYNAMICS/ftp_new1.png}
+\includegraphics[width=1\textwidth]{images_DYNAMICS/ftp_new1.png}
 \caption{Diagram of FTP scenario}
 \end{figure}
 
@@ -441,7 +445,8 @@ To provide ground truth, we have to guarantee that our implemented scenarios and
 It is impossible to guarantee that each scenario will produce a truly `deterministic', or repeatable, output due to differences in network conditions, computational times, or input. Instead, we aim for our data to be \textit{reproducible up to networking and computational differences}. This means that when running a scenario multiple times, we expect the quantities of most packets to be largely identical. We do expect some packets to exhibit greater variation due to non-determinism in the underlying protocols, Fig. \ref{fig:size1} outlines this behavior in terms of interarrival times and packet sizes. 
 
 \begin{figure}
-\includegraphics[width=0.45\textwidth]{images_DYNAMICS/combined3.png} % first figure itself
+\centering
+\includegraphics[width=0.65\textwidth]{images_DYNAMICS/combined3.png} % first figure itself
 \caption{Means of IATs \& packet sizes along with standard deviation bars for the first twelve packets in the Apache scenario.}
 \label{fig:size1}
 \end{figure}
@@ -504,7 +509,7 @@ To perform this measurement, we concatenate one \textit{Local} dataset array wit
 \begin{figure}
 \captionsetup{justification=centering}
 \centering
-\includegraphics[width=0.45\textwidth]{images_DYNAMICS/1-plot_exp1.png}
+\includegraphics[width=0.8\textwidth]{images_DYNAMICS/1-plot_exp1.png}
 \caption{Results of Random Forest Classifier for a given distribution at the best performing delay mean $\mu$. Note that a score of .5 indicates total indistinguishability.}
 \label{Fig:rf_graph}
 \end{figure}
@@ -587,16 +592,10 @@ These results does not hold when we test the classifyer on our Secondary dataset
 These diverging results demonstrate the necessity of dynamic dataset generation for evaluation purposes. Researchers evaluating their methods only on a dataset with fixed properties such as the Primary dataset might receive overoptimistic results. The capability of generating two or more datasets with the same traffic classes, but otherwise differing properties, provides a more realistic evaluation.
 
 
-\begin{figure}%[ht!]
-
-\subfloat{%
- \includegraphics[width=0.4\textwidth]{images_DYNAMICS/bw_100_exp_3.png}
-}
-
-\subfloat{
- \includegraphics[width=0.4\textwidth]{images_DYNAMICS/bw_500_exp_3.png}
-}
-
+\begin{figure}[ht!]
+\centering
+ \includegraphics[width=0.65\textwidth]{images_DYNAMICS/bw_100_exp_3.png}
+ \includegraphics[width=0.65\textwidth]{images_DYNAMICS/bw_500_exp_3.png}
 \caption{Results of Random Forest Classification on Primary dataset (Above) and Secondary dataset (Below)}
 \label{Fig:Primary}
 \end{figure}

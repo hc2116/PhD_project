@@ -33,6 +33,10 @@ However, ...
 
 Machine-learning and anomaly-based intrusion detection solutions are finding more widespread industrial application in products from companies such as Crowdstrike, Darktrace, \textcolor{red}{citation}. Furthermore, the rise of cloud computing has shifted the computational burden of complex intrusion detection systems from the monitored hosts to the cloud.
 
+\textcolor{red}{Current detection methods are predominantly based on the analysis of previously identified attack signatures, which provides great reliability and low false alert rates. However, these methods are dependent on an updated attack signature database and provide no protection against previously unseen attacks. With attackers having access to more resources than ever, custom-built malware is becoming more common to circumvent signature-based detection. 
+Another approach that has recently gained traction in commercial deployment is based on detecting malware and other undesired activity as anomalous behaviour when compared to benign computer activity. In this approach, known as \textbf{network anomaly detection} after Denning \cite{denning1987intrusion}, models must quantify the behaviour of normal network behaviour to be independent of a narrowly defined notion of malicious activity.
+}
+
 
 \subsubsection{SPI and microstructures}
 
@@ -65,6 +69,12 @@ This thesis provides extensive examinations of the necessary requirements on tra
 
 More specifically, we examine how current machine-learning based SPI-detection methods are designed and their requirements on comprehensive and realistic datasets to generate models that generalise well on persistent traffic microstructures. We establish our findings with several experiments and empirical evidence of shortcomings from existing datasets\textcolor{red}{...}.
 
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{images_introduction/Themes.PNG}
+\caption{Three main themes of this thesis.}\label{Fig:themes}
+\end{figure}
+
 This thesis then proposes DetGen, a traffic generation paradigm to provide control over various influence factors that shape traffic microstructures. The goal of DetGen is to provide researchers with extensive ground truth information and enable the generation of customisable, scalable, and controllable datasets with realistic levels of microstructure diversity. We examine with the level of control DetGen provides with a number of experiments to compare with existing traffic generation techniques. 
 
 We demonstrate the benefit of precise traffic control and corresponding ground truth labels by probing two state-of-the-art (SOTA) NID models to understand where they fail and how they can be improved. We identify design flaws with regards to specific microstructures, and can correspondingly improve the detection performance by several percentage points. These examinations also serve as examples how the model development process in NID can be \textcolor{red}{extended} to improve existing models and build up on previous results.
@@ -78,6 +88,12 @@ Lastly, we examine how attackers can perturb traffic in a stepping-stone attack 
 \paragraph{Chapter 2} provides the reader with background information on network traffic and attacks, machine-learning based network intrusion detection and explains the necessary concepts of machine-learning based anomaly detection for sequential data streams. The chapter highlights important NID models that leverage traffic microstructures, and discusses existing datasets and synthetic traffic generation as well as their current shortcomings, as well as related studies on traffic structures.
 
 \paragraph{Chapter 3} introduces DetGen, a framework that provides small-scale traffic generation specifically aimed for machine-learning based intrusion detection. The chapter starts with the identification of four major shortcomings of existing NID-datasets regarding the training of machine-learning models that leverage traffic microstructures. The chapter then defines four requirements that a machine-learning-focused traffic generation framework must fulfil. The chapter then provides results from several experiments to demonstrate the lack of model \textcolor{red}{generalisability} when trained on data not meeting these requirements. 
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.6\textwidth]{images_introduction/Thesis_structure.PNG}
+\caption{Chapter structure of this thesis.}\label{Fig:structure}
+\end{figure}
 
 \paragraph{Chapter 4} builds up on the results in Chapter 2 by experimentally examining the influence of several factors on traffic microstructures and the level of control that DetGen provides. The chapter then provides two case-studies on how to produce traffic effectively to probe a state-of-the-art traffic classifier, and why a certain degree of generative determinism is required for this to isolate the influence of traffic microstructures. 
 
