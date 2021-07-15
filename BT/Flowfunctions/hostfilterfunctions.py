@@ -15,12 +15,12 @@ import pandas as pd
 
 # CICIDS
 
-Hosts=["192.168.10.3","192.168.10.50","192.168.10.51","192.168.10.19","192.168.10.9","192.168.10.25"]
-
-filename="Desktop/Project/Data/CIC/Friday-WorkingHours.pcap"
-outputfilename="Desktop/Project/Data/CIC/Friday-WorkingHours_activity.csv"
-packetstats(filename,outputfilename,Hosts,5*60)
-output=pd.read_csv(outputfilename)
+#Hosts=["192.168.10.3","192.168.10.50","192.168.10.51","192.168.10.19","192.168.10.9","192.168.10.25"]
+#
+#filename="Desktop/Project/Data/CIC/Friday-WorkingHours.pcap"
+#outputfilename="Desktop/Project/Data/CIC/Friday-WorkingHours_activity.csv"
+#packetstats(filename,outputfilename,Hosts,5*60)
+#output=pd.read_csv(outputfilename)
 
 def packetstats(filename,outputfilename,Hosts,timeintervals,sample=False):
     inputpackets = PcapReader(filename)
@@ -207,6 +207,16 @@ outputfilename="Desktop/Project/BT/Data_Adi/Data_June/Client-Server-Stepping-Sto
 packetstats(filename,outputfilename,Hosts,3*60)
 outputfilename="Desktop/Project/BT/Data_Adi/Data_June/Client-Server-Stepping-Stone-big-payloads-merged_sample.txt"
 packetstats(filename,outputfilename,Hosts,3*60,sample=True)
+
+#################################################################################
+
+filename="Desktop/Project/BT/Data_Adi/Data_June/Temp_Merged.pcap"
+outputfilename="Desktop/Project/BT/Data_Adi/Data_June/Temp_Merged.txt"
+packetstats(filename,outputfilename,Hosts,3*60)
+outputfilename="Desktop/Project/BT/Data_Adi/Data_June/Temp_Merged_sample.txt"
+packetstats(filename,outputfilename,Hosts,3*60,sample=True)
+
+
 
 #####################################################################################
 

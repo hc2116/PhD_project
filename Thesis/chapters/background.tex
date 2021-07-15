@@ -112,19 +112,35 @@ Anomaly detection has found wide application in areas where stability of  critic
 %\subsection{Classification vs anomaly-detection}
 %Supervised vs self-supervised
 
-\subsection{Self-supervised language models}
+\subsection{Language models and self-supervised sequential training}
 
-In natural language processing, language models are used for text-completion, -generation, and -correction. A statistical language model is a probability distribution that describes the overall likelihood of a sequences of words. 
+In natural language processing, language models are used for text completion, generation, and correction. A statistical language model is a probability distribution that describes the overall likelihood of a sequences of words. For example, in the sentence ``\textit{The students opened their laptops.}'', the language model could provide the probability 
 
+\begin{align*}
+\Pr\big(\text{\small``laptops''}|\text{\small``The students opened their''}\big)
+\end{align*}
 
-To assi
+of the word ``laptop'' following the previous part of the sentence.
 
-Language are typically trained in a self-supervised way 
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.7\textwidth]{images_introduction/Langmod.png}
+%\caption{Depiction of the output a language model provides on a given input.}
+%\end{figure}
 
+Language are typically trained in a self-supervised way with large amounts of unlabelled text. The model is fed an input sentence with a part of the sentence masked that the model tries to predict. The predictions are then compared to the actual words, as depicted in Fig. \ref{Fig:Langmod}.
 
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{images_introduction/Langmod2.png}
+\caption{Depiction of the training of a language model on a given input.}\label{Fig:Langmod}
+\end{figure}
 
+In the past, language models were mainly built using simple \textit{N-gram} models or \textit{Hidden Markov} models. In the last decade the success of deep learning pushed \textit{LSTM-based}\footnote{Long-short-term memory} networks as depicted in Fig. \ref{Fig:Langmod} to the top of well-performing language models. Recently, LSTM-networks have been overtaken by \textit{Transformer}-networks that can be trained more efficiently on huge datasets. 
 
-In the context of this thesis, language models are of relevance due to the similarity of 
+Language models can be used as anomaly detectors in for example a grammar checking setting. Here, the predicted probability of a word or a whole sentence are compared to a threshold value, and grammatical or syntactical anomalies are detected as low predicted probabilities. 
+
+Written language and network traffic metadata bear significant similarity as each consists of sequences of discrete events (words vs. packets/flows) that stand in contextual relationship to their surroundings. However, the application of successful language models to network anomaly detection is still unexplored. In part, this thesis is trying to demonstrate the potential of training language models to capture traffic microstructures.
 
 \section{Network intrusion detection}
 

@@ -1,47 +1,38 @@
 
-This chapter introduces DetGen, a framework that provides small-scale traffic generation specifically aimed for machine-learning based intrusion detection. The chapter starts with the identification of four major shortcomings of existing NID-datasets regarding the training of machine-learning models that leverage traffic microstructures. The chapter then defines four requirements that a machine-learning-focused traffic generation framework must fulfil. DetGen is designed to address these requirements through the use of standalone containerised communication scenarios. The majority of work in this chapter was published in \textcolor{red}{citation}.
+
 
 %In the overall context of the thesis, this chapter 
 
-Specifically important for the narrative of this thesis are:
-Sect. \ref{Sec:problems} discusses problems in existing datasets, in particular regarding the lack of sufficient microstructure variation, before Sect. \ref{Sec:require} then defines requirements on the variability and monitoring of microstructures. Sect. \ref{Sec:Scenarios}, \ref{Sec:Subscenarios}, and\ref{Sec:randomsubscen} discuss in detail how these requirements can be achieved during the data generation process.
-
-Sect. \ref{Sec:ArtiDel} performs an experimental analysis of how well the influence of real-world WAN-effects on observed interarrival times can be replicated in DetGen. Sect. \ref{Sec:DynDataGen}. Sect \ref{Sec:DynDataGen} then builds up on these results and measures the effect that differing WAN-configurations between training and evaluation data can have on a traffic classifier. 
-
-
-
-
-%\section{Traffic Generation using Containerization for Machine Learning}
-%
-%The design and evaluation of data-driven network intrusion detection methods are currently held back by a lack of adequate data, both in terms of benign and attack traffic. Existing datasets are mostly gathered in isolated lab environments containing virtual machines, to both offer more control over the computer interactions and prevent any malicious code from escaping. This procedure however leads to datasets that lack four core properties: heterogeneity, ground truth traffic labels, large data size, and contemporary content.
-%Here, we present a novel data generation framework based on Docker containers that addresses these problems systematically. For this, we arrange suitable containers into relevant traffic communication scenarios and subscenarios, which are subject to appropriate input randomization as well as WAN emulation. By relying on process isolation through containerization, we can match traffic events with individual processes, and achieve scalability and modularity of individual traffic scenarios.
-%We perform two experiments to assess the reproducability and traffic properties of our framework, and demonstrate the usefulness of our framework on a traffic classification example.
+%Specifically important for the narrative of this thesis are:Sect. \ref{Sec:problems} discusses problems in existing datasets, in particular regarding the lack of sufficient microstructure variation, before Sect. \ref{Sec:require} then defines requirements on the variability and monitoring of microstructures. Sect. \ref{Sec:Scenarios}, \ref{Sec:Subscenarios}, and\ref{Sec:randomsubscen} discuss in detail how these requirements can be achieved during the data generation process. Sect. \ref{Sec:ArtiDel} performs an experimental analysis of how well the influence of real-world WAN-effects on observed interarrival times can be replicated in DetGen. Sect. \ref{Sec:DynDataGen}. Sect \ref{Sec:DynDataGen} then builds up on these results and measures the effect that differing WAN-configurations between training and evaluation data can have on a traffic classifier. 
 
 
 \section{Introduction}
 
 
-The exponential growth of data availability enabled the machine learning revolution of this decade that transformed many areas of our lives. Ironically, security oriented data describing computer networks is notoriously hard to obtain, and researchers struggle to evaluate new network intrusion detection systems (NIDS) or similar tools on suitable network traffic data.
+%The exponential growth of data availability enabled the machine learning revolution of this decade that transformed many areas of our lives. Ironically, s
+Security oriented data describing computer networks is notoriously hard to obtain, and researchers struggle to evaluate new network intrusion detection systems (NIDS) or similar tools on suitable network traffic data.
 Well-designed datasets are such a rarity that researchers often rely on datasets that are well over a decade old \cite{tavallaee2009detailed, kayacik2005selecting}, calling into question their effectiveness on modern traffic and attacks. The lack of quantity, variability, meaningful labels, and ground truth has so far slowed scientific progress and objective and appropriate measurements on ML-based network security methods.
 
 
-Privacy and security concerns discourage network administrators to release rich and realistic datasets for the public. Network traffic produced by individuals contains a mass of sensitive, personal information, such as passwords, email addresses, or usage habits, requiring researchers to expend effort anonymising the dataset \cite{mirsky2016sherlock}. To examine malicious behaviour, researchers are often forced to build artificial datasets using isolated machines in a laboratory setting to avoid damaging operational devices. Background traffic is usually generated in real-time from scripts executed on the virtual machine, which constrains both the amount and heterogeneity of the data. Current experiments show that it is possible to use large network of virtual machines for traffic generation \cite{crussell2019lessons,crussell2019virtually}, however we did not find any publicly available dataset of that category. 
+Privacy and security concerns discourage network administrators to release rich and realistic datasets for the public. Network traffic produced by individuals contains a mass of sensitive, personal information, such as passwords, email addresses, or usage habits, requiring researchers to expend effort anonymising the dataset \cite{mirsky2016sherlock}. To examine malicious behaviour, researchers are often forced to build artificial datasets using isolated machines in a laboratory setting to avoid damaging operational devices. Background traffic is usually generated in real-time from scripts executed on the virtual machine, which constrains both the amount and heterogeneity of the data. %Current experiments show that it is possible to use large network of virtual machines for traffic generation \cite{crussell2019lessons,crussell2019virtually}, however we did not find any publicly available dataset of that category. 
 
 Existing network intrusion detection datasets are predominantly designed to support a broad range of applications, and are collected in a static manner, unable to be modified or expanded. This proves to be a serious defect as the ecosystem of intrusions is continually evolving.
 Furthermore, it prohibits a more detailed analysis of specific areas of network traffic due to the available data only being a fraction of the original dataset. To combat this, new datasets must be periodically built from scratch.
 
-Allowing researchers to create datasets dynamically to circumvent these issues would be extremely beneficial. We propose a such framework, based on application containers using Docker \cite{docker}. Docker is a service for developing and monitoring containers, also known as OS-level virtual machines. 
-By moving from virtual machines to containers, we enable the scalable, modular, and dynamic creation of network traffic datasets. Since Docker containers can be arranged in complex settings with a few commands, it is a lot easier with containers to script a variety of network activities thus increase the heterogeneity and realism of the generated data.
-
-Furthermore, each Docker container is highly specialized in its purpose, generating traffic related to only a single application process. Therefore, by scripting a variety of Docker-based \emph{scenarios} that simulate benign or malicious behaviours and collecting the resultant traffic, we can build a dataset with perfect ground truth, something that has so far not been possible for network traffic. 
+Allowing researchers to create datasets dynamically to circumvent these issues would be extremely beneficial. In this chapter, we propose such a framework, called \textbf{DetGen}, based on application containers using Docker \cite{docker}. %Docker is a service for developing and monitoring containers, also known as OS-level virtual machines. 
+By moving from virtual machines to containers, we enable the scalable, modular, and dynamic creation of network traffic datasets. %Since Docker containers can be arranged in complex settings with a few commands, it is a lot easier with containers to script a variety of network activities thus increase the heterogeneity and realism of the generated data.
+Each Docker container is highly specialized in its purpose, generating traffic related to only a single application process. Therefore, by scripting a variety of Docker-based \emph{scenarios} that simulate benign or malicious behaviours and collecting the resultant traffic, we can build a dataset with perfect ground truth, something that has so far not been possible for network traffic. 
 
 Finally, the most import reason to rely on Docker for containerization is that many containerized applications are shared on the Docker Hub platform.
 
 
 
 %This is the primary goal of this work. Furthermore, we demonstrate the utility of this framework by performing a series of experiments: one that measures the realism of the network traffic produced by our Docker scenarios and two that would be difficult to perform using a conventional dataset.
+\textbf{Thesis context:} This chapter defines four requirements that a machine-learning-focused traffic generation framework must fulfil. The chapter then introduces DetGen, a framework that provides small-scale traffic generation specifically aimed for machine-learning based intrusion detection. 
 
-This work provides the following contributions:
+This chapter is mostly consisting of work published in ``Traffic generation using containerization for machine learning'' (Henry Clausen, Robert Flood, and David Aspinall, 2019).
+
+The following results are discussed in this chapter:
 
 \begin{enumerate}
  \item We present a novel network traffic generation framework that is designed to improve several shortcomings of current datasets for NIDS evaluation. This framework is openly accessible for researchers and allows for straightforward customization.
@@ -52,7 +43,7 @@ This work provides the following contributions:
 
 \subsection{Outline}
 
-The remainder of the paper is organized as follows. Section \ref{Sec:background} discusses existing NIDS datasets and the problems that arise during their usage as well as background information about network traffic data formats and virtualization methods. The section concludes with a set of requirements we propose to improve the training and evaluation of machine-learning-based methods. Section \ref{Sec:Design} describes the general design of our framework, and how it improves on the discussed problems in existing datasets. We also discuss a specific example in detail. Section \ref{Sec:Experiments} discusses several experiments to validate the improvements and utility our framework provides. 
+The remainder of this chapter is organized as follows. Section \ref{Sec:background} discusses existing NIDS datasets and the problems that arise during their usage as well as background information about network traffic data formats and virtualization methods. The section concludes with a set of requirements we propose to improve the training and evaluation of machine-learning-based methods. Section \ref{Sec:Design} describes the general design of our framework, and how it improves on the discussed problems in existing datasets. We also discuss a specific example in detail. Section \ref{Sec:Experiments} discusses several experiments to validate the improvements and utility our framework provides. 
 Section \ref{Sec:Conclusion} concludes the results and discusses limitations of our work and directions for future work.
 
 \subsection{Scope of DetGen}
@@ -603,7 +594,7 @@ These diverging results demonstrate the necessity of dynamic dataset generation 
 
 \section{Conclusions}\label{Sec:Conclusion}
 
-In this paper, we outlined four requirements a modern dataset has to fulfil to strengthen the training of intrusion detection systems. We then proposed a Docker framework capable of generating network intrusion datasets that satisfy these conditions. The major design advantage of this framework are the isolation of traffic scenarios into separate container arrangements, which allows the extension of new scenarios and detailed implementation of subscenarios as well as the capture of ground truth of the computational origins of individual traffic events. Furthermore, containerization enables the generation of traffic data at scale due to containers being light-weight and easily clonable.
+In this chapter, we outlined four requirements a modern dataset has to fulfil to strengthen the training of intrusion detection systems. We then proposed a Docker framework capable of generating network intrusion datasets that satisfy these conditions. The major design advantage of this framework are the isolation of traffic scenarios into separate container arrangements, which allows the extension of new scenarios and detailed implementation of subscenarios as well as the capture of ground truth of the computational origins of individual traffic events. Furthermore, containerization enables the generation of traffic data at scale due to containers being light-weight and easily clonable.
 
 We verified the realism of the generated traffic and the corresponding ground truth information with two experiments, and demonstrated the usefulness of the framework in another experiment.
 Presently, our framework consists of 29 scenarios capable of producing benign and malicious network traffic. Several of these scenarios, such as the \emph{BitTorrent} or the \emph{Stepping-Stone} scenario, provide novel traffic data of protocols or behaviours that has not been widely available to researchers previously.

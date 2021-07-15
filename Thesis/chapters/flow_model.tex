@@ -14,30 +14,37 @@
 
 Remote access attacks are used to gain control or access information on remote devices by exploiting vulnerabilities in network services, and are involved in many of today's data breaches \cite{mandiant2015trends}.
 A recent survey \cite{nisioti2018intrusion} showed that these attacks are detected at significantly lower rates than more high-volume probing or DoS attacks. 
-We have recently presented \textbf{CBAM}, a short-term \textbf{c}ontextual \textbf{b}idirectional \textbf{a}nomaly \textbf{m}odel of network flows at the MLN 2020 conference \cite{clausen2021better}, which improves detection rates of remote access attacks significantly. The underlying idea of CBAM is to capture probability distributions over sequences of network flows that quantify their overall likelihood, much like a language model. 
-CBAM is based on deep bidirectional LSTM networks. 
+To address this, we present \textbf{CBAM}, a short-term \textbf{c}ontextual \textbf{b}idirectional \textbf{a}nomaly \textbf{m}odel of network flows, which improves detection rates of remote access attacks significantly. The underlying idea of CBAM is to capture probability distributions over sequences of network flows that quantify their overall likelihood, much like a language model. 
+CBAM is based on deep bidirectional LSTM networks. 	
 
-We have evaluated CBAM carefully on two modern network intrusion detection datasets. Furthermore, we reimplemented and evaluated three state-of-the-art methods on these datasets and compared their performance against ours. By carefully selecting input parameters based on their sequential interdependence as well as increasing model complexity in terms of depth and efficient input embedding compared to preceding models, we are able to detect remote access attacks at a false positive rate of $0.16\%$, a rate at which none of the comparison models are able to detect any attacks reliably. 
-Here, we present results from an additional real-world dataset, LANL-15, that display how and why CBAM can detect the real-world attacks contained in the dataset. 
+Recently, deep learning models such as LSTMs have been a popular tool in network intrusion detection \cite{Bontemps2016,kim2016long,radford2018network}. 
+However, %a lack of suitable benchmark datasets and 
+persistent failings in evaluations have made it difficult to assess the performance and real-world applicability of currently proposed methods to access attack detection, and have lead to a chaotic and convoluted NIDS landscape \cite{nisioti2018intrusion}.
 
-We also discuss specific design choices and how they enable effective modelling of specific traffic characteristics to boost performance. 
-Recently, deep learning models such as LSTMs have been a popular tool in network intrusion detection \cite{Bontemps2016,kim2016long,radford2018network}. However, the evaluation of these models is generally agnostic to particular characteristics of the modelled traffic and fails to explain where and why the corresponding model fails to classify traffic properly. We have recently demonstrated how a detailed examination of these failings of two state-of-the-art NID-models enables specific improvements in the model design to boost detection performances \cite{clausen2021Controlling}. The additional results presented here aim to do the same for our short-term CBAM model and provide a validation for the undertaken design steps.
+To avoid these pitfalls and demonstrate that our approach delivers a significant improvement in detection rates and real-world applicability, we evaluated our model carefully on three modern network intrusion detection datasets. Furthermore, we reimplemented and evaluated three state-of-the-art methods on these datasets and compared their performance against ours. By carefully selecting input parameters based on their sequential interdependence as well as increasing model complexity in terms of depth and efficient input embedding compared to preceding models, we are able to detect remote access attacks at a false positive rate of $0.16\%$, a rate at which none of the comparison models are able to detect any attacks reliably.
+
+%We evaluate CBAM carefully on two modern network intrusion detection datasets. Furthermore, we reimplemented and evaluated three state-of-the-art methods on these datasets and compared their performance against ours. By carefully selecting input parameters based on their sequential interdependence as well as increasing model complexity in terms of depth and efficient input embedding compared to preceding models, we are able to detect remote access attacks at a false positive rate of $0.16\%$, a rate at which none of the comparison models are able to detect any attacks reliably. 
+%Here, we present results from an additional real-world dataset, LANL-15, that display how and why CBAM can detect the real-world attacks contained in the dataset. 
+
+We also discuss specific design choices and how they enable effective modelling of specific traffic characteristics to boost performance. The evaluation of existing deep learning models so far has generally been agnostic to particular characteristics of the modelled traffic and fails to explain where and why the corresponding model fails to classify traffic properly. In this chapter, we therefore apply the similar model probing techniques as demonstrated in Chapter \ref{Chap:Prob} to validate the undertaken design steps.
+
+\textbf{Thesis context:} This chapter turns from the generation and examination of traffic microstructures to the design of an anomaly detection model that leverages specific microstructures for detection. It also examines which conclusions can be made on the distribution and similarity of microstructures from the model output.
 
 
-\subsection{Contribution}
-This paper extends our work ``Better Anomaly Detection for Access Attacks Using Deep Bidirectional LSTMs'', presented at the 3rd International Conference on Machine Learning for Networking (MLN'2020) \cite{clausen2021better}, and provides additional traffic examinations and corresponding performance results to demonstrate the design process. In particular, we present the following contributions:
+This chapter largely consists of work published in ``Better Anomaly Detection for Access Attacks Using Deep Bidirectional LSTMs'' (H. Clausen, G. Grov, M. Sabate, and D. Aspinall, 2020) and ``CBAM: A Contextual Model for Network Anomaly Detection'' (H. Clausen, G. Grov, and D. Aspinall, 2021).
 
-\begin{itemize}
-\item We provide extensive examination how common access attacks perturb short-term contextual sequence structures, and can thus be detected as anomalies by our presented model. 
-%contextual are suitable to model short flow sequence effectively, and how common access attacks are detected as perturbations of the extracted sequence structures.
-\item We examine in detail how adding bidirectional LSTM-layers, increasing network depth, and adding a separate size vocabulary helps CBAM predict flows better for specific traffic types to reduce false-positives.
-\item We provide additional performance results on the LANL-15 real-world dataset to demonstrate that CBAM is capable of detecting real-world attacks in real-world traffic.
-\item We examine in more detail how short-term flow sequence structures remain stable over long time periods, what the most common source for false-positives are, and how the size of the training data affects the models ability to reliably recognise benign traffic.
-\end{itemize}
+
+%\begin{itemize}
+%\item We provide extensive examination how common access attacks perturb short-term contextual sequence structures, and can thus be detected as anomalies by our presented model. 
+%%contextual are suitable to model short flow sequence effectively, and how common access attacks are detected as perturbations of the extracted sequence structures.
+%\item We examine in detail how adding bidirectional LSTM-layers, increasing network depth, and adding a separate size vocabulary helps CBAM predict flows better for specific traffic types to reduce false-positives.
+%\item We provide additional performance results on the LANL-15 real-world dataset to demonstrate that CBAM is capable of detecting real-world attacks in real-world traffic.
+%\item We examine in more detail how short-term flow sequence structures remain stable over long time periods, what the most common source for false-positives are, and how the size of the training data affects the models ability to reliably recognise benign traffic.
+%\end{itemize}
 
 \subsection{Outline}
 
-The remainder of the paper is organised as follows:
+The remainder of this chapter is organised as follows:
 Section \ref{Sec:Over} provides a motivation for short-term contextual models and their benefits for the detection of access attacks. Section \ref{Sec:Design} explains the methodology and architecture of CBAM  as well as the data preprocessing. Section \ref{Sec:Datasets} describes the problems with network traffic datasets which previous methods were evaluated on, and explains the advantages of our selection of datasets. 
 We also describe how and why traffic from particular hosts is selected, and how training and test data are constructed.
 Section \ref{Sec:Det} discusses our detection rates on attack traffic in the CICIDS-17 and LANL-15 data, and examines how and why CBAM is able to identify these attacks.
@@ -52,7 +59,7 @@ Section \ref{Sec:flaws} concludes our results.%, gives an outlook to future work
 \begin{table}[ht]
 \centering
 \begin{footnotesize}
-\begin{subtable}{.3\textwidth}
+\begin{subtable}{.47\textwidth}
 \begin{tabular}{l l l r r}
 Src&Dst&DPort&bytes&\# packets\\ \hline
 A&B&80&247956&315\\ 
@@ -68,7 +75,7 @@ A&B&80&328&6\\
 \caption{XSS-attack, A=192.168.10.50, B= 172.16.0.1}\label{Tab:XSS}
 \end{subtable}
 \quad
-\begin{subtable}{.3\textwidth}
+\begin{subtable}{.47\textwidth}
 \begin{tabular}{l l l r r}
 Src&Dst&DPort&bytes&\# packets\\ \hline
 D&C&N33&600&5\\ 
@@ -116,12 +123,88 @@ The underlying idea of CBAM is to predict probabilities of connections in a host
 To assign probabilities, we map each connection event to two discrete sets of states, called vocabularies, according to the protocol, the network port, and the direction of the connection for the first, and according to number of transmitted bytes for the second. The size of the vocabulary is chosen large enough to capture meaningful structures without capturing  rare events that can deteriorate prediction quality. We feed these vocabularies into a deep bidirectional LSTM (long short-term memory) network that takes bivariate sequences of mapped events as input to efficiently capture the conditional probabilities for each event. 
 \begin{figure}
 \centering
-\includegraphics[width=0.6\textwidth]{images_MLN/XSSdist3.png}
+\includegraphics[width=0.8\textwidth]{images_MLN/XSSdist3.png}
 \caption{HTTP flow size distribution overall, and if preceded by an HTTP flow smaller than 500 bytes.}\label{Fig:XSSdist}
 \end{figure}
 
 CBAM acts as an anomaly-detection model that learns short-term structures in benign traffic and identifies malicious sequences as deviations from these structures. 
 By predicting probabilities of flows in benign flow sequences, CBAM is trained in a self-supervised way  on strictly benign traffic. In contrast to classification-based training, CBAM does not require labelled attack traffic in the training data and is thus not affected by typical class imbalances in network intrusion datasets. 
+
+\section{Related work and evaluation pitfalls}\label{Sec:Related work}
+
+%\textcolor{red}{In this section, we broadly review previous literature in both network intrusion detection and the application of recurrent neural networks in network security. As far as we are aware, we are the first to learn contextual models of short-term interactions from benign network traffic.}
+
+%\subsection{Related work}
+
+%\subsubsection{Recurrent Neural Network Applications}
+
+%A recurrent neural network (RNN) is a directed chain of regular feedforward network, with each individual network cell taking a vector $x_k$ of the input sequence $\{x_1,\dots,x_n\}$ as input. The RNN is able to retain information about the state of a sequence by also passing a value of the internal layer as additional input to the next network cell in the chain. LSTM (long short-term memory) and GRU (gated recurrent units) networks improve several shortcomings of RNNs such as the vanishing gradient problem, and their performance is generally thought to be superior.
+
+%The application of recurrent neural networks to network intrusion detection %and in particular intrusion detection  has risen in popularity recently. 
+
+LSTM-models for web attack detection, such as by Yu et al. \cite{yu2018attention}, improve detection rates of simpler preceding models such as Song et al. \cite{song2009spectrogram}. They rely on deep packet inspection, and are often targeted at protecting selected web-servers rather than network-wide, due to a lack of computational scalability and increasing traffic encryption. Methodologically, vocabularies are created from string sequences with well-known NLP methods, while our work provides a new vocabulary-construction method suitable for traffic metadata.
+
+%Approaches acting on traffic metadata are designed primarily for network-wide intrusion detection using traffic collected on routers. 
+%which is increasingly difficult due to traffic encryption, and computationally difficult to apply in a network-wide manner.This makes 
+%To date, we count eleven published applications of recurrent neural networks (RNNs) to network traffic for intrusion detection. 
+The majority of LSTM-based metadata approaches rely on labelled attack data for classification, and do not have the scope of anomaly-based models to detect previously unseen attacks. %, and therefore does not offer the benefits of anomaly detection. 
+A prominent example of this comes from Kim et al. \cite{kim2016long}, who classify flow sequences based on 41 numeric input features. %, therefore bypassing vocabulary-construction. 
+Anomaly-based approaches, such as ours, mostly rely on iterative one-step ahead forecasts, with the forecasting error acting as the anomaly indicator. This is for instance done in GAMPAL by Wakui et~al.~\cite{wakui2019gampal}, who use flow data aggregation  as numerical input features, which are computationally easier to process, but cannot encapsulate high-level information such as the used protocol, port, or direction. These models are best used for detecting high-volume attacks.
+Apart from our work, only Radford et al. \cite{radford2018network} create event vocabularies from flow protocols and sizes. We use a more sophisticated model in terms of stacked recurrent layers and embeddings for more input features, which results in higher detection rates, as demonstrated in see Sect. \ref{Sec:Evalmal}.
+%Little exploration of the usage of stacked recurrent layers or input embeddings has been done.
+%However, all RNN-based approaches share several common evaluation pitfalls, which make it impossible to assess their suitability for U2R and R2L detection in real-world applications. We describe these problems in Section \ref{Sec:Evalmal}.
+% in each of the presented approaches , which we discuss in Section \textcolor{red}{xxxx}. This makes it difficult to assess ....
+
+%A related application to ours was presented by Bontemps et~al.~\cite{Bontemps2016}, which uses LSTM model to detect group anomalies in network traffic via sequential modelling. The model uses three numerical input parameters from aggregated traffic for one-step forecasting, which is then compared to the actual values. Evaluation is done on the outdated KDD-99 dataset. The model construction and anomaly scoring differs substantially from ours as the raw input can be fed directly to the model input layer. Similarly, the detection scope focuses on long-term group anomalies with larger volume rather than contextual anomalies.
+
+Notable work outside of network traffic includes Tiresias \cite{shen2018tiresias}%, an LSTM model for security event forecasting with great accuracy, 
+and DeepLog \cite{du2017deeplog}. %, an LSTM network to learn a system's log patterns (e.g., log key patterns and parameter values) from normal execution. 
+The design of Tiresias has similarities to ours, but the scope of the model is attack forecasting rather than intrusion detection, and relies on both different input data in the form of IDS logs as well as different evaluation metrics.
+
+DeepLog is combined with a novel log parser to create a sequence of symbolic log keys, which is then also modelled using one-step forecasting. The authors achieve good detection results in regulated environments such as Hadoop with limited variety of events (e.g., 29 events in Hadoop). Here, our model goes further by being applied to a much more heterogeneous data source and creating a more than 30 times larger vocabulary.
+
+\subsection{Evaluation pitfalls}\label{Sec:Evalmal}
+
+According to Nisioti et al. \cite{nisioti2018intrusion}, the trustworthiness of published low volume access attack detection rates is debatable due to evaluation shortcomings.
+We designed our evaluation to avoid four common pitfalls that are regularly seen:
+
+\subsubsection{Outdated datasets}
+
+%The field of network intrusion detection has always suffered from a lack of suitable datasets for evaluation. %Privacy concerns and the difficulty of posterior attack traffic identification are the reason that no dataset exists that contains realistic U2R/R2L traffic and benign traffic from a real-world environment \cite{ahmed2016survey}. 
+Two datasets and their derivatives, DARPA-98 %\cite{DARPA98} 
+and KDD-99, have been extensively used to benchmark network intrusion detection models \cite{ozgur2016review}. %, with all anomaly-based techniques discussed in a recent survey \cite{nisioti2018intrusion} with reported detection rates on U2R and R2L attacks relying on either of them. %Of the published LSTM approaches we found, all but one test their models on the KDD-99 dataset.% and state high detection rates.
+However, both datasets are now more than 20 years old and have been pointed out as significantly flawed and prone to give overoptimistic results %due to inconsistencies, traffic artifacts, a lack of realistic benign traffic, and an imbalance of benign and attack traffic 
+%\cite{mchugh2000testing,mahoney2003analysis,tavallaee2009detailed}
+\cite{tavallaee2009detailed}. %As we show in Section \ref{sec:evaluation}, we are not able to reproduce the achieved detection rates of three highly cited approaches on more modern datasets.
+
+
+\subsubsection{Lack of attack class distinction}
+
+Most intrusion datasets include attack events from both low volume access attack classes such as R2L (Remote-to-Local) and U2R (User-to-Root) as well as attacks like DoS or port scans which generate a large number of events. %Recorded events are labelled individually, 
+%creating an imbalance in the number of DoS and probing events compared other attack classes. %For instance, $96\%$ of the attack events in the CICIDS-17 dataset \cite{sharafaldin2018toward} consist of DoS and probing events.
+If reported detection rates do not distinguish between different attacks or attack classes, performance metrics will be dominated and potentially inflated by DoS and probing attacks. %sSimilarly, results are often given in terms of precision and recall, which are misleading in imbalanced datasets.
+%\textcolor{red}{can we get a citation here? Otherwise state examples?}
+
+%A common malpractice in network intrusion detection is to only report overall detection rates, i.e. what percentage of all attack events in the test data was successfully identified as malicious, instead of breaking this up for different attacks. 
+%The described event imbalace means that detection rates are dominated by the performance on DoS and probing attacks, which can inflate performance metrics significantly.
+
+%Furthermore, detection rates are often inflated by the lack of distinction between attack classes and the imbalance of DoS- and probing-like attack events versus other attack events.
+
+\subsubsection{Arbitrary false positive rates}\label{Sec:ArbFP}
+There is no agreed upon value for a suitable false positive rate in network intrusion detection. This leads many authors to report very high detection rates at the expense of having unrealistically high false positive rates, often around $5\%$ and above. %, which is unrealistic for a real-world deployment. 
+%Raised alerts mostly trigger manual human investigation, so high false positive rates increase operational costs and render an intrusion detection system unusable.
+In our evaluation, %we aim for a more realistic false positive rate of about $0.1\%$, and furthermore 
+we report overall AUC scores, which describe the separation of benign and anomalous traffic.
+%Since often, no measures such as the AUC, which describe the overall separation between benign and anomalous traffic, are given, it is impossible to assess the detection power of these models.
+
+\subsubsection{Lack of long-term evaluation}
+
+To be effective, an intrusion detection system has to produce a consistently low false positive rate in the presence of concept drift. %or alterations in the network topology can harm the ability of a model to correctly classify benign traffic. 
+A crucial aspect when assessing the deployability of an intrusion detection system is the long-term stability of a trained model \cite{koutrouki2018mitigating}, which is often neglected in the literature.
+We include a dataset focused on long-term traffic evolution in our evaluation to demonstrate the stability and deployability of our model. 
+%However, long-term model stability is most often neglected in the evaluation of network intrusion detection models, with the KDD-99 dataset spanning just two weeks. None of the papers employing recurrent neural networks make any statements on this issue.
+
+
 
 
 \section{Design}\label{Sec:Design}
@@ -129,7 +212,7 @@ By predicting probabilities of flows in benign flow sequences, CBAM is trained i
 \subsection{Session construction}
 
 %We look at a model of network flow events. 
-A network flow (often referred to as ``NetFlow'') is a summary of a connection between two computers and contains a timestamp, the used IP protocol, the source and destination IP address and network port, and a choice of summary values.
+%A network flow (often referred to as ``NetFlow'') is a summary of a connection between two computers and contains a timestamp, the used IP protocol, the source and destination IP address and network port, and a choice of summary values.
 The raw input data, in the form of network flows, contains unordered traffic from and to all hosts in the network. %, while we want to examine structures in the traffic of individual hosts. 
 To order the raw network flows, we  first gather all outgoing and incoming flows for each of the hosts selected for examination according to their IP address. 
 
@@ -148,7 +231,7 @@ The interarrival time distribution for selected hosts in the used datasets, desc
 
 \begin{figure}
 \centering
-\includegraphics[width=0.65\textwidth]{images_MLN/Interarrivals-1}
+\includegraphics[width=0.8\textwidth]{images_MLN/Interarrivals-1}
  \caption[Flow interarrival distributions for selected hosts in the the CICIDS-17, the LANL-15, and the UGR-16 data, with 90 percent quantile lines]{Flow interarrival distributions for selected hosts in the the CICIDS-17, the LANL-15, and the UGR-16 data, with 90 percent quantile lines.}\label{fig:Interarrivals}
 \end{figure}
 
@@ -266,7 +349,7 @@ with the size group loss being calculated in the same way. We calculate the tota
 
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{images_MLN/Example_new.png} 
+\includegraphics[width=0.95\textwidth]{images_MLN/Example_new.png} 
 \caption{Visualisation of model prediction process.}\label{fig:Modelpred}
 \end{figure}
 
@@ -322,7 +405,7 @@ Finding an appropriate threshold value is a compromise between higher detection 
 %\textcolor{red}{table with threshold values}.
 
 
-\section{Datasets}\label{Sec:Datasets}
+\section{Datasets and benchmark models}\label{Sec:Datasets}
 
 \subsection{Dataset assembly}\label{Sec:data}
 
@@ -376,36 +459,6 @@ The UGR-16 dataset \cite{macia2018ugr} was released by the University of Grenada
 Additionally, a main focus in the creation of the data was the consideration of long-term traffic evolution, which allows us to make statements about the robustness of CBAM to concept drift over the 163 day span of the dataset. For our evaluation, we isolated traffic from five web-servers that provide a variety of services.
 
 
-%\subsubsection{Other datasets}
-%
-%Two datasets and their derivatives, \textbf{DARPA-98} \cite{DARPA98} and \textbf{KDD-99} \cite{KDD99}, are often used to benchmark detection models, with all anomaly-based techniques discussed in a recent survey \cite{nisioti2018intrusion} with reported detection rates on U2R and R2L attacks relying on either of them. Both datasets have been pointed out as flawed and can give overoptimistic results due to inconsistencies, a lack of realistic benign traffic, and an imbalance of benign and attack traffic  \cite{mchugh2000testing,mahoney2003analysis,tavallaee2009detailed}. Both datasets are 20 years old and outdated. The KDD-99 datasets was collected using a Solaris operating system in a laboratory environment to collect a wide range traffic and OS features, which makes it the most popular dataset to evaluate machine-learning based techniques. The collection of many of these features is however currently infeasible in real-world deployment. All these factors mean that reported detection rates collected on these datasets have to be taken with care. 
-%
-%
-%%\subsubsection*{CTU 2013 \cite{noauthor_ctu-13_nodate, garcia2014empirical}}
-%
-%\textbf{CTU 2013:} The \textbf{Stratosphere Laboratory} \cite{noauthor_ctu-13_nodate, garcia2014empirical} in Prague released this dataset in 2013 to study botnet detection. It consists of more than 10 million labelled network flows captured on lab machines for 13 different botnet attack scenarios. 
-%A criticism of this dataset is the unrealistically high amount of malicious traffic contained in the dataset, which makes it easier to spot it while reducing false positives. Furthermore, the way normal or background traffic is generated is described only poorly and leaves the question how representative it is of actual network traffic.
-%
-%%\subsubsection*{UNSW-NB 2015 \cite{moustafa_unsw-nb15:_2015}}
-%
-%\textbf{UNSW-NB 2015} \textbf{:} The dataset realeased by the \textit{University of New South Wales} in 2015 \cite{moustafa_unsw-nb15:_2015} contains real background traffic and synthetic attack traffic collected at the "Cyber Range Lab of the Australian Centre for Cyber Security". The data is collected from a small number of computers which generate background traffic, which is overlayed with attack traffic using the \textit{IXIA PerfectStorm tool}. The time span of the collection is in total 31 hours.
-%%An advantage of the collected dataset is the inclusion of both \textbf{raw packets} and \textbf{network flows} along with two other data formats containing newly engineered features. This allows a more detailed analysis of the data and possibly a better distinction between attack and benign traffic. %In total, the data contains 260 000 events.
-%An advantage of the data is the variety of attack data, containing a number of DoS, reconnaissance, and access attacks. However, due to the synthetical injection of these attacks, it is unclear how close they are to real-world attack scenarios, and again, 
-%the generation process of benign traffic is described poorly and leaves the question how close to actual network traffic it is.
-%
-%%Since this dataset is collected from a relatively small number of machines and during a limited period of time, it is furthermore unclear how suitable for capturing both the temporal evolution and the heterogeneity of real background traffic.
-%
-%\textbf{ADFA 2013/2014 \cite{creech2014developing}:}
-%The ADFA datasets, released by the \textit{University of New South Wales}, focuses on attack scenarios on Linux and Windows systems as well as stealth attacks. To create host targets, the authors  installed web servers and database servers , which were then subject to a number of attacks. 
-%The dataset is directed more towards attack scenario analysis and is criticised as being unsuitable for intrusion detection due to its lack of traffic diversity. Furthermore, the attack traffic is not well separated from the normal one.
-%
-%\textbf{CICIDS 2018 \cite{sharafaldin2018toward}:}
-%This dataset, released by the \textit{Canadian Institute for Cybersecurity} (CIC), is generated in a similar fashion to the CICIDS 2017 data that we used in this work. The main differences are that the CICIDS 2018 data spans over three weeks and includes in total 450 hosts, but lacks the amount of web-attacks that we require and which is present in the CICIDS-2017 dataset.
-%
-%
-%The \textbf{LITNET-2020 \cite{damasevicius2020litnet}} from the Kaunas University of Technology Lithuania from 2020 was collected from an academic network over a timespan of 10 months and contains annotated real-life benign and attack traffic. The corresponding network provides a large network topology with more than a million IP-addresses, and the data was collected in the form of network flows with more than 80 features. However, the dataset only contains traffic from high volume attacks such as DoS-, scanning, or worm attacks, which are not suitable to evaluate CBAM.
-%
-%The \textbf{Bo{\u{g}}azi{\c{c}}i University distributed denial of service dataset} \cite{erhan2020bougazicci} contains both benign traffic from more than 400 users from an academic network as well as artificially created DoS-attack traffic. The dataset spans only 8 minutes and contains no access attacks.
 
 \subsection{Dataset split}
 
@@ -457,6 +510,38 @@ Some researchers propose cost-based evaluation metrics by assigning false alerts
 Training classifiers on imbalanced dataset can affect their performance, both due to the imbalanced ratio of attack to benign traffic and the imbalance between several attack classes. Some methods have been proposed to augment or synthetically inflate minority samples for attack traffic \cite{liu2020intrusion}. As an anomaly-detection method, CBAM is however trained in a self-supervised way strictly on benign traffic, with no attack traffic being present in the training data. The training stage is therefore independent of the minority class ratio in a given dataset and does not require specific balancing methods. In the evaluation stage, the above described steps apply for both classification- and anomaly-detection-based methods.
 
 
+\subsection{Benchmark comparison models}\label{Sec:Benchmark}
+
+%To highlight the benefits of our model for9 remote access attack detection and deployability,
+We compare our detection and false positive rates against three network anomaly models that we have re-implemented and re-evaluated. 
+%We have selected two prominent and recently published LSTM-based models as well as a clustering-based model that achieved the highest detection rates of U2R and R2L attacks ($80-85\%$) on the KDD-99 dataset in a recent survey \cite{nisioti2018intrusion}. 
+
+A recent and well cited survey by Nisioti et al. \cite{nisioti2018intrusion} identified the \textbf{UNIDS model by Casas et al.} \cite{casas2012unsupervised} as achieving the highest detection rates of remote access attacks on the KDD-99 dataset, so we chose to include this method as our first benchmark. The authors rely on subspace-projection and density-based clustering (DBSCAN) for outlier detection, and %mine various traffic features and project flow events into several subspaces. Outliers within every subspace are then identified using density-based clustering (DBSCAN) to determine the overall anomaly. The authors 
+achieve detection rates of access attacks at around $80-85\%$ on the KDD-99 dataset with a false positive rate of $3.5\%$. %The authors distinguish detection rates for U2R/R2L and other attacks, however they do not make distinctions for individual attacks, which means that brute-force attack detection rates can inflate overall performance.
+
+\textbf{Niyaz et al.} \cite{javaid2016deep} present a more recent deep-learning model combines anomaly detection and classification by using sparse autoencoders and detection through reconstruction error. %Relying on 41 flow features, they train a deep autoencoder to encode individual traffic events in a low-dimensional space, with the reconstruction error from the projection being used as an anomaly score. Learned features from the projections can then be used to train a classifier in a more robust manner. 
+The authors classify individual flows and claim a detection precision of $99\%$ with a recall of $97.5\%$, even higher than the UNIDS model.
+
+Finally, \textbf{Radford et al.} \cite{radford2018network} predict sequences of individual flows between pairs of hosts using a two-layer LSTM network. Flows are tokenised according to their protocol and size, and the model detects $60\%$ of the attacks at a false positive rate of about $2\%$ on the CICIDS-2010 dataset. %with a rolling window of ten flows as input. %\textcolor{red}{However their tokenisation is significantly simpler than ours, which we believe enables us to improve detection rates drastically.} 
+%The authors only provide ROC curves of attack detection, which indicate moderate detection rates around $60\%$ at a false positive rate of about $2\%$ on the CICIDS-2010 dataset. 
+This model is closest to ours in terms of contextual anomaly detection from flow metadata, and achieves the best results out of the three bechmark models during our evaluation. We include it to highlight the improvements our design choices yield over other contextual LSTM-models.
+
+%\textcolor{red}{add their results}
+
+%All of these papers suffer from the evaluation pitfalls described in Section \ref{Sec:Evalmal}, with only the UNIDS model making some distinction for different attack classes, and only Radford et al. evaluating their model on a more modern dataset. We compare detection and false positive rates for each model on our dataset assembly in Section \ref{sec:evaluation}, where the evaluation malpractices will become apparent.
+
+Lastly, we include a more \textbf{shallow version of our model}, depicted in Fig. \ref{fig:rnn_FSA2}, to highlight the benefits of a deeper structure. This model only contains one LSTM-layer, and no linear layer before the output layer. 
+
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=0.6\textwidth]{images_MLN/LSTM_design_shallow.png}
+    \end{center}
+    \vspace{-15pt}
+    \caption{Architecture of the shallow LSTM-model version we use as a benchmark.}\label{fig:rnn_FSA2}
+\end{figure}
+
+
+
 \section{Detection performance}\label{Sec:Det}
 
 We now demonstrate that we can build an accurate and close-fitting model of normal behaviour with CBAM. We train models for each dataset separately, but without any change in the selected hyperparameters, i.e. number of hidden cells, vocabulary size, learning rate etc. 
@@ -465,15 +550,14 @@ As described above, we estimate detection rates using traffic of various remote 
 
 \begin{table}[ht]
 \centering
+\small
 \begin{tabular}{l|ccccccc}
-%\hline
 &FTP-BF&SSH-BF&Web-BF&SQL-Inj.&XSS&Heartbleed&Infiltr.\\
 \hline
 \# Sessions&243&210&88&8&41&4&17\\[0.2cm]
 \end{tabular}
 \vspace{2pt}
 \caption{Number of sessions for each attack class in the CICIDS-17 dataset}\label{tab:Attackdata}
-%\vspace{-25pt}
 \end{table}
 
 \subsection{CICIDS-17 results}\label{Sec:DetCIC}
@@ -492,6 +576,7 @@ depict anomaly score distributions and detection rates for traffic from seven di
 \end{figure}
 
 Most notable is that scores from all attacks except cross-site scripting (XSS) are significantly higher distributed than benign traffic, with median scores lying between $0.75$ and $0.89$. Detection rates with our chosen threshold of $T=0.77$ are highest for Heartbleed attacks ($100\%$), followed by FTP and SSH brute-force attacks and SQL-injections, where $91\%$, $74\%$, and $75\%$ of all affected sessions are detected. Detection rates are lowest for XSS and Infiltration attacks. The overall detection rates we achieve are in a similar range as most unsupervised methods in Nisioti et al.'s evaluation \cite{nisioti2018intrusion}, but with significantly better false positive rates.
+
 
 
 \begin{table}[ht]
@@ -530,6 +615,45 @@ Fig. \ref{fig:CICplots2} provides \emph{ROC} (Receiver operating characteristic)
 \vspace{-0.5cm}
 \caption[ROC-curves for different attack types.]{ROC-curves for different attack types in the CICIDS-17 dataset.}\label{fig:CICplots2}
 \end{figure}
+
+\subsubsection{Comparison models}\label{Sect:Comp}
+
+
+We now compare detection rates between our model and the three models described in Section \ref{Sec:Benchmark} that we chose as benchmarks.
+
+All three models ultimately detect anomalies when an anomaly score exceeds a threshold, which controls the balance between low false positive rates and high detection rates and usually depends on the given data. To create a fair comparison, we chose threshold providing similar false positive rates of $0.01\%$, e.g. the $99.9\%$ anomaly score quantile of the training data, which is necessary for assessing suitability for real-world deployment as we have argued in Section \ref{Sec:decmeth}. 
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|c|ccc|c}
+  %\hline
+\multicolumn{1}{c|}{ }&\multicolumn{5}{c}{1-AUC scores}\\
+
+%Our model&UNIDS&Radford&Niyaz\\%[0.2cm]
+  \hline
+  & Our model&UNIDS&Radford&Niyaz&shallow m.\\ 
+  \hline
+Brute Force Web & \textbf{0.016}&0.49&0.027&0.32 &0.048 \\ 
+  FTP-Patator & \textbf{0.0025}&0.011&0.0048&0.16 &0.0052\\ 
+  Heartbleed  & \textbf{0.0003}&0.0057&0.032&0.077 &0.012\\ 
+  Infiltration &0.046& \textbf{0.033}&0.35&0.15&0.11\\ 
+  SQL-injection & \textbf{0.005}&0.44&0.497&0.39&0.019\\ 
+  SSH-Patator & \textbf{0.009}&0.013&0.035&0.011&0.005\\ 
+  XSS &0.127&\textbf{0.02}&0.03&0.16&0.13\\ 
+   \hline
+\textbf{Average}&\textbf{0.044} & 0.144&0.135&0.18 &0.091 \\
+\end{tabular}
+\vspace{2pt}
+\caption{1-AUC scores for our model and the implemented comparison models on the CICIDS-17 dataset. Fat numbers indicate the best value for each attack.}% (99.9\% quantile).}
+% as well as detection rates of comparison models with a similar detection threshold (99.9\% quantile).} 
+\label{tab:dfCICinf}
+\end{table}
+
+To assess the overall separation between benign and malicious traffic for each model, we calculated $1-$\emph{AUC (Area under ROC curve)} scores by varying the thresholds for each model, and calculating the area under the ROC-curve, depicted in Fig. \ref{fig:CICplots2} and Table \ref{tab:dfCICinf}. 
+
+In comparison to the other benchmark models, our shallow model is capable of making some detection at the chosen false positive rate, but cannot reach the levels of our deeper model.  While brute-force attacks are still detected, more nimble attacks such as Heartbleed or XSS are less distinctive from benign traffic for the shallow model.
+It is remarkable that by adding the described additional layers, we are able to more than double the overall detection power, as indicated by the 1-AUC-scores.
+
 
 \subsection{LANL results}
 
@@ -860,19 +984,19 @@ In this section we aim at studying whether the higher complexity of an LSTM netw
 
 Similar to our LSTM model, Markov Chains and Finite Automata predict state transition probabilities, which is why we can employ the same anomaly score computation. However, computational costs increase quadratically with the number of states, and a separation of state vocabularies is not possible. We restrict both comparison models to the above described port-direction states. 
 Models and detection rates were determined on the CICIDS-17 dataset.
-
-\begin{figure}
-\centering
-\begin{subfigure}[b]{0.4\textwidth}
-\includegraphics[width=0.8\textwidth]{images_MLN/LSTM_design_shallow.png}
-%\caption{Shallow LSTM-model}
-\end{subfigure}
-\quad
-\small
-%\begin{subfigure}[b]{0.33\textwidth}
+%
+%\begin{figure}
+%\centering
+%\begin{subfigure}[b]{0.4\textwidth}
+%\includegraphics[width=0.8\textwidth]{images_MLN/LSTM_design_shallow.png}
+%%\caption{Shallow LSTM-model}
 %\end{subfigure}
-\caption{Architecture of the shallow LSTM-model.}\label{fig:rnn_FSA2}
-\end{figure}
+%\quad
+%\small
+%%\begin{subfigure}[b]{0.33\textwidth}
+%%\end{subfigure}
+%\caption{Architecture of the shallow LSTM-model.}\label{fig:rnn_FSA2}
+%\end{figure}
 Table \ref{tab:Simpcomptab} shows distribution characteristics of benign and malicious sessions for our shallow LSTM-model, the Markov Chain model, and the NDFA. It shows that CBAM outperforms these baseline methods, but also that the automata performs better than Markov Chains. While the Markov Chain is practically not able to make any distinction between malicious and benign traffic, the automata model shows some, albeit limited ability to identify anomalous sessions, mainly for the three types of brute-force attacks. This order shows the importance of sequence memory for contextual anomaly detection, and confirms our previous comparison of the suitability of Markov Chains and NDFAs for network intrusion detection \cite{grov2019towards}.
 \begin{table}[ht]
 \centering

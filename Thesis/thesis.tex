@@ -12,6 +12,7 @@
 \usepackage{multirow}
 \usepackage{array}
 \usepackage{amsmath,amssymb,amsfonts}
+\usepackage{makecell}
 
 \usepackage{listings}
 \usepackage{subcaption}
@@ -73,7 +74,12 @@ To mum and dad
 I declare that this thesis was composed by myself, that the work contained herein is my own except where explicitly stated otherwise in the text, and that this work has not been submitted for any other degree or professional qualification except as specified. Some of the material used in this thesis has been published in the following papers:
 
 \begin{itemize}
-\item ....
+\item Henry Clausen, Robert Flood, and David Aspinall: ``Traffic generation using containerization for machine learning''. In: \textit{Proceedings of the \textcolor{red}{abc}} (appears in Chapter \ref{Chap:Req}). 
+\item Henry Clausen and David Aspinall: ``Examining traffic microstructures to improve model development''. In: \textit{2021 IEEE Security and Privacy Workshops (SPW)} (appears in Chapter \ref{Chap:Prob}).
+\item Henry Clausen, David Aspinall, and Rober Flood: ``Controlling network traffic microstructures for machine-learning model probing''. In: \textit{Proceedings of the 17th EAI SecureComm Conference, Canterbury, UK, September 2021} (appears in Chapter \ref{Chap:Prob}).
+\item Henry Clausen, Gudmund Grov, Marc Sabate, and David Aspinall: ``Better Anomaly Detection for Access Attacks Using Deep Bidirectional LSTMs''. In: \textit{Machine Learning for Networking: Third International Conference (MLN), Paris, France, November 24–26, 2020, Springer}  (appears in Chapter \ref{Chap:CBAM}).
+\item Henry Clausen, Gudmund Grov, and David Aspinall: ``CBAM: A Contextual Model for Network Anomaly Detection''. In: \textit{Computers 10.6 (2021) (MPDI)} (appears in Chapter \ref{Chap:CBAM}).
+\item Henry Clausen, Michael S. Gibson, and David Aspinall: ``Evading stepping-stone detection with enough chaff''. In: \textit{International Conference on Network and System Security (NSS), Melbourne, Australia, November 25-27 2020, Springer} (appears in Chapter \ref{Chap:NSS}).
 \end{itemize}
 
 \hspace*{0pt}\hfill Henry Clausen
@@ -108,14 +114,14 @@ I want to thank...
 \chapter{Requirements for Machine Learning}\label{Chap:Req}
 \input{chapters/DYNAMICS}
 
-\chapter{Traffic generation to probe and understand model behaviour}
+\chapter{Traffic generation to probe and understand model behaviour}\label{Chap:Prob}
 \input{chapters/modelling}
 
-\chapter{CBAM: A contextual model for network anomaly detection}
+\chapter{CBAM: An anomaly detection model for traffic microstructures}\label{Chap:CBAM}
 \input{chapters/flow_model}
 %input{chapters/packet_encoder}
 
-\chapter{Application to stepping-stone detection}
+\chapter{Stepping-stone detection and evasive microstructure control}\label{Chap:NSS}
 \input{chapters/NSS}
 
 \chapter{Conclusion}

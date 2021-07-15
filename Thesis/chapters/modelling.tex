@@ -6,16 +6,6 @@
 \definecolor{myblue}{RGB}{97, 156, 255}
 \definecolor{Gray}{gray}{0.9}
  
-%\section{Controlling network traffic microstructures for machine-learning model probing}
-
-%\begin{abstract}
-%Network intrusion detection models increasingly rely on learning traffic microstructures that consist of pattern sequences in features such as interarrival time, size, or packet flags. We argue that precise and reproducible control over traffic microstructures is crucial to understand and improve NID-model behaviour.
-%We demonstrate that probing a traffic classifier with appropriately generated microstructures reveals links between misclassifications and traffic characteristics, and correspondingly lets us improve the false positive rate by more than $500\%$. We examine how specific factors such as network congestion, load, conducted activity, or protocol implementation impact traffic microstructures, and how well their influence can be isolated in a controlled and near-deterministic traffic generation process. We then introduce DetGen, a traffic generation tool that provides precise microstructure control, and demonstrate how to generate traffic suitable to probe pre-trained NID-models.
-%We then demonstrate how to generate traffic appropriately to probe pre-trained NID-models. 
-%For this, we introduce DetGen, a traffic generation tool that provides microstructure control and corresponding ground-truth labels.
-%\end{abstract}
-
-
 
 \section{Introduction}
 
@@ -39,7 +29,10 @@ In \textit{automatic speech recognition (ASR)}, tone and emotions can alter the 
 
 In contrast to ASR, no effort has been made so far to monitor or control the effect of similar factors on network traffic to probe these models for specific microstructures, with the current quasi-benchmark NID-datasets pay more attention to the inclusion of specific attacks and topologies rather than the documentation of the generated traffic. This situation has so far led researchers to often simply evaluate a variety of ML-models on these datasets in the hope of edging out competitors, without understanding model flaws and corresponding data structures through targeted probing.
 
-The majority of work in this chapter was pubished in \textcolor{red}{abc}. In this chapter, we demonstrate how to produce traffic effectively to probe a state-of-the-art traffic classifier, and why a certain degree of generative \textbf{determinism} is required for this to isolate the influence of traffic microstructures. The model insights and corresponding performance improvements achieved through probing motivate our experimental examination of various influence factors over microstructures and how to control them during traffic generation. This chapter builds up on chapter \ref{Chap:Req} by extending the examination of DetGen. Here, we examine DetGen's near-deterministic control over microstructure-shaping factors such as conducted activity, communication failures or network congestion to generate reproducible traffic samples along with corresponding ground-truth labels. %Our motivation stems from the lack of attention that current benchmark datasets spent on these factors.
+
+In this chapter, we demonstrate how to produce traffic effectively to probe a state-of-the-art traffic classifier, and why a certain degree of generative \textbf{determinism} is required for this to isolate the influence of traffic microstructures. The model insights and corresponding performance improvements achieved through probing motivate our experimental examination of various influence factors over microstructures and how to control them during traffic generation. 
+
+\textbf{Thesis context:} This chapter builds up on chapter \ref{Chap:Req} by extending the examination of DetGen. Here, we examine DetGen's near-deterministic control over microstructure-shaping factors such as conducted activity, communication failures or network congestion to generate reproducible traffic samples along with corresponding ground-truth labels. %Our motivation stems from the lack of attention that current benchmark datasets spent on these factors.
 %how traffic microstructure labelling improves the probing of \textcolor{red}{NIDS} models, and how traffic with controllable microstructures can be generated for this purpose.
 
 
@@ -50,7 +43,10 @@ The majority of work in this chapter was pubished in \textcolor{red}{abc}. In th
 
  
 %We propose a novel design paradigm that makes generation of network traffic and corresponding attacks significantly more flexible and offers a \textcolor{red}{new level} of insight and reproducibility for traffic microstructures through the use of containerisation. 
-This chapter provides the following contributions:
+The majority of work in this chapter was pubished in ``Examining traffic microstructures to improve model development'' (Henry Clausen and David Aspinall, 2021) and ``Controlling network traffic microstructures for machine-learning model probing'' (Henry Clausen, David Aspinall, and Robert Flood, 2021).
+
+
+This chapter discusses the following results:
 
 \begin{enumerate}
 % an exemplary dataset that is suitable for broad probing of models trained on the CICIDS-17 dataset\cite{sharafaldin2018toward}, as it mirrors its range of protocols and attacks.
@@ -396,7 +392,7 @@ Time& Source-IP &Destination-IP& Dest. Port\\ \hline
 \end{tabular}
 \vspace{0.2cm}
 \caption{5-second window for host 192.168.10.9 in the CICIDS-17 dataset.}\label{Tab:Sess}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{table}
 
 
@@ -469,21 +465,21 @@ Additionally, containers are specified in an image-layer, which is unaffected du
 %The container network interface provides the connection between a network namespace and the container runtimes. We want to \textcolor{red}{highlight} that multiple containers can share on network interface, which enables us to generate traffic from multiple applications over one network address in order to emulate \textcolor{red}{fully functional network hosts}.
  
 
-\subsection{Activity generation}\label{Sec:Scenarios}
-
-\subsubsection*{Scenario.}
-We define a \emph{scenario} as a composition of containers conducting a specific interaction. Each scenario produces traffic from a setting with two (client/server) or more containers, with traffic being captured from each container's perspective. This constructs network datasets with total interaction capture, as described by Shiravi et al. \cite{shiravi2012toward}.
-Examples may include an FTP interaction, an online login form paired with an SQL database, or a C\&C server communicating with an open backdoor. %A full list of currently implemented scenarios can be found in Section \textcolor{red}{\ref{Sec:ExistScen}}.
-%Each scenario is designed to be easily started via a single script and can be repeated indefinitely without further instructions, therefore allowing the generation of large amounts of data.
-Our framework is modular, so that individual scenarios are configured, stored, and launched independently. %Adding or reconfiguring a scenario has no effect on the remaining framework.
-We provide a complete list of implemented scenarios in Table \ref{tab:scen} in the Appendix.
-%When composing different settings, we most emphasised the inclusion of different \textbf{application layer protocols} such as HTTP or SSH, followed by the inclusion of different corresponding \textbf{applications} such as NGINX or Apache that steer the communication. We are currently aiming to also include options to use different \textbf{application layer implementations} such as TLS1.3 vs TLS1.2.
-
-\subsubsection*{Task.} \label{Sec:Subscenarios}
-
-To provide a finer grain of control over the traffic to be generated, we create a catalogue of different tasks that allow the user to specify the manner in which a scenario should develop. %The aim of having multiple tasks for each scenario is to explore the full breadth of a protocol or application's possible traffic behaviour. For instance, the SSH protocol can be used to access the servers console, to retrieve or send files, or for port forwarding, all of which may or may not be successful. It is therefore appropriate to script a number of tasks that cover this range of tasks.
-%To implement tasks, we first examine the functionality of the underlying protocol and scenario setting before proceeding to adding tasks to the catalogue. 
-To explore the breadth of the corresponding traffic structures efficiently, we prioritise tasks that cover aspects such as the direction of file transfers (e.g. GET vs POST for HTTP), the amount of data transferred (e.g. HEAD/DELETE vs GET/PUT), or the duration of the interaction (e.g. persistent vs non-persistent tasks) as much as possible. For each task, we furthermore add different failure options for the interaction to not be successful (e.g. wrong password or file directory). 
+%\subsection{Activity generation}\label{Sec:Scenarios}
+%
+%\subsubsection*{Scenario.}
+%We define a \emph{scenario} as a composition of containers conducting a specific interaction. Each scenario produces traffic from a setting with two (client/server) or more containers, with traffic being captured from each container's perspective. This constructs network datasets with total interaction capture, as described by Shiravi et al. \cite{shiravi2012toward}.
+%Examples may include an FTP interaction, an online login form paired with an SQL database, or a C\&C server communicating with an open backdoor. %A full list of currently implemented scenarios can be found in Section \textcolor{red}{\ref{Sec:ExistScen}}.
+%%Each scenario is designed to be easily started via a single script and can be repeated indefinitely without further instructions, therefore allowing the generation of large amounts of data.
+%Our framework is modular, so that individual scenarios are configured, stored, and launched independently. %Adding or reconfiguring a scenario has no effect on the remaining framework.
+%We provide a complete list of implemented scenarios in Table \ref{tab:scen} in the Appendix.
+%%When composing different settings, we most emphasised the inclusion of different \textbf{application layer protocols} such as HTTP or SSH, followed by the inclusion of different corresponding \textbf{applications} such as NGINX or Apache that steer the communication. We are currently aiming to also include options to use different \textbf{application layer implementations} such as TLS1.3 vs TLS1.2.
+%
+%\subsubsection*{Task.} \label{Sec:Subscenarios}
+%
+%To provide a finer grain of control over the traffic to be generated, we create a catalogue of different tasks that allow the user to specify the manner in which a scenario should develop. %The aim of having multiple tasks for each scenario is to explore the full breadth of a protocol or application's possible traffic behaviour. For instance, the SSH protocol can be used to access the servers console, to retrieve or send files, or for port forwarding, all of which may or may not be successful. It is therefore appropriate to script a number of tasks that cover this range of tasks.
+%%To implement tasks, we first examine the functionality of the underlying protocol and scenario setting before proceeding to adding tasks to the catalogue. 
+%To explore the breadth of the corresponding traffic structures efficiently, we prioritise tasks that cover aspects such as the direction of file transfers (e.g. GET vs POST for HTTP), the amount of data transferred (e.g. HEAD/DELETE vs GET/PUT), or the duration of the interaction (e.g. persistent vs non-persistent tasks) as much as possible. For each task, we furthermore add different failure options for the interaction to not be successful (e.g. wrong password or file directory). 
 
 %Subscenarios are specific to particular scenarios and can be specified when launching that scenario.
 
@@ -533,17 +529,17 @@ We apply NetEm to the network interface of a given container, providing us with 
 
 We simulate excessive computational load on the host with the tool \emph{stress-ng}, a Linux workload generator. Currently, we only stress the CPU of the host, which is controlled by the number of workers spawned. Future work will also include stressing the memory of a system. We have investigated how stress on the network sockets affects the traffic we capture without any visible effect, which is why we omit this variable here. 
 
-\subsection{Data generation}
+%\subsection{Data generation}
+%
+%\subsubsection*{Execution script.}
+%
+%DetGen generates traffic through executing execution script that are specific to the scenario. The script creates the virtual network and populates it with the corresponding containers. The container network interfaces of the containers are then subjected to the NetEm chosen settings and the host is assigned the respective load before the inputs for the chosen task are prepared and mounted to the containers. 
+%
+%%The user can then choose how long and how often to execute the scenario. Once the activity is terminated, the script takes down the network and containers, and repeats the process for the next repetition. Randomised settings are drawn anew for each repetition.
 
-\subsubsection*{Execution script.}
-
-DetGen generates traffic through executing execution script that are specific to the scenario. The script creates the virtual network and populates it with the corresponding containers. The container network interfaces of the containers are then subjected to the NetEm chosen settings and the host is assigned the respective load before the inputs for the chosen task are prepared and mounted to the containers. 
-
-%The user can then choose how long and how often to execute the scenario. Once the activity is terminated, the script takes down the network and containers, and repeats the process for the next repetition. Randomised settings are drawn anew for each repetition.
-
-\subsubsection*{Labelling and traffic separation.}
-
-Each container network interface is hooked to a \emph{tcpdump}-container that records the packets that arrive or leave on this interface. Combined with the described process isolation, this setting allows us to exclusively capture traffic that corresponds to the conducted activity and exclude any background events. The execution script then stores all parameters (conducted task, mean packet delay, ...) and descriptive values (input file size, communication failure, ...) for the chosen settings.
+%\subsubsection*{Labelling and traffic separation.}
+%
+%Each container network interface is hooked to a \emph{tcpdump}-container that records the packets that arrive or leave on this interface. Combined with the described process isolation, this setting allows us to exclusively capture traffic that corresponds to the conducted activity and exclude any background events. The execution script then stores all parameters (conducted task, mean packet delay, ...) and descriptive values (input file size, communication failure, ...) for the chosen settings.
 
 %\subsection{Network creation and population}
 
@@ -647,9 +643,9 @@ SMTP&465   &2663.5  & 21.5    & 77650&104967&3\\
 %\rowcolor{Gray}SSDP&1900 & 9006.4    &    52.4& 14966&&\\
 %NetBIOS&138&   3577.067  & 15.956  &    5026\\
 \end{tabular}
-\vspace{0.2cm}
+%\vspace{0.2cm}
 \caption{Common ALPs in CICIDS-17 data}\label{Tab:ALPs}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{table}
 
 
