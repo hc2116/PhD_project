@@ -140,7 +140,7 @@ In the past, language models were mainly built using simple \textit{N-gram} mode
 
 Language models can be used as anomaly detectors in for example a grammar checking setting. Here, the predicted probability of a word or a whole sentence are compared to a threshold value, and grammatical or syntactical anomalies are detected as low predicted probabilities. 
 
-Written language and network traffic metadata bear significant similarity as each consists of sequences of discrete events (words vs. packets/flows) that stand in contextual relationship to their surroundings. However, the application of successful language models to network anomaly detection is still unexplored. In part, this thesis is trying to demonstrate the potential of training language models to capture traffic microstructures.
+Written language and network traffic metadata bear significant similarity as each consists of sequences of discrete events (words vs. packets/flows) that stand in contextual relationship to their surroundings. However, the application of successful language models to network anomaly detection is still unexplored. A part of this thesis tries to demonstrate the potential of training language models to capture traffic microstructures.
 
 \section{Network intrusion detection}
 
@@ -170,10 +170,10 @@ Intrusion detection is a well researched area, with the first IDSs emerging in t
 %\textit{Host-based intrusion detection systems} (HIDS) monitor each host in a network individually, and rely on local data streams such as application logs or raw operating system calls as  data source. 
 %\textit{Network-based intrusion detection} refers to the detection of malicious traffic in a network of computers. A network intrusion detection system (NIDS) monitors network traffic within in a network and/or between the network and external hosts for malicious activity or policy violations. Network traffic data can take different forms, a more detailed explanation is provided in Section \ref{traffic}.
 
-\begin{figure}\label{graph}
+\begin{figure}
 \centering
-\includegraphics[scale=0.25]{images/Graphic2.pdf}
-\caption{A broad overview over different aspects in an IDS}
+\includegraphics[width=\textwidth]{images/Graphic2.pdf}
+\caption{A broad overview over different aspects in an IDS}\label{graph}
 \end{figure}
 
 %Host-based systems have the advantage of working with high quality data that   are   typically   very   informative \cite{lazarevic2005intrusion}. 
