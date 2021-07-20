@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.6.28 NEXT) (preloaded format=pdflatex 2021.7.19)  19 JUL 2021 20:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.6.28 NEXT) (preloaded format=pdflatex 2021.7.19)  20 JUL 2021 18:42
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -947,43 +947,40 @@ LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
 
 ]
 Chapter 1.
-(chapters/introduction.tex
-Underfull \vbox (badness 1418) has occurred while \output is active []
-
- [15]
+(chapters/introduction.tex [15]
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 15.55188pt on input line 21.
+(Font)              scaled to size 15.55188pt on input line 25.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 12.9599pt on input line 25.
+(Font)              scaled to size 12.9599pt on input line 29.
 
-Overfull \hbox (1.90797pt too wide) in paragraph at lines 34--35
+Overfull \hbox (1.90797pt too wide) in paragraph at lines 38--39
 []\OT1/ptm/m/n/12 Machine-learning and anomaly-based in-tru-sion de-tec-tion so
 -lu-tions are find-ing more
  []
 
 [16]
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 41.
+(Font)              scaled to size 10.79993pt on input line 45.
  [17]
 <images//images_introduction/Themes.PNG, id=66, 351.56343pt x 252.19218pt>
 File: images//images_introduction/Themes.PNG Graphic file (type png)
 <use images//images_introduction/Themes.PNG>
 Package pdftex.def Info: images//images_introduction/Themes.PNG  used on input 
-line 74.
+line 78.
 (pdftex.def)             Requested size: 247.54149pt x 177.57231pt.
- [18]
-Overfull \hbox (1.13062pt too wide) in paragraph at lines 88--89
+ [18 <./images//images_introduction/Themes.PNG>]
+Overfull \hbox (1.13062pt too wide) in paragraph at lines 92--93
 \OT1/ptm/m/n/12 sary con-cepts of machine-learning based anomaly de-tec-tion fo
 r se-quen-tial data streams.
  []
 
-[19 <./images//images_introduction/Themes.PNG>]
+[19]
 <images//images_introduction/Thesis_structure.PNG, id=74, 395.97937pt x 677.531
 25pt>
 File: images//images_introduction/Thesis_structure.PNG Graphic file (type png)
 <use images//images_introduction/Thesis_structure.PNG>
 Package pdftex.def Info: images//images_introduction/Thesis_structure.PNG  used
- on input line 94.
+ on input line 98.
 (pdftex.def)             Requested size: 247.54149pt x 423.55937pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1080,10 +1077,10 @@ File: images//images_introduction/VM_setup.png Graphic file (type png)
 Package pdftex.def Info: images//images_introduction/VM_setup.png  used on inpu
 t line 456.
 (pdftex.def)             Requested size: 288.79422pt x 255.24843pt.
-
+)
 Underfull \vbox (badness 1888) has occurred while \output is active []
 
- [39 <./images//images_introduction/VM_setup.png>]) [40] [41] [42
+ [39 <./images//images_introduction/VM_setup.png>] [40] [41] [42
 
 ]
 Chapter 3.
@@ -1590,7 +1587,7 @@ Underfull \vbox (badness 1783) has occurred while \output is active []
 
 ]
 Chapter 7.
-(chapters/Conclusion.tex [153]) (thesis.bbl [154]
+(chapters/Conclusion.tex) (thesis.bbl [153] [154]
 Underfull \hbox (badness 6608) in paragraph at lines 9--14
 []\OT1/ptm/m/n/12 Impact cy-ber trust: USC DS-062, USC DS-266, USC LAN-DER.
  []
@@ -1639,7 +1636,11 @@ Underfull \hbox (badness 2057) in paragraph at lines 710--714
 ing . unibs . it / []ntw / tools /
  []
 
-[166] [167]) [168] (thesis.aux) ) 
+[166] [167]) [168] (thesis.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
  18742 strings out of 478836
  362013 string characters out of 2845310
@@ -1648,22 +1649,22 @@ Here is how much of TeX's memory you used:
  484035 words of font info for 176 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  105i,20n,115p,1871b,1241s stack positions out of 5000i,500n,10000p,200000b,80000s
-{C:/Users/henry/AppData/Local/Programs/MiKTeX 
-2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/henry/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/henry/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/henry/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users
-/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/courier/u
-crr8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/hel
-vetic/uhvb8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
-urw/helvetic/uhvr8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/urw/helvetic/uhvro8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/urw/symbol/usyr.pfb><C:/Users/henry/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/henry/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/henry/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on thesis.pdf (168 pages, 2644904 bytes).
+{C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
+}<C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmex10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmmi10.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/henry/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/henry/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/henry/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/henr
+y/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Use
+rs/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb
+><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/symbol/usyr.
+pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utm
+b8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times
+/utmr8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/t
+imes/utmri8a.pfb>
+Output written on thesis.pdf (168 pages, 2644229 bytes).
 PDF statistics:
  764 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

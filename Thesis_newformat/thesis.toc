@@ -22,7 +22,6 @@
 \contentsline {subsubsection}{\numberline {2.4.2.1}LITNET-2020 \cite {damasevicius2020litnet}}{38}{}%
 \contentsline {subsubsection}{\numberline {2.4.2.2}Bo{\u {g}}azi{\c {c}}i University distributed denial of service dataset}{38}{}%
 \contentsline {subsection}{\numberline {2.4.3}Generative traffic models and traffic generation}{38}{}%
-\contentsline {section}{\numberline {2.5}Related studies on traffic structures}{40}{}%
 \contentsline {chapter}{\numberline {3}Requirements for Machine Learning}{43}{}%
 \contentsline {section}{\numberline {3.1}Introduction}{43}{}%
 \contentsline {subsection}{\numberline {3.1.1}Outline}{44}{}%
@@ -159,12 +158,7 @@
 \contentsline {subsection}{\numberline {6.6.1}Testbeds and data}{150}{}%
 \contentsline {section}{\numberline {6.7}Conclusion}{151}{}%
 \contentsline {chapter}{\numberline {7}Conclusion}{153}{}%
-\contentsline {section}{\numberline {7.1}Result conclusions}{153}{}%
-\contentsline {section}{\numberline {7.2}Contributions}{153}{}%
-\contentsline {subsection}{\numberline {7.2.1}Microstructure results}{153}{}%
-\contentsline {subsection}{\numberline {7.2.2}Traffic generation paradigm}{153}{}%
-\contentsline {subsection}{\numberline {7.2.3}Anomaly detection}{153}{}%
-\contentsline {section}{\numberline {7.3}Central Research questions}{153}{}%
-\contentsline {section}{\numberline {7.4}Critical analysis of results}{154}{}%
-\contentsline {section}{\numberline {7.5}Future work}{154}{}%
+\contentsline {section}{\numberline {7.1}Central Research questions}{153}{}%
+\contentsline {section}{\numberline {7.2}Critical analysis of results}{154}{}%
+\contentsline {section}{\numberline {7.3}Future work}{154}{}%
 \contentsline {chapter}{Bibliography}{155}{}%
