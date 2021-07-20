@@ -1,0 +1,19 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: thesis.aux
+The style file: abbrv.bst
+Database file #1: refs.bib
+Warning--entry type for "CAIDA2018" isn't style-file defined
+--line 1959 of file refs.bib
+Warning--to sort, need author or key in mandiant2015trends
+Warning--to sort, need author or key in noauthor_ctu-13_nodate
+Warning--to sort, need author or key in USC2010ICT
+Warning--to sort, need author or key in mcafee2015report
+Warning--to sort, need author or key in CAIDA2018
+Warning--empty author in mandiant2015trends
+Warning--empty institution in mandiant2015trends
+Warning--empty author in mcafee2015report
+Warning--empty institution in mcafee2015report
+Warning--empty institution in brownlee1999traffic
+Warning--there's a number but no volume in denning1987intrusion
+Warning--empty year in zeroday
+Warning--empty journal in song2009spectrogram
+(There were 14 warnings)

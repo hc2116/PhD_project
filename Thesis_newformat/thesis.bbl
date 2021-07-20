@@ -1,0 +1,827 @@
+\begin{thebibliography}{100}
+
+\bibitem{noauthor_ctu-13_nodate}
+The {CTU}-13 {Dataset}. {A} {Labeled} {Dataset} with {Botnet}, {Normal} and
+  {Background} traffic.
+\newblock 00001.
+
+\bibitem{USC2010ICT}
+Impact cyber trust: {USC} {DS}-062, {USC} {DS}-266, {USC} {LANDER}.
+\newblock \url{https://www.impactcybertrust.org/dataset_view?idDataset=62/}
+  \url{https://www.impactcybertrust.org/dataset_view?idDataset=75/}
+  \url{https://www.impactcybertrust.org/dataset_view?idDataset=265}, 2010.
+\newblock Accessed on 05 Nov. 2018.
+
+\bibitem{mandiant2015trends}
+M-trends 2015: A view from the front lines.
+\newblock Technical report, 2015.
+
+\bibitem{mcafee2015report}
+Mcafee technical report on night dragon operation.
+\newblock Technical report, 2015.
+
+\bibitem{CAIDA2018}
+{The CAIDA UCSD Anonymized Internet Traces 2018}, 2018.
+\newblock Accessed: 2020-02-10.
+
+\bibitem{ahmed2016survey}
+M.~Ahmed, A.~N. Mahmood, and J.~Hu.
+\newblock A survey of network anomaly detection techniques.
+\newblock {\em Journal of Network and Computer Applications}, 60:19--31, 2016.
+
+\bibitem{allix2014machine}
+K.~Allix, T.~F. D.~A. Bissyande, J.~Klein, and Y.~Le~Traon.
+\newblock Machine learning-based malware detection for android applications:
+  History matters!
+\newblock Technical report, University of Luxembourg, SnT, 2014.
+
+\bibitem{anderson1980computer}
+J.~P. Anderson.
+\newblock Computer security threat monitoring and surveillance.
+\newblock {\em Technical Report, James P. Anderson Company}, 1980.
+
+\bibitem{aparicio2017using}
+F.~J. Aparicio-Navarro, J.~A. Chambers, K.~Kyriakopoulos, Y.~Gong, and
+  D.~Parish.
+\newblock Using the pattern-of-life in networks to improve the effectiveness of
+  intrusion detection systems.
+\newblock In {\em 2017 IEEE International Conference on Communications (ICC)},
+  pages 1--7. IEEE, 2017.
+
+\bibitem{arfeen2013role}
+M.~A. Arfeen, K.~Pawlikowski, D.~McNickle, and A.~Willig.
+\newblock The role of the weibull distribution in internet traffic modeling.
+\newblock In {\em Proceedings of the 2013 25th International Teletraffic
+  Congress (ITC)}, pages 1--8. IEEE, 2013.
+
+\bibitem{aun2017review}
+Y.~Aun, S.~Manickam, and S.~Karuppayah.
+\newblock A review on features' robustness in high diversity mobile traffic
+  classifications.
+\newblock {\em International journal of communication networks and information
+  security}, 9(2):294, 2017.
+
+\bibitem{ayala2016active}
+L.~Ayala.
+\newblock Active medical device cyber-attacks.
+\newblock In {\em Cybersecurity for Hospitals and Healthcare Facilities}, pages
+  19--37. Springer, 2016.
+
+\bibitem{badiger2018violet}
+S.~Badiger, S.~Baheti, and Y.~Simmhan.
+\newblock Violet: A large-scale virtual environment for internet of things.
+\newblock In {\em European Conference on Parallel Processing}, pages 309--324.
+  Springer, 2018.
+
+\bibitem{berman2019survey}
+D.~S. Berman, A.~L. Buczak, J.~S. Chavis, and C.~L. Corbett.
+\newblock A survey of deep learning methods for cyber security.
+\newblock {\em Information}, 10(4):122, 2019.
+
+\bibitem{bernaille2006traffic}
+L.~Bernaille, R.~Teixeira, I.~Akodkenou, A.~Soule, and K.~Salamatian.
+\newblock Traffic classification on the fly.
+\newblock {\em ACM SIGCOMM Computer Communication Review}, 36(2):23--26, 2006.
+
+\bibitem{Bontemps2016}
+L.~Bontemps, V.~L. Cao, J.~McDermott, and N.-A. Le-Khac.
+\newblock Collective anomaly detection based on long short-term memory
+  recurrent neural networks.
+\newblock In {\em Future Data and Security Engineering}, pages 141--152.
+  Springer, 2016.
+
+\bibitem{brownlee1999traffic}
+N.~Brownlee, C.~Mills, and G.~Ruth.
+\newblock Traffic flow measurement: Architecture.
+\newblock Technical report, 1999.
+
+\bibitem{casas2012unsupervised}
+P.~Casas, J.~Mazel, and P.~Owezarski.
+\newblock Unsupervised network intrusion detection systems: Detecting the
+  unknown without knowledge.
+\newblock {\em Computer Communications}, 35(7):772--783, 2012.
+
+\bibitem{chandola_anomaly_2009}
+V.~Chandola, A.~Banerjee, and V.~Kumar.
+\newblock Anomaly {Detection}: {A} {Survey}.
+\newblock {\em ACM Comput. Surv.}, 41(3):15:1--15:58, July 2009.
+
+\bibitem{chen2015strategies}
+W.~Chen, D.~Grangier, and M.~Auli.
+\newblock Strategies for training large vocabulary neural language models.
+\newblock {\em arXiv preprint arXiv:1512.04906}, 2015.
+
+\bibitem{cheng2019pac}
+A.~Cheng.
+\newblock Pac-gan: Packet generation of network traffic using generative
+  adversarial networks.
+\newblock In {\em 2019 IEEE 10th Annual Information Technology, Electronics and
+  Mobile Communication Conference (IEMCON)}, pages 0728--0734. IEEE, 2019.
+
+\bibitem{cheng2021packet}
+Q.~Cheng, S.~Zhou, Y.~Shen, D.~Kong, and C.~Wu.
+\newblock Packet-level adversarial network traffic crafting using sequence
+  generative adversarial networks.
+\newblock {\em arXiv preprint arXiv:2103.04794}, 2021.
+
+\bibitem{clausen2019traffic}
+H.~Clausen, R.~Flood, and D.~Aspinall.
+\newblock Traffic generation using containerization for machine learning.
+\newblock In {\em Proceedings of the Dynamic and Novel Advances in Machine
+  Learning and Intelligent Cyber Security Workshop}. ACM, 2019.
+
+\bibitem{henryLSTM}
+H.~Clausen, G.~Grov, M.~Sabaté, and D.~Aspinall.
+\newblock Better anomaly detection for access attacks using deep bidirectional
+  {LSTM}s.
+\newblock In {\em International Conference on Machine Learning for Networking},
+  pages 1--14. Springer, 2020.
+
+\bibitem{creech2014developing}
+G.~Creech.
+\newblock {\em Developing a high-accuracy cross platform Host-Based Intrusion
+  Detection System capable of reliably detecting zero-day attacks.}
+\newblock PhD thesis, University of New South Wales, Canberra, Australia, 2014.
+
+\bibitem{creech2013generation}
+G.~Creech and J.~Hu.
+\newblock Generation of a new ids test dataset: Time to retire the kdd
+  collection.
+\newblock In {\em Wireless Communications and Networking Conference (WCNC),
+  2013 IEEE}, pages 4487--4492. IEEE, 2013.
+
+\bibitem{crussell2015minimega}
+J.~Crussell, J.~Erickson, D.~Fritz, and J.~Floren.
+\newblock minimega v. 3.0.
+\newblock Technical report, Sandia National Lab.(SNL-NM), Albuquerque, NM
+  (United States), 2015.
+
+\bibitem{cup1999data}
+K.~Cup.
+\newblock Data. knowledge discovery in databases darpa archive, 1999.
+
+\bibitem{cup1999dataset}
+K.~Cup.
+\newblock Dataset.
+\newblock \url{http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html}, 1999.
+\newblock Accessed on 05 Nov. 2018.
+
+\bibitem{damasevicius2020litnet}
+R.~Damasevicius, A.~Venckauskas, S.~Grigaliunas, J.~Toldinas, N.~Morkevicius,
+  T.~Aleliunas, and P.~Smuikys.
+\newblock Litnet-2020: An annotated real-world network flow dataset for network
+  intrusion detection.
+\newblock {\em Electronics}, 9(5):800, 2020.
+
+\bibitem{denning1987intrusion}
+D.~E. Denning.
+\newblock An intrusion-detection model.
+\newblock {\em IEEE Transactions on software engineering}, (2):222--232, 1987.
+
+\bibitem{di2011detecting}
+G.~Di~Crescenzo, A.~Ghosh, A.~Kampasi, R.~Talpade, and Y.~Zhang.
+\newblock Detecting anomalies in active insider stepping stone attacks.
+\newblock {\em JoWUA}, 2(1):103--120, 2011.
+
+\bibitem{ding2013detecting}
+W.~Ding, K.~Le, and S.-H.~S. Huang.
+\newblock Detecting stepping-stones under the influence of packet jittering.
+\newblock In {\em 2013 9th International Conference on Information Assurance
+  and Security (IAS)}, pages 31--36. IEEE, 2013.
+
+\bibitem{donoho2002multiscale}
+D.~L. Donoho, A.~G. Flesia, U.~Shankar, V.~Paxson, J.~Coit, and S.~Staniford.
+\newblock Multiscale stepping-stone detection: Detecting pairs of jittered
+  interactive streams by exploiting maximum tolerable delay.
+\newblock In {\em International Workshop on Recent Advances in Intrusion
+  Detection}, pages 17--35. Springer, 2002.
+
+\bibitem{du2017deeplog}
+M.~Du, F.~Li, G.~Zheng, and V.~Srikumar.
+\newblock Deeplog: Anomaly detection and diagnosis from system logs through
+  deep learning.
+\newblock In {\em Proceedings of the 2017 ACM SIGSAC Conference on Computer and
+  Communications Security}, pages 1285--1298. ACM, 2017.
+
+\bibitem{enisa2017baseline}
+E.~ENISA.
+\newblock Baseline security recommendations for iot in the context of critical
+  information infrastructures, 2017.
+
+\bibitem{erhan2020bougazicci}
+D.~Erhan and E.~Anar{\i}m.
+\newblock Bo{\u{g}}azi{\c{c}}i university distributed denial of service
+  dataset.
+\newblock {\em Data in brief}, 32:106187, 2020.
+
+\bibitem{pivoting2015}
+G.~Fraser.
+\newblock Tunneling, pivoting, and webapplication penetrationtesting.
+\newblock Technical report, SANS, 2015.
+
+\bibitem{fricker2012impact}
+C.~Fricker, P.~Robert, J.~Roberts, and N.~Sbihi.
+\newblock Impact of traffic mix on caching performance in a content-centric
+  network.
+\newblock In {\em 2012 Proceedings IEEE INFOCOM Workshops}, pages 310--315.
+  IEEE, 2012.
+
+\bibitem{fujdiak2018ip}
+R.~Fujdiak, V.~Uher, P.~Mlynek, P.~Blazek, J.~Slacik, V.~Sedlacek, J.~Misurec,
+  M.~Volkova, and P.~Chmelar.
+\newblock Ip traffic generator using container virtualization technology.
+\newblock In {\em 2018 10th International Congress on Ultra Modern
+  Telecommunications and Control Systems and Workshops (ICUMT)}, pages 1--6.
+  IEEE, 2018.
+
+\bibitem{garcia2014empirical}
+S.~Garcia, M.~Grill, J.~Stiborek, and A.~Zunino.
+\newblock An empirical comparison of botnet detection methods.
+\newblock {\em computers \& security}, 45:100--123, 2014.
+
+\bibitem{iperf}
+M.~Gates and A.~Warshavsky.
+\newblock {Iperf} {Man} {Page}.
+\newblock \url{https://linux.die.net/man/1/iperf}.
+\newblock Accessed: 2019-08-11.
+
+\bibitem{gharib2016evaluation}
+A.~Gharib, I.~Sharafaldin, A.~H. Lashkari, and A.~A. Ghorbani.
+\newblock An evaluation framework for intrusion detection dataset.
+\newblock In {\em Information Science and Security (ICISS), 2016 International
+  Conference on}, pages 1--6. IEEE, 2016.
+
+\bibitem{grov2019towards}
+G.~Grov, M.~Sabate, W.~Chen, and D.~Aspinall.
+\newblock Towards intelligible robust anomaly detection by learning
+  interpretable behavioural models.
+\newblock {\em NISK Journal}, 12, 2019.
+
+\bibitem{han2020unicorn}
+X.~Han, T.~Pasquier, A.~Bates, J.~Mickens, and M.~Seltzer.
+\newblock Unicorn: Runtime provenance-based detector for advanced persistent
+  threats.
+\newblock {\em arXiv preprint arXiv:2001.01525}, 2020.
+
+\bibitem{haque2019audio}
+A.~Haque, M.~Guo, P.~Verma, and L.~Fei-Fei.
+\newblock Audio-linguistic embeddings for spoken sentences.
+\newblock In {\em ICASSP 2019-2019 IEEE International Conference on Acoustics,
+  Speech and Signal Processing (ICASSP)}, pages 7355--7359. IEEE, 2019.
+
+\bibitem{hemminger2005network}
+S.~Hemminger et~al.
+\newblock Network emulation with {N}et{E}m.
+\newblock In {\em Linux conf au}, pages 18--23, 2005.
+
+\bibitem{hou2017deep}
+X.~Hou, L.~Shen, K.~Sun, and G.~Qiu.
+\newblock Deep feature consistent variational autoencoder.
+\newblock In {\em 2017 IEEE Winter Conference on Applications of Computer
+  Vision (WACV)}, pages 1133--1141. IEEE, 2017.
+
+\bibitem{huang2011detecting}
+S.-H.~S. Huang and Y.-W. Kuo.
+\newblock Detecting chaff perturbation on stepping-stone connection.
+\newblock In {\em 2011 IEEE 17th International Conference on Parallel and
+  Distributed Systems}, pages 660--667. IEEE, 2011.
+
+\bibitem{huang2016detecting}
+S.-H.~S. Huang, H.~Zhang, and M.~Phay.
+\newblock Detecting stepping-stone intruders by identifying crossover packets
+  in ssh connections.
+\newblock In {\em 2016 IEEE 30th International Conference on Advanced
+  Information Networking and Applications (AINA)}, pages 1043--1050. IEEE,
+  2016.
+
+\bibitem{hwang2019lstm}
+R.-H. Hwang, M.-C. Peng, V.-L. Nguyen, and Y.-L. Chang.
+\newblock An lstm-based deep learning approach for classifying malicious
+  traffic at the packet level.
+\newblock {\em Applied Sciences}, 9(16):3414, 2019.
+
+\bibitem{bestpractise}
+D.~{Inc.}
+\newblock {Best} {Practises} for {Writing} {Docker] {Images}}.
+\newblock
+  \url{https://docs.docker.com/develop/develop-images/dockerfile_best-practices/}.
+\newblock Accessed: 2019-08-11.
+
+\bibitem{docker}
+D.~{Inc.}
+\newblock Docker.
+\newblock \url{https://www.docker.com/}.
+\newblock Accessed: 2019-08-11.
+
+\bibitem{docker_docs}
+D.~{Inc.}
+\newblock Docker {Documentation}.
+\newblock \url{https://docs.docker.com/}.
+\newblock Accessed: 2019-08-11.
+
+\bibitem{dockerhub}
+D.~{Inc.}
+\newblock Docker {Hub}.
+\newblock \url{https://hub.docker.com/}.
+\newblock Accessed: 2019-08-11.
+
+\bibitem{jaber2011can}
+M.~Jaber, R.~G. Cascella, and C.~Barakat.
+\newblock Can we trust the inter-packet time for traffic classification?
+\newblock In {\em 2011 IEEE International Conference on Communications (ICC)},
+  pages 1--5. IEEE, 2011.
+
+\bibitem{jacobson1989tcpdump}
+V.~Jacobson, C.~Leres, and S.~McCanne.
+\newblock The tcpdump manual page.
+\newblock {\em Lawrence Berkeley Laboratory, Berkeley, CA}, 143, 1989.
+
+\bibitem{javaid2016deep}
+A.~Javaid, Q.~Niyaz, W.~Sun, and M.~Alam.
+\newblock A deep learning approach for network intrusion detection system.
+\newblock In {\em Proceedings of the 9th EAI International Conference on
+  Bio-inspired Information and Communications Technologies (formerly
+  BIONETICS)}, pages 21--26. ICST (Institute for Computer Sciences,
+  Social-Informatics and Telecommunications Engineering), 2016.
+
+\bibitem{jurgelionis2011empirical}
+A.~Jurgelionis, J.-P. Laulajainen, M.~Hirvonen, and A.~I. Wang.
+\newblock An empirical study of {N}et{E}m network emulation functionalities.
+\newblock In {\em 2011 Proceedings of 20th International Conference on Computer
+  Communications and Networks (ICCCN)}, pages 1--6. IEEE, 2011.
+
+\bibitem{kamper2020multilingual}
+H.~Kamper, Y.~Matusevych, and S.~Goldwater.
+\newblock Multilingual acoustic word embedding models for processing
+  zero-resource languages.
+\newblock In {\em ICASSP 2020-2020 IEEE International Conference on Acoustics,
+  Speech and Signal Processing (ICASSP)}, pages 6414--6418. IEEE, 2020.
+
+\bibitem{kayacik2005selecting}
+H.~G. Kayacik, A.~N. Zincir-Heywood, and M.~I. Heywood.
+\newblock Selecting features for intrusion detection: A feature relevance
+  analysis on kdd 99 intrusion detection datasets.
+\newblock In {\em Proceedings of the third annual conference on privacy,
+  security and trust}, volume~94, pages 1723--1722, 2005.
+
+\bibitem{kent-2015-cyberdata1}
+A.~D. Kent.
+\newblock {Comprehensive, Multi-Source Cyber-Security Events}.
+\newblock Los Alamos National Laboratory, 2015.
+
+\bibitem{akent-2015-enterprise-data}
+A.~D. Kent.
+\newblock {Cybersecurity Data Sources for Dynamic Network Research}.
+\newblock In {\em Dynamic Networks in Cybersecurity}. Imperial College Press,
+  June 2015.
+
+\bibitem{khan2021hcrnnids}
+M.~A. Khan.
+\newblock Hcrnnids: Hybrid convolutional recurrent neural network-based network
+  intrusion detection system.
+\newblock {\em Processes}, 9(5):834, 2021.
+
+\bibitem{kim2016long}
+J.~Kim, J.~Kim, H.~L.~T. Thu, and H.~Kim.
+\newblock Long short term memory recurrent neural network classifier for
+  intrusion detection.
+\newblock In {\em 2016 International Conference on Platform Technology and
+  Service (PlatCon)}, pages 1--5. IEEE, 2016.
+
+\bibitem{kolyshkin2006virtualization}
+K.~Kolyshkin.
+\newblock Virtualization in linux.
+\newblock {\em White paper, OpenVZ}, 3:39, 2006.
+
+\bibitem{koutrouki2018mitigating}
+E.~Koutrouki.
+\newblock Mitigating concept drift in data mining applications for intrusion
+  detection systems.
+\newblock {\em arXiv preprint arXiv:1010.4784}, 2018.
+
+\bibitem{lamprakis2017unsupervised}
+P.~Lamprakis, R.~Dargenio, D.~Gugelmann, V.~Lenders, M.~Happe, and L.~Vanbever.
+\newblock Unsupervised detection of apt c\&c channels using web request graphs.
+\newblock In {\em International Conference on Detection of Intrusions and
+  Malware, and Vulnerability Assessment}, pages 366--387. Springer, 2017.
+
+\bibitem{lantz2010network}
+B.~Lantz, B.~Heller, and N.~McKeown.
+\newblock A network in a laptop: rapid prototyping for software-defined
+  networks.
+\newblock In {\em Proceedings of the 9th ACM SIGCOMM Workshop on Hot Topics in
+  Networks}, pages 1--6, 2010.
+
+\bibitem{lashkari2017characterization}
+A.~H. Lashkari, G.~Draper-Gil, M.~S.~I. Mamun, and A.~A. Ghorbani.
+\newblock Characterization of tor traffic using time based features.
+\newblock In {\em ICISSp}, pages 253--262, 2017.
+
+\bibitem{eisac2017report}
+R.~M. Lee, M.~J. Assante, and T.~Conway.
+\newblock Analysis of the cyber attack onthe ukrainian power grid.
+\newblock Technical report, E-ISAC, 2016.
+
+\bibitem{lin2019generating}
+Z.~Lin, A.~Jain, C.~Wang, G.~Fanti, and V.~Sekar.
+\newblock Generating high-fidelity, synthetic time series datasets with
+  doppelganger.
+\newblock {\em arXiv preprint arXiv:1909.13403}, 2019.
+
+\bibitem{lippmann2000evaluating}
+R.~P. Lippmann, D.~J. Fried, I.~Graf, J.~W. Haines, K.~R. Kendall, D.~McClung,
+  D.~Weber, S.~E. Webster, D.~Wyschogrod, R.~K. Cunningham, et~al.
+\newblock Evaluating intrusion detection systems: The 1998 darpa off-line
+  intrusion detection evaluation.
+\newblock In {\em DARPA Information Survivability Conference and Exposition,
+  2000. DISCEX'00. Proceedings}, volume~2, pages 12--26. IEEE, 2000.
+
+\bibitem{liu2020intrusion}
+L.~Liu, P.~Wang, J.~Lin, and L.~Liu.
+\newblock Intrusion detection of imbalanced network traffic based on machine
+  learning and deep learning.
+\newblock {\em IEEE Access}, 2020.
+
+\bibitem{livingstone2018ryerson}
+S.~R. Livingstone and F.~A. Russo.
+\newblock The ryerson audio-visual database of emotional speech and song
+  ({RAVDESS}): A dynamic, multimodal set of facial and vocal expressions in
+  north american english.
+\newblock {\em PloS one}, 13(5):e0196391, 2018.
+
+\bibitem{macia2018ugr}
+G.~Maci{\'a}-Fern{\'a}ndez, J.~Camacho, R.~Mag{\'a}n-Carri{\'o}n,
+  P.~Garc{\'\i}a-Teodoro, and R.~Ther{\'o}n.
+\newblock {UGR} ‘16: A new dataset for the evaluation of
+  cyclostationarity-based network {IDS}s.
+\newblock {\em Computers \& Security}, 73:411--424, 2018.
+
+\bibitem{marx2020same}
+R.~Marx, J.~Herbots, W.~Lamotte, and P.~Quax.
+\newblock Same standards, different decisions: A study of {QUIC} and {HTTP}/3
+  implementation diversity.
+\newblock In {\em Proceedings of the Workshop on the Evolution, Performance,
+  and Interoperability of QUIC}, pages 14--20, 2020.
+
+\bibitem{massey1951kolmogorov}
+F.~J. Massey~Jr.
+\newblock The kolmogorov-smirnov test for goodness of fit.
+\newblock {\em Journal of the American statistical Association},
+  46(253):68--78, 1951.
+
+\bibitem{mchugh2000testing}
+J.~McHugh.
+\newblock Testing intrusion detection systems: a critique of the 1998 and 1999
+  darpa intrusion detection system evaluations as performed by lincoln
+  laboratory.
+\newblock {\em ACM Transactions on Information and System Security (TISSEC)},
+  3(4):262--294, 2000.
+
+\bibitem{mell2003overview}
+P.~Mell, V.~Hu, R.~Lippmann, J.~Haines, and M.~Zissman.
+\newblock An overview of issues in testing intrusion detection systems, 2003.
+
+\bibitem{zeroday}
+K.~Metrick, P.~Najafi, and J.~Semrau.
+\newblock Zero-day exploitation increasingly demonstrates access to money,
+  rather than skill — {I}ntelligence for {V}ulnerability {M}anagement.
+\newblock Technical report, {F}ire{E}ye Technical Report.
+
+\bibitem{milenkoski2015evaluating}
+A.~Milenkoski, M.~Vieira, S.~Kounev, A.~Avritzer, and B.~D. Payne.
+\newblock Evaluating computer intrusion detection systems: A survey of common
+  practices.
+\newblock {\em ACM Computing Surveys (CSUR)}, 48(1):1--41, 2015.
+
+\bibitem{mirsky2018kitsune}
+Y.~Mirsky, T.~Doitshman, Y.~Elovici, and A.~Shabtai.
+\newblock Kitsune: an ensemble of autoencoders for online network intrusion
+  detection.
+\newblock {\em arXiv preprint arXiv:1802.09089}, 2018.
+
+\bibitem{mirsky2016sherlock}
+Y.~Mirsky, A.~Shabtai, L.~Rokach, B.~Shapira, and Y.~Elovici.
+\newblock Sherlock vs moriarty: A smartphone dataset for cybersecurity
+  research.
+\newblock In {\em Proceedings of the 2016 ACM workshop on Artificial
+  intelligence and security}, pages 1--12. ACM, 2016.
+
+\bibitem{moustafa2015unsw}
+N.~Moustafa and J.~Slay.
+\newblock {UNSW-NB}15: a comprehensive data set for network intrusion detection
+  systems.
+\newblock In {\em 2015 military communications and information systems
+  conference (MilCIS)}, pages 1--6. IEEE, 2015.
+
+\bibitem{moustafa_unsw-nb15:_2015}
+N.~Moustafa and J.~Slay.
+\newblock {UNSW}-{NB}15: a comprehensive data set for network intrusion
+  detection systems ({UNSW}-{NB}15 network data set).
+\newblock In {\em 2015 {Military} {Communications} and {Information} {Systems}
+  {Conference} ({MilCIS})}, pages 1--6, Nov. 2015.
+
+\bibitem{nasr2018deepcorr}
+M.~Nasr, A.~Bahramali, and A.~Houmansadr.
+\newblock Deepcorr: Strong flow correlation attacks on tor using deep learning.
+\newblock In {\em Proceedings of the 2018 ACM SIGSAC Conference on Computer and
+  Communications Security}, pages 1962--1976, 2018.
+
+\bibitem{nguyen2008survey}
+T.~T. Nguyen and G.~J. Armitage.
+\newblock A survey of techniques for internet traffic classification using
+  machine learning.
+\newblock {\em IEEE Communications Surveys and Tutorials}, 10(1-4):56--76,
+  2008.
+
+\bibitem{nisioti2018intrusion}
+A.~Nisioti, A.~Mylonas, P.~D. Yoo, and V.~Katos.
+\newblock From intrusion detection to attacker attribution: A comprehensive
+  survey of unsupervised methods.
+\newblock {\em IEEE Communications Surveys \& Tutorials}, 2018.
+
+\bibitem{ozgur2016review}
+A.~{\"O}zg{\"u}r and H.~Erdem.
+\newblock A review of {KDD99} dataset usage in intrusion detection and machine
+  learning between 2010 and 2015.
+\newblock {\em PeerJ Preprints}, 4:e1954v1, 2016.
+
+\bibitem{padhye2010evading}
+J.~D. Padhye, K.~Kothari, M.~Venkateshaiah, and M.~Wright.
+\newblock Evading stepping-stone detection under the cloak of streaming media
+  with sneak.
+\newblock {\em Computer Networks}, 54(13):2310--2325, 2010.
+
+\bibitem{paxson1995wide}
+V.~Paxson and S.~Floyd.
+\newblock Wide area traffic: the failure of poisson modeling.
+\newblock {\em IEEE/ACM Transactions on networking}, 3(3):226--244, 1995.
+
+\bibitem{pellegrino2017learning}
+G.~Pellegrino, Q.~Lin, C.~Hammerschmidt, and S.~Verwer.
+\newblock Learning behavioral fingerprints from netflows using timed automata.
+\newblock In {\em Integrated Network and Service Management (IM), 2017
+  IFIP/IEEE Symposium on}, pages 308--316. IEEE, 2017.
+
+\bibitem{radford2018network}
+B.~J. Radford, L.~M. Apolonio, A.~J. Trias, and J.~A. Simpson.
+\newblock Network traffic anomaly detection using recurrent neural networks.
+\newblock {\em arXiv preprint arXiv:1803.10769}, 2018.
+
+\bibitem{mergecap}
+S.~Renfro.
+\newblock {Mergecap} {Man} {Page}.
+\newblock \url{https://www.wireshark.org/docs/man-pages/mergecap.html}.
+\newblock Accessed: 2019-08-11.
+
+\bibitem{ring2019survey}
+M.~Ring, S.~Wunderlich, D.~Scheuring, D.~Landes, and A.~Hotho.
+\newblock A survey of network-based intrusion detection data sets.
+\newblock {\em Computers \& Security}, 86:147--167, 2019.
+
+\bibitem{rubin2014three}
+P.~Rubin-Delanchy, D.~J. Lawson, M.~J. Turcotte, N.~Heard, and N.~M. Adams.
+\newblock Three statistical approaches to sessionizing network flow data.
+\newblock In {\em 2014 IEEE Joint Intelligence and Security Informatics
+  Conference}, pages 244--247. IEEE, 2014.
+
+\bibitem{sequeira2013influence}
+L.~Sequeira, J.~Fern{\'a}ndez-Navajas, L.~Casadesus, J.~Saldana, I.~Quintana,
+  and J.~Ruiz-Mas.
+\newblock The influence of the buffer size in packet loss for competing
+  multimedia and bursty traffic.
+\newblock In {\em 2013 International Symposium on Performance Evaluation of
+  Computer and Telecommunication Systems (SPECTS)}, pages 134--141. IEEE, 2013.
+
+\bibitem{sharafaldin2018towards}
+I.~Sharafaldin, A.~Gharib, A.~H. Lashkari, and A.~A. Ghorbani.
+\newblock Towards a reliable intrusion detection benchmark dataset.
+\newblock {\em Software Networking}, 2018(1):177--200, 2018.
+
+\bibitem{sharafaldin2018toward}
+I.~Sharafaldin, A.~H. Lashkari, and A.~A. Ghorbani.
+\newblock Toward generating a new intrusion detection dataset and intrusion
+  traffic characterization.
+\newblock In {\em ICISSP}, pages 108--116, 2018.
+
+\bibitem{editcap}
+R.~Sharpe.
+\newblock {Editcap} {Man} {Page}.
+\newblock \url{https://www.wireshark.org/docs/man-pages/editcap.html}.
+\newblock Accessed: 2019-08-11.
+
+\bibitem{shen2018tiresias}
+Y.~Shen, E.~Mariconti, P.~A. Vervier, and G.~Stringhini.
+\newblock Tiresias: Predicting security events through deep learning.
+\newblock In {\em Proceedings of the 2018 ACM SIGSAC Conference on Computer and
+  Communications Security}, pages 592--605. ACM, 2018.
+
+\bibitem{shiravi2012toward}
+A.~Shiravi, H.~Shiravi, M.~Tavallaee, and A.~A. Ghorbani.
+\newblock Toward developing a systematic approach to generate benchmark
+  datasets for intrusion detection.
+\newblock {\em computers \& security}, 31(3):357--374, 2012.
+
+\bibitem{shullich2011survey}
+R.~Shullich, J.~Chu, P.~Ji, and W.~Chen.
+\newblock A survey of research in stepping-stone detection.
+\newblock {\em " International Journal of Electronic Commerce Studies"},
+  2(2):103--126, 2011.
+
+\bibitem{sommer_outside_2010}
+R.~Sommer and V.~Paxson.
+\newblock Outside the {Closed} {World}: {On} {Using} {Machine} {Learning} for
+  {Network} {Intrusion} {Detection}.
+\newblock In {\em 2010 {IEEE} {Symposium} on {Security} and {Privacy}}, pages
+  305--316, May 2010.
+
+\bibitem{song2009spectrogram}
+Y.~Song, A.~D. Keromytis, and S.~Swtolfo.
+\newblock Spectrogram: A mixture-of-markov-chains model for anomaly detection
+  in web traffic.
+\newblock 2009.
+
+\bibitem{sony2000traffic}
+C.~Sony and K.~Cho.
+\newblock Traffic data repository at the wide project.
+\newblock In {\em Proceedings of USENIX 2000 Annual Technical Conference:
+  FREENIX Track}, pages 263--270, 2000.
+
+\bibitem{sperotto2009labeled}
+A.~Sperotto, R.~Sadre, F.~Van~Vliet, and A.~Pras.
+\newblock A labeled data set for flow-based intrusion detection.
+\newblock In {\em International Workshop on IP Operations and Management},
+  pages 39--50. Springer, 2009.
+
+\bibitem{srivastava2014dropout}
+N.~Srivastava, G.~Hinton, A.~Krizhevsky, I.~Sutskever, and R.~Salakhutdinov.
+\newblock Dropout: a simple way to prevent neural networks from overfitting.
+\newblock {\em The journal of machine learning research}, 15(1):1929--1958,
+  2014.
+
+\bibitem{staniford1995holding}
+S.~Staniford-Chen and L.~T. Heberlein.
+\newblock Holding intruders accountable on the internet.
+\newblock In {\em Proceedings 1995 IEEE Symposium on Security and Privacy},
+  pages 39--49. IEEE, 1995.
+
+\bibitem{stober2013you}
+T.~St{\"o}ber, M.~Frank, J.~Schmitt, and I.~Martinovic.
+\newblock Who do you sync you are? smartphone fingerprinting via application
+  behaviour.
+\newblock In {\em Proceedings of the sixth ACM conference on Security and
+  privacy in wireless and mobile networks}, pages 7--12, 2013.
+
+\bibitem{tahaei2020rise}
+H.~Tahaei, F.~Afifi, A.~Asemi, F.~Zaki, and N.~B. Anuar.
+\newblock The rise of traffic classification in {I}o{T} networks: A survey.
+\newblock {\em Journal of Network and Computer Applications}, 154:102538, 2020.
+
+\bibitem{tankard2011advanced}
+C.~Tankard.
+\newblock Advanced persistent threats and how to monitor and deter them.
+\newblock {\em Network security}, 2011(8):16--19, 2011.
+
+\bibitem{tavallaee2009detailed}
+M.~Tavallaee, E.~Bagheri, W.~Lu, and A.~A. Ghorbani.
+\newblock A detailed analysis of the kdd cup 99 data set.
+\newblock In {\em 2009 IEEE Symposium on Computational Intelligence for
+  Security and Defense Applications}, pages 1--6. IEEE, 2009.
+
+\bibitem{tavallaee2012nsl}
+M.~Tavallaee, E.~Bagheri, W.~Lu, and A.~A. Ghorbani.
+\newblock Nsl-kdd dataset.
+\newblock
+  \url{http://www.unb.ca/research/iscx/dataset/iscx-NSL-KDD-dataset.html},
+  2012.
+\newblock Accessed on 05 Nov. 2018.
+
+\bibitem{turcotte17}
+M.~J.~M. {Turcotte}, A.~D. {Kent}, and C.~{Hash}.
+\newblock {Unified Host and Network Data Set}.
+\newblock {\em ArXiv e-prints}, Aug. 2017.
+
+\bibitem{ulvila2003evaluation}
+J.~W. Ulvila and J.~E. Gaffney~Jr.
+\newblock Evaluation of intrusion detection systems.
+\newblock {\em Journal of Research of the National Institute of Standards and
+  Technology}, 108(6):453, 2003.
+
+\bibitem{UNIBS2009data}
+UNIBS.
+\newblock Data sharing.
+\newblock \url{http://netweb.ing.unibs.it/~ntw/tools/traces/}, 2009.
+\newblock Accessed on 05 Nov. 2018.
+
+\bibitem{velan2016network}
+P.~Velan, J.~Medkov{\'a}, T.~Jirs{\'\i}k, and P.~{\v{C}}eleda.
+\newblock Network traffic characterisation using flow-based statistics.
+\newblock In {\em NOMS 2016-2016 IEEE/IFIP Network Operations and Management
+  Symposium}, pages 907--912. IEEE, 2016.
+
+\bibitem{wakui2019gampal}
+T.~Wakui, T.~Kondo, and F.~Teraoka.
+\newblock Gampal: Anomaly detection for internet backbone traffic by flow
+  prediction with lstm-rnn.
+\newblock In {\em International Conference on Machine Learning for Networking},
+  pages 196--211. Springer, 2019.
+
+\bibitem{walsworth2015caida}
+C.~Walsworth, E.~Aben, K.~Claffy, and D.~Andersen.
+\newblock The {CAIDA} {UCSD} anonymized internet traces 2018,”, 2018.
+
+\bibitem{wang2018research}
+L.~Wang and J.~Yang.
+\newblock A research survey in stepping-stone intrusion detection.
+\newblock {\em EURASIP Journal on Wireless Communications and Networking},
+  2018(1):276, 2018.
+
+\bibitem{wang2010robust}
+X.~Wang and D.~Reeves.
+\newblock Robust correlation of encrypted attack traffic through stepping
+  stones by flow watermarking.
+\newblock {\em IEEE Transactions on Dependable and Secure Computing},
+  8(3):434--449, 2010.
+
+\bibitem{wexler2019if}
+J.~Wexler, M.~Pushkarna, T.~Bolukbasi, M.~Wattenberg, F.~Vi{\'e}gas, and
+  J.~Wilson.
+\newblock The what-if tool: Interactive probing of machine learning models.
+\newblock {\em IEEE transactions on visualization and computer graphics},
+  26(1):56--65, 2019.
+
+\bibitem{wu2010neural}
+H.-C. Wu and S.-H.~S. Huang.
+\newblock Neural networks-based detection of stepping-stone intrusion.
+\newblock {\em expert systems with applications}, 37(2):1431--1437, 2010.
+
+\bibitem{xin2006testbed}
+J.~Xin, L.~Zhang, B.~Aswegan, J.~Dickerson, T.~Daniels, and Y.~Guan.
+\newblock A testbed for evaluation and analysis of stepping stone attack
+  attribution techniques.
+\newblock In {\em 2nd International Conference on Testbeds and Research
+  Infrastructures for the Development of Networks and Communities, 2006.
+  TRIDENTCOM 2006.}, pages 9--pp. IEEE, 2006.
+
+\bibitem{yang2007mining}
+J.~Yang and S.-H.~S. Huang.
+\newblock Mining tcp/ip packets to detect stepping-stone intrusion.
+\newblock {\em computers \& security}, 26(7-8):479--484, 2007.
+
+\bibitem{yang2011correlating}
+J.~Yang and D.~Woolbright.
+\newblock Correlating tcp/ip packet contexts to detect stepping-stone
+  intrusion.
+\newblock {\em Computers \& Security}, 30(6-7):538--546, 2011.
+
+\bibitem{yang2015rtt}
+J.~Yang and Y.~Zhang.
+\newblock Rtt-based random walk approach to detect stepping-stone intrusion.
+\newblock In {\em 2015 IEEE 29th International Conference on Advanced
+  Information Networking and Applications}, pages 558--563. IEEE, 2015.
+
+\bibitem{ye2000markov}
+N.~Ye et~al.
+\newblock A markov chain model of temporal behavior for anomaly detection.
+\newblock In {\em Proceedings of the 2000 IEEE Systems, Man, and Cybernetics
+  Information Assurance and Security Workshop}, volume 166, page 169. West
+  Point, NY, 2000.
+
+\bibitem{yen2009browser}
+T.-F. Yen, X.~Huang, F.~Monrose, and M.~K. Reiter.
+\newblock Browser fingerprinting from coarse traffic summaries: Techniques and
+  implications.
+\newblock In {\em International Conference on Detection of Intrusions and
+  Malware, and Vulnerability Assessment}, pages 157--175. Springer, 2009.
+
+\bibitem{yin2017comparative}
+W.~Yin, K.~Kann, M.~Yu, and H.~Sch{\"u}tze.
+\newblock Comparative study of cnn and rnn for natural language processing.
+\newblock {\em arXiv preprint arXiv:1702.01923}, 2017.
+
+\bibitem{yu2018attention}
+Y.~Yu, G.~Liu, H.~Yan, H.~Li, and H.~Guan.
+\newblock Attention-based bi-lstm model for anomalous http traffic detection.
+\newblock In {\em 2018 15th International Conference on Service Systems and
+  Service Management (ICSSSM)}, pages 1--6. IEEE, 2018.
+
+\bibitem{zander2005automated}
+S.~Zander, T.~Nguyen, and G.~Armitage.
+\newblock Automated traffic classification and application identification using
+  machine learning.
+\newblock In {\em The IEEE Conference on Local Computer Networks 30th
+  Anniversary (LCN'05) l}, pages 250--257. IEEE, 2005.
+
+\bibitem{zhong2020helad}
+Y.~Zhong, W.~Chen, Z.~Wang, Y.~Chen, K.~Wang, Y.~Li, X.~Yin, X.~Shi, J.~Yang,
+  and K.~Li.
+\newblock Helad: A novel network anomaly detection model based on heterogeneous
+  ensemble learning.
+\newblock {\em Computer Networks}, 169:107049, 2020.
+
+\bibitem{zhou2020variational}
+X.~Zhou, Y.~Hu, W.~Liang, J.~Ma, and Q.~Jin.
+\newblock Variational lstm enhanced anomaly detection for industrial big data.
+\newblock {\em IEEE Transactions on Industrial Informatics}, 17(5):3469--3477,
+  2020.
+
+\end{thebibliography}

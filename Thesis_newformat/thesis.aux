@@ -1,0 +1,763 @@
+\relax 
+\pgfsyspdfmark {pgfid1}{4736286}{50644704}
+\citation{zeroday}
+\citation{mandiant2015trends}
+\citation{nisioti2018intrusion}
+\citation{mirsky2018kitsune}
+\citation{nasr2018deepcorr}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{15}{}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Motivation}{16}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}The case for machine learning and anomaly-based intrusion detection}{16}{}\protected@file@percent }
+\citation{denning1987intrusion}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.1.1.1}SPI and microstructures}{17}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Lack of model development in NID}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.3}Dataset problems and lack of labels}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Contributions}{18}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Three main themes of this thesis.\relax }}{19}{}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{Fig:themes}{{1.1}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Thesis overview}{19}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Chapter structure of this thesis.\relax }}{20}{}\protected@file@percent }
+\newlabel{Fig:structure}{{1.2}{20}}
+\citation{brownlee1999traffic}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Background}{23}{}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Network traffic and attacks}{23}{}\protected@file@percent }
+\newlabel{traffic}{{2.1}{23}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Traffic metadata}{23}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Typical format of a TCP packet. Source:\scriptsize  { https://www.lifewire.com/tcp-headers-and-udp-headers-explained-817970}\normalsize  \relax }}{23}{}\protected@file@percent }
+\newlabel{Fig:TCPheader}{{2.1}{23}}
+\citation{anderson1980computer}
+\citation{nisioti2018intrusion}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}Network attacks}{24}{}\protected@file@percent }
+\citation{lamprakis2017unsupervised}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Anomaly detection}{26}{}\protected@file@percent }
+\citation{chandola_anomaly_2009}
+\citation{chandola_anomaly_2009}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces The left plot (a) depicts simple anomalies that deviate in distance from regular data. The right plot (b) shows a contextual anomaly where a group of data instances do not follow a repeating timely behaviour with respect to all other data points (corresponding to an \textit  {Atrial Premature Contraction}, taken from \cite  {chandola_anomaly_2009})\relax }}{27}{}\protected@file@percent }
+\newlabel{graph2}{{2.2}{27}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Depiction of the training of a language model on a given input.\relax }}{28}{}\protected@file@percent }
+\newlabel{Fig:Langmod}{{2.3}{28}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Language models and self-supervised sequential training}{28}{}\protected@file@percent }
+\citation{denning1987intrusion}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Network intrusion detection}{29}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Misuse vs anomaly detection}{29}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces A broad overview over different aspects in an IDS\relax }}{30}{}\protected@file@percent }
+\newlabel{graph}{{2.4}{30}}
+\citation{nisioti2018intrusion}
+\citation{nisioti2018intrusion}
+\citation{ahmed2016survey}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Evaluation methodology and common flaws}{31}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Related methods leveraging traffic microstructures}{31}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Existing datasets}{31}{}\protected@file@percent }
+\citation{akent-2015-enterprise-data}
+\citation{kent-2015-cyberdata1}
+\citation{turcotte17}
+\citation{UNIBS2009data}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}Real-world datasets}{32}{}\protected@file@percent }
+\citation{walsworth2015caida}
+\citation{sony2000traffic}
+\citation{macia2018ugr}
+\citation{noauthor_ctu-13_nodate}
+\citation{garcia2014empirical}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}Synthetic datasets}{34}{}\protected@file@percent }
+\citation{moustafa_unsw-nb15:_2015}
+\citation{gharib2016evaluation}
+\citation{sharafaldin2018towards}
+\citation{lippmann2000evaluating}
+\citation{cup1999data}
+\citation{cup1999dataset}
+\citation{tavallaee2012nsl}
+\citation{creech2014developing}
+\citation{creech2013generation}
+\citation{USC2010ICT}
+\citation{damasevicius2020litnet}
+\citation{erhan2020bougazicci}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2.1}LITNET-2020 \cite  {damasevicius2020litnet}}{38}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2.2}Bo{\u {g}}azi{\c {c}}i University distributed denial of service dataset}{38}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}Generative traffic models and traffic generation}{38}{}\protected@file@percent }
+\citation{lin2019generating}
+\citation{cheng2019pac}
+\citation{cheng2021packet}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Setup of VM-machines in the UGR-16 dataset.\relax }}{39}{}\protected@file@percent }
+\newlabel{Fig:VM_generation}{{2.5}{39}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Related studies on traffic structures}{40}{}\protected@file@percent }
+\newlabel{RF1}{41}
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Summary of the most commonly used NID-datasets.\relax }}{41}{}\protected@file@percent }
+\newlabel{Tab:NIDdatasets}{{2.1}{41}}
+\citation{tavallaee2009detailed}
+\citation{kayacik2005selecting}
+\citation{mirsky2016sherlock}
+\citation{docker}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Requirements for Machine Learning}{43}{}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{Chap:Req}{{3}{43}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Introduction}{43}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Outline}{44}{}\protected@file@percent }
+\citation{sperotto2009labeled}
+\citation{akent-2015-enterprise-data}
+\citation{turcotte17}
+\citation{macia2018ugr}
+\citation{walsworth2015caida}
+\citation{sony2000traffic}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Scope of DetGen}{45}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Background}{45}{}\protected@file@percent }
+\newlabel{SecD:background}{{3.2}{45}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Related work and existing datasets}{45}{}\protected@file@percent }
+\citation{sharafaldin2018towards}
+\citation{moustafa_unsw-nb15:_2015}
+\citation{tavallaee2009detailed}
+\citation{mchugh2000testing}
+\citation{fujdiak2018ip}
+\citation{crussell2015minimega}
+\citation{badiger2018violet}
+\citation{sommer_outside_2010}
+\citation{sperotto2009labeled}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Problems in modern datasets}{46}{}\protected@file@percent }
+\newlabel{SecD:problems}{{3.2.2}{46}}
+\citation{sommer_outside_2010}
+\newlabel{SecD:lackvar}{{3.2.2}{47}}
+\citation{allix2014machine}
+\citation{kolyshkin2006virtualization}
+\newlabel{code1}{{\caption@xref {code1}{ on input line 140}}{49}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Example of \texttt  {Dockerfile} creating a nginx-container.\relax }}{49}{}\protected@file@percent }
+\newlabel{figD:dockerfile}{{3.1}{49}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Containerization with Docker}{49}{}\protected@file@percent }
+\citation{dockerhub}
+\citation{docker_docs}
+\citation{hemminger2005network}
+\newlabel{SecD:network}{{3.2.3}{50}}
+\newlabel{code2}{{\caption@xref {code2}{ on input line 179}}{51}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Example of \texttt  {Docker-compose} file launching a nginx- and a mysql-container in an isolated network.\relax }}{51}{}\protected@file@percent }
+\newlabel{figD:dockercompose}{{3.2}{51}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Dataset Requirements}{52}{}\protected@file@percent }
+\newlabel{SecD:require}{{3.2.4}{52}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {3.2.4.0.1}Variation}{52}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {3.2.4.0.2}Ground truth}{52}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {3.2.4.0.3}Modularity}{52}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {3.2.4.0.4}Scalability}{52}{}\protected@file@percent }
+\citation{shiravi2012toward}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Visualization of the different levels at which traffic variation is introduced in DetGen.\relax }}{53}{}\protected@file@percent }
+\newlabel{figD:branching}{{3.3}{53}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Design}{53}{}\protected@file@percent }
+\newlabel{SecD:Design}{{3.3}{53}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Scenarios}{53}{}\protected@file@percent }
+\newlabel{SecD:Scenarios}{{3.3.1}{53}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Subscenarios}{54}{}\protected@file@percent }
+\newlabel{SecD:Subscenarios}{{3.3.2}{54}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Randomization within Subscenarios}{54}{}\protected@file@percent }
+\newlabel{SecD:randomsubscen}{{3.3.3}{54}}
+\citation{iperf}
+\citation{jacobson1989tcpdump}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Network transmission}{55}{}\protected@file@percent }
+\newlabel{SecD:Netrand}{{3.3.4}{55}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Capture}{55}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.6}Implementation Process}{55}{}\protected@file@percent }
+\citation{bestpractise}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.7}Simple Example Scenario - FTP server}{56}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagram of FTP scenario\relax }}{57}{}\protected@file@percent }
+\citation{shiravi2012toward}
+\citation{mergecap}
+\citation{editcap}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.8}Dataset creation}{58}{}\protected@file@percent }
+\newlabel{SecD:datasetcreation}{{3.3.8}{58}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.9}Scenarios}{58}{}\protected@file@percent }
+\newlabel{SecD:ExistScen}{{3.3.9}{58}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Validation experiments}{59}{}\protected@file@percent }
+\newlabel{SecD:Experiments}{{3.4}{59}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Currently implemented traffic scenarios along with the number of implemented subscenarios\relax }}{60}{}\protected@file@percent }
+\newlabel{tabD:scen}{{3.1}{60}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Means of IATs \& packet sizes along with standard deviation bars for the first twelve packets in the Apache scenario.\relax }}{61}{}\protected@file@percent }
+\newlabel{figD:size1}{{3.5}{61}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Reproducible scenarios}{61}{}\protected@file@percent }
+\newlabel{SecD:deterministic}{{3.4.1}{61}}
+\citation{massey1951kolmogorov}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Explorating Artificial Delays}{62}{}\protected@file@percent }
+\newlabel{SecD:ArtiDel}{{3.4.2}{62}}
+\citation{arfeen2013role}
+\citation{paxson1995wide}
+\newlabel{SecD:method1}{{3.4.2}{63}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Results of Random Forest Classifier for a given distribution at the best performing delay mean $\mu $. Note that a score of .5 indicates total indistinguishability.\relax }}{64}{}\protected@file@percent }
+\newlabel{figD:rf_graph}{{3.6}{64}}
+\citation{zander2005automated}
+\citation{nguyen2008survey}
+\citation{jaber2011can}
+\citation{bernaille2006traffic}
+\citation{jaber2011can}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Worst Random Forest accuracy rates for a given distribution\relax }}{65}{}\protected@file@percent }
+\newlabel{tabD:results-iat_rf}{{3.2}{65}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Advantages of Dynamic Dataset Generation}{65}{}\protected@file@percent }
+\newlabel{SecD:DynDataGen}{{3.4.3}{65}}
+\citation{jaber2011can}
+\newlabel{SecD:exp2_method}{{3.4.3}{67}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Results of Random Forest Classification on Primary dataset (Above) and Secondary dataset (Below)\relax }}{68}{}\protected@file@percent }
+\newlabel{figD:Primary}{{3.7}{68}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Conclusions}{68}{}\protected@file@percent }
+\newlabel{SecD:Conclusion}{{3.5}{68}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Difficulties and limitations}{69}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}Future work}{69}{}\protected@file@percent }
+\citation{wexler2019if}
+\citation{livingstone2018ryerson}
+\citation{haque2019audio}
+\citation{kamper2020multilingual}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Traffic generation to probe and understand model behaviour}{71}{}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{Chap:Prob}{{4}{71}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{71}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Model evaluation and model probing with controlled data characteristics.\relax }}{72}{}\protected@file@percent }
+\newlabel{figM:Prob}{{4.1}{72}}
+\citation{kent-2015-cyberdata1}
+\citation{macia2018ugr}
+\citation{sharafaldin2018toward}
+\citation{moustafa2015unsw}
+\citation{ring2019survey}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Outline}{73}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Existing datasets and corresponding ground-truth information}{73}{}\protected@file@percent }
+\newlabel{SecM:ExData}{{4.1.2}{73}}
+\citation{nisioti2018intrusion}
+\citation{hwang2019lstm}
+\citation{tahaei2020rise}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Methodology and example}{74}{}\protected@file@percent }
+\newlabel{SecM:Motivation}{{4.2}{74}}
+\citation{sharafaldin2018toward}
+\citation{mell2003overview}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Scores for the LSTM-traffic model before and after the model correction.\relax }}{75}{}\protected@file@percent }
+\newlabel{figM:LSTM_exp}{{4.2}{75}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces LSTM-output activation in dependence of connection phases.\relax }}{76}{}\protected@file@percent }
+\newlabel{figM:LSTM_act}{{4.3}{76}}
+\citation{mirsky2018kitsune}
+\citation{sharafaldin2018toward}
+\citation{hou2017deep}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Refining the notion of benign traffic for anomaly detection}{78}{}\protected@file@percent }
+\newlabel{SecM:Refining}{{4.3}{78}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Projection coherency evaluation}{78}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Outline of the traffic settings for examining projection consistency. The numbers below each setting describe the measured Mahalanobis-distances (blue:average, red:maximal) for the corresponding projections.\relax }}{79}{}\protected@file@percent }
+\newlabel{tabM:Dataset}{{4.1}{79}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Dispersion of projected traffic samples from each setting, plotted along the two most dispersed axes.\relax }}{80}{}\protected@file@percent }
+\newlabel{figM:Subspace_disp}{{4.4}{80}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Investigating individual cluster incoherences}{80}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Scores for the LSTM-traffic classification model in dependence of simulated network congestion, along with the classification threshold\relax }}{81}{}\protected@file@percent }
+\newlabel{figM:Subspace_projection}{{4.5}{81}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Traffic microstructures and their influence factors}{81}{}\protected@file@percent }
+\newlabel{SecM:DetGenMicro}{{4.4}{81}}
+\citation{yen2009browser}
+\citation{stober2013you}
+\citation{marx2020same}
+\citation{marx2020same}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {4.4.0.0.1}1. Performed task and application.}{82}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {4.4.0.0.2}2. Application layer implementations.}{82}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {4.4.0.0.3}3. LAN and WAN congestion.}{82}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {4.4.0.0.4}4. Host level load.}{82}{}\protected@file@percent }
+\citation{fricker2012impact}
+\citation{aparicio2017using}
+\citation{radford2018network}
+\citation{henryLSTM}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Packet-sequence similarity comparison under different load.\relax }}{83}{}\protected@file@percent }
+\newlabel{figM:FTP_load}{{4.6}{83}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {4.4.0.0.5}5. Caching/Repetition effects.}{83}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {4.4.0.0.6}6. User and background activities.}{83}{}\protected@file@percent }
+\citation{sequeira2013influence}
+\citation{walsworth2015caida}
+\citation{sharafaldin2018toward}
+\citation{macia2018ugr}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces 5-second window for host 192.168.10.9 in the CICIDS-17 dataset.\relax }}{84}{}\protected@file@percent }
+\newlabel{tabM:Sess}{{4.2}{84}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {4.4.0.0.7}7. Networking stack load.}{84}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {4.4.0.0.8}8. Network configurations.}{84}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}DetGen: precisely controlled data generation}{84}{}\protected@file@percent }
+\newlabel{SecM:Archi}{{4.5}{84}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Design overview}{84}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Traditional traffic-generation-setups (left), and DetGen (right).\relax }}{85}{}\protected@file@percent }
+\newlabel{figM:Setup_comp}{{4.7}{85}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Containerisation and activity isolation}{85}{}\protected@file@percent }
+\citation{iperf}
+\citation{hemminger2005network}
+\citation{jurgelionis2011empirical}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Simulation of external influence}{86}{}\protected@file@percent }
+\newlabel{SecM:ExtInfls}{{4.5.3}{86}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.3.1}Host load.}{86}{}\protected@file@percent }
+\citation{macia2018ugr}
+\citation{lashkari2017characterization}
+\citation{aun2017review}
+\citation{yen2009browser}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Dissimilarity scores for DetGen and a regular VM-setup, on a log-scale.\relax }}{87}{}\protected@file@percent }
+\newlabel{figM:determ-metric}{{4.8}{87}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Traffic control and generative determinism of DetGen}{87}{}\protected@file@percent }
+\newlabel{SecM:Determinism}{{4.6}{87}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Packet-sequence similarity comparison for HTTP-activity for DetGen and a regular setting.\relax }}{88}{}\protected@file@percent }
+\newlabel{figM:HTTP-seq}{{4.9}{88}}
+\citation{sharafaldin2018toward}
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Reconstructing an IDS-dataset for efficient probing}{89}{}\protected@file@percent }
+\newlabel{SecM:ProbData}{{4.7}{89}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Common ALPs in CICIDS-17 data\relax }}{90}{}\protected@file@percent }
+\newlabel{tabM:ALPs}{{4.3}{90}}
+\citation{henryLSTM}
+\citation{henryLSTM}
+\citation{henryLSTM}
+\citation{macia2018ugr}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces Validation errors of LSTM-model \cite  {henryLSTM} on DetGen-IDS data.\relax }}{91}{}\protected@file@percent }
+\newlabel{figM:ValLoss}{{4.10}{91}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.8}Conclusions}{91}{}\protected@file@percent }
+\newlabel{SecM:Conclusion}{{4.8}{91}}
+\citation{macia2018ugr}
+\citation{turcotte17}
+\citation{lin2019generating}
+\citation{lantz2010network}
+\citation{mandiant2015trends}
+\citation{nisioti2018intrusion}
+\citation{Bontemps2016}
+\citation{kim2016long}
+\citation{radford2018network}
+\citation{nisioti2018intrusion}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}CBAM: An anomaly detection model for traffic microstructures}{95}{}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{Chap:CBAM}{{5}{95}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Introduction}{95}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Outline}{96}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Overview}{97}{}\protected@file@percent }
+\newlabel{SecF:Over}{{5.2}{97}}
+\newlabel{tabF:XSS}{{5.1a}{97}}
+\newlabel{sub@tabF:XSS}{{a}{97}}
+\newlabel{tabF:SMB}{{5.1b}{97}}
+\newlabel{sub@tabF:SMB}{{b}{97}}
+\newlabel{tabF:PTH}{{5.1c}{97}}
+\newlabel{sub@tabF:PTH}{{c}{97}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces The left side depicts a flow sequence from an XSS-attack.The right side depicts a benign SMB-sequence (top), and a sequence from a \textit  {Pass-the-hash} attack via the same SMB service.\relax }}{97}{}\protected@file@percent }
+\citation{nisioti2018intrusion}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces HTTP flow size distribution overall, and if preceded by an HTTP flow smaller than 500 bytes.\relax }}{98}{}\protected@file@percent }
+\newlabel{figF:XSSdist}{{5.1}{98}}
+\citation{ozgur2016review}
+\citation{tavallaee2009detailed}
+\citation{koutrouki2018mitigating}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Evaluation pitfalls}{99}{}\protected@file@percent }
+\newlabel{SecF:Evalmal}{{5.3}{99}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.0.1}Outdated datasets}{99}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.0.2}Lack of attack class distinction}{99}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.0.3}Arbitrary false positive rates}{99}{}\protected@file@percent }
+\newlabel{SecF:ArbFP}{{5.3.0.3}{99}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.0.4}Lack of long-term evaluation}{99}{}\protected@file@percent }
+\citation{rubin2014three}
+\citation{rubin2014three}
+\citation{rubin2014three}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Design}{100}{}\protected@file@percent }
+\newlabel{SecF:Design}{{5.4}{100}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Session construction}{100}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Contextual modelling}{100}{}\protected@file@percent }
+\citation{chen2015strategies}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Flow interarrival distributions for selected hosts in the the CICIDS-17, the LANL-15, and the UGR-16 data, with 90 percent quantile lines}}{101}{}\protected@file@percent }
+\newlabel{figF:Interarrivals}{{5.2}{101}}
+\citation{yin2017comparative}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Architecture selection}{102}{}\protected@file@percent }
+\citation{chen2015strategies}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Architecture of the trained bidirectional LSTM network. \relax }}{103}{}\protected@file@percent }
+\newlabel{figF:rnn_FSA}{{5.3}{103}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Trained architecture}{103}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.1}Embedding}{103}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.2}LSTM-layer}{104}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4.3}Output layer}{104}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Visualisation of model prediction process.\relax }}{105}{}\protected@file@percent }
+\newlabel{figF:Modelpred}{{5.4}{105}}
+\citation{srivastava2014dropout}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.5}Parameter selection and training}{106}{}\protected@file@percent }
+\citation{ahmed2016survey}
+\citation{sharafaldin2018toward}
+\citation{akent-2015-enterprise-data}
+\citation{kent-2015-cyberdata1}
+\citation{macia2018ugr}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.6}Detection method}{107}{}\protected@file@percent }
+\newlabel{SecF:decmeth}{{5.4.6}{107}}
+\citation{sharafaldin2018toward}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Datasets and benchmark models}{108}{}\protected@file@percent }
+\newlabel{SecF:Datasets}{{5.5}{108}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Dataset assembly}{108}{}\protected@file@percent }
+\newlabel{SecF:data}{{5.5.1}{108}}
+\citation{akent-2015-enterprise-data}
+\citation{kent-2015-cyberdata1}
+\citation{macia2018ugr}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Temporal change in protocol and port usage over the different train and test intervals across selected servers in the UGR-16 dataset.\relax }}{109}{}\protected@file@percent }
+\newlabel{figF:longterm_analysis}{{5.5}{109}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Dataset split}{110}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Summary of the amount of traffic extracted from each dataset.\relax }}{110}{}\protected@file@percent }
+\newlabel{tabF:Datasets}{{5.2}{110}}
+\citation{ulvila2003evaluation}
+\citation{milenkoski2015evaluating}
+\citation{ulvila2003evaluation}
+\citation{milenkoski2015evaluating}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}Sample imbalance and evaluation methodology}{111}{}\protected@file@percent }
+\citation{liu2020intrusion}
+\citation{nisioti2018intrusion}
+\citation{casas2012unsupervised}
+\citation{javaid2016deep}
+\citation{radford2018network}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.4}Benchmark comparison models}{112}{}\protected@file@percent }
+\newlabel{SecF:Benchmark}{{5.5.4}{112}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Architecture of the shallow LSTM-model version we use as a benchmark.\relax }}{113}{}\protected@file@percent }
+\newlabel{figF:rnn_FSA2}{{5.6}{113}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Detection performance}{113}{}\protected@file@percent }
+\newlabel{SecF:Det}{{5.6}{113}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces Number of sessions for each attack class in the CICIDS-17 dataset\relax }}{113}{}\protected@file@percent }
+\newlabel{tabF:Attackdata}{{5.3}{113}}
+\citation{nisioti2018intrusion}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.1}CICIDS-17 results}{114}{}\protected@file@percent }
+\newlabel{SecF:DetCIC}{{5.6.1}{114}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Score distribution for various access attacks contained in the CICIDS-17 dataset, along with our detection threshold}}{114}{}\protected@file@percent }
+\newlabel{figF:CICplots1}{{5.7}{114}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.4}{\ignorespaces Anomaly score distributions and detection rates at threshold T for known-malicious sessions in the CICIDS-17 dataset, as well as detection rates for a less complex benchmark model (Fig. 5.6\hbox {}).\relax }}{115}{}\protected@file@percent }
+\newlabel{tabF:dfCICinf}{{5.4}{115}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces ROC-curves for different attack types.}}{115}{}\protected@file@percent }
+\newlabel{figF:CICplots2}{{5.8}{115}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.6.1.1}Comparison models}{116}{}\protected@file@percent }
+\newlabel{Sect:Comp}{{5.6.1.1}{116}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.5}{\ignorespaces 1-AUC scores for our model and the implemented comparison models on the CICIDS-17 dataset. Fat numbers indicate the best value for each attack.\relax }}{116}{}\protected@file@percent }
+\newlabel{tabF:dfCICAUC}{{5.5}{116}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.2}LANL results}{117}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Computed scores for the third attack interval in the LANL data, along with our detection threshold.\relax }}{117}{}\protected@file@percent }
+\newlabel{figF:LANLdetection}{{5.9}{117}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.6}{\ignorespaces Exemplary session with SMB-traffic, host C2519, along with the estimated probability of the session to end.\relax }}{118}{}\protected@file@percent }
+\newlabel{tabF:MalSessionLANL}{{5.6}{118}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.3}How attacks affect flow structures}{118}{}\protected@file@percent }
+\newlabel{SecF:AttackInfl}{{5.6.3}{118}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Flow-sequence in an SQL-injection attack with predicted size likelihood (log-scale). Arrows indicate flow directions (down=incoming, up=outgoing).\relax }}{118}{}\protected@file@percent }
+\newlabel{figF:SQL_I}{{5.10}{118}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.4}Runtime performance}{119}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Flow-sequence in an infiltration attack with port-direction likelihood (log-scale).\relax }}{120}{}\protected@file@percent }
+\newlabel{figF:Infiltration}{{5.11}{120}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.7}Benign traffic and longterm stability}{120}{}\protected@file@percent }
+\newlabel{SecF:Benigntraffic}{{5.7}{120}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}UGR-16 data}{120}{}\protected@file@percent }
+\newlabel{SecF:UGR_benign}{{5.7.1}{120}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Anomaly score distributions for benign traffic in the UGR-16 data, along with an exemplary distribution plot for a selected host.\relax }}{121}{}\protected@file@percent }
+\newlabel{figF:UGRrealresults}{{5.12}{121}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Sessions corresponding to score banding structures in Fig. 5.12\hbox {}, with predicted likelihoods (log-scale).\relax }}{122}{}\protected@file@percent }
+\newlabel{figF:colsess}{{5.13}{122}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}CICIDS-17 and LANL-15 results}{123}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Anomaly score distributions for benign traffic in the LANL-15 and CICIDS-17 datasets.\relax }}{124}{}\protected@file@percent }
+\newlabel{figF:CICrealresults}{{5.14}{124}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.3}Importance of training data size}{124}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Influence of number of sessions in training data for benign traffic modelling accuracy.\relax }}{125}{}\protected@file@percent }
+\newlabel{figF:Trainingsize}{{5.15}{125}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.8}Benefit of increased model complexity}{126}{}\protected@file@percent }
+\newlabel{SecF:Modelcompl}{{5.8}{126}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.1}Bidirectionality for better session context}{126}{}\protected@file@percent }
+\newlabel{SecF:Bidir}{{5.8.1}{126}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Common short session and the flow likelihoods predicted by each dirctional model.\relax }}{127}{}\protected@file@percent }
+\newlabel{figF:short_sess}{{5.16}{127}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.7}{\ignorespaces Average likelihood of first two flows in a session and false-positives for uni- and bidirectional model.\relax }}{128}{}\protected@file@percent }
+\newlabel{tabF:bidir}{{5.7}{128}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.2}Additional layers for complex session modelling}{128}{}\protected@file@percent }
+\newlabel{SecF:depth}{{5.8.2}{128}}
+\citation{ye2000markov}
+\citation{pellegrino2017learning}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces Predictions for two activities in isolated sessions and in a mixed session.\relax }}{129}{}\protected@file@percent }
+\newlabel{figF:complex_sess}{{5.17}{129}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.3}Comparison with simpler models}{129}{}\protected@file@percent }
+\newlabel{Sect:Compsimp}{{5.8.3}{129}}
+\citation{grov2019towards}
+\citation{yu2018attention}
+\citation{song2009spectrogram}
+\@writefile{lot}{\contentsline {table}{\numberline {5.8}{\ignorespaces Score distributions for simpler models.\relax }}{130}{}\protected@file@percent }
+\newlabel{tabF:Simpcomptab}{{5.8}{130}}
+\citation{kim2016long}
+\citation{wakui2019gampal}
+\citation{radford2018network}
+\citation{khan2021hcrnnids}
+\citation{zhong2020helad}
+\citation{zhou2020variational}
+\citation{liu2020intrusion}
+\citation{berman2019survey}
+\@writefile{toc}{\contentsline {section}{\numberline {5.9}Related work}{131}{}\protected@file@percent }
+\newlabel{SecF:Related work}{{5.9}{131}}
+\citation{shen2018tiresias}
+\citation{du2017deeplog}
+\citation{han2020unicorn}
+\citation{sommer_outside_2010}
+\@writefile{toc}{\contentsline {section}{\numberline {5.10}Limitations and evasion}{132}{}\protected@file@percent }
+\newlabel{SecF:Resilience}{{5.10}{132}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.10.1}Limitations}{132}{}\protected@file@percent }
+\newlabel{SecF:Limitations}{{5.10.1}{132}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.10.2}Evasion and resilience}{133}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.11}Conclusion}{134}{}\protected@file@percent }
+\newlabel{SecF:flaws}{{5.11}{134}}
+\citation{tankard2011advanced}
+\citation{mcafee2015report}
+\citation{eisac2017report}
+\citation{ayala2016active}
+\citation{enisa2017baseline}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Stepping-stone detection and evasive microstructure control}{135}{}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{Chap:NSS}{{6}{135}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Introduction}{135}{}\protected@file@percent }
+\newlabel{SecN:Introduction}{{6.1}{135}}
+\citation{staniford1995holding}
+\citation{pivoting2015}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Outline}{136}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Background}{136}{}\protected@file@percent }
+\citation{donoho2002multiscale}
+\citation{clausen2019traffic}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Depiction of an exemplary stepping-stone chain.\relax }}{137}{}\protected@file@percent }
+\newlabel{figN:Stepstone}{{6.1}{137}}
+\citation{pivoting2015}
+\citation{xin2006testbed}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Depiction of the way a command is packetised, encrypted, and travels through the different stages of the stepping-stone chain via SSH-tunnels.\relax }}{138}{}\protected@file@percent }
+\newlabel{figN:Packetway}{{6.2}{138}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Data generation setting}{138}{}\protected@file@percent }
+\newlabel{SecN:Datasetcreation}{{6.2}{138}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Containerisation}{138}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Simulating stepping stones with SSH-tunnels and Docker}{138}{}\protected@file@percent }
+\newlabel{SecN:Setup}{{6.2.2}{138}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2.1}Simulating interactive SSH-traffic}{138}{}\protected@file@percent }
+\newlabel{SecN:Simulating_interactive}{{6.2.2.1}{138}}
+\citation{paxson1995wide}
+\citation{hemminger2005network}
+\citation{padhye2010evading}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2.2}Simulating different network settings}{139}{}\protected@file@percent }
+\newlabel{SecN:congestion}{{6.2.2.2}{139}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.3}Evasive tactics}{139}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.3.1}Adding transfer delays}{139}{}\protected@file@percent }
+\newlabel{SecN:delays_desc}{{6.2.3.1}{139}}
+\citation{padhye2010evading}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Depiction the simulation setup for each host in the chain.\relax }}{140}{}\protected@file@percent }
+\newlabel{figN:Simulation_setup}{{6.3}{140}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.3.2}Adding chaff perturbation}{140}{}\protected@file@percent }
+\newlabel{SecN:chaff_desc}{{6.2.3.2}{140}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.3.3}Repacketisation}{140}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Evaluation data}{140}{}\protected@file@percent }
+\newlabel{SecN:Evaldata}{{6.3}{140}}
+\citation{CAIDA2018}
+\citation{velan2016network}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Stepping-stone data}{141}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Benign data}{141}{}\protected@file@percent }
+\citation{shullich2011survey}
+\citation{wang2018research}
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Summary of different components in our evaluation data.\relax }}{142}{}\protected@file@percent }
+\newlabel{figN:Datasim}{{6.1}{142}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.3}Evaluation methodology}{142}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Selected SSD methods and Implementation}{142}{}\protected@file@percent }
+\newlabel{SecN:Selection}{{6.4}{142}}
+\citation{yang2011correlating}
+\citation{nasr2018deepcorr}
+\citation{wu2010neural}
+\citation{yang2015rtt}
+\citation{huang2016detecting}
+\citation{di2011detecting}
+\citation{huang2011detecting}
+\citation{ding2013detecting}
+\citation{wang2010robust}
+\citation{yang2011correlating}
+\citation{wu2010neural}
+\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces Summary of included SSD-methods along with the claimed true positive and false positive rates and evasion robustness by the corresponding authors. We added labels to each method for later reference.\relax }}{143}{}\protected@file@percent }
+\newlabel{tabN:Summary}{{6.2}{143}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.0.1}PContext, 2011}{143}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.0.2}WuNeur, 2010}{143}{}\protected@file@percent }
+\citation{nasr2018deepcorr}
+\citation{yang2015rtt}
+\citation{yang2007mining}
+\citation{huang2016detecting}
+\citation{di2011detecting}
+\citation{huang2011detecting}
+\citation{ding2013detecting}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.0.3}DeepCorr, 2018}{144}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.0.4}RWalk, 2015}{144}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.0.5}C-Over, 2016}{144}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.0.6}Ano1, 2011}{144}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.0.7}Ano2, 2011/2013}{144}{}\protected@file@percent }
+\citation{wang2010robust}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces ROC-curves for different SSD methods on dataset BA (no evasive tactics)}}{145}{}\protected@file@percent }
+\newlabel{figN:Noevasion_4nodes}{{6.4}{145}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.3}{\ignorespaces AUC-scores for different methods on stepping-stone data without evasive tactics.\relax }}{145}{}\protected@file@percent }
+\newlabel{tabN:dfAUC}{{6.3}{145}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.0.8}WM, 2010}{145}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Results}{145}{}\protected@file@percent }
+\newlabel{SecN:Results}{{6.5}{145}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.1}Data without evasion tactics}{145}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Detection rates in dependence of $\delta _D$ for different methods on dataset DA with a fixed FP rate of $0.4\%$}}{146}{}\protected@file@percent }
+\newlabel{figN:Delaydetection}{{6.5}{146}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.2}Delays}{146}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.4}{\ignorespaces AUC-scores for SSD methods with added transfer delays at $\delta _D=1000ms$.\relax }}{147}{}\protected@file@percent }
+\newlabel{tabN:AUCdelays}{{6.4}{147}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces Detection rates in dependence of $\delta _C$ for different methods on dataset CA with a fixed FP rate of $0.4\%$}}{147}{}\protected@file@percent }
+\newlabel{figN:Chaffdetection}{{6.6}{147}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.3}Chaff}{147}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.5}{\ignorespaces AUC-scores for SSD methods with added chaff at 300\% ratio.\relax }}{148}{}\protected@file@percent }
+\newlabel{tabN:AUCchaff}{{6.5}{148}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.6}{\ignorespaces Relative contribution in \% of different benign data to the FP rate.\relax }}{148}{}\protected@file@percent }
+\newlabel{tabN:dfFP}{{6.6}{148}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.4}False positives}{148}{}\protected@file@percent }
+\newlabel{SecN:FPana}{{6.5.4}{148}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.5}Influence of chain length}{148}{}\protected@file@percent }
+\newlabel{SecN:Chainl}{{6.5.5}{148}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces Detection rates in dependence of chain length for different methods on dataset CL with a fixed FP rate of $0.4\%$}}{149}{}\protected@file@percent }
+\newlabel{figN:Influencechainl}{{6.7}{149}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.7}{\ignorespaces Influence of network congestion on detection rates at a fixed FP rate of $0.4\%$. The given percentages are describing the change of the detection rate under the given congestion setting when compared to the overall average.\relax }}{149}{}\protected@file@percent }
+\newlabel{tabN:Congestion}{{6.7}{149}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.6}Influence of network settings}{149}{}\protected@file@percent }
+\newlabel{SecN:InfluenceNetwork}{{6.5.6}{149}}
+\citation{xin2006testbed}
+\citation{nasr2018deepcorr}
+\citation{CAIDA2018}
+\citation{di2011detecting}
+\citation{yang2015rtt}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.7}Summary}{150}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.6}Related work}{150}{}\protected@file@percent }
+\newlabel{SecN:Relatedwork}{{6.6}{150}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.1}Testbeds and data}{150}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.7}Conclusion}{151}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Conclusion}{153}{}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Result conclusions}{153}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Contributions}{153}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Microstructure results}{153}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Traffic generation paradigm}{153}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.3}Anomaly detection}{153}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Central Research questions}{153}{}\protected@file@percent }
+\newlabel{Sec:Reseach_questions}{{7.3}{153}}
+\bibstyle{abbrv}
+\bibdata{refs}
+\@writefile{toc}{\contentsline {section}{\numberline {7.4}Critical analysis of results}{154}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.5}Future work}{154}{}\protected@file@percent }
+\bibcite{noauthor_ctu-13_nodate}{1}
+\bibcite{USC2010ICT}{2}
+\bibcite{mandiant2015trends}{3}
+\bibcite{mcafee2015report}{4}
+\bibcite{CAIDA2018}{5}
+\bibcite{ahmed2016survey}{6}
+\bibcite{allix2014machine}{7}
+\bibcite{anderson1980computer}{8}
+\bibcite{aparicio2017using}{9}
+\bibcite{arfeen2013role}{10}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{155}{}\protected@file@percent }
+\bibcite{aun2017review}{11}
+\bibcite{ayala2016active}{12}
+\bibcite{badiger2018violet}{13}
+\bibcite{berman2019survey}{14}
+\bibcite{bernaille2006traffic}{15}
+\bibcite{Bontemps2016}{16}
+\bibcite{brownlee1999traffic}{17}
+\bibcite{casas2012unsupervised}{18}
+\bibcite{chandola_anomaly_2009}{19}
+\bibcite{chen2015strategies}{20}
+\bibcite{cheng2019pac}{21}
+\bibcite{cheng2021packet}{22}
+\bibcite{clausen2019traffic}{23}
+\bibcite{henryLSTM}{24}
+\bibcite{creech2014developing}{25}
+\bibcite{creech2013generation}{26}
+\bibcite{crussell2015minimega}{27}
+\bibcite{cup1999data}{28}
+\bibcite{cup1999dataset}{29}
+\bibcite{damasevicius2020litnet}{30}
+\bibcite{denning1987intrusion}{31}
+\bibcite{di2011detecting}{32}
+\bibcite{ding2013detecting}{33}
+\bibcite{donoho2002multiscale}{34}
+\bibcite{du2017deeplog}{35}
+\bibcite{enisa2017baseline}{36}
+\bibcite{erhan2020bougazicci}{37}
+\bibcite{pivoting2015}{38}
+\bibcite{fricker2012impact}{39}
+\bibcite{fujdiak2018ip}{40}
+\bibcite{garcia2014empirical}{41}
+\bibcite{iperf}{42}
+\bibcite{gharib2016evaluation}{43}
+\bibcite{grov2019towards}{44}
+\bibcite{han2020unicorn}{45}
+\bibcite{haque2019audio}{46}
+\bibcite{hemminger2005network}{47}
+\bibcite{hou2017deep}{48}
+\bibcite{huang2011detecting}{49}
+\bibcite{huang2016detecting}{50}
+\bibcite{hwang2019lstm}{51}
+\bibcite{bestpractise}{52}
+\bibcite{docker}{53}
+\bibcite{docker_docs}{54}
+\bibcite{dockerhub}{55}
+\bibcite{jaber2011can}{56}
+\bibcite{jacobson1989tcpdump}{57}
+\bibcite{javaid2016deep}{58}
+\bibcite{jurgelionis2011empirical}{59}
+\bibcite{kamper2020multilingual}{60}
+\bibcite{kayacik2005selecting}{61}
+\bibcite{kent-2015-cyberdata1}{62}
+\bibcite{akent-2015-enterprise-data}{63}
+\bibcite{khan2021hcrnnids}{64}
+\bibcite{kim2016long}{65}
+\bibcite{kolyshkin2006virtualization}{66}
+\bibcite{koutrouki2018mitigating}{67}
+\bibcite{lamprakis2017unsupervised}{68}
+\bibcite{lantz2010network}{69}
+\bibcite{lashkari2017characterization}{70}
+\bibcite{eisac2017report}{71}
+\bibcite{lin2019generating}{72}
+\bibcite{lippmann2000evaluating}{73}
+\bibcite{liu2020intrusion}{74}
+\bibcite{livingstone2018ryerson}{75}
+\bibcite{macia2018ugr}{76}
+\bibcite{marx2020same}{77}
+\bibcite{massey1951kolmogorov}{78}
+\bibcite{mchugh2000testing}{79}
+\bibcite{mell2003overview}{80}
+\bibcite{zeroday}{81}
+\bibcite{milenkoski2015evaluating}{82}
+\bibcite{mirsky2018kitsune}{83}
+\bibcite{mirsky2016sherlock}{84}
+\bibcite{moustafa2015unsw}{85}
+\bibcite{moustafa_unsw-nb15:_2015}{86}
+\bibcite{nasr2018deepcorr}{87}
+\bibcite{nguyen2008survey}{88}
+\bibcite{nisioti2018intrusion}{89}
+\bibcite{ozgur2016review}{90}
+\bibcite{padhye2010evading}{91}
+\bibcite{paxson1995wide}{92}
+\bibcite{pellegrino2017learning}{93}
+\bibcite{radford2018network}{94}
+\bibcite{mergecap}{95}
+\bibcite{ring2019survey}{96}
+\bibcite{rubin2014three}{97}
+\bibcite{sequeira2013influence}{98}
+\bibcite{sharafaldin2018towards}{99}
+\bibcite{sharafaldin2018toward}{100}
+\bibcite{editcap}{101}
+\bibcite{shen2018tiresias}{102}
+\bibcite{shiravi2012toward}{103}
+\bibcite{shullich2011survey}{104}
+\bibcite{sommer_outside_2010}{105}
+\bibcite{song2009spectrogram}{106}
+\bibcite{sony2000traffic}{107}
+\bibcite{sperotto2009labeled}{108}
+\bibcite{srivastava2014dropout}{109}
+\bibcite{staniford1995holding}{110}
+\bibcite{stober2013you}{111}
+\bibcite{tahaei2020rise}{112}
+\bibcite{tankard2011advanced}{113}
+\bibcite{tavallaee2009detailed}{114}
+\bibcite{tavallaee2012nsl}{115}
+\bibcite{turcotte17}{116}
+\bibcite{ulvila2003evaluation}{117}
+\bibcite{UNIBS2009data}{118}
+\bibcite{velan2016network}{119}
+\bibcite{wakui2019gampal}{120}
+\bibcite{walsworth2015caida}{121}
+\bibcite{wang2018research}{122}
+\bibcite{wang2010robust}{123}
+\bibcite{wexler2019if}{124}
+\bibcite{wu2010neural}{125}
+\bibcite{xin2006testbed}{126}
+\bibcite{yang2007mining}{127}
+\bibcite{yang2011correlating}{128}
+\bibcite{yang2015rtt}{129}
+\bibcite{ye2000markov}{130}
+\bibcite{yen2009browser}{131}
+\bibcite{yin2017comparative}{132}
+\bibcite{yu2018attention}{133}
+\bibcite{zander2005automated}{134}
+\bibcite{zhong2020helad}{135}
+\bibcite{zhou2020variational}{136}
+\gdef \@abspage@last{168}

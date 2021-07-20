@@ -1,0 +1,153 @@
+\documentclass[phd,ilcc,twoside]{infthesis}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{color, colortbl}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{makecell}
+\usepackage{rotating}
+
+\usepackage{listings}
+\usepackage{subcaption}
+\graphicspath{ {images/} }
+
+
+\usepackage[some]{background}
+
+\SetBgScale{1}
+\SetBgContents{\parbox{14cm}{%
+%\centering
+\includegraphics[scale=5.2]{roundel.jpg}}}
+%  \Huge Draft:  \today\\[14cm]\rotatebox{180}{\Huge Draft:  \today}}}
+\SetBgColor{gray}
+\SetBgAngle{0}
+\SetBgOpacity{0.06}
+
+\title{
+{Traffic microstructures and network\\ anomaly detection}\\
+}
+\author{Henry Clausen}
+\date{\today}
+\submityear{\today}
+
+
+\newtheorem{hypothesis}{Hypothesis}
+
+\newtheorem{rquestion}{Research Question}
+
+\begin{document}
+
+\begin{titlepage}
+   \begin{center}
+       \vspace*{0.6cm}
+ 		\Huge
+       \textbf{Traffic microstructures\\ and network anomaly detection}
+       
+		\LARGE
+       \vspace{0.3cm}
+        Subtitle
+            
+       \vspace{0.4cm}
+
+       \textbf{Henry Clausen}
+
+\BgThispage
+       \vfill
+            
+\large       A thesis presented for the degree of\\
+       Doctor of Philosophy
+            
+       \vspace{0.5cm}
+     
+
+
+\includegraphics[scale=0.4]{roundel_informatics.jpg}
+            
+\large Laboratory for Foundations of Computer Science (LFCS)\\            
+\large School of Informatics\\
+University of Edinburgh\\
+%United Kingdom\\
+\today
+            
+   \end{center}
+\end{titlepage}
+
+%\maketitle
+%\input{chapters/titlepage}
+
+%\chapter*{Abstract}
+\input{chapters/abstract}
+
+\chapter*{Dedication}
+...
+
+\chapter*{Declaration}
+
+I declare that this thesis was composed by myself, that the work contained herein is my own except where explicitly stated otherwise in the text, and that this work has not been submitted for any other degree or professional qualification except as specified. Some of the material used in this thesis has been published in the following papers:
+
+\begin{itemize}
+\item Henry Clausen, Robert Flood, and David Aspinall: ``Traffic generation using containerization for machine learning''. In: \textit{Proceedings of the \textcolor{red}{abc}} (appears in Chapter \ref{Chap:Req}). 
+\item Henry Clausen and David Aspinall: ``Examining traffic microstructures to improve model development''. In: \textit{2021 IEEE Security and Privacy Workshops (SPW)} (appears in Chapter \ref{Chap:Prob}).
+\item Henry Clausen, David Aspinall, and Rober Flood: ``Controlling network traffic microstructures for machine-learning model probing''. In: \textit{Proceedings of the 17th EAI SecureComm Conference, Canterbury, UK, September 2021} (appears in Chapter \ref{Chap:Prob}).
+\item Henry Clausen, Gudmund Grov, Marc Sabate, and David Aspinall: ``Better Anomaly Detection for Access Attacks Using Deep Bidirectional LSTMs''. In: \textit{Machine Learning for Networking: Third International Conference (MLN), Paris, France, November 24–26, 2020, Springer}  (appears in Chapter \ref{Chap:CBAM}).
+\item Henry Clausen, Gudmund Grov, and David Aspinall: ``CBAM: A Contextual Model for Network Anomaly Detection''. In: \textit{Computers 10.6 (2021) (MPDI)} (appears in Chapter \ref{Chap:CBAM}).
+\item Henry Clausen, Michael S. Gibson, and David Aspinall: ``Evading stepping-stone detection with enough chaff''. In: \textit{International Conference on Network and System Security (NSS), Melbourne, Australia, November 25-27 2020, Springer} (appears in Chapter \ref{Chap:NSS}).
+\end{itemize}
+
+\hspace*{0pt}\hfill Henry Clausen
+
+\chapter*{Acknowledgements}
+I want to thank...
+
+\tableofcontents
+%\listoffigures
+%\listoftables
+
+\chapter{Introduction}
+\input{chapters/introduction}
+
+\chapter{Background}
+\input{chapters/background}
+
+%\chapter{Related work}
+%\input{chapters/relwork}
+
+
+%It should address six questions:
+%
+%    What is the reason for writing the thesis?
+%    What are the current approaches and gaps in the literature?
+%    What are your research question(s) and aims?
+%    Which methodology have you used?
+%    What are the main findings?
+%    What are the main conclusions and implications?
+%
+
+\chapter{Requirements for Machine Learning}\label{Chap:Req}
+\input{chapters/DYNAMICS}
+
+\chapter{Traffic generation to probe and understand model behaviour}\label{Chap:Prob}
+\input{chapters/modelling}
+
+\chapter{CBAM: An anomaly detection model for traffic microstructures}\label{Chap:CBAM}
+\input{chapters/flow_model}
+%input{chapters/packet_encoder}
+
+\chapter{Stepping-stone detection and evasive microstructure control}\label{Chap:NSS}
+\input{chapters/NSS}
+
+\chapter{Conclusion}
+\input{chapters/Conclusion}
+
+
+%\addcontentsline{toc}{section}{Bibliography}
+\bibliographystyle{abbrv}
+\bibliography{refs}
+
+\end{document}

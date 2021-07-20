@@ -1,0 +1,1077 @@
+%\section{CBAM: A contextual model for network anomaly detection}
+%
+%
+%Anomaly-based intrusion detection methods are aimed to combat the increasing rate of zero-day  attacks \cite{zeroday}, but their success is currently restricted to the detection of high-volume attacks using aggregated traffic features. Recent evaluations show that the current anomaly-based network intrusion detection methods fail to detect remote access attacks reliably \cite{nisioti2018intrusion}. These are smaller in volume and often only stand out when compared to their surroundings. Currently, anomaly methods try to detect access attack events mainly as point anomalies and neglect the context they appear in.
+%We present and examine CBAM, a contextual bidirectional anomaly model based on deep LSTM-networks that is designed specifically to detect such attacks as contextual network anomalies. The model efficiently learns short-term sequential patterns in network flows as conditional event probabilities. Access attacks frequently break these patterns when exploiting vulnerabilities, and can thus be detected as contextual anomalies. 
+%We evaluated our CBAM on an assembly of three datasets that provide both representative network access attacks, real-life traffic over a long timespan, and traffic from a real-world red-team attack. We contend that this assembly is closer to a potential deployment environment than current NIDS benchmark datasets. We show that by building a deep model, we are able to reduce the false positive rate to $0.16\%$ while detecting effectively, which is significantly lower than the operational range of other methods. We furthermore demonstrate that short-term flow structures remain stable over long periods of time, making CBAM robust against concept drift.
+
+
+\section{Introduction}
+
+
+
+
+
+Remote access attacks are used to gain control or access information on remote devices by exploiting vulnerabilities in network services, and are involved in many of today's data breaches \cite{mandiant2015trends}.
+A recent survey \cite{nisioti2018intrusion} showed that these attacks are detected at significantly lower rates than more high-volume probing or DoS attacks. 
+To address this, we present \textbf{CBAM}, a short-term \textbf{c}ontextual \textbf{b}idirectional \textbf{a}nomaly \textbf{m}odel of network flows, which improves detection rates of remote access attacks significantly. The underlying idea of CBAM is to capture probability distributions over sequences of network flows that quantify their overall likelihood, much like a language model. 
+CBAM is based on deep bidirectional LSTM networks. 	
+
+Recently, deep learning models such as LSTMs have been a popular tool in network intrusion detection \cite{Bontemps2016,kim2016long,radford2018network}. 
+However, %a lack of suitable benchmark datasets and 
+persistent failings in evaluations have made it difficult to assess the performance and real-world applicability of currently proposed methods to access attack detection, and have lead to a chaotic and convoluted NIDS landscape \cite{nisioti2018intrusion}.
+
+To avoid these pitfalls and demonstrate that our approach delivers a significant improvement in detection rates and real-world applicability, we evaluated our model carefully on three modern network intrusion detection datasets. Furthermore, we reimplemented and evaluated three state-of-the-art methods on these datasets and compared their performance against ours. By carefully selecting input parameters based on their sequential interdependence as well as increasing model complexity in terms of depth and efficient input embedding compared to preceding models, we are able to detect remote access attacks at a false positive rate of $0.16\%$, a rate at which none of the comparison models are able to detect any attacks reliably.
+
+%We evaluate CBAM carefully on two modern network intrusion detection datasets. Furthermore, we reimplemented and evaluated three state-of-the-art methods on these datasets and compared their performance against ours. By carefully selecting input parameters based on their sequential interdependence as well as increasing model complexity in terms of depth and efficient input embedding compared to preceding models, we are able to detect remote access attacks at a false positive rate of $0.16\%$, a rate at which none of the comparison models are able to detect any attacks reliably. 
+%Here, we present results from an additional real-world dataset, LANL-15, that display how and why CBAM can detect the real-world attacks contained in the dataset. 
+
+We also discuss specific design choices and how they enable effective modelling of specific traffic characteristics to boost performance. The evaluation of existing deep learning models so far has generally been agnostic to particular characteristics of the modelled traffic and fails to explain where and why the corresponding model fails to classify traffic properly. In this chapter, we therefore apply the similar model probing techniques as demonstrated in Chapter \ref{Chap:Prob} to validate the undertaken design steps.
+
+\textbf{Thesis context:} This chapter turns from the generation and examination of traffic microstructures to the design of an anomaly detection model that leverages specific microstructures for detection. It also examines which conclusions can be made on the distribution and similarity of microstructures from the model output.
+
+
+This chapter largely consists of work published in ``Better Anomaly Detection for Access Attacks Using Deep Bidirectional LSTMs'' (H. Clausen, G. Grov, M. Sabate, and D. Aspinall, 2020) and ``CBAM: A Contextual Model for Network Anomaly Detection'' (H. Clausen, G. Grov, and D. Aspinall, 2021).
+
+
+%\begin{itemize}
+%\item We provide extensive examination how common access attacks perturb short-term contextual sequence structures, and can thus be detected as anomalies by our presented model. 
+%%contextual are suitable to model short flow sequence effectively, and how common access attacks are detected as perturbations of the extracted sequence structures.
+%\item We examine in detail how adding bidirectional LSTM-layers, increasing network depth, and adding a separate size vocabulary helps CBAM predict flows better for specific traffic types to reduce false-positives.
+%\item We provide additional performance results on the LANL-15 real-world dataset to demonstrate that CBAM is capable of detecting real-world attacks in real-world traffic.
+%\item We examine in more detail how short-term flow sequence structures remain stable over long time periods, what the most common source for false-positives are, and how the size of the training data affects the models ability to reliably recognise benign traffic.
+%\end{itemize}
+
+\subsection{Outline}
+
+The remainder of this chapter is organised as follows:
+Section \ref{SecF:Over} provides a motivation for short-term contextual models and their benefits for the detection of access attacks. Section \ref{SecF:Evalmal} provides an overview of common evaluation pitfalls that prevent a fair comparison of corresponding NID models.
+Section \ref{SecF:Design} explains the methodology and architecture of CBAM  as well as the data preprocessing. Section \ref{SecF:Datasets} describes the problems with network traffic datasets which previous methods were evaluated on, and explains the advantages of our selection of datasets. 
+We also describe how and why traffic from particular hosts is selected, and how training and test data are constructed.
+Section \ref{SecF:Det} discusses our detection rates on attack traffic in the CICIDS-17 and LANL-15 data, and examines how and why CBAM is able to identify these attacks.
+Section \ref{SecF:Benigntraffic} discusses the false positive rate on benign traffic, and examines long-term stability of flow structures and corresponding model performance. It also provides details on the score distributions and the type of traffic that is both predicted accurately and inaccurately, as well as the influence of the training data size on these predictions.
+Section \ref{SecF:Modelcompl} discusses the reason and measured benefit of specific design steps that increase model complexity.
+Section \ref{SecF:flaws} concludes our results.%, gives an outlook to future work and potential evasion tactics, and discusses related work.
+
+
+\section{Overview}\label{SecF:Over}
+
+
+\begin{table}[ht]
+\centering
+\begin{footnotesize}
+\begin{subtable}{.47\textwidth}
+\begin{tabular}{l l l r r}
+Src&Dst&DPort&bytes&\# packets\\ \hline
+A&B&80&247956&315\\ 
+A&B&80&7544&13\\ 
+A&B&80&328&6\\ 
+A&B&80&2601&10\\ 
+A&B&80&328&6\\ 
+A&B&80&328&6\\ 
+A&B&80&380&7\\
+A&B&80&328&6\\
+\multicolumn{5}{c}{\vdots}
+\end{tabular}
+\caption{XSS-attack, A=192.168.10.50, B= 172.16.0.1}\label{tabF:XSS}
+\end{subtable}
+\quad
+\begin{subtable}{.47\textwidth}
+\begin{tabular}{l l l r r}
+Src&Dst&DPort&bytes&\# packets\\ \hline
+D&C&N33&600&5\\ 
+C&D&445&77934&1482\\ 
+D&C&N33&600&5\\ 
+C&D&445&5202&10\\  
+\end{tabular}
+\caption{Benign SMB, C=C6267, D=C754}\label{tabF:SMB}
+
+\begin{tabular}{l l l r r}
+Src&Dst&DPort&bytes&\# packets\\ \hline
+C&D&445&4106275&2830\\ 
+C&D&445&358305611&242847\\ 
+\end{tabular}
+\caption{\textit{Pass-the-hash} attack via SMB}\label{tabF:PTH}
+\end{subtable}
+\end{footnotesize}
+\caption{The left side depicts a flow sequence from an XSS-attack.% in the CICIDS-17 dataset. 
+The right side depicts a benign SMB-sequence (top), and a sequence from a \textit{Pass-the-hash} attack via the same SMB service.}
+\end{table}
+
+
+In verbal or written speech, we expect the words ``I will arrive by \dots'' to be followed by a word from a smaller set such as ``car'' or ``bike'' or ``5pm''. 
+Similarly, on an average machine we may expect DNS lookups 
+to be followed by outgoing HTTP/HTTPS connections. %(TCP port 80 or 443) 
+%to form a connection to a new destination. 
+These short-term structures in network traffic are a reflection of the computational order of information exchange. Attacks that exploit vulnerabilities in network communication protocols often achieve their target by deviating from the regular computational exchange of a service, which should be reflected in the generated network pattern. 
+
+
+Table 1(a) %\ref{tabF:XSS} 
+depicts a flow sequence from an XSS-attack. Initial larger flows are followed by a long sequence of very small flows which are likely generated by the embedded attack script  trying to download multiple inaccessible locations. Flows of this size are normally immediately followed by larger flows, as depicted in Fig. \ref{figF:XSSdist}, which makes the repeated occurrence of small HTTP flows in this sequence very unusual. 
+
+
+
+Table 1(b) %\ref{tabF:SMB} 
+depicts a regular SMB service sequence while Table 1(c) %\ref{tabF:PTH} 
+depicts a \textit{Pass-the-hash} attack via the same SMB service. As shown, the flows to port N33 necessary to trigger the communication on the SMB port are missing while the second flow is significantly larger than any regular SMB flows due to it being misused for exfiltration purposes.
+
+
+
+
+The underlying idea of CBAM is to predict probabilities of connections in a host's traffic stream conditional on adjacent connections. The probabilities are assigned based on the connection's protocol, network port, direction, and size,  and the model is trained to maximise the overall predicted probabilities. 
+
+
+To assign probabilities, we map each connection event to two discrete sets of states, called vocabularies, according to the protocol, the network port, and the direction of the connection for the first, and according to number of transmitted bytes for the second. The size of the vocabulary is chosen large enough to capture meaningful structures without capturing  rare events that can deteriorate prediction quality. We feed these vocabularies into a deep bidirectional LSTM (long short-term memory) network that takes bivariate sequences of mapped events as input to efficiently capture the conditional probabilities for each event. 
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{images_MLN/XSSdist3.png}
+\caption{HTTP flow size distribution overall, and if preceded by an HTTP flow smaller than 500 bytes.}\label{figF:XSSdist}
+\end{figure}
+
+CBAM acts as an anomaly-detection model that learns short-term structures in benign traffic and identifies malicious sequences as deviations from these structures. 
+By predicting probabilities of flows in benign flow sequences, CBAM is trained in a self-supervised way  on strictly benign traffic. In contrast to classification-based training, CBAM does not require labelled attack traffic in the training data and is thus not affected by typical class imbalances in network intrusion datasets. 
+
+%\section{Related work and evaluation pitfalls}\label{SecF:Related work}
+
+%\textcolor{red}{In this section, we broadly review previous literature in both network intrusion detection and the application of recurrent neural networks in network security. As far as we are aware, we are the first to learn contextual models of short-term interactions from benign network traffic.}
+
+%\subsection{Related work}
+
+%\subsubsection{Recurrent Neural Network Applications}
+
+%A recurrent neural network (RNN) is a directed chain of regular feedforward network, with each individual network cell taking a vector $x_k$ of the input sequence $\{x_1,\dots,x_n\}$ as input. The RNN is able to retain information about the state of a sequence by also passing a value of the internal layer as additional input to the next network cell in the chain. LSTM (long short-term memory) and GRU (gated recurrent units) networks improve several shortcomings of RNNs such as the vanishing gradient problem, and their performance is generally thought to be superior.
+
+%The application of recurrent neural networks to network intrusion detection %and in particular intrusion detection  has risen in popularity recently. 
+
+%LSTM-models for web attack detection, such as by Yu et al. \cite{yu2018attention}, improve detection rates of simpler preceding models such as Song et al. \cite{song2009spectrogram}. They rely on deep packet inspection, and are often targeted at protecting selected web-servers rather than network-wide, due to a lack of computational scalability and increasing traffic encryption. Methodologically, vocabularies are created from string sequences with well-known NLP methods, while our work provides a new vocabulary-construction method suitable for traffic metadata.
+
+%Approaches acting on traffic metadata are designed primarily for network-wide intrusion detection using traffic collected on routers. 
+%which is increasingly difficult due to traffic encryption, and computationally difficult to apply in a network-wide manner.This makes 
+%To date, we count eleven published applications of recurrent neural networks (RNNs) to network traffic for intrusion detection. 
+%The majority of LSTM-based metadata approaches rely on labelled attack data for classification, and do not have the scope of anomaly-based models to detect previously unseen attacks. %, and therefore does not offer the benefits of anomaly detection. 
+%A prominent example of this comes from Kim et al. \cite{kim2016long}, who classify flow sequences based on 41 numeric input features. %, therefore bypassing vocabulary-construction. 
+%Anomaly-based approaches, such as ours, mostly rely on iterative one-step ahead forecasts, with the forecasting error acting as the anomaly indicator. This is for instance done in GAMPAL by Wakui et~al.~\cite{wakui2019gampal}, who use flow data aggregation  as numerical input features, which are computationally easier to process, but cannot encapsulate high-level information such as the used protocol, port, or direction. These models are best used for detecting high-volume attacks.
+%Apart from our work, only Radford et al. \cite{radford2018network} create event vocabularies from flow protocols and sizes. We use a more sophisticated model in terms of stacked recurrent layers and embeddings for more input features, which results in higher detection rates, as demonstrated in see Sect. \ref{SecF:Evalmal}.
+%Little exploration of the usage of stacked recurrent layers or input embeddings has been done.
+%However, all RNN-based approaches share several common evaluation pitfalls, which make it impossible to assess their suitability for U2R and R2L detection in real-world applications. We describe these problems in Section \ref{SecF:Evalmal}.
+% in each of the presented approaches , which we discuss in Section \textcolor{red}{xxxx}. This makes it difficult to assess ....
+
+%A related application to ours was presented by Bontemps et~al.~\cite{Bontemps2016}, which uses LSTM model to detect group anomalies in network traffic via sequential modelling. The model uses three numerical input parameters from aggregated traffic for one-step forecasting, which is then compared to the actual values. Evaluation is done on the outdated KDD-99 dataset. The model construction and anomaly scoring differs substantially from ours as the raw input can be fed directly to the model input layer. Similarly, the detection scope focuses on long-term group anomalies with larger volume rather than contextual anomalies.
+
+%Notable work outside of network traffic includes Tiresias \cite{shen2018tiresias}%, an LSTM model for security event forecasting with great accuracy, 
+%and DeepLog \cite{du2017deeplog}. %, an LSTM network to learn a system's log patterns (e.g., log key patterns and parameter values) from normal execution. 
+%The design of Tiresias has similarities to ours, but the scope of the model is attack forecasting rather than intrusion detection, and relies on both different input data in the form of IDS logs as well as different evaluation metrics.
+
+%DeepLog is combined with a novel log parser to create a sequence of symbolic log keys, which is then also modelled using one-step forecasting. The authors achieve good detection results in regulated environments such as Hadoop with limited variety of events (e.g., 29 events in Hadoop). Here, our model goes further by being applied to a much more heterogeneous data source and creating a more than 30 times larger vocabulary.
+
+\section{Evaluation pitfalls}\label{SecF:Evalmal}
+
+According to Nisioti et al. \cite{nisioti2018intrusion}, the trustworthiness of published low volume access attack detection rates is debatable due to evaluation shortcomings.
+We designed our evaluation to avoid four common pitfalls that are regularly seen:
+
+\subsubsection{Outdated datasets}
+
+%The field of network intrusion detection has always suffered from a lack of suitable datasets for evaluation. %Privacy concerns and the difficulty of posterior attack traffic identification are the reason that no dataset exists that contains realistic U2R/R2L traffic and benign traffic from a real-world environment \cite{ahmed2016survey}. 
+Two datasets and their derivatives, DARPA-98 %\cite{DARPA98} 
+and KDD-99, have been extensively used to benchmark network intrusion detection models \cite{ozgur2016review}. %, with all anomaly-based techniques discussed in a recent survey \cite{nisioti2018intrusion} with reported detection rates on U2R and R2L attacks relying on either of them. %Of the published LSTM approaches we found, all but one test their models on the KDD-99 dataset.% and state high detection rates.
+However, both datasets are now more than 20 years old and have been pointed out as significantly flawed and prone to give overoptimistic results %due to inconsistencies, traffic artifacts, a lack of realistic benign traffic, and an imbalance of benign and attack traffic 
+%\cite{mchugh2000testing,mahoney2003analysis,tavallaee2009detailed}
+\cite{tavallaee2009detailed}. %As we show in Section \ref{SecF:evaluation}, we are not able to reproduce the achieved detection rates of three highly cited approaches on more modern datasets.
+
+
+\subsubsection{Lack of attack class distinction}
+
+Most intrusion datasets include attack events from both low volume access attack classes such as R2L (Remote-to-Local) and U2R (User-to-Root) as well as attacks like DoS or port scans which generate a large number of events. %Recorded events are labelled individually, 
+%creating an imbalance in the number of DoS and probing events compared other attack classes. %For instance, $96\%$ of the attack events in the CICIDS-17 dataset \cite{sharafaldin2018toward} consist of DoS and probing events.
+If reported detection rates do not distinguish between different attacks or attack classes, performance metrics will be dominated and potentially inflated by DoS and probing attacks. %sSimilarly, results are often given in terms of precision and recall, which are misleading in imbalanced datasets.
+%\textcolor{red}{can we get a citation here? Otherwise state examples?}
+
+%A common malpractice in network intrusion detection is to only report overall detection rates, i.e. what percentage of all attack events in the test data was successfully identified as malicious, instead of breaking this up for different attacks. 
+%The described event imbalace means that detection rates are dominated by the performance on DoS and probing attacks, which can inflate performance metrics significantly.
+
+%Furthermore, detection rates are often inflated by the lack of distinction between attack classes and the imbalance of DoS- and probing-like attack events versus other attack events.
+
+\subsubsection{Arbitrary false positive rates}\label{SecF:ArbFP}
+There is no agreed upon value for a suitable false positive rate in network intrusion detection. This leads many authors to report very high detection rates at the expense of having unrealistically high false positive rates, often around $5\%$ and above. %, which is unrealistic for a real-world deployment. 
+%Raised alerts mostly trigger manual human investigation, so high false positive rates increase operational costs and render an intrusion detection system unusable.
+In our evaluation, %we aim for a more realistic false positive rate of about $0.1\%$, and furthermore 
+we report overall AUC scores, which describe the separation of benign and anomalous traffic.
+%Since often, no measures such as the AUC, which describe the overall separation between benign and anomalous traffic, are given, it is impossible to assess the detection power of these models.
+
+\subsubsection{Lack of long-term evaluation}
+
+To be effective, an intrusion detection system has to produce a consistently low false positive rate in the presence of concept drift. %or alterations in the network topology can harm the ability of a model to correctly classify benign traffic. 
+A crucial aspect when assessing the deployability of an intrusion detection system is the long-term stability of a trained model \cite{koutrouki2018mitigating}, which is often neglected in the literature.
+We include a dataset focused on long-term traffic evolution in our evaluation to demonstrate the stability and deployability of our model. 
+%However, long-term model stability is most often neglected in the evaluation of network intrusion detection models, with the KDD-99 dataset spanning just two weeks. None of the papers employing recurrent neural networks make any statements on this issue.
+
+
+
+
+\section{Design}\label{SecF:Design}
+
+\subsection{Session construction}
+
+%We look at a model of network flow events. 
+%A network flow (often referred to as ``NetFlow'') is a summary of a connection between two computers and contains a timestamp, the used IP protocol, the source and destination IP address and network port, and a choice of summary values.
+The raw input data, in the form of network flows, contains unordered traffic from and to all hosts in the network. %, while we want to examine structures in the traffic of individual hosts. 
+To order the raw network flows, we  first gather all outgoing and incoming flows for each of the hosts selected for examination according to their IP address. 
+
+The traffic a host generates is often seen as a series of \emph{session}, which are intervals of time  during which the host is engaging in the same, continued, activity \cite{rubin2014three}. In our context, flows that occur during the same session can be seen as having strong short-term dependencies. We therefore group flows going from or to the same host to sessions using an established statistical approach \cite{rubin2014three}:
+
+\textit{If a network flow starts less than $\alpha$ seconds after the previous flow for that host, then it belongs to the same session; otherwise a new session is started. If a session exceeds $\beta$ events, a new session is started.}
+
+
+ 
+We chose the number of $\alpha=8$ seconds as we have found that on average around $90\%$ of flows on a host start less than $8$ seconds after the previous flow, a suitable threshold to create cohesive sessions according to Rubin-Delanchy et al. \cite{rubin2014three}. We introduced the $\beta$ parameter in order to break up long sessions that potentially contain a small amount of malicious flows, and estimated $\beta=25$ to be a suitable parameter. Detection rates do not seem to be very sensitive to the exact choice of $\beta$ though.
+
+A perfect session grouping would require (unavailable) information from the top layers of the network stack. We therefore use our session definition as  a first approximation which we found to be useful enough for this experiment. We will discuss this issue further in Section \ref{SecF:depth} and Section \ref{SecF:Resilience}.
+
+
+The interarrival time distribution for selected hosts in the used datasets, described in Section \ref{SecF:data}, along with $90\%$ quantile lines is depicted in Fig. \ref{figF:Interarrivals}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{images_MLN/Interarrivals-1}
+ \caption[Flow interarrival distributions for selected hosts in the the CICIDS-17, the LANL-15, and the UGR-16 data, with 90 percent quantile lines]{Flow interarrival distributions for selected hosts in the the CICIDS-17, the LANL-15, and the UGR-16 data, with 90 percent quantile lines.}\label{figF:Interarrivals}
+\end{figure}
+
+\subsection{Contextual modelling}
+%\textcolor{red}{rewrite}
+Each session is now a sequence of flows that are assumed to be interdependent. %We make this assumption because network flows more often than not retrieve information that is directly relevant for subsequent flows. %For example, before a computer makes a connection to a new website, it needs to retrieve its IP address from the nearest DNS nameserver. 
+%Our goal is to build a model that can learn an accurate representation of these sequential patterns and assign each session a likelihood, similar to a language model. 
+We observed in an initial traffic analysis that the protocol, port, and direction of a flow as well as its size are highly dependent on the surrounding flows, %For instance, two small outgoing DNS flows are followed by a large outgoing HTTP flow with a probability of $99.8\%$ in the CICIDS-17 dataset. 
+which motivates their use in the modelling process. We treat flows as symbolic events that can take different states, much like words in a language model. The state of a flow is defined as the tuple consisting of the protocol, network port, and the direction of the flow. %\footnote{For portless protocols, the state is  given by the pair of the protocol and the direction.}. 
+We consider only the server port numbers, which indicate the used service, in the state-building process.
+%For TCP- and UDP-connections, usually only the contacted server port contains valuable information about the purpose of a flow. For that reason, 
+We introduce the following notation:
+
+\vspace{0.35cm}
+\begin{center}
+\begin{tabular}{l l}
+$M$:&number of states \\[0.2cm]
+$C$:&number of host groups \\[0.2cm]
+$S$:&number of size groups \\[0.2cm]
+$N^i_{\text{embed}}$:& embedding dimension\\[0.2cm]
+$N^i_{\text{hidden}}$:& LSTM layers dimension \\[0.2cm]
+%\end{tabular}
+%\quad
+%\begin{tabular}{l l}
+$N_j$:& the length of session $j$\\[0.2cm]
+$x^{i,j}\in\{1,\dots,M\}:$%\in\{1,\dots,M\}$ 
+& the state of flow $i$ in %\\[0.2cm]
+session $j$\\[0.2cm]
+$c^{j}\in\{1,\dots,C\}$:%\in\{1,\dots,C\}$ 
+& the host group% that session $j$%\\%[0.2cm] %originates from
+\\[0.2cm]
+$s^{i,j}\in\{1,\dots,S\}$: & size group of flow $i$ in %[0.2cm]
+session $j$\\[0.2cm]
+%$\{x,s,c\}^{j}$& Set of flow states, sizes and host group \\%[0.2cm]
+%& in session $j$ \\[0.2cm]
+$p_x^{i,j,k}=P(x^{i,j}=k|j)$& the predicted probability of $x^{i,j}=k$\\
+& conditional on the other flows in session $j$ \\[0.2cm] 
+%& given all other $x^{i,j}$ and $s^{i,j}$\\[0.2cm] 
+$p_s^{i,j,l}=P(s^{i,j}=l|j)$& the predicted probability of $s^{i,j}=l$\\
+& conditional on the other flows in session $j$ \\[0.2cm] %,~k\in\{1,\dots,M\}
+\end{tabular}
+\vspace{0.35cm}
+\end{center}
+The collection of all states is called a \emph{vocabulary}. For prediction, the total size of a vocabulary directly correlates with the number of parameters needed to be inferred in an LSTM network, thus influencing the time and data volume needed for training. Too large vocabularies also lead to decreased predictive performance by including rare events that are hard to predict \cite{chen2015strategies}. We therefore bound the total number of states and only distinguish between the $M-2$ tuples of protocol, port, and direction most commonly seen on a machine, with less popular combinations being grouped as ``Other''. Furthermore, the end of a session is treated as an additional artificial event  with its own state. The total vocabulary size is then given by $M$. 
+
+%To create a more comprehensive model of flow sequences, we might want to include additional flow features into CBAM to extend the detection capability of CBAM. 
+Our experimentation has shown that detection rates improve when including the size as an additional variable, as we discuss in Section \ref{SecF:AttackInfl}. Rather than making a point estimate of the size, we want to produce a probability distribution for different size intervals. This provides better accuracy for situations in which both small and large flows have a similar occurrence likelihood. We group flows into $S$ different size quantile intervals, with the set of all size intervals forming a third vocabulary. The $S-1$ boundaries that separate the size intervals correspond to $S-1$ equidistant quantiles of the size distribution in the training data.
+
+Hosts are grouped according to their functionality (Windows, Ubuntu, servers, etc.) a distinction that can easily be performed using signals in the traffic.  %All hosts running Windows belong to a different group than hosts running Ubuntu while servers belong to a third group. 
+The group is provided to the model as an additional input parameter $c^j$ and forms a third vocabulary. 
+
+%By treating the state, the host group, and the size group as separate dictionaries, we avoid the creation of one large vocabulary of size $M\times C \times S$, which makes training faster and avoids the creation of rare states \cite{chen2015strategies}. 
+
+\subsection{Architecture selection}
+
+
+We now represent each session as a set of two symbolic sequences that contain between three and 27 items, in order to capture their contextual structure for the reasons described in Section \ref{SecF:Over}. A number of techniques exist to describe such sequences, such as \textit{Markov-models and Hidden-Markov-models, Finite-State-Automata,} or \textit{N-Gram} models. However, the success of recurrent neural networks in similar applications of natural language processing over these methods suggests they would be the most appropriate architecture to capture contextual relationships between flows. In Section \ref{Sect:Compsimp}, we compare the performance of CBAM to both Markov-based models and Finite-State-Automata. Even though convolutional neural networks and feed-forward networks can be more suitable choices for specific sequential problems with tabular or regression characteristics, recurrent neural networks such as LSTMs or GRUs normally outperform them for short tokenised sequences \cite{yin2017comparative}. Both LSTMs and GRUs perform similarly well and generally outperform simple RNNs.
+
+
+
+
+
+\subsection{Trained architecture}
+
+
+We use a deep bidirectional LSTM network which processes a sequence in both forward and reverse direction to predict the state and size group of individual flows.
+The architecture of the network we trained is depicted in Fig. \ref{figF:rnn_FSA}. The increased model complexity we present has not been explored in previous LSTM applications to network intrusion detection, and enables us to boost detection rates while lowering false positive rates, which we demonstrate in Section \ref{SecF:Modelcompl}.
+ %\textcolor{red}{Stronger statement what we do more }In contrast to Shen et al. \cite{shen2018tiresias}, our LSTM network uses to multivariate inputs and outputs.
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=0.88\textwidth]{images_MLN/LSTM_design_bi2.jpg}
+    \end{center}
+    \vspace{-15pt}
+    \caption{Architecture of the trained bidirectional LSTM network. }\label{figF:rnn_FSA}
+\end{figure}
+
+%To prepare the input, the state $x^{i,j}$ of each flow in a session is transformed into an $M$-dimensional vector using \emph{one-hot encoding}. This process takes the discrete state $x^{i,j}$ and maps it to a vector of zeros and a single 1 signalling the specific state. Similarly, we provide the network a $C$-dimensional one-hot encoding vector $c^{j}$ and an $S$-dimensional one-hot encoding vector $s^{i,j}$, which indicate the type of machine the session is coming from and the size interval of the respective flow. 
+\subsubsection{Embedding}
+First, each of the three vectors is fed through an embedding layer, which assigns them a vector of size $N^i_{\text{embed}}, ~i\in\{1,2,3\}$. This embedding allows the network to project the data into a space with easier temporal dynamics. This step significantly extends existing designs of LSTM models for anomaly detection and allows us to project multiple input vocabularies simultaneously without a large increase in the model size. 
+By treating the state, the size group, and the host group as separate dictionaries, we avoid the creation of one large vocabulary of size $M\times C \times S$, which makes training faster and avoids the creation of rare states \cite{chen2015strategies}. 
+
+\subsubsection{LSTM-layer}
+In the second step, the vectors are concatenated and fed to a stacked bidirectional LSTM layer with $N^1_{\text{hidden}}$ hidden cells. This layer is responsible for the transport of sequential information in both directions. The usage of bidirectional LSTM layers compared to unidirectional ones significantly improved the prediction of events at the beginning of a session and consequently boosted detection rates within short sessions, as we demonstrate in Section \ref{SecF:Bidir}. Increasing the number of LSTM layers from one to two decreases false positive rates in longer sessions while maintaining similar detection rates, as we show in Section \ref{SecF:depth}. In Section \ref{SecF:Limitations}, we discuss why we are not further increasing the number of layers.
+
+
+\subsubsection{Output layer}
+The outputs from the bidirectional LSTM layers are then concatenated and fed to an additional linear hidden layer of size $N^2_{\text{hidden}}$ with the commonly used rectified linear activation function. We added this layer to enable the network to learn more non-linear dependencies in a sequence. 
+We found that by adding this layer, we are able to capture complex and rare behaviours and decrease false positive rates, as demonstrated in Section \ref{Sect:Compsimp}.
+
+Finally, the output of this layer layer is fed to two output layers with $M$ and $S$ linear output cells. These produce two numeric vectors of size $M$ and $S$
+
+\begin{align*}
+p_x^{i,j,k}, ~ k\in\{1,\dots,M\},~~~~~~~~~\sum_k^M p_x^{i,j,k}=1\\
+p_s^{i,j,l}, ~ l\in\{1,\dots,S\},~~~~~~~~~\sum_l^S p_s^{i,j,l}=1
+\end{align*}
+
+\noindent that describe the predicted probability distribution of $x^{i,j}$ and $s^{i,j}$ respectively.
+
+%\begin{align*}
+%p_x^{i,j,k}=\text{Smax}(y^{i,j}_k)=\frac{\exp(y^{i,j}_k)}{\sum_{m=1}^M \exp(y^{i,j}_m)}\\
+%p_s^{i,j,l}=\text{Smax}(z^{i,j}_l)=\frac{\exp(z^{i,j}_l)}{\sum_{m=1}^S \exp(z^{i,j}_m)}
+%\end{align*}
+
+
+The prediction loss for the state group is then given by the negative log-likelihood:
+
+\begin{align*}
+\text{lh}_x^{i,j}=&\sum_{k=1}^{M}(1-x^{i,j}_{k})\cdot\log(1-y^{i,j}_{k})-x^{i,j}_{k}\cdot\log(y^{i,j}_{k})\nonumber
+\end{align*}
+%\vspace{-0.1cm}
+with the size group loss being calculated in the same way. We calculate the total loss as the sum of the state loss and the size group loss. A visualisation of the prediction-making process is depicted in Fig. \ref{figF:Modelpred}.
+
+%\textcolor{red}{bring out what is significant/different}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\textwidth]{images_MLN/Example_new.png} 
+\caption{Visualisation of model prediction process.}\label{figF:Modelpred}
+\end{figure}
+
+
+After the training, we use the network to determine the anomaly score of a given input session via the average of the predicted likelihoods, as this measure is independent of the session length: 
+
+\begin{align*}
+\text{AS}^j=1-\sum_{i=1}^{N_j}\Big(\exp(\text{lh}_x^{i,j})+\exp(\text{lh}_s^{i,j})\Big)/N_j
+\end{align*}
+
+An anomaly score close to 0 corresponds to a benign session with a very high likelihood while a score close to 1 corresponds to an anomalous session with events which the network would not predict in the context of previous events. We rescale all anomaly scores for better readability, however this does not influence their ordering.
+
+
+\subsection{Parameter selection and training}
+
+We now train CBAM and tune it to maximise its prediction performance. We train on a quad-core CPU with 3.2 GHz, 16 GB RAM, and a single NVIDIA Tesla V100 GPU, and we use minibatches of size 30 using the ADAM optimiser in PyTorch. Training a model can be achieved in under three hours.
+
+We want to create a model that has sufficient parameters to capture complex flow dependencies, but is not overfitting the training data. For this, we split the available training data into a larger training and a smaller validation set. We then select two model configuration, one with a larger number of parameters and one with a smaller number. We then train the model for 500 epochs on the training set and observe whether the same loss decrease can be observed on the validation set. As long as the larger model is performing better than the smaller model and the validation loss is consistent with the training loss, we keep increasing the number of parameters, a standard practice to train deep learning models. The best performing parameters were $N^1_{\text{embed}}=10$, $N^2_{\text{embed}}=N^3_{\text{embed}}=5$ for the embedding layers, and $N^1_{\text{hidden}}=N^2_{\text{hidden}}=50$ for the hidden layers.
+
+To build a more powerful model without the risk of overfitting, we use a drop-out rate of $0.5$ and a weight-decay regularization of $5\times 10^{-4}$ per epoch, as suggested by Hinton et al. \cite{srivastava2014dropout}. To increase the training performance, we use an adaptive learning of $0.0003$, which decays by a factor of 2 after each fifty subsequent epochs, as well as layer normalization. The values for the learning rate and weight decay were estimated in a similar procedure as the model size. 
+
+As we mentioned above, too large vocabularies can cause problems both for model training and event prediction. We achieved the best results for $M=200$ for the available data and computational resources. The size of the size group was chosen smaller with $S=7$, which improves detection capabilities without increasing anomaly scores for benign sessions too much. 
+We found that a suitable value of $C=4$ to describe different host types, which include servers, two types of client machines depending on the operating system, and auxiliary devices (printers, IP-phones, and similar). Host groups were determined for each dataset individually and the corresponding machines labelled manually. However, for larger datasets this process is easily automated by filtering for specific traffic events such as requests to Microsoft update servers.
+
+
+%We trained on a quad-core CPU with 3.2 GHz, 16 GB RAM, a single NVIDIA Tesla V100 GPU. Training each model could be achieved in under three hours. %More data could enable training with a larger value for $M$, and thus a more detailed model. 
+%We chose $N^1_{\text{embed}}=10$, $N^2_{\text{embed}}=N^3_{\text{embed}}=5$ for the embedding layers, and $N^1_{\text{hidden}}=N^2_{\text{hidden}}=50$ for the hidden layers, which achieve the best results without overfitting. We trained each model for $500$ epochs. The parameters of the network are optimised to minimise the total loss in minibatches of size 30 using the ADAM optimiser. The optimal value for the learning rate was found to be $0.0003$, and decays by a factor of 2 after each ten subsequent epochs the training set. We use a parameter weight decay of $5\times 10^{-4}$ per epoch to avoid overfitting, and a drop-out rate of $0.5$. %All parameters were chosen by comparing the validation loss over all epochs. %The chosen weight decay and dropout rate prevent rising of the validation loss for later epochs (overfitting), while the chosen learning rate achieves the lowest loss after completed training. 
+ %\cite{paszke2017pytorch}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{c|c|c}
+&\# cells &\# parameters\\ \hline
+Embedding layer&202/10/5 &2055\\ %200*10+7*5+4*5=
+LSTM-layer 1&50 & 6700\\ %4*(20+1)*50+50*50=
+LSTM-layer 2 & 50 & 12700\\ %4*51*50+50*50=
+Linear layer & 50 & 2550\\ %50*50+50=
+Softmax layer & 202/10 & 10557\\ \hline %51*200+51*7=
+Total &\textbf{34562}
+\end{tabular}
+\end{table}
+
+\subsection{Detection method}\label{SecF:decmeth}
+
+We use a simple threshold anomaly score to identify a session as malicious. We estimate the $99.9\%$ quantile for benign sessions in the training data, which will then act as our threshold value T. By determining T from the training data, we control the expected false positive rate in the test data. Threshold values are determined for each dataset and each host within a dataset separately. 
+
+\begin{align*}
+T_{c}:P[{AS_{c}^j}_j \leq T_c ] \leq 0.999
+\end{align*}
+
+Finding an appropriate threshold value is a compromise between higher detection rates and lower false positive rates, and we chose this value to achieve false positive rates that are low enough for a realistic setting. We compare detection and false positive rates for different T in Section \ref{SecF:DetCIC}, and we give an outlook to more sophisticated detection methods in Section \ref{SecF:Resilience}.
+
+%\textcolor{red}{table with threshold values}.
+
+
+\section{Datasets and benchmark models}\label{SecF:Datasets}
+
+\subsection{Dataset assembly}\label{SecF:data}
+
+The field of network intrusion detection has always suffered from a lack of suitable datasets for evaluation. Privacy concerns and the difficulty of posterior attack traffic identification are the reason that no dataset exists that contains realistic U2R/R2L (User-to-Root, Remote-to-local) traffic and benign traffic from a real-world environment \cite{ahmed2016survey}. 
+To evaluate CBAM, we need both representative access attack traffic to test detection rates, and  background traffic from a realistic environment to test false positive rates. To ensure that both criteria are met, we selected three modern publicly available datasets that complement each other: CICIDS-17 \cite{sharafaldin2018toward}, LANL-15 \cite{akent-2015-enterprise-data,kent-2015-cyberdata1}, and UGR-16 \cite{macia2018ugr}. 
+ The CICIDS-17 dataset contains traffic from a variety of modern attacks, while the UGR-16 dataset's length is suitable for long-term evaluation. The LANL-15 dataset contains enterprise network traffic along with several real-world access attacks.
+ 
+ We train models with the same hyperparameters on each dataset to demonstrate the capability of CBAM to detect various attacks and perform well in a realistic environment. 
+
+
+
+\textbf{CICIDS-17:}
+This dataset \cite{sharafaldin2018toward}, released by the Canadian  Institute  for  Cybersecurity(CIC), contains 5 days of network traffic collected from 12 computers with attacks that were conducted in a laboratory setting. The computers all have different operating systems to enable a wider range of attack scenarios. The  attack  data  of  this  dataset  is  one  of  the  most  diverse  among  NID  datasets and contains SQL-injections, Heartbleed attacks, brute-forcing, various download infiltrations, and cross-site scripting (XSS) attacks, on which we evaluate our detection rates.
+
+The traffic data consists of labelled benign and attack flow events with 85 summary features which can be computed by common routers. The availability of these features makes it suitable to evaluate machine-learning techniques that were only tested on the KDD-99 data.
+
+The benign traffic is generated on hosts using previously gathered and implemented traffic profiles to make the traffic more heterogeneous during a comparably short time span, and consequently closer to reality. For our evaluation, we selected four hosts that are subject to U2R and R2L attacks, two web servers and two personal computers. 
+
+This dataset is generated in a laboratory environment, with a higher proportion of attack traffic than is normally encountered in a realistic setting. Consequently, we need to test on traffic from real-world environments to prove that CBAM retains its detection capabilities and low false alert rates. 
+
+\textbf{LANL-15 dataset:}
+In 2015, the Los Alamos National Laboratory (LANL)  released a large dataset containing internal network flows (among other data) from their corporate computer network. The netflow data was gathered over a period of 27 days with about 600 million events per day \cite{akent-2015-enterprise-data,kent-2015-cyberdata1}.
+
+In addition to large amounts of real-world benign traffic, the dataset contains a set of attack events that were conducted by an authorised red team and are supposed to resemble remote access attacks, using mainly the \emph{pass-the-hash} exploit. We selected this dataset to demonstrate that CBAM is able to detect attacks in a realistic environment with low false alert rates. We isolated traffic from ten hosts, with two being subject to attack events. Two of these hosts resemble server behaviour, while the other eight show typical behaviour of personal computers.
+
+The provided red team events are not part of the network flow data and only contain information about the time of the attack and the attacked computer. Furthermore, not all of the attack events are conducted on the network level, so it is impossible to tell exactly which flows  correspond to malicious activity and which do not. Therefore we labelled all flows in a narrow time interval around each of the attack timestamps as possibly malicious. As these intervals are narrow, identified anomalies likely correspond to the conducted attack. %However, to avoid ambiguity, we additionally included the UGR-16 dataset in our evaluation.
+
+
+\begin{figure}[ht]
+\centering
+%\textbf{Temporal change in protocol and port usage}\par\medskip
+\vspace{-0.2cm}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{images_MLN/UGR_longterm_proto.pdf}
+        \vspace{-0.4cm}
+%        \caption{Protocols}
+%        \label{figF:gull}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{images_MLN/UGR_longterm_port2.png}
+%        \caption{Ports}
+%        \label{figF:gull}
+    \end{subfigure}
+%\vspace{-0.3cm}
+\caption{Temporal change in protocol and port usage over the different train and test intervals across selected servers in the UGR-16 dataset.}
+\label{figF:longterm_analysis}
+\end{figure}
+
+\textbf{UGR-16 dataset:}
+The UGR-16 dataset \cite{macia2018ugr} was released by the University of Grenada in 2016 and contains network flows from a Spanish ISP. It contains both clients' access to the Internet and traffic from servers hosting a number of services. The data thus contains a wide variety of real-world traffic patterns, unlike other available datasets. %The authors identified a number of computers in the dataset that were targeted by a network probing attack, and labelled the corresponding flows. 
+Additionally, a main focus in the creation of the data was the consideration of long-term traffic evolution, which allows us to make statements about the robustness of CBAM to concept drift over the 163 day span of the dataset. For our evaluation, we isolated traffic from five web-servers that provide a variety of services.
+
+
+
+\subsection{Dataset split}
+
+We split our data into a test set and a training set. To resemble a realistic scenario, the sessions in the training data are from a previous time interval than sessions in the test data. 
+
+To evaluate detection rates on the CICIDS-17 data, we selected the four hosts in the data that are subject to remote access attacks, two web servers and two personal computers. 
+We choose our test set to contain the known attack data while the training data should only contain the benign data. Due to the short timespan of the dataset, we have to train on traffic from all five days, with the test data intervals being placed around the attack. 
+In total, the test set contains 14 hours of traffic for each host while the training set contains 31 hours of traffic. While the test set for the CICIDS-17 data covers a shorter timespan, it contains more traffic due to voluminous brute-force attacks.
+
+For the LANL data, the test set stretches approximately over the first 13 days with the training data spanning over the last 14 days. The unusual choice of placing the test set earlier the training set was made because the attacks occur early in the dataset. However as the training and test are contained in two non-overlapping intervals, a robustness evaluation is still possible.
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|cccc}
+\hline
+Dataset&hosts&sessions in&sessions in&length\\
+&&training set&test set&\\[0.2cm]
+\hline
+CICIDS-17&4&24128&32414&5 days\\[0.2cm]
+LANL-15&10&89480&76984&27 days\\[0.2cm]
+UGR-16&5&65000&480018&163 days\\
+\hline
+\end{tabular}
+\vspace{2pt}
+\caption{Summary of the amount of traffic extracted from each dataset.}\label{tabF:Datasets}
+%\vspace{-25pt}
+\end{table}
+
+To test long-term stability and robustness of CBAM against concept drift, 
+we split the UGR-16 data into one training set interval and two test set intervals, for which we can compare model performance. 
+The training set interval stretches over the first month, with the first test set interval containing the sessions from the following two months, and the second test set interval containing the last two months.
+ %For the LANL data, the test set stretches approximately over the first 13 days with the training data spanning over the last 14 days. The unusal choice of placing the test set earlier the training set was made because the attacks occur early in the dataset, however as the training and test are contained in two non-overlapping intervals, a robustness evaluation is still possible.
+We then isolated traffic from five web-servers that provide a variety of services that show behavioural evolution. Fig. \ref{figF:longterm_analysis} depicts the changes of these servers in terms of protocol and port usage over the different intervals.
+
+We chose our training data to contain about 10 000 sessions per host if possible. A summary of the amount of data in the training and test data for each dataset can be found in Table \ref{tabF:Datasets}.
+
+\subsection{Sample imbalance and evaluation methodology}
+
+
+Most NID datasets include attack events from both low volume access attack classes as well as attacks like DoS or port scans which generate a large number of events. 
+If reported detection rates do not distinguish between different attacks or attack classes, performance metrics will be dominated and potentially inflated by DoS and probing attacks. 
+Similarly, detection results are often given in terms of precision and recall or F-measures, which are sensitive to the specific dataset balance of the majority and minority classes in a dataset. Since the ratio of attack traffic is inflated in general NID-datasets, these measures are not suitable for model comparison. 
+
+We evaluate CBAM using simple detection true positive and false positive rates, which are independent of the dataset balance. We also distinguish detection rates for different attacks, and assess overall performance by averaging these rates over attack classes rather than overall number of attack events. Since there is no agreed upon value for a suitable false positive rate in network intrusion detection, we compute ROC-curves to display the detection rates in dependence of the false-positive rate and report overall AUC-scores (\textit{Area under Curve}), which describe the separation of benign and anomalous traffic. We use these for comparison with other models, as this measure is fairer than point comparisons. The evaluation procedure is supported by several NID evaluation surveys \cite{ulvila2003evaluation,milenkoski2015evaluating}.
+
+Some researchers propose cost-based evaluation metrics by assigning false alerts and missed intrusion attempts a cost-value and tuning the detection threshold to minimise the expected cost, such as done by Ulvila and Gaffney \cite{ulvila2003evaluation}. Such a metric is however strongly dependent on the observed ratio of attack to benign traffic, which is strongly inflated in NID-datasets, and requires operational information to assign costs to a false alert or intrusion. This evaluation works well in specific cases such as DoS-attacks or cryptojacking, where server-downtime costs and attack volume are generally quantifiable, but is not applicable in cases where this information is not available or well defined \cite{milenkoski2015evaluating}. 
+
+Training classifiers on imbalanced dataset can affect their performance, both due to the imbalanced ratio of attack to benign traffic and the imbalance between several attack classes. Some methods have been proposed to augment or synthetically inflate minority samples for attack traffic \cite{liu2020intrusion}. As an anomaly-detection method, CBAM is however trained in a self-supervised way strictly on benign traffic, with no attack traffic being present in the training data. The training stage is therefore independent of the minority class ratio in a given dataset and does not require specific balancing methods. In the evaluation stage, the above described steps apply for both classification- and anomaly-detection-based methods.
+
+
+\subsection{Benchmark comparison models}\label{SecF:Benchmark}
+
+%To highlight the benefits of our model for9 remote access attack detection and deployability,
+We compare our detection and false positive rates against three network anomaly models that we have re-implemented and re-evaluated. 
+%We have selected two prominent and recently published LSTM-based models as well as a clustering-based model that achieved the highest detection rates of U2R and R2L attacks ($80-85\%$) on the KDD-99 dataset in a recent survey \cite{nisioti2018intrusion}. 
+
+A recent and well cited survey by Nisioti et al. \cite{nisioti2018intrusion} identified the \textbf{UNIDS model by Casas et al.} \cite{casas2012unsupervised} as achieving the highest detection rates of remote access attacks on the KDD-99 dataset, so we chose to include this method as our first benchmark. The authors rely on subspace-projection and density-based clustering (DBSCAN) for outlier detection, and %mine various traffic features and project flow events into several subspaces. Outliers within every subspace are then identified using density-based clustering (DBSCAN) to determine the overall anomaly. The authors 
+achieve detection rates of access attacks at around $80-85\%$ on the KDD-99 dataset with a false positive rate of $3.5\%$. %The authors distinguish detection rates for U2R/R2L and other attacks, however they do not make distinctions for individual attacks, which means that brute-force attack detection rates can inflate overall performance.
+
+\textbf{Niyaz et al.} \cite{javaid2016deep} present a more recent deep-learning model combines anomaly detection and classification by using sparse autoencoders and detection through reconstruction error. %Relying on 41 flow features, they train a deep autoencoder to encode individual traffic events in a low-dimensional space, with the reconstruction error from the projection being used as an anomaly score. Learned features from the projections can then be used to train a classifier in a more robust manner. 
+The authors classify individual flows and claim a detection precision of $99\%$ with a recall of $97.5\%$, even higher than the UNIDS model.
+
+Finally, \textbf{Radford et al.} \cite{radford2018network} predict sequences of individual flows between pairs of hosts using a two-layer LSTM network. Flows are tokenised according to their protocol and size, and the model detects $60\%$ of the attacks at a false positive rate of about $2\%$ on the CICIDS-2010 dataset. %with a rolling window of ten flows as input. %\textcolor{red}{However their tokenisation is significantly simpler than ours, which we believe enables us to improve detection rates drastically.} 
+%The authors only provide ROC curves of attack detection, which indicate moderate detection rates around $60\%$ at a false positive rate of about $2\%$ on the CICIDS-2010 dataset. 
+This model is closest to ours in terms of contextual anomaly detection from flow metadata, and achieves the best results out of the three bechmark models during our evaluation. We include it to highlight the improvements our design choices yield over other contextual LSTM-models.
+
+%\textcolor{red}{add their results}
+
+%All of these papers suffer from the evaluation pitfalls described in Section \ref{SecF:Evalmal}, with only the UNIDS model making some distinction for different attack classes, and only Radford et al. evaluating their model on a more modern dataset. We compare detection and false positive rates for each model on our dataset assembly in Section \ref{SecF:evaluation}, where the evaluation malpractices will become apparent.
+
+Lastly, we include a more \textbf{shallow version of our model}, depicted in Fig. \ref{figF:rnn_FSA2}, to highlight the benefits of a deeper structure. This model only contains one LSTM-layer, and no linear layer before the output layer. 
+
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=0.6\textwidth]{images_MLN/LSTM_design_shallow.png}
+    \end{center}
+    \vspace{-15pt}
+    \caption{Architecture of the shallow LSTM-model version we use as a benchmark.}\label{figF:rnn_FSA2}
+\end{figure}
+
+
+
+\section{Detection performance}\label{SecF:Det}
+
+We now demonstrate that we can build an accurate and close-fitting model of normal behaviour with CBAM. We train models for each dataset separately, but without any change in the selected hyperparameters, i.e. number of hidden cells, vocabulary size, learning rate etc. 
+
+As described above, we estimate detection rates using traffic of various remote access attacks in the CICIDS-17 dataset. Table \ref{tabF:Attackdata} describes the number of sessions present for each attack class.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{l|ccccccc}
+&FTP-BF&SSH-BF&Web-BF&SQL-Inj.&XSS&Heartbleed&Infiltr.\\
+\hline
+\# Sessions&243&210&88&8&41&4&17\\[0.2cm]
+\end{tabular}
+\vspace{2pt}
+\caption{Number of sessions for each attack class in the CICIDS-17 dataset}\label{tabF:Attackdata}
+\end{table}
+
+\subsection{CICIDS-17 results}\label{SecF:DetCIC}
+
+
+Table \ref{tabF:dfCICinf} and Fig. \ref{figF:CICplots1} 
+depict anomaly score distributions and detection rates for traffic from seven different types of attacks.
+
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{images_MLN/CICplots1-1} 
+\vspace{-0.5cm}
+\caption[Score distribution for various access attacks contained in the CICIDS-17 dataset, along with our detection threshold]{Score distribution for access attacks contained in the CICIDS-17 dataset.}\label{figF:CICplots1}
+\end{center}
+\end{figure}
+
+Most notable is that scores from all attacks except cross-site scripting (XSS) are significantly higher distributed than benign traffic, with median scores lying between $0.75$ and $0.89$. Detection rates with our chosen threshold of $T=0.77$ are highest for Heartbleed attacks ($100\%$), followed by FTP and SSH brute-force attacks and SQL-injections, where $91\%$, $74\%$, and $75\%$ of all affected sessions are detected. Detection rates are lowest for XSS and Infiltration attacks. The overall detection rates we achieve are in a similar range as most unsupervised methods in Nisioti et al.'s evaluation \cite{nisioti2018intrusion}, but with significantly better false positive rates.
+
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|ccc||c|c}
+  %\hline >{\bf}
+\multicolumn{1}{c|}{ }&\multicolumn{3}{c||}{Anomaly scores (T=0.77)}&Detection&Shallow\\
+ % \cline{6}
+ &  min  &  max  &  median  & rates [\%] & LSTM\\ 
+  \hline
+Brute-force Web & 0.50 & 0.92 & 0.80 & 0.66  &0.28 \\ 
+  FTP-Patator & 0.28 & 1.00 & 0.82 & 0.91 & 0.38\\ 
+  Heartbleed & 0.89 & 0.89 & 0.89 & 1.00 & 0.0\\ 
+  Infiltration &0.57& 0.97& 0.75&0.41 &0.0\\ 
+  SQL-injection & 0.67 & 1.00 & 0.84 & 0.75 2&0.21\\ 
+  SSH-Patator & 0.47 & 0.86 & 0.80 & 0.74 &0.67\\ 
+  XSS & 0.06 & 0.75 & 0.20 & 0.00 &0.0\\ 
+   \hline
+\end{tabular}
+\vspace{2pt}
+\caption{Anomaly score distributions and detection rates at threshold T for known-malicious sessions in the CICIDS-17 dataset, as well as detection rates for a less complex benchmark model (Fig. \ref{figF:rnn_FSA2}).}
+% as well as detection rates of comparison models with a similar detection threshold (99.9\% quantile).} 
+\label{tabF:dfCICinf}
+\end{table}
+
+XSS and infiltration attacks cause the victim to execute malicious code locally. Heartbleed and SQL injections on the other hand exploit vulnerabilities in the communication protocol to exfiltrate information, and are thus more likely to exhibit unusual traffic patterns, visible as excessively long SQL-connections or completely isolated TCP-80 flows for SQL-attacks, or unusual sequences of connections initiated by the attacked server during Heartbleed attacks.
+
+Brute-force attacks on the other hand cause longer sequences of incoming connections to the same port of a server, in this case to port 21 for FTP, 22 for SSH, and 80 for web brute-force. Especially for port 80, such sequences are not necessarily unusual, which explains the difference in detection rates between web brute-force, which CBAM does not detect reliably, and FTP and SSH brute-force, which are detected at a higher rate. Depending on how much benign traffic the particular sessions are overlayed, the estimated anomaly scores can vary. Brute-Force attacks are not low in volume, and spread over many sessions since we introduced a maximum session length. For these types of attack, CBAM therefore only has to flag a smaller percentage of malicious sessions the attack generates to detect anomalous behaviour.
+
+Fig. \ref{figF:CICplots2} provides \emph{ROC} (Receiver operating characteristic) curves for each attack type. As seen, for Heartbleed, FTP brute-force, SQL injection, and infiltration attacks, CBAM starts detecting attacks with close to zero false positives.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.9\textwidth]{images_MLN/CICplots2-1} 
+\vspace{-0.5cm}
+\caption[ROC-curves for different attack types.]{ROC-curves for different attack types in the CICIDS-17 dataset.}\label{figF:CICplots2}
+\end{figure}
+
+\subsubsection{Comparison models}\label{Sect:Comp}
+
+
+We now compare detection rates between our model and the three models described in Section \ref{SecF:Benchmark} that we chose as benchmarks.
+
+All three models ultimately detect anomalies when an anomaly score exceeds a threshold, which controls the balance between low false positive rates and high detection rates and usually depends on the given data. To create a fair comparison, we chose threshold providing similar false positive rates of $0.01\%$, e.g. the $99.9\%$ anomaly score quantile of the training data, which is necessary for assessing suitability for real-world deployment as we have argued in Section \ref{SecF:decmeth}. 
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|c|ccc|c}
+  %\hline
+\multicolumn{1}{c|}{ }&\multicolumn{5}{c}{1-AUC scores}\\
+
+%Our model&UNIDS&Radford&Niyaz\\%[0.2cm]
+  \hline
+  & Our model&UNIDS&Radford&Niyaz&shallow m.\\ 
+  \hline
+Brute Force Web & \textbf{0.016}&0.49&0.027&0.32 &0.048 \\ 
+  FTP-Patator & \textbf{0.0025}&0.011&0.0048&0.16 &0.0052\\ 
+  Heartbleed  & \textbf{0.0003}&0.0057&0.032&0.077 &0.012\\ 
+  Infiltration &0.046& \textbf{0.033}&0.35&0.15&0.11\\ 
+  SQL-injection & \textbf{0.005}&0.44&0.497&0.39&0.019\\ 
+  SSH-Patator & \textbf{0.009}&0.013&0.035&0.011&0.005\\ 
+  XSS &0.127&\textbf{0.02}&0.03&0.16&0.13\\ 
+   \hline
+\textbf{Average}&\textbf{0.044} & 0.144&0.135&0.18 &0.091 \\
+\end{tabular}
+\vspace{2pt}
+\caption{1-AUC scores for our model and the implemented comparison models on the CICIDS-17 dataset. Fat numbers indicate the best value for each attack.}% (99.9\% quantile).}
+% as well as detection rates of comparison models with a similar detection threshold (99.9\% quantile).} 
+\label{tabF:dfCICAUC}
+\end{table}
+
+To assess the overall separation between benign and malicious traffic for each model, we calculated $1-$\emph{AUC (Area under ROC curve)} scores by varying the thresholds for each model, and calculating the area under the ROC-curve, depicted in Fig. \ref{figF:CICplots2} and Table \ref{tabF:dfCICAUC}. 
+
+In comparison to the other benchmark models, our shallow model is capable of making some detection at the chosen false positive rate, but cannot reach the levels of our deeper model.  While brute-force attacks are still detected, more nimble attacks such as Heartbleed or XSS are less distinctive from benign traffic for the shallow model.
+It is remarkable that by adding the described additional layers, we are able to more than double the overall detection power, as indicated by the 1-AUC-scores.
+
+
+\subsection{LANL results}
+
+We now examine whether CBAM is able to detect actual attacks in real-life traffic from the LANL-15 dataset.
+
+As described in Section \ref{SecF:data}, we do not have labels for malicious flows in the LANL-15 data. Instead, attacks are described by narrow intervals surrounding conducted malicious activity. These intervals inevitably contain benign activity too. However, as the intervals are narrow and we saw that benign sessions only rarely receive high anomaly scores, a session with a high anomaly score is likely to be associated with a malicious event. Of the hosts in the dataset we selected for evaluation, hosts C2519 and C754 are subject to the red team attacks. The red team activity is spread over three attack intervals \textbf{A1}, \textbf{A2}, and \textbf{A3}. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.99\textwidth]{images_MLN/LANLdet.png} \caption{Computed scores for the third attack interval in the LANL data, along with our detection threshold.}\label{figF:LANLdetection}
+\end{figure}
+
+Sessions in \textbf{A1} and \textbf{A2} have similar scores as other benign traffic, with no sessions receiving remarkably high scores. It is both possible that CBAM did not identify the malicious traffic, or that the activity in these intervals was purely host-based and did not generate any traffic. 
+
+Interval \textbf{A3} is more interesting, containing 15 sessions for host C2519 and 5 sessions for host C754 that have high anomaly scores, as depicted in Fig. \ref{figF:LANLdetection}.
+
+
+
+
+% latex table generated in R 3.4.4 by xtable 1.8-4 package
+% Fri Jun 14 15:25:34 2019
+
+
+For host C2519, each session with a high anomaly score consists of a single TCP-flow on port 445, which is usually reserved for a Microsoft SMB service. The anomaly of these sessions becomes apparent when we compare them to other sessions that contain TCP-flows on port 445. 
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlllllr}
+  \hline
+ & Proto & SrcAddr & Sport & DstAddr & Dport & Prob\_End \\ 
+  \hline
+1 & tcp & C20473 & N345 & C2519 & 445 & 0.03 \\ 
+  2 & tcp & C2519 & 445 & C20473 & N345 & 0.55 \\ 
+   \hline
+\end{tabular}
+\caption{Exemplary session with SMB-traffic,  host C2519, along with the estimated probability of the session to end.} 
+\label{tabF:MalSessionLANL}
+\end{table}
+
+All other sessions contain at least two subsequent flows. The model, in expectation of other following flows, assigns a very low probability to the sessions ending after a single flow. Since the analysis of the identified sessions supports their anomaly score, we believe it is very likely that these events correspond to the conducted malicious activity. 
+
+
+\subsection{How attacks affect flow structures}\label{SecF:AttackInfl}
+
+We now examine in more detail why modelling sequences of flows is effective to detect access attacks, and how these attacks alter common flow structures. Unfortunately, the CICIDS-17 dataset, and to our knowledge all other NID-datasets, do not contain sufficient ground truth information about included attack traffic, so this analysis is based on empirical domain-knowledge of similar attacks as well as the traffic itself.
+
+\begin{figure}[ht]
+    \begin{center}
+      \includegraphics[width=0.99\textwidth]{images_MLN/SQL_I_new.png}
+    \end{center}
+    \caption{Flow-sequence in an SQL-injection attack with predicted size likelihood (log-scale). Arrows indicate flow directions (down=incoming, up=outgoing).}\label{figF:SQL_I}
+\end{figure}
+
+
+Fig \ref{figF:SQL_I} shows a session in the CICIDS-17 data that corresponds to a SQL-injection attack on host 172.16.0.1, a Ubuntu web server. Depicted is the order of the flows along with their direction, the destination port and the size of the flow. Dashed rectangles indicate the most likely flow size as predicted by CBAM. Below are the likelihoods of the actually observed flow sizes on a log-scale, which determine the anomaly-score of the session.
+
+SQL-requests from a web-server typically consist of verification of user credentials or the retrieval of specific content on a webpage.
+In an SQL-injection, SQL-code is injected into a HTTP-request that forces the server to retrieve, modify or forward additional content from an SQL-database, which can significantly increase the size of the corresponding SQL-request. 
+
+The sequence of flows in Fig. \ref{figF:SQL_I} overall resembles regular incoming HTTP requests accompanied by corresponding outgoing SQL-requests from the server. However, 
+Fig. \ref{figF:SQL_I} clearly shows that the sizes of two of the SQL-connections on port 1433 are magnitudes larger than CBAM is predicting based on the context of the surrounding flows, which is likely caused by the injection attack. This results in a very low likelihood of the observed flow sizes and a high anomaly score for the whole session.
+
+
+Fig \ref{figF:Infiltration} depicts a session that corresponds to an infiltration attack on host 192.168.10.8 in the CICIDS-17 data. Again, the figure depicts the order, direction, size and destination port of the flows, along with predictions of the most-likely sizes (dashed rectangles) and the overall likelihood of the actually observed flows.
+
+This sequence does not resemble regular behaviour typically encountered on this host. DNS flows on port 53 are typically followed by HTTP flows on port 80 or 443, to which the model assigns a very high likelihood after the first 4 flows. However, this session contains excessively many consecutive DNS flows, which are interrupted by only one HTTP flow. Correspondingly, the likelihood for the excessive DNS flows as well as the overall session likelihood is low. 
+
+It is not completely clear how the infiltration attack triggers this abnormal behaviour. Possibly, the infiltration software is trying to retrieve the current address of a C\&C-server via DNS.
+
+\begin{figure}[ht]
+    \begin{center}
+      \includegraphics[width=\textwidth]{images_MLN/Infiltration_new.png}
+    \end{center}
+
+    \caption{Flow-sequence in an infiltration attack with port-direction likelihood (log-scale).}\label{figF:Infiltration}
+\end{figure}
+
+\subsection{Runtime performance}
+
+CBAM contains around $35\,000$ parameters, which is relatively lightweight for deep learning models. The processing of a session of ten flows takes around $23ms$ on our setup, which is far shorter than the average length of $5.6s$ of a session. In a similar comparison, our setup can process one day of activity ($\approx 15\,000$ sessions) of a web server in the UGR-16 dataset in $95s$.
+
+Considering these runtime numbers, the necessary rate of recorded flows to overwhelm our setup would need to exceed $434$ flows/second. The largest rate observed for Brute-Force attacks in the CICIDS-17 dataset is $23$ flows/second. 
+
+
+
+
+
+\section{Benign traffic and longterm stability}\label{SecF:Benigntraffic}
+%\subsection{Benign traffic}\label{SecF:Benigntraffic}
+
+\subsection{UGR-16 data}\label{SecF:UGR_benign}
+
+
+We conduct the main validation of the longterm stability of CBAM on benign traffic in the UGR-16 dataset, which contains real-world traffic and spans several months. For this, we split the test data into two disjoint sets that span from May-July and August-September while being separated by one month.
+We then look at the quantiles and visual distribution of session scores in each test set and assess whether the score distributions and number of false positives changed as evidence on concept drift in the traffic.
+Fig. \ref{figF:UGRrealresults} depicts the score distribution of benign sessions for each dataset in the corresponding test sets. 
+
+
+
+
+\begin{figure}
+    \begin{center}
+%\includegraphics[width=0.6\textwidth]{images_MLN/UGRrealresults-1} 
+\includegraphics[width=\textwidth]{images_MLN/UGR_Longterm.png} 
+
+
+\begin{tabular}{l|ccc|ccc}
+  \hline
+&\multicolumn{3}{c|}{test set 1}&\multicolumn{3}{c}{test set 2}\\
+ &  50\%  &  90\%  &  Pr($>$T)  &  50\%  &  90\%  &  Pr($>$T)) \\ 
+  \hline
+42.219.153.32 & 0.21 & 0.39   & 0.01\% & 0.22 & 0.38   & 0.01\% \\ 
+  42.219.155.189 & 0.12 & 0.20  & 0.01\% &0.10 & 0.21  & 0.03\% \\ 
+  42.219.155.128 & 0.24 & 0.44   & 0.63\% & 0.19 & 0.43   & 0.41\% \\ 
+  42.219.155.4 & 0.13 & 0.34 & 0.10\% & 0.17 & 0.39 & 0.23\% \\ 
+  42.219.154.44 & 0.11 & 0.32 & 0.13\% & 0.11 & 0.28 & 0.11\% \\ 
+   \hline
+\end{tabular}
+
+
+\end{center}
+%\vspace{-15pt}
+\caption{Anomaly score distributions for benign traffic in the UGR-16 data, along with an exemplary distribution plot for a selected host.}\label{figF:UGRrealresults}
+\end{figure}
+
+%The centres of the distributions are concentrated very well in the lower region of the $[0,1]$ interval, with about $50\%$ of all sessions receiving scores in the region between $0.1$ and $0.25$. High scores are rare, with only very small percentages exceeding our chosen detection threshold of T. If we look at the hosts in the UGR-16 data, on average less than $0.15\%$ of all assumed-benign sessions exceed the threshold.
+
+
+
+As visible in the plot, the centre of the score distribution is concentrated very well in the lower region of the $[0,1]$ interval, with about $50\%$ of all sessions receiving scores in the region between $0.1$ and $0.25$. High scores are rare, with only very small percentages exceeding our chosen detection threshold of $T=0.76$.
+
+
+
+This is also reflected by the corresponding table that describes score distributions for all 5 hosts in the UGR-16 data. On average less than $0.15\%$ of all assumed-benign sessions exceed the threshold, which would translate to fewer than ten false-alerts over the span of four months on a host with similar activity rates. 
+
+Differences in the score distributions for the two test sets are quasi non-existent. The core of the distributions are very stable, with the score quantiles differences being less than $0.03$.
+There are some differences in the observed false positives, but the available sample size is not large enough to make any statements on any systematic differences.
+
+A clear banding structure is visible in the plotted distributions, with most session scores being very concentrated on narrow intervals. These scores represent frequently reoccurring activities that generate very similar traffic sequences. %The model consequently assigns these sequences similar anomaly scores. 
+Fig. \ref{figF:UGRrealresults} shows that these banding structures remain virtually unchanged over several months and carry over from test set 1 to test set 2. 
+%Similarly, 
+%Score distributions remain stable over several months, as depicted in Table \ref{tabF:UGRrealresults}. Although more investigations are required for definitive conclusions, these results indicate that the identified contextual structures in network traffic remain relatively stable over time.% than other traffic quantities.
+
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{images_MLN/Color_sess_new.png} 
+%\vspace{-15pt}
+\caption{Sessions corresponding to score banding structures in Fig. \ref{figF:UGRrealresults}, with predicted likelihoods (log-scale).}\label{figF:colsess}
+\end{figure}
+
+We coloured three of these bands in Fig. \ref{figF:UGRrealresults} at different levels as well as two of the observed false-positives, which we are now examining closer. Fig. \ref{figF:colsess} depicts the corresponding dominant session pattern that is present in each band along with the predicted likelihood for each flow. Again, the figure depicts the order, direction, size and destination port of the flows, along the overall likelihood of observed flows. For clarity, we omitted the predictions of the most-likely flow sizes (dashed rectangles).
+
+The two lower bands, blue and red located at $AS=0.061$ and $AS=0.18$, represent simple and frequent HTTP- as well as corresponding NoSQL-requests and SSH activity by the server. These sessions are therefore predicted with high accuracy. 
+
+The green band at $AS=0.45$ represents more complex and longer sessions that involve both incoming and outgoing HTTP-connections as well as TelNet and RDP connections. The size and order of the flows in these sessions is less deterministic than the activity in the red and blue bands. This activity is also less frequent, which explains the less accurate predictions by CBAM. The model however still recognises these sessions and is able to predict flow state and size with a non-vanishing probability, which keeps the overall session score bounded.
+
+The two purple-coloured sessions likely represent server inspection activity, involving activity on port 0, SSH-sessions and activity on uncommon ports. This type of activity is very rare on this server and appears less deterministic than other more common activity. CBAM therefore fails to recognise the session structure and is not able to assign non-vanishing probabilities to several flows, which decreases the overall session likelihood and results in a high anomaly-score. We are not aware how often server are subject to inspections and whether this would present a problem in operational deployment. However, it seems feasible that resulting false-alerts could be linked to this administrative activity automatically or by a security analyst.
+
+\subsection{CICIDS-17 and LANL-15 results}
+
+We now look at the structure and stability of anomaly scores for benign traffic in the LANL-15 and CICIDS-17 datasets. 
+The plots and tables in Fig. \ref{figF:CICrealresults} depict the score distribution of presumably benign sessions in both datasets as well as describe the $50\%$ and $90\%$ quantiles and false-positive rates for each host. Again, score distributions for both datasets are concentrated well in the lower region of the $[0,1]$ interval. For both datasets, the median lies between $0.06$ and and $0.29$.
+
+For the LANL-15 data, we observe the same banding structure as in the UGR-15 data, with most sessions being concentrated in these bands. This banding is however far less pronounced in the CICIDS-17 data, with the majority of session scores here being dispersed to a greater extent. This suggests that the traffic generation process for this dataset relies far less on reoccurring rigid activities than we observe in real-life data, which however does not seem to deteriorate the prediction performance of CBAM. 
+
+
+\begin{figure}%[!htb]
+    \begin{center}
+\includegraphics[width=\textwidth]{images_MLN/CIC_LANL} 
+%\includegraphics[width=0.7\textwidth]{images_MLN/CICrealresults-1} 
+%\includegraphics[width=0.34\textwidth]{images_MLN/LANLrealresults-1} 
+%\scriptsize
+\begin{tabular}{l|ccc}
+  \hline &  50\%q  &  90\%q  & Pr($>$T) \\ 
+  \hline
+C10047 & 0.06 & 0.34 & $0.053\%$ \\ 
+  C443 & 0.06 & 0.33 &  $0.119\%$ \\ 
+  C2519 & 0.19 & 0.25 & $0.064\%$ \\ 
+  C13845 & 0.38 & 0.63 & $0.40\%$ \\ 
+  C486 & 0.12 & 0.48 & $0.16\%$ \\ 
+  C7379 & 0.09 & 0.38 & $0.11\%$ \\ 
+  C754 & 0.22 & 0.40 &  $0.08\%$ \\ 
+  C7564 & 0.06 & 0.38 & $0.11\%$ \\ 
+  C9020 & 0.10 & 0.43 & $0.19\%$ \\ 
+  C9676 & 0.29 & 0.51 & $0.19\%$ \\ 
+   \hline
+\end{tabular}
+\quad
+%\scriptsize
+\begin{tabular}{l|ccc}
+  \hline
+ &  50\%q  &  90\%q  &  Pr($>$T) \\ 
+  \hline
+10.25 & 0.25 & 0.49 &  $0.09\%$ \\ 
+10.50 & 0.11 & 0.50  & $0.17\%$ \\ 
+10.51 & 0.38 & 0.63  & $0.42\%$ \\ 
+10.8 & 0.25 & 0.56 & $0.064\%$ \\ 
+   \hline
+\multicolumn{2}{c}{}
+\vspace{2.1cm}
+\end{tabular}
+\end{center}
+%\vspace{-15pt}
+\caption{Anomaly score distributions for benign traffic in the LANL-15 and CICIDS-17 datasets.%, along with an exemplary distribution plot for a selected host.
+}\label{figF:CICrealresults}
+\end{figure}
+
+
+\subsection{Importance of training data size}
+
+
+Host C13845 in the LANL-15 and host 192.168.10.51 in the CICIDS-17 data are an exception from the above observations, with their median anomaly score being $0.38$ each and their estimated false-positive rates being $0.4\%$ and $0.42\%$, which significantly exceed the average of $0.1\%$. 
+
+When examining host 192.168.10.51, we notice that it produced less traffic than other hosts in the CICIDS-17 data. Due to this fact, the training dataset only contains $3\,096$ sessions or $36\,989$ flows for this host, compared to about $10\,000$ sessions or $115\,000$ for host 192.168.10.25. 
+
+
+For hosts C13845, we see a similar picture. Because the host is less active than others in the dataset,
+ the training data contains only $728$ sessions or $2\,423$ flows for this host, compared to $6\,013$ sessions for the host with the next fewest training sessions. 
+
+
+%\begin{table}
+%\begin{tabular}{l|c|c|c}
+%\hline
+%&\multicolumn{3}{c|}{\# Training sessions}\\
+%& 1000&4000&10000 \\ \hline
+%192.168.10.25 & & \\
+%{\scriptsize (CICIDS-17)}& &\\ 
+%42.219.154.44 & \\
+%{\scriptsize (UGR-16)}& &\\ 
+%C2519& \\
+%{\scriptsize (LANL-15)}& &\\ 
+%C2519& \\
+%{\scriptsize (reduced LANL-15)}& &\\ 
+%\end{tabular}
+%\end{table}
+
+This suggests that traffic on these hosts are not necessarily harder to predict for CBAM, but that the lack of sufficient training data prevents CBAM from learning traffic patterns for these two hosts effectively. To verify this, we examined how many sessions are necessary in the training phase to achieve similar false positives at a given anomaly threshold. 
+We selected the hosts with the most sessions for each dataset, and reduced the number of training sessions from $10\,000$ to $3\,000$ and $1\,000$. We then trained models with otherwise similar settings and compared how many additional sessions exceed the anomaly threshold. For UGR-16 and LANL-15, we examined if increasing the number of training sessions to $20\,000$, which was not possible for the CICIDS-17 data.
+
+Fig. \ref{figF:Trainingsize} depicts the corresponding false-positive rates for each host. False-positive rates for the UGR-16 and the CICIDS-17 hosts are already significantly affected when only trained on $3\,000$ sessions, and increase further when only $1\,000$ host sessions are available during training. Increasing the number of sessions to $20\,000$ however does not seem to have an effect to further improve the model.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{images_MLN/Trainingsize} 
+\caption{Influence of number of sessions in training data for benign traffic modelling accuracy.}\label{figF:Trainingsize}
+\end{figure}
+For the host in the LANL-data, this effect is far less pronounced, and false-positives at $3\,000$ sessions are similar to the ones at $10\,000$ and $20\,000$. CBAM apparently is able to learn flow predictions sufficiently from similar hosts in the dataset without depending on sessions specifically from the selected host. When we train CBAM exclusively on sessions from host C2519 without data from other hosts, the same deterioration of model prediction can be observed.
+
+%Reducing the number of training sessions to $3$
+%Reducing the number 
+ 
+
+%and examined how the false positive rate at a constant threshold is affected when reducing the number of sessions in the training data. 
+
+
+
+
+
+\section{Benefit of increased model complexity}\label{SecF:Modelcompl}
+
+A significant part of the conducted work was concerned with improving the given network design to address insufficient predictions for several traffic phenomena and boost overall model performance. We now outline several key-steps in the design process and how they improve performance.
+
+\subsection{Bidirectionality for better session context}\label{SecF:Bidir}
+
+%As mentioned in Section \textcolor{red}{...}, t
+The usage of bidirectional LSTM layers compared to unidirectional ones significantly improved the prediction of events at the beginning of a session and consequently boosted detection rates within short sessions. Fig. \ref{figF:short_sess} demonstrates this in a detailed manner: Displayed is a short session of 4 flows containing FTP and HTTP activity on host ``42.219.153.32''. On the right side are the predicted likelihoods of FTP and HTTP states for each flow in the session, with the the blue bars corresponding to predictions by the forward layer, while the red bars display the backwards direction and the green bars display the likelihoods after aggregating both predictions. %Increasing the number of LSTM layers from one to two decreases false positive rates in longer sessions while maintaining similar detection rates.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{images_MLN/short_sess_new2.png} \caption{Common short session and the flow likelihoods predicted by each dirctional model.}\label{figF:short_sess}
+\end{figure}
+
+Fig. \ref{figF:short_sess} demonstrates this in a detailed manner: Displayed is a short session of 4 flows containing FTP and HTTP activity on host ``42.219.153.32''. On the right side are the predicted likelihoods of FTP and HTTP states for each flow in the session, with the the blue bars corresponding to predictions by the forward layer, while the red bars display the backwards direction and the green bars display the likelihoods after aggregating both predictions. 
+
+When only relying on the forward direction, for the first two flows the predicted likelihoods are less than $0.07$ each. 
+The last two flows of the session are however predicted well with high likelihoods over $0.3$. Because the session is short, the inaccurate predictions for the first two flows decrease overall likelihood of the session to $0.18$ and the corresponding anomaly score to $AS=0.73$, which is just below the anomaly threshold, even though this type flow sequence is quite common in the UGR-16-dataset.
+In a similar manner, this applies for the backward direction with  the likelihoods of the last two observed flows being $0.02$ and $0.03$ respectively. 
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l|l|l|l}
+& & \multicolumn{2}{c|}{Likelihood of}&\multicolumn{2}{c}{\multirow{2}{*}{FP rate $[\%]$}}\\
+& & \multicolumn{2}{c|}{flows 1\&2} &\multicolumn{2}{c}{} \\
+&& unidir & bidir& unidir& bidir\\  \hline \hline
+\multirow{2}{*}{UGR-16}&All sess.& 0.13&0.27 &0.31 & 0.12\\  \cline{2-6}
+&sess.<5 flows& 0.19 & 0.41 & 1.6& 0.09\\  \hline \hline
+\multirow{2}{*}{CICIDS-17}&All sess.& 0.09& 0.29& 0.37& 0.18\\  \cline{2-6}
+&sess.<5 flows& 0.05 & 0.30 & 1.7& 0.13\\  \hline
+\end{tabular}
+\caption{Average likelihood of first two flows in a session and false-positives for uni- and bidirectional model.}\label{tabF:bidir}
+\end{table}
+The cause for these phenomena is that the start of a session can differ significantly for different activities, and the LSTM-layer needs some context before recognising the specific activity and make corresponding predictions. In short sessions, the lack of accurate predictions in the first flows can then dominate the anomaly-score of the whole session.
+
+By adding a bi-directional layer, we are able to provide context for these initial flows in a session as well by looking at later flows first. The green bars in Fig. \ref{figF:short_sess} displays this: By basing predictions both on the output of the forward- and the backward-layer, the bidirectional model is able to predict flow likelihoods significantly better and thus assign the session a much lower anomaly-score.
+
+
+
+
+Table \ref{tabF:bidir} displays how much we could decrease false-positive rates by replacing the unidirectional LSTM layer with a bidirectional one. Overall, the false-positives decreased by 61\% for the CICIDS-17 dataset, and by 52\% for the UGR-16 dataset. More strikingly, when only looking at short sessions that contain less than 5 flows, we were able to reduce false-positives by $94\%$ and $87\%$ respectively.
+
+
+\subsection{Additional layers for complex session modelling}\label{SecF:depth}
+
+
+
+The inclusion of a second LSTM-layer as well a subsequent linear layer allows CBAM to capture more complex behaviour in long sessions as well as remember rare behaviour more quickly. It also increased the average predicted likelihood for flows overall. 
+
+To examine the benefit of the described model depth, we compare it to a more shallow version that lacks the second LSTM- and linear layer, as depicted in Fig. \ref{figF:rnn_FSA2}, which was trained under otherwise similar conditions. Overall detection rates for this model can be found in Table \ref{tabF:dfCICinf} and \ref{tabF:dfCICAUC}, while score distributions can be found  further down in Table \ref{tabF:Simpcomptab}. Here, we examine in more detail how the increased model depth allows better predictions for complex sessions. 
+
+Fig. \ref{figF:complex_sess} displays two different types of activities, A and B, which are common in the CICIDS-17 data. The structure in these sessions can be observed frequently with only minor variations. Consequently, the sessions are predicted well by both the original and the more shallow model.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{images_MLN/complex_sess_new2.png} \caption{Predictions for two activities in isolated sessions and in a mixed session.}\label{figF:complex_sess}
+\end{figure}
+
+However, traffic from two or more activities can sometimes occur simultaneously and thus get grouped into the same session. Fig. \ref{figF:complex_sess} shows how the traffic from activity A and B are overlapping in a session, which makes the structure in the session more complex to predict.
+
+
+
+The displayed likelihoods show predictions by the shallow model are accurate for flows at the beginning of the session well, but deteriorate once encountering flows from activity B. Prediction accuracy by the more complex model is also decreasing, but remaining on a sufficient level to assign this session an anomaly score of $AS=0.51$, compared to $AS_S=0.79$ for the shallow model. When looking at the activation in the LSTM-memory cell, we see that similar neurons as in activity A are activated at the beginning of the session, which shifts during the course of the session and resembles a more similar activation as in activity B at the end.
+
+The improvements achieved by adding these additional layers could suggest that increasing the number of layers even further will decrease false positive rates even further, which we discuss in Section \ref{SecF:Resilience}.
+
+\subsection{Comparison with simpler models}\label{Sect:Compsimp}
+
+In this section we aim at studying whether the higher complexity of an LSTM network is necessary for the task of detecting contextual network anomalies, or whether simpler baseline methods can achieve the same results. For comparison purposes, we implemented a first-order Markov Chain (MC) and a Non-Deterministic Finite  Automata (NDFA) model. Both methods are widely used in sequence modelling, and have been applied successfully to security problems \cite{ye2000markov,pellegrino2017learning}. In contrast to LSTMs, Markov Chains have no memory past the last event while NDFAs can distinguish between different types of sequences via state-merging, and give corresponding transition probabilities.
+
+Similar to our LSTM model, Markov Chains and Finite Automata predict state transition probabilities, which is why we can employ the same anomaly score computation. However, computational costs increase quadratically with the number of states, and a separation of state vocabularies is not possible. We restrict both comparison models to the above described port-direction states. 
+Models and detection rates were determined on the CICIDS-17 dataset.
+%
+%\begin{figure}
+%\centering
+%\begin{subfigure}[b]{0.4\textwidth}
+%\includegraphics[width=0.8\textwidth]{images_MLN/LSTM_design_shallow.png}
+%%\caption{Shallow LSTM-model}
+%\end{subfigure}
+%\quad
+%\small
+%%\begin{subfigure}[b]{0.33\textwidth}
+%%\end{subfigure}
+%\caption{Architecture of the shallow LSTM-model.}\label{figF:rnn_FSA2}
+%\end{figure}
+Table \ref{tabF:Simpcomptab} shows distribution characteristics of benign and malicious sessions for our shallow LSTM-model, the Markov Chain model, and the NDFA. It shows that CBAM outperforms these baseline methods, but also that the automata performs better than Markov Chains. While the Markov Chain is practically not able to make any distinction between malicious and benign traffic, the automata model shows some, albeit limited ability to identify anomalous sessions, mainly for the three types of brute-force attacks. This order shows the importance of sequence memory for contextual anomaly detection, and confirms our previous comparison of the suitability of Markov Chains and NDFAs for network intrusion detection \cite{grov2019towards}.
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|ccc}
+%\multicolumn{2}{c}{ } \vspace{-5cm}\\
+\hline
+&shallow&Markov&\multirow{2}{*}{NDFA}\\
+&LSTM&MC&\\
+\hline
+Ben. 50\%q&0.22&0.61&0.55\\[0.2cm]
+Ben. 90\%q&0.55&0.81&0.86\\[0.2cm]
+Ben. 99\%q&0.73&0.89&0.96\\[0.2cm]
+Mal. 50\%q&0.70&0.60&0.68\\[0.2cm]
+Mal. 90\%q&0.85&0.83&0.89\\[0.2cm]
+Mean AUC&0.86&0.53&0.64\\ \hline
+\multicolumn{2}{c}{ }
+\end{tabular}
+\caption{Score distributions for simpler models.}\label{tabF:Simpcomptab}
+\end{table}
+
+
+\section{Related work}\label{SecF:Related work}
+
+The application of recurrent neural networks to network intrusion detection has risen in popularity recently. LSTM-models for web attack detection, such as by Yu et al. \cite{yu2018attention}, improve detection rates of simpler preceding models such as Song et al. \cite{song2009spectrogram}. They rely on deep packet inspection, and are often targeted at protecting selected web-servers rather than network-wide, due to a lack of computational scalability and increasing traffic encryption. Methodologically, vocabularies are created from string sequences with well-known NLP methods, while CBAM provides a new vocabulary-construction method suitable for traffic metadata.
+
+The majority of LSTM-based metadata approaches rely on labelled attack data for classification, and do not have the scope of anomaly-based models to detect previously unseen attacks. %, and therefore does not offer the benefits of anomaly detection. 
+A prominent example of this comes from Kim et al. \cite{kim2016long}, who classify flow sequences based on 41 numeric input features. %, therefore bypassing vocabulary-construction. 
+Anomaly-based approaches, such as ours, mostly rely on iterative one-step ahead forecasts, with the forecasting error acting as the anomaly indicator. This is for instance done in GAMPAL by Wakui et~al.~\cite{wakui2019gampal}, who use flow data aggregation  as numerical input features, which are computationally easier to process, but cannot encapsulate high-level information such as the used protocol, port, or direction. These models are best used for detecting high-volume attacks.
+Apart from our work, only Radford et al. \cite{radford2018network} create event vocabularies from flow protocols and sizes. We use a more sophisticated model in terms of stacked recurrent layers and embeddings for more input features, which results in higher detection rates, as demonstrated in see Section \ref{SecF:Modelcompl}. The HCRNNIDS model by Kahn provides an interesting adaption of hybrid convolutional recurrent networks typically used in video modelling to intrusion detection \cite{khan2021hcrnnids} with promising results. In comparison to CBAM, this model is applied to individual flow features rather than flow sequences, and is trained as a classifier rather than an anomaly-detection model.  
+
+Encoding methods are increasingly used in combination with LSTM networks to create embeddings of packet or flow sequences, such as done by Zhong et al. \cite{zhong2020helad} for anomaly detection. Zhou et al. \cite{zhou2020variational} use embeddings to facilitate anomaly-detection that is robust against dataset imbalances. Liu et al. \cite{liu2020intrusion} use embeddings to augment and inflate minority class data samples for the same purpose. 
+
+Berman et al. \cite{berman2019survey} have surveyed recent deep-learning techniques for network intrusion detection as well as other cyber-security applications. They assess that many recurrent methods are state-of-the-art, but do not reach a conclusion whether they perform better than convolutional or generative methods.
+
+Notable work outside of network traffic includes Tiresias \cite{shen2018tiresias}, an LSTM model for security event forecasting with great accuracy, 
+and DeepLog \cite{du2017deeplog}, an LSTM network to learn a system's log patterns (e.g., log key patterns and parameter values) from normal execution. 
+The design of Tiresias has similarities to ours, but the scope of the model is attack forecasting rather than intrusion detection, and relies on both different input data in the form of IDS logs as well as different evaluation metrics. DeepLog is combined with a novel log parser to create a sequence of symbolic log keys, which is then also modelled using one-step forecasting. The authors achieve good detection results in regulated environments such as Hadoop with limited variety of events (e.g., 29 events in Hadoop). Here, CBAM goes further by being applied to a much more heterogeneous data source and creating a more than 30 times larger vocabulary.
+Han et al. \cite{han2020unicorn} have recently proposed a deep graph-net based anomaly-detection method for provenance based data that demonstrates  how effective neural anomaly-detection methods at detecting unkown intrusions.
+
+
+\section{Limitations and evasion}\label{SecF:Resilience}
+
+\subsection{Limitations}\label{SecF:Limitations}
+
+CBAM is an initial application of short-term contextual modelling on network traffic that demonstrates the potential of contextual traffic models for intrusion detection. Although we use a relatively simple model with few, but carefully selected input features, we outperform sophisticated methods while retaining low false positive rates. The detection rates are to be taken with care as the available access attack data is small, synthetic and contains just a limited number of attack classes. The detection rates in the cross-evaluation on a real-world access attack in the LANL-15 data gives us confidence that CBAM's performance is reproducible in real-world scenarios, but additional data is required for an ultimate conclusion. 
+
+A frequently asked question concerns whether low false-positive rates carry over from the synthetic background traffic in datasets such as CICIDS-17 to real-world scenarios \cite{sommer_outside_2010}. We believe that this was sufficiently demonstrated by the long-term evaluation and the observed score stability on the UGR-16 real-world dataset. 
+
+%Future work may further improve detection and false positive rates to consistently detect more types of contextual anomalies. Efforts to extend the input or output feature space, or to grow the size of the model will require careful design and calibration, but may potentially achieve even better results and more accurate traffic representations.
+
+The improvements achieved by adding additional layers could suggest that increasing the number of layers even further will decrease false positive rates even further, and is certainly worth exploring in future work. However, as discussed in Section \ref{SecF:UGR_benign}, the current main source for false positives are rare activity events which are not contained in the training data and are therefore not be recognised by the model. To make significant reduction in the false positive rate, we would need to train on datasets spanning more computers or over longer time periods. We are however aware of the difficulties involved in creating datasets for NIDS evaluation.
+
+\subsection{Evasion and resilience}
+Evasion tactics and corresponding model resilience against them have been a concern in the development of NIDS. We specifically focused on short-term sequential anomalies as they are often an unavoidable by-product of attack sequences, and it is thus very difficult for an attacker to perturb attack sequences that rely on a specific exploit without pre-existing control over the victim device or other network devices. %CBAM also does not open new pathways for attackers to evade detection. 
+We therefore believe that CBAM is relatively robust against evasion. However we identified potential improvements for future work.
+%In contrast to signature misuse detection, anomaly-based methods are more robust to attackers performing simple alterations in their attack procedure \cite{Chandola2009}.
+% Not all access attacks generate such sequential anomalies, but it is 
+
+% As CBAM uses symbolic features instead of numerical ones, there is little possibility to introduce gradual shifts, and attempts to introduce new sequences would likely exceed the anomaly threshold. Additionally, without control over the victim device, the attacker can only introduce alterations in one direction, making this tactic very difficult to apply to CBAM.
+
+A specific evasion tactic that has been discussed extensively in the context of machine learning is model poisoning in the training/retraining phase. A great difficulty for the attacker is the fact that CBAM uses sequences of symbolic events rather than continuous parameters. The introduction of a gradual shift is therefore not possible in a direct way as the alteration of individual events would look anomalous straight away. Furthermore, it is normally not possible for an attacker to alter individual events significantly without pre-existing control over network devices or specific exploits, i.e. the change of the port or size would normally cause an error in the communication. It is thinkable that an attacker could increase the predicted probability of specific events patterns more gradually by overlaying traffic stemming from 3rd party devices. However, the attacker would either need control of these devices or the ability to monitor traffic to the victim device in real-time, both of which is usually not available.
+We also showed in Section \ref{SecF:Benigntraffic} that short-term contextual traffic patterns remain stable over several months, which means that retraining of CBAM is only necessary at a low rate and attackers will have to wait for a long time to execute successful model poisoning.
+
+
+
+
+An issue we encountered is the overlay of malicious and benign traffic. Currently, the existence of known traffic patterns in a session can deplete the overall anomaly score of a session. A potential evasion tactic could therefore try to conceal an attack behind benign communication on the victim device, an already common approach for C\&C communication. Possible improvements for this issue are a refined notion of a session that groups related traffic better, and a better scoring method that identifies smaller anomalous sequences in an otherwise normal sequence of flows. Additionally, developing more sophisticated detection methods from the computed scores may boost detection rates.
+
+
+
+\section{Conclusion}\label{SecF:flaws}
+
+
+CBAM presents a new and promising angle to anomaly-based intrusion detection that significantly improves detection rates on the types of network attacks with the lowest detection rates. We use an anomaly-based approach that does not rely on specific notions of attack behaviours, and is therefore better suited at detecting unknown attacks rather than regular misuse- or signature-based systems. By assigning contextual probabilities to network events, CBAM improves detection rates of low-volume remote access attacks and outperforms current state-of-the-art anomaly-based models in the detection of several attacks while retaining significantly lower false positive rates. Furthermore, CBAM retains low false positive rates for periods stretching several months. Our results provide good evidence that using contextual anomaly detection may in the future help decrease the threat of previously unseen vulnerabilities and malware aimed at acquiring unauthorised access on a host. We specifically focused on short-term anomalies as they are often an unavoidable by-product of an attack thus very difficult for an attacker to avoid without pre-existing control over the victim device or other network devices.
+
+
+

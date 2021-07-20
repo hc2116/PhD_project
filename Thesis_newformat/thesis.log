@@ -1,0 +1,1671 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.6.28 NEXT) (preloaded format=pdflatex 2021.7.19)  19 JUL 2021 20:51
+entering extended mode
+**./thesis.tex
+(thesis.tex
+LaTeX2e <2021-06-01> patch level 1
+L3 programming layer <2021-07-12> (infthesis.cls
+Document Class: infthesis 2011/02/02 v3.5 School of Informatics Thesis Class
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometry.s
+ty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count182
+\Gm@cntv=\count183
+\c@Gm@tempcnt=\count184
+\Gm@bindingoffset=\dimen138
+\Gm@wd@mp=\dimen139
+\Gm@odd@mp=\dimen140
+\Gm@even@mp=\dimen141
+\Gm@layoutwidth=\dimen142
+\Gm@layoutheight=\dimen143
+\Gm@layouthoffset=\dimen144
+\Gm@layoutvoffset=\dimen145
+\Gm@dimlist=\toks17
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometry.c
+fg))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.s
+ty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graphi
+cs.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdftex
+.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(eushield.sty
+Package: eushield 2006/08/28\ v1.1\ Commands for including the EU shield graphi
+c
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+)) (C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\report.cls
+Document Class: report 2021/02/12 v1.4n Standard LaTeX document class
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size12.clo
+File: size12.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@chapter=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen146
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pslatex\pslatex.sty
+Package: pslatex 2021/01/13 v1.3 pslatex emulation (DPC)
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 66.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/ptmcm/m/n on input line 66.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/ptmcm/m/n on input line 66.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 67.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/ptmcm/m/it on input line 67.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/ptmcm/m/it on input line 67.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 68.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/pzccm/m/n on input line 68.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/pzccm/m/n on input line 68.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 69.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/psycm/m/n on input line 69.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/psycm/m/n on input line 69.
+\symbold=\mathgroup4
+\symitalic=\mathgroup5
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 75.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 76.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/ptm/m/it on input line 76.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 76.
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/sectsty\sectsty.sty
+Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
+les
+
+LaTeX Warning: Command \underbar  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \underline  has changed.
+               Check if current package is valid.
+
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption3.st
+y
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen147
+\captionmargin@=\dimen148
+\captionwidth=\dimen149
+\caption@tempdima=\dimen150
+\caption@indent=\dimen151
+\caption@parindent=\dimen152
+\caption@hangindent=\dimen153
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count194
+\c@continuedfloat=\count195
+)) (C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/url\url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\color.
+cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.s
+ty
+Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
+\Gin@req@height=\dimen154
+\Gin@req@width=\dimen155
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/colortbl\colortbl.s
+ty
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+ (C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.sty
+Package: array 2021/04/20 v2.5e Tabular extension package (FMi)
+\col@sep=\dimen156
+\ar@mcellbox=\box50
+\extrarowheight=\dimen157
+\NC@list=\toks18
+\extratabsurround=\skip49
+\backup@length=\skip50
+\ar@cellbox=\box51
+)
+\everycr=\toks19
+\minrowclearance=\skip51
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\subcaption.
+sty
+Package: subcaption 2020/10/07 v1.3j Sub-captions (AR)
+\c@subfigure=\count196
+\c@subtable=\count197
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\multicol.sty
+Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
+\c@tracingmulticols=\count198
+\mult@box=\box52
+\multicol@leftmargin=\dimen158
+\c@unbalance=\count199
+\c@collectmore=\count266
+\doublecol@number=\count267
+\multicoltolerance=\count268
+\multicolpretolerance=\count269
+\full@width=\dimen159
+\page@free=\dimen160
+\premulticols=\dimen161
+\postmulticols=\dimen162
+\multicolsep=\skip52
+\multicolbaselineskip=\skip53
+\partial@page=\box53
+\last@line=\box54
+\maxbalancingoverflow=\dimen163
+\mult@rightbox=\box55
+\mult@grightbox=\box56
+\mult@gfirstbox=\box57
+\mult@firstbox=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\c@minrows=\count270
+\c@columnbadness=\count271
+\c@finalcolumnbadness=\count272
+\last@try=\dimen164
+\multicolovershoot=\dimen165
+\multicolundershoot=\dimen166
+\mult@nat@firstbox=\box96
+\colbreak@box=\box97
+\mc@col@check@num=\count273
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/multirow\multirow.s
+ty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip54
+\multirow@cntb=\count274
+\multirow@dima=\skip55
+\bigstrutjot=\dimen167
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2021/04/20 v2.17j AMS math features
+\@mathmargin=\skip56
+For additional information on amsmath, use the `?' option.
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks20
+\ex@=\dimen168
+))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen169
+) (C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn.st
+y
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count275
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count276
+\leftroot@=\count277
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count278
+\DOTSCASE@=\count279
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box98
+\strutbox@=\box99
+\big@size=\dimen170
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count280
+\c@MaxMatrixCols=\count281
+\dotsspace@=\muskip17
+\c@parentequation=\count282
+\dspbrk@lvl=\count283
+\tag@help=\toks21
+\row@=\count284
+\column@=\count285
+\maxfields@=\count286
+\andhelp@=\toks22
+\eqnshift@=\dimen171
+\alignsep@=\dimen172
+\tagshift@=\dimen173
+\tagwidth@=\dimen174
+\totwidth@=\dimen175
+\lineht@=\dimen176
+\@envbody=\toks23
+\multlinegap=\skip57
+\multlinetaggap=\skip58
+\mathdisplay@stack=\toks24
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amssymb.st
+y
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amsfonts.s
+ty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup6
+\symAMSb=\mathgroup7
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/makecell\makecell.s
+ty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen177
+\c@nlinenum=\count287
+\TeXr@lab=\toks25
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\rotating.s
+ty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+\c@r@tfl@t=\count288
+\rotFPtop=\skip59
+\rotFPbot=\skip60
+\rot@float@box=\box100
+\rot@mess@toks=\toks26
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listings.s
+ty
+\lst@mode=\count289
+\lst@gtempboxa=\box101
+\lst@token=\toks27
+\lst@length=\count290
+\lst@currlwidth=\dimen178
+\lst@column=\count291
+\lst@pos=\count292
+\lst@lostspace=\dimen179
+\lst@width=\dimen180
+\lst@newlines=\count293
+\lst@lineno=\count294
+\lst@maxwidth=\dimen181
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstmisc.st
+y
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count295
+\lst@skipnumbers=\count296
+\lst@framebox=\box102
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listings.c
+fg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/background\backgrou
+nd.sty
+Package: background 2014/03/04 v2.1 background material
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/xkeyval\xkeyval.t
+ex
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/xkeyval\xkvutils.
+tex
+\XKV@toks=\toks28
+\XKV@tempa@toks=\toks29
+)
+\XKV@depth=\count297
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/frontendlayer\t
+ikz.sty
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/basiclayer\pgf.
+sty
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/utilities\pgfrc
+s.sty
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
+util-common.tex
+\pgfutil@everybye=\toks30
+\pgfutil@tempdima=\dimen182
+\pgfutil@tempdimb=\dimen183
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
+util-common-lists.tex))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
+util-latex.def
+\pgfutil@abb=\box103
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/everyshi\everyshi.s
+ty
+Package: everyshi 2020/11/18 v4.00 EveryShipout Package
+))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
+rcs.code.tex
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf\pgf.revision.
+tex)
+Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
+))
+Package: pgf 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/basiclayer\pgfc
+ore.sty
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/systemlayer\pgf
+sys.sty
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\p
+gfsys.code.tex
+Package: pgfsys 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
+keys.code.tex
+\pgfkeys@pathtoks=\toks31
+\pgfkeys@temptoks=\toks32
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
+keysfiltered.code.tex
+\pgfkeys@tmptoks=\toks33
+))
+\pgf@x=\dimen184
+\pgf@y=\dimen185
+\pgf@xa=\dimen186
+\pgf@ya=\dimen187
+\pgf@xb=\dimen188
+\pgf@yb=\dimen189
+\pgf@xc=\dimen190
+\pgf@yc=\dimen191
+\pgf@xd=\dimen192
+\pgf@yd=\dimen193
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count298
+\c@pgf@countb=\count299
+\c@pgf@countc=\count300
+\c@pgf@countd=\count301
+\t@pgf@toka=\toks34
+\t@pgf@tokb=\toks35
+\t@pgf@tokc=\toks36
+\pgf@sys@id@count=\count302
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\p
+gf.cfg
+File: pgf.cfg 2020/01/08 v3.1.5b (3.1.5b)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\p
+gfsys-pdftex.def
+File: pgfsys-pdftex.def 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\p
+gfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2020/01/08 v3.1.5b (3.1.5b)
+)))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\p
+gfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfsyssoftpath@smallbuffer@items=\count303
+\pgfsyssoftpath@bigbuffer@items=\count304
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\p
+gfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcore.code.tex
+Package: pgfcore 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath.
+code.tex
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathc
+alc.code.tex
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathu
+til.code.tex)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathp
+arser.code.tex
+\pgfmath@dimen=\dimen194
+\pgfmath@count=\count305
+\pgfmath@box=\box104
+\pgfmath@toks=\toks37
+\pgfmath@stack@operand=\toks38
+\pgfmath@stack@operation=\toks39
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathf
+unctions.code.tex
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathf
+unctions.basic.code.tex)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathf
+unctions.trigonometric.code.tex)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathf
+unctions.random.code.tex)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathf
+unctions.comparison.code.tex)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathf
+unctions.base.code.tex)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathf
+unctions.round.code.tex)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathf
+unctions.misc.code.tex)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathf
+unctions.integerarithmetics.code.tex)))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathf
+loat.code.tex
+\c@pgfmathroundto@lastzeros=\count306
+))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfint.c
+ode.tex)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcorepoints.code.tex
+File: pgfcorepoints.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@picminx=\dimen195
+\pgf@picmaxx=\dimen196
+\pgf@picminy=\dimen197
+\pgf@picmaxy=\dimen198
+\pgf@pathminx=\dimen199
+\pgf@pathmaxx=\dimen256
+\pgf@pathminy=\dimen257
+\pgf@pathmaxy=\dimen258
+\pgf@xx=\dimen259
+\pgf@xy=\dimen260
+\pgf@yx=\dimen261
+\pgf@yy=\dimen262
+\pgf@zx=\dimen263
+\pgf@zy=\dimen264
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@path@lastx=\dimen265
+\pgf@path@lasty=\dimen266
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@shorten@end@additional=\dimen267
+\pgf@shorten@start@additional=\dimen268
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcorescopes.code.tex
+File: pgfcorescopes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfpic=\box105
+\pgf@hbox=\box106
+\pgf@layerbox@main=\box107
+\pgf@picture@serial@count=\count307
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgflinewidth=\dimen269
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@pt@x=\dimen270
+\pgf@pt@y=\dimen271
+\pgf@pt@temp=\dimen272
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcorequick.code.tex
+File: pgfcorequick.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcorearrows.code.tex
+File: pgfcorearrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfarrowsep=\dimen273
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcoreshade.code.tex
+File: pgfcoreshade.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@max=\dimen274
+\pgf@sys@shading@range@num=\count308
+\pgf@shadingcount=\count309
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcoreimage.code.tex
+File: pgfcoreimage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfexternal@startupbox=\box108
+))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcorelayers.code.tex
+File: pgfcorelayers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\pg
+fcorerdf.code.tex
+File: pgfcorerdf.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/modules\pgfmo
+duleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfnodeparttextbox=\box109
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/modules\pgfmo
+duleplot.code.tex
+File: pgfmoduleplot.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/compatibility\p
+gfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@nodesepstart=\dimen275
+\pgf@nodesepend=\dimen276
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/compatibility\p
+gfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2020/01/08 v3.1.5b (3.1.5b)
+))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/utilities\pgffo
+r.sty
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/utilities\pgfke
+ys.sty
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
+keys.code.tex))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/math\pgfmath.st
+y
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath.
+code.tex))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
+for.code.tex
+Package: pgffor 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath.
+code.tex)
+\pgffor@iter=\dimen277
+\pgffor@skip=\dimen278
+\pgffor@stack=\toks40
+\pgffor@toks=\toks41
+))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlayer
+/tikz\tikz.code.tex
+Package: tikz 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/libraries\pgf
+libraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@plot@mark@count=\count310
+\pgfplotmarksize=\dimen279
+)
+\tikz@lastx=\dimen280
+\tikz@lasty=\dimen281
+\tikz@lastxsaved=\dimen282
+\tikz@lastysaved=\dimen283
+\tikz@lastmovetox=\dimen284
+\tikz@lastmovetoy=\dimen285
+\tikzleveldistance=\dimen286
+\tikzsiblingdistance=\dimen287
+\tikz@figbox=\box110
+\tikz@figbox@bg=\box111
+\tikz@tempbox=\box112
+\tikz@tempbox@bg=\box113
+\tikztreelevel=\count311
+\tikznumberofchildren=\count312
+\tikznumberofcurrentchild=\count313
+\tikz@fig@count=\count314
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/modules\pgfmo
+dulematrix.code.tex
+File: pgfmodulematrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfmatrixcurrentrow=\count315
+\pgfmatrixcurrentcolumn=\count316
+\pgf@matrix@numberofcolumns=\count317
+)
+\tikz@expandcount=\count318
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlayer
+/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)))
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/everypage\everypage
+.sty
+Package: everypage 2020/10/17 R2.0b Hooks to run on every page
+
+
+Package everypage Warning: Functionality similar to this package has recently
+(everypage)                been implemented in LaTeX. This package is now in
+(everypage)                legacy status.
+(everypage)                Please, don't use it in new documents and packages.
+
+
+Package everypage Warning: You appear to be running a version of LaTeX
+(everypage)                providing the new functionality.
+(everypage)                Doing the best to deliver the original `everypage`
+(everypage)                interface on top of it. Strict equivalence is
+(everypage)                not possible, breakage may occur.
+(everypage)                If truly needed, Use `everypage-1x` to force the
+(everypage)                loading of an older code base.
+
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\afterpage.sty
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks42
+\AP@partial=\box114
+\AP@footins=\box115
+))
+\c@hypothesis=\count319
+\c@rquestion=\count320
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3backend\l3backend
+-pdftex.def
+File: l3backend-pdftex.def 2021-07-12 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count321
+\l__pdf_internal_box=\box116
+) (thesis.aux)
+\openout1 = `thesis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 44.
+LaTeX Font Info:    Trying to load font information for OMS+pzccm on input line
+ 44.
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\omspzccm.fd
+File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
+)
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(113.81102pt, 412.56497pt, 71.13188pt)
+* v-part:(T,H,B)=(56.9055pt, 674.33032pt, 113.81102pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=412.56497pt
+* \textheight=674.33032pt
+* \oddsidemargin=41.54103pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=85.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-pd
+f.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count322
+\scratchdimen=\dimen288
+\scratchbox=\box117
+\nofMPsegments=\count323
+\nofMParguments=\count324
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count325
+\MPscratchDim=\dimen289
+\MPnumerator=\count326
+\makeMPintoPDFobject=\count327
+\everyMPtoPDFconversion=\toks44
+)
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/epstopdf-pkg\epstop
+df-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/00miktex\epstopdf-s
+ys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: rotating package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count328
+<images//roundel_informatics.jpg, id=4, 372.1905pt x 99.9735pt>
+File: images//roundel_informatics.jpg Graphic file (type jpg)
+<use images//roundel_informatics.jpg>
+Package pdftex.def Info: images//roundel_informatics.jpg  used on input line 70
+.
+(pdftex.def)             Requested size: 148.87355pt x 39.98868pt.
+<images//roundel.jpg, id=5, 86.0013pt x 87.6876pt>
+File: images//roundel.jpg Graphic file (type jpg)
+<use images//roundel.jpg>
+Package pdftex.def Info: images//roundel.jpg  used on input line 79.
+(pdftex.def)             Requested size: 447.20528pt x 455.97409pt.
+
+Overfull \hbox (48.8667pt too wide) has occurred while \output is active
+[][] 
+ []
+
+LaTeX Font Info:    Trying to load font information for OT1+ptmcm on input line
+ 79.
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1ptmcm.fd
+File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
+)
+LaTeX Font Info:    Trying to load font information for OML+ptmcm on input line
+ 79.
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\omlptmcm.fd
+File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
+)
+LaTeX Font Info:    Trying to load font information for OMX+psycm on input line
+ 79.
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\omxpsycm.fd
+File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 79.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 79.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 79.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 79.
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 79.
+
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+[1
+
+{C:/Users/henry/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./images//r
+oundel.jpg> <./images//roundel_informatics.jpg>] (chapters/abstract.tex
+File: images//roundel_informatics.jpg Graphic file (type jpg)
+<use images//roundel_informatics.jpg>
+Package pdftex.def Info: images//roundel_informatics.jpg  used on input line 19
+.
+(pdftex.def)             Requested size: 148.87355pt x 39.98868pt.
+)
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 10.79993pt on input line 87.
+
+[2]
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 22.39185pt on input line 87.
+ [3
+
+] [4
+
+]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 9
+5.
+
+(C:\Users\henry\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+Overfull \hbox (4.09401pt too wide) in paragraph at lines 98--99
+\OT1/ptm/m/it/12 Ma-chine Learn-ing for Net-work-ing: Third In-ter-na-tional Co
+n-fer-ence (MLN), Paris,
+ []
+
+
+Overfull \hbox (8.27097pt too wide) in paragraph at lines 100--101
+\OT1/ptm/m/it/12 and Sys-tem Se-cu-rity (NSS), Mel-bourne, Aus-tralia, Novem-be
+r 25-27 2020, Springer
+ []
+
+[5]
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 105.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 10.79993pt on input line 105.
+ [6] [7
+
+] [8
+
+] (thesis.toc [9] [10] [11] [12])
+\tf@toc=\write4
+\openout4 = `thesis.toc'.
+
+ [13] [14
+
+]
+Chapter 1.
+(chapters/introduction.tex
+Underfull \vbox (badness 1418) has occurred while \output is active []
+
+ [15]
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 15.55188pt on input line 21.
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 12.9599pt on input line 25.
+
+Overfull \hbox (1.90797pt too wide) in paragraph at lines 34--35
+[]\OT1/ptm/m/n/12 Machine-learning and anomaly-based in-tru-sion de-tec-tion so
+-lu-tions are find-ing more
+ []
+
+[16]
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 10.79993pt on input line 41.
+ [17]
+<images//images_introduction/Themes.PNG, id=66, 351.56343pt x 252.19218pt>
+File: images//images_introduction/Themes.PNG Graphic file (type png)
+<use images//images_introduction/Themes.PNG>
+Package pdftex.def Info: images//images_introduction/Themes.PNG  used on input 
+line 74.
+(pdftex.def)             Requested size: 247.54149pt x 177.57231pt.
+ [18]
+Overfull \hbox (1.13062pt too wide) in paragraph at lines 88--89
+\OT1/ptm/m/n/12 sary con-cepts of machine-learning based anomaly de-tec-tion fo
+r se-quen-tial data streams.
+ []
+
+[19 <./images//images_introduction/Themes.PNG>]
+<images//images_introduction/Thesis_structure.PNG, id=74, 395.97937pt x 677.531
+25pt>
+File: images//images_introduction/Thesis_structure.PNG Graphic file (type png)
+<use images//images_introduction/Thesis_structure.PNG>
+Package pdftex.def Info: images//images_introduction/Thesis_structure.PNG  used
+ on input line 94.
+(pdftex.def)             Requested size: 247.54149pt x 423.55937pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [20 <./images//images_introduction/Thesis_structure.PNG>]) [21] [22
+
+]
+Chapter 2.
+(chapters/background.tex
+<images/tcp_header.png, id=86, 575.90157pt x 324.46219pt>
+File: images/tcp_header.png Graphic file (type png)
+<use images/tcp_header.png>
+Package pdftex.def Info: images/tcp_header.png  used on input line 11.
+(pdftex.def)             Requested size: 230.35654pt x 129.78256pt.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 7.19995pt on input line 12.
+ [23 <./images/tcp_header.png>] [24] [25]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
+ [26]
+<images/outlier_mine.png, id=102, 710.655pt x 577.15625pt>
+File: images/outlier_mine.png Graphic file (type png)
+<use images/outlier_mine.png>
+Package pdftex.def Info: images/outlier_mine.png  used on input line 96.
+(pdftex.def)             Requested size: 185.65297pt x 150.77922pt.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 9.85492pt on input line 97.
+<images/Atrial_Premature_Contraction.png, id=103, 1324.95pt x 1029.8475pt>
+File: images/Atrial_Premature_Contraction.png Graphic file (type png)
+<use images/Atrial_Premature_Contraction.png>
+Package pdftex.def Info: images/Atrial_Premature_Contraction.png  used on input
+ line 100.
+(pdftex.def)             Requested size: 185.65297pt x 144.30338pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27 <./images/outlier_mine.png> <./images/Atrial_Premature_Contraction.png>]
+<images//images_introduction/Langmod2.png, id=108, 435.87843pt x 301.8778pt>
+File: images//images_introduction/Langmod2.png Graphic file (type png)
+<use images//images_introduction/Langmod2.png>
+Package pdftex.def Info: images//images_introduction/Langmod2.png  used on inpu
+t line 135.
+(pdftex.def)             Requested size: 309.42372pt x 214.29788pt.
+ [28 <./images//images_introduction/Langmod2.png>]
+<images/Graphic2.pdf, id=114, 1862.96pt x 1818.795pt>
+File: images/Graphic2.pdf Graphic file (type pdf)
+<use images/Graphic2.pdf>
+Package pdftex.def Info: images/Graphic2.pdf  used on input line 175.
+(pdftex.def)             Requested size: 412.56497pt x 402.77263pt.
+ [29] [30 <./images/Graphic2.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 303--303
+[]|\OT1/ptm/m/n/12 Pcap+ML-flows
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 303--303
+[]|\OT1/ptm/m/n/12 Synthetic
+ []
+
+
+Underfull \hbox (badness 4608) in paragraph at lines 303--303
+[]|\OT1/ptm/m/n/12 12 (DoS, prob-ing,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 304--304
+[]|\OT1/ptm/m/n/12 Real-world (+12
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 305--305
+[]|\OT1/ptm/m/n/12 Real-world (+12
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[31]
+Underfull \vbox (badness 2547) has occurred while \output is active []
+
+ [32]
+[33] [34] [35]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [36]
+[37] [38]
+<images//images_introduction/VM_setup.png, id=162, 712.91344pt x 630.10406pt>
+File: images//images_introduction/VM_setup.png Graphic file (type png)
+<use images//images_introduction/VM_setup.png>
+Package pdftex.def Info: images//images_introduction/VM_setup.png  used on inpu
+t line 456.
+(pdftex.def)             Requested size: 288.79422pt x 255.24843pt.
+
+Underfull \vbox (badness 1888) has occurred while \output is active []
+
+ [39 <./images//images_introduction/VM_setup.png>]) [40] [41] [42
+
+]
+Chapter 3.
+(chapters/DYNAMICS.tex [43] [44] [45] [46] [47] [48] [49] [50]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [51]
+Underfull \vbox (badness 2653) has occurred while \output is active []
+
+ [52]
+<images//images_DYNAMICS/scenario_branching.PNG, id=208, 1036.87375pt x 399.492
+5pt>
+File: images//images_DYNAMICS/scenario_branching.PNG Graphic file (type png)
+<use images//images_DYNAMICS/scenario_branching.PNG>
+Package pdftex.def Info: images//images_DYNAMICS/scenario_branching.PNG  used o
+n input line 237.
+(pdftex.def)             Requested size: 412.56497pt x 158.95905pt.
+
+[53 <./images//images_DYNAMICS/scenario_branching.PNG>] [54] [55]
+<images//images_DYNAMICS/ftp_new1.png, id=219, 901.3675pt x 415.5525pt>
+File: images//images_DYNAMICS/ftp_new1.png Graphic file (type png)
+<use images//images_DYNAMICS/ftp_new1.png>
+Package pdftex.def Info: images//images_DYNAMICS/ftp_new1.png  used on input li
+ne 328.
+(pdftex.def)             Requested size: 412.56497pt x 190.20534pt.
+ [56]
+Overfull \hbox (13.59807pt too wide) in paragraph at lines 336--337
+[]\OT1/ptm/m/n/12 The \OT1/ptm/m/it/12 User \OT1/ptm/m/n/12 di-rec-tory with th
+e server, which con-tains the same files as the \OT1/ptm/m/it/12 dataToShare
+ []
+
+[57 <./images//images_DYNAMICS/ftp_new1.png>] [58]
+
+LaTeX Warning: Float too large for page by 70.09981pt on input line 421.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [59]
+[60]
+<images//images_DYNAMICS/combined3.png, id=237, 425.33907pt x 558.58687pt>
+File: images//images_DYNAMICS/combined3.png Graphic file (type png)
+<use images//images_DYNAMICS/combined3.png>
+Package pdftex.def Info: images//images_DYNAMICS/combined3.png  used on input l
+ine 440.
+(pdftex.def)             Requested size: 268.1647pt x 352.19286pt.
+ [61 <./images//images_DYNAMICS/combined3.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [62]
+[63]
+<images//images_DYNAMICS/1-plot_exp1.png, id=249, 390.45876pt x 292.09125pt>
+File: images//images_DYNAMICS/1-plot_exp1.png Graphic file (type png)
+<use images//images_DYNAMICS/1-plot_exp1.png>
+Package pdftex.def Info: images//images_DYNAMICS/1-plot_exp1.png  used on input
+ line 503.
+(pdftex.def)             Requested size: 330.05322pt x 246.91489pt.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 515.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 515.
+ [64 <./images//images_DYNAMICS/1-plot_exp1.png>] [65]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [66]
+<images//images_DYNAMICS/bw_100_exp_3.png, id=260, 390.45876pt x 279.0425pt>
+File: images//images_DYNAMICS/bw_100_exp_3.png Graphic file (type png)
+<use images//images_DYNAMICS/bw_100_exp_3.png>
+Package pdftex.def Info: images//images_DYNAMICS/bw_100_exp_3.png  used on inpu
+t line 588.
+(pdftex.def)             Requested size: 268.1647pt x 191.65388pt.
+<images//images_DYNAMICS/bw_500_exp_3.png, id=261, 390.45876pt x 279.0425pt>
+File: images//images_DYNAMICS/bw_500_exp_3.png Graphic file (type png)
+<use images//images_DYNAMICS/bw_500_exp_3.png>
+Package pdftex.def Info: images//images_DYNAMICS/bw_500_exp_3.png  used on inpu
+t line 589.
+(pdftex.def)             Requested size: 268.1647pt x 191.65388pt.
+
+Overfull \hbox (3.95102pt too wide) in paragraph at lines 597--598
+\OT1/ptm/m/n/12 In this chap-ter, we out-lined four re-quire-ments a mod-ern da
+taset has to ful-fil to strengthen
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [67]
+[68 <./images//images_DYNAMICS/bw_100_exp_3.png> <./images//images_DYNAMICS/bw_
+500_exp_3.png>] [69]) [70]
+Chapter 4.
+(chapters/modelling.tex
+<images//images_SecureComm/Eva_Prob.png, id=277, 606.76688pt x 248.42813pt>
+File: images//images_SecureComm/Eva_Prob.png Graphic file (type png)
+<use images//images_SecureComm/Eva_Prob.png>
+Package pdftex.def Info: images//images_SecureComm/Eva_Prob.png  used on input 
+line 18.
+(pdftex.def)             Requested size: 412.56497pt x 168.91751pt.
+ [71
+
+]
+Overfull \hbox (1.73112pt too wide) in paragraph at lines 35--37
+\OT1/ptm/m/n/12 of Det-Gen. Here, we ex-am-ine Det-Gen's near-deterministic con
+-trol over microstructure-
+ []
+
+
+Overfull \hbox (1.1521pt too wide) in paragraph at lines 46--47
+[]\OT1/ptm/m/n/12 The ma-jor-ity of work in this chap-ter was pu-bished in ``Ex
+-am-in-ing traf-fic mi-crostruc-
+ []
+
+[72 <./images//images_SecureComm/Eva_Prob.png>] [73] [74]
+<images//images_SecureComm/LSTM_classi.png, id=291, 569.12625pt x 232.61906pt>
+File: images//images_SecureComm/LSTM_classi.png Graphic file (type png)
+<use images//images_SecureComm/LSTM_classi.png>
+Package pdftex.def Info: images//images_SecureComm/LSTM_classi.png  used on inp
+ut line 164.
+(pdftex.def)             Requested size: 408.44157pt x 166.94962pt.
+ [75 <./images//images_SecureComm/LSTM_classi.png (PNG copy)>]
+<images//images_SecureComm/LSTM_activation_new.png, id=295, 514.92375pt x 348.5
+5219pt>
+File: images//images_SecureComm/LSTM_activation_new.png Graphic file (type png)
+
+<use images//images_SecureComm/LSTM_activation_new.png>
+Package pdftex.def Info: images//images_SecureComm/LSTM_activation_new.png  use
+d on input line 180.
+(pdftex.def)             Requested size: 408.44157pt x 276.48071pt.
+
+Underfull \vbox (badness 2452) has occurred while \output is active []
+
+ [76 <./images//images_SecureComm/LSTM_activation_new.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [77]
+Underfull \hbox (badness 3343) in paragraph at lines 213--213
+[]|\OT1/ptm/m/n/12 Get-req. NG-INX,
+ []
+
+
+Underfull \hbox (badness 4156) in paragraph at lines 213--213
+[]|\OT1/ptm/m/n/12 Command 1, low
+ []
+
+
+Underfull \hbox (badness 4156) in paragraph at lines 217--217
+[]|\OT1/ptm/m/n/12 Command 2, low
+ []
+
+
+Underfull \hbox (badness 2626) in paragraph at lines 221--221
+[]|\OT1/ptm/m/n/12 Post-req. Apache,
+ []
+
+
+Underfull \hbox (badness 1688) in paragraph at lines 221--221
+[]|\OT1/ptm/m/n/12 Command 3, high
+ []
+
+
+Underfull \hbox (badness 1688) in paragraph at lines 225--225
+[]|\OT1/ptm/m/n/12 Command 4, high
+ []
+
+[78]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [79]
+<images//images_SecureComm/traffic_dispersion.png, id=310, 367.3725pt x 342.529
+7pt>
+File: images//images_SecureComm/traffic_dispersion.png Graphic file (type png)
+<use images//images_SecureComm/traffic_dispersion.png>
+Package pdftex.def Info: images//images_SecureComm/traffic_dispersion.png  used
+ on input line 248.
+(pdftex.def)             Requested size: 206.28249pt x 192.33797pt.
+
+[80 <./images//images_SecureComm/traffic_dispersion.png>]
+<images//images_SecureComm/Subspace_projection_new3.png, id=315, 376.40625pt x 
+399.74344pt>
+File: images//images_SecureComm/Subspace_projection_new3.png Graphic file (type
+ png)
+<use images//images_SecureComm/Subspace_projection_new3.png>
+Package pdftex.def Info: images//images_SecureComm/Subspace_projection_new3.png
+  used on input line 265.
+(pdftex.def)             Requested size: 206.28249pt x 219.07881pt.
+ [81 <./images//images_SecureComm/Subspace_projection_new3.png>]
+<images//images_SecureComm/FTP_load.png, id=320, 487.06969pt x 277.035pt>
+File: images//images_SecureComm/FTP_load.png Graphic file (type png)
+<use images//images_SecureComm/FTP_load.png>
+Package pdftex.def Info: images//images_SecureComm/FTP_load.png  used on input 
+line 332.
+(pdftex.def)             Requested size: 371.30595pt x 211.19131pt.
+ [82]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[83 <./images//images_SecureComm/FTP_load.png>] [84]
+<images//images_SecureComm/VM_setup_final.png, id=331, 281.57655pt x 322.64803p
+t>
+File: images//images_SecureComm/VM_setup_final.png Graphic file (type png)
+<use images//images_SecureComm/VM_setup_final.png>
+Package pdftex.def Info: images//images_SecureComm/VM_setup_final.png  used on 
+input line 441.
+(pdftex.def)             Requested size: 198.02942pt x 226.92041pt.
+<images//images_SecureComm/Docker_setup_final.png, id=332, 312.77509pt x 375.96
+196pt>
+File: images//images_SecureComm/Docker_setup_final.png Graphic file (type png)
+<use images//images_SecureComm/Docker_setup_final.png>
+Package pdftex.def Info: images//images_SecureComm/Docker_setup_final.png  used
+ on input line 448.
+(pdftex.def)             Requested size: 198.02942pt x 238.03903pt.
+ [85 <./images//images_SecureComm/VM_setup_final.png> <./images//images_SecureC
+omm/Docker_setup_final.png>]
+Underfull \vbox (badness 1552) has occurred while \output is active []
+
+ [86]
+Overfull \hbox (23.06415pt too wide) in paragraph at lines 555--557
+[]\OT1/ptm/m/n/12 To do so, we gen-er-ate traf-fic from three traf-fic types, n
+amely HTTP, file-synchronisation,
+ []
+
+<images//images_SecureComm/Exp111.png, id=340, 606.76688pt x 221.32687pt>
+File: images//images_SecureComm/Exp111.png Graphic file (type png)
+<use images//images_SecureComm/Exp111.png>
+Package pdftex.def Info: images//images_SecureComm/Exp111.png  used on input li
+ne 564.
+(pdftex.def)             Requested size: 408.44157pt x 148.98729pt.
+[87 <./images//images_SecureComm/Exp111.png>]
+<images//images_SecureComm/Detgen_Reg_HTTP_comp_crop.png, id=345, 836.3747pt x 
+293.59688pt>
+File: images//images_SecureComm/Detgen_Reg_HTTP_comp_crop.png Graphic file (typ
+e png)
+<use images//images_SecureComm/Detgen_Reg_HTTP_comp_crop.png>
+Package pdftex.def Info: images//images_SecureComm/Detgen_Reg_HTTP_comp_crop.pn
+g  used on input line 581.
+(pdftex.def)             Requested size: 408.44157pt x 143.37988pt.
+ [88 <./images//images_SecureComm/Detgen_Reg_HTTP_comp_crop.png>] [89]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 625.
+ [90]
+<images//images_SecureComm/ValLoss.png, id=355, 566.115pt x 161.10187pt>
+File: images//images_SecureComm/ValLoss.png Graphic file (type png)
+<use images//images_SecureComm/ValLoss.png>
+Package pdftex.def Info: images//images_SecureComm/ValLoss.png  used on input l
+ine 685.
+(pdftex.def)             Requested size: 408.44157pt x 116.23415pt.
+ [91 <./images//images_SecureComm/ValLoss.png>] [92]
+Overfull \hbox (1.90799pt too wide) in paragraph at lines 734--735
+[]\OT1/ptm/m/n/12 We are cur-rently in-ves-ti-gat-ing how to bet-ter sim-u-late
+ causal-ity in con-nec-tion spawn-
+ []
+
+) [93] [94
+
+]
+Chapter 5.
+(chapters/flow_model.tex [95] [96]
+Underfull \hbox (badness 10000) in paragraph at lines 76--76
+[]\OT1/phv/m/n/10.95 (a) |XSS-attack, A=192.168.10.50, B=
+ []
+
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 94.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 9.85492pt on input line 94.
+[97]
+<images//images_MLN/XSSdist3.png, id=380, 585.68813pt x 211.54031pt>
+File: images//images_MLN/XSSdist3.png Graphic file (type png)
+<use images//images_MLN/XSSdist3.png>
+Package pdftex.def Info: images//images_MLN/XSSdist3.png  used on input line 12
+7.
+(pdftex.def)             Requested size: 330.05322pt x 119.21384pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [98 <./images//images_MLN/XSSdist3.png>] [99]
+<images//images_MLN/Interarrivals-1.pdf, id=388, 397.485pt x 180.675pt>
+File: images//images_MLN/Interarrivals-1.pdf Graphic file (type pdf)
+<use images//images_MLN/Interarrivals-1.pdf>
+Package pdftex.def Info: images//images_MLN/Interarrivals-1.pdf  used on input 
+line 235.
+(pdftex.def)             Requested size: 330.05322pt x 150.02911pt.
+ [100] [101 <./images//images_MLN/Interarrivals-1.pdf>]
+<images//images_MLN/LSTM_design_bi2.jpg, id=402, 962.59625pt x 722.7pt>
+File: images//images_MLN/LSTM_design_bi2.jpg Graphic file (type jpg)
+<use images//images_MLN/LSTM_design_bi2.jpg>
+Package pdftex.def Info: images//images_MLN/LSTM_design_bi2.jpg  used on input 
+line 306.
+(pdftex.def)             Requested size: 363.05919pt x 272.57773pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [102]
+[103 <./images//images_MLN/LSTM_design_bi2.jpg>]
+<images//images_MLN/Example_new.png, id=410, 640.64343pt x 504.38437pt>
+File: images//images_MLN/Example_new.png Graphic file (type png)
+<use images//images_MLN/Example_new.png>
+Package pdftex.def Info: images//images_MLN/Example_new.png  used on input line
+ 353.
+(pdftex.def)             Requested size: 391.93546pt x 308.58217pt.
+ [104] [105 <./images//images_MLN/Example_new.png>] [106] [107] [108]
+<images//images_MLN/UGR_longterm_proto.pdf, id=426, 275.2063pt x 254.23787pt>
+File: images//images_MLN/UGR_longterm_proto.pdf Graphic file (type pdf)
+<use images//images_MLN/UGR_longterm_proto.pdf>
+Package pdftex.def Info: images//images_MLN/UGR_longterm_proto.pdf  used on inp
+ut line 443.
+(pdftex.def)             Requested size: 185.65297pt x 171.50615pt.
+<images//images_MLN/UGR_longterm_port2.png, id=427, 263.98625pt x 261.97874pt>
+File: images//images_MLN/UGR_longterm_port2.png Graphic file (type png)
+<use images//images_MLN/UGR_longterm_port2.png>
+Package pdftex.def Info: images//images_MLN/UGR_longterm_port2.png  used on inp
+ut line 449.
+(pdftex.def)             Requested size: 185.65297pt x 184.23932pt.
+ [109 <./images//images_MLN/UGR_longterm_proto.pdf> <./images//images_MLN/UGR_l
+ongterm_port2.png>] [110] [111] [112]
+<images//images_MLN/LSTM_design_shallow.png, id=475, 462.97969pt x 414.04688pt>
+
+File: images//images_MLN/LSTM_design_shallow.png Graphic file (type png)
+<use images//images_MLN/LSTM_design_shallow.png>
+Package pdftex.def Info: images//images_MLN/LSTM_design_shallow.png  used on in
+put line 538.
+(pdftex.def)             Requested size: 247.54149pt x 221.37704pt.
+<images//images_MLN/CICplots1-1.pdf, id=476, 469.755pt x 216.81pt>
+File: images//images_MLN/CICplots1-1.pdf Graphic file (type pdf)
+<use images//images_MLN/CICplots1-1.pdf>
+Package pdftex.def Info: images//images_MLN/CICplots1-1.pdf  used on input line
+ 573.
+(pdftex.def)             Requested size: 371.30595pt x 171.37065pt.
+
+[113 <./images//images_MLN/LSTM_design_shallow.png>] [114 <./images//images_MLN
+/CICplots1-1.pdf>]
+<images//images_MLN/CICplots2-1.pdf, id=488, 361.35pt x 216.81pt>
+File: images//images_MLN/CICplots2-1.pdf Graphic file (type pdf)
+<use images//images_MLN/CICplots2-1.pdf>
+Package pdftex.def Info: images//images_MLN/CICplots2-1.pdf  used on input line
+ 615.
+(pdftex.def)             Requested size: 371.30595pt x 222.78415pt.
+ [115 <./images//images_MLN/CICplots2-1.pdf>]
+Underfull \vbox (badness 2318) has occurred while \output is active []
+
+ [116]
+<images//images_MLN/LANLdet.png, id=501, 1218.80344pt x 313.17pt>
+File: images//images_MLN/LANLdet.png Graphic file (type png)
+<use images//images_MLN/LANLdet.png>
+Package pdftex.def Info: images//images_MLN/LANLdet.png  used on input line 667
+.
+(pdftex.def)             Requested size: 408.44157pt x 104.94724pt.
+
+[117 <./images//images_MLN/LANLdet.png>]
+<images//images_MLN/SQL_I_new.png, id=505, 537.50812pt x 263.48438pt>
+File: images//images_MLN/SQL_I_new.png Graphic file (type png)
+<use images//images_MLN/SQL_I_new.png>
+Package pdftex.def Info: images//images_MLN/SQL_I_new.png  used on input line 7
+06.
+(pdftex.def)             Requested size: 408.44157pt x 200.21803pt.
+ [118 <./images//images_MLN/SQL_I_new.png>]
+Overfull \hbox (16.68034pt too wide) in paragraph at lines 721--722
+[]\OT1/ptm/m/n/12 Fig 5.11[] de-picts a ses-sion that cor-re-sponds to an in-fi
+l-tra-tion at-tack on host 192.168.10.8
+ []
+
+<images//images_MLN/Infiltration_new.png, id=510, 537.50812pt x 263.48438pt>
+File: images//images_MLN/Infiltration_new.png Graphic file (type png)
+<use images//images_MLN/Infiltration_new.png>
+Package pdftex.def Info: images//images_MLN/Infiltration_new.png  used on input
+ line 729.
+(pdftex.def)             Requested size: 412.56497pt x 202.2363pt.
+[119]
+<images//images_MLN/UGR_Longterm.png, id=514, 400.49625pt x 255.95625pt>
+File: images//images_MLN/UGR_Longterm.png Graphic file (type png)
+<use images//images_MLN/UGR_Longterm.png>
+Package pdftex.def Info: images//images_MLN/UGR_Longterm.png  used on input lin
+e 761.
+(pdftex.def)             Requested size: 412.56497pt x 263.68474pt.
+ [120 <./images//images_MLN/Infiltration_new.png>] [121 <./images//images_MLN/U
+GR_Longterm.png>]
+<images//images_MLN/Color_sess_new.png, id=524, 584.93532pt x 451.6875pt>
+File: images//images_MLN/Color_sess_new.png Graphic file (type png)
+<use images//images_MLN/Color_sess_new.png>
+Package pdftex.def Info: images//images_MLN/Color_sess_new.png  used on input l
+ine 804.
+(pdftex.def)             Requested size: 412.56497pt x 318.59135pt.
+ [122 <./images//images_MLN/Color_sess_new.png (PNG copy)>] [123]
+<images//images_MLN/CIC_LANL.png, id=531, 584.93532pt x 248.42813pt>
+File: images//images_MLN/CIC_LANL.png Graphic file (type png)
+<use images//images_MLN/CIC_LANL.png>
+Package pdftex.def Info: images//images_MLN/CIC_LANL.png  used on input line 82
+7.
+(pdftex.def)             Requested size: 412.56497pt x 175.22525pt.
+ [124 <./images//images_MLN/CIC_LANL.png>]
+<images//images_MLN/Trainingsize.png, id=536, 511.15968pt x 174.6525pt>
+File: images//images_MLN/Trainingsize.png Graphic file (type png)
+<use images//images_MLN/Trainingsize.png>
+Package pdftex.def Info: images//images_MLN/Trainingsize.png  used on input lin
+e 902.
+(pdftex.def)             Requested size: 412.56497pt x 140.96407pt.
+ [125 <./images//images_MLN/Trainingsize.png>]
+<images//images_MLN/short_sess_new2.png, id=541, 339.51843pt x 249.18094pt>
+File: images//images_MLN/short_sess_new2.png Graphic file (type png)
+<use images//images_MLN/short_sess_new2.png>
+Package pdftex.def Info: images//images_MLN/short_sess_new2.png  used on input 
+line 928.
+(pdftex.def)             Requested size: 350.68274pt x 257.38544pt.
+ [126]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [127 <./images//images_MLN/short_sess_new2.png>]
+<images//images_MLN/complex_sess_new2.png, id=550, 516.42938pt x 494.59781pt>
+File: images//images_MLN/complex_sess_new2.png Graphic file (type png)
+<use images//images_MLN/complex_sess_new2.png>
+Package pdftex.def Info: images//images_MLN/complex_sess_new2.png  used on inpu
+t line 971.
+(pdftex.def)             Requested size: 412.56497pt x 395.13539pt.
+ [128] [129 <./images//images_MLN/complex_sess_new2.png>]
+Underfull \vbox (badness 4832) has occurred while \output is active []
+
+ [130]
+Underfull \vbox (badness 1874) has occurred while \output is active []
+
+ [131]
+[132] [133]) [134]
+Chapter 6.
+(chapters/NSS.tex
+Overfull \hbox (2.46346pt too wide) in paragraph at lines 50--51
+\OT1/ptm/m/n/12 meth-ods on self-provided pri-vate data, which makes a di-rect 
+com-par-i-son of the achieved
+ []
+
+[135
+
+] [136]
+<images//images_NSS/Stepstone_final_2.png, id=580, 423.83344pt x 168.63pt>
+File: images//images_NSS/Stepstone_final_2.png Graphic file (type png)
+<use images//images_NSS/Stepstone_final_2.png>
+Package pdftex.def Info: images//images_NSS/Stepstone_final_2.png  used on inpu
+t line 88.
+(pdftex.def)             Requested size: 247.54149pt x 98.4899pt.
+ [137 <./images//images_NSS/Stepstone_final_2.png>]
+<images//images_NSS/Packetway_2.png, id=584, 843.15pt x 182.18062pt>
+File: images//images_NSS/Packetway_2.png Graphic file (type png)
+<use images//images_NSS/Packetway_2.png>
+Package pdftex.def Info: images//images_NSS/Packetway_2.png  used on input line
+ 154.
+(pdftex.def)             Requested size: 371.30595pt x 80.2292pt.
+ [138 <./images//images_NSS/Packetway_2.png>] [139]
+<images//images_NSS/Docker_framework.png, id=592, 1291.07344pt x 445.665pt>
+File: images//images_NSS/Docker_framework.png Graphic file (type png)
+<use images//images_NSS/Docker_framework.png>
+Package pdftex.def Info: images//images_NSS/Docker_framework.png  used on input
+ line 206.
+(pdftex.def)             Requested size: 309.42372pt x 106.80537pt.
+ [140 <./images//images_NSS/Docker_framework.png>]
+Underfull \hbox (badness 3240) in paragraph at lines 248--248
+[]|\OT1/ptm/m/n/12 Background data sim-i-lar to at-tack
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [141]
+[142]
+Overfull \hbox (2.86803pt too wide) in paragraph at lines 290--301
+ [][] 
+ []
+
+[143] [144]
+Overfull \hbox (5.06696pt too wide) in paragraph at lines 364--367
+\OT1/ptm/m/n/12 Watermarking typ-i-cally yields very low false-positives for co
+n-nec-tion cor-re-la-tion. Wang
+ []
+
+<images//images_NSS/Noevasion_4nodes-1.pdf, id=608, 578.16pt x 180.675pt>
+File: images//images_NSS/Noevasion_4nodes-1.pdf Graphic file (type pdf)
+<use images//images_NSS/Noevasion_4nodes-1.pdf>
+Package pdftex.def Info: images//images_NSS/Noevasion_4nodes-1.pdf  used on inp
+ut line 374.
+(pdftex.def)             Requested size: 412.56497pt x 128.92525pt.
+[145 <./images//images_NSS/Noevasion_4nodes-1.pdf>]
+<images//images_NSS/Delaydetection-1.pdf, id=618, 578.16pt x 180.675pt>
+File: images//images_NSS/Delaydetection-1.pdf Graphic file (type pdf)
+<use images//images_NSS/Delaydetection-1.pdf>
+Package pdftex.def Info: images//images_NSS/Delaydetection-1.pdf  used on input
+ line 416.
+(pdftex.def)             Requested size: 412.56497pt x 128.92525pt.
+ [146 <./images//images_NSS/Delaydetection-1.pdf>]
+<images//images_NSS/Chaffdetection-1.pdf, id=627, 578.16pt x 180.675pt>
+File: images//images_NSS/Chaffdetection-1.pdf Graphic file (type pdf)
+<use images//images_NSS/Chaffdetection-1.pdf>
+Package pdftex.def Info: images//images_NSS/Chaffdetection-1.pdf  used on input
+ line 451.
+(pdftex.def)             Requested size: 412.56497pt x 128.92525pt.
+ [147 <./images//images_NSS/Chaffdetection-1.pdf>]
+<images//images_NSS/Influencechainl-1.pdf, id=636, 578.16pt x 172.645pt>
+File: images//images_NSS/Influencechainl-1.pdf Graphic file (type pdf)
+<use images//images_NSS/Influencechainl-1.pdf>
+Package pdftex.def Info: images//images_NSS/Influencechainl-1.pdf  used on inpu
+t line 508.
+(pdftex.def)             Requested size: 412.56497pt x 123.19522pt.
+
+[148] [149 <./images//images_NSS/Influencechainl-1.pdf>]
+Underfull \vbox (badness 1783) has occurred while \output is active []
+
+ [150])
+[151] [152
+
+]
+Chapter 7.
+(chapters/Conclusion.tex [153]) (thesis.bbl [154]
+Underfull \hbox (badness 6608) in paragraph at lines 9--14
+[]\OT1/ptm/m/n/12 Impact cy-ber trust: USC DS-062, USC DS-266, USC LAN-DER.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--14
+\OT1/pcr/m/n/12 https : / / www . impactcybertrust . org / dataset _ view ? idD
+ataset = 62/$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--14
+\OT1/pcr/m/n/12 https : / / www . impactcybertrust . org / dataset _ view ? idD
+ataset = 75/$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--14
+\OT1/pcr/m/n/12 https : / / www . impactcybertrust . org / dataset _ view ? idD
+ataset = 265$\OT1/ptm/m/n/12 ,
+ []
+
+[155
+
+] [156]
+Underfull \hbox (badness 2384) in paragraph at lines 164--168
+[]\OT1/ptm/m/n/12 K. Cup.  Dataset.  $\OT1/pcr/m/n/12 http : / / kdd . ics . uc
+i . edu / databases / kddcup99 /
+ []
+
+[157] [158] [159] [160] [161] [162] [163]
+Underfull \hbox (badness 1442) in paragraph at lines 607--611
+[]\OT1/ptm/m/n/12 R. Sharpe.  Ed-it-cap Man Page.  $\OT1/pcr/m/n/12 https : / /
+ www . wireshark . org / docs /
+ []
+
+[164] [165]
+Underfull \hbox (badness 10000) in paragraph at lines 691--697
+\OT1/pcr/m/n/12 / / www . unb . ca / research / iscx / dataset / iscx-[]NSL-[]K
+DD-[]dataset . html$\OT1/ptm/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 2057) in paragraph at lines 710--714
+[]\OT1/ptm/m/n/12 UNIBS.  Data shar-ing.  $\OT1/pcr/m/n/12 http : / / netweb . 
+ing . unibs . it / []ntw / tools /
+ []
+
+[166] [167]) [168] (thesis.aux) ) 
+Here is how much of TeX's memory you used:
+ 18742 strings out of 478836
+ 362013 string characters out of 2845310
+ 633670 words of memory out of 3000000
+ 36194 multiletter control sequences out of 15000+600000
+ 484035 words of font info for 176 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 105i,20n,115p,1871b,1241s stack positions out of 5000i,500n,10000p,200000b,80000s
+{C:/Users/henry/AppData/Local/Programs/MiKTeX 
+2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/henry/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/henry/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/henry/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users
+/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/courier/u
+crr8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/hel
+vetic/uhvb8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
+urw/helvetic/uhvr8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/urw/helvetic/uhvro8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/urw/symbol/usyr.pfb><C:/Users/henry/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/henry/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/henry/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on thesis.pdf (168 pages, 2644904 bytes).
+PDF statistics:
+ 764 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 273 words of extra memory for PDF output out of 10000 (max. 10000000)
+

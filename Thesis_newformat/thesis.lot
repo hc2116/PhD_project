@@ -1,0 +1,24 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Outline of the traffic settings for examining projection consistency. The numbers below each setting describe the measured Mahalanobis-distances (blue:average, red:maximal) for the corresponding projections.\relax }}{23}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Common ALPs in CICIDS-17 data\relax }}{26}
+\contentsline {table}{\numberline {2.3}{\ignorespaces 5-second window for host 192.168.10.9 in the CICIDS-17 dataset.\relax }}{28}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces The left side depicts a flow sequence from an XSS-attack.The right side depicts a benign SMB-sequence (top), and a sequence from a \textit {Pass-the-hash} attack via the same SMB service.\relax }}{35}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Summary of the amount of traffic extracted from each dataset.\relax }}{43}
+\contentsline {table}{\numberline {3.3}{\ignorespaces Number of sessions for each attack class in the CICIDS-17 dataset\relax }}{44}
+\contentsline {table}{\numberline {3.4}{\ignorespaces Anomaly score distributions and detection rates at threshold T for known-malicious sessions in the CICIDS-17 dataset, as well as detection rates for a less complex benchmark model (Fig. 3.17\hbox {}).\relax }}{45}
+\contentsline {table}{\numberline {3.5}{\ignorespaces Exemplary session with SMB-traffic, host C2519, along with the estimated probability of the session to end.\relax }}{46}
+\contentsline {table}{\numberline {3.6}{\ignorespaces Average likelihood of first two flows in a session and false-positives for uni- and bidirectional model.\relax }}{51}
+\contentsline {table}{\numberline {3.7}{\ignorespaces Score distributions for simpler models.\relax }}{54}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Summary of different components in our evaluation data.\relax }}{61}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Summary of included SSD-methods along with the claimed true positive and false positive rates and evasion robustness by the corresponding authors. We added labels to each method for later reference.\relax }}{62}
+\contentsline {table}{\numberline {4.3}{\ignorespaces AUC-scores for different methods on stepping-stone data without evasive tactics.\relax }}{63}
+\contentsline {table}{\numberline {4.4}{\ignorespaces AUC-scores for SSD methods with added transfer delays at $\delta _D=1000ms$.\relax }}{64}
+\contentsline {table}{\numberline {4.5}{\ignorespaces AUC-scores for SSD methods with added chaff at 300\% ratio.\relax }}{65}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Relative contribution in \% of different benign data to the FP rate.\relax }}{65}
+\contentsline {table}{\numberline {4.7}{\ignorespaces Influence of network congestion on detection rates at a fixed FP rate of $0.4\%$. The given percentages are describing the change of the detection rate under the given congestion setting when compared to the overall average.\relax }}{66}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Currently implemented traffic scenarios along with the number of implemented subscenarios\relax }}{78}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Worst Random Forest accuracy rates for a given distribution\relax }}{81}
