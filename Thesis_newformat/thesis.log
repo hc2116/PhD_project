@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.6.28 NEXT) (preloaded format=pdflatex 2021.7.19)  20 JUL 2021 18:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.6.28 NEXT) (preloaded format=pdflatex 2021.7.19)  21 JUL 2021 12:22
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -961,33 +961,36 @@ Overfull \hbox (1.90797pt too wide) in paragraph at lines 38--39
 [16]
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
 (Font)              scaled to size 10.79993pt on input line 45.
- [17]
-<images//images_introduction/Themes.PNG, id=66, 351.56343pt x 252.19218pt>
+ [17] [18]
+<images//images_introduction/Themes.PNG, id=69, 351.56343pt x 252.19218pt>
 File: images//images_introduction/Themes.PNG Graphic file (type png)
 <use images//images_introduction/Themes.PNG>
 Package pdftex.def Info: images//images_introduction/Themes.PNG  used on input 
-line 78.
+line 80.
 (pdftex.def)             Requested size: 247.54149pt x 177.57231pt.
- [18 <./images//images_introduction/Themes.PNG>]
-Overfull \hbox (1.13062pt too wide) in paragraph at lines 92--93
+
+Underfull \vbox (badness 1122) has occurred while \output is active []
+
+ [19 <./images//images_introduction/Themes.PNG>]
+Overfull \hbox (1.13062pt too wide) in paragraph at lines 94--95
 \OT1/ptm/m/n/12 sary con-cepts of machine-learning based anomaly de-tec-tion fo
 r se-quen-tial data streams.
  []
 
-[19]
 <images//images_introduction/Thesis_structure.PNG, id=74, 395.97937pt x 677.531
 25pt>
 File: images//images_introduction/Thesis_structure.PNG Graphic file (type png)
 <use images//images_introduction/Thesis_structure.PNG>
 Package pdftex.def Info: images//images_introduction/Thesis_structure.PNG  used
- on input line 98.
+ on input line 100.
 (pdftex.def)             Requested size: 247.54149pt x 423.55937pt.
 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[20])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [20 <./images//images_introduction/Thesis_structure.PNG>]) [21] [22
-
-]
+ [21 <./images//images_introduction/Thesis_structure.PNG>] [22]
 Chapter 2.
 (chapters/background.tex
 <images/tcp_header.png, id=86, 575.90157pt x 324.46219pt>
@@ -997,7 +1000,9 @@ Package pdftex.def Info: images/tcp_header.png  used on input line 11.
 (pdftex.def)             Requested size: 230.35654pt x 129.78256pt.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
 (Font)              scaled to size 7.19995pt on input line 12.
- [23 <./images/tcp_header.png>] [24] [25]
+ [23
+
+ <./images/tcp_header.png>] [24] [25]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
@@ -1664,7 +1669,7 @@ pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utm
 b8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times
 /utmr8a.pfb><C:/Users/henry/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on thesis.pdf (168 pages, 2644229 bytes).
+Output written on thesis.pdf (168 pages, 2645338 bytes).
 PDF statistics:
  764 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
